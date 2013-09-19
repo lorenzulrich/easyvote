@@ -57,14 +57,11 @@ class VotingDayController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContro
 	 *
 	 * @return void
 	 */
-	public function showCurrentVotingDay() {
-		if (1 == 1) {
-			// TODO check if user is logged in
-			// frontend user logged in
-		} else {
-			// anonymous, show national votings
-
-		}
+	public function showCurrentVotingDayAction() {
+		$votingDay = $this->votingDayRepository->findCurrentVotingDay();
+		$this->view->assignMultiple(array(
+			'votingDay' => $votingDay,
+		));
 	}
 
 	/**

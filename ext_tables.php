@@ -3,6 +3,12 @@ if (!defined('TYPO3_MODE')) {
 	die ('Access denied.');
 }
 
+\TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin(
+	$_EXTKEY,
+	'Currentvotings',
+	'CurrentVotings'
+);
+
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addStaticFile($_EXTKEY, 'Configuration/TypoScript', 'easyvote');
 
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addLLrefForTCAdescr('tx_easyvote_domain_model_metavotingproposal', 'EXT:easyvote/Resources/Private/Language/locallang_csh_tx_easyvote_domain_model_metavotingproposal.xlf');

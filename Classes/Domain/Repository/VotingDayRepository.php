@@ -33,8 +33,16 @@ namespace Visol\Easyvote\Domain\Repository;
  */
 class VotingDayRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
 
-	public function findCurrentVoting() {
+	protected $defaultOrderings = array(
+		'votingDate' => \TYPO3\CMS\Extbase\Persistence\QueryInterface::ORDER_ASCENDING,
+	);
 
+	/**
+	 * @return \TYPO3\CMS\Extbase\Persistence\QueryInterface
+	 */
+	public function findCurrentVotingDay() {
+		$votingDays = $this->createQuery()->setLimit(1)->execute();
+		return $votingDays->getFirst();
 	}
 	
 }
