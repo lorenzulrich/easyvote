@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" date="2013-09-19T13:43:14Z" product-name="easyvote">
+		<header/>
+		<body>
+
+			<trans-unit id="tx_easyvote_domain_model_metavotingproposal">
+				<source>Meta-Abstimmungsvorlage</source>
+			</trans-unit>
+			<trans-unit id="tx_easyvote_domain_model_metavotingproposal.private_title">
+				<source>Titel (nur interne Verwendung)</source>
+			</trans-unit>
+			<trans-unit id="tx_easyvote_domain_model_metavotingproposal.type">
+				<source>Typ</source>
+			</trans-unit>
+			<trans-unit id="tx_easyvote_domain_model_metavotingproposal.scope">
+				<source>Reichweite</source>
+			</trans-unit>
+			<trans-unit id="tx_easyvote_domain_model_metavotingproposal.main_proposal_approval">
+				<source>Zustimmung zur Hauptvorlage (in %)</source>
+			</trans-unit>
+			<trans-unit id="tx_easyvote_domain_model_metavotingproposal.voting_proposals">
+				<source>Abstimmungsvorlagen</source>
+			</trans-unit>
+			<trans-unit id="tx_easyvote_domain_model_metavotingproposal.kanton">
+				<source>Kanton</source>
+			</trans-unit>
+
+			<trans-unit id="tx_easyvote_domain_model_votingproposal">
+				<source>Abstimmungsvorlage</source>
+			</trans-unit>
+			<trans-unit id="tx_easyvote_domain_model_votingproposal.short_title">
+				<source>Kurztitel</source>
+			</trans-unit>
+			<trans-unit id="tx_easyvote_domain_model_votingproposal.official_title">
+				<source>Offizieller Titel</source>
+			</trans-unit>
+			<trans-unit id="tx_easyvote_domain_model_votingproposal.youtube_url">
+				<source>URL zu YouTube-Video</source>
+			</trans-unit>
+			<trans-unit id="tx_easyvote_domain_model_votingproposal.goal">
+				<source>Ziel</source>
+			</trans-unit>
+			<trans-unit id="tx_easyvote_domain_model_votingproposal.initial_status">
+				<source>Ausgangslage</source>
+			</trans-unit>
+			<trans-unit id="tx_easyvote_domain_model_votingproposal.consequence">
+				<source>Was würde sich ändern?</source>
+			</trans-unit>
+			<trans-unit id="tx_easyvote_domain_model_votingproposal.pro_arguments">
+				<source>Pro</source>
+			</trans-unit>
+			<trans-unit id="tx_easyvote_domain_model_votingproposal.contra_arguments">
+				<source>Kontra</source>
+			</trans-unit>
+			<trans-unit id="tx_easyvote_domain_model_votingproposal.government_opinion">
+				<source>Regierungsmeinung</source>
+			</trans-unit>
+			<trans-unit id="tx_easyvote_domain_model_votingproposal.links">
+				<source>Links</source>
+			</trans-unit>
+			<trans-unit id="tx_easyvote_domain_model_votingproposal.proposal_approval">
+				<source>Zustimmung zur Vorlage (in %)</source>
+			</trans-unit>
+
+			<trans-unit id="tx_easyvote_domain_model_kanton">
+				<source>Kanton</source>
+			</trans-unit>
+			<trans-unit id="tx_easyvote_domain_model_kanton.name">
+				<source>Name</source>
+			</trans-unit>
+			<trans-unit id="tx_easyvote_domain_model_kanton.abbreviation">
+				<source>Abkürzung</source>
+			</trans-unit>
+			<trans-unit id="tx_easyvote_domain_model_kanton.cities">
+				<source>Orte</source>
+			</trans-unit>
+
+			<trans-unit id="tx_easyvote_domain_model_votingday">
+				<source>Abstimmungstag</source>
+			</trans-unit>
+			<trans-unit id="tx_easyvote_domain_model_votingday.voting_date">
+				<source>Datum</source>
+			</trans-unit>
+			<trans-unit id="tx_easyvote_domain_model_votingday.archived">
+				<source>Archiviert</source>
+			</trans-unit>
+			<trans-unit id="tx_easyvote_domain_model_votingday.meta_voting_proposals">
+				<source>Meta-Abstimmungsvorlagen</source>
+			</trans-unit>
+
+			<trans-unit id="tx_easyvote_domain_model_city">
+				<source>Ort</source>
+			</trans-unit>
+			<trans-unit id="tx_easyvote_domain_model_city.zip">
+				<source>Postleitzahl</source>
+			</trans-unit>
+			<trans-unit id="tx_easyvote_domain_model_city.name">
+				<source>Ortsname</source>
+			</trans-unit>
+
+		</body>
+	</file>
+</xliff>
