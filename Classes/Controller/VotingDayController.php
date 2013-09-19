@@ -44,6 +44,7 @@ class VotingDayController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContro
 	/**
 	 * action list
 	 *
+	 * @unused
 	 * @return void
 	 */
 	public function listAction() {
@@ -52,8 +53,24 @@ class VotingDayController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContro
 	}
 
 	/**
+	 * action showCurrentVotingDay
+	 *
+	 * @return void
+	 */
+	public function showCurrentVotingDay() {
+		if (1 == 1) {
+			// TODO check if user is logged in
+			// frontend user logged in
+		} else {
+			// anonymous, show national votings
+
+		}
+	}
+
+	/**
 	 * action show
 	 *
+	 * @unused
 	 * @param \Visol\Easyvote\Domain\Model\VotingDay $votingDay
 	 * @return void
 	 */

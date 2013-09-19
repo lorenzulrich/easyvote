@@ -33,5 +33,9 @@ namespace Visol\Easyvote\Domain\Repository;
  */
 class VotingDayRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
 
+	public function findCurrentVoting() {
+
+	}
+	
 }
 ?>
