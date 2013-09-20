@@ -80,62 +80,30 @@ Otherwise your changes will be overwritten the next time you save the extension 
 	</section>
 	<section class="col-floatLeft col-marginRight col-50 col-middle">
 		<f:for each="{votingDay.metaVotingProposals}" as="metaVotingProposal" iteration="metaIterator">
-			<div class="meta-abstimmungsvorlage {f:if(condition: '{metaVotingProposal.type} == 1', then: 'meta-abstimmungsvorlage-normal', else: 'meta-abstimmungsvorlage-gegenvorschlag')} {f:if(condition: '{metaIterator.isFirst}', then: 'meta-abstimmungsvorlage-open', else: '')}"  id="meta-abstimmungsvorlage-{metaVotingProposal.uid}">
-				<f:for each="{metaVotingProposal.votingProposals}" as="votingProposal" iteration="iterator">
-					<div class="abstimmungsvorlage abstimmungsvorlage-meta-{metaVotingProposal.uid}" id="abstimmungsvorlage-{votingProposal.uid}">
-						<h2>{votingProposal.shortTitle}</h2>
-						<f:if condition="{metaVotingProposal.type} == 2">
-							<f:if condition="{iterator.isFirst}">
-								<f:then>
-									<p>Zu dieser Abstimmungsvorlage gibt es einen <a href="#" id="goToGegenvorschlag">Gegenvorschlag</a>.</p>
-								</f:then>
-								<f:else>
-									<p>Dies ist der Gegenvorschlag. <a href="#" id="goToHauptvorlage">Zurück zur Vorlage</a>.</p>
-								</f:else>
-							</f:if>
-						</f:if>
-						<p class="abstimmungsvorlage-subheader">
-							<span class="abstimmungsvorlage-datum">
-								<f:format.date format="d.m.Y">{votingDay.votingDate}</f:format.date>
-							</span>
-							•
-							{votingProposal.officialTitle}
-						</p>
-						<div class="abstimmungsvorlage-content">
-							<f:if condition="{votingProposal.youtubeUrl}">
-								<ev:youtube videoUrl="{votingProposal.youtubeUrl}"></ev:youtube>
-							</f:if>
-							<h3><f:translate key="tx_easyvote_domain_model_votingproposal.goal" /></h3>
-							<div><f:format.html parseFuncTSPath="lib.parseFunc">{votingProposal.goal}</f:format.html></div>
-							<h3><f:translate key="tx_easyvote_domain_model_votingproposal.initial_status" /></h3>
-							<div><f:format.html parseFuncTSPath="lib.parseFunc">{votingProposal.initialStatus}</f:format.html></div>
-							<h3><f:translate key="tx_easyvote_domain_model_votingproposal.consequences" /></h3>
-							<div><f:format.html parseFuncTSPath="lib.parseFunc">{votingProposal.consequences}</f:format.html></div>
-							<h3><f:translate key="tx_easyvote_domain_model_votingproposal.pro_arguments" /></h3>
-							<div><f:format.html parseFuncTSPath="lib.parseFunc">{votingProposal.proArguments}</f:format.html></div>
-							<h3><f:translate key="tx_easyvote_domain_model_votingproposal.contra_arguments" /></h3>
-							<div><f:format.html parseFuncTSPath="lib.parseFunc">{votingProposal.contraArguments}</f:format.html></div>
-							<h3><f:translate key="tx_easyvote_domain_model_votingproposal.government_opinion" /></h3>
-							<div><f:format.html parseFuncTSPath="lib.parseFunc">{votingProposal.governmentOpinion}</f:format.html></div>
-							<h3><f:translate key="tx_easyvote_domain_model_votingproposal.links" /></h3>
-							<div><f:format.html parseFuncTSPath="lib.parseFunc">{votingProposal.links}</f:format.html></div>
-						</div>
-					</div>
-				</f:for>
-			</div>
+			<f:if condition="{metaVotingProposal.scope} == 1">
+				<f:then>
+					<f:render partial="MetaVotingProposal/SingleItem" arguments="{metaVotingProposal:metaVotingProposal, metaIterator:metaIterator}" />
+				</f:then>
+				<f:else>
+					<f:if condition="{metaVotingProposal.kanton.uid} == {requestedKanton.uid}">
+						<f:render partial="MetaVotingProposal/SingleItem" arguments="{metaVotingProposal:metaVotingProposal, metaIterator:metaIterator}" />
+					</f:if>
+				</f:else>
+			</f:if>
 		</f:for>
 	</section>
 	<section class="col-floatLeft col-25 col-right">
-		<f:for each="{votingDay.metaVotingProposals}" as="metaVotingProposal" iteration="metaIterator">
-			<div class="meta-abstimmungsvorlage-navi" id="meta-abstimmungsvorlage-navi-{metaVotingProposal.uid}">
-					<v:var.set name="first" value="{metaVotingProposal.votingProposals -> v:iterator.first()}" />
-					<h2>{first.shortTitle}</h2>
-					<p class="abstimmungsvorlage-subheader">
-						<span class="abstimmungsvorlage-datum">
-							<f:format.date format="d.m.Y">{votingDay.votingDate}</f:format.date>
-						</span>
-					</p>
-			</div>
+		<f:for each="{votingDay.metaVotingProposals}" as="metaVotingProposal">
+			<f:if condition="{metaVotingProposal.scope} == 1">
+				<f:then>
+					<f:render partial="MetaVotingProposal/SingleNaviItem" arguments="{metaVotingProposal:metaVotingProposal}" />
+				</f:then>
+				<f:else>
+					<f:if condition="{metaVotingProposal.kanton.uid} == {requestedKanton.uid}">
+						<f:render partial="MetaVotingProposal/SingleNaviItem" arguments="{metaVotingProposal:metaVotingProposal}" />
+					</f:if>
+				</f:else>
+			</f:if>
 		</f:for>
 	</section>
 

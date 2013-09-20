@@ -55,12 +55,14 @@ class VotingDayController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContro
 	/**
 	 * action showCurrentVotingDay
 	 *
+	 * @param \Visol\Easyvote\Domain\Model\Kanton $kanton requested Kanton
 	 * @return void
 	 */
-	public function showCurrentVotingDayAction() {
+	public function showCurrentVotingDayAction(\Visol\Easyvote\Domain\Model\Kanton $kanton = NULL) {
 		$votingDay = $this->votingDayRepository->findCurrentVotingDay();
 		$this->view->assignMultiple(array(
 			'votingDay' => $votingDay,
+			'requestedKanton' => $kanton
 		));
 	}
 

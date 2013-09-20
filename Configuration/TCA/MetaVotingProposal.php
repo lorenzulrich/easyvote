@@ -186,6 +186,7 @@ $TCA['tx_easyvote_domain_model_metavotingproposal'] = array(
 			'config' => array(
 				'type' => 'select',
 				'foreign_table' => 'tx_easyvote_domain_model_kanton',
+				'foreign_table_where' => 'ORDER BY tx_easyvote_domain_model_kanton.name',
 				'minitems' => 1,
 				'maxitems' => 1,
 			),

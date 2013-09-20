@@ -44,6 +44,7 @@ class KantonController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControlle
 	/**
 	 * action list
 	 *
+	 * @unused
 	 * @return void
 	 */
 	public function listAction() {
@@ -52,8 +53,25 @@ class KantonController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControlle
 	}
 
 	/**
+	 * action list
+	 *
+	 * @return void
+	 */
+	public function kantonNavigationAction() {
+		$requestedKanton = (int)\t3lib_div::_GET('tx_easyvote_currentvotings')['kanton'];
+		if (!empty($requestedKanton)) {
+			$this->view->assign('requestedKanton', $requestedKanton);
+		}
+		$kantons = $this->kantonRepository->findAll();
+		$this->view->assignMultiple(array(
+			'kantons' => $kantons,
+		));
+	}
+
+	/**
 	 * action show
 	 *
+	 * @unused
 	 * @param \Visol\Easyvote\Domain\Model\Kanton $kanton
 	 * @return void
 	 */

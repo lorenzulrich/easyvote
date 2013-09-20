@@ -3,10 +3,20 @@ if (!defined('TYPO3_MODE')) {
 	die ('Access denied.');
 }
 
+/* Votings Dashboard */
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin(
 	$_EXTKEY,
 	'Currentvotings',
-	'CurrentVotings'
+	'Aktuelle Abstimmungen',
+	'EXT:easyvote/ext_icon.gif'
+);
+
+/* Navigation of all Kantons */
+\TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin(
+	$_EXTKEY,
+	'Kantonnavigation',
+	'Kantons-Navigation',
+	'EXT:easyvote/ext_icon.gif'
 );
 
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addStaticFile($_EXTKEY, 'Configuration/TypoScript', 'easyvote');
@@ -82,6 +92,7 @@ $TCA['tx_easyvote_domain_model_kanton'] = array(
 		'title'	=> 'LLL:EXT:easyvote/Resources/Private/Language/locallang_db.xlf:tx_easyvote_domain_model_kanton',
 		'label' => 'name',
 		'tstamp' => 'tstamp',
+		'sortby' => 'name',
 		'crdate' => 'crdate',
 		'cruser_id' => 'cruser_id',
 		'dividers2tabs' => TRUE,

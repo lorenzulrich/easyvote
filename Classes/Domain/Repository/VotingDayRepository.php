@@ -41,8 +41,8 @@ class VotingDayRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
 	 * @return \TYPO3\CMS\Extbase\Persistence\QueryInterface
 	 */
 	public function findCurrentVotingDay() {
-		$votingDays = $this->createQuery()->setLimit(1)->execute();
-		return $votingDays->getFirst();
+		$query = $this->createQuery()->setLimit(1)->execute();
+		return $query->getFirst();
 	}
 	
 }

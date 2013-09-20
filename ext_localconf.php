@@ -3,6 +3,7 @@ if (!defined('TYPO3_MODE')) {
 	die ('Access denied.');
 }
 
+/* Votings Dashboard */
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
 	'Visol.' . $_EXTKEY,
 	'Currentvotings',
@@ -12,11 +13,18 @@ if (!defined('TYPO3_MODE')) {
 	),
 	// non-cacheable actions
 	array(
-		'MetaVotingProposal' => '',
-		'VotingProposal' => '',
-		'Kanton' => '',
-		'VotingDay' => '',
-		'City' => '',
+	)
+);
+
+/* Navigation of all Kantons */
+\TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
+	'Visol.' . $_EXTKEY,
+	'Kantonnavigation',
+	array(
+		'Kanton' => 'kantonNavigation',
+	),
+	// non-cacheable actions
+	array(
 	)
 );
 

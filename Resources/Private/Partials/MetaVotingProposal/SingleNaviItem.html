@@ -1,0 +1,11 @@
+{namespace v=Tx_Vhs_ViewHelpers}
+{namespace ev=Tx_Easyvote_ViewHelpers}
+<div class="meta-abstimmungsvorlage-navi" id="meta-abstimmungsvorlage-navi-{metaVotingProposal.uid}">
+	<v:var.set name="first" value="{metaVotingProposal.votingProposals -> v:iterator.first()}" />
+	<h2>{first.shortTitle}</h2>
+	<p class="abstimmungsvorlage-subheader">
+					<span class="abstimmungsvorlage-datum">
+						<f:format.date format="d.m.Y">{votingDay.votingDate}</f:format.date>
+					</span>
+	</p>
+</div>
