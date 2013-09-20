@@ -127,6 +127,10 @@
     background: none !important;
 }
 
+.navi-3 ul:before, .navi-3 ul:after {
+    display: none;
+}
+
 .flag-navi {
     padding: 0;
     margin-right: 5px !important;
