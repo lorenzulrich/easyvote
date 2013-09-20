@@ -20,7 +20,7 @@ Otherwise your changes will be overwritten the next time you save the extension 
 		</li>
 		<f:for each="{kantons}" as="kanton">
 		<li class="{f:if(condition: '{requestedKanton.uid} == {kanton.uid}', then: 'active', else: 'item')} flag-navi flag-{v:format.case(string: kanton.abbreviation, case: 'lower')}">
-			<f:link.action controller="VotingDay" action="showCurrentVotingDay" arguments="{kanton : kanton}"><span>{kanton.abbreviation}</span></f:link.action>
+			<f:link.action additionalAttributes="{title:kanton.name}" controller="VotingDay" action="showCurrentVotingDay" arguments="{kanton : kanton}"><span>{kanton.abbreviation}</span></f:link.action>
 		</li>
 		</f:for>
 	</ul>

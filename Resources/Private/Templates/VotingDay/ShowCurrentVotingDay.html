@@ -16,6 +16,7 @@ Otherwise your changes will be overwritten the next time you save the extension 
 <f:section name="main">
 
 <link rel="stylesheet" href="/typo3conf/ext/easyvote/Resources/Public/Stylesheets/easyvote.css" />
+<link rel="stylesheet" href="/typo3conf/ext/easyvote/Resources/Public/Stylesheets/font-awesome.css" />
 
 
 <div id="votingsDashboard">
@@ -66,11 +67,11 @@ Otherwise your changes will be overwritten the next time you save the extension 
 		bindNavigation();
 
 		$('a#goToGegenvorschlag').click(function() {
-			var jumpToId = $(this).closest('div').next().attr('id');
+			var jumpToId = $(this).closest('div.abstimmungsvorlage').next().attr('id');
 			scrollToElement('#' + jumpToId);
 		});
 		$('a#goToHauptvorlage').click(function() {
-			var jumpToId = $(this).closest('div').prev().attr('id');
+			var jumpToId = $(this).closest('div.abstimmungsvorlage').prev().attr('id');
 			scrollToElement('#' + jumpToId);
 		});
 
@@ -96,10 +97,10 @@ Otherwise your changes will be overwritten the next time you save the extension 
 	function openVoting(metaVotingId) {
 		var openVoting = $('.meta-abstimmungsvorlage-open').attr('id');
 		var openVotingId = openVoting.split('-')[2];
-		$('#' + openVoting).slideUp(500, function() {
-			$('#meta-abstimmungsvorlage-navi-' + metaVotingId).slideUp(500, function() {
-				$('#meta-abstimmungsvorlage-' + metaVotingId).slideDown(500, function() {
-					$('#meta-abstimmungsvorlage-navi-' + openVotingId).slideDown(500, function() {
+		$('#' + openVoting).slideUp(300, function() {
+			$('#meta-abstimmungsvorlage-navi-' + metaVotingId).slideUp(300, function() {
+				$('#meta-abstimmungsvorlage-' + metaVotingId).slideDown(300, function() {
+					$('#meta-abstimmungsvorlage-navi-' + openVotingId).slideDown(300, function() {
 						$('#meta-abstimmungsvorlage-' + metaVotingId).toggleClass('meta-abstimmungsvorlage-open');
 						$('#' + openVoting).toggleClass('meta-abstimmungsvorlage-open');
 						bindNavigation();
@@ -117,7 +118,7 @@ Otherwise your changes will be overwritten the next time you save the extension 
 
 	function toggleBlock(trigger) {
 		$('.toggle-handle', trigger).toggleClass('toggle-handle-plus').promise().done(function() {
-			$(trigger).next().slideToggle(1000).toggleClass('toggle-closed');
+			$(trigger).next().slideToggle('fast').toggleClass('toggle-closed');
 		})
 	}
 

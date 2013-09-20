@@ -3,17 +3,6 @@
 <div class="meta-abstimmungsvorlage {f:if(condition: '{metaVotingProposal.type} == 1', then: 'meta-abstimmungsvorlage-normal', else: 'meta-abstimmungsvorlage-gegenvorschlag')} {f:if(condition: '{metaIterator.isFirst}', then: 'meta-abstimmungsvorlage-open', else: '')}"  id="meta-abstimmungsvorlage-{metaVotingProposal.uid}">
 	<f:for each="{metaVotingProposal.votingProposals}" as="votingProposal" iteration="iterator">
 		<div class="abstimmungsvorlage abstimmungsvorlage-meta-{metaVotingProposal.uid}" id="abstimmungsvorlage-{votingProposal.uid}">
-			<h2>{votingProposal.shortTitle}</h2>
-			<f:if condition="{metaVotingProposal.type} == 2">
-				<f:if condition="{iterator.isFirst}">
-					<f:then>
-						<p>Zu dieser Abstimmungsvorlage gibt es einen <a href="#" id="goToGegenvorschlag">Gegenvorschlag</a>.</p>
-					</f:then>
-					<f:else>
-						<p>Dies ist der Gegenvorschlag. <a href="#" id="goToHauptvorlage">Zurück zur Vorlage</a>.</p>
-					</f:else>
-				</f:if>
-			</f:if>
 			<div class="abstimmungsvorlage-header">
 				<div class="abstimmungsvorlage-subheader-left">
 					<f:if condition="{metaVotingProposal.scope} == 1">
@@ -26,11 +15,22 @@
 					</f:if>
 				</div>
 				<div class="abstimmungsvorlage-subheader-right">
-					<span class="abstimmungsvorlage-datum">
+					<h2>{votingProposal.shortTitle}</h2>
+					<p></ö><span class="abstimmungsvorlage-datum">
 						<f:format.date format="d.m.Y">{votingDay.votingDate}</f:format.date>
 					</span>
 					&nbsp;•&nbsp;
-					{votingProposal.officialTitle}
+					{votingProposal.officialTitle}</p>
+					<f:if condition="{metaVotingProposal.type} == 2">
+						<f:if condition="{iterator.isFirst}">
+							<f:then>
+								<p><i class="icon-hand-up pull-left"></i>Zu dieser Abstimmungsvorlage gibt es einen <a href="#" id="goToGegenvorschlag">Gegenvorschlag</a>.</p>
+							</f:then>
+							<f:else>
+								<p><i class="icon-hand-up pull-left"></i>Dies ist der Gegenvorschlag. <a href="#" id="goToHauptvorlage">Zurück zur Vorlage</a>.</p>
+							</f:else>
+						</f:if>
+					</f:if>
 				</div>
 			</div>
 			<div class="clearer"></div>

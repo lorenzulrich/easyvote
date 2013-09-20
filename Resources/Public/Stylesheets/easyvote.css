@@ -79,6 +79,10 @@
     float: left;
 }
 
+.abstimmungsvorlage-subheader-right p {
+    line-height: 16px;
+}
+
 .abstimmungsvorlage-header span.abstimmungsvorlage-datum {
     color: #ed0a71;
     font-weight: 500;
@@ -100,6 +104,7 @@
     border-radius: 15px;
     margin-bottom: 20px;
     cursor: pointer;
+    position: relative;
 }
 
 .meta-abstimmungsvorlage-navi p.abstimmungsvorlage-subheader {
@@ -127,6 +132,8 @@
     margin-right: 5px !important;
     height: 35px;
     width: 35px;
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
     background: url('../Flags/flag-ch.svg') no-repeat;
     background-size: 100%;
 }
@@ -152,8 +159,8 @@
 .flag-middle {
     width: 70px;
     height: 70px;
-    /*-webkit-border-radius: 15px;
-    border-radius: 15px;*/
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
     background: url('../Flags/flag-ch.svg') no-repeat;
     background-size: 100%;
 }
@@ -161,8 +168,19 @@
 .flag-big {
     width: 260px;
     height: 260px;
-    /*-webkit-border-radius: 15px;
-    border-radius: 15px;*/
+    -webkit-border-radius: 15px;
+    border-radius: 15px;
+    background: url('../Flags/flag-ch.svg') no-repeat;
+    background-size: 100%;
+}
+
+.flag-voting-navi {
+    float: left;
+    margin-right: 10px;
+    width: 14px;
+    height: 14px;
+    -webkit-border-radius: 2px;
+    border-radius: 2px;
     background: url('../Flags/flag-ch.svg') no-repeat;
     background-size: 100%;
 }
@@ -189,6 +207,7 @@
 .flag-tg { background-image: url('../Flags/flag-tg.svg'); }
 .flag-ti { background-image: url('../Flags/flag-ti.svg'); }
 .flag-ur { background-image: url('../Flags/flag-ur.svg'); }
+.flag-vd { background-image: url('../Flags/flag-vd.svg'); }
 .flag-vs { background-image: url('../Flags/flag-vs.svg'); }
 .flag-zg { background-image: url('../Flags/flag-zg.svg'); }
 .flag-zh { background-image: url('../Flags/flag-zh.svg'); }

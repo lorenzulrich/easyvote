@@ -4,6 +4,14 @@
 	<v:var.set name="first" value="{metaVotingProposal.votingProposals -> v:iterator.first()}" />
 	<h2>{first.shortTitle}</h2>
 	<p class="abstimmungsvorlage-subheader">
+		<f:if condition="{metaVotingProposal.scope} == 1">
+			<f:then>
+				<div class="flag-voting-navi flag-ch"></div>
+			</f:then>
+			<f:else>
+				<div class="flag-voting-navi flag-{v:format.case(string: metaVotingProposal.kanton.abbreviation, case: 'lower')}"></div>
+			</f:else>
+		</f:if>
 		<span class="abstimmungsvorlage-datum">
 			<f:format.date format="d.m.Y">{votingDay.votingDate}</f:format.date>
 		</span>
