@@ -14,31 +14,51 @@
 					</f:else>
 				</f:if>
 			</f:if>
-			<p class="abstimmungsvorlage-subheader">
-							<span class="abstimmungsvorlage-datum">
-								<f:format.date format="d.m.Y">{votingDay.votingDate}</f:format.date>
-							</span>
-				•
-				{votingProposal.officialTitle}
+			<div class="abstimmungsvorlage-header">
+				<div class="abstimmungsvorlage-subheader-left">
+					<f:if condition="{metaVotingProposal.scope} == 1">
+						<f:then>
+							<div class="flag-middle flag-ch"></div>
+						</f:then>
+						<f:else>
+							<div class="flag-middle flag-{v:format.case(string: metaVotingProposal.kanton.abbreviation, case: 'lower')}"></div>
+						</f:else>
+					</f:if>
+				</div>
+				<div class="abstimmungsvorlage-subheader-right">
+					<span class="abstimmungsvorlage-datum">
+						<f:format.date format="d.m.Y">{votingDay.votingDate}</f:format.date>
+					</span>
+					&nbsp;•&nbsp;
+					{votingProposal.officialTitle}
+				</div>
+			</div>
+			<div class="clearer"></div>
 			</p>
 			<div class="abstimmungsvorlage-content">
 				<f:if condition="{votingProposal.youtubeUrl}">
-					<ev:youtube videoUrl="{votingProposal.youtubeUrl}"></ev:youtube>
+					<f:then>
+						<ev:youtube videoUrl="{votingProposal.youtubeUrl}"></ev:youtube>
+						<h3 class="toggle-trigger"><f:translate key="tx_easyvote_domain_model_votingproposal.goal" /><div class="toggle-handle toggle-handle-plus"></div></h3>
+						<div class="toggle-closed"><f:format.html parseFuncTSPath="lib.parseFunc">{votingProposal.goal}</f:format.html></div>
+					</f:then>
+					<f:else>
+						<h3 class="noLine"><f:translate key="tx_easyvote_domain_model_votingproposal.goal" /></h3>
+						<div><f:format.html parseFuncTSPath="lib.parseFunc">{votingProposal.goal}</f:format.html></div>
+					</f:else>
 				</f:if>
-				<h3><f:translate key="tx_easyvote_domain_model_votingproposal.goal" /></h3>
-				<div><f:format.html parseFuncTSPath="lib.parseFunc">{votingProposal.goal}</f:format.html></div>
-				<h3><f:translate key="tx_easyvote_domain_model_votingproposal.initial_status" /></h3>
-				<div><f:format.html parseFuncTSPath="lib.parseFunc">{votingProposal.initialStatus}</f:format.html></div>
-				<h3><f:translate key="tx_easyvote_domain_model_votingproposal.consequences" /></h3>
-				<div><f:format.html parseFuncTSPath="lib.parseFunc">{votingProposal.consequences}</f:format.html></div>
-				<h3><f:translate key="tx_easyvote_domain_model_votingproposal.pro_arguments" /></h3>
-				<div><f:format.html parseFuncTSPath="lib.parseFunc">{votingProposal.proArguments}</f:format.html></div>
-				<h3><f:translate key="tx_easyvote_domain_model_votingproposal.contra_arguments" /></h3>
-				<div><f:format.html parseFuncTSPath="lib.parseFunc">{votingProposal.contraArguments}</f:format.html></div>
-				<h3><f:translate key="tx_easyvote_domain_model_votingproposal.government_opinion" /></h3>
-				<div><f:format.html parseFuncTSPath="lib.parseFunc">{votingProposal.governmentOpinion}</f:format.html></div>
-				<h3><f:translate key="tx_easyvote_domain_model_votingproposal.links" /></h3>
-				<div><f:format.html parseFuncTSPath="lib.parseFunc">{votingProposal.links}</f:format.html></div>
+				<h3 class="toggle-trigger"><f:translate key="tx_easyvote_domain_model_votingproposal.initial_status" /><div class="toggle-handle toggle-handle-plus"></div></h3>
+				<div class="toggle-closed"><f:format.html parseFuncTSPath="lib.parseFunc">{votingProposal.initialStatus}</f:format.html></div>
+				<h3 class="toggle-trigger"><f:translate key="tx_easyvote_domain_model_votingproposal.consequence" /><div class="toggle-handle toggle-handle-plus"></div></h3>
+				<div class="toggle-closed"><f:format.html parseFuncTSPath="lib.parseFunc">{votingProposal.consequence}</f:format.html></div>
+				<h3 class="toggle-trigger"><f:translate key="tx_easyvote_domain_model_votingproposal.pro_arguments" /><div class="toggle-handle toggle-handle-plus"></div></h3>
+				<div class="toggle-closed"><f:format.html parseFuncTSPath="lib.parseFunc">{votingProposal.proArguments}</f:format.html></div>
+				<h3 class="toggle-trigger"><f:translate key="tx_easyvote_domain_model_votingproposal.contra_arguments" /><div class="toggle-handle toggle-handle-plus"></div></h3>
+				<div class="toggle-closed"><f:format.html parseFuncTSPath="lib.parseFunc">{votingProposal.contraArguments}</f:format.html></div>
+				<h3 class="toggle-trigger"><f:translate key="tx_easyvote_domain_model_votingproposal.government_opinion" /><div class="toggle-handle toggle-handle-plus"></div></h3>
+				<div class="toggle-closed"><f:format.html parseFuncTSPath="lib.parseFunc">{votingProposal.governmentOpinion}</f:format.html></div>
+				<h3 class="toggle-trigger"><f:translate key="tx_easyvote_domain_model_votingproposal.links" /><div class="toggle-handle toggle-handle-plus"></div></h3>
+				<div class="toggle-closed"><f:format.html parseFuncTSPath="lib.parseFunc">{votingProposal.links}</f:format.html></div>
 			</div>
 		</div>
 	</f:for>

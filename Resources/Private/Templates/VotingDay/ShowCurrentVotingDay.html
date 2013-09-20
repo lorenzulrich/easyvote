@@ -15,78 +15,29 @@ Otherwise your changes will be overwritten the next time you save the extension 
 
 <f:section name="main">
 
-<style type="text/css">
-	#votingsDashboard {
-		display: none;
-	}
-
-	#votingsDashboard .col-left, #votingsDashboard .col-right {
-		width: 260px;
-		min-height: 1px;
-	}
-
-	#votingsDashboard .col-middle {
-		width: 540px;
-		min-height: 1px;
-	}
-
-	.meta-abstimmungsvorlage-navi {
-		background-color: #97e3f8;
-		padding: 40px 30px 50px 30px;
-		-webkit-border-radius: 15px;
-		border-radius: 15px;
-		margin-bottom: 20px;
-	}
-
-	.abstimmungsvorlage {
-		background-color: #97e3f8;
-		padding: 40px 30px 50px 30px;
-		-webkit-border-radius: 15px;
-		border-radius: 15px;
-		margin-bottom: 20px;
-	}
-
-	.abstimmungsvorlage h2{
-		color: #ed0a71;
-		font-size: 20px;
-		text-transform: uppercase;
-		margin-bottom: 10px;
-	}
-
-	.abstimmungsvorlage h3{
-		color: #ed0a71;
-	}
-
-	.abstimmungsvorlage header{
-		font-family: "Ubuntu", Arial, Helvetica, sans-serif;
-		line-height: 20px;
-		margin-left: 80px;
-		text-align: left;
-	}
-
-	.meta-abstimmungsvorlage {
-		display: none;
-	}
-
-	.meta-abstimmungsvorlage-open {
-		display: block;
-	}
-</style>
+<link rel="stylesheet" href="/typo3conf/ext/easyvote/Resources/Public/Stylesheets/easyvote.css" />
 
 
 <div id="votingsDashboard">
 	<section class="col-floatLeft col-marginRight col-left col-25">
-		links
+		<f:if condition="{requestedKanton}">
+			<f:then>
+				<div class="flag-big flag-{v:format.case(string: requestedKanton.abbreviation, case: 'lower')}"></div>
+			</f:then>
+			<f:else>
+				<div class="flag-big flag-ch"></div>
+			</f:else>
+		</f:if>
 	</section>
 	<section class="col-floatLeft col-marginRight col-50 col-middle">
 		<f:for each="{votingDay.metaVotingProposals}" as="metaVotingProposal" iteration="metaIterator">
 			<f:if condition="{metaVotingProposal.scope} == 1">
 				<f:then>
-					<f:render partial="MetaVotingProposal/SingleItem" arguments="{metaVotingProposal:metaVotingProposal, metaIterator:metaIterator}" />
+					<f:render partial="MetaVotingProposal/SingleItem" arguments="{metaVotingProposal:metaVotingProposal, metaIterator:metaIterator, votingDay:votingDay}" />
 				</f:then>
 				<f:else>
 					<f:if condition="{metaVotingProposal.kanton.uid} == {requestedKanton.uid}">
-						<f:render partial="MetaVotingProposal/SingleItem" arguments="{metaVotingProposal:metaVotingProposal, metaIterator:metaIterator}" />
+						<f:render partial="MetaVotingProposal/SingleItem" arguments="{metaVotingProposal:metaVotingProposal, metaIterator:metaIterator, votingDay:votingDay}" />
 					</f:if>
 				</f:else>
 			</f:if>
@@ -96,11 +47,11 @@ Otherwise your changes will be overwritten the next time you save the extension 
 		<f:for each="{votingDay.metaVotingProposals}" as="metaVotingProposal">
 			<f:if condition="{metaVotingProposal.scope} == 1">
 				<f:then>
-					<f:render partial="MetaVotingProposal/SingleNaviItem" arguments="{metaVotingProposal:metaVotingProposal}" />
+					<f:render partial="MetaVotingProposal/SingleNaviItem" arguments="{metaVotingProposal:metaVotingProposal, votingDay:votingDay}" />
 				</f:then>
 				<f:else>
 					<f:if condition="{metaVotingProposal.kanton.uid} == {requestedKanton.uid}">
-						<f:render partial="MetaVotingProposal/SingleNaviItem" arguments="{metaVotingProposal:metaVotingProposal}" />
+						<f:render partial="MetaVotingProposal/SingleNaviItem" arguments="{metaVotingProposal:metaVotingProposal, votingDay:votingDay}" />
 					</f:if>
 				</f:else>
 			</f:if>
@@ -121,6 +72,10 @@ Otherwise your changes will be overwritten the next time you save the extension 
 		$('a#goToHauptvorlage').click(function() {
 			var jumpToId = $(this).closest('div').prev().attr('id');
 			scrollToElement('#' + jumpToId);
+		});
+
+		$('.toggle-trigger').click(function() {
+			toggleBlock(this);
 		});
 	});
 
@@ -159,6 +114,13 @@ Otherwise your changes will be overwritten the next time you save the extension 
 			scrollTop: $(elementId).offset().top
 		}, 1000);
 	}
+
+	function toggleBlock(trigger) {
+		$('.toggle-handle', trigger).toggleClass('toggle-handle-plus').promise().done(function() {
+			$(trigger).next().slideToggle(1000).toggleClass('toggle-closed');
+		})
+	}
+
 </script>
 
 

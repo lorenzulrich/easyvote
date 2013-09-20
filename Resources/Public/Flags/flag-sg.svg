@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="600" height="600">
+	<rect width="600" height="600" fill="#008000"/>
+	<g fill="#fff" stroke="#000" stroke-width="3">
+		<rect x="287.5" y="21.5" width="25" height="557"/>
+		<rect x="282.5" y="130.5" width="35" height="400" rx="12.5"/>
+		<rect id="fasce" x="230.5" y="130.5" width="25" height="400" rx="12.5"/>
+		<use xlink:href="#fasce" x="26"/>
+		<use xlink:href="#fasce" x="88"/>
+		<use xlink:href="#fasce" x="114"/>
+		<rect id="horiz" x="226" y="166.5" width="148" height="32" rx="5" fill="#008000"/>
+		<use xlink:href="#horiz" y="300"/>
+		<use xlink:href="#diag" x="-600" transform="scale(-1,1)"/>	
+		<path id="diag" d="M 226,218 L 226,268 L 374,445 L 374,395 z" fill="#008000" stroke-linejoin="round"/>
+		<path d="M 326,86 C 333,85 333,77 326,75 C 286,67 257,47 230,16 C 212,56 212,90 230,126 C 255,102 286,89 326,86 z"/>
+		<path d="M 317,70 V 90 C 305,93 295,96 283,95 V 59 C 295,60 305,66 317,70 z"/>
+	</g>
+</svg>

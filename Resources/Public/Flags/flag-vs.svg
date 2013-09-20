@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg version="1.0" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="600" height="600">
+	<rect width="600" height="600" fill="#f00"/>
+	<rect width="300" height="600" fill="#fff"/>
+	<g fill="#fff">
+		<g id="m">
+			<use xlink:href="#s" y="-234"/>
+			<use xlink:href="#s" y="-117"/>
+			<g id="s" transform="translate(300,304)">
+				<g id="c">
+					<path id="t" d="M 0,-53 V 0 H 26.5" transform="rotate(18 0,-53)"/>
+					<use xlink:href="#t" transform="scale(-1,1)"/>
+				</g>
+				<use xlink:href="#c" transform="rotate(72)"/>
+				<use xlink:href="#c" transform="rotate(144)"/>
+				<use xlink:href="#c" transform="rotate(216)"/>
+				<use xlink:href="#c" transform="rotate(288)"/>
+			</g>
+			<use xlink:href="#s" y="117"/>
+			<use xlink:href="#s" y="234"/>
+		</g>
+		<g id="r">
+			<use xlink:href="#s" x="197" y="-213"/>
+			<use xlink:href="#s" x="197" y="-73"/>
+			<use xlink:href="#s" x="197" y="67"/>
+			<use xlink:href="#s" x="197" y="207"/>
+		</g>
+	</g>
+	<clipPath id="clip">
+		<rect width="300" height="600"/>
+	</clipPath>
+	<g clip-path="url(#clip)" fill="#f00">
+		<use xlink:href="#r" x="-394"/>
+		<use xlink:href="#m"/>
+	</g>
+</svg>

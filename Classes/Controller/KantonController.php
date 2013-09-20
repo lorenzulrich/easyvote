@@ -60,7 +60,8 @@ class KantonController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControlle
 	public function kantonNavigationAction() {
 		$requestedKanton = (int)\t3lib_div::_GET('tx_easyvote_currentvotings')['kanton'];
 		if (!empty($requestedKanton)) {
-			$this->view->assign('requestedKanton', $requestedKanton);
+			$kantonObject = $this->kantonRepository->findByUid($requestedKanton);
+			$this->view->assign('requestedKanton', $kantonObject);
 		}
 		$kantons = $this->kantonRepository->findAll();
 		$this->view->assignMultiple(array(
