@@ -34,7 +34,7 @@ namespace Visol\Easyvote\Domain\Repository;
 class VotingDayRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
 
 	protected $defaultOrderings = array(
-		'votingDate' => \TYPO3\CMS\Extbase\Persistence\QueryInterface::ORDER_ASCENDING,
+		'votingDate' => \TYPO3\CMS\Extbase\Persistence\QueryInterface::ORDER_DESCENDING,
 	);
 
 	/**
