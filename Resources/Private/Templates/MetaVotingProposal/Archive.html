@@ -35,16 +35,7 @@ Otherwise your changes will be overwritten the next time you save the extension 
 		<ev:widget.paginate objects="{metaVotingProposals}" as="paginatedMetaVotingProposals" additionalParams="{query: '{queryString}'}" additionalParamsPrefix="tx_easyvote_archive" configuration="{itemsPerPage: 1, insertBelow: 1, insertAbove: 0}">
 
 			<f:for each="{paginatedMetaVotingProposals}" as="metaVotingProposal" iteration="metaIterator">
-				<f:if condition="{metaVotingProposal.scope} == 1">
-					<f:then>
-						<f:render partial="MetaVotingProposal/SingleItem" arguments="{metaVotingProposal:metaVotingProposal, metaIterator:metaIterator, votingDay:votingDay}" />
-					</f:then>
-					<f:else>
-						<f:if condition="{metaVotingProposal.kanton.uid} == {requestedKanton.uid}">
-							<f:render partial="MetaVotingProposal/SingleItem" arguments="{metaVotingProposal:metaVotingProposal, metaIterator:metaIterator, votingDay:votingDay}" />
-						</f:if>
-					</f:else>
-				</f:if>
+				<f:render partial="MetaVotingProposal/SingleItem" arguments="{metaVotingProposal:metaVotingProposal, metaIterator:metaIterator, votingDay:votingDay}" />
 			</f:for>
 
 		</ev:widget.paginate>
