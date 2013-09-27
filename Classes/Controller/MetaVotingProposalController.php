@@ -61,8 +61,6 @@ class MetaVotingProposalController extends \TYPO3\CMS\Extbase\Mvc\Controller\Act
 		$request = $this->request->getArguments();
 		$demand = array();
 
-		var_dump($request);
-
 		if (!empty($request['query'])) {
 				// TODO security
 				$queryString = $request['query'];
