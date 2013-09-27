@@ -50,6 +50,13 @@ class Kanton extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	protected $abbreviation;
 
 	/**
+	 * Kantonssprache
+	 *
+	 * @var \integer
+	 */
+	protected $language;
+
+	/**
 	 * Orte
 	 *
 	 * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Visol\Easyvote\Domain\Model\City>
@@ -117,6 +124,25 @@ class Kanton extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	 */
 	public function setAbbreviation($abbreviation) {
 		$this->abbreviation = $abbreviation;
+	}
+
+	/**
+	 * Returns the language
+	 *
+	 * @return \integer $language
+	 */
+	public function getLanguage() {
+		return $this->language;
+	}
+
+	/**
+	 * Sets the language
+	 *
+	 * @param \integer $language
+	 * @return void
+	 */
+	public function setLanguage($language) {
+		$this->language = $language;
 	}
 
 	/**

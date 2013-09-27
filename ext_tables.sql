@@ -106,6 +106,7 @@ CREATE TABLE tx_easyvote_domain_model_kanton (
 	name varchar(255) DEFAULT '' NOT NULL,
 	abbreviation varchar(255) DEFAULT '' NOT NULL,
 	cities int(11) unsigned DEFAULT '0' NOT NULL,
+	language int(11) DEFAULT '0' NOT NULL,
 
 	tstamp int(11) unsigned DEFAULT '0' NOT NULL,
 	crdate int(11) unsigned DEFAULT '0' NOT NULL,
@@ -216,7 +217,7 @@ CREATE TABLE tx_easyvote_domain_model_city (
 	PRIMARY KEY (uid),
 	KEY parent (pid),
 	KEY t3ver_oid (t3ver_oid,t3ver_wsid),
- KEY language (l10n_parent,sys_language_uid)
+  KEY language (l10n_parent,sys_language_uid)
 
 );
 
