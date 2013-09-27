@@ -1,0 +1,55 @@
+{namespace ev=Tx_Easyvote_ViewHelpers}
+<f:layout name="Default" />
+
+This Template is responsible for creating a table of domain objects.
+
+If you modify this template, do not forget to change the overwrite settings
+in /Configuration/ExtensionBuilder/settings.yaml:
+  Resources:
+    Private:
+      Templates:
+        List.html: keep
+
+Otherwise your changes will be overwritten the next time you save the extension in the extension builder
+
+<f:section name="main">
+
+	<div class="c-infobox-statisch csc-default">
+		<h2>Archiv durchstöbern...</h2>
+		<f:form controller="MetaVotingProposal" action="archive">
+			Nach Begriff suchen:
+			<f:form.textfield name="query" value="{queryString} "/>
+			<f:form.submit value="suchen" />
+		</f:form>
+	</div>
+
+	<f:if condition="{metaVotingProposals}">
+
+		<div class="searchResultsHeader">
+			<h2>Suchergebnisse</h2>
+			<p><f:count subject="{metaVotingProposals}" /> Vorlagen gefunden.</p>
+		</div>
+
+		<div class="searchResults">
+
+		<ev:widget.paginate objects="{metaVotingProposals}" as="paginatedMetaVotingProposals" additionalParams="{query: '{queryString}'}" additionalParamsPrefix="tx_easyvote_archive" configuration="{itemsPerPage: 1, insertBelow: 1, insertAbove: 0}">
+
+			<f:for each="{paginatedMetaVotingProposals}" as="metaVotingProposal" iteration="metaIterator">
+				<f:if condition="{metaVotingProposal.scope} == 1">
+					<f:then>
+						<f:render partial="MetaVotingProposal/SingleItem" arguments="{metaVotingProposal:metaVotingProposal, metaIterator:metaIterator, votingDay:votingDay}" />
+					</f:then>
+					<f:else>
+						<f:if condition="{metaVotingProposal.kanton.uid} == {requestedKanton.uid}">
+							<f:render partial="MetaVotingProposal/SingleItem" arguments="{metaVotingProposal:metaVotingProposal, metaIterator:metaIterator, votingDay:votingDay}" />
+						</f:if>
+					</f:else>
+				</f:if>
+			</f:for>
+
+		</ev:widget.paginate>
+
+		</div>
+
+	</f:if>
+</f:section>

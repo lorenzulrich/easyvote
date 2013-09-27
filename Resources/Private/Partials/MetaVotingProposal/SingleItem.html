@@ -16,7 +16,7 @@
 				</div>
 				<div class="abstimmungsvorlage-subheader-right">
 					<h2>{votingProposal.shortTitle}</h2>
-					<p></ö><span class="abstimmungsvorlage-datum">
+					<p><span class="abstimmungsvorlage-datum">
 						<f:format.date format="d.m.Y">{votingDay.votingDate}</f:format.date>
 					</span>
 					&nbsp;•&nbsp;
@@ -24,17 +24,18 @@
 					<f:if condition="{metaVotingProposal.type} == 2">
 						<f:if condition="{iterator.isFirst}">
 							<f:then>
-								<p><i class="icon-hand-right pull-left"></i>Zu dieser Vorlage gibt es einen <a href="#" id="goToGegenvorschlag">Gegenvorschlag</a>.</p>
+								<p class="multipleVotingsNavi"><i class="icon-hand-right pull-left"></i>Zu dieser Vorlage gibt es einen <a href="#" id="goToGegenvorschlag">Gegenvorschlag</a>.</p>
 							</f:then>
 							<f:else>
-								<p><i class="icon-hand-right pull-left"></i>Dies ist der Gegenvorschlag. <a href="#" id="goToHauptvorlage">Zurück zur Vorlage</a>.</p>
+								<p class="multipleVotingsNavi"><i class="icon-hand-right pull-left"></i>Dies ist der Gegenvorschlag. <a href="#" id="goToHauptvorlage">Zurück zur Vorlage</a>.</p>
 							</f:else>
 						</f:if>
 					</f:if>
+					<div class="handle"><i class="icon-chevron-up icon-chevron-down"></i></div>
 				</div>
+				<div class="clearer"></div>
 			</div>
 			<div class="clearer"></div>
-			</p>
 			<div class="abstimmungsvorlage-content">
 				<f:if condition="{votingProposal.youtubeUrl}">
 					<f:then>

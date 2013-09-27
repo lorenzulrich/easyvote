@@ -95,6 +95,32 @@
 			<trans-unit id="tx_easyvote_domain_model_city.name">
 				<source>Ortsname</source>
 			</trans-unit>
+
+			<trans-unit id="widget.pagination.previous">
+					<source>zurück</source>
+			</trans-unit>
+			<trans-unit id="widget.pagination.next">
+					<source>weiter</source>
+			</trans-unit>
+			<trans-unit id="widget.pagination.first">
+					<source>erste</source>
+			</trans-unit>
+			<trans-unit id="widget.pagination.last">
+					<source>letzte</source>
+			</trans-unit>
+			<trans-unit id="widget.pagination.records">
+					<source>Vorlagen</source>
+			</trans-unit>
+			<trans-unit id="widget.pagination.page">
+					<source>Seite</source>
+			</trans-unit>
+			<trans-unit id="widget.pagination.of">
+					<source>von</source>
+			</trans-unit>
+			<trans-unit id="widget.pagination.refresh">
+					<source>Refresh</source>
+			</trans-unit>
+
 			
 		</body>
 	</file>

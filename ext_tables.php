@@ -19,6 +19,14 @@ if (!defined('TYPO3_MODE')) {
 	'EXT:easyvote/ext_icon.gif'
 );
 
+/* Voting proposals archive */
+\TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin(
+	$_EXTKEY,
+	'Archive',
+	'Abstimmungs-Archiv',
+	'EXT:easyvote/ext_icon.gif'
+);
+
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addStaticFile($_EXTKEY, 'Configuration/TypoScript', 'easyvote');
 
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addLLrefForTCAdescr('tx_easyvote_domain_model_metavotingproposal', 'EXT:easyvote/Resources/Private/Language/locallang_csh_tx_easyvote_domain_model_metavotingproposal.xlf');

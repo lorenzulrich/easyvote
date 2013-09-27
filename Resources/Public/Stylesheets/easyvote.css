@@ -20,6 +20,14 @@
     margin-bottom: 20px;
 }
 
+.searchResultsHeader h2{
+    color: #112b4d;
+    font-size: 20px;
+    text-transform: uppercase;
+    padding-top: 10px;
+    margin-bottom: 0px;
+}
+
 .abstimmungsvorlage h2{
     color: #ed0a71;
     font-size: 20px;
@@ -62,11 +70,16 @@
     display: none;
 }
 
-.abstimmungsvorlage-header{
+.abstimmungsvorlage-header {
     font-family: "Ubuntu", Arial, Helvetica, sans-serif;
     font-weight: 500;
     line-height: 20px;
     text-align: left;
+    position: relative;
+}
+
+.abstimmungsvorlage-header .handle {
+    display: none
 }
 
 .abstimmungsvorlage-subheader-left {
@@ -215,6 +228,44 @@
 .flag-vs { background-image: url('../Flags/flag-vs.svg'); }
 .flag-zg { background-image: url('../Flags/flag-zg.svg'); }
 .flag-zh { background-image: url('../Flags/flag-zh.svg'); }
+
+div.pagination { border-top: 1px solid #112b4d; padding-top: 10px; }
+div.pagination div.previous { float: left; width: 100px; min-height: 1px; text-align: left; }
+div.pagination div.next { float: left; width: 100px; text-align: right; }
+div.pagination div.stat { float: left; width: 340px; text-align: center; line-height: 30px; }
+div.pagination a {
+    display: inline-block;
+    height: 30px;
+    line-height: 30px;
+    padding: 0 20px;
+    text-transform: uppercase;
+    background-color: #ed0a71;
+    color: #fff;
+    text-decoration: none;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+}
+div.pagination a:hover {
+    color: #fff;
+    text-decoration: none;
+}
+
+.searchResults .abstimmungsvorlage-content {
+    display: none;
+}
+
+.searchResults .abstimmungsvorlage-header {
+    cursor: pointer;
+}
+
+.searchResults .abstimmungsvorlage-header .handle {
+    position: absolute;
+    display: inline-block;
+    right: 0;
+    top: 0;
+}
+
+.searchResults p.multipleVotingsNavi { display: none; }
 
 .clearer {
     height: 1px;

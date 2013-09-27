@@ -28,4 +28,17 @@ if (!defined('TYPO3_MODE')) {
 	)
 );
 
+/* Voting proposals archive */
+\TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
+	'Visol.' . $_EXTKEY,
+	'Archive',
+	array(
+		'MetaVotingProposal' => 'archive',
+	),
+	// non-cacheable actions
+	array(
+		'MetaVotingProposal' => 'archive',
+	)
+);
+
 ?>

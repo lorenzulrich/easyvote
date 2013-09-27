@@ -35,5 +35,38 @@ class MetaVotingProposalRepository extends \TYPO3\CMS\Extbase\Persistence\Reposi
 	protected $defaultOrderings = array(
 		'sorting' => \TYPO3\CMS\Extbase\Persistence\QueryInterface::ORDER_ASCENDING,
 	);
+
+	/**
+	 * @param $demand
+	 * @return Tx_Extbase_Persistence_QueryResultInterface
+	 */
+	public function findByDemand($demand) {
+
+		$query = $this->createQuery();
+		$andConstraints = array();
+
+		if (isset($demand['queryString'])) {
+			$andConstraints = $query->logicalOr(
+				$query->like('votingProposals.shortTitle', $demand['queryString']),
+				$query->like('votingProposals.officialTitle', $demand['queryString']),
+				$query->like('votingProposals.goal', $demand['queryString']),
+				$query->like('votingProposals.initialStatus', $demand['queryString']),
+				$query->like('votingProposals.consequence', $demand['queryString']),
+				$query->like('votingProposals.proArguments', $demand['queryString']),
+				$query->like('votingProposals.contraArguments', $demand['queryString']),
+				$query->like('votingProposals.governmentOpinion', $demand['queryString']),
+				$query->like('votingProposals.links', $demand['queryString'])
+			);
+		}
+
+		$query->matching(
+			$query->logicalAnd(
+				$andConstraints
+			)
+		);
+
+
+		return $query->execute();
+	}
 }
 ?>

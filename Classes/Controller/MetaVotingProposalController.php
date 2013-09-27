@@ -52,6 +52,32 @@ class MetaVotingProposalController extends \TYPO3\CMS\Extbase\Mvc\Controller\Act
 	}
 
 	/**
+	 * action archive
+	 *
+	 * @return void
+	 */
+	public function archiveAction() {
+
+		$request = $this->request->getArguments();
+		$demand = array();
+
+		var_dump($request);
+
+		if (!empty($request['query'])) {
+				// TODO security
+				$queryString = $request['query'];
+				$demand['queryString'] = '%' . $queryString . '%';
+				$this->view->assign('queryString', $queryString);
+		}
+
+		if (!empty($demand)) {
+			$metaVotingProposals = $this->metaVotingProposalRepository->findByDemand($demand);
+			$this->view->assign('metaVotingProposals', $metaVotingProposals);
+		}
+
+	}
+
+	/**
 	 * action show
 	 *
 	 * @param \Visol\Easyvote\Domain\Model\MetaVotingProposal $metaVotingProposal

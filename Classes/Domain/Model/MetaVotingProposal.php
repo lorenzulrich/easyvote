@@ -34,6 +34,14 @@ namespace Visol\Easyvote\Domain\Model;
 class MetaVotingProposal extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 
 	/**
+	 * Titel intern
+	 *
+	 * @var \string
+	 * @validate NotEmpty
+	 */
+	protected $privateTitle;
+
+	/**
 	 * Typ
 	 *
 	 * @var \integer
@@ -94,6 +102,25 @@ class MetaVotingProposal extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity 
 		 * You may modify the constructor of this class instead
 		 */
 		$this->votingProposals = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
+	}
+
+	/**
+	 * Returns the private title
+	 *
+	 * @return \string $privateTitle
+	 */
+	public function getPrivateTitle() {
+		return $this->privateTitle;
+	}
+
+	/**
+	 * Sets the private title
+	 *
+	 * @param \string $privateTitle
+	 * @return void
+	 */
+	public function setPrivateTitle($privateTitle) {
+		$this->privateTitle = $privateTitle;
 	}
 
 	/**
