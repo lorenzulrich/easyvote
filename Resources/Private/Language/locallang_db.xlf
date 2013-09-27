@@ -75,8 +75,8 @@
 			<trans-unit id="tx_easyvote_domain_model_kanton.cities">
 				<source>Orte</source>
 			</trans-unit>
-			<trans-unit id="tx_easyvote_domain_model_kanton.language">
-				<source>Kantonssprache</source>
+			<trans-unit id="tx_easyvote_domain_model_kanton.languages">
+				<source>Kantonssprachen</source>
 			</trans-unit>
 
 			<trans-unit id="tx_easyvote_domain_model_votingday">
@@ -100,6 +100,16 @@
 			</trans-unit>
 			<trans-unit id="tx_easyvote_domain_model_city.name">
 				<source>Ortsname</source>
+			</trans-unit>
+
+			<trans-unit id="tx_easyvote_domain_model_language">
+				<source>Sprache</source>
+			</trans-unit>
+			<trans-unit id="tx_easyvote_domain_model_language.title">
+				<source>Sprache</source>
+			</trans-unit>
+			<trans-unit id="tx_easyvote_domain_model_language.language_uid">
+				<source>Entsprechende Sprache in TYPO3</source>
 			</trans-unit>
 
 		</body>

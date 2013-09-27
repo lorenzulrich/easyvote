@@ -50,19 +50,20 @@ class Kanton extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	protected $abbreviation;
 
 	/**
-	 * Kantonssprache
-	 *
-	 * @var \integer
-	 */
-	protected $language;
-
-	/**
 	 * Orte
 	 *
 	 * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Visol\Easyvote\Domain\Model\City>
 	 * @lazy
 	 */
 	protected $cities;
+
+	/**
+	 * Languages
+	 *
+	 * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Visol\Easyvote\Domain\Model\Language>
+	 * @lazy
+	 */
+	protected $languages;
 
 	/**
 	 * __construct
@@ -86,6 +87,7 @@ class Kanton extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 		 * You may modify the constructor of this class instead
 		 */
 		$this->cities = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
+		$this->languages = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
 	}
 
 	/**
@@ -127,25 +129,6 @@ class Kanton extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	}
 
 	/**
-	 * Returns the language
-	 *
-	 * @return \integer $language
-	 */
-	public function getLanguage() {
-		return $this->language;
-	}
-
-	/**
-	 * Sets the language
-	 *
-	 * @param \integer $language
-	 * @return void
-	 */
-	public function setLanguage($language) {
-		$this->language = $language;
-	}
-
-	/**
 	 * Adds a City
 	 *
 	 * @param \Visol\Easyvote\Domain\Model\City $city
@@ -182,6 +165,45 @@ class Kanton extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	 */
 	public function setCities(\TYPO3\CMS\Extbase\Persistence\ObjectStorage $cities) {
 		$this->cities = $cities;
+	}
+
+	/**
+	 * Adds a Language
+	 *
+	 * @param \Visol\Easyvote\Domain\Model\Language $language
+	 * @return void
+	 */
+	public function addLanguage(\Visol\Easyvote\Domain\Model\Language $language) {
+		$this->languages->attach($language);
+	}
+
+	/**
+	 * Removes a Language
+	 *
+	 * @param \Visol\Easyvote\Domain\Model\City $cityToRemove The City to be removed
+	 * @return void
+	 */
+	public function removeLanguage(\Visol\Easyvote\Domain\Model\Language $languageToRemove) {
+		$this->languages->detach($languageToRemove);
+	}
+
+	/**
+	 * Returns the languages
+	 *
+	 * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Visol\Easyvote\Domain\Model\Language> $languages
+	 */
+	public function getLanguages() {
+		return $this->languages;
+	}
+
+	/**
+	 * Sets the languages
+	 *
+	 * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Visol\Easyvote\Domain\Model\Language> $languages
+	 * @return void
+	 */
+	public function setLanguages(\TYPO3\CMS\Extbase\Persistence\ObjectStorage $languages) {
+		$this->languages = $languages;
 	}
 
 }
