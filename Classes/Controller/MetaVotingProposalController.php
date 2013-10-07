@@ -42,6 +42,14 @@ class MetaVotingProposalController extends \TYPO3\CMS\Extbase\Mvc\Controller\Act
 	protected $metaVotingProposalRepository;
 
 	/**
+	 * votingDayRepository
+	 *
+	 * @var \Visol\Easyvote\Domain\Repository\VotingDayRepository
+	 * @inject
+	 */
+	protected $votingDayRepository;
+
+	/**
 	 * action list
 	 *
 	 * @return void
@@ -58,20 +66,64 @@ class MetaVotingProposalController extends \TYPO3\CMS\Extbase\Mvc\Controller\Act
 	 */
 	public function archiveAction() {
 
+		// generate list of all years with votings
+		$votingDays = $this->votingDayRepository->findAll();
+		$votingYears = array();
+		foreach ($votingDays as $votingDay) {
+			$votingYear = date('Y', $votingDay->getVotingDate()->getTimestamp());
+			$votingYears[$votingYear] = $votingYear;
+		}
+		$this->view->assign('years', $votingYears);
+
+		// generate list of all Kantons with votings
+		$metaVotingProposals = $this->metaVotingProposalRepository->findAll();
+		$kantons = array();
+		foreach ($metaVotingProposals as $metaVotingProposal) {
+			if ($metaVotingProposal->getScope() === 2) {
+				// Kantonale Abstimmungen
+				$kantons[$metaVotingProposal->getKanton()->getUid()] = $metaVotingProposal->getKanton()->getAbbreviation();
+			}
+		}
+		$this->view->assign('kantons', $kantons);
+
+		// perform search
 		$request = $this->request->getArguments();
 		$demand = array();
+		$filteredRequest = array();
 
-		if (!empty($request['query'])) {
-				// TODO security
-				$queryString = $request['query'];
-				$demand['queryString'] = '%' . $queryString . '%';
-				$this->view->assign('queryString', $queryString);
+		// search by query string
+		if (isset($request['query'])) {
+			// we have a search query, so we use it
+			$queryString = mysql_real_escape_string($request['query']);
+			if (!empty($queryString)) {
+				$demand['query'] = '%' . $queryString . '%';
+				$filteredRequest['query'] = $queryString;
+			}
 		}
 
-		if (!empty($demand)) {
-			$metaVotingProposals = $this->metaVotingProposalRepository->findByDemand($demand);
-			$this->view->assign('metaVotingProposals', $metaVotingProposals);
+		// filter by national
+		if (isset($request['kantons'])) {
+			$demand['kantons'] = $request['kantons'];
+			$filteredRequest['kantons'] = $request['kantons'];
 		}
+
+		// filter by national
+		if (isset($request['national'])) {
+			$demand['national'] = $request['national'];
+			$filteredRequest['national'] = $request['national'];
+		}
+
+		// filter by years
+		if (isset($request['years'])) {
+			$demand['years'] = $request['years'];
+			$filteredRequest['years'] = $request['years'];
+		}
+
+		$metaVotingProposals = $this->metaVotingProposalRepository->findByDemand($demand);
+
+		$this->view->assign('metaVotingProposals', $metaVotingProposals);
+		$this->view->assign('request', $filteredRequest);
+
 
 	}
 

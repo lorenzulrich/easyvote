@@ -42,6 +42,12 @@ class MetaVotingProposal extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity 
 	protected $privateTitle;
 
 	/**
+	 * jobs
+	 * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Visol\Easyvote\Domain\Model\VotingDay>
+	 */
+	protected $votingDay;
+
+	/**
 	 * Typ
 	 *
 	 * @var \integer
@@ -121,6 +127,15 @@ class MetaVotingProposal extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity 
 	 */
 	public function setPrivateTitle($privateTitle) {
 		$this->privateTitle = $privateTitle;
+	}
+
+	/**
+	 * Getter for voting day
+	 *
+	 * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Visol\Easyvote\Domain\Model\VotingDay> $votingDay
+	 */
+	public function getVotingDay() {
+		return $this->votingDay->toArray();
 	}
 
 	/**

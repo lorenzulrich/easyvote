@@ -43,28 +43,92 @@ class MetaVotingProposalRepository extends \TYPO3\CMS\Extbase\Persistence\Reposi
 	public function findByDemand($demand) {
 
 		$query = $this->createQuery();
-		$andConstraints = array();
+		// TODO doesn't work with localization
+		//$query->setOrderings(array('votingDay.votingDate' => \TYPO3\CMS\Extbase\Persistence\QueryInterface::ORDER_DESCENDING));
+		$constraints[] = array();
 
-		if (isset($demand['queryString'])) {
-			$andConstraints = $query->logicalOr(
-				$query->like('votingProposals.shortTitle', $demand['queryString']),
-				$query->like('votingProposals.officialTitle', $demand['queryString']),
-				$query->like('votingProposals.goal', $demand['queryString']),
-				$query->like('votingProposals.initialStatus', $demand['queryString']),
-				$query->like('votingProposals.consequence', $demand['queryString']),
-				$query->like('votingProposals.proArguments', $demand['queryString']),
-				$query->like('votingProposals.contraArguments', $demand['queryString']),
-				$query->like('votingProposals.governmentOpinion', $demand['queryString']),
-				$query->like('votingProposals.links', $demand['queryString'])
-			);
+		// query string constraint
+		if (isset($demand['query'])) {
+			if (!empty($demand['query'])) {
+				// we query all languages
+				// TODO no effect
+				//$query->getQuerySettings()->setRespectSysLanguage(FALSE);
+				// query all text fields non-case sensitive
+				$constraints[] = $query->logicalOr(
+					$query->like('votingProposals.shortTitle', $demand['query'], FALSE),
+					$query->like('votingProposals.officialTitle', $demand['query'], FALSE),
+					$query->like('votingProposals.goal', $demand['query'], FALSE),
+					$query->like('votingProposals.initialStatus', $demand['query'], FALSE),
+					$query->like('votingProposals.consequence', $demand['query'], FALSE),
+					$query->like('votingProposals.proArguments', $demand['query'], FALSE),
+					$query->like('votingProposals.contraArguments', $demand['query'], FALSE),
+					$query->like('votingProposals.governmentOpinion', $demand['query'], FALSE),
+					$query->like('votingProposals.links', $demand['query'], FALSE)
+				);
+			}
 		}
 
-		$query->matching(
-			$query->logicalAnd(
-				$andConstraints
-			)
-		);
+		// kantons constraint
+		$kantonUids = array();
+		if (is_array($demand['kantons'])) {
+			// we query multiple kantons
+			foreach ($demand['kantons'] as $kanton) {
+				$kantonUids[] = $kanton;
+			}
+			$kantonsConstraint = $query->in('kanton', $kantonUids);
+		}
 
+		// national constraint
+		if ($demand['national'] == 1) {
+			$nationalConstraint = $query->equals('kanton', 0);
+		}
+
+		// combine these to scope constraint
+		if (isset($kantonsConstraint)) {
+			if (isset($nationalConstraint)) {
+				$constraints[] = $query->logicalOr(
+					$kantonsConstraint,
+					$nationalConstraint
+				);
+			} else {
+				$constraints[] = $kantonsConstraint;
+			}
+		} else {
+			if (isset($nationalConstraint)) {
+				$constraints[] = $nationalConstraint;
+			}
+		}
+
+		// year constraint
+		if (is_array($demand['years'])) {
+			$years = array();
+			foreach ($demand['years'] as $year) {
+				$firstDayInYearTimeStamp = strtotime('1 January ' . $year);
+				$lastDayInYearTimeStamp = strtotime('31 December ' . $year);
+				$years[] = $query->logicalAnd(
+					$query->greaterThanOrEqual('votingDay.votingDate', $firstDayInYearTimeStamp),
+					$query->lessThanOrEqual('votingDay.votingDate', $lastDayInYearTimeStamp)
+				);
+			}
+			$constraints[] = $query->logicalOr($years);
+		}
+
+		// remove empty constraints to prevent an exception
+		foreach ($constraints as $key => $value) {
+			if (empty($value)) {
+				unset($constraints[$key]);
+			}
+		}
+
+		// votingDay must be archived
+		$constraints[] = $query->equals('votingDay.archived', 1);
+
+		// build query from constraints
+		if (!empty($constraints)) {
+			$query->matching(
+				$query->logicalAnd($constraints)
+			);
+		}
 
 		return $query->execute();
 	}

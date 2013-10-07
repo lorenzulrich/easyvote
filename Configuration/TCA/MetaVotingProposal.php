@@ -9,8 +9,8 @@ $TCA['tx_easyvote_domain_model_metavotingproposal'] = array(
 		'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, private_title, type, scope, main_proposal_approval, voting_proposals, kanton',
 	),
 	'types' => array(
-		'1' => array('showitem' => 'sys_language_uid;;;;1-1-1, l10n_parent, l10n_diffsource, hidden;;1, private_title, type, scope, voting_proposals, kanton,--div--;LLL:EXT:cms/locallang_ttc.xlf:tabs.access,starttime, endtime'),
-		'2' => array('showitem' => 'sys_language_uid;;;;1-1-1, l10n_parent, l10n_diffsource, hidden;;1, private_title, type, scope, main_proposal_approval, voting_proposals, kanton,--div--;LLL:EXT:cms/locallang_ttc.xlf:tabs.access,starttime, endtime'),
+		'1' => array('showitem' => 'sys_language_uid;;;;1-1-1, l10n_parent, l10n_diffsource, hidden;;1, private_title, voting_day, type, scope, voting_proposals, kanton,--div--;LLL:EXT:cms/locallang_ttc.xlf:tabs.access,starttime, endtime'),
+		'2' => array('showitem' => 'sys_language_uid;;;;1-1-1, l10n_parent, l10n_diffsource, hidden;;1, private_title, voting_day, type, scope, main_proposal_approval, voting_proposals, kanton,--div--;LLL:EXT:cms/locallang_ttc.xlf:tabs.access,starttime, endtime'),
 	),
 	'palettes' => array(
 		'1' => array('showitem' => ''),
@@ -104,6 +104,20 @@ $TCA['tx_easyvote_domain_model_metavotingproposal'] = array(
 				'type' => 'input',
 				'size' => 30,
 				'eval' => 'trim,required'
+			),
+		),
+		'voting_day' => array(
+			'exclude' => 1,
+			'label' => 'LLL:EXT:easyvote/Resources/Private/Language/locallang_db.xlf:tx_easyvote_domain_model_votingday',
+			'config' => array(
+				'type' => 'select',
+				'foreign_table' => 'tx_easyvote_domain_model_votingday',
+				'MM' => 'tx_easyvote_votingday_metavotingproposal_mm',
+				'MM_opposite_field' => 'meta_voting_proposals',
+				'size' => 1,
+				'maxitems' => 1,
+				'multiple' => 0,
+				'readOnly' => 1,
 			),
 		),
 		'type' => array(

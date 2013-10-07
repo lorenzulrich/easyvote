@@ -24,10 +24,10 @@
 					<f:if condition="{metaVotingProposal.type} == 2">
 						<f:if condition="{iterator.isFirst}">
 							<f:then>
-								<p class="multipleVotingsNavi"><i class="icon-hand-right pull-left"></i>Zu dieser Vorlage gibt es einen <a href="#" id="goToGegenvorschlag">Gegenvorschlag</a>.</p>
+								<p class="multipleVotingsNavi"><i class="icon-hand-right pull-left"></i><f:translate key="tx_easyvote_archive.gegenvorschlagNotice" /></p>
 							</f:then>
 							<f:else>
-								<p class="multipleVotingsNavi"><i class="icon-hand-right pull-left"></i>Dies ist der Gegenvorschlag. <a href="#" id="goToHauptvorlage">Zurück zur Vorlage</a>.</p>
+								<p class="multipleVotingsNavi"><i class="icon-hand-right pull-left"></i><f:translate key="tx_easyvote_archive.gegenvorschlagBack" /></p>
 							</f:else>
 						</f:if>
 					</f:if>

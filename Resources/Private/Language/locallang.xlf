@@ -120,8 +120,42 @@
 			<trans-unit id="widget.pagination.refresh">
 					<source>Refresh</source>
 			</trans-unit>
-
-			
+			<trans-unit id="tx_easyvote_archive.title">
+					<source>Archiv durchstöbern...</source>
+			</trans-unit>
+			<trans-unit id="tx_easyvote_archive.searchByQuery">
+					<source>Nach Begriff suchen...</source>
+			</trans-unit>
+			<trans-unit id="tx_easyvote_archive.limitSearch">
+					<source>Suche eingrenzen...</source>
+			</trans-unit>
+			<trans-unit id="tx_easyvote_archive.limitNational">
+					<source>National</source>
+			</trans-unit>
+			<trans-unit id="tx_easyvote_archive.title">
+					<source>Archiv durchstöbern...</source>
+			</trans-unit>
+			<trans-unit id="tx_easyvote_archive.title">
+					<source>Archiv durchstöbern...</source>
+			</trans-unit>
+			<trans-unit id="tx_easyvote_archive.searchResultsCount">
+					<source>%o Vorlage(n) gefunden.</source>
+			</trans-unit>
+			<trans-unit id="tx_easyvote_archive.noResults">
+					<source>Keine Vorlagen gefunden.</source>
+			</trans-unit>
+			<trans-unit id="tx_easyvote_archive.gegenvorschlagNotice">
+					<source><![CDATA[Zu dieser Vorlage gibt es einen <a href="#" id="goToGegenvorschlag">Gegenvorschlag</a>.]]></source>
+			</trans-unit>
+			<trans-unit id="tx_easyvote_archive.gegenvorschlagBack">
+					<source><![CDATA[Dies ist der Gegenvorschlag. <a href="#" id="goToHauptvorlage">Zurück zur Vorlage</a>.]]></source>
+			</trans-unit>
+			<trans-unit id="tx_easyvote_archive.submit">
+					<source>suchen</source>
+			</trans-unit>
+			<trans-unit id="tx_easyvote_archive.reset">
+					<source>zurücksetzen</source>
+			</trans-unit>
 		</body>
 	</file>
 </xliff>

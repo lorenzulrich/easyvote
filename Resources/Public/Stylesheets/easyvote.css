@@ -101,13 +101,13 @@
     font-weight: 500;
 }
 
-.meta-abstimmungsvorlage {
+/*.meta-abstimmungsvorlage {
     display: none;
 }
 
 .meta-abstimmungsvorlage-open {
     display: block;
-}
+}*/
 
 .meta-abstimmungsvorlage-navi {
     font-family: "Ubuntu", Arial, Helvetica, sans-serif;
@@ -267,8 +267,25 @@ div.pagination a:hover {
 
 .searchResults p.multipleVotingsNavi { display: none; }
 
+.searchResults .meta-abstimmungsvorlage-gegenvorschlag .abstimmungsvorlage:first-child { margin-bottom: 0; border-radius: 15px 15px 0 0; }
+.searchResults .meta-abstimmungsvorlage-gegenvorschlag .abstimmungsvorlage:nth-child(2n+2) { border-radius: 0 0 15px 15px; }
+
 .clearer {
     height: 1px;
     clear: both;
     visibility: hidden;
 }
+
+.archiveSearch h4 { margin-bottom: 10px; font-weight: 500; }
+.archiveSearch .left { float: left; width: 220px; margin-right: 20px; }
+.archiveSearch .left input { width: 200px; }
+.archiveSearch .right{ float: left; width: 240px; }
+.archiveSearch .filter-kanton { width: 110px; float: left; margin-right: 20px; }
+.archiveSearch .filter-year { width: 110px; float: left; }
+.archiveSearch label { margin-left: 5px; }
+.archiveSearch .filters input { margin-bottom: 3px; }
+.archiveSearch .controls { margin-top: 20px; }
+.archiveSearch .controls-left { width: 110px; float: left; margin-right: 20px; }
+.archiveSearch .controls-right { width: 110px; float: left; }
+.archiveSearch input[type=submit] { padding: 2px 5px; }
+.archiveSearch input[type=reset] { padding: 2px 5px; }

@@ -70,4 +70,9 @@
 		})
 	}
 
+	function resetForm() {
+		$("#searchForm").find("input[type=text], textarea, select").val("");
+		$("#searchForm").find("input[type=checkbox]").attr('checked', false);
+	}
+
 </script>

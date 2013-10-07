@@ -1,46 +1,82 @@
 {namespace ev=Tx_Easyvote_ViewHelpers}
+{namespace v=Tx_Vhs_ViewHelpers}
 <f:layout name="Default" />
-
-This Template is responsible for creating a table of domain objects.
-
-If you modify this template, do not forget to change the overwrite settings
-in /Configuration/ExtensionBuilder/settings.yaml:
-  Resources:
-    Private:
-      Templates:
-        List.html: keep
-
-Otherwise your changes will be overwritten the next time you save the extension in the extension builder
 
 <f:section name="main">
 
-	<div class="c-infobox-statisch csc-default">
-		<h2>Archiv durchstöbern...</h2>
-		<f:form controller="MetaVotingProposal" action="archive">
-			Nach Begriff suchen:
-			<f:form.textfield name="query" value="{queryString} "/>
-			<f:form.submit value="suchen" />
+	<div class="c-infobox-statisch csc-default archiveSearch">
+		<h2><f:translate key="tx_easyvote_archive.title" /></h2>
+		<f:form id="searchForm" controller="MetaVotingProposal" action="archive">
+
+			<div class="left">
+				<h4><f:translate key="tx_easyvote_archive.searchByQuery" /></h4>
+				<f:form.textfield name="query" value="{request.query}"/>
+			</div>
+
+			<div class="right">
+
+				<div class="filters">
+					<h4><f:translate key="tx_easyvote_archive.limitSearch" /></h4>
+
+					<div class="filter-kanton">
+						<f:form.checkbox id="national" name="national" value="1" checked="{request.national} == 1"/><label for="national"><f:translate key="tx_easyvote_archive.limitNational" /></label><br />
+						<f:for each="{kantons}" as="kanton" key="key">
+							<div class="filter-kanton-item">
+								<f:form.checkbox id="kanton-{key}" name="kantons[]" value="{key}" checked="{v:if.iterator.contains(then: 'true', else: 'false', needle: key, haystack: request.kantons, considerKeys: 0)}" /><label for="kanton-{key}">{kanton}</label><br />
+							</div>
+						</f:for>
+					</div>
+
+					<div class="filter-year">
+						<f:for each="{years}" as="year" key="key">
+							<div class="filter-year-item">
+								<f:form.checkbox id="year-{year}" name="years[]" value="{year}" checked="{v:if.iterator.contains(then: 'true', else: 'false', needle: key, haystack: request.years, considerKeys: 0)}"/><label for="year-{year}">{year}</label><br />
+							</div>
+						</f:for>
+					</div>
+					<div class="clearer"></div>
+				</div>
+
+				<div class="controls">
+					<div class="controls-left">
+						<input type="reset" onclick="resetForm()" value="{f:translate(key: 'tx_easyvote_archive.reset')}" />
+					</div>
+
+					<div class="controls-right">
+						<f:form.submit value="{f:translate(key: 'tx_easyvote_archive.submit')}" />
+					</div>
+				</div>
+
+			</div>
+			<div class="clearer"></div>
+
 		</f:form>
 	</div>
 
 	<f:if condition="{metaVotingProposals}">
 
-		<div class="searchResultsHeader">
-			<h2>Suchergebnisse</h2>
-			<p><f:count subject="{metaVotingProposals}" /> Vorlagen gefunden.</p>
-		</div>
+		<f:then>
 
-		<div class="searchResults">
+			<div class="searchResultsHeader">
+				<h2><f:translate key="tx_easyvote_archive.searchResultsHeader" /></h2>
+				<p><f:format.printf arguments="{0: '{f:count(subject: metaVotingProposals)}'}"><f:translate key="tx_easyvote_archive.searchResultsCount" /></f:format.printf></p>
+			</div>
 
-		<ev:widget.paginate objects="{metaVotingProposals}" as="paginatedMetaVotingProposals" additionalParams="{query: '{queryString}'}" additionalParamsPrefix="tx_easyvote_archive" configuration="{itemsPerPage: 1, insertBelow: 1, insertAbove: 0}">
+			<div class="searchResults">
 
-			<f:for each="{paginatedMetaVotingProposals}" as="metaVotingProposal" iteration="metaIterator">
-				<f:render partial="MetaVotingProposal/SingleItem" arguments="{metaVotingProposal:metaVotingProposal, metaIterator:metaIterator, votingDay:votingDay}" />
-			</f:for>
+			<ev:widget.paginate objects="{metaVotingProposals}" as="paginatedMetaVotingProposals" additionalParams="{kantons: '{request.kantons}', years: '{request.years}', query: '{request.query}', national: '{request.national}'}" additionalParamsPrefix="tx_easyvote_archive" configuration="{itemsPerPage: 5, insertBelow: 1, insertAbove: 0}">
+				<f:for each="{paginatedMetaVotingProposals}" as="metaVotingProposal" iteration="metaIterator">
+					<f:render partial="MetaVotingProposal/SingleItem" arguments="{metaVotingProposal:metaVotingProposal, metaIterator:metaIterator, votingDay:metaVotingProposal.votingDay.0}" />
+				</f:for>
 
-		</ev:widget.paginate>
+			</ev:widget.paginate>
 
-		</div>
+			</div>
+
+		</f:then>
+		<f:else>
+			<f:translate key="tx_easyvote_archive.noResults" />
+		</f:else>
 
 	</f:if>
 </f:section>
