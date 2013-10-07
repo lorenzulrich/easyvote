@@ -101,13 +101,13 @@
     font-weight: 500;
 }
 
-/*.meta-abstimmungsvorlage {
+.meta-abstimmungsvorlage {
     display: none;
 }
 
 .meta-abstimmungsvorlage-open {
     display: block;
-}*/
+}
 
 .meta-abstimmungsvorlage-navi {
     font-family: "Ubuntu", Arial, Helvetica, sans-serif;
@@ -270,6 +270,10 @@ div.pagination a:hover {
 .searchResults .meta-abstimmungsvorlage-gegenvorschlag .abstimmungsvorlage:first-child { margin-bottom: 0; border-radius: 15px 15px 0 0; }
 .searchResults .meta-abstimmungsvorlage-gegenvorschlag .abstimmungsvorlage:nth-child(2n+2) { border-radius: 0 0 15px 15px; }
 
+.searchResults .meta-abstimmungsvorlage {
+    display: block;
+}
+
 .clearer {
     height: 1px;
     clear: both;
@@ -278,7 +282,7 @@ div.pagination a:hover {
 
 .archiveSearch h4 { margin-bottom: 10px; font-weight: 500; }
 .archiveSearch .left { float: left; width: 220px; margin-right: 20px; }
-.archiveSearch .left input { width: 200px; }
+.archiveSearch .left input { width: 200px; padding: 2px; }
 .archiveSearch .right{ float: left; width: 240px; }
 .archiveSearch .filter-kanton { width: 110px; float: left; margin-right: 20px; }
 .archiveSearch .filter-year { width: 110px; float: left; }
