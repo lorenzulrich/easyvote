@@ -56,6 +56,9 @@
 			<trans-unit id="tx_easyvote_domain_model_votingproposal.links">
 				<source>Links</source>
 			</trans-unit>
+			<trans-unit id="tx_easyvote_domain_model_votingproposal.share">
+				<source>Teilen</source>
+			</trans-unit>
 			<trans-unit id="tx_easyvote_domain_model_votingproposal.proposal_approval">
 				<source>Zustimmung zur Vorlage (in %)</source>
 			</trans-unit>

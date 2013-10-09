@@ -135,6 +135,8 @@
     margin-bottom: 10px;
 }
 
+.abstimmungsvorlage-content .share div { float: left; margin-right: 15px; }
+
 .navi-3 ul {
     padding: 0 !important;
     background: none !important;

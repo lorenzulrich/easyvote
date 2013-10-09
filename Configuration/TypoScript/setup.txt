@@ -77,3 +77,10 @@ tt_content.easyvoteimage {
     25.value = </div>
 
 }
+
+# skip default arguments in request --> RealURL optimization
+plugin.tx_easyvote {
+	features {
+		skipDefaultArguments = 1
+	}
+}
