@@ -37,3 +37,43 @@ plugin.tx_easyvote._CSS_DEFAULT_STYLE (
 		vertical-align:top;
 	}
 )
+
+# Content Element for displaying an image from image field or CSS class
+tt_content.easyvoteimage = COA
+tt_content.easyvoteimage {
+	5 = TEXT
+	5.stdWrap.noTrimWrap = |<div class="c-imagebox |
+
+    10 = TEXT
+    10.field = tx_easyvote_contentclass
+    10.stdWrap.noTrimWrap = | easyvote-icons |
+    10.if.isTrue.field = tx_easyvote_contentclass
+
+    15 = TEXT
+    15.value = ">
+
+	20 = FILES
+	20 {
+		references {
+			table = tt_content
+			uid.data = field:uid
+			fieldName = image
+			listNum = 0
+		}
+		renderObj = COA
+		renderObj {
+			10 = IMAGE
+			10 {
+				file.import.data = file:current:publicUrl
+				file.maxW = 260
+				file.maxH = 260
+			}
+		}
+	}
+	20.stdWrap.wrap = <div class="center-image">|</div>
+	20.if.isTrue.field = image
+
+    25 = TEXT
+    25.value = </div>
+
+}

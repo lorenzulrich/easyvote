@@ -314,3 +314,10 @@ CREATE TABLE tx_easyvote_votingday_metavotingproposal_mm (
 	KEY uid_local (uid_local),
 	KEY uid_foreign (uid_foreign)
 );
+
+#
+# Table structure for table 'tt_content'
+#
+CREATE TABLE tt_content (
+  tx_easyvote_contentclass tinytext
+);

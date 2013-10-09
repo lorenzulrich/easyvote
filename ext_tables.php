@@ -218,4 +218,32 @@ $TCA['tx_easyvote_domain_model_language'] = array(
 	),
 );
 
+$tempColumns = array (
+	'tx_easyvote_contentclass' => array (
+		'exclude' => 1,
+		'label'	=> 'LLL:EXT:easyvote/Resources/Private/Language/locallang_db.xlf:tx_easyvote_contentclass',
+		'config' => array (
+			'type' => 'input',
+			'size' => '30',
+		)
+	),
+);
+
+# Content Element for displaying an image from image field or CSS class
+\TYPO3\CMS\Core\Utility\GeneralUtility::loadTCA('tt_content');
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addTCAcolumns('tt_content',$tempColumns,1);
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addToAllTCAtypes('tt_content','tx_easyvote_contentclass;;;;1-1-1');
+
+$TCA['tt_content']['columns']['CType']['config']['easyvoteimage'] = array(
+	'label' => 'easyvote Bild',
+	//'config' => array(...)
+);
+
+$TCA['tt_content']['columns']['CType']['config']['items'][] = array('easyvote Bild', 'easyvoteimage', 'EXT:easyvote/ext_icon.gif');
+
+$TCA['tt_content']['types']['easyvoteimage'] = array(
+	'showitem' => 'CType;;4;;1-1-1, hidden, tx_easyvote_contentclass, image, layout,
+                    --div--;LLL:EXT:cms/locallang_tca.xml:pages.tabs.access, starttime, endtime'
+);
+
 ?>

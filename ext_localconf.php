@@ -41,4 +41,24 @@ if (!defined('TYPO3_MODE')) {
 	)
 );
 
+# Content Element for displaying an image from image field or CSS class
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addPageTSConfig('
+mod.wizards.newContentElement.wizardItems {
+    easyvoteimage {
+        icon = EXT:easyvote/ext_icon.gif
+    }
+    common.show := addToList(easyvoteimage)
+}
+
+mod.wizards.newContentElement.wizardItems.common.elements.easyvoteimage {
+		icon = ../typo3conf/ext/easyvote/ext_icon.gif
+        title = easyvote Bild
+        description = Zeigt ein Bild in einer quadratischen Box an
+        tt_content_defValues {
+			CType = easyvoteimage
+        }
+}
+
+');
+
 ?>
