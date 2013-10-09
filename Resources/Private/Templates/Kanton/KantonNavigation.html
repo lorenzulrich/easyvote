@@ -8,13 +8,11 @@
 		<li class="{f:if(condition: '{requestedKanton}', then: 'item', else: 'active')} flag-navi flag-ch">
 			<f:link.action controller="VotingDay" action="showCurrentVotingDay"><span>CH</span></f:link.action>
 		</li>
-			<f:then>
-				<f:for each="{kantons}" as="kanton">
-				<li class="{f:if(condition: '{requestedKanton.uid} == {kanton.uid}', then: 'active', else: 'item')} flag-navi flag-{v:format.case(string: kanton.abbreviation, case: 'lower')}">
-					<f:link.action additionalAttributes="{title:kanton.name}" controller="VotingDay" action="showCurrentVotingDay" arguments="{kanton : kanton}"><span>{kanton.abbreviation}</span></f:link.action>
-				</li>
-				</f:for>
-			</f:then>
+		<f:for each="{kantons}" as="kanton">
+		<li class="{f:if(condition: '{requestedKanton.uid} == {kanton.uid}', then: 'active', else: 'item')} flag-navi flag-{v:format.case(string: kanton.abbreviation, case: 'lower')}">
+			<f:link.action additionalAttributes="{title:kanton.name}" controller="VotingDay" action="showCurrentVotingDay" arguments="{kanton : kanton}"><span>{kanton.abbreviation}</span></f:link.action>
+		</li>
+		</f:for>
 	</ul>
 	</f:security.ifAuthenticated>
 </f:section>
