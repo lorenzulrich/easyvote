@@ -37,7 +37,6 @@ if (!defined('TYPO3_MODE')) {
 	),
 	// non-cacheable actions
 	array(
-		'MetaVotingProposal' => 'archive',
 	)
 );
 

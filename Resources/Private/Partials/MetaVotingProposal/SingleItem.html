@@ -64,10 +64,10 @@
 				<div class="toggle-closed">
 					<div class="share">
 						<div class="facebook">
-							<ev:social.facebook.like javaScript="-1" href="{f:uri.action(action:'showCurrentVotingDay', absolute: 1, arguments: {kanton: requestedKanton.uid})}#{metaVotingProposal.uid}" width="300" layout="box_count"></ev:social.facebook.like>
+							<ev:social.facebook.like javaScript="-1" href="{f:uri.action(arguments: {selectSingle:metaVotingProposal.uid}, absolute: 1)}" width="300" layout="box_count"></ev:social.facebook.like>
 						</div>
 						<div class="twitter">
-							<a href="https://twitter.com/share" class="twitter-share-button" data-count="vertical" data-url="{f:uri.action(action:'showCurrentVotingDay', absolute: 1, arguments: {kanton: requestedKanton.uid})}#{metaVotingProposal.uid}" data-text="{votingProposal.shortTitle}" data-via="easyvote_ch" data-hashtags="easyvote">Tweet</a>
+							<a href="https://twitter.com/share" class="twitter-share-button" data-count="vertical" data-url="{f:uri.action(arguments: {selectSingle:metaVotingProposal.uid}, absolute: 1)}" data-text="{votingProposal.shortTitle}" data-via="easyvote_ch" data-hashtags="easyvote">Tweet</a>
 						</div>
 					</div>
 					<div class="clearer"></div>
