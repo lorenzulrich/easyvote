@@ -41,7 +41,6 @@ class MetaVotingProposalRepository extends \TYPO3\CMS\Extbase\Persistence\Reposi
 	 * @return Tx_Extbase_Persistence_QueryResultInterface
 	 */
 	public function findByDemand($demand) {
-
 		$query = $this->createQuery();
 		// TODO doesn't work with localization
 		//$query->setOrderings(array('votingDay.votingDate' => \TYPO3\CMS\Extbase\Persistence\QueryInterface::ORDER_DESCENDING));

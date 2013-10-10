@@ -65,7 +65,6 @@ class MetaVotingProposalController extends \TYPO3\CMS\Extbase\Mvc\Controller\Act
 	 * @return void
 	 */
 	public function archiveAction() {
-
 		// generate list of all years with votings
 		$votingDays = $this->votingDayRepository->findAll();
 		$votingYears = array();
