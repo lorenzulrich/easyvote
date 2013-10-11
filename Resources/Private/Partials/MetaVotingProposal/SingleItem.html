@@ -60,11 +60,11 @@
 				<div class="toggle-closed"><f:format.html parseFuncTSPath="lib.parseFunc">{votingProposal.governmentOpinion}</f:format.html></div>
 				<h3 class="toggle-trigger"><f:translate key="tx_easyvote_domain_model_votingproposal.links" /><div class="toggle-handle toggle-handle-plus"></div></h3>
 				<div class="toggle-closed"><f:format.html parseFuncTSPath="lib.parseFunc">{votingProposal.links}</f:format.html></div>
-				<h3 class="toggle-trigger"><f:translate key="tx_easyvote_domain_model_votingproposal.share" /><div class="toggle-handle toggle-handle-plus"></div></h3>
-				<div class="toggle-closed">
+				<h3 class="toggle-trigger"><f:translate key="tx_easyvote_domain_model_votingproposal.share" /><div class="toggle-handle toggle-handle-minus"></div></h3>
+				<div class="toggle-open">
 					<div class="share">
 						<div class="facebook">
-							<ev:social.facebook.like javaScript="-1" href="{f:uri.action(arguments: {selectSingle:metaVotingProposal.uid}, absolute: 1)}" width="300" layout="box_count"></ev:social.facebook.like>
+							<a href="http://www.facebook.com/sharer.php" share_url="{f:uri.action(arguments: {selectSingle:metaVotingProposal.uid}, absolute: 1)}" name="fb_share" type="box_count"></a>
 						</div>
 						<div class="twitter">
 							<a href="https://twitter.com/share" class="twitter-share-button" data-count="vertical" data-url="{f:uri.action(arguments: {selectSingle:metaVotingProposal.uid}, absolute: 1)}" data-text="{votingProposal.shortTitle}" data-via="easyvote_ch" data-hashtags="easyvote">Tweet</a>
