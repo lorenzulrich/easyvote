@@ -149,6 +149,7 @@ CREATE TABLE tx_easyvote_domain_model_votingday (
 
 	voting_date int(11) DEFAULT '0' NOT NULL,
 	archived tinyint(1) unsigned DEFAULT '0' NOT NULL,
+	upload_allowed tinyint(1) unsigned DEFAULT '0' NOT NULL,
 	meta_voting_proposals int(11) unsigned DEFAULT '0' NOT NULL,
 
 	tstamp int(11) unsigned DEFAULT '0' NOT NULL,

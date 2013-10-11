@@ -49,6 +49,13 @@ class VotingDay extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	protected $archived = FALSE;
 
 	/**
+	 * Upload erlaubt
+	 *
+	 * @var boolean
+	 */
+	protected $uploadAllowed = FALSE;
+
+	/**
 	 * Meta-Abstimmungsvorlagen
 	 *
 	 * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Visol\Easyvote\Domain\Model\MetaVotingProposal>
@@ -116,6 +123,25 @@ class VotingDay extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	 */
 	public function setArchived($archived) {
 		$this->archived = $archived;
+	}
+
+	/**
+	 * Returns the uploadAllowed
+	 *
+	 * @return boolean $uploadAllowed
+	 */
+	public function getUploadAllowed() {
+		return $this->uploadAllowed;
+	}
+
+	/**
+	 * Sets the uploadAllowed
+	 *
+	 * @param boolean $uploadAllowed
+	 * @return void
+	 */
+	public function setUploadAllowed($uploadAllowed) {
+		$this->uploadAllowed = $uploadAllowed;
 	}
 
 	/**

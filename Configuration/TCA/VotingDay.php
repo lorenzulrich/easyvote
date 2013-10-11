@@ -9,7 +9,7 @@ $TCA['tx_easyvote_domain_model_votingday'] = array(
 		'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, voting_date, archived, meta_voting_proposals',
 	),
 	'types' => array(
-		'1' => array('showitem' => 'sys_language_uid;;;;1-1-1, l10n_parent, l10n_diffsource, hidden;;1, voting_date, archived, meta_voting_proposals,--div--;LLL:EXT:cms/locallang_ttc.xlf:tabs.access,starttime, endtime'),
+		'1' => array('showitem' => 'sys_language_uid;;;;1-1-1, l10n_parent, l10n_diffsource, hidden;;1, voting_date, archived, upload_allowed, meta_voting_proposals,--div--;LLL:EXT:cms/locallang_ttc.xlf:tabs.access,starttime, endtime'),
 	),
 	'palettes' => array(
 		'1' => array('showitem' => ''),
@@ -60,6 +60,13 @@ $TCA['tx_easyvote_domain_model_votingday'] = array(
 		'hidden' => array(
 			'exclude' => 1,
 			'label' => 'LLL:EXT:lang/locallang_general.xlf:LGL.hidden',
+			'config' => array(
+				'type' => 'check',
+			),
+		),
+		'upload_allowed' => array(
+			'exclude' => 1,
+			'label' => 'Upload-Freigabe',
 			'config' => array(
 				'type' => 'check',
 			),
