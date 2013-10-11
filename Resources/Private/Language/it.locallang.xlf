@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" date="2013-09-19T13:43:14Z" product-name="easyvote">
+		<header/>
+		<body>
+			<trans-unit id="tx_easyvote_domain_model_votingproposal">
+				<source>Abstimmungsvorlage</source>
+				<target>Oggetto in votazione</target>
+			</trans-unit>
+			<trans-unit id="tx_easyvote_domain_model_votingproposal.goal">
+				<source>Ziel</source>
+				<target>Obiettivo</target>
+			</trans-unit>
+			<trans-unit id="tx_easyvote_domain_model_votingproposal.initial_status">
+				<source>Ausgangslage</source>
+				<target>Situazione attuale</target>
+			</trans-unit>
+			<trans-unit id="tx_easyvote_domain_model_votingproposal.consequence">
+				<source>Was würde sich ändern?</source>
+				<target>Che cosa cambierebbe?</target>
+			</trans-unit>
+			<trans-unit id="tx_easyvote_domain_model_votingproposal.pro_arguments">
+				<source>Pro</source>
+				<target>Argomenti dei favorevoli</target>
+			</trans-unit>
+			<trans-unit id="tx_easyvote_domain_model_votingproposal.contra_arguments">
+				<source>Kontra</source>
+				<target>Argomenti dei contrari</target>
+			</trans-unit>
+			<trans-unit id="tx_easyvote_domain_model_votingproposal.government_opinion">
+				<source>Regierungsmeinung</source>
+				<target>Opinione del governo</target>
+			</trans-unit>
+			<trans-unit id="tx_easyvote_domain_model_votingproposal.links">
+				<source>Links</source>
+				<target>Links</target>
+			</trans-unit>
+			<trans-unit id="tx_easyvote_domain_model_votingproposal.share">
+				<source>Teilen</source>
+				<target>Condividi</target>
+			</trans-unit>
+			<trans-unit id="widget.pagination.previous">
+					<source>zurück</source>
+					<target>indietro</target>
+			</trans-unit>
+			<trans-unit id="widget.pagination.next">
+					<source>weiter</source>
+					<target>avanti</target>
+			</trans-unit>
+			<trans-unit id="widget.pagination.first">
+					<source>erste</source>
+					<target>prima</target>
+			</trans-unit>
+			<trans-unit id="widget.pagination.last">
+					<source>letzte</source>
+					<target>ultima</target>
+			</trans-unit>
+			<trans-unit id="widget.pagination.records">
+					<source>Vorlagen</source>
+					<target>Proposte</target>
+			</trans-unit>
+			<trans-unit id="widget.pagination.page">
+					<source>Seite</source>
+					<target>pagina</target>
+			</trans-unit>
+			<trans-unit id="widget.pagination.of">
+					<source>von</source>
+					<target>di</target>
+			</trans-unit>
+			<trans-unit id="widget.pagination.refresh">
+					<source>Refresh</source>
+					<target>Aggiorna</target>
+			</trans-unit>
+			<trans-unit id="tx_easyvote_archive.title">
+					<source>Archiv durchstöbern...</source>
+					<target>Curiosare nell'archivio...</target>
+			</trans-unit>
+			<trans-unit id="tx_easyvote_archive.searchByQuery">
+					<source>Nach Begriff suchen...</source>
+					<target>Ricerca per significato...</target>
+			</trans-unit>
+			<trans-unit id="tx_easyvote_archive.limitSearch">
+					<source>Suche eingrenzen...</source>
+					<target>Delimitare la ricerca</target>
+			</trans-unit>
+			<trans-unit id="tx_easyvote_archive.limitNational">
+					<source>national</source>
+					<target>nazionale</target>
+			</trans-unit>
+			<trans-unit id="tx_easyvote_archive.title">
+					<source>Archiv durchstöbern...</source>
+					<target>Curiosare nell'archivio...</target>
+			</trans-unit>
+			<trans-unit id="tx_easyvote_archive.title">
+					<source>Archiv durchstöbern...</source>
+					<target>Curiosare nell'archivio...</target>
+			</trans-unit>
+			<trans-unit id="tx_easyvote_archive.searchResultsCount">
+					<source>%o Vorlagen gefunden.</source>
+					<target>%o oggetti trovati.</target>
+			</trans-unit>
+			<trans-unit id="tx_easyvote_archive.searchResultsCount">
+					<source>Keine Vorlagen gefunden.</source>
+					<target>Nessun oggetto trovato</target>
+			</trans-unit>
+			<trans-unit id="tx_easyvote_archive.gegenvorschlagNotice">
+					<source><![CDATA[Zu dieser Vorlage gibt es einen <a href="#" id="goToGegenvorschlag">Gegenvorschlag</a>.]]></source>
+					<target><![CDATA[Per questo oggetto in votazione non è stato presentato nessun <a href="#" id="goToGegenvorschlag">controproggetto</a>.]]></target>
+			</trans-unit>
+			<trans-unit id="tx_easyvote_archive.gegenvorschlagBack">
+					<source><![CDATA[Dies ist der Gegenvorschlag. <a href="#" id="goToHauptvorlage">Zurück zur Vorlage</a>.]]></source>
+					<target><![CDATA[Questo è il controproggetto. <a href="#" id="goToHauptvorlage">Indietro alla proposta</a>.]]></target>
+			</trans-unit>
+
+		</body>
+	</file>
+</xliff>
