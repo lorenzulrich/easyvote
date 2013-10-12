@@ -50,6 +50,7 @@ class VotingDayRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
 	 */
 	public function findUploadAllowedVotingDays() {
 		$query = $this->createQuery();
+		$query->getQuerySettings()->setIgnoreEnableFields(TRUE);
 		$query->matching($query->equals('uploadAllowed', TRUE));
 		return $query->execute();
 	}
