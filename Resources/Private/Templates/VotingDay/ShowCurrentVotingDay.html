@@ -3,7 +3,14 @@
 <f:layout name="Default" />
 
 <f:section name="main">
-
+<f:if condition="{selectMetaVotingProposal}">
+	<script>
+		$(function() {
+			var metaVotingProposal = {selectMetaVotingProposal};
+			openVoting(metaVotingProposal);
+		})
+	</script>
+</f:if>
 <div id="votingsDashboard">
 	<section class="col-floatLeft col-marginRight col-left col-25">
 		<f:if condition="{requestedKanton}">

@@ -24,6 +24,7 @@ namespace Visol\Easyvote\Controller;
  *
  *  This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
+use TYPO3\CMS\Core\Utility\DebugUtility;
 
 /**
  *
@@ -66,6 +67,12 @@ class VotingDayController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContro
 			'votingDay' => $votingDay,
 			'requestedKanton' => $kanton
 		));
+
+		$requestArguments = $this->request->getArguments();
+		if (isset($requestArguments['selectSingle']) && is_int((int)$requestArguments['selectSingle'])) {
+			$this->view->assign('selectMetaVotingProposal', (int)$requestArguments['selectSingle']);
+		}
+
 	}
 
 	/**
