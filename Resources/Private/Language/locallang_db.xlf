@@ -57,6 +57,12 @@
 			<trans-unit id="tx_easyvote_domain_model_votingproposal.contra_arguments">
 				<source>Kontra</source>
 			</trans-unit>
+			<trans-unit id="tx_easyvote_domain_model_votingproposal.additional_information_header">
+				<source>Infobereich Überschrift</source>
+			</trans-unit>
+			<trans-unit id="tx_easyvote_domain_model_votingproposal.additional_information_content">
+				<source>Infobereich Inhalt</source>
+			</trans-unit>
 			<trans-unit id="tx_easyvote_domain_model_votingproposal.government_opinion">
 				<source>Regierungsmeinung</source>
 			</trans-unit>

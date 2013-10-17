@@ -92,6 +92,20 @@ class VotingProposal extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	protected $contraArguments;
 
 	/**
+	 * Zusätzliche Informationen Überschrift
+	 *
+	 * @var \string
+	 */
+	protected $additionalInformationHeader;
+
+	/**
+	 * Zusätzliche Informationen Inhalt
+	 *
+	 * @var \string
+	 */
+	protected $additionalInformationContent;
+
+	/**
 	 * Regierungsmeinung
 	 *
 	 * @var \string
@@ -262,6 +276,44 @@ class VotingProposal extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	 */
 	public function setContraArguments($contraArguments) {
 		$this->contraArguments = $contraArguments;
+	}
+
+	/**
+	 * Returns the additionalInformationHeader
+	 *
+	 * @return \string $additionalInformationHeader
+	 */
+	public function getAdditionalInformationHeader() {
+		return $this->additionalInformationHeader;
+	}
+
+	/**
+	 * Sets the additionalInformationHeader
+	 *
+	 * @param \string $additionalInformationHeader
+	 * @return void
+	 */
+	public function setAdditionalInformationHeader($additionalInformationHeader) {
+		$this->additionalInformationHeader = $additionalInformationHeader;
+	}
+
+	/**
+	 * Returns the additionalInformationContent
+	 *
+	 * @return \string $additionalInformationContent
+	 */
+	public function getAdditionalInformationContent() {
+		return $this->additionalInformationContent;
+	}
+
+	/**
+	 * Sets the additionalInformationContent
+	 *
+	 * @param \string $additionalInformationContent
+	 * @return void
+	 */
+	public function setAdditionalInformationContent($additionalInformationContent) {
+		$this->additionalInformationContent = $additionalInformationContent;
 	}
 
 	/**

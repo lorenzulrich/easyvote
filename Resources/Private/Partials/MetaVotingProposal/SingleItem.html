@@ -56,6 +56,10 @@
 				<div class="toggle-closed"><f:format.html parseFuncTSPath="lib.parseFunc_tagged">{votingProposal.proArguments}</f:format.html></div>
 				<h3 class="toggle-trigger"><f:translate key="tx_easyvote_domain_model_votingproposal.contra_arguments" /><div class="toggle-handle toggle-handle-plus"></div></h3>
 				<div class="toggle-closed"><f:format.html parseFuncTSPath="lib.parseFunc_tagged">{votingProposal.contraArguments}</f:format.html></div>
+				<f:if condition="{votingProposal.additionalInformationHeader}">
+					<h3 class="toggle-trigger">{votingProposal.additionalInformationHeader}<div class="toggle-handle toggle-handle-plus"></div></h3>
+					<div class="toggle-closed"><f:format.html parseFuncTSPath="lib.parseFunc_tagged">{votingProposal.additionalInformationContent}</f:format.html></div>
+				</f:if>
 				<h3 class="toggle-trigger"><f:translate key="tx_easyvote_domain_model_votingproposal.government_opinion" /><div class="toggle-handle toggle-handle-plus"></div></h3>
 				<div class="toggle-closed"><f:format.html parseFuncTSPath="lib.parseFunc_tagged">{votingProposal.governmentOpinion}</f:format.html></div>
 				<h3 class="toggle-trigger"><f:translate key="tx_easyvote_domain_model_votingproposal.links" /><div class="toggle-handle toggle-handle-plus"></div></h3>

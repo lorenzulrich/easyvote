@@ -6,10 +6,10 @@ if (!defined ('TYPO3_MODE')) {
 $TCA['tx_easyvote_domain_model_votingproposal'] = array(
 	'ctrl' => $TCA['tx_easyvote_domain_model_votingproposal']['ctrl'],
 	'interface' => array(
-		'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, short_title, official_title, youtube_url, goal, initial_status, consequence, pro_arguments, contra_arguments, government_opinion, links, proposal_approval',
+		'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, short_title, official_title, youtube_url, goal, initial_status, consequence, pro_arguments, contra_arguments, additional_information_header, additional_information_content, government_opinion, links, proposal_approval',
 	),
 	'types' => array(
-		'1' => array('showitem' => 'sys_language_uid;;;;1-1-1, l10n_parent, l10n_diffsource, hidden;;1, short_title, official_title, youtube_url, goal, initial_status, consequence, pro_arguments, contra_arguments, government_opinion, links, proposal_approval,--div--;LLL:EXT:cms/locallang_ttc.xlf:tabs.access,starttime, endtime'),
+		'1' => array('showitem' => 'sys_language_uid;;;;1-1-1, l10n_parent, l10n_diffsource, hidden;;1, short_title, official_title, youtube_url, goal, initial_status, consequence, pro_arguments, contra_arguments, additional_information_header, additional_information_content, government_opinion, links, proposal_approval,--div--;LLL:EXT:cms/locallang_ttc.xlf:tabs.access,starttime, endtime'),
 	),
 	'palettes' => array(
 		'1' => array('showitem' => ''),
@@ -210,6 +210,36 @@ $TCA['tx_easyvote_domain_model_votingproposal'] = array(
 		'contra_arguments' => array(
 			'exclude' => 1,
 			'label' => 'LLL:EXT:easyvote/Resources/Private/Language/locallang_db.xlf:tx_easyvote_domain_model_votingproposal.contra_arguments',
+			'config' => array(
+				'type' => 'text',
+				'cols' => 40,
+				'rows' => 15,
+				'eval' => 'trim',
+				'wizards' => array(
+					'RTE' => array(
+						'icon' => 'wizard_rte2.gif',
+						'notNewRecords'=> 1,
+						'RTEonly' => 1,
+						'script' => 'wizard_rte.php',
+						'title' => 'LLL:EXT:cms/locallang_ttc.xlf:bodytext.W.RTE',
+						'type' => 'script'
+					)
+				)
+			),
+			'defaultExtras' => 'richtext:rte_transform[flag=rte_enabled|mode=ts]',
+		),
+		'additional_information_header' => array(
+			'exclude' => 1,
+			'label' => 'LLL:EXT:easyvote/Resources/Private/Language/locallang_db.xlf:tx_easyvote_domain_model_votingproposal.additional_information_header',
+			'config' => array(
+				'type' => 'input',
+				'size' => 30,
+				'eval' => 'trim'
+			),
+		),
+		'additional_information_content' => array(
+			'exclude' => 1,
+			'label' => 'LLL:EXT:easyvote/Resources/Private/Language/locallang_db.xlf:tx_easyvote_domain_model_votingproposal.additional_information_content',
 			'config' => array(
 				'type' => 'text',
 				'cols' => 40,
