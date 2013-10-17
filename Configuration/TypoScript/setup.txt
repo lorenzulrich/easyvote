@@ -83,4 +83,11 @@ plugin.tx_easyvote {
 	features {
 		skipDefaultArguments = 1
 	}
+	settings {
+		votingDayViewTemplate = EXT:easyvote/Resources/Private/Templates/VotingDay/ShowCurrentVotingDay.html
+		votingProposal {
+			youtubeWidth = 480
+			youtubeHeight = 360
+		}
+	}
 }

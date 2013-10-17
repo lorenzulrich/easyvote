@@ -60,6 +60,8 @@ class VotingDayController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContro
 	 */
 	public function showCurrentVotingDayAction(\Visol\Easyvote\Domain\Model\Kanton $kanton = NULL) {
 		$votingDay = $this->votingDayRepository->findCurrentVotingDay();
+		// view can be set via TypoScript
+		$this->view->setTemplatePathAndFilename(\TYPO3\CMS\Core\Utility\GeneralUtility::getFileAbsFileName($this->settings['votingDayViewTemplate']));
 		$this->view->assignMultiple(array(
 			'votingDay' => $votingDay,
 			'requestedKanton' => $kanton

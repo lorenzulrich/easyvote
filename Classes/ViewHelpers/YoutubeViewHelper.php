@@ -56,16 +56,18 @@ class Tx_Easyvote_ViewHelpers_YoutubeViewHelper extends Tx_Fluid_Core_ViewHelper
 
 	/**
 	 * @param string $videoUrl
+	 * @param integer $width
+	 * @param integer $height
 	 * @return string
 	 */
-	public function render($videoUrl = '') {
+	public function render($videoUrl = '', $width=480, $height=360) {
 		$embedCode = '';
 		if (!empty($videoUrl)) {
 			$urlArray = @parse_url($videoUrl);
 			$videoQuery = $urlArray['query'];
 			$videoId = t3lib_div::trimExplode('=', $videoQuery);
 			$videoId = $videoId[1];
-			$embedCode = '<iframe width="480" height="360" src="//www.youtube.com/embed/' . $videoId . '?rel=0" frameborder="0" allowfullscreen></iframe>';
+			$embedCode = '<iframe width="' . $width . '" height="' . $height . '" src="//www.youtube.com/embed/' . $videoId . '?rel=0" frameborder="0" allowfullscreen></iframe>';
 		}
 		return $embedCode;
 	}

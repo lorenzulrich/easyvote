@@ -39,7 +39,7 @@
 			<div class="abstimmungsvorlage-content">
 				<f:if condition="{votingProposal.youtubeUrl}">
 					<f:then>
-						<ev:youtube videoUrl="{votingProposal.youtubeUrl}"></ev:youtube>
+						<ev:youtube videoUrl="{votingProposal.youtubeUrl}" width="{settings.votingProposal.youtubeWidth}" height="{settings.votingProposal.youtubeHeight}"></ev:youtube>
 						<h3 class="toggle-trigger"><f:translate key="tx_easyvote_domain_model_votingproposal.goal" /><div class="toggle-handle toggle-handle-plus"></div></h3>
 						<div class="toggle-closed"><f:format.html parseFuncTSPath="lib.parseFunc_tagged">{votingProposal.goal}</f:format.html></div>
 					</f:then>

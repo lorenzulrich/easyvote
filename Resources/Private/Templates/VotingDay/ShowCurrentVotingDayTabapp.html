@@ -5,17 +5,7 @@
 <f:section name="main">
 
 <div id="votingsDashboard">
-	<section class="col-floatLeft col-marginRight col-left col-25">
-		<f:if condition="{requestedKanton}">
-			<f:then>
-				<div class="flag-big flag-{v:format.case(string: requestedKanton.abbreviation, case: 'lower')}"></div>
-			</f:then>
-			<f:else>
-				<div class="flag-big flag-ch"></div>
-			</f:else>
-		</f:if>
-	</section>
-	<section class="col-floatLeft col-marginRight col-50 col-middle">
+	<section class="col-floatLeft col-marginRight col-66">
 		<f:for each="{votingDay.metaVotingProposals}" as="metaVotingProposal" iteration="metaIterator">
 			<f:if condition="{metaVotingProposal.scope} == 1">
 				<f:then>
@@ -29,7 +19,7 @@
 			</f:if>
 		</f:for>
 	</section>
-	<section class="col-floatLeft col-25 col-right">
+	<section class="col-floatLeft col-33">
 		<f:for each="{votingDay.metaVotingProposals}" as="metaVotingProposal">
 			<f:if condition="{metaVotingProposal.scope} == 1">
 				<f:then>
@@ -42,7 +32,11 @@
 				</f:else>
 			</f:if>
 		</f:for>
+		<f:cObject typoscriptObjectPath="lib.contentCol3" />
 	</section>
 </div>
+
+
+
 
 </f:section>
