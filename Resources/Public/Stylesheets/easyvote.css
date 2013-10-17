@@ -24,6 +24,10 @@
     margin-bottom: 20px;
 }
 
+.tabapp .abstimmungsvorlage {
+    padding: 20px;
+}
+
 .searchResultsHeader h2{
     color: #112b4d;
     font-size: 20px;
@@ -126,6 +130,10 @@
     margin-bottom: 20px;
     cursor: pointer;
     position: relative;
+}
+
+.tabapp .meta-abstimmungsvorlage-navi {
+    padding: 20px;
 }
 
 .meta-abstimmungsvorlage-navi p.abstimmungsvorlage-subheader {
