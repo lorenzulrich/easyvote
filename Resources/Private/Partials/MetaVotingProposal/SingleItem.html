@@ -68,7 +68,7 @@
 				<div class="toggle-open">
 					<div class="share">
 						<div class="facebook">
-							<a href="http://www.facebook.com/sharer.php" share_url="{f:uri.action(arguments: {selectSingle:metaVotingProposal.uid}, absolute: 1)}" name="fb_share" type="box_count"></a>
+							<div class="fb-like" data-href="{f:uri.action(arguments: {selectSingle:metaVotingProposal.uid}, absolute: 1)}" data-colorscheme="light" data-layout="box_count" data-action="recommend" data-show-faces="false" data-send="true"></div>
 						</div>
 						<div class="twitter">
 							<a href="https://twitter.com/share" class="twitter-share-button" data-count="vertical" data-url="{f:uri.action(arguments: {selectSingle:metaVotingProposal.uid}, absolute: 1)}" data-text="{votingProposal.shortTitle}" data-via="easyvote_ch" data-hashtags="easyvote">Tweet</a>
