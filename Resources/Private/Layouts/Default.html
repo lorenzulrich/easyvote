@@ -8,6 +8,11 @@
 	<f:if condition="{requestedVotingProposal}">
 		<meta property="og:title" content="{requestedVotingProposal.shortTitle} - easyvote.ch">
 	</f:if>
+	<f:if condition="{selectMetaVotingProposal}">
+		<script>
+			metaVotingProposalId = {selectMetaVotingProposal};
+		</script>
+	</f:if>
 </v:page.header>
 
 <link rel="stylesheet" href="/typo3conf/ext/easyvote/Resources/Public/Stylesheets/easyvote.css" />

@@ -1,6 +1,6 @@
 {namespace v=Tx_Vhs_ViewHelpers}
 {namespace ev=Tx_Easyvote_ViewHelpers}
-<div class="meta-abstimmungsvorlage {f:if(condition: '{metaVotingProposal.type} == 1', then: 'meta-abstimmungsvorlage-normal', else: 'meta-abstimmungsvorlage-gegenvorschlag')} {f:if(condition: '{metaIterator.isFirst}', then: 'meta-abstimmungsvorlage-open', else: '')}"  id="meta-abstimmungsvorlage-{metaVotingProposal.uid}">
+<div class="meta-abstimmungsvorlage {f:if(condition: '{metaVotingProposal.type} == 1', then: 'meta-abstimmungsvorlage-normal', else: 'meta-abstimmungsvorlage-gegenvorschlag')}"  id="meta-abstimmungsvorlage-{metaVotingProposal.uid}">
 	<f:for each="{metaVotingProposal.votingProposals}" as="votingProposal" iteration="iterator">
 		<div class="abstimmungsvorlage abstimmungsvorlage-meta-{metaVotingProposal.uid}" id="abstimmungsvorlage-{votingProposal.uid}">
 			<div class="abstimmungsvorlage-header">

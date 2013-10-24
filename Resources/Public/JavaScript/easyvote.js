@@ -23,10 +23,14 @@ $('.searchResults .abstimmungsvorlage-header').click(function(e) {
 });
 
 function initializeVotings() {
-    var currentVoting = $('.meta-abstimmungsvorlage-open').attr('id').split('-')[2];
-    $('#meta-abstimmungsvorlage-navi-' + currentVoting).hide();
-    $('#votingsDashboard').show();
+    if (typeof metaVotingProposalId != 'undefined') {
+        openVoting(metaVotingProposalId);
+
+    } else {
+        var firstVoting = $('.meta-abstimmungsvorlage').first().attr('id').split('-')[2];
+        openVoting(firstVoting);
     }
+}
 
 function bindNavigation() {
     $('.meta-abstimmungsvorlage-navi').click(function() {
@@ -37,20 +41,19 @@ function bindNavigation() {
 }
 
 function openVoting(metaVotingId) {
-    var openVoting = $('.meta-abstimmungsvorlage-open').attr('id');
-    var openVotingId = openVoting.split('-')[2];
-    $('#' + openVoting).slideUp(300, function() {
+
     $('#meta-abstimmungsvorlage-navi-' + metaVotingId).slideUp(300, function() {
-    $('#meta-abstimmungsvorlage-' + metaVotingId).slideDown(300, function() {
-    $('#meta-abstimmungsvorlage-navi-' + openVotingId).slideDown(300, function() {
-    $('#' + openVoting).toggleClass('meta-abstimmungsvorlage-open').promise().done(function(){
-    $('#meta-abstimmungsvorlage-' + metaVotingId).toggleClass('meta-abstimmungsvorlage-open');
+        $('.meta-abstimmungsvorlage').not('#meta-abstimmungsvorlage-' + metaVotingId).slideUp(300, function() {
+            $('#meta-abstimmungsvorlage-' + metaVotingId).slideDown(300, function() {
+                $('.meta-abstimmungsvorlage-navi').not('#meta-abstimmungsvorlage-navi-' + metaVotingId).slideDown(300, function() {
+                    $('#votingsDashboard').show();
+                });
+
+            });
+        });
     });
-bindNavigation();
-});
-});
-});
-});
+    bindNavigation();
+
 }
 
 function scrollToElement(elementId){
