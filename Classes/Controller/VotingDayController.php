@@ -43,6 +43,14 @@ class VotingDayController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContro
 	protected $votingDayRepository;
 
 	/**
+	 * metaVotingProposalRepository
+	 *
+	 * @var \Visol\Easyvote\Domain\Repository\MetaVotingProposalRepository
+	 * @inject
+	 */
+	protected $metaVotingProposalRepository;
+
+	/**
 	 * action list
 	 *
 	 * @unused
@@ -71,6 +79,11 @@ class VotingDayController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContro
 		$requestArguments = $this->request->getArguments();
 		if (isset($requestArguments['selectSingle']) && is_int((int)$requestArguments['selectSingle'])) {
 			$this->view->assign('selectMetaVotingProposal', (int)$requestArguments['selectSingle']);
+			/** @var \Visol\Easyvote\Domain\Model\MetaVotingProposal $metaVotingPropsal */
+			$metaVotingPropsal = $this->metaVotingProposalRepository->findByUid((int)$requestArguments['selectSingle']);
+			$votingProposals = $metaVotingPropsal->getVotingProposals()->toArray();
+			$firstVotingProposal = $votingProposals[0];
+			$this->view->assign('requestedVotingProposal', $firstVotingProposal);
 		}
 
 	}

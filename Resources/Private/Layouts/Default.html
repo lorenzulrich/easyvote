@@ -1,9 +1,13 @@
 {namespace v=Tx_Vhs_ViewHelpers}
 <v:page.header allowMoveToFooter="0">
-	<meta property="og:image" content="http://www.easyvote.ch/typo3conf/ext/easyvote/Resources/Public/Images/easyvote-logo-200.png">
+	<meta property="og:image" content="http://www.easyvote.ch/typo3conf/ext/easyvote/Resources/Public/Images/easyvote-logo-fb.png">
 	<meta property="og:image:type" content="image/png">
-	<meta property="og:image:width" content="200">
-	<meta property="og:image:height" content="76">
+	<meta property="og:image:width" content="1200">
+	<meta property="og:image:height" content="630">
+	<meta property="og:description" content="{f:translate(key: 'tx_easyvote_domain_model_metavotingproposal.opengraphDescription')}">
+	<f:if condition="{requestedVotingProposal}">
+		<meta property="og:title" content="{requestedVotingProposal.shortTitle} - easyvote.ch">
+	</f:if>
 </v:page.header>
 
 <link rel="stylesheet" href="/typo3conf/ext/easyvote/Resources/Public/Stylesheets/easyvote.css" />

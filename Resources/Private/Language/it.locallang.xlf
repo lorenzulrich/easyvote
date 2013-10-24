@@ -3,6 +3,10 @@
 	<file source-language="en" datatype="plaintext" original="messages" date="2013-09-19T13:43:14Z" product-name="easyvote">
 		<header/>
 		<body>
+			<trans-unit id="tx_easyvote_domain_model_metavotingproposal.opengraphDescription">
+				<source>Informiere dich jetzt einfach und neutral mit der easyvote Abstimmungshilfe!</source>
+				<target>Informati in modo semplice e neutrale grazie alla brochure easyvote!</target>
+			</trans-unit>
 			<trans-unit id="tx_easyvote_domain_model_votingproposal">
 				<source>Abstimmungsvorlage</source>
 				<target>Oggetto in votazione</target>

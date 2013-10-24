@@ -10,6 +10,9 @@
 			<trans-unit id="tx_easyvote_domain_model_metavotingproposal.type">
 				<source>Typ</source>
 			</trans-unit>
+			<trans-unit id="tx_easyvote_domain_model_metavotingproposal.opengraphDescription">
+				<source>Informiere dich jetzt einfach und neutral mit der easyvote Abstimmungshilfe!</source>
+			</trans-unit>
 			<trans-unit id="tx_easyvote_domain_model_metavotingproposal.scope">
 				<source>Reichweite</source>
 			</trans-unit>
