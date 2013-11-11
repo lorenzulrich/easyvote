@@ -48,7 +48,6 @@ function openVoting(metaVotingId) {
                 $('.meta-abstimmungsvorlage-navi').not('#meta-abstimmungsvorlage-navi-' + metaVotingId).slideDown(300, function() {
                     $('#votingsDashboard').show();
                 });
-
             });
         });
     });

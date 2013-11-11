@@ -72,6 +72,9 @@
 			<trans-unit id="tx_easyvote_domain_model_votingproposal.proposal_approval">
 				<source>Zustimmung zur Vorlage (in %)</source>
 			</trans-unit>
+			<trans-unit id="tx_easyvote_domain_model_votingproposal.kanton_majority">
+				<source>Anzahl zustimmende Kantone (Ständemehr)</source>
+			</trans-unit>
 
 			<trans-unit id="tx_easyvote_domain_model_kanton">
 				<source>Kanton</source>

@@ -6,10 +6,10 @@ if (!defined ('TYPO3_MODE')) {
 $TCA['tx_easyvote_domain_model_votingproposal'] = array(
 	'ctrl' => $TCA['tx_easyvote_domain_model_votingproposal']['ctrl'],
 	'interface' => array(
-		'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, short_title, official_title, youtube_url, goal, initial_status, consequence, pro_arguments, contra_arguments, additional_information_header, additional_information_content, government_opinion, links, proposal_approval',
+		'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, short_title, official_title, youtube_url, goal, initial_status, consequence, pro_arguments, contra_arguments, additional_information_header, additional_information_content, government_opinion, links, proposal_approval, kanton_majority',
 	),
 	'types' => array(
-		'1' => array('showitem' => 'sys_language_uid;;;;1-1-1, l10n_parent, l10n_diffsource, hidden;;1, short_title, official_title, youtube_url, goal, initial_status, consequence, pro_arguments, contra_arguments, additional_information_header, additional_information_content, government_opinion, links, proposal_approval,--div--;LLL:EXT:cms/locallang_ttc.xlf:tabs.access,starttime, endtime'),
+		'1' => array('showitem' => 'sys_language_uid;;;;1-1-1, l10n_parent, l10n_diffsource, hidden;;1, short_title, official_title, youtube_url, goal, initial_status, consequence, pro_arguments, contra_arguments, additional_information_header, additional_information_content, government_opinion, links, proposal_approval, kanton_majority,--div--;LLL:EXT:cms/locallang_ttc.xlf:tabs.access,starttime, endtime'),
 	),
 	'palettes' => array(
 		'1' => array('showitem' => ''),
@@ -307,6 +307,15 @@ $TCA['tx_easyvote_domain_model_votingproposal'] = array(
 				'type' => 'input',
 				'size' => 30,
 				'eval' => 'trim'
+			),
+		),
+		'kanton_majority' => array(
+			'exclude' => 1,
+			'label' => 'LLL:EXT:easyvote/Resources/Private/Language/locallang_db.xlf:tx_easyvote_domain_model_votingproposal.kanton_majority',
+			'config' => array(
+				'type' => 'input',
+				'size' => 30,
+				'eval' => 'int'
 			),
 		),
 	),
