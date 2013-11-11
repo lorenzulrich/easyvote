@@ -129,7 +129,7 @@ class VotingProposal extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	/**
 	 * Anzahl der zustimmenden Kantone (Ständemehr)
 	 *
-	 * @var \integer
+	 * @var \string
 	 */
 	protected $kantonMajority;
 
@@ -383,7 +383,7 @@ class VotingProposal extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	/**
 	 * Returns the kantonMajority
 	 *
-	 * @return \integer $kantonMajority
+	 * @return \string $kantonMajority
 	 */
 	public function getKantonMajority() {
 		return $this->kantonMajority;
@@ -392,7 +392,7 @@ class VotingProposal extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	/**
 	 * Sets the kantonMajority
 	 *
-	 * @param \integer $kantonMajority
+	 * @param \string $kantonMajority
 	 * @return void
 	 */
 	public function setKantonMajority($kantonMajority) {

@@ -64,7 +64,7 @@ CREATE TABLE tx_easyvote_domain_model_votingproposal (
 	government_opinion text NOT NULL,
 	links text NOT NULL,
 	proposal_approval varchar(255) DEFAULT '' NOT NULL,
-	kanton_majority int(11) unsigned DEFAULT '0' NOT NULL,
+	kanton_majority varchar(255) DEFAULT '' NOT NULL,
 	additional_information_header varchar(255) DEFAULT '' NOT NULL,
 	additional_information_content text NOT NULL,
 

@@ -315,7 +315,7 @@ $TCA['tx_easyvote_domain_model_votingproposal'] = array(
 			'config' => array(
 				'type' => 'input',
 				'size' => 30,
-				'eval' => 'int'
+				'eval' => 'trim'
 			),
 		),
 	),
