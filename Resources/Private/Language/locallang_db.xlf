@@ -64,7 +64,7 @@
 				<source>Infobereich Inhalt</source>
 			</trans-unit>
 			<trans-unit id="tx_easyvote_domain_model_votingproposal.government_opinion">
-				<source>Regierungsmeinung</source>
+				<source>Parlaments- und Regierungsmeinung</source>
 			</trans-unit>
 			<trans-unit id="tx_easyvote_domain_model_votingproposal.links">
 				<source>Links</source>

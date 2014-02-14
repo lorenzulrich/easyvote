@@ -32,8 +32,8 @@
 				<target>Argomenti dei contrari</target>
 			</trans-unit>
 			<trans-unit id="tx_easyvote_domain_model_votingproposal.government_opinion">
-				<source>Regierungsmeinung</source>
-				<target>Opinione del governo</target>
+				<source>Parlaments- und Regierungsmeinung</source>
+				<target>Opinione di governo e parlamento</target>
 			</trans-unit>
 			<trans-unit id="tx_easyvote_domain_model_votingproposal.links">
 				<source>Links</source>
