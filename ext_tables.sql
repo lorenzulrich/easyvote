@@ -325,3 +325,10 @@ CREATE TABLE tx_easyvote_votingday_metavotingproposal_mm (
 CREATE TABLE tt_content (
   tx_easyvote_contentclass tinytext
 );
+
+#
+# Table structure for table 'pages'
+#
+CREATE TABLE pages (
+  tx_easyvote_pageclass tinytext
+);

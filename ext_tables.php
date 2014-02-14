@@ -234,6 +234,22 @@ $tempColumns = array (
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addTCAcolumns('tt_content',$tempColumns,1);
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addToAllTCAtypes('tt_content','tx_easyvote_contentclass;;;;1-1-1');
 
+$tempColumns = array (
+	'tx_easyvote_pageclass' => array (
+		'exclude' => 1,
+		'label'	=> 'LLL:EXT:easyvote/Resources/Private/Language/locallang_db.xlf:tx_easyvote_pageclass',
+		'config' => array (
+			'type' => 'input',
+			'size' => '30',
+		)
+	),
+);
+
+# Content Element for displaying an image from image field or CSS class
+\TYPO3\CMS\Core\Utility\GeneralUtility::loadTCA('pages');
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addTCAcolumns('pages',$tempColumns,1);
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addToAllTCAtypes('pages','tx_easyvote_pageclass;;;;1-1-1', '', 'after:backend_layout_next_level');
+
 $TCA['tt_content']['columns']['CType']['config']['easyvoteimage'] = array(
 	'label' => 'easyvote Bild',
 	//'config' => array(...)

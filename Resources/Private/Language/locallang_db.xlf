@@ -7,6 +7,9 @@
 			<trans-unit id="tx_easyvote_contentclass">
 				<source>CSS-Klasse für Element-Bild</source>
 			</trans-unit>
+			<trans-unit id="tx_easyvote_pageclass">
+				<source>CSS-Klasse für Navigation</source>
+			</trans-unit>
 
 			<trans-unit id="tx_easyvote_domain_model_metavotingproposal">
 				<source>Meta-Abstimmungsvorlage</source>
