@@ -1,0 +1,71 @@
+nav.navi-2 li {
+    float: left;
+    margin-right: 3px;
+}
+
+nav.navi-2 a {
+    display: block;
+    padding: 0;
+    line-height: 40px;
+    -webkit-border-radius: 0;
+    border-radius: 0;
+    text-transform: uppercase;
+    background: none;
+    color: #fff;
+}
+
+.flag-navi {
+    padding: 0;
+    margin-right: 5px !important;
+    height: 40px;
+    width: 40px;
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
+    background: url('../Flags/flag-ch.svg') no-repeat;
+    background-size: 100%;
+}
+
+.flag-navi a {
+    background-color: rgba(255,255,255,0.7) !important;
+    display: block;
+}
+
+li.flag-navi a:hover, li.active a {
+    background-color: transparent !important;
+    -webkit-transition: all 0.2s linear;
+    -moz-transition: all 0.2s linear;
+    -ms-transition: all 0.2s linear;
+    -o-transition: all 0.2s linear;
+    transition: all 0.2s linear;
+}
+
+.flag-navi span {
+    visibility: hidden;
+}
+
+.flag-ag { background-image: url('../Flags/flag-ag.svg'); }
+.flag-ai { background-image: url('../Flags/flag-ai.svg'); }
+.flag-ar { background-image: url('../Flags/flag-ar.svg'); }
+.flag-be { background-image: url('../Flags/flag-be.svg'); }
+.flag-bl { background-image: url('../Flags/flag-bl.svg'); }
+.flag-bs { background-image: url('../Flags/flag-bs.svg'); }
+.flag-fr { background-image: url('../Flags/flag-fr.svg'); }
+.flag-ge { background-image: url('../Flags/flag-ge.svg'); }
+.flag-gl { background-image: url('../Flags/flag-gl.svg'); }
+.flag-gr { background-image: url('../Flags/flag-gr.svg'); }
+.flag-ju { background-image: url('../Flags/flag-ju.svg'); }
+.flag-lu { background-image: url('../Flags/flag-lu.svg'); }
+.flag-ne { background-image: url('../Flags/flag-ne.svg'); }
+.flag-nw { background-image: url('../Flags/flag-nw.svg'); }
+.flag-ow { background-image: url('../Flags/flag-ow.svg'); }
+.flag-sg { background-image: url('../Flags/flag-sg.svg'); }
+.flag-sh { background-image: url('../Flags/flag-sh.svg'); }
+.flag-so { background-image: url('../Flags/flag-so.svg'); }
+.flag-sz { background-image: url('../Flags/flag-sz.svg'); }
+.flag-tg { background-image: url('../Flags/flag-tg.svg'); }
+.flag-ti { background-image: url('../Flags/flag-ti.svg'); }
+.flag-ur { background-image: url('../Flags/flag-ur.svg'); }
+.flag-vd { background-image: url('../Flags/flag-vd.svg'); }
+.flag-vs { background-image: url('../Flags/flag-vs.svg'); }
+.flag-zg { background-image: url('../Flags/flag-zg.svg'); }
+.flag-zh { background-image: url('../Flags/flag-zh.svg'); }
