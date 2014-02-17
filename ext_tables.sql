@@ -56,6 +56,7 @@ CREATE TABLE tx_easyvote_domain_model_votingproposal (
 	short_title varchar(255) DEFAULT '' NOT NULL,
 	official_title varchar(255) DEFAULT '' NOT NULL,
 	youtube_url varchar(255) DEFAULT '' NOT NULL,
+	image varchar(255) DEFAULT '' NOT NULL,
 	goal text NOT NULL,
 	initial_status text NOT NULL,
 	consequence text NOT NULL,

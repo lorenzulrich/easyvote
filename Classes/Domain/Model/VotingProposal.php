@@ -57,6 +57,13 @@ class VotingProposal extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	protected $youtubeUrl;
 
 	/**
+	 * Bild (für Open Graph Tag)
+	 *
+	 * @var \string
+	 */
+	protected $image;
+
+	/**
 	 * Ziel
 	 *
 	 * @var \string
@@ -188,6 +195,20 @@ class VotingProposal extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	 */
 	public function setYoutubeUrl($youtubeUrl) {
 		$this->youtubeUrl = $youtubeUrl;
+	}
+
+	/**
+	 * @return string
+	 */
+	public function getImage() {
+		return $this->image;
+	}
+
+	/**
+	 * @param string $image
+	 */
+	public function setImage($image) {
+		$this->image = $image;
 	}
 
 	/**

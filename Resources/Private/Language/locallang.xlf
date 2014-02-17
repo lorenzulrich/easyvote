@@ -38,6 +38,9 @@
 			<trans-unit id="tx_easyvote_domain_model_votingproposal.youtube_url">
 				<source>URL zu YouTube-Video</source>
 			</trans-unit>
+			<trans-unit id="tx_easyvote_domain_model_votingproposal.image">
+				<source>Bild (für Open Graph)</source>
+			</trans-unit>
 			<trans-unit id="tx_easyvote_domain_model_votingproposal.goal">
 				<source>Ziel</source>
 			</trans-unit>
