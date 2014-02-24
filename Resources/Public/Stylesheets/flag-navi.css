@@ -30,7 +30,7 @@ nav.navi-2 a {
     display: block;
 }
 
-li.flag-navi a:hover, li.active a {
+li.flag-navi a:hover, li.flag-navi.active a {
     background-color: transparent !important;
     -webkit-transition: all 0.2s linear;
     -moz-transition: all 0.2s linear;
