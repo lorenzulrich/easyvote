@@ -52,6 +52,7 @@ li.flag-navi a:hover, li.active a {
     background-size: 100%;
 }
 
+.flag-ch { background-image: url('../Flags/flag-ch.svg') !important; }
 .flag-ag { background-image: url('../Flags/flag-ag.svg') !important; }
 .flag-ai { background-image: url('../Flags/flag-ai.svg') !important; }
 .flag-ar { background-image: url('../Flags/flag-ar.svg') !important; }
