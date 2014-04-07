@@ -93,6 +93,22 @@ $TCA['tx_easyvote_domain_model_votingproposal'] = array(
 	),
 );
 
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::allowTableOnStandardPages('tx_easyvote_domain_model_poll');
+$TCA['tx_easyvote_domain_model_poll'] = array(
+	'ctrl' => array(
+		'title'	=> 'LLL:EXT:easyvote/Resources/Private/Language/locallang_db.xlf:tx_easyvote_domain_model_poll',
+		'label' => 'value',
+		'tstamp' => 'tstamp',
+		'crdate' => 'crdate',
+		'cruser_id' => 'cruser_id',
+		'dividers2tabs' => TRUE,
+		'sortby' => 'crdate',
+		'delete' => 'deleted',
+		'dynamicConfigFile' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath($_EXTKEY) . 'Configuration/TCA/Poll.php',
+		'iconfile' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extRelPath($_EXTKEY) . 'Resources/Public/Icons/tx_easyvote_domain_model_poll.gif'
+	),
+);
+
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addLLrefForTCAdescr('tx_easyvote_domain_model_kanton', 'EXT:easyvote/Resources/Private/Language/locallang_csh_tx_easyvote_domain_model_kanton.xlf');
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::allowTableOnStandardPages('tx_easyvote_domain_model_kanton');
 $TCA['tx_easyvote_domain_model_kanton'] = array(
