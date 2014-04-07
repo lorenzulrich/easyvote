@@ -131,6 +131,34 @@
 				<source>Entsprechende Sprache in TYPO3</source>
 			</trans-unit>
 
+			<trans-unit id="tx_easyvote_domain_model_communityuser">
+				<source>easyvote Community User</source>
+			</trans-unit>
+			<trans-unit id="tx_easyvote_domain_model_communityuser.gender">
+				<source>Salutation</source>
+			</trans-unit>
+			<trans-unit id="tx_easyvote_domain_model_communityuser.gender.m">
+				<source>Mr</source>
+			</trans-unit>
+			<trans-unit id="tx_easyvote_domain_model_communityuser.gender.f">
+				<source>Ms</source>
+			</trans-unit>
+			<trans-unit id="tx_easyvote_domain_model_communityuser.user_language">
+				<source>Language of correspondence</source>
+			</trans-unit>
+			<trans-unit id="tx_easyvote_domain_model_communityuser.user_language.1">
+				<source>Deutsch</source>
+			</trans-unit>
+			<trans-unit id="tx_easyvote_domain_model_communityuser.user_language.2">
+				<source>French</source>
+			</trans-unit>
+			<trans-unit id="tx_easyvote_domain_model_communityuser.user_language.3">
+				<source>Italian</source>
+			</trans-unit>
+			<trans-unit id="tx_easyvote_domain_model_communityuser.birthdate">
+				<source>Birth date</source>
+			</trans-unit>
+
 		</body>
 	</file>
 </xliff>

@@ -333,3 +333,18 @@ CREATE TABLE tt_content (
 CREATE TABLE pages (
   tx_easyvote_pageclass tinytext
 );
+
+
+#
+# Table structure for table 'fe_users'
+#
+CREATE TABLE fe_users (
+
+	gender int(1) unsigned DEFAULT '0' NOT NULL,
+	kanton int(11) unsigned DEFAULT '0' NOT NULL,
+	user_language int(11) unsigned DEFAULT '0' NOT NULL,
+	birthdate int(11) unsigned DEFAULT '0' NOT NULL,
+
+	tx_extbase_type varchar(255) DEFAULT '' NOT NULL,
+
+);

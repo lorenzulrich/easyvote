@@ -262,4 +262,67 @@ $TCA['tt_content']['types']['easyvoteimage'] = array(
                     --div--;LLL:EXT:cms/locallang_tca.xml:pages.tabs.access, starttime, endtime'
 );
 
+
+/* Frontend User Integration */
+$TCA['fe_users']['types']['Tx_Easyvote_CommunityUser']['showitem'] = $TCA['fe_users']['types']['Tx_Extbase_Domain_Model_FrontendUser']['showitem'];
+$TCA['fe_users']['columns'][$TCA['fe_users']['ctrl']['type']]['config']['items'][] = array('LLL:EXT:easyvote/Resources/Private/Language/locallang_db.xlf:tx_easyvote_domain_model_communityuser','Tx_Easyvote_CommunityUser');
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addToAllTCAtypes('fe_users', $TCA['fe_users']['ctrl']['type'],'','after:hidden');
+
+
+/* New columns for FrontendUser of type CommunityUser */
+$communityUserColumns = array(
+	'gender' => array (
+		'exclude' => 1,
+		'label'  => 'LLL:EXT:easyvote/Resources/Private/Language/locallang_db.xlf:tx_easyvote_domain_model_communityuser.gender',
+		'config' => array (
+			'type'    => 'radio',
+			'default' => 2,
+			'items'   => array(
+				array('LLL:EXT:easyvote/Resources/Private/Language/locallang_db.xlf:tx_easyvote_domain_model_communityuser.gender.m', 1),
+				array('LLL:EXT:easyvote/Resources/Private/Language/locallang_db.xlf:tx_easyvote_domain_model_communityuser.gender.f', 2)
+			)
+		)
+	),
+	'user_language' => array(
+		'exclude' => 1,
+		'label' => 'LLL:EXT:easyvote/Resources/Private/Language/locallang_db.xlf:tx_easyvote_domain_model_communityuser.user_language',
+		'config' => array(
+			'type' => 'select',
+			'items' => array(
+				array('LLL:EXT:easyvote/Resources/Private/Language/locallang_db.xlf:tx_easyvote_domain_model_communityuser.user_language.german', 1),
+				array('LLL:EXT:easyvote/Resources/Private/Language/locallang_db.xlf:tx_easyvote_domain_model_communityuser.user_language.french', 2),
+				array('LLL:EXT:easyvote/Resources/Private/Language/locallang_db.xlf:tx_easyvote_domain_model_communityuser.user_language.italian', 3),
+			),
+		),
+	),
+	'kanton' => array(
+		'exclude' => 1,
+		'label' => 'LLL:EXT:easyvote/Resources/Private/Language/locallang_db.xlf:tx_easyvote_domain_model_metavotingproposal.kanton',
+		'config' => array(
+			'type' => 'select',
+			'foreign_table' => 'tx_easyvote_domain_model_kanton',
+			'foreign_table_where' => 'ORDER BY tx_easyvote_domain_model_kanton.name',
+			'minitems' => 1,
+			'maxitems' => 1,
+		),
+	),
+	'birthdate' => array (
+		'exclude' => 1,
+		'label'   => 'LLL:EXT:easyvote/Resources/Private/Language/locallang_db.xlf:tx_easyvote_domain_model_communityuser.birthdate',
+		'config'  => array (
+			'type' => 'input',
+			'eval' => 'date',
+			'size' => '8',
+			'max'  => '20'
+		)
+	),
+);
+
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addTCAcolumns('fe_users', $communityUserColumns);
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addToAllTCAtypes('fe_users', $TCA['fe_users']['ctrl']['type'],'','after:hidden');
+
+$TCA['fe_users']['types']['Tx_Easyvote_CommunityUser']['showitem'] = $TCA['fe_users']['types']['Tx_Extbase_Domain_Model_FrontendUser']['showitem'];
+$TCA['fe_users']['types']['Tx_Easyvote_CommunityUser']['showitem'] .= ',--div--;LLL:EXT:easyvote/Resources/Private/Language/locallang_db.xlf:tx_easyvote_domain_model_communityuser';
+$TCA['fe_users']['types']['Tx_Easyvote_CommunityUser']['showitem'] .= ',gender, kanton, user_language, birthdate';
+
 ?>
