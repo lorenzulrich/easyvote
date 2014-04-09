@@ -54,6 +54,19 @@ if (!defined('TYPO3_MODE')) {
 	)
 );
 
+/* Community-Plugins */
+\TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
+	'Visol.' . $_EXTKEY,
+	'Community',
+	array(
+		'CommunityUser' => 'userOverview,userFunctions,loginPanel',
+	),
+	// non-cacheable actions
+	array(
+		'CommunityUser' => 'userOverview,userFunctions,loginPanel',
+	)
+);
+
 # Content Element for displaying an image from image field or CSS class
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addPageTSConfig('
 mod.wizards.newContentElement.wizardItems {

@@ -1,0 +1,15 @@
+{namespace v=Tx_Vhs_ViewHelpers}
+{namespace ev=Tx_Easyvote_ViewHelpers}
+
+<div class="community-plugins">
+	<f:if condition="{user.image}">
+		<f:image class="user-image" alt="{user.firstName} {user.lastName}" src="uploads/pics/{user.image}" width="260" height="260c"/>
+	</f:if>
+	<div class="csc-default box box-pink">
+		<h2>{user.firstName} {user.lastName}</h2>
+		<p>
+			{user.age} Jahre<br />
+			{user.city}
+		</p>
+	</div>
+</div>

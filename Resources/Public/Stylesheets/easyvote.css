@@ -394,3 +394,103 @@ div.pagination a:hover {
 .pull-right { float: right; }
 .hidden { display: none; }
 .hasTooltip { cursor: pointer; }
+
+/* Community */
+.community-plugins img.user-image {
+    -webkit-border-radius: 15px;
+    border-radius: 15px;
+    margin-bottom: 15px;
+}
+
+.community-plugins .box {
+    -webkit-border-radius: 15px;
+    border-radius: 15px;
+    margin: 0 0 20px 0;
+    padding: 30px;
+    color: #fff;
+}
+
+.community-plugins .box h2 {
+    font-family: "Ubuntu", Arial, Helvetica, sans-serif;
+    font-weight: 500;
+    font-size: 18px;
+    margin-bottom: 10px;
+    color: #fff !important;
+    text-transform: uppercase;
+}
+
+.community-plugins .box *:last-child {
+    margin-bottom: 0;
+}
+
+.community-plugins .box h2.center {
+    text-align: center;
+}
+
+.community-plugins .box-blue {
+    background-color: #97E3F8;
+}
+
+.community-plugins .box-lightblue {
+    background-color: #AEE9F9;
+}
+
+.community-plugins .box-signalblue {
+    background-color: #2BABE2
+}
+
+.community-plugins .box-pink {
+    background-color: #ed0a71;
+}
+
+.community-plugins .box-square {
+    height: 200px; /* 260-30-30 */
+}
+
+.community-plugins .evicon-votewecker {
+    background-image: url('/fileadmin/template/images/iconSprite126.png');
+    background-position: -126px 0;
+    height: 126px;
+    width: 126px;
+    margin: 0 auto;
+}
+
+.community-plugins .wrapping-link, .community-plugins .wrapping-link *, .community-plugins .wrapping-link *:hover {
+    text-decoration: none !important;
+}
+
+div.login-panel .pull-right {
+    width: 160px;
+}
+
+div.login-panel a {
+    display: block;
+    background-color: #ed0a71;
+    color: #fff;
+    border-radius: 5px;
+    padding: 5px;
+    text-align: center;
+    text-transform: uppercase;
+    margin-bottom: 7px;
+}
+
+div.login-panel a.muted {
+    background-color: #005476;
+}
+
+div.login-panel .login-status {
+    color: #fff;
+    width: 200px;
+}
+
+div.login-panel .login-status img {
+    float: left;
+    margin-right: 15px;
+}
+
+div.login-panel .login-status .user-name {
+    font-family: "Ubuntu", Arial, Helvetica, sans-serif;
+    font-weight: 500;
+    font-size: 18px;
+    padding-top: 5px;
+}

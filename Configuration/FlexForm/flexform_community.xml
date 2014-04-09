@@ -1,0 +1,41 @@
+<T3DataStructure>
+    <meta>
+        <langDisable>1</langDisable>
+    </meta>
+    <sheets>
+        <sDEF>
+            <ROOT>
+                <TCEforms>
+                    <sheetTitle>Function</sheetTitle>
+                </TCEforms>
+                <type>array</type>
+                <el>
+                    <switchableControllerActions>
+                        <TCEforms>
+                            <label>Select action</label>
+                            <config>
+                                <type>select</type>
+                                <items>
+
+                                    <numIndex index="0">
+                                        <numIndex index="0">User Profile Overview</numIndex>
+                                        <numIndex index="1">CommunityUser->userOverview</numIndex>
+                                    </numIndex>
+                                    <numIndex index="1">
+                                        <numIndex index="0">User Functions</numIndex>
+                                        <numIndex index="1">CommunityUser->userFunctions</numIndex>
+                                    </numIndex>
+                                    <numIndex index="2">
+                                        <numIndex index="0">Login Panel</numIndex>
+                                        <numIndex index="1">CommunityUser->loginPanel</numIndex>
+                                    </numIndex>
+
+                                </items>
+                            </config>
+                        </TCEforms>
+                    </switchableControllerActions>
+                </el>
+            </ROOT>
+        </sDEF>
+    </sheets>
+</T3DataStructure>

@@ -90,8 +90,28 @@ plugin.tx_easyvote {
 			youtubeHeight = 360
 		}
 		communityUserGroupUid = 4
-		loginUrl = https://www.test.com
+		loginUrl = 193
 		communityAjaxPid = 194
 		votingPid = 139
+		communityVoteweckerPid = 199
+		communityMobilizePid = 200
+		communityHomePid = 192
+		siteHomePid = 4
 	}
+}
+
+lib.loginPanel = USER_INT
+lib.loginPanel {
+    userFunc      = TYPO3\CMS\Extbase\Core\Bootstrap->run
+
+    pluginName    = Community
+    extensionName = Easyvote
+    vendorName    = Visol
+    controller    = CommunityUser
+    action        = loginPanel
+    switchableControllerActions {
+        CommunityUser {
+            1 = loginPanel
+        }
+    }
 }

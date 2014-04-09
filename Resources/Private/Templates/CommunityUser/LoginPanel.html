@@ -1,0 +1,30 @@
+{namespace v=Tx_Vhs_ViewHelpers}
+{namespace ev=Tx_Easyvote_ViewHelpers}
+
+<div class="pull-left login-status">
+	<f:security.ifAuthenticated>
+		<f:then>
+			<f:security.ifHasRole role="{settings.communityUserGroupUid}">
+				<f:if condition="{user.image}">
+					<f:image class="user-image" alt="{user.firstName} {user.lastName}" src="uploads/pics/{user.image}" width="50" height="50c"/>
+				</f:if>
+				angemeldet als
+				<div class="user-name">{user.firstName} {user.lastName}</div>
+			</f:security.ifHasRole>
+		</f:then>
+	</f:security.ifAuthenticated>
+</div>
+<div class="pull-right">
+	<f:security.ifAuthenticated>
+		<f:then>
+			<f:security.ifHasRole role="{settings.communityUserGroupUid}">
+				<f:link.page pageUid="{settings.communityHomePid}">Profil</f:link.page>
+				<f:link.page class="muted" pageUid="{settings.siteHomePid}" additionalParams="{logintype:'logout'}">Abmelden</f:link.page>
+			</f:security.ifHasRole>
+		</f:then>
+		<f:else>
+			<f:link.page pageUid="{settings.loginUrl}">Anmelden</f:link.page>
+			<a href="#">Registrieren</a>
+		</f:else>
+	</f:security.ifAuthenticated>
+</div>
