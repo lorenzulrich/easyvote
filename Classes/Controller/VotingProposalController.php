@@ -31,7 +31,7 @@ namespace Visol\Easyvote\Controller;
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  *
  */
-class VotingProposalController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController {
+class VotingProposalController extends \Visol\Easyvote\Controller\AbstractController {
 
 	/**
 	 * @var int
@@ -58,14 +58,6 @@ class VotingProposalController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionC
 	 * @inject
 	 */
 	protected $pollRepository;
-
-	/**
-	 * communityUserRepository
-	 *
-	 * @var \Visol\Easyvote\Domain\Repository\CommunityUserRepository
-	 * @inject
-	 */
-	protected $communityUserRepository;
 
 	/**
 	 * @var \TYPO3\CMS\Extbase\Persistence\Generic\PersistenceManager
@@ -189,22 +181,6 @@ class VotingProposalController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionC
 			return json_encode(array('successText' => '<p>Danke für deine Stimme! Teile deine Meinung:</p>' . $facebookShare . $twitterShare));
 		}
 		return json_encode(array('successText' => '<p>Fehler.</p>'));
-	}
-
-	/**
-	 * @return \Visol\Easyvote\Domain\Model\CommunityUser|bool
-	 */
-	protected function getLoggedInUser() {
-		if ((int)$GLOBALS['TSFE']->fe_user->user['uid'] > 0) {
-			$communityUser = $this->communityUserRepository->findByUid($GLOBALS['TSFE']->fe_user->user['uid']);
-			if ($communityUser instanceof \Visol\Easyvote\Domain\Model\CommunityUser) {
-				return $communityUser;
-			} else {
-				return FALSE;
-			}
-		} else {
-			return FALSE;
-		}
 	}
 
 }
