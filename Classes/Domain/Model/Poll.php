@@ -50,6 +50,14 @@ class Poll extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	protected $votingProposal;
 
 	/**
+	 * Benutzer
+	 *
+	 * @var \Visol\Easyvote\Domain\Model\CommunityUser
+	 * @lazy
+	 */
+	protected $communityUser;
+
+	/**
 	 * @return \Visol\Easyvote\Domain\Model\VotingProposal
 	 */
 	public function getVotingProposal() {
@@ -75,6 +83,20 @@ class Poll extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	 */
 	public function setValue($value) {
 		$this->value = $value;
+	}
+
+	/**
+	 * @return \Visol\Easyvote\Domain\Model\CommunityUser
+	 */
+	public function getCommunityUser() {
+		return $this->communityUser;
+	}
+
+	/**
+	 * @param \Visol\Easyvote\Domain\Model\CommunityUser $communityUser
+	 */
+	public function setCommunityUser($communityUser) {
+		$this->communityUser = $communityUser;
 	}
 
 }

@@ -195,6 +195,7 @@ CREATE TABLE tx_easyvote_domain_model_poll (
 	pid int(11) DEFAULT '0' NOT NULL,
 
 	voting_proposal int(11) DEFAULT '0' NOT NULL,
+	community_user int(11) DEFAULT '0' NOT NULL,
 	value tinyint(1) unsigned DEFAULT '0' NOT NULL,
 
 	tstamp int(11) unsigned DEFAULT '0' NOT NULL,

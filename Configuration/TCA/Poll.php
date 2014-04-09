@@ -6,7 +6,7 @@ if (!defined ('TYPO3_MODE')) {
 $TCA['tx_easyvote_domain_model_poll'] = array(
 	'ctrl' => $TCA['tx_easyvote_domain_model_poll']['ctrl'],
 	'types' => array(
-		'1' => array('showitem' => 'value, voting_proposal'),
+		'1' => array('showitem' => 'value, voting_proposal, community_user'),
 	),
 	'palettes' => array(
 		'1' => array('showitem' => ''),
@@ -33,6 +33,17 @@ $TCA['tx_easyvote_domain_model_poll'] = array(
 				'type' => 'select',
 				'foreign_table' => 'tx_easyvote_domain_model_votingproposal',
 				'foreign_table_where' => 'AND tx_easyvote_domain_model_votingproposal.pid=###CURRENT_PID### AND tx_easyvote_domain_model_votingproposal.sys_language_uid IN (-1,0) ORDER BY tx_easyvote_domain_model_votingproposal.short_title',
+				'minitems' => 1,
+				'maxitems' => 1,
+			),
+		),
+		'community_user' => array(
+			'exclude' => 1,
+			'label' => 'LLL:EXT:easyvote/Resources/Private/Language/locallang_db.xlf:tx_easyvote_domain_model_communityuser',
+			'config' => array(
+				'type' => 'select',
+				'foreign_table' => 'fe_users',
+				'foreign_table_where' => 'AND tx_extbase_type=\'Tx_Easyvote_CommunityUser\'',
 				'minitems' => 1,
 				'maxitems' => 1,
 			),
