@@ -41,6 +41,19 @@ if (!defined('TYPO3_MODE')) {
 	)
 );
 
+/* Voting proposals archive */
+\TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
+	'Visol.' . $_EXTKEY,
+	'CommunityAjax',
+	array(
+		'VotingProposal' => 'showPollForVotingProposal,undoUserVoteForVotingProposal,voteForVotingProposal',
+	),
+	// non-cacheable actions
+	array(
+		'VotingProposal' => 'showPollForVotingProposal,undoUserVoteForVotingProposal,voteForVotingProposal',
+	)
+);
+
 # Content Element for displaying an image from image field or CSS class
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addPageTSConfig('
 mod.wizards.newContentElement.wizardItems {

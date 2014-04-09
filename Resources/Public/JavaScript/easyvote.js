@@ -71,3 +71,133 @@ function resetForm() {
     $("#searchForm").find("input[type=text], textarea, select").val("");
     $("#searchForm").find("input[type=checkbox]").attr('checked', false);
 }
+
+/* Tooltips */
+function bindToolTips() {
+	$('.hasTooltip').each(function() {
+		$(this).qtip({
+			content: {
+				text: $(this).next('div')
+			},
+			hide: {
+				delay: 200,
+				fixed: true
+			},
+			show: {
+				solo: true
+			},
+			style: {
+				classes: 'qtip-light qtip-rounded'
+			}
+		});
+	});
+}
+
+/* Display a passed flash message */
+function displayFlashMessage(message) {
+	var $flashMessageContainer = $('#flashMessageContainer');
+	var $contentWrap = $('#contentWrap');
+	$flashMessageContainer.html(message);
+
+	$contentWrap.qtip({
+		show: '',
+		hide: {
+			delay: 2000,
+			fixed: true
+		},
+		content: {
+			prerender: true, // important
+			text: $flashMessageContainer.html()
+		},
+		style: {
+			classes: 'qtip-light qtip-rounded'
+		},
+		position: {
+			my: 'bottom right',
+			at: 'top right',
+			target: $contentWrap
+		}
+	}).qtip('show');
+}
+
+/* Load poll result */
+function loadPollResult(votingProposal) {
+	var ajaxPollUri = ajaxUri + '&tx_easyvote_communityajax[action]=showPollForVotingProposal&tx_easyvote_communityajax[votingProposal]=' + votingProposal;
+	$.ajax({
+		url: ajaxPollUri,
+		success: function(data) {
+			$('.vote-result-up', '#abstimmungsvorlage-' + votingProposal).text(data['results'][0] + '%');
+			$('.vote-result-down', '#abstimmungsvorlage-' + votingProposal).text(data['results'][1] + '%');
+			$voteUpHandle = $('#voteUp-' + votingProposal);
+			$voteDownHandle = $('#voteDown-' + votingProposal);
+
+			$voteUpHandle.after('<div class="hidden">' + data['voteUpText'] + '</div>');
+			$voteDownHandle.after('<div class="hidden">' + data['voteDownText'] + '</div>');
+			bindToolTips();
+			if (data['voteValue'] > 0) {
+				if (data['voteValue'] === 1) {
+					$voteUpHandle.addClass('vote-active');
+					$voteDownHandle.addClass('vote-disabled');
+				} else {
+					$voteDownHandle.addClass('vote-active');
+					$voteUpHandle.addClass('vote-disabled');
+				}
+			} else {
+				$voteUpHandle.addClass('vote-up').removeClass('vote-active').removeClass('vote-disabled');
+				$voteDownHandle.addClass('vote-down').removeClass('vote-active').removeClass('vote-disabled');
+			}
+		}
+	});
+}
+
+/* Load poll results for all votingProposals on loading the site */
+$('.abstimmungsvorlage').each(function() {
+	var votingProposalUid = $(this).attr('id').split('-')[1];
+	loadPollResult(votingProposalUid);
+});
+
+var $body = $('body');
+
+/* Undo vote */
+$body.on('click', '.vote-active', function() {
+	var $trigger = $(this);
+	$trigger.removeClass('vote-active');
+	var votingProposalUid = $trigger.closest('.abstimmungsvorlage').attr('id').split('-')[1];
+	var ajaxCallUri = ajaxUri + '&tx_easyvote_communityajax[action]=undoUserVoteForVotingProposal&tx_easyvote_communityajax[votingProposal]=' + votingProposalUid;
+	$.ajax({
+		url: ajaxCallUri,
+		success: function(data) {
+			loadPollResult(votingProposalUid);
+		}
+	});
+});
+
+/* upVote */
+$body.on('click', '.vote-up', function() {
+	var $trigger = $(this);
+	$trigger.removeClass('vote-up');
+	var votingProposalUid = $trigger.closest('.abstimmungsvorlage').attr('id').split('-')[1];
+	var ajaxCallUri = ajaxUri + '&tx_easyvote_communityajax[action]=voteForVotingProposal&tx_easyvote_communityajax[value]=1&tx_easyvote_communityajax[votingProposal]=' + votingProposalUid;
+	$.ajax({
+		url: ajaxCallUri,
+		success: function(data) {
+			displayFlashMessage(data['successText']);
+			loadPollResult(votingProposalUid);
+		}
+	});
+});
+
+/* downVote */
+$body.on('click', '.vote-down', function() {
+	var $trigger = $(this);
+	$trigger.removeClass('vote-down');
+	var votingProposalUid = $trigger.closest('.abstimmungsvorlage').attr('id').split('-')[1];
+	var ajaxCallUri = ajaxUri + '&tx_easyvote_communityajax[action]=voteForVotingProposal&tx_easyvote_communityajax[value]=2&tx_easyvote_communityajax[votingProposal]=' + votingProposalUid;
+	$.ajax({
+		url: ajaxCallUri,
+		success: function(data) {
+			displayFlashMessage(data['successText']);
+			loadPollResult(votingProposalUid);
+		}
+	});
+});

@@ -7,20 +7,15 @@
 				<div class="abstimmungsvorlage-subheader-left">
 					<f:if condition="{metaVotingProposal.scope} == 1">
 						<f:then>
-							<div class="flag-middle flag-ch"></div>
+							<div class="flag-voting flag-ch"></div>
 						</f:then>
 						<f:else>
-							<div class="flag-middle flag-{v:format.case(string: metaVotingProposal.kanton.abbreviation, case: 'lower')}"></div>
+							<div class="flag-voting flag-{v:format.case(string: metaVotingProposal.kanton.abbreviation, case: 'lower')}"></div>
 						</f:else>
 					</f:if>
 				</div>
 				<div class="abstimmungsvorlage-subheader-right">
 					<h2>{votingProposal.shortTitle}</h2>
-					<p><span class="abstimmungsvorlage-datum">
-						<f:format.date format="d.m.Y">{votingDay.votingDate}</f:format.date>
-					</span>
-					&nbsp;•&nbsp;
-					{votingProposal.officialTitle}</p>
 					<f:if condition="{metaVotingProposal.type} == 2">
 						<f:if condition="{iterator.isFirst}">
 							<f:then>
@@ -36,14 +31,40 @@
 				<div class="clearer"></div>
 			</div>
 			<div class="clearer"></div>
+			<div class="actions">
+				<div class="action facebook">
+					<div class="fb-like" data-href="{f:uri.action(arguments: {selectSingle:metaVotingProposal.uid}, absolute: 1)}" data-colorscheme="light" data-layout="box_count" data-action="recommend" data-show-faces="false" data-send="true"></div>
+				</div>
+				<div class="action twitter">
+					<a href="https://twitter.com/share" class="twitter-share-button" data-count="vertical" data-url="{f:uri.action(arguments: {selectSingle:metaVotingProposal.uid}, absolute: 1)}" data-text="{votingProposal.shortTitle}" data-via="easyvote_ch" data-hashtags="easyvote">Tweet</a>
+				</div>
+				<div class="pull-right">
+					<f:render partial="MetaVotingProposal/Voting" arguments="{settings:settings, votingPropsalUid:votingProposal.uid}" />
+				</div>
+			</div>
+			<div class="clearer"></div>
 			<div class="abstimmungsvorlage-content">
 				<f:if condition="{votingProposal.youtubeUrl}">
 					<f:then>
-						<ev:youtube videoUrl="{votingProposal.youtubeUrl}" width="{settings.votingProposal.youtubeWidth}" height="{settings.votingProposal.youtubeHeight}"></ev:youtube>
+						<ev:youtube videoUrl="{votingProposal.youtubeUrl}" width="{settings.votingProposal.youtubeWidth}" height="{settings.votingProposal.youtubeHeight}" />
+						<p class="abstimmungsvorlage-teaser">
+							<span class="abstimmungsvorlage-datum">
+								<f:format.date format="d.m.Y">{votingDay.votingDate}</f:format.date>
+							</span>
+							&nbsp;•&nbsp;
+							{votingProposal.officialTitle}
+						</p>
 						<h3 class="toggle-trigger"><f:translate key="tx_easyvote_domain_model_votingproposal.goal" /><div class="toggle-handle toggle-handle-plus"></div></h3>
 						<div class="toggle-closed"><f:format.html parseFuncTSPath="lib.parseFunc_tagged">{votingProposal.goal}</f:format.html></div>
 					</f:then>
 					<f:else>
+						<p class="abstimmungsvorlage-teaser">
+							<span class="abstimmungsvorlage-datum">
+								<f:format.date format="d.m.Y">{votingDay.votingDate}</f:format.date>
+							</span>
+							&nbsp;•&nbsp;
+							{votingProposal.officialTitle}
+						</p>
 						<h3 class="noLine"><f:translate key="tx_easyvote_domain_model_votingproposal.goal" /></h3>
 						<div><f:format.html parseFuncTSPath="lib.parseFunc_tagged">{votingProposal.goal}</f:format.html></div>
 					</f:else>
@@ -64,18 +85,6 @@
 				<div class="toggle-closed"><f:format.html parseFuncTSPath="lib.parseFunc_tagged">{votingProposal.governmentOpinion}</f:format.html></div>
 				<h3 class="toggle-trigger"><f:translate key="tx_easyvote_domain_model_votingproposal.links" /><div class="toggle-handle toggle-handle-plus"></div></h3>
 				<div class="toggle-closed"><f:format.html parseFuncTSPath="lib.parseFunc_tagged">{votingProposal.links}</f:format.html></div>
-				<h3 class="toggle-trigger"><f:translate key="tx_easyvote_domain_model_votingproposal.share" /><div class="toggle-handle toggle-handle-minus"></div></h3>
-				<div class="toggle-open">
-					<div class="share">
-						<div class="facebook">
-							<div class="fb-like" data-href="{f:uri.action(arguments: {selectSingle:metaVotingProposal.uid}, absolute: 1)}" data-colorscheme="light" data-layout="box_count" data-action="recommend" data-show-faces="false" data-send="true"></div>
-						</div>
-						<div class="twitter">
-							<a href="https://twitter.com/share" class="twitter-share-button" data-count="vertical" data-url="{f:uri.action(arguments: {selectSingle:metaVotingProposal.uid}, absolute: 1)}" data-text="{votingProposal.shortTitle}" data-via="easyvote_ch" data-hashtags="easyvote">Tweet</a>
-						</div>
-					</div>
-					<div class="clearer"></div>
-				</div>
 			</div>
 
 		</div>

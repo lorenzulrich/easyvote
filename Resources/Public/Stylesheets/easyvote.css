@@ -41,6 +41,7 @@
     font-size: 20px;
     text-transform: uppercase;
     margin-bottom: 10px;
+    line-height: 130%;
 }
 
 .abstimmungsvorlage h3{
@@ -78,7 +79,7 @@
     display: none;
 }
 
-.abstimmungsvorlage-header {
+.abstimmungsvorlage-header{
     font-family: "Ubuntu", Arial, Helvetica, sans-serif;
     font-weight: 500;
     line-height: 20px;
@@ -86,17 +87,26 @@
     position: relative;
 }
 
+.abstimmungsvorlage-teaser {
+    font-family: "Ubuntu", Arial, Helvetica, sans-serif;
+    font-weight: 500;
+    line-height: 20px;
+    text-align: left;
+    position: relative;
+    margin-top: 15px;
+}
+
 .abstimmungsvorlage-header .handle {
     display: none
 }
 
 .abstimmungsvorlage-subheader-left {
-    width: 90px;
+    width: 65px;
     float: left;
 }
 
 .abstimmungsvorlage-subheader-right {
-    width: 390px;
+    width: 415px;
     float: left;
 }
 
@@ -108,7 +118,7 @@
     line-height: 16px;
 }
 
-.abstimmungsvorlage-header span.abstimmungsvorlage-datum {
+.abstimmungsvorlage-teaser span.abstimmungsvorlage-datum {
     color: #ed0a71;
     font-weight: 500;
 }
@@ -141,13 +151,76 @@
     font-weight: 500;
 }
 
-.meta-abstimmungsvorlage-navi h2{
+.meta-abstimmungsvorlage-navi h2 {
     color: #112b4d;
     font-size: 20px;
     margin-bottom: 10px;
 }
 
-.abstimmungsvorlage-content .share div { float: left; margin-right: 15px; }
+.abstimmungsvorlage div.actions {
+    margin-top: 15px;
+}
+
+.abstimmungsvorlage div.actions .action {
+    float: left;
+    margin: 0 15px 10px 0;
+}
+
+.abstimmungsvorlage .actions .vote {
+    float: left;
+    margin-left: 20px;
+    text-align: center;
+}
+
+.abstimmungsvorlage .actions .vote-color-up {
+    color: #00adef;
+}
+
+.abstimmungsvorlage .actions .vote-color-down {
+    color: #ed0a71;
+}
+
+.abstimmungsvorlage .actions .vote-handle {
+    font-size: 35px;
+    padding-right: 3px;
+}
+
+.abstimmungsvorlage .actions .vote-handle-up {
+}
+
+.abstimmungsvorlage .actions .vote-handle-down {
+}
+
+.abstimmungsvorlage .actions .vote-result-up {
+    color: #005476;
+}
+
+.abstimmungsvorlage .actions .vote-result-down {
+}
+
+.abstimmungsvorlage .vote-active {
+    text-shadow: 3px 3px 3px #005476;
+    padding-right: 0;
+}
+
+.abstimmungsvorlage .vote-disabled {
+    color: #ccc !important;
+    cursor: default;
+}
+
+.flashMessageIcon {
+    font-size: 30px;
+    margin-right: 30px;
+    color: #000;
+}
+
+.flashMessageIcon.icon-facebook {
+    clear: left;
+}
+
+#flashMessageContainer {
+    display: none;
+}
 
 .navi-3 ul {
     padding: 0 !important;
@@ -185,6 +258,15 @@
 
 .flag-navi span {
     visibility: hidden;
+}
+
+.flag-voting {
+    width: 52px;
+    height: 52px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    background: url('../Flags/flag-ch.svg') no-repeat;
+    background-size: 100%;
 }
 
 .flag-middle {
@@ -307,3 +389,8 @@ div.pagination a:hover {
 .archiveSearch .controls-right { width: 110px; float: left; }
 .archiveSearch input[type=submit] { padding: 2px 5px; }
 .archiveSearch input[type=reset] { padding: 2px 5px; }
+
+.pull-left { float: left; }
+.pull-right { float: right; }
+.hidden { display: none; }
+.hasTooltip { cursor: pointer; }

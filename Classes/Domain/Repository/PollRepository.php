@@ -38,13 +38,32 @@ class PollRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
 	 * @param $value integer
 	 * @return \TYPO3\CMS\Extbase\Persistence\QueryResultInterface
 	 */
-	public function findByVotingProposalAndValue(\Visol\Easyvote\Domain\Model\VotingProposal $votingProposal, $value) {
+	public function countByVotingProposalAndValue(\Visol\Easyvote\Domain\Model\VotingProposal $votingProposal, $value) {
 		$query = $this->createQuery();
 
 		$query->matching(
 			$query->logicalAnd(
 				$query->equals('votingProposal', $votingProposal),
 				$query->equals('value', $value)
+			)
+		);
+
+		return $query->execute()->count();
+	}
+
+	/**
+	 * @param \Visol\Easyvote\Domain\Model\VotingProposal $votingProposal
+	 * @param \Visol\Easyvote\Domain\Model\CommunityUser $communityUser
+	 * @internal param int $value
+	 * @return \TYPO3\CMS\Extbase\Persistence\QueryResultInterface
+	 */
+	public function findByVotingProposalAndUser(\Visol\Easyvote\Domain\Model\VotingProposal $votingProposal, \Visol\Easyvote\Domain\Model\CommunityUser $communityUser) {
+		$query = $this->createQuery();
+
+		$query->matching(
+			$query->logicalAnd(
+				$query->equals('votingProposal', $votingProposal),
+				$query->equals('communityUser', $communityUser)
 			)
 		);
 

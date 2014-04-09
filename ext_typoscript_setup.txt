@@ -1,0 +1,21 @@
+config.tx_extbase{
+    persistence{
+        classes{
+
+
+            TYPO3\CMS\Extbase\Domain\Model\FrontendUser {
+                subclasses {
+                    Tx_Easyvote_CommunityUser = Visol\Easyvote\Domain\Model\CommunityUser
+
+          		}
+            }
+            Visol\Easyvote\Domain\Model\CommunityUser {
+                mapping {
+                    tableName = fe_users
+                    recordType = Tx_Easyvote_CommunityUser
+                }
+            }
+            
+    	}
+    }
+}
