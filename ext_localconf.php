@@ -80,6 +80,19 @@ if (!defined('TYPO3_MODE')) {
 	)
 );
 
+/* Community-Plugins */
+\TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
+	'Visol.' . $_EXTKEY,
+	'Notifications',
+	array(
+		'CommunityUser' => 'editNotifications,updateNotifications',
+	),
+	// non-cacheable actions
+	array(
+		'CommunityUser' => 'editNotifications,updateNotifications',
+	)
+);
+
 # Content Element for displaying an image from image field or CSS class
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addPageTSConfig('
 mod.wizards.newContentElement.wizardItems {

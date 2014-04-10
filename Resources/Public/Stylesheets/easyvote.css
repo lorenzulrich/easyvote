@@ -418,6 +418,14 @@ div.pagination a:hover {
     text-transform: uppercase;
 }
 
+.community-plugins .box h3 {
+    font-family: "Ubuntu", Arial, Helvetica, sans-serif;
+    font-weight: 500;
+    font-size: 18px;
+    margin-bottom: 10px;
+    color: #005476;
+}
+
 .community-plugins .box *:last-child {
     margin-bottom: 0;
 }

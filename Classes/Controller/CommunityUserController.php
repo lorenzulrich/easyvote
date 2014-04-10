@@ -105,5 +105,31 @@ class CommunityUserController extends \Visol\Easyvote\Controller\AbstractControl
 		$this->redirect('editProfile');
 	}
 
+	/**
+	 * action editNotifications
+	 */
+	public function editNotificationsAction() {
+		$communityUser = $this->getLoggedInUser();
+		if ($communityUser instanceof \Visol\Easyvote\Domain\Model\CommunityUser) {
+			$this->view->assign('user', $communityUser);
+		}
+	}
+
+	/**
+	 * action updateNotifications
+	 *
+	 * @param \Visol\Easyvote\Domain\Model\CommunityUser $communityUser
+	 */
+	public function updateNotificationsAction(\Visol\Easyvote\Domain\Model\CommunityUser $communityUser) {
+		$loggedInUser = $this->getLoggedInUser();
+		/** Todo: Sanitize properties that should never be updated by the user. */
+		if ($loggedInUser->getUid() === $communityUser->getUid()) {
+			$this->communityUserRepository->update($communityUser);
+			$this->persistenceManager->persistAll();
+			$this->flashMessageContainer->add('<i class="icon icon-check-sign"></i> Deine Vote-Wecker wurden aktualisiert!');
+		}
+		$this->redirect('editNotifications');
+	}
+
 }
 ?>

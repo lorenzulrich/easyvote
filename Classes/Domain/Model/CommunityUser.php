@@ -64,6 +64,16 @@ class CommunityUser extends \TYPO3\CMS\Extbase\Domain\Model\FrontendUser {
 	protected $age;
 
 	/**
+	 * @var integer
+	 */
+	protected $notificationMailActive;
+
+	/**
+	 * @var integer
+	 */
+	protected $notificationSmsActive;
+
+	/**
 	 * Adressdaten
 	 *
 	 * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Visol\EasyvoteImporter\Domain\Model\Dataset>
@@ -197,6 +207,34 @@ class CommunityUser extends \TYPO3\CMS\Extbase\Domain\Model\FrontendUser {
 		$birthdateTimestamp = $this->getBirthdate()->getTimestamp();
 		$age = ($birthdateTimestamp < 0) ? ( $t + ($birthdateTimestamp * -1) ) : $t - $birthdateTimestamp;
 		return floor($age/31536000);
+	}
+
+	/**
+	 * @return integer
+	 */
+	public function getNotificationMailActive() {
+		return $this->notificationMailActive;
+	}
+
+	/**
+	 * @param integer $notificationMailActive
+	 */
+	public function setNotificationMailActive($notificationMailActive) {
+		$this->notificationMailActive = $notificationMailActive;
+	}
+
+	/**
+	 * @return integer
+	 */
+	public function getNotificationSmsActive() {
+		return $this->notificationSmsActive;
+	}
+
+	/**
+	 * @param integer $notificationSmsActive
+	 */
+	public function setNotificationSmsActive($notificationSmsActive) {
+		$this->notificationSmsActive = $notificationSmsActive;
 	}
 
 }

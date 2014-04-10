@@ -55,6 +55,14 @@ $TCA['tt_content']['types']['list']['subtypes_addlist'][$pluginSignature] = 'pi_
 	'EXT:easyvote/ext_icon.gif'
 );
 
+/* Eigener Vote-Wecker */
+\TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin(
+	$_EXTKEY,
+	'Notifications',
+	'Eigener Vote-Wecker',
+	'EXT:easyvote/ext_icon.gif'
+);
+
 /* TypoScript-Konfiguration */
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addStaticFile($_EXTKEY, 'Configuration/TypoScript', 'easyvote');
 
@@ -313,7 +321,7 @@ $TCA['tt_content']['types']['easyvoteimage'] = array(
 /* Frontend User Integration */
 $TCA['fe_users']['types']['Tx_Easyvote_CommunityUser']['showitem'] = $TCA['fe_users']['types']['Tx_Extbase_Domain_Model_FrontendUser']['showitem'];
 $TCA['fe_users']['columns'][$TCA['fe_users']['ctrl']['type']]['config']['items'][] = array('LLL:EXT:easyvote/Resources/Private/Language/locallang_db.xlf:tx_easyvote_domain_model_communityuser','Tx_Easyvote_CommunityUser');
-\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addToAllTCAtypes('fe_users', $TCA['fe_users']['ctrl']['type'],'','after:hidden');
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addToAllTCAtypes('fe_users', $TCA['fe_users']['ctrl']['type']);
 
 
 /* New columns for FrontendUser of type CommunityUser */
@@ -363,13 +371,29 @@ $communityUserColumns = array(
 			'max'  => '20'
 		)
 	),
+	'notification_mail_active' => array(
+		'exclude' => 1,
+		'label' => 'LLL:EXT:easyvote/Resources/Private/Language/locallang_db.xlf:tx_easyvote_domain_model_communityuser.notification_mail_active',
+		'config' => array(
+			'type' => 'check',
+			'default' => 0
+		),
+	),
+	'notification_sms_active' => array(
+		'exclude' => 1,
+		'label' => 'LLL:EXT:easyvote/Resources/Private/Language/locallang_db.xlf:tx_easyvote_domain_model_communityuser.notification_sms_active',
+		'config' => array(
+			'type' => 'check',
+			'default' => 0
+		),
+	),
 );
 
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addTCAcolumns('fe_users', $communityUserColumns);
-\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addToAllTCAtypes('fe_users', $TCA['fe_users']['ctrl']['type'],'','after:hidden');
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addToAllTCAtypes('fe_users', $TCA['fe_users']['ctrl']['type']);
 
 $TCA['fe_users']['types']['Tx_Easyvote_CommunityUser']['showitem'] = $TCA['fe_users']['types']['Tx_Extbase_Domain_Model_FrontendUser']['showitem'];
 $TCA['fe_users']['types']['Tx_Easyvote_CommunityUser']['showitem'] .= ',--div--;LLL:EXT:easyvote/Resources/Private/Language/locallang_db.xlf:tx_easyvote_domain_model_communityuser';
-$TCA['fe_users']['types']['Tx_Easyvote_CommunityUser']['showitem'] .= ',gender, kanton, user_language, birthdate';
+$TCA['fe_users']['types']['Tx_Easyvote_CommunityUser']['showitem'] .= ',gender, kanton, user_language, birthdate, notification_mail_active, notification_sms_active';
 
 ?>
