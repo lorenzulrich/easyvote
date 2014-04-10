@@ -24,6 +24,7 @@ namespace Visol\Easyvote\Controller;
  *
  *  This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
+use TYPO3\CMS\Core\Utility\DebugUtility;
 
 /**
  *
@@ -32,6 +33,18 @@ namespace Visol\Easyvote\Controller;
  *
  */
 class CommunityUserController extends \Visol\Easyvote\Controller\AbstractController {
+
+	/**
+	 * @var \Visol\Easyvote\Domain\Repository\KantonRepository
+	 * @inject
+	 */
+	protected $kantonRepository;
+
+	/**
+	 * @var \TYPO3\CMS\Extbase\Persistence\Generic\PersistenceManager
+	 * @inject
+	 */
+	protected $persistenceManager;
 
 	/**
 	 * action userOverview
@@ -61,6 +74,35 @@ class CommunityUserController extends \Visol\Easyvote\Controller\AbstractControl
 		if ($communityUser instanceof \Visol\Easyvote\Domain\Model\CommunityUser) {
 			$this->view->assign('user', $communityUser);
 		}
+	}
+
+	/**
+	 * action editProfile
+	 */
+	public function editProfileAction() {
+		$communityUser = $this->getLoggedInUser();
+		$kantons = $this->kantonRepository->findAll();
+
+		if ($communityUser instanceof \Visol\Easyvote\Domain\Model\CommunityUser) {
+			$this->view->assign('user', $communityUser);
+			$this->view->assign('kantons', $kantons);
+		}
+	}
+
+	/**
+	 * action updateProfile
+	 *
+	 * @param \Visol\Easyvote\Domain\Model\CommunityUser $communityUser
+	 */
+	public function updateProfileAction(\Visol\Easyvote\Domain\Model\CommunityUser $communityUser) {
+		$loggedInUser = $this->getLoggedInUser();
+		/** Todo: Sanitize properties that should never be updated by the user. */
+		if ($loggedInUser->getUid() === $communityUser->getUid()) {
+			$this->communityUserRepository->update($communityUser);
+			$this->persistenceManager->persistAll();
+			$this->flashMessageContainer->add('<i class="icon icon-check-sign"></i> Dein Profil wurde aktualisiert!');
+		}
+		$this->redirect('editProfile');
 	}
 
 }

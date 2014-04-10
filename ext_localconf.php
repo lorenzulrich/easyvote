@@ -67,6 +67,19 @@ if (!defined('TYPO3_MODE')) {
 	)
 );
 
+/* Community-Plugins */
+\TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
+	'Visol.' . $_EXTKEY,
+	'Profile',
+	array(
+		'CommunityUser' => 'editProfile,updateProfile',
+	),
+	// non-cacheable actions
+	array(
+		'CommunityUser' => 'editProfile,updateProfile',
+	)
+);
+
 # Content Element for displaying an image from image field or CSS class
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addPageTSConfig('
 mod.wizards.newContentElement.wizardItems {

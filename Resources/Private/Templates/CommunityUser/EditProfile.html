@@ -1,0 +1,46 @@
+{namespace v=Tx_Vhs_ViewHelpers}
+{namespace ev=Tx_Easyvote_ViewHelpers}
+
+<div class="community-plugins">
+	<div class="csc-default box box-lightblue">
+		<h2>Profil bearbeiten</h2>
+		<f:flashMessages renderMode="div" />
+		<f:form class="inputForm" action="updateProfile" name="communityUser" object="{user}">
+			<div class="form-row">
+				<f:form.textarea property="address" additionalAttributes="{placeholder:'Adresse'}" />
+			</div>
+			<div class="form-row">
+				<f:form.textfield class="formfield-zip" property="zip" additionalAttributes="{required: required, placeholder:'PLZ'}" />
+				<f:form.textfield class="formfield-city" property="city" additionalAttributes="{required: required, placeholder:'Wohnort'}" />
+			</div>
+			<div class="form-row">
+				<f:form.select property="kanton" options="{kantons}" optionValueField="uid" optionLabelField="name" additionalAttributes="{required: required}" />
+			</div>
+			<div class="form-row">
+				<f:form.textfield property="telephone" additionalAttributes="{placeholder:'Mobiltelefon'}" />
+			</div>
+			<div class="form-row">
+				<f:form.textfield property="email" additionalAttributes="{required: required, placeholder:'E-Mail-Adresse'}" />
+			</div>
+			<div class="form-row">
+				<f:form.textfield property="birthdate" additionalAttributes="{required: required, placeholder:'Geburtsdatum, z.B. 01.01.2000'}" value="{user.birthdate -> f:format.date(format:'d.m.Y')}">
+					<f:format.date format="d.m.Y">{user.birthdate}</f:format.date>
+				</f:form.textfield>
+			</div>
+			<div class="form-row form-row-radio">
+				<f:form.radio id="userLanguage-1" name="communityUser[userLanguage]" value="1" checked="{user.userLanguage} == 1" /> <label for="userLanguage-1">Deutsch</label>
+				<f:form.radio id="userLanguage-2" name="communityUser[userLanguage]" value="2" checked="{user.userLanguage} == 2" /> <label for="userLanguage-2">Français</label>
+				<f:form.radio id="userLanguage-3" name="communityUser[userLanguage]" value="3" checked="{user.userLanguage} == 3" /> <label for="userLanguage-3">Italiano</label>
+			</div>
+			<div class="form-row form-row-radio">
+				<f:form.radio id="gender-1" name="communityUser[gender]" value="1" checked="{user.gender} == 1" /> <label for="gender-1"><i class="icon icon-male"></i></label>
+				<f:form.radio id="gender-2" name="communityUser[gender]" value="2" checked="{user.gender} == 2" /> <label for="gender-2"><i class="icon icon-female"></i></label>
+			</div>
+			<div class="form-row">
+				<button type="submit">Speichern</button>
+			</div>
+
+			<p class="ym-clearfix">Möchtest du dein Konto löschen?</p>
+		</f:form>
+	</div>
+</div>

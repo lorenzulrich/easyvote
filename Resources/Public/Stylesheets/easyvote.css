@@ -390,6 +390,7 @@ div.pagination a:hover {
 .archiveSearch input[type=submit] { padding: 2px 5px; }
 .archiveSearch input[type=reset] { padding: 2px 5px; }
 
+/* Generic Style for Community UI */
 .pull-left { float: left; }
 .pull-right { float: right; }
 .hidden { display: none; }
@@ -397,13 +398,11 @@ div.pagination a:hover {
 
 /* Community */
 .community-plugins img.user-image {
-    -webkit-border-radius: 15px;
     border-radius: 15px;
     margin-bottom: 15px;
 }
 
 .community-plugins .box {
-    -webkit-border-radius: 15px;
     border-radius: 15px;
     margin: 0 0 20px 0;
     padding: 30px;
@@ -433,6 +432,11 @@ div.pagination a:hover {
 
 .community-plugins .box-lightblue {
     background-color: #AEE9F9;
+    color: #112B4D;
+}
+
+.community-plugins .box-lightblue h2 {
+    color: #ed0a71 !important;
 }
 
 .community-plugins .box-signalblue {
@@ -493,4 +497,68 @@ div.login-panel .login-status .user-name {
     font-weight: 500;
     font-size: 18px;
     padding-top: 5px;
+}
+
+/* User Profile Forms */
+.community-plugins .form-row {
+    margin-bottom: 10px;
+    clear: both;
+}
+
+.community-plugins .form-row:after {
+    content: ".";
+    display: block;
+    clear: both;
+    visibility: hidden;
+    line-height: 0;
+    height: 0;
+}
+
+.community-plugins .form-row input[type=text],
+.community-plugins .form-row select,
+.community-plugins .form-row textarea {
+    width: 280px;
+    border: 0;
+    padding: 5px;
+}
+
+.community-plugins .form-row select {
+    width: 290px;
+}
+
+.community-plugins .form-row input.formfield-zip {
+    width: 40px;
+    float: left;
+    margin-right: 10px;
+}
+
+.community-plugins .form-row input.formfield-city {
+    width: 220px;
+    float: left;
+}
+
+.community-plugins .form-row.form-row-radio label {
+    margin-right: 10px;
+}
+
+
+.community-plugins button[type=submit] {
+    float: right;
+    width: 160px;
+    display: block;
+    background-color: #ed0a71;
+    color: #fff;
+    border-radius: 5px;
+    padding: 5px;
+    text-align: center;
+    text-transform: uppercase;
+    margin-bottom: 7px;
+    border: 0;
+}
+
+.community-plugins .typo3-messages {
+    border-radius: 5px;
+    background: white;
+    padding: 10px;
+    margin-bottom: 20px;
 }
