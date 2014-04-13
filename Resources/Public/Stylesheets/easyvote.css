@@ -522,25 +522,25 @@ div.login-panel .login-status .user-name {
     height: 0;
 }
 
-.community-plugins .form-row input[type=text],
-.community-plugins .form-row select,
-.community-plugins .form-row textarea {
+.community-plugins form input[type=text],
+.community-plugins form select,
+.community-plugins form textarea {
     width: 280px;
     border: 0;
     padding: 5px;
 }
 
-.community-plugins .form-row select {
+.community-plugins form select {
     width: 290px;
 }
 
-.community-plugins .form-row input.formfield-zip {
+.community-plugins form input.formfield-zip {
     width: 40px;
     float: left;
     margin-right: 10px;
 }
 
-.community-plugins .form-row input.formfield-city {
+.community-plugins form input.formfield-city {
     width: 220px;
     float: left;
 }
@@ -550,7 +550,7 @@ div.login-panel .login-status .user-name {
 }
 
 
-.community-plugins button[type=submit] {
+.community-plugins button {
     float: right;
     width: 160px;
     display: block;
@@ -562,6 +562,7 @@ div.login-panel .login-status .user-name {
     text-transform: uppercase;
     margin-bottom: 7px;
     border: 0;
+    cursor: pointer;
 }
 
 .community-plugins .typo3-messages {
@@ -569,4 +570,41 @@ div.login-panel .login-status .user-name {
     background: white;
     padding: 10px;
     margin-bottom: 20px;
+}
+
+.community-plugins .mobilization-notification-example {
+    padding: 15px;
+    width: 450px;
+    background-color: #fff;
+}
+
+.community-plugins table {
+    border: 0;
+    margin-bottom: 20px;
+}
+
+.community-plugins table tbody tr td {
+    vertical-align: middle;
+    line-height: 1.3em;
+    padding: 5px;
+    border-top: 0;
+    border-bottom: 2px solid grey;
+}
+
+.community-plugins table tr.no-border td {
+    border: 0;
+}
+
+.community-plugins table tbody tr:hover td {
+    background-color: transparent;
+}
+
+.community-plugins #newMobilizedCommunityUser {
+    clear: both;
+    float: left;
+    width: auto;
+}
+
+.community-plugins #newMobilizedCommunityUserPlaceholder {
+    margin-bottom: 10px;
 }

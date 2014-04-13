@@ -171,7 +171,9 @@
 			<trans-unit id="tx_easyvote_domain_model_communityuser.notification_sms_active">
 				<source>Receive voting notification by SMS</source>
 			</trans-unit>
-
+			<trans-unit id="tx_easyvote_domain_model_communityuser.notification_related_users">
+				<source>Mobilized users</source>
+			</trans-unit>
 		</body>
 	</file>
 </xliff>

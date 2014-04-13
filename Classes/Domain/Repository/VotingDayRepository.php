@@ -48,6 +48,15 @@ class VotingDayRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
 	/**
 	 * @return \TYPO3\CMS\Extbase\Persistence\QueryInterface
 	 */
+	public function findNextVotingDay() {
+		$query = $this->createQuery();
+		$query->statement('SELECT * FROM tx_easyvote_domain_model_votingday WHERE voting_date > ' . time() . ' AND deleted = 0 ORDER BY voting_date asc LIMIT 1');
+		return $query->execute()->getFirst();
+	}
+
+	/**
+	 * @return \TYPO3\CMS\Extbase\Persistence\QueryInterface
+	 */
 	public function findUploadAllowedVotingDays() {
 		$query = $this->createQuery();
 		$query->getQuerySettings()->setIgnoreEnableFields(TRUE);

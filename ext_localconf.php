@@ -41,16 +41,18 @@ if (!defined('TYPO3_MODE')) {
 	)
 );
 
-/* Voting proposals archive */
+/* AJAX functions for community plugins */
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
 	'Visol.' . $_EXTKEY,
 	'CommunityAjax',
 	array(
 		'VotingProposal' => 'showPollForVotingProposal,undoUserVoteForVotingProposal,voteForVotingProposal',
+		'CommunityUser' => 'listMobilizedCommunityUsers,newMobilizedCommunityUser,createMobilizedCommunityUser,removeMobilizedCommunityUser',
 	),
 	// non-cacheable actions
 	array(
 		'VotingProposal' => 'showPollForVotingProposal,undoUserVoteForVotingProposal,voteForVotingProposal',
+		'CommunityUser' => 'listMobilizedCommunityUsers,newMobilizedCommunityUser,createMobilizedCommunityUser,removeMobilizedCommunityUser',
 	)
 );
 
@@ -80,7 +82,7 @@ if (!defined('TYPO3_MODE')) {
 	)
 );
 
-/* Community-Plugins */
+/* Eigener Vote-Wecker */
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
 	'Visol.' . $_EXTKEY,
 	'Notifications',
@@ -90,6 +92,19 @@ if (!defined('TYPO3_MODE')) {
 	// non-cacheable actions
 	array(
 		'CommunityUser' => 'editNotifications,updateNotifications',
+	)
+);
+
+/* Freunde mobilisieren */
+\TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
+	'Visol.' . $_EXTKEY,
+	'Mobilize',
+	array(
+		'CommunityUser' => 'editMobilizations',
+	),
+	// non-cacheable actions
+	array(
+		'CommunityUser' => 'editMobilizations',
 	)
 );
 

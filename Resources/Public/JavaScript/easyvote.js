@@ -1,25 +1,28 @@
 $(function() {
-    initializeVotings();
-    bindNavigation();
+	if ($('#votingsDashboard').length > 0) {
+		initializeVotings();
+		bindNavigation();
+	}
 
-    $('a#goToGegenvorschlag').click(function() {
-    var jumpToId = $(this).closest('div.abstimmungsvorlage').next().attr('id');
-    scrollToElement('#' + jumpToId);
-    });
-$('a#goToHauptvorlage').click(function() {
-    var jumpToId = $(this).closest('div.abstimmungsvorlage').prev().attr('id');
-    scrollToElement('#' + jumpToId);
-    });
+	$('a#goToGegenvorschlag').click(function() {
+		var jumpToId = $(this).closest('div.abstimmungsvorlage').next().attr('id');
+		scrollToElement('#' + jumpToId);
+	});
+	$('a#goToHauptvorlage').click(function() {
+		var jumpToId = $(this).closest('div.abstimmungsvorlage').prev().attr('id');
+		scrollToElement('#' + jumpToId);
+	});
 
-$('.toggle-trigger').click(function() {
-    toggleBlock(this);
-    });
+	$('.toggle-trigger').click(function() {
+		toggleBlock(this);
+	});
 
-$('.searchResults .abstimmungsvorlage-header').click(function(e) {
-    $('.abstimmungsvorlage-content', $(this).parent()).slideToggle('slow', function() {
-        $('i', $(this).parent()).toggleClass('icon-chevron-down');
-    });
-})
+	$('.searchResults .abstimmungsvorlage-header').click(function(e) {
+		$('.abstimmungsvorlage-content', $(this).parent()).slideToggle('slow', function() {
+			$('i', $(this).parent()).toggleClass('icon-chevron-down');
+		});
+	})
+
 });
 
 function initializeVotings() {
@@ -198,6 +201,69 @@ $body.on('click', '.vote-down', function() {
 		success: function(data) {
 			displayFlashMessage(data['successText']);
 			loadPollResult(votingProposalUid);
+		}
+	});
+});
+
+/* Load mobilized community users */
+$(function() {
+	if ($('#mobilizedCommunityUsers').length > 0) {
+		newMobilizedCommunityUser();
+		loadMobilizedCommunityUsers();
+	}
+});
+
+function loadMobilizedCommunityUsers() {
+	var ajaxDataUri = ajaxUri + '&tx_easyvote_communityajax[controller]=CommunityUser&tx_easyvote_communityajax[action]=listMobilizedCommunityUsers';
+	$.ajax({
+		url: ajaxDataUri,
+		success: function(data) {
+			$('#mobilizedCommunityUsers').html(data);
+		}
+	});
+}
+
+/* Add new mobilized community user */
+$body.on('click', '#newMobilizedCommunityUser', function() {
+		newMobilizedCommunityUser();
+});
+
+function newMobilizedCommunityUser() {
+	var ajaxDataUri = ajaxUri + '&tx_easyvote_communityajax[controller]=CommunityUser&tx_easyvote_communityajax[action]=newMobilizedCommunityUser';
+	$.ajax({
+		url: ajaxDataUri,
+		success: function(data) {
+			$('#newMobilizedCommunityUserPlaceholder').append(data);
+		}
+	});
+}
+
+$body.on('submit', '.newMobilizedCommunityUser', function(e) {
+	e.preventDefault();
+	$(this).closest('div').remove();
+	var $formData = $(this).serializeArray();
+	var ajaxDataUri = ajaxUri + '&tx_easyvote_communityajax[controller]=CommunityUser&tx_easyvote_communityajax[action]=createMobilizedCommunityUser';
+	$.ajax({
+		url: ajaxDataUri,
+		data: $formData,
+		success: function(returnValue) {
+			displayFlashMessage(returnValue);
+			loadMobilizedCommunityUsers();
+		}
+	});
+});
+
+/* Remove a mobilized community user */
+$body.on('submit', '.removeMobilizedCommunityUser', function(e) {
+	e.preventDefault();
+	var $formData = $(this).serializeArray();
+	var ajaxDataUri = ajaxUri + '&tx_easyvote_communityajax[controller]=CommunityUser&tx_easyvote_communityajax[action]=removeMobilizedCommunityUser';
+	$.ajax({
+		url: ajaxDataUri,
+		data: $formData,
+		success: function(returnValue) {
+			displayFlashMessage(returnValue);
+			loadMobilizedCommunityUsers();
 		}
 	});
 });

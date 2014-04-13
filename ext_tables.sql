@@ -367,6 +367,8 @@ CREATE TABLE fe_users (
 	birthdate int(11) unsigned DEFAULT '0' NOT NULL,
 	notification_mail_active int(1) unsigned DEFAULT '0' NOT NULL,
 	notification_sms_active int(1) unsigned DEFAULT '0' NOT NULL,
+  notification_related_users int(11) unsigned DEFAULT '0' NOT NULL,
+  community_user int(11) unsigned DEFAULT '0' NOT NULL,
 	tx_extbase_type varchar(255) DEFAULT '' NOT NULL,
 
 );

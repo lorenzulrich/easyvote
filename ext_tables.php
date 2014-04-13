@@ -27,7 +27,7 @@ if (!defined('TYPO3_MODE')) {
 	'EXT:easyvote/ext_icon.gif'
 );
 
-/* Voting proposals archive */
+/* AJAX functions for community plugins */
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin(
 	$_EXTKEY,
 	'CommunityAjax',
@@ -60,6 +60,14 @@ $TCA['tt_content']['types']['list']['subtypes_addlist'][$pluginSignature] = 'pi_
 	$_EXTKEY,
 	'Notifications',
 	'Eigener Vote-Wecker',
+	'EXT:easyvote/ext_icon.gif'
+);
+
+/* Freunde mobilisieren */
+\TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin(
+	$_EXTKEY,
+	'Mobilize',
+	'Freunde mobilisieren',
 	'EXT:easyvote/ext_icon.gif'
 );
 
@@ -387,6 +395,25 @@ $communityUserColumns = array(
 			'default' => 0
 		),
 	),
+	'notification_related_users' => array(
+		'exclude' => 1,
+		'label' => 'LLL:EXT:easyvote/Resources/Private/Language/locallang_db.xlf:tx_easyvote_domain_model_communityuser.notification_related_users',
+		'config' => array(
+			'type' => 'inline',
+			'foreign_table' => 'fe_users',
+			'foreign_field' => 'community_user',
+			'maxitems'      => 9999,
+			'appearance' => array(
+				'collapseAll' => 0,
+				'levelLinksPosition' => 'top',
+			),
+		),
+	),
+	'community_user' => array(
+		'config' => array(
+			'type' => 'passthrough',
+		),
+	),
 );
 
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addTCAcolumns('fe_users', $communityUserColumns);
@@ -394,6 +421,6 @@ $communityUserColumns = array(
 
 $TCA['fe_users']['types']['Tx_Easyvote_CommunityUser']['showitem'] = $TCA['fe_users']['types']['Tx_Extbase_Domain_Model_FrontendUser']['showitem'];
 $TCA['fe_users']['types']['Tx_Easyvote_CommunityUser']['showitem'] .= ',--div--;LLL:EXT:easyvote/Resources/Private/Language/locallang_db.xlf:tx_easyvote_domain_model_communityuser';
-$TCA['fe_users']['types']['Tx_Easyvote_CommunityUser']['showitem'] .= ',gender, kanton, user_language, birthdate, notification_mail_active, notification_sms_active';
+$TCA['fe_users']['types']['Tx_Easyvote_CommunityUser']['showitem'] .= ',gender, kanton, user_language, birthdate, notification_mail_active, notification_sms_active,notification_related_users';
 
 ?>

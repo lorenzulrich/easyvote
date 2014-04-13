@@ -1,0 +1,13 @@
+<div class="form-row">
+	<f:form class="inputForm newMobilizedCommunityUser" action="createMobilizedCommunityUser" name="newCommunityUser" object="{newCommunityUser}">
+		<f:form.textfield style="width: 105px;" property="firstName" additionalAttributes="{required: required, placeholder:'Vorname'}" />
+		<f:form.textfield style="width: 105px;" property="lastName"  additionalAttributes="{required: required, placeholder:'Nachname'}" />
+		<f:form.textfield style="width: 220px;" property="email" additionalAttributes="{required: required, placeholder:'E-Mail'}" />
+		<select style="width: 90px" name="tx_easyvote_communityajax[newCommunityUser][userLanguage]">
+			<option value="1">Deutsch</option>
+			<option value="2">Français</option>
+			<option value="3">Italiano</option>
+		</select>
+		<button type="submit">stellen</button>
+	</f:form>
+</div>

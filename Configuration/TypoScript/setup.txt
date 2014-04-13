@@ -7,10 +7,6 @@ plugin.tx_easyvote {
 	persistence {
 		storagePid = {$plugin.tx_easyvote.persistence.storagePid}
 	}
-	features {
-		# uncomment the following line to enable the new Property Mapper.
-		# rewrittenPropertyMapper = 1
-	}
 	mvc {
 		callDefaultActionIfActionCantBeResolved = 1
 	}
@@ -93,6 +89,7 @@ plugin.tx_easyvote {
 			youtubeHeight = 360
 		}
 		communityUserGroupUid = 4
+		notificationRelatedUserGroupUid = 5
 		loginUrl = 193
 		communityAjaxPid = 194
 		votingPid = 139
@@ -100,6 +97,7 @@ plugin.tx_easyvote {
 		communityMobilizePid = 200
 		communityHomePid = 192
 		siteHomePid = 4
+		userStoragePid = 144
 	}
 }
 

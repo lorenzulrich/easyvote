@@ -1,0 +1,26 @@
+<table>
+	<tbody>
+		<f:for each="{user.notificationRelatedUsers}" as="notificationRelatedUser">
+			<tr>
+				<td>{notificationRelatedUser.firstName} {notificationRelatedUser.lastName}</td>
+				<td style="width: 220px;">{notificationRelatedUser.email}</td>
+				<td style="width: 100px">
+					<f:if condition="{notificationRelatedUser.userLanguage} == 1">
+						Deutsch
+					</f:if>
+					<f:if condition="{notificationRelatedUser.userLanguage} == 2">
+						Français
+					</f:if>
+					<f:if condition="{notificationRelatedUser.userLanguage} == 3">
+						Italiano
+					</f:if>
+				</td>
+				<td style="width: 180px;">
+					<f:form class="inputForm removeMobilizedCommunityUser" action="removeMobilizedCommunityUser" name="notificationRelatedUser" object="{notificationRelatedUser}">
+						<button type="submit"><i class="icon icon-remove"></i> löschen</button>
+					</f:form>
+				</td>
+			</tr>
+		</f:for>
+	</tbody>
+</table>

@@ -74,12 +74,20 @@ class CommunityUser extends \TYPO3\CMS\Extbase\Domain\Model\FrontendUser {
 	protected $notificationSmsActive;
 
 	/**
-	 * Adressdaten
+	 * Users that were subscribed for notifications by this user
 	 *
-	 * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Visol\EasyvoteImporter\Domain\Model\Dataset>
+	 * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Visol\Easyvote\Domain\Model\CommunityUser>
 	 * @lazy
 	 */
-	protected $datasets;
+	protected $notificationRelatedUsers;
+
+	/**
+	 * Parent Community User
+	 *
+	 * @var \Visol\Easyvote\Domain\Model\CommunityUser
+	 * @lazy
+	 */
+	protected $communityUser;
 
 	/**
 	 * __construct
@@ -88,6 +96,7 @@ class CommunityUser extends \TYPO3\CMS\Extbase\Domain\Model\FrontendUser {
 	 */
 	public function __construct() {
 		//Do not remove the next line: It would break the functionality
+		parent::__construct();
 		$this->initStorageObjects();
 	}
 
@@ -97,50 +106,45 @@ class CommunityUser extends \TYPO3\CMS\Extbase\Domain\Model\FrontendUser {
 	 * @return void
 	 */
 	protected function initStorageObjects() {
-		/**
-		 * Do not modify this method!
-		 * It will be rewritten on each save in the extension builder
-		 * You may modify the constructor of this class instead
-		 */
-		$this->datasets = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
+		$this->notificationRelatedUsers = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
 	}
 	/**
-	 * Adds a Dataset
+	 * Adds a related user
 	 *
-	 * @param \Visol\EasyvoteImporter\Domain\Model\Dataset $dataset
+	 * @param \Visol\Easyvote\Domain\Model\CommunityUser $communityUser
 	 * @return void
 	 */
-	public function addDataset(\Visol\EasyvoteImporter\Domain\Model\Dataset $dataset) {
-		$this->datasets->attach($dataset);
+	public function addNotificationRelatedUser(\Visol\Easyvote\Domain\Model\CommunityUser $communityUser) {
+		$this->notificationRelatedUsers->attach($communityUser);
 	}
 
 	/**
-	 * Removes a Dataset
+	 * Removes a related user
 	 *
-	 * @param \Visol\EasyvoteImporter\Domain\Model\Dataset $datasetToRemove The Dataset to be removed
+	 * @param \Visol\Easyvote\Domain\Model\CommunityUser $communityUser
 	 * @return void
 	 */
-	public function removeDataset(\Visol\EasyvoteImporter\Domain\Model\Dataset $datasetToRemove) {
-		$this->datasets->detach($datasetToRemove);
+	public function removeNotificationRelatedUser(\Visol\Easyvote\Domain\Model\CommunityUser $communityUser) {
+		$this->notificationRelatedUsers->detach($communityUser);
 	}
 
 	/**
-	 * Returns the datasets
+	 * Returns the related users
 	 *
-	 * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Visol\EasyvoteImporter\Domain\Model\Dataset> $datasets
+	 * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Visol\Easyvote\Domain\Model\CommunityUser> $notificationRelatedUsers
 	 */
-	public function getDatasets() {
-		return $this->datasets;
+	public function getNotificationRelatedUsers() {
+		return $this->notificationRelatedUsers;
 	}
 
 	/**
-	 * Sets the datasets
+	 * Sets the related users
 	 *
-	 * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Visol\EasyvoteImporter\Domain\Model\Dataset> $datasets
+	 * @param $ \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Visol\Easyvote\Domain\Model\CommunityUser> $notificationRelatedUsers
 	 * @return void
 	 */
-	public function setDatasets(\TYPO3\CMS\Extbase\Persistence\ObjectStorage $datasets) {
-		$this->datasets = $datasets;
+	public function setNotificationRelatedUsers(\TYPO3\CMS\Extbase\Persistence\ObjectStorage $notificationRelatedUsers) {
+		$this->notificationRelatedUsers = $notificationRelatedUsers;
 	}
 
 	/**
@@ -235,6 +239,20 @@ class CommunityUser extends \TYPO3\CMS\Extbase\Domain\Model\FrontendUser {
 	 */
 	public function setNotificationSmsActive($notificationSmsActive) {
 		$this->notificationSmsActive = $notificationSmsActive;
+	}
+
+	/**
+	 * @return \Visol\Easyvote\Domain\Model\CommunityUser
+	 */
+	public function getCommunityUser() {
+		return $this->communityUser;
+	}
+
+	/**
+	 * @param \Visol\Easyvote\Domain\Model\CommunityUser $communityUser
+	 */
+	public function setCommunityUser($communityUser) {
+		$this->communityUser = $communityUser;
 	}
 
 }

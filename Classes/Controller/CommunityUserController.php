@@ -25,6 +25,7 @@ namespace Visol\Easyvote\Controller;
  *  This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
 use TYPO3\CMS\Core\Utility\DebugUtility;
+use TYPO3\CMS\Core\Utility\GeneralUtility;
 
 /**
  *
@@ -39,6 +40,18 @@ class CommunityUserController extends \Visol\Easyvote\Controller\AbstractControl
 	 * @inject
 	 */
 	protected $kantonRepository;
+
+	/**
+	 * @var \Visol\Easyvote\Domain\Repository\VotingDayRepository
+	 * @inject
+	 */
+	protected $votingDayRepository;
+
+	/**
+	 * @var \TYPO3\CMS\Extbase\Domain\Repository\FrontendUserGroupRepository
+	 * @inject
+	 */
+	protected $frontendUserGroupRepository;
 
 	/**
 	 * @var \TYPO3\CMS\Extbase\Persistence\Generic\PersistenceManager
@@ -129,6 +142,108 @@ class CommunityUserController extends \Visol\Easyvote\Controller\AbstractControl
 			$this->flashMessageContainer->add('<i class="icon icon-check-sign"></i> Deine Vote-Wecker wurden aktualisiert!');
 		}
 		$this->redirect('editNotifications');
+	}
+
+	/**
+	 * action editNotifications
+	 */
+	public function editMobilizationsAction() {
+		$communityUser = $this->getLoggedInUser();
+		$nextVotingDay = $this->votingDayRepository->findNextVotingDay();
+		if ($communityUser instanceof \Visol\Easyvote\Domain\Model\CommunityUser) {
+			$this->view->assign('user', $communityUser);
+			$this->view->assign('nextVotingDay', $nextVotingDay);
+		}
+	}
+
+	/**
+	 * action listMobilizedCommunityUsers
+	 *
+	 * @return string|boolean
+	 */
+	public function listMobilizedCommunityUsersAction() {
+		$communityUser = $this->getLoggedInUser();
+		if ($communityUser instanceof \Visol\Easyvote\Domain\Model\CommunityUser) {
+			$this->view->assign('user', $communityUser);
+			$content = $this->view->render();
+			return json_encode($content);
+		} else {
+			return json_encode(FALSE);
+		}
+	}
+
+	/**
+	 * action newMobilizedCommunityUser
+	 *
+	 * @return string
+	 */
+	public function newMobilizedCommunityUserAction() {
+		$newCommunityUser = $this->objectManager->create('\Visol\Easyvote\Domain\Model\CommunityUser');
+		$this->view->assign('newCommunityUser', $newCommunityUser);
+		$content = $this->view->render();
+		return json_encode($content);
+	}
+
+	/**
+	 * action createMobilizedCommunityUser
+	 *
+	 * @param \Visol\Easyvote\Domain\Model\CommunityUser $newCommunityUser
+	 * @dontverifyrequesthash $newCommunityUser
+	 * @return string
+	 */
+	public function createMobilizedCommunityUserAction(\Visol\Easyvote\Domain\Model\CommunityUser $newCommunityUser) {
+		$communityUser = $this->getLoggedInUser();
+		if ($communityUser instanceof \Visol\Easyvote\Domain\Model\CommunityUser) {
+			// user is authorized to add users to his profile
+			if (GeneralUtility::validEmail($newCommunityUser->getEmail())) {
+				if (!count($this->communityUserRepository->findByEmail($newCommunityUser->getEmail()))) {
+					$notificationRelatedUserGroupUid = (int)$this->settings['notificationRelatedUserGroupUid'];
+					$notificationRelatedUserGroup = $this->frontendUserGroupRepository->findByUid($notificationRelatedUserGroupUid);
+					$newCommunityUser->addUsergroup($notificationRelatedUserGroup);
+					$newCommunityUser->setCommunityUser($communityUser);
+					$newCommunityUser->setNotificationMailActive(1);
+					$newCommunityUser->setUsername($newCommunityUser->getEmail());
+					$newCommunityUser->setPassword(md5(GeneralUtility::generateRandomBytes(40)));
+					$newCommunityUser->setPid($this->settings['userStoragePid']);
+					$this->communityUserRepository->add($newCommunityUser);
+					$this->persistenceManager->persistAll();
+					// TODO send confirmation mail to user
+					return json_encode('Der Vote-Wecker wurde gestellt.');
+				} else {
+					return json_encode('Der Vote-Wecker konnte nicht gestellt werden, da für diese Person bereits ein Vote-Wecker gestellt wurde.');
+				}
+			} else {
+				// e-mail invalid
+				return json_encode('Der Vote-Wecker konnte nicht gestellt werden, da die E-Mail-Adresse ungültig war.');
+			}
+		} else {
+			return json_encode(FALSE);
+		}
+	}
+
+	/**
+	 * action removeMobilizedCommunityUser
+	 *
+	 * @param \Visol\Easyvote\Domain\Model\CommunityUser $notificationRelatedUser
+	 * @dontverifyrequesthash $notificationRelatedUser
+	 * @return string
+	 */
+	public function removeMobilizedCommunityUserAction(\Visol\Easyvote\Domain\Model\CommunityUser $notificationRelatedUser) {
+		$communityUser = $this->getLoggedInUser();
+		if ($communityUser instanceof \Visol\Easyvote\Domain\Model\CommunityUser) {
+			// user is logged in
+			if ($notificationRelatedUser->getCommunityUser()->getUid() === $communityUser->getUid()) {
+				// is it really a child of the logged in user
+				// TODO in future: Check is user has change account to a real account and prevent deletion
+				$this->communityUserRepository->remove($notificationRelatedUser);
+				$this->persistenceManager->persistAll();
+				return json_encode('Der Vote-Wecker-Kontakt wurde gelöscht.');
+			} else {
+				return json_encode('Du bist nicht berechtigt, diesen Vote-Wecker-Kontakt zu löschen.');
+			}
+		} else {
+			return json_encode('Nicht eingeloggt.');
+		}
 	}
 
 }

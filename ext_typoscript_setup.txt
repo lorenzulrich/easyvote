@@ -6,8 +6,12 @@ config.tx_extbase{
             TYPO3\CMS\Extbase\Domain\Model\FrontendUser {
                 subclasses {
                     Tx_Easyvote_CommunityUser = Visol\Easyvote\Domain\Model\CommunityUser
-
           		}
+            }
+            TYPO3\CMS\Extbase\Domain\Model\FrontendUserGroup {
+                mapping {
+                    recordType = Tx_Extbase_Domain_Model_FrontendUserGroup
+                }
             }
             Visol\Easyvote\Domain\Model\CommunityUser {
                 mapping {
