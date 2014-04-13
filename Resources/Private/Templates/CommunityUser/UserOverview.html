@@ -8,7 +8,7 @@
 	<div class="csc-default box box-pink">
 		<h2>{user.firstName} {user.lastName}</h2>
 		<p>
-			{user.age} Jahre<br />
+			<f:if condition="{user.age}">{user.age} Jahre<br /></f:if>
 			{user.city}
 		</p>
 	</div>

@@ -207,10 +207,12 @@ class CommunityUser extends \TYPO3\CMS\Extbase\Domain\Model\FrontendUser {
 	 * @return int
 	 */
 	public function getAge() {
-		$t = time();
-		$birthdateTimestamp = $this->getBirthdate()->getTimestamp();
-		$age = ($birthdateTimestamp < 0) ? ( $t + ($birthdateTimestamp * -1) ) : $t - $birthdateTimestamp;
-		return floor($age/31536000);
+		if ($this->getBirthdate() instanceof \DateTime) {
+			$t = time();
+			$birthdateTimestamp = $this->getBirthdate()->getTimestamp();
+			$age = ($birthdateTimestamp < 0) ? ( $t + ($birthdateTimestamp * -1) ) : $t - $birthdateTimestamp;
+			return floor($age/31536000);
+		}
 	}
 
 	/**
