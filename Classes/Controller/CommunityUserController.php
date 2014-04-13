@@ -119,6 +119,33 @@ class CommunityUserController extends \Visol\Easyvote\Controller\AbstractControl
 	}
 
 	/**
+	 * action removeProfile
+	 *
+	 * @param \Visol\Easyvote\Domain\Model\CommunityUser $communityUser
+	 */
+	public function removeProfileAction(\Visol\Easyvote\Domain\Model\CommunityUser $communityUser) {
+		$loggedInUser = $this->getLoggedInUser();
+		if ($loggedInUser->getUid() === $communityUser->getUid()) {
+			$communityUser->setEmail('');
+			$communityUser->setNotificationMailActive(0);
+			$communityUser->setTelephone('');
+			$communityUser->setNotificationSmsActive(0);
+			$communityUser->setUsername('gelöschter Benutzer');
+			$communityUser->setFirstName('gelöschter Benutzer');
+			$communityUser->setLastName('');
+			$communityUser->setAddress('');
+			$communityUser->setZip('');
+			$communityUser->setCity('');
+			$communityUserGroup = $this->frontendUserGroupRepository->findByUid($this->settings['communityUserGroupUid']);
+			$communityUser->removeUsergroup($communityUserGroup);
+			$this->communityUserRepository->update($communityUser);
+			$this->persistenceManager->persistAll();
+			$votingProposalUri = $this->uriBuilder->setTargetPageUid($this->settings['siteHomePid'])->setArguments(array('logintype' => 'logout'))->setCreateAbsoluteUri(TRUE)->build();
+			$this->redirectToUri($votingProposalUri);
+		}
+	}
+
+	/**
 	 * action editNotifications
 	 */
 	public function editNotificationsAction() {

@@ -74,11 +74,11 @@ if (!defined('TYPO3_MODE')) {
 	'Visol.' . $_EXTKEY,
 	'Profile',
 	array(
-		'CommunityUser' => 'editProfile,updateProfile',
+		'CommunityUser' => 'editProfile,updateProfile,removeProfile',
 	),
 	// non-cacheable actions
 	array(
-		'CommunityUser' => 'editProfile,updateProfile',
+		'CommunityUser' => 'editProfile,updateProfile,removeProfile',
 	)
 );
 

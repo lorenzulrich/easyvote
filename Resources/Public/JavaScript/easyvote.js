@@ -75,7 +75,52 @@ function resetForm() {
     $("#searchForm").find("input[type=checkbox]").attr('checked', false);
 }
 
-/* Tooltips */
+/* Modals */
+function bindModals() {
+	$('.hasModal').click(function(e) {
+		e.preventDefault();
+		var requestedLink = $(e.target).attr('href');
+		var $modalContentContainer = $(this).next('div');
+		var modalContent = $modalContentContainer.html();
+		$(this).qtip({
+			content: {
+				text: $modalContentContainer
+			},
+			hide: false,
+			show: {
+				ready: true,
+				modal: {
+					on: true,
+					blur: false
+				}
+			},
+			position: {
+				my: 'center', at: 'center',
+				target: $(window)
+			},
+			style: {
+				classes: 'qtip-light qtip-rounded'
+			},
+			events: {
+				render: function(event, api) {
+					event.preventDefault();
+					$('button.button-confirm', api.elements.content).click(function(e) {
+						window.location = requestedLink;
+					});
+					$('button.button-cancel', api.elements.content).click(function(e) {
+						api.hide(e);
+					});
+				},
+				hide: function(event, api) {
+					$(e.target).after('<div class="hidden">' + modalContent + '</div>');
+					api.destroy();
+				}
+			}
+		});
+	});
+}
+
+/* Flashing tooltips */
 function bindToolTips() {
 	$('.hasTooltip').each(function() {
 		$(this).qtip({
@@ -113,7 +158,7 @@ function displayFlashMessage(message) {
 			text: $flashMessageContainer.html()
 		},
 		style: {
-			classes: 'qtip-light qtip-rounded'
+			classes: 'qtip-light qtip-rounded qtip-modal'
 		},
 		position: {
 			my: 'bottom right',
@@ -267,3 +312,8 @@ $body.on('submit', '.removeMobilizedCommunityUser', function(e) {
 		}
 	});
 });
+
+$(function() {
+	bindToolTips();
+	bindModals();
+})

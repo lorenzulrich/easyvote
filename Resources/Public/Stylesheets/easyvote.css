@@ -391,8 +391,8 @@ div.pagination a:hover {
 .archiveSearch input[type=reset] { padding: 2px 5px; }
 
 /* Generic Style for Community UI */
-.pull-left { float: left; }
-.pull-right { float: right; }
+.pull-left { float: left !important; }
+.pull-right { float: right !important; }
 .hidden { display: none; }
 .hasTooltip { cursor: pointer; }
 
