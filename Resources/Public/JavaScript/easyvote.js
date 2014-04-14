@@ -270,9 +270,11 @@ function loadMobilizedCommunityUsers() {
 	});
 }
 
-/* Add new mobilized community user */
-$body.on('click', '#newMobilizedCommunityUser', function() {
-		newMobilizedCommunityUser();
+$(function() {
+	/* Add new mobilized community user */
+	$body.on('click', '#newMobilizedCommunityUser', function() {
+			newMobilizedCommunityUser();
+	});
 });
 
 function newMobilizedCommunityUser() {
@@ -285,37 +287,37 @@ function newMobilizedCommunityUser() {
 	});
 }
 
-$body.on('submit', '.newMobilizedCommunityUser', function(e) {
-	e.preventDefault();
-	$(this).closest('div').remove();
-	var $formData = $(this).serializeArray();
-	var ajaxDataUri = ajaxUri + '&tx_easyvote_communityajax[controller]=CommunityUser&tx_easyvote_communityajax[action]=createMobilizedCommunityUser';
-	$.ajax({
-		url: ajaxDataUri,
-		data: $formData,
-		success: function(returnValue) {
-			displayFlashMessage(returnValue);
-			loadMobilizedCommunityUsers();
-		}
-	});
-});
-
-/* Remove a mobilized community user */
-$body.on('submit', '.removeMobilizedCommunityUser', function(e) {
-	e.preventDefault();
-	var $formData = $(this).serializeArray();
-	var ajaxDataUri = ajaxUri + '&tx_easyvote_communityajax[controller]=CommunityUser&tx_easyvote_communityajax[action]=removeMobilizedCommunityUser';
-	$.ajax({
-		url: ajaxDataUri,
-		data: $formData,
-		success: function(returnValue) {
-			displayFlashMessage(returnValue);
-			loadMobilizedCommunityUsers();
-		}
-	});
-});
-
 $(function() {
+	$body.on('submit', '.newMobilizedCommunityUser', function(e) {
+		e.preventDefault();
+		$(this).closest('div').remove();
+		var $formData = $(this).serializeArray();
+		var ajaxDataUri = ajaxUri + '&tx_easyvote_communityajax[controller]=CommunityUser&tx_easyvote_communityajax[action]=createMobilizedCommunityUser';
+		$.ajax({
+			url: ajaxDataUri,
+			data: $formData,
+			success: function(returnValue) {
+				displayFlashMessage(returnValue);
+				loadMobilizedCommunityUsers();
+			}
+		});
+	});
+
+	/* Remove a mobilized community user */
+	$body.on('submit', '.removeMobilizedCommunityUser', function(e) {
+		e.preventDefault();
+		var $formData = $(this).serializeArray();
+		var ajaxDataUri = ajaxUri + '&tx_easyvote_communityajax[controller]=CommunityUser&tx_easyvote_communityajax[action]=removeMobilizedCommunityUser';
+		$.ajax({
+			url: ajaxDataUri,
+			data: $formData,
+			success: function(returnValue) {
+				displayFlashMessage(returnValue);
+				loadMobilizedCommunityUsers();
+			}
+		});
+	});
+
 	bindToolTips();
 	bindModals();
-})
+});
