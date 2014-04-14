@@ -281,6 +281,29 @@ $TCA['tx_easyvote_domain_model_language'] = array(
 	),
 );
 
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::allowTableOnStandardPages('tx_easyvote_domain_model_messagingjob');
+$TCA['tx_easyvote_domain_model_messagingjob'] = array(
+	'ctrl' => array(
+		'title'	=> 'LLL:EXT:easyvote/Resources/Private/Language/locallang_db.xlf:tx_easyvote_domain_model_messagingjob',
+		'label' => 'community_user',
+		'tstamp' => 'tstamp',
+		'crdate' => 'crdate',
+		'cruser_id' => 'cruser_id',
+		'dividers2tabs' => TRUE,
+		'sortby' => 'distribution_time',
+
+		'origUid' => 't3_origuid',
+		'languageField' => 'sys_language_uid',
+		'transOrigPointerField' => 'l10n_parent',
+		'transOrigDiffSourceField' => 'l10n_diffsource',
+
+		'delete' => 'deleted',
+		'dynamicConfigFile' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath($_EXTKEY) . 'Configuration/TCA/MessagingJob.php',
+		'iconfile' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extRelPath($_EXTKEY) . 'Resources/Public/Icons/tx_easyvote_domain_model_messagingjob.gif'
+	),
+);
+
+
 $tempColumns = array (
 	'tx_easyvote_contentclass' => array (
 		'exclude' => 1,

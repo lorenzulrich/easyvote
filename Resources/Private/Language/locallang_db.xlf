@@ -174,6 +174,29 @@
 			<trans-unit id="tx_easyvote_domain_model_communityuser.notification_related_users">
 				<source>Mobilized users</source>
 			</trans-unit>
+
+			<trans-unit id="tx_easyvote_domain_model_messagingjob">
+				<source>Messaging Job</source>
+			</trans-unit>
+			<trans-unit id="tx_easyvote_domain_model_messagingjob.type">
+				<source>Type</source>
+			</trans-unit>
+			<trans-unit id="tx_easyvote_domain_model_messagingjob.content">
+				<source>Content</source>
+			</trans-unit>
+			<trans-unit id="tx_easyvote_domain_model_messagingjob.distribution_time">
+				<source>Distribution Time</source>
+			</trans-unit>
+			<trans-unit id="tx_easyvote_domain_model_messagingjob.time_distributed">
+				<source>Message distributed at</source>
+			</trans-unit>
+			<trans-unit id="tx_easyvote_domain_model_messagingjob.time_error">
+				<source>Error occured at</source>
+			</trans-unit>
+			<trans-unit id="tx_easyvote_domain_model_messagingjob.error_code">
+				<source>Error code</source>
+			</trans-unit>
+
 		</body>
 	</file>
 </xliff>
