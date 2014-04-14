@@ -199,54 +199,56 @@ function loadPollResult(votingProposal) {
 }
 
 /* Load poll results for all votingProposals on loading the site */
-$('.abstimmungsvorlage').each(function() {
-	var votingProposalUid = $(this).attr('id').split('-')[1];
-	loadPollResult(votingProposalUid);
-});
-
-var $body = $('body');
-
-/* Undo vote */
-$body.on('click', '.vote-active', function() {
-	var $trigger = $(this);
-	$trigger.removeClass('vote-active');
-	var votingProposalUid = $trigger.closest('.abstimmungsvorlage').attr('id').split('-')[1];
-	var ajaxCallUri = ajaxUri + '&tx_easyvote_communityajax[action]=undoUserVoteForVotingProposal&tx_easyvote_communityajax[votingProposal]=' + votingProposalUid;
-	$.ajax({
-		url: ajaxCallUri,
-		success: function(data) {
-			loadPollResult(votingProposalUid);
-		}
+$(function() {
+	$('.abstimmungsvorlage').each(function() {
+		var votingProposalUid = $(this).attr('id').split('-')[1];
+		loadPollResult(votingProposalUid);
 	});
-});
 
-/* upVote */
-$body.on('click', '.vote-up', function() {
-	var $trigger = $(this);
-	$trigger.removeClass('vote-up');
-	var votingProposalUid = $trigger.closest('.abstimmungsvorlage').attr('id').split('-')[1];
-	var ajaxCallUri = ajaxUri + '&tx_easyvote_communityajax[action]=voteForVotingProposal&tx_easyvote_communityajax[value]=1&tx_easyvote_communityajax[votingProposal]=' + votingProposalUid;
-	$.ajax({
-		url: ajaxCallUri,
-		success: function(data) {
-			displayFlashMessage(data['successText']);
-			loadPollResult(votingProposalUid);
-		}
+	var $body = $('body');
+
+	/* Undo vote */
+	$body.on('click', '.vote-active', function() {
+		var $trigger = $(this);
+		$trigger.removeClass('vote-active');
+		var votingProposalUid = $trigger.closest('.abstimmungsvorlage').attr('id').split('-')[1];
+		var ajaxCallUri = ajaxUri + '&tx_easyvote_communityajax[action]=undoUserVoteForVotingProposal&tx_easyvote_communityajax[votingProposal]=' + votingProposalUid;
+		$.ajax({
+			url: ajaxCallUri,
+			success: function(data) {
+				loadPollResult(votingProposalUid);
+			}
+		});
 	});
-});
 
-/* downVote */
-$body.on('click', '.vote-down', function() {
-	var $trigger = $(this);
-	$trigger.removeClass('vote-down');
-	var votingProposalUid = $trigger.closest('.abstimmungsvorlage').attr('id').split('-')[1];
-	var ajaxCallUri = ajaxUri + '&tx_easyvote_communityajax[action]=voteForVotingProposal&tx_easyvote_communityajax[value]=2&tx_easyvote_communityajax[votingProposal]=' + votingProposalUid;
-	$.ajax({
-		url: ajaxCallUri,
-		success: function(data) {
-			displayFlashMessage(data['successText']);
-			loadPollResult(votingProposalUid);
-		}
+	/* upVote */
+	$body.on('click', '.vote-up', function() {
+		var $trigger = $(this);
+		$trigger.removeClass('vote-up');
+		var votingProposalUid = $trigger.closest('.abstimmungsvorlage').attr('id').split('-')[1];
+		var ajaxCallUri = ajaxUri + '&tx_easyvote_communityajax[action]=voteForVotingProposal&tx_easyvote_communityajax[value]=1&tx_easyvote_communityajax[votingProposal]=' + votingProposalUid;
+		$.ajax({
+			url: ajaxCallUri,
+			success: function(data) {
+				displayFlashMessage(data['successText']);
+				loadPollResult(votingProposalUid);
+			}
+		});
+	});
+
+	/* downVote */
+	$body.on('click', '.vote-down', function() {
+		var $trigger = $(this);
+		$trigger.removeClass('vote-down');
+		var votingProposalUid = $trigger.closest('.abstimmungsvorlage').attr('id').split('-')[1];
+		var ajaxCallUri = ajaxUri + '&tx_easyvote_communityajax[action]=voteForVotingProposal&tx_easyvote_communityajax[value]=2&tx_easyvote_communityajax[votingProposal]=' + votingProposalUid;
+		$.ajax({
+			url: ajaxCallUri,
+			success: function(data) {
+				displayFlashMessage(data['successText']);
+				loadPollResult(votingProposalUid);
+			}
+		});
 	});
 });
 
