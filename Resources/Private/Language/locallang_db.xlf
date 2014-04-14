@@ -181,6 +181,9 @@
 			<trans-unit id="tx_easyvote_domain_model_messagingjob.type">
 				<source>Type</source>
 			</trans-unit>
+			<trans-unit id="tx_easyvote_domain_model_messagingjob.subject">
+				<source>Subject</source>
+			</trans-unit>
 			<trans-unit id="tx_easyvote_domain_model_messagingjob.content">
 				<source>Content</source>
 			</trans-unit>

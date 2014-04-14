@@ -351,6 +351,7 @@ CREATE TABLE tx_easyvote_domain_model_messagingjob (
 
 	type int(11) DEFAULT '0' NOT NULL,
 	community_user int(11) unsigned DEFAULT '0' NOT NULL,
+	subject varchar(255) DEFAULT '' NOT NULL,
 	content text NOT NULL,
 	distribution_time int(11) unsigned DEFAULT '0' NOT NULL,
 	time_distributed int(11) unsigned DEFAULT '0' NOT NULL,

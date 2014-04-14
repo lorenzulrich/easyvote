@@ -98,8 +98,12 @@ plugin.tx_easyvote {
 		communityHomePid = 192
 		siteHomePid = 4
 		userStoragePid = 144
+		senderEmail = info@easyvote.ch
+		senderName = easyvote
 	}
 }
+
+module.tx_easyvote < plugin.tx_easyvote
 
 lib.loginPanel = USER_INT
 lib.loginPanel {

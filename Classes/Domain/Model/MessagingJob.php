@@ -48,9 +48,15 @@ class MessagingJob extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	 * Benutzer
 	 *
 	 * @var \Visol\Easyvote\Domain\Model\CommunityUser
-	 * @lazy
 	 */
 	protected $communityUser;
+
+	/**
+	 * Subject for message
+	 *
+	 * @var \string
+	 */
+	protected $subject;
 
 	/**
 	 * Content for message
@@ -184,6 +190,20 @@ class MessagingJob extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	 */
 	public function setErrorCode($errorCode) {
 		$this->errorCode = $errorCode;
+	}
+
+	/**
+	 * @return string
+	 */
+	public function getSubject() {
+		return $this->subject;
+	}
+
+	/**
+	 * @param string $subject
+	 */
+	public function setSubject($subject) {
+		$this->subject = $subject;
 	}
 
 }
