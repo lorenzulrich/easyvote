@@ -53,14 +53,20 @@ class EmailMessageProcessorCommandController extends \Visol\Easyvote\Command\Abs
 
 		foreach ($pendingJobs as $job) {
 			/** @var \Visol\Easyvote\Domain\Model\MessagingJob $job */
-			$emailContent = $this->renderContentWithFluid($job->getContent(), $job->getCommunityUser());
-			$sender = array($this->extensionConfiguration['settings']['senderEmail'] => $this->extensionConfiguration['settings']['senderName']);
-			$recipient = array($job->getCommunityUser()->getEmail() => $job->getCommunityUser()->getFirstName() . ' ' . $job->getCommunityUser()->getLastName());
-			$success = $this->sendEmail($recipient, $sender, $job->getSubject(), $emailContent);
-			if ($success) {
-				$job->setTimeDistributed(new \DateTime());
+
+			if ($job->getCommunityUser() instanceof \Visol\Easyvote\Domain\Model\CommunityUser) {
+				$emailContent = $this->renderContentWithFluid($job->getContent(), $job->getCommunityUser());
+				$sender = array($this->extensionConfiguration['settings']['senderEmail'] => $this->extensionConfiguration['settings']['senderName']);
+				$recipient = array($job->getCommunityUser()->getEmail() => $job->getCommunityUser()->getFirstName() . ' ' . $job->getCommunityUser()->getLastName());
+				$success = $this->sendEmail($recipient, $sender, $job->getSubject(), $emailContent);
+				if ($success) {
+					$job->setTimeDistributed(new \DateTime());
+				} else {
+					$job->setTimeError(new \DateTime());
+				}
 			} else {
-				$job->setTimeError(new \DateTime());
+				// user is no longer present, delete job
+				$this->messagingJobRepository->remove($job);
 			}
 		}
 

@@ -54,6 +54,12 @@ class CommunityUserController extends \Visol\Easyvote\Controller\AbstractControl
 	protected $frontendUserGroupRepository;
 
 	/**
+	 * @var \Visol\Easyvote\Domain\Repository\MessagingJobRepository
+	 * @inject
+	 */
+	protected $messagingJobRepository;
+
+	/**
 	 * @var \TYPO3\CMS\Extbase\Persistence\Generic\PersistenceManager
 	 * @inject
 	 */
@@ -234,7 +240,27 @@ class CommunityUserController extends \Visol\Easyvote\Controller\AbstractControl
 					$newCommunityUser->setPid($this->settings['userStoragePid']);
 					$this->communityUserRepository->add($newCommunityUser);
 					$this->persistenceManager->persistAll();
-					// TODO send confirmation mail to user
+
+					/** @var \Visol\Easyvote\Domain\Model\MessagingJob $messagingJob */
+					$standaloneView = $this->objectManager->create('TYPO3\CMS\Fluid\View\StandaloneView');
+					$standaloneView->setFormat('html');
+					$extbaseConfiguration = $this->configurationManager->getConfiguration(\TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface::CONFIGURATION_TYPE_FRAMEWORK, 'easyvote', 'easyvote');
+					$templateRootPath = GeneralUtility::getFileAbsFileName($extbaseConfiguration['view']['templateRootPath']);
+					$templatePathAndFilename = $templateRootPath . 'Email/MobilizedWelcomeMail.html';
+					$standaloneView->setTemplatePathAndFilename($templatePathAndFilename);
+					$nextVotingDay = $this->votingDayRepository->findNextVotingDay();
+					$standaloneView->assign('nextVotingDay', $nextVotingDay);
+					$standaloneView->assign('parentUser', $communityUser);
+					$standaloneView->assign('mobilizedUser', $newCommunityUser);
+					$content = $standaloneView->render();
+					$messagingJob = $this->objectManager->create('Visol\Easyvote\Domain\Model\MessagingJob');
+					$messagingJob->setContent($content);
+					$messagingJob->setSubject('Ein Vote-Wecker wurde für dich gestellt.');
+					$messagingJob->setCommunityUser($newCommunityUser);
+					$messagingJob->setDistributionTime(new \DateTime());
+					$messagingJob->setType($messagingJob::JOBTYPE_EMAIL);
+					$this->messagingJobRepository->add($messagingJob);
+
 					return json_encode('Der Vote-Wecker wurde gestellt.');
 				} else {
 					return json_encode('Der Vote-Wecker konnte nicht gestellt werden, da für diese Person bereits ein Vote-Wecker gestellt wurde.');
