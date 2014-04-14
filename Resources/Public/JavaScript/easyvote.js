@@ -198,14 +198,14 @@ function loadPollResult(votingProposal) {
 	});
 }
 
+var $body = $('body');
+
 /* Load poll results for all votingProposals on loading the site */
 $(function() {
 	$('.abstimmungsvorlage').each(function() {
 		var votingProposalUid = $(this).attr('id').split('-')[1];
 		loadPollResult(votingProposalUid);
 	});
-
-	var $body = $('body');
 
 	/* Undo vote */
 	$body.on('click', '.vote-active', function() {
