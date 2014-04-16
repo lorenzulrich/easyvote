@@ -148,25 +148,31 @@ function bindToolTips() {
 function displayFlashMessage(message) {
 	var $flashMessageContainer = $('#flashMessageContainer');
 	var $contentWrap = $('#contentWrap');
-	$flashMessageContainer.html(message);
+	$flashMessageContainer.html('<a class="pull-right qtip-close" aria-label="schliessen"><i class="icon icon-remove"></i></a>' + message);
 
 	$contentWrap.qtip({
 		show: '',
 		hide: {
 			delay: 2000,
-			fixed: true
+			when: 'inactive'
 		},
 		content: {
 			prerender: true, // important
 			text: $flashMessageContainer.html()
 		},
 		style: {
-			classes: 'qtip-light qtip-rounded qtip-modal'
+			classes: 'qtip-easyvote qtip-rounded qtip-modal qtip-shadow'
 		},
 		position: {
-			my: 'bottom right',
-			at: 'top right',
-			target: $contentWrap
+			my: 'center', at: 'center',
+			target: $(window)
+		},
+		events: {
+			render: function(event, api) {
+				$('a.qtip-close', api.elements.content).click(function(e) {
+					api.hide(e);
+				});
+			}
 		}
 	}).qtip('show');
 }
@@ -276,7 +282,7 @@ function loadMobilizedCommunityUsers() {
 $(function() {
 	/* Add new mobilized community user */
 	$body.on('click', '#newMobilizedCommunityUser', function() {
-			newMobilizedCommunityUser();
+		newMobilizedCommunityUser();
 	});
 });
 
@@ -302,6 +308,7 @@ $(function() {
 			success: function(returnValue) {
 				displayFlashMessage(returnValue);
 				loadMobilizedCommunityUsers();
+				newMobilizedCommunityUser();
 			}
 		});
 	});
