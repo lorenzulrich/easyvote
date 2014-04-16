@@ -36,6 +36,7 @@ plugin.tx_easyvote._CSS_DEFAULT_STYLE (
 		vertical-align:top;
 	}
 )
+plugin.tx_opauth.features.rewrittenPropertyMapper = 1
 
 # Content Element for displaying an image from image field or CSS class
 tt_content.easyvoteimage = COA
@@ -90,7 +91,7 @@ plugin.tx_easyvote {
 		}
 		communityUserGroupUid = 4
 		notificationRelatedUserGroupUid = 5
-		loginUrl = 193
+		loginPid = 193
 		communityAjaxPid = 194
 		votingPid = 139
 		communityVoteweckerPid = 199

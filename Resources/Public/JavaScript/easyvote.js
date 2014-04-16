@@ -99,13 +99,16 @@ function bindModals() {
 				target: $(window)
 			},
 			style: {
-				classes: 'qtip-light qtip-rounded'
+				classes: 'qtip-easyvote qtip-rounded qtip-modal'
 			},
 			events: {
 				render: function(event, api) {
 					event.preventDefault();
 					$('button.button-confirm', api.elements.content).click(function(e) {
 						window.location = requestedLink;
+					});
+					$('a.qtip-close', api.elements.content).click(function(e) {
+						api.hide(e);
 					});
 					$('button.button-cancel', api.elements.content).click(function(e) {
 						api.hide(e);
@@ -135,7 +138,7 @@ function bindToolTips() {
 				solo: true
 			},
 			style: {
-				classes: 'qtip-light qtip-rounded'
+				classes: 'qtip-easyvote qtip-rounded'
 			}
 		});
 	});

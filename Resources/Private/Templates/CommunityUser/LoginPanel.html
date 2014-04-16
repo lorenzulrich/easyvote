@@ -23,8 +23,41 @@
 			</f:security.ifHasRole>
 		</f:then>
 		<f:else>
-			<f:link.page pageUid="{settings.loginUrl}">Anmelden</f:link.page>
-			<a href="#">Registrieren</a>
+			<f:link.action extensionName="vifbauth" pluginName="Auth" pageUid="{settings.loginPid}" controller="Authentication" action="login">Anmelden</f:link.action>
+			<a class="hasModal" href="#">Registrieren</a>
+			<div class="hidden">
+				<a class="pull-right qtip-close" aria-label="schliessen">
+					<i class="icon icon-remove"></i>
+				</a>
+				<h2>Registrierung</h2>
+				<p class="introduction">Registriere dich jetzt bei easyvote, um die angewählte Funktion verwenden zu können.</p>
+				<div class="ym-clearfix">
+					<div class="pull-left" style="width: 50%;">
+						<p class="introduction">
+							Registrierung mit Facebook
+						</p>
+						<p>
+							<f:link.action extensionName="vifbauth" pluginName="Auth" pageUid="{settings.loginPid}" controller="Authentication" action="login">
+								<f:image src="EXT:easyvote/Resources/Public/Images/button-facebook-login.png" alt="Log in with Facebook" />
+							</f:link.action>
+						</p>
+					</div>
+					<div class="pull-right" style="width: 50%;">
+						<p>Informiere dich einfach und neutral
+						über Abstimmungen und Wahlen!</p>
+						<p>Stelle den Vote-Wecker für dich
+						und deine Freude, damit ihr keinen
+						Urnengang verpasst.</p>
+						<p>Mache mit beim Abstimmungsrating
+						und teile deine Meinung!
+						Weitere Features folgen...</p>
+					</div>
+				</div>
+				<p>
+					Wenn du fortfährst, bestätigst Du, dass Du unsere Allgemeinen Geschäftsbedingungen,
+					Datenschutzrichtlinien und Richtlinien zu Cookies gelesen und akzeptiert hast.
+				</p>
+			</div>
 		</f:else>
 	</f:security.ifAuthenticated>
 </div>

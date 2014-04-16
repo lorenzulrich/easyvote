@@ -18,19 +18,15 @@
 
 	max-width: 280px;
 	min-width: 50px;
-	
-	font-size: 12px;
-	line-height: 13px;
 
 	direction: ltr;
 
 	box-shadow: none;
-	padding: 3px;
 }
 
 	.qtip-content{
 		position: relative;
-		padding: 5px 9px;
+		padding: 30px;
 		overflow: hidden;
 
 		text-align: left;
@@ -51,14 +47,10 @@
 	/* Default close button class */
 	.qtip-close{
 		position: absolute;
-		right: -9px; top: -9px;
+		right: 15px; top: 15px;
 
 		cursor: pointer;
 		outline: medium none;
-
-		border-width: 1px;
-		border-style: solid;
-		border-color: transparent;
 	}
 
 		.qtip-titlebar .qtip-close{
@@ -129,22 +121,33 @@
 
 
 /*! Light tooltip style */
-.qtip-light{
-	background-color: white;
-	border-color: white;
-	color: #000;
-    -webkit-box-shadow: -3px 3px 5px 2px rgba(0,0,0,0.5);
-    box-shadow: -3px 3px 5px 2px rgba(0,0,0,0.5);
+.qtip-easyvote {
+	background-color: #d9f5fc;
+	border-color: #d9f5fc;
+	color: #112B4D;
 }
 
-	.qtip-light .qtip-titlebar{
-		background-color: #f1f1f1;
-	}
+.qtip-easyvote .qtip-titlebar{
+    background-color: #f1f1f1;
+}
+
+.qtip-easyvote h2 {
+    color: #ED0A71;
+    font-size: 20px;
+    text-transform: uppercase;
+    margin-bottom: 25px;
+}
+
+.qtip-easyvote p.introduction {
+    font-size: 18px;
+    font-weight: 500;
+    font-family: "Ubuntu", Arial, Helvetica, sans-serif;
+}
 
 .qtip-modal {
-    width: 480px;
-    min-width: 480px;
-    max-width: 480px;
+    width: 600px;
+    min-width: 600px;
+    max-width: 600px;
 }
 
 /*! Dark tooltip style */
@@ -250,25 +253,17 @@
 .qtip-rounded,
 .qtip-tipsy,
 .qtip-bootstrap{
-	-moz-border-radius: 5px;
-	-webkit-border-radius: 5px;
 	border-radius: 5px;
 }
 
 .qtip-rounded .qtip-titlebar{
-	-moz-border-radius: 4px 4px 0 0;
-	-webkit-border-radius: 4px 4px 0 0;
 	border-radius: 4px 4px 0 0;
 }
 
 /* Youtube tooltip style */
 .qtip-youtube{
-	-moz-border-radius: 2px;
-	-webkit-border-radius: 2px;
 	border-radius: 2px;
 	
-	-webkit-box-shadow: 0 0 3px #333;
-	-moz-box-shadow: 0 0 3px #333;
 	box-shadow: 0 0 3px #333;
 
 	color: white;
