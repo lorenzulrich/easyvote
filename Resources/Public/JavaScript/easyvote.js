@@ -138,7 +138,7 @@ function bindToolTips() {
 				solo: true
 			},
 			style: {
-				classes: 'qtip-easyvote qtip-rounded'
+				classes: 'qtip-easyvote qtip-rounded qtip-shadow qtip-easyvote-narrow'
 			}
 		});
 	});
@@ -153,8 +153,9 @@ function displayFlashMessage(message) {
 	$contentWrap.qtip({
 		show: '',
 		hide: {
-			delay: 2000,
-			when: 'inactive'
+			fixed: true,
+			inactive: 1000,
+			delay: 2000
 		},
 		content: {
 			prerender: true, // important

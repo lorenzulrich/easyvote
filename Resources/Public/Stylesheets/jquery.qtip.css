@@ -127,6 +127,10 @@
 	color: #112B4D;
 }
 
+.qtip-easyvote-narrow .qtip-content {
+    padding: 10px !important;
+}
+
 .qtip-easyvote .qtip-titlebar{
     background-color: #f1f1f1;
 }
