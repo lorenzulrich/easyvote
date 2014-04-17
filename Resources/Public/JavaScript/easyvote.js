@@ -173,6 +173,8 @@ function displayFlashMessage(message) {
 				$('a.qtip-close', api.elements.content).click(function(e) {
 					api.hide(e);
 				});
+				FB.XFBML.parse();
+				twttr.widgets.load();
 			}
 		}
 	}).qtip('show');

@@ -131,5 +131,20 @@ class MetaVotingProposalRepository extends \TYPO3\CMS\Extbase\Persistence\Reposi
 
 		return $query->execute();
 	}
+
+	/**
+	 * Find the metaVotingProposal of a votingProposal
+	 *
+	 * @param \Visol\Easyvote\Domain\Model\VotingProposal $votingProposal
+	 * @return object
+	 */
+	public function findOneByVotingProposal(\Visol\Easyvote\Domain\Model\VotingProposal $votingProposal) {
+		$query = $this->createQuery();
+		$query->matching(
+			$query->contains('votingProposals', $votingProposal->getUid())
+		);
+		return $query->execute()->getFirst();
+	}
+
 }
 ?>

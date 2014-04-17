@@ -33,15 +33,8 @@ namespace Visol\Easyvote\Controller;
  */
 class VotingProposalController extends \Visol\Easyvote\Controller\AbstractController {
 
-	/**
-	 * @var int
-	 */
-	protected $voteUpValue = 1;
-
-	/**
-	 * @var int
-	 */
-	protected $voteDownValue = 2;
+	const VOTE_UP_VALUE = 1;
+	const VOTE_DOWN_VALUE = 2;
 
 	/**
 	 * votingProposalRepository
@@ -50,6 +43,14 @@ class VotingProposalController extends \Visol\Easyvote\Controller\AbstractContro
 	 * @inject
 	 */
 	protected $votingProposalRepository;
+
+	/**
+	 * metaVotingProposalRepository
+	 *
+	 * @var \Visol\Easyvote\Domain\Repository\MetaVotingProposalRepository
+	 * @inject
+	 */
+	protected $metaVotingProposalRepository;
 
 	/**
 	 * pollRepository
@@ -90,8 +91,8 @@ class VotingProposalController extends \Visol\Easyvote\Controller\AbstractContro
 	 * @return string
 	 */
 	public function showPollForVotingProposalAction(\Visol\Easyvote\Domain\Model\VotingProposal $votingProposal) {
-		$upVotes = $this->pollRepository->countByVotingProposalAndValue($votingProposal, $this->voteUpValue);
-		$downVotes = $this->pollRepository->countByVotingProposalAndValue($votingProposal, $this->voteDownValue);
+		$upVotes = $this->pollRepository->countByVotingProposalAndValue($votingProposal, VotingProposalController::VOTE_UP_VALUE);
+		$downVotes = $this->pollRepository->countByVotingProposalAndValue($votingProposal, VotingProposalController::VOTE_DOWN_VALUE);
 
 		$totalVotes = $upVotes + $downVotes;
 
@@ -117,7 +118,7 @@ class VotingProposalController extends \Visol\Easyvote\Controller\AbstractContro
 			$pollUserStatus = $this->pollRepository->findByVotingProposalAndUser($votingProposal, $loggedInUser);
 			if (count($pollUserStatus)) {
 				$returnArray['voteValue'] = $pollUserStatus->getFirst()->getValue();
-				if ($pollUserStatus->getFirst()->getValue() === $this->voteUpValue) {
+				if ($pollUserStatus->getFirst()->getValue() === VotingProposalController::VOTE_UP_VALUE) {
 					$returnArray['voteUpText'] = 'Du hast bereits abgestimmt. Klicke, um die Stimme rückgängig zu machen.';
 					$returnArray['voteDownText'] = 'Du hast bereits abgestimmt.';
 				} else {
@@ -168,17 +169,25 @@ class VotingProposalController extends \Visol\Easyvote\Controller\AbstractContro
 			$this->pollRepository->add($newVote);
 			$this->persistenceManager->persistAll();
 
-			$votingProposalUri = $this->uriBuilder->setTargetPageUid($this->settings['votingPid'])->setCreateAbsoluteUri(TRUE)->build();
-			if ((int)$value === $this->voteUpValue) {
-				$shareText = 'Ich sage JA zu "' . $votingProposal->getShortTitle() . '"! ' . $votingProposalUri;
-			} else {
-				$shareText = 'Ich sage NEIN zu "' . $votingProposal->getShortTitle() . '"! ' . $votingProposalUri;
-			}
+			/** @var \Visol\Easyvote\Domain\Model\MetaVotingProposal $metaVotingProposal */
+			$metaVotingProposal = $this->metaVotingProposalRepository->findOneByVotingProposal($votingProposal);
 
-			$facebookShare = '<a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=' .$votingProposalUri . '"><i title="Meine Meinung auf Facebook teilen." class="flashMessageIcon icon icon-facebook" /></a>';
-			$twitterShare = '<a target="_blank" href="https://twitter.com/home?status=' . htmlentities($shareText) . '"><i title="Meine Meinung auf Twitter teilen." class="flashMessageIcon icon icon-twitter" /></a>';
+			/** @var \TYPO3\CMS\Fluid\View\StandaloneView $standaloneView */
+			$standaloneView = $this->objectManager->create('TYPO3\CMS\Fluid\View\StandaloneView');
+			$standaloneView->setFormat('html');
+			//$templateRootPath = GeneralUtility::getFileAbsFileName($this->extensionConfiguration['view']['templateRootPath']);
+			//$templatePathAndFilename = $templateRootPath . 'Email/' . $templateFileName . '.html';
+			//$standaloneView->setTemplatePathAndFilename($templatePathAndFilename);
 
-			return json_encode(array('successText' => '<p>Danke für deine Stimme! Teile deine Meinung:</p>' . $facebookShare . $twitterShare));
+			$standaloneView->setTemplatePathAndFilename('typo3conf/ext/easyvote/Resources/Private/Partials/VotingProposal/VotingAnswer.html');
+			$standaloneView->assignMultiple(array(
+				'metaVotingProposal' => $metaVotingProposal,
+				'value' => $value,
+				'voteUpValue' => VotingProposalController::VOTE_UP_VALUE,
+				'votingProposal' => $votingProposal
+			));
+
+			return json_encode(array('successText' => $standaloneView->render()));
 		}
 		return json_encode(array('successText' => '<p>Fehler.</p>'));
 	}
