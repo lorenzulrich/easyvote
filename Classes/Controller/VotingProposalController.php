@@ -175,10 +175,6 @@ class VotingProposalController extends \Visol\Easyvote\Controller\AbstractContro
 			/** @var \TYPO3\CMS\Fluid\View\StandaloneView $standaloneView */
 			$standaloneView = $this->objectManager->create('TYPO3\CMS\Fluid\View\StandaloneView');
 			$standaloneView->setFormat('html');
-			//$templateRootPath = GeneralUtility::getFileAbsFileName($this->extensionConfiguration['view']['templateRootPath']);
-			//$templatePathAndFilename = $templateRootPath . 'Email/' . $templateFileName . '.html';
-			//$standaloneView->setTemplatePathAndFilename($templatePathAndFilename);
-
 			$standaloneView->setTemplatePathAndFilename('typo3conf/ext/easyvote/Resources/Private/Partials/VotingProposal/VotingAnswer.html');
 			$standaloneView->assignMultiple(array(
 				'metaVotingProposal' => $metaVotingProposal,
