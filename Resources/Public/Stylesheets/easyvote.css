@@ -479,7 +479,7 @@ div.login-panel .pull-right {
     width: 160px;
 }
 
-div.login-panel a {
+div.login-panel .pull-right a {
     display: block;
     background-color: #ed0a71;
     color: #fff;
@@ -488,6 +488,10 @@ div.login-panel a {
     text-align: center;
     text-transform: uppercase;
     margin-bottom: 7px;
+}
+
+div.login-panel .pull-left a {
+    color: #fff;
 }
 
 div.login-panel a.muted {
