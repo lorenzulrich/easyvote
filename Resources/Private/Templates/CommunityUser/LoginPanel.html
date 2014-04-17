@@ -6,7 +6,12 @@
 		<f:then>
 			<f:security.ifHasRole role="{settings.communityUserGroupUid}">
 				<f:if condition="{user.image}">
-					<f:image class="user-image" alt="{user.firstName} {user.lastName}" src="uploads/pics/{user.image}" width="50" height="50c"/>
+					<f:then>
+						<f:image class="user-image" alt="{user.firstName} {user.lastName}" src="uploads/pics/{user.image}" width="50" height="50c"/>
+					</f:then>
+					<f:else>
+						<img src="https://graph.facebook.com/{user.username}/picture?width=50&height=50" height="50" width="50" alt="{user.firstName} {user.lastName}">
+					</f:else>
 				</f:if>
 				angemeldet als
 				<div class="user-name">{user.firstName} {user.lastName}</div>
