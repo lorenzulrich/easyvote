@@ -5,6 +5,11 @@
 	<div class="csc-default box box-lightblue">
 		<h2>Profil bearbeiten</h2>
 		<f:flashMessages renderMode="div" />
+		<form class="inputForm">
+		<div class="form-row">
+			<input type="text" readonly value="{user.firstName} {user.lastName}" />
+		</div>
+		</form>
 		<f:form class="inputForm" action="updateProfile" name="communityUser" object="{user}">
 			<div class="form-row">
 				<f:form.textarea property="address" additionalAttributes="{placeholder:'Adresse'}" />
