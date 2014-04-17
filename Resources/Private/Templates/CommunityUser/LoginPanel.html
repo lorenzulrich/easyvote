@@ -10,7 +10,7 @@
 						<f:image class="user-image" alt="{user.firstName} {user.lastName}" src="uploads/pics/{user.image}" width="50" height="50c"/>
 					</f:then>
 					<f:else>
-						<img src="https://graph.facebook.com/{user.username}/picture?width=50&height=50" height="50" width="50" alt="{user.firstName} {user.lastName}">
+						<img class="user-image-small" src="https://graph.facebook.com/{user.username}/picture?width=50&height=50" height="50" width="50" alt="{user.firstName} {user.lastName}">
 					</f:else>
 				</f:if>
 				angemeldet als

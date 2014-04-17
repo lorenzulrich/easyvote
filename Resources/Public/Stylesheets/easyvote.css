@@ -402,6 +402,10 @@ div.pagination a:hover {
     margin-bottom: 15px;
 }
 
+img.user-image-small {
+    border-radius: 5px;
+}
+
 .community-plugins .box {
     border-radius: 15px;
     margin: 0 0 20px 0;
