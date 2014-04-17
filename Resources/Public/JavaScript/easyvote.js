@@ -154,8 +154,8 @@ function displayFlashMessage(message) {
 		show: '',
 		hide: {
 			fixed: true,
-			inactive: 1000,
-			delay: 2000
+			inactive: 2000,
+			delay: 4000
 		},
 		content: {
 			prerender: true, // important
