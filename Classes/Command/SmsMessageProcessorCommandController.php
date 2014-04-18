@@ -24,6 +24,7 @@ namespace Visol\Easyvote\Command;
  *
  *  This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
+use TYPO3\CMS\Core\Utility\GeneralUtility;
 
 /**
  *
@@ -40,26 +41,6 @@ class SmsMessageProcessorCommandController extends \Visol\Easyvote\Command\Abstr
 	 * @inject
 	 */
 	protected $messagingJobRepository;
-
-	/**
-	 * @var \TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface
-	 * @inject
-	 */
-	protected $configurationManager;
-
-	/**
-	 * @var array
-	 */
-	protected $settings;
-
-	/**
-	 * @param $message
-	 * @param \Visol\Easyvote\Domain\Model\MessagingJob $messagingJob
-	 * @return mixed
-	 */
-	public function sendMessage($message, \Visol\Easyvote\Domain\Model\MessagingJob $messagingJob) {
-		return TRUE;
-	}
 
 	/**
 	 * @param \Visol\Easyvote\Domain\Model\MessagingJob $messagingJob
@@ -79,11 +60,29 @@ class SmsMessageProcessorCommandController extends \Visol\Easyvote\Command\Abstr
 
 		$pendingJobs = $this->messagingJobRepository->findPendingJobs(SmsMessageProcessorCommandController::JOBTYPE);
 
+		$gatewayUrl = 'https://' . urlencode($this->extensionConfiguration['settings']['smsGatewayUsername']) . ':' . $this->extensionConfiguration['settings']['smsGatewayPassword'] . '@api.websms.com/rest/smsmessaging/simple';
+
 		foreach ($pendingJobs as $job) {
-			\TYPO3\CMS\Core\Utility\DebugUtility::debug($job->getContent(), $job->getCommunityUser()->getUsername());
+			/** @var \Visol\Easyvote\Domain\Model\MessagingJob $job */
+			// TODO parse
+			$recipient = $job->getCommunityUser()->getTelephone();
+			$gatewayUrl .= '?recipientAddressList=' . $recipient;
+			$gatewayUrl .= '&messageContent=' . urlencode($job->getContent());
+			if ((int)$this->extensionConfiguration['settings']['smsGatewayTest'] === 1) {
+				$gatewayUrl .= '&test=true';
+				\TYPO3\CMS\Core\Utility\DebugUtility::debug(GeneralUtility::getUrl($gatewayUrl), 'SMS-Gateway-Testmodus');
+			} else {
+				$response = GeneralUtility::getUrl($gatewayUrl);
+				if (GeneralUtility::isFirstPartOfStr($response, 'statusCode=2000')) {
+					$job->setTimeDistributed(new \DateTime());
+				} else {
+					$job->setTimeError(new \DateTime());
+					$job->setErrorCode(AbstractCommandController::ERRORCODE_SMS);
+				}
+				$this->messagingJobRepository->update($job);
+			}
+
 		}
-
-
 
 	}
 

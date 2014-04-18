@@ -45,6 +45,8 @@ class AbstractCommandController extends \TYPO3\CMS\Extbase\Mvc\Controller\Comman
 	 */
 	protected $extensionConfiguration;
 
+	const ERRORCODE_SMS = 1;
+
 	/**
 	 * @param $content
 	 * @param \Visol\Easyvote\Domain\Model\CommunityUser $communityUser
