@@ -12,3 +12,14 @@ plugin.tx_easyvote {
 		storagePid =
 	}
 }
+
+module.tx_easyvote {
+	view {
+		# cat=module.easyvote/file; type=string; label=Path to template root (BE)
+		templateRootPath = EXT:easyvote/Resources/Private/Backend/Templates/
+		# cat=module.easyvote/file; type=string; label=Path to template partials (BE)
+		partialRootPath = EXT:easyvote/Resources/Private/Backend/Partials/
+		# cat=module.easyvote/file; type=string; label=Path to template layouts (BE)
+		layoutRootPath = EXT:easyvote/Resources/Private/Backend/Layouts/
+	}
+}

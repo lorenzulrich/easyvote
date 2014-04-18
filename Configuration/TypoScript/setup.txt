@@ -101,10 +101,20 @@ plugin.tx_easyvote {
 		userStoragePid = 144
 		senderEmail = info@easyvote.ch
 		senderName = easyvote
+		smsTestUserUid = 696
 	}
 }
 
 module.tx_easyvote < plugin.tx_easyvote
+
+ # Module configuration
+module.tx_easyvote {
+	view {
+		templateRootPath = {$module.tx_easyvote.view.templateRootPath}
+		partialRootPath = {$module.tx_easyvote.view.partialRootPath}
+		layoutRootPath = {$module.tx_easyvote.view.layoutRootPath}
+	}
+}
 
 lib.loginPanel = USER_INT
 lib.loginPanel {

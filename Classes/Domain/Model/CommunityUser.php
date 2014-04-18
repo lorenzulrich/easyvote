@@ -89,6 +89,10 @@ class CommunityUser extends \TYPO3\CMS\Extbase\Domain\Model\FrontendUser {
 	 */
 	protected $communityUser;
 
+	const USERLANGUAGE_GERMAN = 1;
+	const USERLANGUAGE_FRENCH = 2;
+	const USERLANGUAGE_ITALIAN = 3;
+
 	/**
 	 * __construct
 	 *

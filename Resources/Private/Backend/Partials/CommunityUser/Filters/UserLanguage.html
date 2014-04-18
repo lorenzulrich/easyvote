@@ -1,0 +1,10 @@
+<div class="form-row clearfix">
+	<div class="label">
+		Sprachen
+	</div>
+	<div class="fields">
+		<f:for each="{languages}" as="language" key="key">
+			<input type="checkbox" name="tx_easyvote_tools_easyvoteeasyvote[demand][filter][userLanguages][]" id="userLanguage-{language}" value="{language}" /> <label for="userLanguage-{language}">{key}</label><br />
+		</f:for>
+	</div>
+</div>

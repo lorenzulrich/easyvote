@@ -32,5 +32,55 @@ namespace Visol\Easyvote\Domain\Repository;
  *
  */
 class CommunityUserRepository extends \TYPO3\CMS\Extbase\Domain\Repository\FrontendUserRepository {
+
+	public function findByFilterDemand($filterDemand) {
+		$query = $this->createQuery();
+
+		$constraints = array();
+
+		if (array_key_exists('type', $filterDemand)) {
+			if ($filterDemand['type'] === \Visol\Easyvote\Domain\Model\MessagingJob::JOBTYPE_SMS) {
+				$constraints[] = $query->equals('notificationSmsActive', 1);
+			}
+			if ($filterDemand['type'] === \Visol\Easyvote\Domain\Model\MessagingJob::JOBTYPE_EMAIL) {
+				$constraints[] = $query->equals('notificationEmailActive', 1);
+			}
+		}
+
+		if (array_key_exists('userLanguages', $filterDemand)) {
+			$userLanguages = array();
+			foreach ($filterDemand['userLanguages'] as $userLanguage) {
+				$userLanguages[] = $query->equals('userLanguage', $userLanguage);
+			}
+			$constraints[] = $query->logicalOr($userLanguages);
+		}
+
+		if (array_key_exists('kantons', $filterDemand)) {
+			$useKantonsConstraint = TRUE;
+
+			foreach ($filterDemand['kantons'] as $kanton) {
+				if ((string)$kanton === 'all') {
+					$useKantonsConstraint = FALSE;
+				}
+			}
+
+			if ($useKantonsConstraint) {
+				$kantons = array();
+				foreach ($filterDemand['kantons'] as $kanton) {
+					$kantons [] = $query->equals('kanton', $kanton);
+				}
+				$constraints[] = $query->logicalOr($kantons);
+			}
+		}
+
+		if (count($constraints)) {
+			return $query->matching(
+				$query->logicalAnd($constraints)
+			)->execute();
+		} else {
+			return FALSE;
+		}
+	}
+
 }
 ?>

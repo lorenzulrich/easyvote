@@ -1,0 +1,19 @@
+/**
+ * @group: Structure
+ */
+
+div.collapsibleSection { background-color: #ededed; border-top: 1px solid #cdcdcd; border-bottom: 1px solid #cdcdcd; padding: 12px; margin-bottom: 24px; width: 100%; }
+
+/**
+ * @end
+ */
+
+/**
+ * @group: Form
+ */
+
+form { clear: both; }
+form .form-row { clear: both; margin-bottom: 20px; width: 100%; }
+form .label { float: left; width: 150px; }
+form .fields { float: left; }
+form .fields textarea { height: 50px; width: 300px; }

@@ -71,6 +71,22 @@ $TCA['tt_content']['types']['list']['subtypes_addlist'][$pluginSignature] = 'pi_
 	'EXT:easyvote/ext_icon.gif'
 );
 
+/* Easyvote Backend Module */
+\TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerModule(
+	'Visol.' . $_EXTKEY,
+	'tools',
+	'easyvote',
+	'top',
+	array(
+		'CommunityUser' => 'backendDashboard,backendSmsMessagingIndex,backendSmsMessageSend,backendEmailExportIndex'
+	),
+	array(
+		'access' => 'user,group',
+		'icon' => 'EXT:easyvote/ext_icon.gif',
+		'labels' => 'LLL:EXT:easyvote/Resources/Private/Language/locallang_module.xlf'
+	)
+);
+
 /* TypoScript-Konfiguration */
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addStaticFile($_EXTKEY, 'Configuration/TypoScript', 'easyvote');
 

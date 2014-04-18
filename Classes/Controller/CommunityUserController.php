@@ -299,5 +299,82 @@ class CommunityUserController extends \Visol\Easyvote\Controller\AbstractControl
 		}
 	}
 
+	public function backendDashboardAction() {
+
+	}
+
+	/**
+	 * Interface for sending SMS messages
+	 */
+	public function backendSmsMessagingIndexAction() {
+		$languages = array(
+			'Deutsch' => \Visol\Easyvote\Domain\Model\CommunityUser::USERLANGUAGE_GERMAN,
+			'Französisch' => \Visol\Easyvote\Domain\Model\CommunityUser::USERLANGUAGE_FRENCH,
+			'Italienisch' => \Visol\Easyvote\Domain\Model\CommunityUser::USERLANGUAGE_ITALIAN
+		);
+
+		$kantons = $this->kantonRepository->findAll();
+
+		$dateTime = new \DateTime();
+		$dateTime = $dateTime->format('Y-m-d\TH:i:s');
+
+		$testUser = $this->communityUserRepository->findByUid($this->settings['smsTestUserUid']);
+
+		$this->view->assignMultiple(array(
+			'languages' => $languages,
+			'kantons' => $kantons,
+			'dateTime' => $dateTime,
+			'testUser' => $testUser
+		));
+
+	}
+
+	/**
+	 * @param array $demand
+	 */
+	public function backendSmsMessageSendAction($demand) {
+		if ((int)$demand['sendToTestUser'] === 1) {
+			// no need to process filter demand, we just queue one message
+			$messagingJob = new \Visol\Easyvote\Domain\Model\MessagingJob();
+			$messagingJob->setContent($demand['message']);
+			$messagingJob->setType(\Visol\Easyvote\Domain\Model\MessagingJob::JOBTYPE_SMS);
+			$distributionTime = date_create($demand['distrubutionTime']);
+			$messagingJob->setDistributionTime($distributionTime);
+			$testUser = $this->communityUserRepository->findByUid($this->settings['smsTestUserUid']);
+			$messagingJob->setCommunityUser($testUser);
+			$messagingJob->setSubject('SMS-Test-Job');
+			$this->messagingJobRepository->add($messagingJob);
+			$this->flashMessageContainer->add('Test-SMS wurde in Warteschlange gestellt.');
+		} else {
+			// we queue the message for all users
+			if (is_array($demand['filter'])) {
+				$demand['filter']['type'] = \Visol\Easyvote\Domain\Model\MessagingJob::JOBTYPE_SMS;
+				$communityUsers = $this->communityUserRepository->findByFilterDemand($demand['filter']);
+				$distributionTime = date_create($demand['distrubutionTime']);
+				$jobRandomValue = uniqid();
+				$iterator = 1;
+				foreach ($communityUsers as $communityUser) {
+					$messagingJob = new \Visol\Easyvote\Domain\Model\MessagingJob();
+					$messagingJob->setContent($demand['message']);
+					$messagingJob->setType(\Visol\Easyvote\Domain\Model\MessagingJob::JOBTYPE_SMS);
+					$messagingJob->setDistributionTime($distributionTime);
+					$messagingJob->setCommunityUser($communityUser);
+					$messagingJob->setSubject('SMS-Job ' . $jobRandomValue);
+					$this->messagingJobRepository->add($messagingJob);
+					if ($iterator % 20 == 0) {
+						$this->persistenceManager->persistAll();
+					}
+					$iterator++;
+				}
+				$communityUsersCount = $communityUsers->count();
+				$this->flashMessageContainer->add('Es wurden ' . $communityUsersCount . ' SMS in die Warteschlange gestellt.');
+			} else {
+				$this->flashMessageContainer->add('Fehler: Keine Filter-Anfrage für Versand.', '', \TYPO3\CMS\Core\Messaging\FlashMessage::ERROR);
+			}
+		}
+		$this->persistenceManager->persistAll();
+		$this->redirect('backendSmsMessagingIndex');
+	}
+
 }
 ?>
