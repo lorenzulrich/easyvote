@@ -64,8 +64,13 @@ class SmsMessageProcessorCommandController extends \Visol\Easyvote\Command\Abstr
 
 		foreach ($pendingJobs as $job) {
 			/** @var \Visol\Easyvote\Domain\Model\MessagingJob $job */
-			// TODO parse
 			$recipient = $job->getCommunityUser()->getTelephone();
+			if (empty($recipient) || strlen($recipient) !== 11) {
+				$job->setTimeError(new \DateTime());
+				$job->setErrorCode(AbstractCommandController::ERRORCODE_SMSINVALIDNUMBER);
+				$this->messagingJobRepository->update($job);
+				continue;
+			}
 			$gatewayUrl .= '?recipientAddressList=' . $recipient;
 			$gatewayUrl .= '&messageContent=' . urlencode($job->getContent());
 			if ((int)$this->extensionConfiguration['settings']['smsGatewayTest'] === 1) {
@@ -77,7 +82,7 @@ class SmsMessageProcessorCommandController extends \Visol\Easyvote\Command\Abstr
 					$job->setTimeDistributed(new \DateTime());
 				} else {
 					$job->setTimeError(new \DateTime());
-					$job->setErrorCode(AbstractCommandController::ERRORCODE_SMS);
+					$job->setErrorCode(AbstractCommandController::ERRORCODE_SMSGATEWAY);
 				}
 				$this->messagingJobRepository->update($job);
 			}
@@ -85,6 +90,7 @@ class SmsMessageProcessorCommandController extends \Visol\Easyvote\Command\Abstr
 		}
 
 	}
+
 
 }
 ?>

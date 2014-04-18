@@ -65,6 +65,14 @@ class CommunityUserController extends \Visol\Easyvote\Controller\AbstractControl
 	 */
 	protected $persistenceManager;
 
+	protected $allowedPhoneNumberPrefixes = array(
+		'4175' => '075',
+		'4176' => '076',
+		'4177' => '077',
+		'4178' => '078',
+		'4179' => '079'
+	);
+
 	/**
 	 * action userOverview
 	 *
@@ -103,8 +111,14 @@ class CommunityUserController extends \Visol\Easyvote\Controller\AbstractControl
 		$kantons = $this->kantonRepository->findAll();
 
 		if ($communityUser instanceof \Visol\Easyvote\Domain\Model\CommunityUser) {
+			$fullPhoneNumber = $communityUser->getTelephone();
+			$prefixCode = substr($fullPhoneNumber, 0, 4);
+			$phoneNumber = substr($fullPhoneNumber, 4);
+			$communityUser->setPrefixCode($prefixCode);
+			$communityUser->setTelephoneWithoutPrefix($phoneNumber);
 			$this->view->assign('user', $communityUser);
 			$this->view->assign('kantons', $kantons);
+			$this->view->assign('phoneNumberPrefixes', $this->allowedPhoneNumberPrefixes);
 		}
 	}
 
@@ -112,11 +126,18 @@ class CommunityUserController extends \Visol\Easyvote\Controller\AbstractControl
 	 * action updateProfile
 	 *
 	 * @param \Visol\Easyvote\Domain\Model\CommunityUser $communityUser
+	 * @param string $phoneNumberPrefix
+	 * @dontverifyrequesthash $communityUser
 	 */
-	public function updateProfileAction(\Visol\Easyvote\Domain\Model\CommunityUser $communityUser) {
+	public function updateProfileAction(\Visol\Easyvote\Domain\Model\CommunityUser $communityUser, $phoneNumberPrefix = '4175') {
 		$loggedInUser = $this->getLoggedInUser();
 		/** Todo: Sanitize properties that should never be updated by the user. */
 		if ($loggedInUser->getUid() === $communityUser->getUid()) {
+			if (array_key_exists($phoneNumberPrefix, $this->allowedPhoneNumberPrefixes)) {
+				$communityUser->setTelephone($phoneNumberPrefix . preg_replace('/\D/', '', $communityUser->getTelephone()));
+			} else {
+				$communityUser->setTelephone($this->allowedPhoneNumberPrefixes[0] . preg_replace('/\D/', '', $communityUser->getTelephone()));
+			}
 			$this->communityUserRepository->update($communityUser);
 			$this->persistenceManager->persistAll();
 			$this->flashMessageContainer->add('<i class="icon icon-check-sign"></i> Dein Profil wurde aktualisiert!');
@@ -157,7 +178,13 @@ class CommunityUserController extends \Visol\Easyvote\Controller\AbstractControl
 	public function editNotificationsAction() {
 		$communityUser = $this->getLoggedInUser();
 		if ($communityUser instanceof \Visol\Easyvote\Domain\Model\CommunityUser) {
+			$fullPhoneNumber = $communityUser->getTelephone();
+			$prefixCode = substr($fullPhoneNumber, 0, 4);
+			$phoneNumber = substr($fullPhoneNumber, 4);
+			$communityUser->setPrefixCode($prefixCode);
+			$communityUser->setTelephoneWithoutPrefix($phoneNumber);
 			$this->view->assign('user', $communityUser);
+			$this->view->assign('phoneNumberPrefixes', $this->allowedPhoneNumberPrefixes);
 		}
 	}
 
@@ -165,11 +192,18 @@ class CommunityUserController extends \Visol\Easyvote\Controller\AbstractControl
 	 * action updateNotifications
 	 *
 	 * @param \Visol\Easyvote\Domain\Model\CommunityUser $communityUser
+	 * @param string $phoneNumberPrefix
+	 * @dontverifyrequesthash $communityUser
 	 */
-	public function updateNotificationsAction(\Visol\Easyvote\Domain\Model\CommunityUser $communityUser) {
+	public function updateNotificationsAction(\Visol\Easyvote\Domain\Model\CommunityUser $communityUser, $phoneNumberPrefix = '4175') {
 		$loggedInUser = $this->getLoggedInUser();
 		/** Todo: Sanitize properties that should never be updated by the user. */
 		if ($loggedInUser->getUid() === $communityUser->getUid()) {
+			if (array_key_exists($phoneNumberPrefix, $this->allowedPhoneNumberPrefixes)) {
+				$communityUser->setTelephone($phoneNumberPrefix . preg_replace('/\D/', '', $communityUser->getTelephone()));
+			} else {
+				$communityUser->setTelephone($this->allowedPhoneNumberPrefixes[0] . preg_replace('/\D/', '', $communityUser->getTelephone()));
+			}
 			$this->communityUserRepository->update($communityUser);
 			$this->persistenceManager->persistAll();
 			$this->flashMessageContainer->add('<i class="icon icon-check-sign"></i> Deine Vote-Wecker wurden aktualisiert!');
@@ -375,6 +409,16 @@ class CommunityUserController extends \Visol\Easyvote\Controller\AbstractControl
 		$this->persistenceManager->persistAll();
 		$this->redirect('backendSmsMessagingIndex');
 	}
+
+	/**
+	 * Deactivate errorFlashMessage
+	 *
+	 * @return bool|string
+	 */
+	public function getErrorFlashMessage() {
+		return FALSE;
+	}
+
 
 }
 ?>

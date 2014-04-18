@@ -22,7 +22,12 @@
 				<f:form.select property="kanton" options="{kantons}" optionValueField="uid" optionLabelField="name" additionalAttributes="{required: required}" />
 			</div>
 			<div class="form-row">
-				<f:form.textfield property="telephone" additionalAttributes="{placeholder:'Mobiltelefon'}" />
+				<select name="tx_easyvote_profile[phoneNumberPrefix]" class="formfield-phoneNumberPrefix">
+					<f:for each="{phoneNumberPrefixes}" as="phoneNumberPrefix" key="key">
+						<option {f:if(condition:'{0: \'{user.prefixCode}\'} == {0:\'{key}\'}', then:'selected=selected')} value="{key}">{phoneNumberPrefix}</option>
+					</f:for>
+				</select>
+				<f:form.textfield name="communityUser[telephone]" value="{user.telephoneWithoutPrefix}" class="formfield-phoneNumber" additionalAttributes="{placeholder:'Mobiltelefon'}" />
 			</div>
 			<div class="form-row">
 				<f:form.textfield property="email" additionalAttributes="{required: required, placeholder:'E-Mail-Adresse'}" />

@@ -3,32 +3,14 @@
 
 <div class="community-plugins">
 	<div class="csc-default box box-lightblue">
-		<h2>Freunde mobilisieren</h2>
-		<h3>Stelle deinen Freunden den Vote-Wecker!</h3>
-		<p>
-			Trage unten in den Felder Name und Mailadresse von deinen Freunden ein, damit sie die nächsten Abstimmungen nicht verschlafen. Dazu werden sie jeweils zwei mal vor Abstimmungen und Wahlen	einfach und neutral über den bevorstehenden Urnengang informiert.
-		</p>
-		<p>
-			Den Vote-Wecker für deine Freunde kannst du jederzeit abschalten. Die Daten werden gemäss unseren Datenschutzrichtlinien behandelt.
-		</p>
+		<f:translate key="editMobilizations.introduction" htmlEscape="false" />
 		<f:flashMessages renderMode="div" />
-		<h3>Vote-Wecker stellen</h3>
+		<h3><f:translate key="editMobilizations.newMobilizedCommunityUserHeader" /></h3>
 		<div id="newMobilizedCommunityUserPlaceholder">
 		</div>
-		<button type="button" id="newMobilizedCommunityUser" class="ym-clearfix" style="margin-bottom: 20px;"><i class="icon icon-plus"></i> Weiteren Vote-Wecker stellen</button>
-		<p style="clear: both;">Deine Freunde werden mit folgender Mail über den gestellten Vote-Wecker informiert:</p>
-		<div class="mobilization-notification-example">
-			<p>Hallo Vorname</p>
-			<p>Ich habe für dich den Vote-Wecker auf easyvote.ch gestellt,
-			damit du zukünftige Abstimmungen nicht mehr verschläfst oder
-			versäumst. Die nächste Abstimmung findet am <strong><f:format.date format="d.m.Y">{nextVotingDay.votingDate}</f:format.date></strong> statt.
-			Weitere Informationen dazu wird dir easyvote per E-Mail zustellen.</p>
-			<p>
-				Beste Grüsse,<br />
-				{user.firstName} {user.lastName}
-			</p>
-		</div>
-		<h3>Meine Vote-Wecker-Kontakte</h3>
+		<button type="button" id="newMobilizedCommunityUser" class="ym-clearfix" style="margin-bottom: 20px;"><i class="icon icon-plus"></i> <f:translate key="editMobilizations.addMobilizedCommunityUser" /></button>
+		<f:translate key="editMobilizations.addMobilizedCommunityUserInformation" htmlEscape="false" arguments="{1: '{nextVotingDay.votingDate -> f:format.date(format: \'d.m.Y\')}', 2: '{user.firstName}', 3: '{user.lastName}'}"></f:translate>
+		<h3><f:translate key="editMobilizations.listMobilizedCommunityUsersHeader" /></h3>
 		<div id="mobilizedCommunityUsers"></div>
 	</div>
 </div>

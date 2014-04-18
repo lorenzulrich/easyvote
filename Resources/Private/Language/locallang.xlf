@@ -165,6 +165,63 @@
 			<trans-unit id="tx_easyvote_archive.reset">
 					<source>zurücksetzen</source>
 			</trans-unit>
+
+			<trans-unit id="easyvoteCommunity" xml:space="preserve">
+				<source>easyvote Community</source>
+			</trans-unit>
+			<trans-unit id="smsMessaging" xml:space="preserve">
+				<source>SMS-Versand</source>
+			</trans-unit>
+			<trans-unit id="backendDashboard" xml:space="preserve">
+				<source>Dashboard</source>
+			</trans-unit>
+			<trans-unit id="emailExport" xml:space="preserve">
+				<source>E-Mail-Export</source>
+			</trans-unit>
+
+			<trans-unit id="editMobilizations.introduction">
+				<source><![CDATA[
+					<h2>Freunde mobilisieren</h2>
+					<h3>Stelle deinen Freunden den Vote-Wecker!</h3>
+					<p>
+						Trage unten in den Felder Name und Mailadresse von deinen Freunden ein, damit sie die nächsten Abstimmungen nicht verschlafen. Dazu werden sie jeweils zwei mal vor Abstimmungen und Wahlen	einfach und neutral über den bevorstehenden Urnengang informiert.
+					</p>
+					<p>
+						Den Vote-Wecker für deine Freunde kannst du jederzeit abschalten. Die Daten werden gemäss unseren Datenschutzrichtlinien behandelt.
+					</p>
+				]]></source>
+			</trans-unit>
+			<trans-unit id="editMobilizations.newMobilizedCommunityUserHeader">
+					<source>Vote-Wecker stellen</source>
+			</trans-unit>
+			<trans-unit id="editMobilizations.addMobilizedCommunityUser">
+					<source>Weiteren Vote-Wecker stellen</source>
+			</trans-unit>
+			<trans-unit id="editMobilizations.addMobilizedCommunityUserInformation">
+				<source><![CDATA[
+					<p style="clear: both;">Deine Freunde werden mit folgender Mail über den gestellten Vote-Wecker informiert:</p>
+					<div class="mobilization-notification-example">
+						<p>Hallo Vorname</p>
+						<p>Ich habe für dich den Vote-Wecker auf easyvote.ch gestellt,
+						damit du zukünftige Abstimmungen nicht mehr verschläfst oder
+						versäumst. Die nächste Abstimmung findet am <strong>%1$s</strong> statt.
+						Weitere Informationen dazu wird dir easyvote per E-Mail zustellen.</p>
+						<p>
+							Beste Grüsse,<br />
+							%2$s %3$s
+						</p>
+					</div>
+				]]></source>
+			</trans-unit>
+			<trans-unit id="editMobilizations.listMobilizedCommunityUsersHeader">
+				<source>Meine Vote-Wecker-Kontakte</source>
+			</trans-unit>
+
+
+
+			<trans-unit id="error.1245107351">
+				<source>Die E-Mail-Adresse ist ungültig.</source>
+			</trans-unit>
 		</body>
 	</file>
 </xliff>

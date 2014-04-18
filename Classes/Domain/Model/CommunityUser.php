@@ -74,6 +74,24 @@ class CommunityUser extends \TYPO3\CMS\Extbase\Domain\Model\FrontendUser {
 	protected $notificationSmsActive;
 
 	/**
+	 * @validate EmailAddress
+	 * @var string
+	 */
+	protected $email = '';
+
+	/**
+	 * @var string
+	 * @transient
+	 */
+	protected $telephoneWithoutPrefix;
+
+	/**
+	 * @var string
+	 * @transient
+	 */
+	protected $prefixCode;
+
+	/**
 	 * Users that were subscribed for notifications by this user
 	 *
 	 * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Visol\Easyvote\Domain\Model\CommunityUser>
@@ -259,6 +277,34 @@ class CommunityUser extends \TYPO3\CMS\Extbase\Domain\Model\FrontendUser {
 	 */
 	public function setCommunityUser($communityUser) {
 		$this->communityUser = $communityUser;
+	}
+
+	/**
+	 * @return string
+	 */
+	public function getTelephoneWithoutPrefix() {
+		return $this->telephoneWithoutPrefix;
+	}
+
+	/**
+	 * @param string $telephoneWithoutPrefix
+	 */
+	public function setTelephoneWithoutPrefix($telephoneWithoutPrefix) {
+		$this->telephoneWithoutPrefix = $telephoneWithoutPrefix;
+	}
+
+	/**
+	 * @return string
+	 */
+	public function getPrefixCode() {
+		return $this->prefixCode;
+	}
+
+	/**
+	 * @param string $prefixCode
+	 */
+	public function setPrefixCode($prefixCode) {
+		$this->prefixCode = $prefixCode;
 	}
 
 }

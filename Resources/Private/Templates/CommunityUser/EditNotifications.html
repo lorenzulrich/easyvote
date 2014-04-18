@@ -1,6 +1,5 @@
 {namespace v=Tx_Vhs_ViewHelpers}
 {namespace ev=Tx_Easyvote_ViewHelpers}
-
 <div class="community-plugins">
 	<div class="csc-default box box-lightblue">
 		<h2>Vote-Wecker</h2>
@@ -9,6 +8,7 @@
 			Damit du die nächsten Abstimmungen nicht vergisst oder verschläfst, können sie den easyvote Vote-Wecker stellen. Der Vote-Wecker erinnert deine Freunde und dich per Mail und SMS über bevorstehende Abstimmungen und Wahlen.
 		</p>
 		<f:flashMessages renderMode="div" />
+		<f:render partial="FormErrors" arguments="{for: ''}" />
 		<f:form class="inputForm" action="updateNotifications" name="communityUser" object="{user}">
 			<h3>Vote-Wecker per E-Mail</h3>
 			<div class="form-row">
@@ -20,7 +20,12 @@
 			</div>
 			<h3>Vote-Wecker per SMS</h3>
 			<div class="form-row">
-				<f:form.textfield property="telephone" additionalAttributes="{placeholder:'Mobiltelefon'}" />
+				<select name="tx_easyvote_notifications[phoneNumberPrefix]" class="formfield-phoneNumberPrefix">
+					<f:for each="{phoneNumberPrefixes}" as="phoneNumberPrefix" key="key">
+						<option {f:if(condition:'{0: \'{user.prefixCode}\'} == {0:\'{key}\'}', then:'selected=selected')} value="{key}">{phoneNumberPrefix}</option>
+					</f:for>
+				</select>
+				<f:form.textfield name="communityUser[telephone]" value="{user.telephoneWithoutPrefix}" class="formfield-phoneNumber" additionalAttributes="{placeholder:'Mobiltelefon'}" />
 			</div>
 			<div class="form-row form-row-radio">
 				<f:form.radio id="notificationSmsActive-1" name="communityUser[notificationSmsActive]" value="1" checked="{user.notificationSmsActive} == 1" /> <label for="notificationSmsActive-1">aktiviert</label>

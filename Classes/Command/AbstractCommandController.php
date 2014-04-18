@@ -45,7 +45,8 @@ class AbstractCommandController extends \TYPO3\CMS\Extbase\Mvc\Controller\Comman
 	 */
 	protected $extensionConfiguration;
 
-	const ERRORCODE_SMS = 1;
+	const ERRORCODE_SMSGATEWAY = 1;
+	const ERRORCODE_SMSINVALIDNUMBER = 2;
 
 	/**
 	 * @param $content

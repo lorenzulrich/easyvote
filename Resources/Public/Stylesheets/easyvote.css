@@ -561,6 +561,18 @@ div.login-panel .login-status .user-name {
     float: left;
 }
 
+.community-plugins form select.formfield-phoneNumberPrefix {
+    height: 26px;
+    width: 60px;
+    float: left;
+    margin-right: 10px;
+}
+
+.community-plugins form input.formfield-phoneNumber {
+    width: 210px;
+    float: left;
+}
+
 .community-plugins .form-row.form-row-radio label {
     margin-right: 10px;
 }
