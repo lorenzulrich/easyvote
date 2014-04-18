@@ -74,7 +74,7 @@ $TCA['tt_content']['types']['list']['subtypes_addlist'][$pluginSignature] = 'pi_
 /* Easyvote Backend Module */
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerModule(
 	'Visol.' . $_EXTKEY,
-	'tools',
+	'user',
 	'easyvote',
 	'top',
 	array(
