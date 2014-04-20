@@ -128,11 +128,12 @@ class VotingProposalController extends \Visol\Easyvote\Controller\AbstractContro
 			} else {
 				$returnArray['voteUpText'] = 'Stimme für diese Vorlage.';
 				$returnArray['voteDownText'] = 'Stimme gegen diese Vorlage.';
+				$returnArray['voteValue'] = 0;
 			}
 		} else {
 			//<f:link.page pageUid="{settings.loginUrl}">Melde dich an</f:link.page>, um abzustimmen!
-			$returnArray['voteUpText'] = 'Melde dich an, um abzustimmen';
-			$returnArray['voteDownText'] = 'Melde dich an, um abzustimmen';
+			$returnArray['voteUpText'] = 'Du bist nicht angemeldet. Klicke für mehr Infos.';
+			$returnArray['voteDownText'] = 'Du bist nicht angemeldet. Klicke für mehr Infos.';
 		}
 
 		return json_encode($returnArray);

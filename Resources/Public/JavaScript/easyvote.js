@@ -241,17 +241,30 @@ function loadPollResult(votingProposal) {
 			$voteUpHandle.after('<div class="hidden">' + data['voteUpText'] + '</div>');
 			$voteDownHandle.after('<div class="hidden">' + data['voteDownText'] + '</div>');
 			bindToolTips();
-			if (data['voteValue'] > 0) {
-				if (data['voteValue'] === 1) {
-					$voteUpHandle.addClass('vote-active');
-					$voteDownHandle.addClass('vote-disabled');
+			if (typeof data['voteValue'] != undefined) {
+				if (data['voteValue'] > 0) {
+					/* classes documentation:
+					   vote-active: Indicates that the vote was cast
+					   vote-disabled: No vote can be cast because it was voted the other way
+					   vote-enabled: Voting is possible
+					   vote-notAuthenticated: no user is authenticated, so voting is not possible
+					 */
+					/* we already have a vote */
+					if (data['voteValue'] === 1) {
+						$voteUpHandle.addClass('vote-active').removeClass('vote-enabled').removeClass('vote-notAuthenticated');
+						$voteDownHandle.addClass('vote-disabled').removeClass('vote-enabled').removeClass('vote-notAuthenticated');
+					} else {
+						$voteDownHandle.addClass('vote-active').removeClass('vote-enabled').removeClass('vote-notAuthenticated');
+						$voteUpHandle.addClass('vote-disabled').removeClass('vote-enabled').removeClass('vote-notAuthenticated');
+					}
 				} else {
-					$voteDownHandle.addClass('vote-active');
-					$voteUpHandle.addClass('vote-disabled');
+					/* we don't have a vote yet */
+					$voteUpHandle.addClass('vote-up').addClass('vote-enabled').removeClass('vote-active').removeClass('vote-disabled').removeClass('vote-notAuthenticated');
+					$voteDownHandle.addClass('vote-down').addClass('vote-enabled').removeClass('vote-active').removeClass('vote-disabled').removeClass('vote-notAuthenticated');
 				}
 			} else {
-				$voteUpHandle.addClass('vote-up').removeClass('vote-active').removeClass('vote-disabled');
-				$voteDownHandle.addClass('vote-down').removeClass('vote-active').removeClass('vote-disabled');
+				$voteUpHandle.addClass('vote-notAuthenticated');
+				$voteDownHandle.addClass('vote-notAuthenticated');
 			}
 		}
 	});
@@ -281,7 +294,7 @@ $(function() {
 	});
 
 	/* upVote */
-	$body.on('click', '.vote-up', function() {
+	$body.on('click', '.vote-up.vote-enabled', function() {
 		var $trigger = $(this);
 		$trigger.removeClass('vote-up');
 		var votingProposalUid = $trigger.closest('.abstimmungsvorlage').attr('id').split('-')[1];
@@ -296,7 +309,7 @@ $(function() {
 	});
 
 	/* downVote */
-	$body.on('click', '.vote-down', function() {
+	$body.on('click', '.vote-down.vote-enabled', function() {
 		var $trigger = $(this);
 		$trigger.removeClass('vote-down');
 		var votingProposalUid = $trigger.closest('.abstimmungsvorlage').attr('id').split('-')[1];
@@ -308,6 +321,12 @@ $(function() {
 				loadPollResult(votingProposalUid);
 			}
 		});
+	});
+
+	/* notAuthenticatedNotification when user clicks voteUp or voteDown without being authenticated*/
+	$body.on('click', '.vote-notAuthenticated', function() {
+		var message = $('#notAuthenticatedNotificationModal').html();
+		displayModal(message);
 	});
 });
 

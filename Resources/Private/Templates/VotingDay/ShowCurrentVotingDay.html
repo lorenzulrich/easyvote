@@ -46,4 +46,64 @@
 <script>
 	var ajaxUri = '<f:uri.page pageUid="{settings.communityAjaxPid}" absolute="TRUE" pageType="999" />'
 </script>
+<div class="hidden" id="notAuthenticatedNotificationModal">
+	<a class="pull-right qtip-close" aria-label="schliessen">
+		<i class="icon icon-remove"></i>
+	</a>
+	<h2>Registrierung</h2>
+	<div class="ym-clearfix">
+		<p class="introduction">
+			Registriere dich jetzt bei easyvote, um die angewählte Funktion verwenden zu können.
+		</p>
+		<div class="pull-left" style="width: 50%;">
+			<p class="introduction">
+				Registrierung mit Facebook
+			</p>
+			<p>
+				<f:link.action extensionName="vifbauth" pluginName="Auth" pageUid="{settings.loginPid}" controller="Authentication" action="login">
+					<f:image src="EXT:easyvote/Resources/Public/Images/button-facebook-login.png" alt="Log in with Facebook" />
+				</f:link.action>
+			</p>
+		</div>
+		<div class="pull-right" style="width: 50%;">
+			<p class="introduction">
+				Vorteile
+			</p>
+			<table class="advantages">
+				<tr>
+					<td>
+						<f:image src="EXT:easyvote/Resources/Public/Images/vorteile-broschuere.png" alt="" />
+					</td>
+					<td>
+						Informiere dich einfach und neutral
+						über Abstimmungen und Wahlen!
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<f:image src="EXT:easyvote/Resources/Public/Images/vorteile-wecker.png" alt="" />
+					</td>
+					<td>
+						Stelle den Vote-Wecker für dich
+						und deine Freude, damit ihr keinen
+						Urnengang verpasst.
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<f:image src="EXT:easyvote/Resources/Public/Images/vorteile-sprechblase.png" alt="" />
+					</td>
+					<td>
+						Mache mit beim Abstimmungsrating
+						und teile deine Meinung!
+						Weitere Features folgen...
+					</td>
+				</tr>
+			</table>
+		</div>
+	</div>
+	<p>
+		Wenn du fortfährst, bestätigst Du, dass Du unsere <a target="_blank" href="http://www.easyvote.ch/files/datenschutz.pdf">Datenschutzrichtlinien</a> gelesen und akzeptiert hast.
+	</p>
+</div>
 </f:section>
