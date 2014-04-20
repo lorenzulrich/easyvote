@@ -241,7 +241,7 @@ function loadPollResult(votingProposal) {
 			$voteUpHandle.after('<div class="hidden">' + data['voteUpText'] + '</div>');
 			$voteDownHandle.after('<div class="hidden">' + data['voteDownText'] + '</div>');
 			bindToolTips();
-			if (typeof data['voteValue'] != undefined) {
+			if (typeof data['voteValue'] != 'undefined') {
 				if (data['voteValue'] > 0) {
 					/* classes documentation:
 					   vote-active: Indicates that the vote was cast
