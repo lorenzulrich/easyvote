@@ -54,6 +54,7 @@ class CommunityUser extends \TYPO3\CMS\Extbase\Domain\Model\FrontendUser {
 	 * Kanton
 	 *
 	 * @var \Visol\Easyvote\Domain\Model\Kanton
+	 * @validate GenericObject
 	 * @lazy
 	 */
 	protected $kanton;

@@ -220,7 +220,7 @@
 
 
 			<trans-unit id="error.1245107351">
-				<source>Die E-Mail-Adresse ist ungültig.</source>
+				<source>Bitte die rot hinterlegten Felder korrigieren.</source>
 			</trans-unit>
 		</body>
 	</file>

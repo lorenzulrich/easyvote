@@ -5,6 +5,7 @@
 	<div class="csc-default box box-lightblue">
 		<h2>Profil bearbeiten</h2>
 		<f:flashMessages renderMode="div" />
+		<f:render partial="FormErrors" arguments="{for: ''}" />
 		<form class="inputForm">
 		<div class="form-row">
 			<input type="text" readonly value="{user.firstName} {user.lastName}" />
@@ -19,7 +20,7 @@
 				<f:form.textfield class="formfield-city" property="city" additionalAttributes="{required: required, placeholder:'Wohnort'}" />
 			</div>
 			<div class="form-row">
-				<f:form.select property="kanton" options="{kantons}" optionValueField="uid" optionLabelField="name" additionalAttributes="{required: required}" />
+				<ev:form.select property="kanton" options="{kantons}" optionValueField="uid" optionLabelField="name" additionalAttributes="{required: required}" prependOptionLabel="Kanton wählen..." prependOptionValue="0" />
 			</div>
 			<div class="form-row">
 				<select name="tx_easyvote_profile[phoneNumberPrefix]" class="formfield-phoneNumberPrefix">

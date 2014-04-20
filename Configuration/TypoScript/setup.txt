@@ -18,6 +18,7 @@ plugin.tx_easyvote._CSS_DEFAULT_STYLE (
 		border: 1px #FF0000 solid;
 	}
 
+	select.f3-form-error,
 	input.f3-form-error {
 		background-color:#FF9F9F;
 		border: 1px #FF0000 solid;
