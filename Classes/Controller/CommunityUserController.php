@@ -166,6 +166,11 @@ class CommunityUserController extends \Visol\Easyvote\Controller\AbstractControl
 			$communityUserGroup = $this->frontendUserGroupRepository->findByUid($this->settings['communityUserGroupUid']);
 			$communityUser->removeUsergroup($communityUserGroup);
 			$this->communityUserRepository->update($communityUser);
+			// get all notificationRelatedUsers and remove them as well
+			$notificationRelatedUsers = $communityUser->getNotificationRelatedUsers();
+			foreach ($notificationRelatedUsers as $notificationRelatedUser) {
+				$this->communityUserRepository->remove($notificationRelatedUser);
+			}
 			$this->persistenceManager->persistAll();
 			$votingProposalUri = $this->uriBuilder->setTargetPageUid($this->settings['siteHomePid'])->setArguments(array('logintype' => 'logout'))->setCreateAbsoluteUri(TRUE)->build();
 			$this->redirectToUri($votingProposalUri);
