@@ -25,18 +25,19 @@
 	<f:security.ifAuthenticated>
 		<f:then>
 			<f:security.ifHasRole role="{settings.communityUserGroupUid}">
-				<f:link.page class="muted" pageUid="{settings.siteHomePid}" additionalParams="{logintype:'logout'}">Abmelden</f:link.page>
+				<f:link.page class="ui-button muted" pageUid="{settings.siteHomePid}" additionalParams="{logintype:'logout'}">Abmelden</f:link.page>
 			</f:security.ifHasRole>
 		</f:then>
 		<f:else>
-			<f:link.action extensionName="vifbauth" pluginName="Auth" pageUid="{settings.loginPid}" controller="Authentication" action="login">Anmelden</f:link.action>
-			<a class="hasModal" href="#">Registrieren</a>
-			<div class="hidden">
+			<f:link.action extensionName="vifbauth" pluginName="Auth" pageUid="{settings.loginPid}" controller="Authentication" action="login">
+				<f:image src="EXT:easyvote/Resources/Public/Images/button-facebook-login.png" alt="Log in with Facebook" />
+			</f:link.action><br />
+			<a class="hasModal" href="#">Noch kein Profil?</a>
+			<div class="hidden profile-popup">
 				<a class="pull-right qtip-close" aria-label="schliessen">
 					<i class="icon icon-remove"></i>
 				</a>
-				<h2>Registrierung</h2>
-				<p class="introduction">Registriere dich jetzt bei easyvote, um die angewählte Funktion verwenden zu können.</p>
+				<h2>Noch kein Profil?</h2>
 				<div class="ym-clearfix">
 					<div class="pull-left" style="width: 50%;">
 						<p class="introduction">
@@ -49,19 +50,44 @@
 						</p>
 					</div>
 					<div class="pull-right" style="width: 50%;">
-						<p>Informiere dich einfach und neutral
-						über Abstimmungen und Wahlen!</p>
-						<p>Stelle den Vote-Wecker für dich
-						und deine Freude, damit ihr keinen
-						Urnengang verpasst.</p>
-						<p>Mache mit beim Abstimmungsrating
-						und teile deine Meinung!
-						Weitere Features folgen...</p>
+						<p class="introduction">
+							Vorteile
+						</p>
+						<table class="advantages">
+							<tr>
+								<td>
+									<f:image src="EXT:easyvote/Resources/Public/Images/vorteile-broschuere.png" alt="" />
+								</td>
+								<td>
+									Informiere dich einfach und neutral
+									über Abstimmungen und Wahlen!
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<f:image src="EXT:easyvote/Resources/Public/Images/vorteile-wecker.png" alt="" />
+								</td>
+								<td>
+									Stelle den Vote-Wecker für dich
+									und deine Freude, damit ihr keinen
+									Urnengang verpasst.
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<f:image src="EXT:easyvote/Resources/Public/Images/vorteile-sprechblase.png" alt="" />
+								</td>
+								<td>
+									Mache mit beim Abstimmungsrating
+									und teile deine Meinung!
+									Weitere Features folgen...
+								</td>
+							</tr>
+						</table>
 					</div>
 				</div>
 				<p>
-					Wenn du fortfährst, bestätigst Du, dass Du unsere Allgemeinen Geschäftsbedingungen,
-					Datenschutzrichtlinien und Richtlinien zu Cookies gelesen und akzeptiert hast.
+					Wenn du fortfährst, bestätigst Du, dass Du unsere <a target="_blank" href="http://www.easyvote.ch/files/datenschutz.pdf">Datenschutzrichtlinien</a> gelesen und akzeptiert hast.
 				</p>
 			</div>
 		</f:else>

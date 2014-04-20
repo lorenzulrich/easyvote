@@ -476,10 +476,18 @@ img.user-image-small {
 }
 
 div.login-panel .pull-right {
-    width: 160px;
+    width: 202px;
 }
 
 div.login-panel .pull-right a {
+    color: #fff;
+}
+
+div.login-panel .pull-right a:hover {
+    color: #ed0a71;
+}
+
+div.login-panel .pull-right a.ui-button {
     display: block;
     background-color: #ed0a71;
     color: #fff;
@@ -513,6 +521,18 @@ div.login-panel .login-status .user-name {
     font-weight: 500;
     font-size: 18px;
     padding-top: 5px;
+}
+
+table.advantages {
+    border: 0;
+}
+
+table.advantages tr:hover td {
+    background-color: transparent;
+}
+
+table.advantages tr td {
+    border: 0;
 }
 
 /* User Profile Forms */
