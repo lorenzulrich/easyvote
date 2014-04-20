@@ -3,12 +3,19 @@
 
 <div class="community-plugins">
 	<div class="csc-default box box-lightblue">
-		<f:translate key="editMobilizations.introduction" htmlEscape="false" />
+		<div class="ym-clearfix">
+			<div class="pull-left" style="width: 110px">
+				<f:image src="EXT:easyvote/Resources/Public/Images/mobilizations-wecker.png" alt="" />
+			</div>
+			<div class="pull-left" style="width: 642px;">
+				<f:translate key="editMobilizations.introduction" htmlEscape="false" />
+			</div>
+		</div>
 		<f:flashMessages renderMode="div" />
 		<h3><f:translate key="editMobilizations.newMobilizedCommunityUserHeader" /></h3>
 		<div id="newMobilizedCommunityUserPlaceholder">
 		</div>
-		<button type="button" id="newMobilizedCommunityUser" class="ym-clearfix" style="margin-bottom: 20px;"><i class="icon icon-plus"></i> <f:translate key="editMobilizations.addMobilizedCommunityUser" /></button>
+		<button type="button" class="button-muted" id="newMobilizedCommunityUser" class="ym-clearfix" style="margin-bottom: 20px;"><i class="icon icon-plus"></i> <f:translate key="editMobilizations.addMobilizedCommunityUser" /></button>
 		<f:translate key="editMobilizations.addMobilizedCommunityUserInformation" htmlEscape="false" arguments="{1: '{nextVotingDay.votingDate -> f:format.date(format: \'d.m.Y\')}', 2: '{user.firstName}', 3: '{user.lastName}'}"></f:translate>
 		<h3><f:translate key="editMobilizations.listMobilizedCommunityUsersHeader" /></h3>
 		<div id="mobilizedCommunityUsers"></div>

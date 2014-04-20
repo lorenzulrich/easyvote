@@ -182,12 +182,12 @@
 			<trans-unit id="editMobilizations.introduction">
 				<source><![CDATA[
 					<h2>Freunde mobilisieren</h2>
-					<h3>Stelle deinen Freunden den Vote-Wecker!</h3>
+					<h3>Möchtest du deine Freunde per E-Mail daran erinnern, dass sie abstimmen gehen sollten? Abonniere für sie den Votewecker von easyvote!</h3>
 					<p>
-						Trage unten in den Felder Name und Mailadresse von deinen Freunden ein, damit sie die nächsten Abstimmungen nicht verschlafen. Dazu werden sie jeweils zwei mal vor Abstimmungen und Wahlen	einfach und neutral über den bevorstehenden Urnengang informiert.
+						Trage unten in den Feldern Name und Mailadresse deiner Freunde ein, damit sie die nächsten Abstimmungen nicht verschlafen. Dazu werden sie jeweils zwei mal vor Abstimmungen und Wahlen einfach und neutral über den bevorstehenden Urnengang informiert.
 					</p>
 					<p>
-						Den Vote-Wecker für deine Freunde kannst du jederzeit abschalten. Die Daten werden gemäss unseren Datenschutzrichtlinien behandelt.
+						Den Vote-Wecker für deine Freunde kannst du jederzeit abschalten, sofern du dies überhaupt willst. Die Daten werden gemäss den Datenschutzrichtlinien behandelt.
 					</p>
 				]]></source>
 			</trans-unit>
@@ -195,21 +195,18 @@
 					<source>Vote-Wecker stellen</source>
 			</trans-unit>
 			<trans-unit id="editMobilizations.addMobilizedCommunityUser">
-					<source>Weiteren Vote-Wecker stellen</source>
+					<source>Weitere Freunde hinzufügen</source>
 			</trans-unit>
 			<trans-unit id="editMobilizations.addMobilizedCommunityUserInformation">
 				<source><![CDATA[
-					<p style="clear: both;">Deine Freunde werden mit folgender Mail über den gestellten Vote-Wecker informiert:</p>
+					<p style="clear: both;">Es wird folgender Text verschickt:</p>
 					<div class="mobilization-notification-example">
 						<p>Hallo Vorname</p>
-						<p>Ich habe für dich den Vote-Wecker auf easyvote.ch gestellt,
-						damit du zukünftige Abstimmungen nicht mehr verschläfst oder
-						versäumst. Die nächste Abstimmung findet am <strong>%1$s</strong> statt.
-						Weitere Informationen dazu wird dir easyvote per E-Mail zustellen.</p>
-						<p>
-							Beste Grüsse,<br />
-							%2$s %3$s
-						</p>
+						<p>Ich habe für dich den Vote-Wecker auf easyvote.ch gestellt, damit du zukünftige Abstimmungen nicht mehr verschläfst oder versäumst.
+						Die nächste Abstimmung findet am <strong>%1$s</strong> statt.
+						Weitere Informationen dazu wird dir easyvote per E-Mail zustellen. Stelle den Votewecker jetzt auch für deine Freunde!</p>
+						<p>Beste Grüsse,<br>
+						%2$s %3$s</p>
 					</div>
 				]]></source>
 			</trans-unit>

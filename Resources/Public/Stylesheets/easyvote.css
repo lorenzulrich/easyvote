@@ -613,6 +613,10 @@ table.advantages tr td {
     cursor: pointer;
 }
 
+.community-plugins .button-muted {
+    background-color: #005476;
+}
+
 .community-plugins .typo3-messages {
     border-radius: 5px;
     background: white;
