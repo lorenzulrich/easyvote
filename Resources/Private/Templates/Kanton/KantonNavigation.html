@@ -4,6 +4,7 @@
 
 <f:section name="main">
 	<f:security.ifAuthenticated>
+		<f:comment>
 		<ul class="navi">
 			<li class="{f:if(condition: '{requestedKanton}', then: 'item', else: 'active')} flag-navi flag-ch">
 				<f:link.action controller="VotingDay" action="showCurrentVotingDay"><span>CH</span></f:link.action>
@@ -14,5 +15,6 @@
 			</li>
 			</f:for>
 		</ul>
+		</f:comment>
 	</f:security.ifAuthenticated>
 </f:section>
