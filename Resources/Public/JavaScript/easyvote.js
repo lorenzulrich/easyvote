@@ -144,12 +144,59 @@ function bindToolTips() {
 	});
 }
 
+/* Display a passed modal */
+function displayModal(message) {
+	var $flashMessageContainer = $('#flashMessageContainer');
+	var $contentWrap = $('#contentWrap');
+	$flashMessageContainer.html('<a class="pull-right qtip-close" aria-label="schliessen"><i class="icon icon-remove"></i></a>' + message);
+
+	$contentWrap.qtip({
+		content: {
+			prerender: true, // important
+			text: $flashMessageContainer.html()
+		},
+		hide: false,
+		show: {
+			ready: true,
+			modal: {
+				on: true,
+				blur: false
+			}
+		},
+		position: {
+			my: 'center', at: 'center',
+			target: $(window)
+		},
+		style: {
+			classes: 'qtip-easyvote qtip-rounded qtip-modal qtip-shadow'
+		},
+		events: {
+			render: function(e, api) {
+				event.preventDefault();
+				$('button.button-confirm', api.elements.content).click(function(e) {
+					window.location = requestedLink;
+				});
+				$('a.qtip-close', api.elements.content).click(function(e) {
+					api.hide(e);
+				});
+				$('button.button-cancel', api.elements.content).click(function(e) {
+					api.hide(e);
+				});
+				FB.XFBML.parse();
+				twttr.widgets.load();
+			},
+			hide: function(e, api) {
+				api.destroy();
+			}
+		}
+	}).qtip('show');
+}
+
 /* Display a passed flash message */
 function displayFlashMessage(message) {
 	var $flashMessageContainer = $('#flashMessageContainer');
 	var $contentWrap = $('#contentWrap');
 	$flashMessageContainer.html('<a class="pull-right qtip-close" aria-label="schliessen"><i class="icon icon-remove"></i></a>' + message);
-
 	$contentWrap.qtip({
 		show: '',
 		hide: {
@@ -242,7 +289,7 @@ $(function() {
 		$.ajax({
 			url: ajaxCallUri,
 			success: function(data) {
-				displayFlashMessage(data['successText']);
+				displayModal(data['successText']);
 				loadPollResult(votingProposalUid);
 			}
 		});
@@ -257,7 +304,7 @@ $(function() {
 		$.ajax({
 			url: ajaxCallUri,
 			success: function(data) {
-				displayFlashMessage(data['successText']);
+				displayModal(data['successText']);
 				loadPollResult(votingProposalUid);
 			}
 		});

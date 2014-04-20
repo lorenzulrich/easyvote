@@ -9,11 +9,11 @@
 		<f:for each="{votingDay.metaVotingProposals}" as="metaVotingProposal" iteration="metaIterator">
 			<f:if condition="{metaVotingProposal.scope} == 1">
 				<f:then>
-					<f:render partial="MetaVotingProposal/SingleItem" arguments="{metaVotingProposal:metaVotingProposal, metaIterator:metaIterator, votingDay:votingDay, settings:settings}" />
+					<f:render partial="MetaVotingProposal/SingleItem" arguments="{settings:settings, metaVotingProposal:metaVotingProposal, metaIterator:metaIterator, votingDay:votingDay, settings:settings}" />
 				</f:then>
 				<f:else>
 					<f:if condition="{metaVotingProposal.kanton.uid} == {requestedKanton.uid}">
-						<f:render partial="MetaVotingProposal/SingleItem" arguments="{metaVotingProposal:metaVotingProposal, metaIterator:metaIterator, votingDay:votingDay}" />
+						<f:render partial="MetaVotingProposal/SingleItem" arguments="{settings:settings, metaVotingProposal:metaVotingProposal, metaIterator:metaIterator, votingDay:votingDay}" />
 					</f:if>
 				</f:else>
 			</f:if>

@@ -180,7 +180,8 @@ class VotingProposalController extends \Visol\Easyvote\Controller\AbstractContro
 				'metaVotingProposal' => $metaVotingProposal,
 				'value' => $value,
 				'voteUpValue' => VotingProposalController::VOTE_UP_VALUE,
-				'votingProposal' => $votingProposal
+				'votingProposal' => $votingProposal,
+				'settings' => $this->settings,
 			));
 
 			return json_encode(array('successText' => $standaloneView->render()));

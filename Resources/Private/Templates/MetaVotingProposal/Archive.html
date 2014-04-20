@@ -66,7 +66,7 @@
 
 			<ev:widget.paginate objects="{metaVotingProposals}" as="paginatedMetaVotingProposals" additionalParams="{kantons: '{request.kantons}', years: '{request.years}', query: '{request.query}', national: '{request.national}'}" additionalParamsPrefix="tx_easyvote_archive" configuration="{itemsPerPage: 5, insertBelow: 1, insertAbove: 0}">
 				<f:for each="{paginatedMetaVotingProposals}" as="metaVotingProposal" iteration="metaIterator">
-					<f:render partial="MetaVotingProposal/SingleItem" arguments="{metaVotingProposal:metaVotingProposal, metaIterator:metaIterator, votingDay:metaVotingProposal.votingDay.0}" />
+					<f:render partial="MetaVotingProposal/SingleItem" arguments="{settings:settings, metaVotingProposal:metaVotingProposal, metaIterator:metaIterator, votingDay:metaVotingProposal.votingDay.0}" />
 				</f:for>
 
 			</ev:widget.paginate>

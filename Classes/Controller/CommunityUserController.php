@@ -149,6 +149,7 @@ class CommunityUserController extends \Visol\Easyvote\Controller\AbstractControl
 	 * action removeProfile
 	 *
 	 * @param \Visol\Easyvote\Domain\Model\CommunityUser $communityUser
+	 * @dontvalidate $communityUser
 	 */
 	public function removeProfileAction(\Visol\Easyvote\Domain\Model\CommunityUser $communityUser) {
 		$loggedInUser = $this->getLoggedInUser();
@@ -199,6 +200,7 @@ class CommunityUserController extends \Visol\Easyvote\Controller\AbstractControl
 	 * @param \Visol\Easyvote\Domain\Model\CommunityUser $communityUser
 	 * @param string $phoneNumberPrefix
 	 * @dontverifyrequesthash $communityUser
+	 * @dontvalidate $communityUser
 	 */
 	public function updateNotificationsAction(\Visol\Easyvote\Domain\Model\CommunityUser $communityUser, $phoneNumberPrefix = '4175') {
 		$loggedInUser = $this->getLoggedInUser();
@@ -261,6 +263,7 @@ class CommunityUserController extends \Visol\Easyvote\Controller\AbstractControl
 	 *
 	 * @param \Visol\Easyvote\Domain\Model\CommunityUser $newCommunityUser
 	 * @dontverifyrequesthash $newCommunityUser
+	 * @dontvalidate $newCommunityUser
 	 * @return string
 	 */
 	public function createMobilizedCommunityUserAction(\Visol\Easyvote\Domain\Model\CommunityUser $newCommunityUser) {
@@ -318,6 +321,7 @@ class CommunityUserController extends \Visol\Easyvote\Controller\AbstractControl
 	 *
 	 * @param \Visol\Easyvote\Domain\Model\CommunityUser $notificationRelatedUser
 	 * @dontverifyrequesthash $notificationRelatedUser
+	 * @dontvalidate $notificationRelatedUser
 	 * @return string
 	 */
 	public function removeMobilizedCommunityUserAction(\Visol\Easyvote\Domain\Model\CommunityUser $notificationRelatedUser) {
