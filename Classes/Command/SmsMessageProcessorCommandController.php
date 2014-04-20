@@ -61,7 +61,6 @@ class SmsMessageProcessorCommandController extends \Visol\Easyvote\Command\Abstr
 		$pendingJobs = $this->messagingJobRepository->findPendingJobs(SmsMessageProcessorCommandController::JOBTYPE);
 
 		$gatewayUrl = 'https://' . urlencode($this->extensionConfiguration['settings']['smsGatewayUsername']) . ':' . $this->extensionConfiguration['settings']['smsGatewayPassword'] . '@api.websms.com/rest/smsmessaging/simple';
-
 		foreach ($pendingJobs as $job) {
 			/** @var \Visol\Easyvote\Domain\Model\MessagingJob $job */
 			$recipient = $job->getCommunityUser()->getTelephone();
@@ -72,7 +71,8 @@ class SmsMessageProcessorCommandController extends \Visol\Easyvote\Command\Abstr
 				continue;
 			}
 			$gatewayUrl .= '?recipientAddressList=' . $recipient;
-			$gatewayUrl .= '&messageContent=' . urlencode($job->getContent());
+
+			$gatewayUrl .= '&messageContent=' . urlencode(utf8_decode($job->getContent()));
 			if ((int)$this->extensionConfiguration['settings']['smsGatewayTest'] === 1) {
 				$gatewayUrl .= '&test=true';
 				\TYPO3\CMS\Core\Utility\DebugUtility::debug(GeneralUtility::getUrl($gatewayUrl), 'SMS-Gateway-Testmodus');
