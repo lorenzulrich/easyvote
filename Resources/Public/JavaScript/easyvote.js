@@ -172,7 +172,7 @@ function displayModal(message) {
 		},
 		events: {
 			render: function(e, api) {
-				event.preventDefault();
+				e.preventDefault();
 				$('button.button-confirm', api.elements.content).click(function(e) {
 					window.location = requestedLink;
 				});
