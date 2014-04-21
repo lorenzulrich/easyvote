@@ -26,6 +26,7 @@ namespace Visol\Easyvote\Controller;
  ***************************************************************/
 use TYPO3\CMS\Core\Utility\DebugUtility;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
 
 /**
  *
@@ -140,7 +141,8 @@ class CommunityUserController extends \Visol\Easyvote\Controller\AbstractControl
 			}
 			$this->communityUserRepository->update($communityUser);
 			$this->persistenceManager->persistAll();
-			$this->flashMessageContainer->add('<i class="icon icon-check-sign"></i> Dein Profil wurde aktualisiert!');
+			$this->flashMessageContainer->add('');
+			$this->flashMessageContainer->add(LocalizationUtility::translate('editProfile.saved', 'easyvote'));
 		}
 		$this->redirect('editProfile');
 	}
@@ -213,7 +215,8 @@ class CommunityUserController extends \Visol\Easyvote\Controller\AbstractControl
 			}
 			$this->communityUserRepository->update($communityUser);
 			$this->persistenceManager->persistAll();
-			$this->flashMessageContainer->add('<i class="icon icon-check-sign"></i> Deine Vote-Wecker wurden aktualisiert!');
+			$this->flashMessageContainer->add(LocalizationUtility::translate('editNotifications.saved', 'easyvote'));
+
 		}
 		$this->redirect('editNotifications');
 	}
@@ -297,19 +300,19 @@ class CommunityUserController extends \Visol\Easyvote\Controller\AbstractControl
 					$content = $standaloneView->render();
 					$messagingJob = $this->objectManager->create('Visol\Easyvote\Domain\Model\MessagingJob');
 					$messagingJob->setContent($content);
-					$messagingJob->setSubject('Ein Vote-Wecker wurde für dich gestellt.');
+					$messagingJob->setSubject(LocalizationUtility::translate('mobilizedWelcomeMail.subject', 'easyvote'));
 					$messagingJob->setCommunityUser($newCommunityUser);
 					$messagingJob->setDistributionTime(new \DateTime());
 					$messagingJob->setType($messagingJob::JOBTYPE_EMAIL);
 					$this->messagingJobRepository->add($messagingJob);
 
-					return json_encode('Der Vote-Wecker wurde gestellt.');
+					return json_encode(LocalizationUtility::translate('editMobilizations.saved', 'easyvote'));
 				} else {
-					return json_encode('Der Vote-Wecker konnte nicht gestellt werden, da für diese Person bereits ein Vote-Wecker gestellt wurde.');
+					return json_encode(LocalizationUtility::translate('editMobilizations.notSavedAlreadyMobilized', 'easyvote'));
 				}
 			} else {
 				// e-mail invalid
-				return json_encode('Der Vote-Wecker konnte nicht gestellt werden, da die E-Mail-Adresse ungültig war.');
+				return json_encode(LocalizationUtility::translate('editMobilizations.notSavedEmailInvalid', 'easyvote'));
 			}
 		} else {
 			return json_encode(FALSE);
@@ -333,12 +336,12 @@ class CommunityUserController extends \Visol\Easyvote\Controller\AbstractControl
 				// TODO in future: Check is user has change account to a real account and prevent deletion
 				$this->communityUserRepository->remove($notificationRelatedUser);
 				$this->persistenceManager->persistAll();
-				return json_encode('Der Vote-Wecker-Kontakt wurde gelöscht.');
+				return json_encode(LocalizationUtility::translate('editMobilizations.removed', 'easyvote'));
 			} else {
-				return json_encode('Du bist nicht berechtigt, diesen Vote-Wecker-Kontakt zu löschen.');
+				return json_encode(LocalizationUtility::translate('editMobilizations.permissionError', 'easyvote'));
 			}
 		} else {
-			return json_encode('Nicht eingeloggt.');
+			return json_encode(LocalizationUtility::translate('editMobilizations.notAuthenticated', 'easyvote'));
 		}
 	}
 

@@ -24,6 +24,7 @@ namespace Visol\Easyvote\Controller;
  *
  *  This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
+use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
 
 /**
  *
@@ -119,21 +120,20 @@ class VotingProposalController extends \Visol\Easyvote\Controller\AbstractContro
 			if (count($pollUserStatus)) {
 				$returnArray['voteValue'] = $pollUserStatus->getFirst()->getValue();
 				if ($pollUserStatus->getFirst()->getValue() === VotingProposalController::VOTE_UP_VALUE) {
-					$returnArray['voteUpText'] = 'Du hast bereits abgestimmt. Klicke, um die Stimme rückgängig zu machen.';
-					$returnArray['voteDownText'] = 'Du hast bereits abgestimmt.';
+					$returnArray['voteUpText'] = LocalizationUtility::translate('voting.alreadyVotedUndo', 'easyvote');
+					$returnArray['voteDownText'] = LocalizationUtility::translate('voting.alreadyVoted', 'easyvote');
 				} else {
-					$returnArray['voteUpText'] = 'Du hast bereits abgestimmt.';
-					$returnArray['voteDownText'] = 'Du hast bereits abgestimmt. Klicke, um die Stimme rückgängig zu machen.';
+					$returnArray['voteUpText'] = LocalizationUtility::translate('voting.alreadyVoted', 'easyvote');
+					$returnArray['voteDownText'] = LocalizationUtility::translate('voting.alreadyVotedUndo', 'easyvote');
 				}
 			} else {
-				$returnArray['voteUpText'] = 'Stimme für diese Vorlage.';
-				$returnArray['voteDownText'] = 'Stimme gegen diese Vorlage.';
+				$returnArray['voteUpText'] = LocalizationUtility::translate('voting.voteUp', 'easyvote');
+				$returnArray['voteDownText'] = LocalizationUtility::translate('voting.voteDown', 'easyvote');
 				$returnArray['voteValue'] = 0;
 			}
 		} else {
-			//<f:link.page pageUid="{settings.loginUrl}">Melde dich an</f:link.page>, um abzustimmen!
-			$returnArray['voteUpText'] = 'Du bist nicht angemeldet. Klicke für mehr Infos.';
-			$returnArray['voteDownText'] = 'Du bist nicht angemeldet. Klicke für mehr Infos.';
+			$returnArray['voteUpText'] = LocalizationUtility::translate('voting.notAuthenticated', 'easyvote');
+			$returnArray['voteDownText'] = LocalizationUtility::translate('voting.notAuthenticated', 'easyvote');
 		}
 
 		return json_encode($returnArray);

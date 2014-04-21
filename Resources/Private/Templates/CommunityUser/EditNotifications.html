@@ -2,23 +2,23 @@
 {namespace ev=Tx_Easyvote_ViewHelpers}
 <div class="community-plugins">
 	<div class="csc-default box box-lightblue">
-		<h2>Vote-Wecker</h2>
-		<h3>Was ist der Vote-Wecker?</h3>
+		<h2><f:translate key="editNotifications.header" /></h2>
+		<h3><f:translate key="editNotifications.whatIs" /></h3>
 		<p>
-			Damit du die nächsten Abstimmungen nicht vergisst oder verschläfst, kannst du hier deinen Votewecker stellen. Er erinnert dich und deine Freunde per E-Mail und SMS über bevorstehende Abstimmungen und Wahlen.
+			<f:translate key="editNotifications.introduction" />
 		</p>
 		<f:flashMessages renderMode="div" />
 		<f:render partial="FormErrors" arguments="{for: ''}" />
 		<f:form class="inputForm" action="updateNotifications" name="communityUser" object="{user}">
-			<h3>Vote-Wecker per E-Mail</h3>
+			<h3><f:translate key="editNotifications.sectionEmailHeader" /></h3>
 			<div class="form-row">
 				<f:form.textfield property="email" additionalAttributes="{required: required, placeholder:'E-Mail-Adresse'}" />
 			</div>
 			<div class="form-row form-row-radio">
-				<f:form.radio id="notificationMailActive-1" name="communityUser[notificationMailActive]" value="1" checked="{user.notificationMailActive} == 1" /> <label for="notificationMailActive-1">aktiviert</label>
-				<f:form.radio id="notificationMailActive-0" name="communityUser[notificationMailActive]" value="0" checked="{user.notificationMailActive} == 0" /> <label for="notificationMailActive-0">deaktiviert</label>
+				<f:form.radio id="notificationMailActive-1" name="communityUser[notificationMailActive]" value="1" checked="{user.notificationMailActive} == 1" /> <label for="notificationMailActive-1"><f:translate key="editNotifications.stateActive" /></label>
+				<f:form.radio id="notificationMailActive-0" name="communityUser[notificationMailActive]" value="0" checked="{user.notificationMailActive} == 0" /> <label for="notificationMailActive-0"><f:translate key="editNotifications.stateInactive" /></label>
 			</div>
-			<h3>Vote-Wecker per SMS</h3>
+			<h3><f:translate key="editNotifications.sectionSmsHeader" /></h3>
 			<div class="form-row">
 				<select name="tx_easyvote_notifications[phoneNumberPrefix]" class="formfield-phoneNumberPrefix">
 					<f:for each="{phoneNumberPrefixes}" as="phoneNumberPrefix" key="key">
@@ -28,11 +28,11 @@
 				<f:form.textfield name="communityUser[telephone]" value="{user.telephoneWithoutPrefix}" class="formfield-phoneNumber" additionalAttributes="{placeholder:'Mobiltelefon'}" />
 			</div>
 			<div class="form-row form-row-radio">
-				<f:form.radio id="notificationSmsActive-1" name="communityUser[notificationSmsActive]" value="1" checked="{user.notificationSmsActive} == 1" /> <label for="notificationSmsActive-1">aktiviert</label>
-				<f:form.radio id="notificationSmsActive-0" name="communityUser[notificationSmsActive]" value="0" checked="{user.notificationSmsActive} == 0" /> <label for="notificationSmsActive-0">deaktiviert</label>
+				<f:form.radio id="notificationSmsActive-1" name="communityUser[notificationSmsActive]" value="1" checked="{user.notificationSmsActive} == 1" /> <label for="notificationSmsActive-1"><f:translate key="editNotifications.stateActive" /></label>
+				<f:form.radio id="notificationSmsActive-0" name="communityUser[notificationSmsActive]" value="0" checked="{user.notificationSmsActive} == 0" /> <label for="notificationSmsActive-0"><f:translate key="editNotifications.stateInactive" /></label>
 			</div>
 			<div class="form-row">
-				<button type="submit">Speichern</button>
+				<button type="submit"><f:translate key="editNotifications.save" /></button>
 			</div>
 		</f:form>
 	</div>

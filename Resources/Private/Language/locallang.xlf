@@ -213,7 +213,204 @@
 			<trans-unit id="editMobilizations.listMobilizedCommunityUsersHeader">
 				<source>Meine Vote-Wecker-Kontakte</source>
 			</trans-unit>
+			<trans-unit id="editMobilizations.saved">
+				<source>Der Vote-Wecker wurde gestellt.</source>
+			</trans-unit>
+			<trans-unit id="editMobilizations.notSavedAlreadyMobilized">
+				<source>Der Vote-Wecker konnte nicht gestellt werden, da für diese Person bereits ein Vote-Wecker gestellt wurde.</source>
+			</trans-unit>
+			<trans-unit id="editMobilizations.notSavedEmailInvalid">
+				<source>Der Vote-Wecker konnte nicht gestellt werden, da die E-Mail-Adresse ungültig war.</source>
+			</trans-unit>
+			<trans-unit id="editMobilizations.removed">
+				<source>Der Vote-Wecker-Kontakt wurde gelöscht.</source>
+			</trans-unit>
+			<trans-unit id="editMobilizations.permissionError">
+				<source>Du bist nicht berechtigt, diesen Vote-Wecker-Kontakt zu löschen.</source>
+			</trans-unit>
+			<trans-unit id="editMobilizations.notAuthenticated">
+				<source>Nicht eingeloggt.</source>
+			</trans-unit>
 
+			<trans-unit id="voting.alreadyVotedUndo">
+				<source>Du hast bereits abgestimmt. Klicke, um die Stimme rückgängig zu machen.</source>
+			</trans-unit>
+			<trans-unit id="voting.alreadyVoted">
+				<source>Du hast bereits abgestimmt.</source>
+			</trans-unit>
+			<trans-unit id="voting.voteUp">
+				<source>Stimme für diese Vorlage.</source>
+			</trans-unit>
+			<trans-unit id="voting.voteDown">
+				<source>Stimme gegen diese Vorlage.</source>
+			</trans-unit>
+			<trans-unit id="voting.notAuthenticated">
+				<source>Du bist nicht angemeldet. Klicke für mehr Infos.</source>
+			</trans-unit>
+
+
+			<trans-unit id="votingAnswer.header">
+				<source>Meine Vote-Wecker-Kontakte</source>
+			</trans-unit>
+			<trans-unit id="votingAnswer.shareYourOpinion">
+				<source>Teile deine Meinung und überzeuge deine Freunde.</source>
+			</trans-unit>
+			<trans-unit id="votingAnswer.iSayYes">
+				<source>Ich sage JA</source>
+			</trans-unit>
+			<trans-unit id="votingAnswer.iSayNo">
+				<source>Ich sage NEIN</source>
+			</trans-unit>
+			<trans-unit id="votingAnswer.getInformation">
+				<source>Informiere dich jetzt unter</source>
+			</trans-unit>
+
+			<trans-unit id="editNotifications.header">
+				<source>Vote-Wecker</source>
+			</trans-unit>
+			<trans-unit id="editNotifications.whatIs">
+				<source>Was ist der Vote-Wecker?</source>
+			</trans-unit>
+			<trans-unit id="editNotifications.introduction">
+				<source>Damit du die nächsten Abstimmungen nicht vergisst oder verschläfst, kannst du hier deinen Votewecker stellen. Er erinnert dich und deine Freunde per E-Mail und SMS über bevorstehende Abstimmungen und Wahlen.</source>
+			</trans-unit>
+			<trans-unit id="editNotifications.sectionEmailHeader">
+				<source>Vote-Wecker per E-Mail</source>
+			</trans-unit>
+			<trans-unit id="editNotifications.sectionSms">
+				<source>Vote-Wecker per SMS</source>
+			</trans-unit>
+			<trans-unit id="editNotifications.stateActive">
+				<source>aktiviert</source>
+			</trans-unit>
+			<trans-unit id="editNotifications.stateInactive">
+				<source>deaktiviert</source>
+			</trans-unit>
+			<trans-unit id="editNotifications.save">
+				<source>speichern</source>
+			</trans-unit>
+			<trans-unit id="editNotifications.saved">
+				<source><![CDATA[
+					<i class="icon icon-check-sign"></i> Deine Vote-Wecker wurden aktualisiert!
+				]]></source>
+			</trans-unit>
+
+			<trans-unit id="editProfile.header">
+				<source>Profil bearbeiten</source>
+			</trans-unit>
+			<trans-unit id="editProfile.save">
+				<source>speichern</source>
+			</trans-unit>
+			<trans-unit id="editProfile.remove">
+				<source>Möchtest du dein Konto löschen?</source>
+			</trans-unit>
+			<trans-unit id="editProfile.removeInformation">
+				<source>Bitte bestätigte, dass du dein Profil löschen möchtest. Nach dem Löschen des Profils erhältst du von uns keine Mitteilungen mehr, auch keine Vote-Wecker.</source>
+			</trans-unit>
+			<trans-unit id="editProfile.removeCancel">
+				<source>abbrechen</source>
+			</trans-unit>
+			<trans-unit id="editProfile.removeConfirm">
+				<source>Profil löschen</source>
+			</trans-unit>
+			<trans-unit id="editProfile.placeholderAddress">
+				<source>Adresse</source>
+			</trans-unit>
+			<trans-unit id="editProfile.placeholderZip">
+				<source>PLZ</source>
+			</trans-unit>
+			<trans-unit id="editProfile.placeholderCity">
+				<source>Ort</source>
+			</trans-unit>
+			<trans-unit id="editProfile.emptySelectKanton">
+				<source>Kanton wählen...</source>
+			</trans-unit>
+			<trans-unit id="editProfile.placeholderMobile">
+				<source>Mobiltelefon</source>
+			</trans-unit>
+			<trans-unit id="editProfile.placeholderEmail">
+				<source>E-Mail-Adresse</source>
+			</trans-unit>
+			<trans-unit id="editProfile.placeholderBirthdate">
+				<source>Geburtsdatum, z.B. 01.01.2000</source>
+			</trans-unit>
+			<trans-unit id="editProfile.saved">
+				<source><![CDATA[
+					<i class="icon icon-check-sign"></i> Dein Profil wurde aktualisiert!
+				]]></source>
+			</trans-unit>
+
+			<trans-unit id="mobilizedCommunityUser.remove">
+				<source>löschen</source>
+			</trans-unit>
+			<trans-unit id="mobilizedCommunityUser.save">
+				<source>stellen</source>
+			</trans-unit>
+
+			<trans-unit id="loginPanel.loggedInAs">
+				<source>eingeloggt als</source>
+			</trans-unit>
+			<trans-unit id="loginPanel.logout">
+				<source>Abmelden</source>
+			</trans-unit>
+			<trans-unit id="loginPanel.register">
+				<source>Noch kein Profil?</source>
+			</trans-unit>
+			<trans-unit id="loginPanel.modalHeader">
+				<source>Noch kein Profil?</source>
+			</trans-unit>
+			<trans-unit id="loginPanel.modalHeaderNotAuthenticated">
+				<source>Registrierung</source>
+			</trans-unit>
+			<trans-unit id="loginPanel.modalSubheaderNotAuthenticated">
+				<source>Registriere dich jetzt bei easyvote, um die angewählte Funktion verwenden zu können.</source>
+			</trans-unit>
+			<trans-unit id="loginPanel.modalFacebookHeader">
+				<source>Facebook</source>
+			</trans-unit>
+			<trans-unit id="loginPanel.modalAdvantages">
+				<source>Vorteile</source>
+			</trans-unit>
+			<trans-unit id="loginPanel.modalAdvantage.1">
+				<source>Informiere dich einfach und neutral über Abstimmungen und Wahlen!</source>
+			</trans-unit>
+			<trans-unit id="loginPanel.modalAdvantage.2">
+				<source>Stelle den Vote-Wecker für dich und deine Freude, damit ihr keinen Urnengang verpasst.</source>
+			</trans-unit>
+			<trans-unit id="loginPanel.modalAdvantage.3">
+				<source>Mache mit beim Abstimmungsrating und teile deine Meinung! Weitere Features folgen...</source>
+			</trans-unit>
+			<trans-unit id="loginPanel.modalLegalInfo">
+				<source><![CDATA[
+					Wenn du fortfährst, bestätigst Du, dass Du unsere <a target="_blank" href="http://www.easyvote.ch/files/datenschutz.pdf">Datenschutzrichtlinien</a> gelesen und akzeptiert hast.
+				]]></source>
+			</trans-unit>
+
+			<trans-unit id="userFunctions.voteWecker">
+				<source>Stelle deinen Vote-Wecker!</source>
+			</trans-unit>
+			<trans-unit id="userFunctions.mobilizeUsers">
+				<source>Freunde mobilisieren</source>
+			</trans-unit>
+			<trans-unit id="userOverview.years">
+				<source>Jahre</source>
+			</trans-unit>
+
+			<trans-unit id="mobilizedWelcomeMail.hello">
+				<source>Hallo</source>
+			</trans-unit>
+			<trans-unit id="mobilizedWelcomeMail.text1">
+				<source>Ich habe für dich den Vote-Wecker auf easyvote.ch gestellt, damit du zukünftige Abstimmungen nicht mehr verschläfst oder versäumst. Die nächste Abstimmung findet am</source>
+			</trans-unit>
+			<trans-unit id="mobilizedWelcomeMail.text2">
+				<source>statt. Weitere Informationen dazu wird dir easyvote per E-Mail zustellen. Stelle den Votewecker jetzt auch für deine Freunde!</source>
+			</trans-unit>
+			<trans-unit id="mobilizedWelcomeMail.bestRegards">
+				<source>Beste Grüsse,</source>
+			</trans-unit>
+			<trans-unit id="mobilizedWelcomeMail.subject">
+				<source>Ein Vote-Wecker wurde für dich gestellt</source>
+			</trans-unit>
 
 
 			<trans-unit id="error.1245107351">
