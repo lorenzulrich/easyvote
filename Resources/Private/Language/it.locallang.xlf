@@ -3,13 +3,45 @@
 	<file source-language="en" datatype="plaintext" original="messages" date="2013-09-19T13:43:14Z" product-name="easyvote">
 		<header/>
 		<body>
+
+			<trans-unit id="tx_easyvote_domain_model_metavotingproposal">
+				<source>Meta-Abstimmungsvorlage</source>
+			</trans-unit>
+			<trans-unit id="tx_easyvote_domain_model_metavotingproposal.type">
+				<source>Typ</source>
+			</trans-unit>
 			<trans-unit id="tx_easyvote_domain_model_metavotingproposal.opengraphDescription">
 				<source>Informiere dich jetzt einfach und neutral mit der easyvote Abstimmungshilfe!</source>
 				<target>Informati in modo semplice e neutrale grazie alla brochure easyvote!</target>
 			</trans-unit>
+			<trans-unit id="tx_easyvote_domain_model_metavotingproposal.scope">
+				<source>Reichweite</source>
+			</trans-unit>
+			<trans-unit id="tx_easyvote_domain_model_metavotingproposal.main_proposal_approval">
+				<source>Zustimmung zur Hauptvorlage (in %)</source>
+			</trans-unit>
+			<trans-unit id="tx_easyvote_domain_model_metavotingproposal.voting_proposals">
+				<source>Abstimmungsvorlagen</source>
+			</trans-unit>
+			<trans-unit id="tx_easyvote_domain_model_metavotingproposal.kanton">
+				<source>Kanton</source>
+			</trans-unit>
+			
 			<trans-unit id="tx_easyvote_domain_model_votingproposal">
 				<source>Abstimmungsvorlage</source>
 				<target>Oggetto in votazione</target>
+			</trans-unit>
+			<trans-unit id="tx_easyvote_domain_model_votingproposal.short_title">
+				<source>Kurztitel</source>
+			</trans-unit>
+			<trans-unit id="tx_easyvote_domain_model_votingproposal.official_title">
+				<source>Offizieller Titel</source>
+			</trans-unit>
+			<trans-unit id="tx_easyvote_domain_model_votingproposal.youtube_url">
+				<source>URL zu YouTube-Video</source>
+			</trans-unit>
+			<trans-unit id="tx_easyvote_domain_model_votingproposal.image">
+				<source>Bild (für Open Graph)</source>
 			</trans-unit>
 			<trans-unit id="tx_easyvote_domain_model_votingproposal.goal">
 				<source>Ziel</source>
@@ -43,6 +75,46 @@
 				<source>Teilen</source>
 				<target>Condividi</target>
 			</trans-unit>
+			<trans-unit id="tx_easyvote_domain_model_votingproposal.proposal_approval">
+				<source>Zustimmung zur Vorlage (in %)</source>
+			</trans-unit>
+			
+			<trans-unit id="tx_easyvote_domain_model_kanton">
+				<source>Kanton</source>
+			</trans-unit>
+			<trans-unit id="tx_easyvote_domain_model_kanton.name">
+				<source>Name</source>
+			</trans-unit>
+			<trans-unit id="tx_easyvote_domain_model_kanton.abbreviation">
+				<source>Abkürzung</source>
+			</trans-unit>
+			<trans-unit id="tx_easyvote_domain_model_kanton.cities">
+				<source>Orte</source>
+			</trans-unit>
+			
+			<trans-unit id="tx_easyvote_domain_model_votingday">
+				<source>Abstimmungstag</source>
+			</trans-unit>
+			<trans-unit id="tx_easyvote_domain_model_votingday.voting_date">
+				<source>Abstimmungstag</source>
+			</trans-unit>
+			<trans-unit id="tx_easyvote_domain_model_votingday.archived">
+				<source>Archiviert</source>
+			</trans-unit>
+			<trans-unit id="tx_easyvote_domain_model_votingday.meta_voting_proposals">
+				<source>Meta-Abstimmungsvorlagen</source>
+			</trans-unit>
+			
+			<trans-unit id="tx_easyvote_domain_model_city">
+				<source>Ort</source>
+			</trans-unit>
+			<trans-unit id="tx_easyvote_domain_model_city.zip">
+				<source>Postleitzahl</source>
+			</trans-unit>
+			<trans-unit id="tx_easyvote_domain_model_city.name">
+				<source>Ortsname</source>
+			</trans-unit>
+
 			<trans-unit id="widget.pagination.previous">
 					<source>zurück</source>
 					<target>indietro</target>
@@ -88,7 +160,7 @@
 					<target>Delimitare la ricerca</target>
 			</trans-unit>
 			<trans-unit id="tx_easyvote_archive.limitNational">
-					<source>national</source>
+					<source>National</source>
 					<target>nazionale</target>
 			</trans-unit>
 			<trans-unit id="tx_easyvote_archive.title">
@@ -100,10 +172,10 @@
 					<target>Curiosare nell'archivio...</target>
 			</trans-unit>
 			<trans-unit id="tx_easyvote_archive.searchResultsCount">
-					<source>%o Vorlagen gefunden.</source>
+					<source>%o Vorlage(n) gefunden.</source>
 					<target>%o oggetti trovati.</target>
 			</trans-unit>
-			<trans-unit id="tx_easyvote_archive.searchResultsCount">
+			<trans-unit id="tx_easyvote_archive.noResults">
 					<source>Keine Vorlagen gefunden.</source>
 					<target>Nessun oggetto trovato</target>
 			</trans-unit>
@@ -115,7 +187,360 @@
 					<source><![CDATA[Dies ist der Gegenvorschlag. <a href="#" id="goToHauptvorlage">Zurück zur Vorlage</a>.]]></source>
 					<target><![CDATA[Questo è il controproggetto. <a href="#" id="goToHauptvorlage">Indietro alla proposta</a>.]]></target>
 			</trans-unit>
+			<trans-unit id="tx_easyvote_archive.submit">
+					<source>suchen</source>
+			</trans-unit>
+			<trans-unit id="tx_easyvote_archive.reset">
+					<source>zurücksetzen</source>
+			</trans-unit>
 
+			<trans-unit id="easyvoteCommunity" xml:space="preserve">
+				<source>easyvote Community</source>
+				<target>easyvote Community</target>
+			</trans-unit>
+			<trans-unit id="smsMessaging" xml:space="preserve">
+				<source>SMS-Versand</source>
+				<target>invia SMS</target>
+			</trans-unit>
+			<trans-unit id="backendDashboard" xml:space="preserve">
+				<source>Dashboard</source>
+				<target>Dashboard</target>
+			</trans-unit>
+			<trans-unit id="emailExport" xml:space="preserve">
+				<source>E-Mail-Export</source>
+				<target>esporta e-mail</target>
+			</trans-unit>
+
+			<trans-unit id="editMobilizations.introduction">
+				<source><![CDATA[
+					<h2>Freunde mobilisieren</h2>
+					<h3>Möchtest du deine Freunde per E-Mail daran erinnern, dass sie abstimmen gehen sollten? Abonniere für sie den Votewecker von easyvote!</h3>
+					<p>
+						Trage unten in den Feldern Name und Mailadresse deiner Freunde ein, damit sie die nächsten Abstimmungen nicht verschlafen. Dazu werden sie jeweils zwei mal vor Abstimmungen und Wahlen einfach und neutral über den bevorstehenden Urnengang informiert.
+					</p>
+					<p>
+						Den Vote-Wecker für deine Freunde kannst du jederzeit abschalten, sofern du dies überhaupt willst. Die Daten werden gemäss den Datenschutzrichtlinien behandelt.
+					</p>
+				]]></source>
+				<target><![CDATA[
+					<h2>mobilita amici</h2>
+					<h3>Vuoi ricordare ai tuoi amici con un e-mail che bisogna andare a votare? Imposta la voto-sveglia anche per loro!</h3>
+					<p>
+						Inserisci il nome e l’indirizzo e-mail dei tuoi amici, in questo modo non si dimenticheranno delle votazioni. Inoltre ogni volta prima delle votazioni o delle elezioni verranno informati due volte in modo semplice e neutrale dell’appuntamento in arrivo.
+					</p>
+					<p>
+Puoi disattivare la voto-sveglia per i tuoi amici in qualsiasi momento, se lo vuoi. I dati verranno trattati in modo coforme alle linee guida della protezione dei dati.
+					</p>
+				]]></target>
+			</trans-unit>
+			<trans-unit id="editMobilizations.newMobilizedCommunityUserHeader">
+					<source>Vote-Wecker stellen</source>
+				<target>impostare la voto-sveglia </target>
+			</trans-unit>
+			<trans-unit id="editMobilizations.addMobilizedCommunityUser">
+					<source>Weitere Freunde hinzufügen</source>
+				<target>aggiungi altri amici</target>
+			</trans-unit>
+			<trans-unit id="editMobilizations.addMobilizedCommunityUserInformation">
+				<source><![CDATA[
+					<p style="clear: both;">Es wird folgender Text verschickt:</p>
+					<div class="mobilization-notification-example">
+						<p>Hallo Vorname</p>
+						<p>Ich habe für dich den Vote-Wecker auf easyvote.ch gestellt, damit du zukünftige Abstimmungen nicht mehr verschläfst oder versäumst.
+						Die nächste Abstimmung findet am <strong>%1$s</strong> statt.
+						Weitere Informationen dazu wird dir easyvote per E-Mail zustellen. Stelle den Votewecker jetzt auch für deine Freunde!</p>
+						<p>Beste Grüsse,<br>
+						%2$s %3$s</p>
+					</div>
+				]]></source>
+				<target><![CDATA[
+					<p style="clear: both;">Es wird folgender Text verschickt:</p>
+					<div class="mobilization-notification-example">
+						<p>Ciao Nome</p>
+						<p>Ho impostato per te una voto-sveglia su easyvote.ch, in questo modo non potrai più dimenticarti, o dormire troppo a lungo, delle votazioni in arrivo.
+						La prossima votazione avrà luogo il <strong>%1$s</strong>.
+						Riceverai ulteriori informazioni per e-mail da easyvote. Crea ora il tuo profilo su easyvote.ch e invita anche tu i tuoi amici!</p>
+						<p>I migliori saluti,<br>
+						%2$s %3$s</p>
+					</div>
+				]]></target>
+			</trans-unit>
+			<trans-unit id="editMobilizations.listMobilizedCommunityUsersHeader">
+				<source>Meine Vote-Wecker-Kontakte</source>
+				<target>I miei contatti voto-sveglia</target>
+			</trans-unit>
+			<trans-unit id="editMobilizations.saved">
+				<source>Der Vote-Wecker wurde gestellt.</source>
+				<target>La voto-sveglia è stata impostata.</target>
+			</trans-unit>
+			<trans-unit id="editMobilizations.notSavedAlreadyMobilized">
+				<source>Der Vote-Wecker konnte nicht gestellt werden, da für diese Person bereits ein Vote-Wecker gestellt wurde.</source>
+				<target>La voto-sveglia non è stata impostata, visto che per questa persona esiste già una voto-sveglia.</target>
+			</trans-unit>
+			<trans-unit id="editMobilizations.notSavedEmailInvalid">
+				<source>Der Vote-Wecker konnte nicht gestellt werden, da die E-Mail-Adresse ungültig war.</source>
+				<target>Impossibile impostare la voto-sveglia, l’indirizzo e-mail indicato non è valido.</target>
+			</trans-unit>
+			<trans-unit id="editMobilizations.removed">
+				<source>Der Vote-Wecker-Kontakt wurde gelöscht.</source>
+				<target>Il contatto voto-sveglia è stato cancellato.</target>
+			</trans-unit>
+			<trans-unit id="editMobilizations.permissionError">
+				<source>Du bist nicht berechtigt, diesen Vote-Wecker-Kontakt zu löschen.</source>
+				<target>Non sei autorizzato a eliminare questo contatto.</target>
+			</trans-unit>
+			<trans-unit id="editMobilizations.notAuthenticated">
+				<source>Nicht eingeloggt.</source>
+				<target>Non hai effettuato il login.</target>
+			</trans-unit>
+
+			<trans-unit id="voting.alreadyVotedUndo">
+				<source>Du hast bereits abgestimmt. Klicke, um die Stimme rückgängig zu machen.</source>
+				<target>Hai già votato. Clicca per annullare il tuo voto.</target>
+			</trans-unit>
+			<trans-unit id="voting.alreadyVoted">
+				<source>Du hast bereits abgestimmt.</source>
+				<target>Hai già votato.</target>
+			</trans-unit>
+			<trans-unit id="voting.voteUp">
+				<source>Stimme für diese Vorlage.</source>
+				<target>Vota a favore di questa proposta.</target>
+			</trans-unit>
+			<trans-unit id="voting.voteDown">
+				<source>Stimme gegen diese Vorlage.</source>
+				<target>Vota contro questa proposta.</target>
+			</trans-unit>
+			<trans-unit id="voting.notAuthenticated">
+				<source>Du bist nicht angemeldet. Klicke für mehr Infos.</source>
+				<target>Non sei ancora iscritto. Clicca per altre informazioni.</target>
+			</trans-unit>
+
+
+			<trans-unit id="votingAnswer.header">
+				<source>Meine Vote-Wecker-Kontakte</source>
+				<target>I miei contatti voto-sveglia</target>
+			</trans-unit>
+			<trans-unit id="votingAnswer.shareYourOpinion">
+				<source>Teile deine Meinung und überzeuge deine Freunde.</source>
+				<target>Condividi la tua opinione e convinci i tuoi amici.</target>
+			</trans-unit>
+			<trans-unit id="votingAnswer.iSayYes">
+				<source>Ich sage JA</source>
+				<target>Io dico SÌ</target>
+			</trans-unit>
+			<trans-unit id="votingAnswer.iSayNo">
+				<source>Ich sage NEIN</source>
+				<target>Io dico NO </target>
+			</trans-unit>
+			<trans-unit id="votingAnswer.getInformation">
+				<source>Informiere dich jetzt unter</source>
+				<target>Informati ora su</target>
+			</trans-unit>
+
+			<trans-unit id="editNotifications.header">
+				<source>Vote-Wecker</source>
+				<target>Voto-Sveglia</target>
+			</trans-unit>
+			<trans-unit id="editNotifications.whatIs">
+				<source>Was ist der Vote-Wecker?</source>
+				<target>Cos’è la voto-sveglia?</target>
+			</trans-unit>
+			<trans-unit id="editNotifications.introduction">
+				<source>Damit du die nächsten Abstimmungen nicht vergisst oder verschläfst, kannst du hier deinen Votewecker stellen. Er erinnert dich und deine Freunde per E-Mail und SMS über bevorstehende Abstimmungen und Wahlen.</source>
+				<target>Per non dimenticarti delle prossime votazioni puoi impostare una voto-sveglia. Verrai avvisato due volte per e-mail e SMS prima di ogni votazione o delle elezioni. </target>
+			</trans-unit>
+			<trans-unit id="editNotifications.sectionEmailHeader">
+				<source>Vote-Wecker per E-Mail</source>
+				<target>Voto-sveglia per E-Mail</target>
+			</trans-unit>
+			<trans-unit id="editNotifications.sectionSms">
+				<source>Vote-Wecker per SMS</source>
+				<target>Voto-sveglia per SMS</target>
+			</trans-unit>
+			<trans-unit id="editNotifications.stateActive">
+				<source>aktiviert</source>
+				<target>attivare</target>
+			</trans-unit>
+			<trans-unit id="editNotifications.stateInactive">
+				<source>deaktiviert</source>
+				<target>disattivare</target>
+			</trans-unit>
+			<trans-unit id="editNotifications.save">
+				<source>speichern</source>
+				<target>salvare</target>
+			</trans-unit>
+			<trans-unit id="editNotifications.saved">
+				<source><![CDATA[
+					<i class="icon icon-check-sign"></i> Deine Vote-Wecker wurden aktualisiert!
+				]]></source>
+				<target><![CDATA[
+					<i class="icon icon-check-sign"></i> La tua voto-sveglia è stata aggiornanata!
+				]]></target>
+			</trans-unit>
+
+			<trans-unit id="editProfile.header">
+				<source>Profil bearbeiten</source>
+				<target>Modifica il profilo</target>
+			</trans-unit>
+			<trans-unit id="editProfile.save">
+				<source>speichern</source>
+				<target>salvare</target>
+			</trans-unit>
+			<trans-unit id="editProfile.remove">
+				<source>Möchtest du dein Konto löschen?</source>
+				<target>Vuoi eliminare il tuo account?</target>
+			</trans-unit>
+			<trans-unit id="editProfile.removeInformation">
+				<source>Bitte bestätigte, dass du dein Profil löschen möchtest. Nach dem Löschen des Profils erhältst du von uns keine Mitteilungen mehr, auch keine Vote-Wecker.</source>
+				<target>Per favore conferma se vuoi cancellare il tuo profilo, dopo l’eliminazione non riceverai più nessuna notizia, anche le voto-sveglie già impostate per i tuoi amici verranno eliminate.</target>
+			</trans-unit>
+			<trans-unit id="editProfile.removeCancel">
+				<source>abbrechen</source>
+				<target>annulla</target>
+			</trans-unit>
+			<trans-unit id="editProfile.removeConfirm">
+				<source>Profil löschen</source>
+				<target>elimina profilo</target>
+			</trans-unit>
+			<trans-unit id="editProfile.placeholderAddress">
+				<source>Adresse</source>
+				<target>Indirizzo</target>
+			</trans-unit>
+			<trans-unit id="editProfile.placeholderZip">
+				<source>PLZ</source>
+				<target>CAP</target>
+			</trans-unit>
+			<trans-unit id="editProfile.placeholderCity">
+				<source>Ort</source>
+				<target>Luogo</target>
+			</trans-unit>
+			<trans-unit id="editProfile.emptySelectKanton">
+				<source>Kanton wählen...</source>
+				<target>Scegli Cantone...</target>
+			</trans-unit>
+			<trans-unit id="editProfile.placeholderMobile">
+				<source>Mobiltelefon</source>
+				<target>Telefono mobile</target>
+			</trans-unit>
+			<trans-unit id="editProfile.placeholderEmail">
+				<source>E-Mail-Adresse</source>
+				<target>Indirizzo e-mail </target>
+			</trans-unit>
+			<trans-unit id="editProfile.placeholderBirthdate">
+				<source>Geburtsdatum, z.B. 01.01.2000</source>
+				<target>Data di nascita, per es. 01.01.2000</target>
+			</trans-unit>
+			<trans-unit id="editProfile.saved">
+				<source><![CDATA[
+					<i class="icon icon-check-sign"></i> Dein Profil wurde aktualisiert!
+				]]></source>
+				<target><![CDATA[
+					<i class="icon icon-check-sign"></i> Il tuo profilo è stato aggiornato!
+				]]></target>
+			</trans-unit>
+
+			<trans-unit id="mobilizedCommunityUser.remove">
+				<source>löschen</source>
+				<target>elimina</target>
+			</trans-unit>
+			<trans-unit id="mobilizedCommunityUser.save">
+				<source>stellen</source>
+				<target>salvare</target>
+			</trans-unit>
+
+			<trans-unit id="loginPanel.loggedInAs">
+				<source>eingeloggt als</source>
+				<target>login come </target>
+			</trans-unit>
+			<trans-unit id="loginPanel.logout">
+				<source>Abmelden</source>
+				<target>esci</target>
+			</trans-unit>
+			<trans-unit id="loginPanel.register">
+				<source>Noch kein Profil?</source>
+				<target>ancora senza profilo?</target>
+			</trans-unit>
+			<trans-unit id="loginPanel.modalHeader">
+				<source>Noch kein Profil?</source>
+				<target> ancora senza profilo?</target>
+			</trans-unit>
+			<trans-unit id="loginPanel.modalHeaderNotAuthenticated">
+				<source>Registrierung</source>
+				<target>Registrati</target>
+			</trans-unit>
+			<trans-unit id="loginPanel.modalSubheaderNotAuthenticated">
+				<source>Registriere dich jetzt bei easyvote, um die angewählte Funktion verwenden zu können.</source>
+				<target>Registrati su easyvote per poter continuare</target>
+			</trans-unit>
+			<trans-unit id="loginPanel.modalFacebookHeader">
+				<source>Facebook</source>
+				<target>Facebook</target>
+			</trans-unit>
+			<trans-unit id="loginPanel.modalAdvantages">
+				<source>Vorteile</source>
+				<target>Vantaggi</target>
+			</trans-unit>
+			<trans-unit id="loginPanel.modalAdvantage.1">
+				<source>Informiere dich einfach und neutral über Abstimmungen und Wahlen!</source>
+				<target>Informati in modo semplice e neutrale sulle votazioni e le elezioni!</target>
+			</trans-unit>
+			<trans-unit id="loginPanel.modalAdvantage.2">
+				<source>Stelle den Vote-Wecker für dich und deine Freude, damit ihr keinen Urnengang verpasst.</source>
+				<target>Imoposta la voto-sveglia per te e i tuoi amici, così nessuno dimenticherà più un appuntamento alle urne.</target>
+			</trans-unit>
+			<trans-unit id="loginPanel.modalAdvantage.3">
+				<source>Mache mit beim Abstimmungsrating und teile deine Meinung! Weitere Features folgen...</source>
+				<target>Partecipa al rating delle votazioni e condividi la tua opinione! Altre collaborazioni arriveranno a breve...</target>
+			</trans-unit>
+			<trans-unit id="loginPanel.modalLegalInfo">
+				<source><![CDATA[
+					Wenn du fortfährst, bestätigst Du, dass Du unsere <a target="_blank" href="http://www.easyvote.ch/files/datenschutz.pdf">Datenschutzrichtlinien</a> gelesen und akzeptiert hast.
+				]]></source>
+				<target><![CDATA[
+					Continuando confermi di aver letto le nostre <a target="_blank" href="http://www.easyvote.ch/files/datenschutz.pdf">linee guida per la protezione dati</a> e averle accettate.
+
+				]]></target>
+			</trans-unit>
+
+			<trans-unit id="userFunctions.voteWecker">
+				<source>Stelle deinen Vote-Wecker!</source>
+				<target>Imposta la tua voto-sveglia!</target>
+			</trans-unit>
+			<trans-unit id="userFunctions.mobilizeUsers">
+				<source>Freunde mobilisieren</source>
+				<target>mobilita amici</target>
+			</trans-unit>
+			<trans-unit id="userOverview.years">
+				<source>Jahre</source>
+				<target>anni</target>
+			</trans-unit>
+
+			<trans-unit id="mobilizedWelcomeMail.hello">
+				<source>Hallo</source>
+				<target>Ciao</target>
+			</trans-unit>
+			<trans-unit id="mobilizedWelcomeMail.text1">
+				<source>Ich habe für dich den Vote-Wecker auf easyvote.ch gestellt, damit du zukünftige Abstimmungen nicht mehr verschläfst oder versäumst. Die nächste Abstimmung findet am</source>
+				<target> Ho impostato per te una voto-sveglia su easyvote.ch, in questo modo non potrai più dimenticarti, o dormire troppo a lungo, delle votazioni in arrivo. La prossima votazione avrà luogo il</target>
+			</trans-unit>
+			<trans-unit id="mobilizedWelcomeMail.text2">
+				<source>statt. Weitere Informationen dazu wird dir easyvote per E-Mail zustellen. Stelle den Votewecker jetzt auch für deine Freunde!</source>
+				<target> Riceverai ulteriori informazioni per e-mail da easyvote. Crea ora il tuo profilo su easyvote.ch e invita anche tu i tuoi amici </target>
+			</trans-unit>
+			<trans-unit id="mobilizedWelcomeMail.bestRegards">
+				<source>Beste Grüsse,</source>
+				<target>I migliori saluti,</target>
+			</trans-unit>
+			<trans-unit id="mobilizedWelcomeMail.subject">
+				<source>Ein Vote-Wecker wurde für dich gestellt</source>
+				<target>È stata creata una voto-sveglia per te</target>
+			</trans-unit>
+
+
+			<trans-unit id="error.1245107351">
+				<source>Bitte die rot hinterlegten Felder korrigieren.</source>
+				<target>per favore correggi i campi marcati in rosso.</target>
+			</trans-unit>
 		</body>
 	</file>
 </xliff>
