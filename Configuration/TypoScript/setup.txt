@@ -106,6 +106,7 @@ plugin.tx_easyvote {
 		smsGatewayUsername =
 		smsGatewayPassword = 
 		smsGatewayTest = 0
+		privacyStatementFile = fileadmin/files/datenschutz.pdf
 	}
 }
 

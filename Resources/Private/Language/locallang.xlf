@@ -382,7 +382,7 @@
 			</trans-unit>
 			<trans-unit id="loginPanel.modalLegalInfo">
 				<source><![CDATA[
-					Wenn du fortfährst, bestätigst Du, dass Du unsere <a target="_blank" href="http://www.easyvote.ch/files/datenschutz.pdf">Datenschutzrichtlinien</a> gelesen und akzeptiert hast.
+					Wenn du fortfährst, bestätigst Du, dass Du unsere <a href="%1$s" target="_blank">Datenschutzrichtlinien</a> gelesen und akzeptiert hast.
 				]]></source>
 			</trans-unit>
 

@@ -82,7 +82,7 @@
 					</div>
 				</div>
 				<p>
-					<f:translate key="loginPanel.modalLegalInfo" />
+					<f:translate key="loginPanel.modalLegalInfo" htmlEscape="false" arguments="{1: '{f:uri.page(pageUid:settings.privacyStatementFile, absolute:\'TRUE\')}'}" />
 				</p>
 			</div>
 		</f:else>

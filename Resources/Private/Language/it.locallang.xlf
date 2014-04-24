@@ -494,11 +494,10 @@ Puoi disattivare la voto-sveglia per i tuoi amici in qualsiasi momento, se lo vu
 			</trans-unit>
 			<trans-unit id="loginPanel.modalLegalInfo">
 				<source><![CDATA[
-					Wenn du fortfährst, bestätigst Du, dass Du unsere <a target="_blank" href="http://www.easyvote.ch/files/datenschutz.pdf">Datenschutzrichtlinien</a> gelesen und akzeptiert hast.
+					Wenn du fortfährst, bestätigst Du, dass Du unsere <a target="_blank" href="%1$s">Datenschutzrichtlinien</a> gelesen und akzeptiert hast.
 				]]></source>
 				<target><![CDATA[
-					Continuando confermi di aver letto le nostre <a target="_blank" href="http://www.easyvote.ch/files/datenschutz.pdf">linee guida per la protezione dati</a> e averle accettate.
-
+					Continuando confermi di aver letto le nostre <a target="_blank" href="%1$s">linee guida per la protezione dati</a> e averle accettate.
 				]]></target>
 			</trans-unit>
 

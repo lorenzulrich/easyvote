@@ -492,10 +492,10 @@
 			</trans-unit>
 			<trans-unit id="loginPanel.modalLegalInfo">
 				<source><![CDATA[
-					Wenn du fortfährst, bestätigst Du, dass Du unsere <a target="_blank" href="http://www.easyvote.ch/files/datenschutz.pdf">Datenschutzrichtlinien</a> gelesen und akzeptiert hast.
+					Wenn du fortfährst, bestätigst Du, dass Du unsere <a target="_blank" href="%1$s">Datenschutzrichtlinien</a> gelesen und akzeptiert hast.
 				]]></source>
 				<target><![CDATA[
-					En poursuivant, tu confirmes avoir lu et accepté notre <a target="_blank" href="http://www.easyvote.ch/files/protection des données.pdf">Règles relatives à la protection des données</a>.
+					En poursuivant, tu confirmes avoir lu et accepté notre <a target="_blank" href="%1$s">Règles relatives à la protection des données</a>.
 				]]></target>
 			</trans-unit>
 
