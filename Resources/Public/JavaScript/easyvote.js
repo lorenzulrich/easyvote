@@ -431,3 +431,24 @@ $(function() {
 
 
 });
+
+$(function() {
+	window.fbAsyncInit = function() {
+		FB.init({
+			appId      : '504241469662693',
+			status     : true,
+			xfbml      : true
+		});
+	};
+	$body.on('click', '.fb-share-link', function(e) {
+		$trigger = $(e.target).closest('a');
+		FB.ui(
+			{
+				method: 'feed',
+				link: $trigger.attr('data-href'),
+				description: $trigger.attr('data-description')
+			},
+			function(response) {}
+		);
+	});
+})

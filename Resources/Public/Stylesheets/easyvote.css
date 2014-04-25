@@ -660,3 +660,7 @@ table.advantages tr td {
 .community-plugins #newMobilizedCommunityUserPlaceholder {
     margin-bottom: 10px;
 }
+
+.fb-share-link, .fb-share-link img {
+    cursor: pointer;
+}
