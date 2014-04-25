@@ -166,6 +166,11 @@
     margin: 0 15px 10px 0;
 }
 
+.abstimmungsvorlage .action.facebook {
+    width: 84px;
+    height: 86px;
+}
+
 .abstimmungsvorlage .actions .vote {
     float: left;
     margin-left: 20px;
