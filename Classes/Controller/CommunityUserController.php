@@ -175,8 +175,9 @@ class CommunityUserController extends \Visol\Easyvote\Controller\AbstractControl
 				$this->communityUserRepository->remove($notificationRelatedUser);
 			}
 			$this->persistenceManager->persistAll();
-			$votingProposalUri = $this->uriBuilder->setTargetPageUid($this->settings['siteHomePid'])->setArguments(array('logintype' => 'logout'))->setCreateAbsoluteUri(TRUE)->build();
-			$this->redirectToUri($votingProposalUri);
+			$siteHomeUri = $this->uriBuilder->setTargetPageUid($this->settings['siteHomePid'])->setArguments(array('logintype' => 'logout'))->setCreateAbsoluteUri(TRUE)->build();
+			$arguments = array('redirectUri' => $siteHomeUri);
+			$this->redirect('revokePermissions', 'Authentication', 'Vifbauth', $arguments, $this->settings['loginPid']);
 		}
 	}
 
