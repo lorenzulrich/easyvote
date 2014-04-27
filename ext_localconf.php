@@ -61,11 +61,11 @@ if (!defined('TYPO3_MODE')) {
 	'Visol.' . $_EXTKEY,
 	'Community',
 	array(
-		'CommunityUser' => 'userOverview,userFunctions,loginPanel',
+		'CommunityUser' => 'userOverview,userFunctions,loginPanel,noProfileNotification',
 	),
 	// non-cacheable actions
 	array(
-		'CommunityUser' => 'userOverview,userFunctions,loginPanel',
+		'CommunityUser' => 'userOverview,userFunctions,loginPanel,noProfileNotification',
 	)
 );
 

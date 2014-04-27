@@ -93,6 +93,14 @@ class CommunityUserController extends \Visol\Easyvote\Controller\AbstractControl
 	}
 
 	/**
+	 * action noProfileNotification
+	 *
+	 * @return void
+	 */
+	public function noProfileNotificationAction() {
+	}
+
+	/**
 	 * action loginPanel
 	 *
 	 * @return void

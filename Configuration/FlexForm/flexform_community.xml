@@ -29,6 +29,10 @@
                                         <numIndex index="0">Login Panel</numIndex>
                                         <numIndex index="1">CommunityUser->loginPanel</numIndex>
                                     </numIndex>
+                                    <numIndex index="3">
+                                        <numIndex index="0">No Profile Notification</numIndex>
+                                        <numIndex index="1">CommunityUser->noProfileNotification</numIndex>
+                                    </numIndex>
 
                                 </items>
                             </config>
