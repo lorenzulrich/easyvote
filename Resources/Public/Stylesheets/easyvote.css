@@ -669,3 +669,7 @@ table.advantages tr td {
 .fb-share-link, .fb-share-link img {
     cursor: pointer;
 }
+
+.siteheader-countdown {
+    cursor: pointer;
+}
