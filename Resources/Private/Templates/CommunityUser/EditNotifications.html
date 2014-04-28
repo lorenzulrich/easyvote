@@ -12,7 +12,7 @@
 		<f:form class="inputForm" action="updateNotifications" name="communityUser" object="{user}">
 			<h3><f:translate key="editNotifications.sectionEmailHeader" /></h3>
 			<div class="form-row">
-				<f:form.textfield property="email" additionalAttributes="{required: required, placeholder:'E-Mail-Adresse'}" />
+				<f:form.textfield property="email" additionalAttributes="{required: required, placeholder:'{f:translate(key:\'editProfile.placeholderEmail\')}'}" />
 			</div>
 			<div class="form-row form-row-radio">
 				<f:form.radio id="notificationMailActive-1" name="communityUser[notificationMailActive]" value="1" checked="{user.notificationMailActive} == 1" /> <label for="notificationMailActive-1"><f:translate key="editNotifications.stateActive" /></label>
@@ -25,7 +25,7 @@
 						<option {f:if(condition:'{0: \'{user.prefixCode}\'} == {0:\'{key}\'}', then:'selected=selected')} value="{key}">{phoneNumberPrefix}</option>
 					</f:for>
 				</select>
-				<f:form.textfield name="communityUser[telephone]" value="{user.telephoneWithoutPrefix}" class="formfield-phoneNumber" additionalAttributes="{placeholder:'Mobiltelefon'}" />
+				<f:form.textfield name="communityUser[telephone]" value="{user.telephoneWithoutPrefix}" class="formfield-phoneNumber" additionalAttributes="{placeholder:'{f:translate(key:\'editProfile.placeholderMobile\')}'}" />
 			</div>
 			<div class="form-row form-row-radio">
 				<f:form.radio id="notificationSmsActive-1" name="communityUser[notificationSmsActive]" value="1" checked="{user.notificationSmsActive} == 1" /> <label for="notificationSmsActive-1"><f:translate key="editNotifications.stateActive" /></label>

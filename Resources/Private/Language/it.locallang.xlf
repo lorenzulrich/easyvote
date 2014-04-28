@@ -294,6 +294,13 @@ Puoi disattivare la voto-sveglia per i tuoi amici in qualsiasi momento, se lo vu
 				<target>Non hai effettuato il login.</target>
 			</trans-unit>
 
+			<trans-unit id="voting.yourOpinion">
+				<source><![CDATA[
+					Wie wirst<br />du abstimmen?
+				]]></source>
+				<target><![CDATA[
+				]]></target>
+			</trans-unit>
 			<trans-unit id="voting.alreadyVotedUndo">
 				<source>Du hast bereits abgestimmt. Klicke, um die Stimme rückgängig zu machen.</source>
 				<target>Hai già votato. Clicca per annullare il tuo voto.</target>
@@ -401,6 +408,14 @@ Puoi disattivare la voto-sveglia per i tuoi amici in qualsiasi momento, se lo vu
 			<trans-unit id="editProfile.removeConfirm">
 				<source>Profil löschen</source>
 				<target>elimina profilo</target>
+			</trans-unit>
+			<trans-unit id="editProfile.placeholderFirstName">
+				<source>Vorname</source>
+				<target>Nome</target>
+			</trans-unit>
+			<trans-unit id="editProfile.placeholderLastName">
+				<source>Nachname</source>
+				<target>Cognome</target>
 			</trans-unit>
 			<trans-unit id="editProfile.placeholderAddress">
 				<source>Adresse</source>

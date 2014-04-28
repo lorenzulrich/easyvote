@@ -232,6 +232,11 @@
 				<source>Nicht eingeloggt.</source>
 			</trans-unit>
 
+			<trans-unit id="voting.yourOpinion">
+				<source><![CDATA[
+					Wie wirst<br />du abstimmen?
+				]]></source>
+			</trans-unit>
 			<trans-unit id="voting.alreadyVotedUndo">
 				<source>Du hast bereits abgestimmt. Klicke, um die Stimme rückgängig zu machen.</source>
 			</trans-unit>
@@ -312,6 +317,12 @@
 			</trans-unit>
 			<trans-unit id="editProfile.removeConfirm">
 				<source>Profil löschen</source>
+			</trans-unit>
+			<trans-unit id="editProfile.placeholderFirstName">
+				<source>Vorname</source>
+			</trans-unit>
+			<trans-unit id="editProfile.placeholderLastName">
+				<source>Nachname</source>
 			</trans-unit>
 			<trans-unit id="editProfile.placeholderAddress">
 				<source>Adresse</source>

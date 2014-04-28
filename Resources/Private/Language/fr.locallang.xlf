@@ -293,6 +293,13 @@
 				<target>Non connecté.</target>
 			</trans-unit>
 
+			<trans-unit id="voting.yourOpinion">
+				<source><![CDATA[
+					Wie wirst<br />du abstimmen?
+				]]></source>
+				<target><![CDATA[
+				]]></target>
+			</trans-unit>
 			<trans-unit id="voting.alreadyVotedUndo">
 				<source>Du hast bereits abgestimmt. Klicke, um die Stimme rückgängig zu machen.</source>
 				<target>Tu as déjà voté. Clique ici pour revenir sur ton vote.</target>
@@ -399,6 +406,14 @@
 			<trans-unit id="editProfile.removeConfirm">
 				<source>Profil löschen</source>
 				<target>supprimer le profil</target>
+			</trans-unit>
+			<trans-unit id="editProfile.placeholderFirstName">
+				<source>Vorname</source>
+				<target>Prénom</target>
+			</trans-unit>
+			<trans-unit id="editProfile.placeholderLastName">
+				<source>Nachname</source>
+				<target>Nom de famille</target>
 			</trans-unit>
 			<trans-unit id="editProfile.placeholderAddress">
 				<source>Adresse</source>
@@ -509,7 +524,7 @@
 			</trans-unit>
 			<trans-unit id="userOverview.years">
 				<source>Jahre</source>
-				<target>Année</target>
+				<target>ans</target>
 			</trans-unit>
 
 			<trans-unit id="mobilizedWelcomeMail.hello">
