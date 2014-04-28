@@ -28,7 +28,7 @@
 						<option {f:if(condition:'{0: \'{user.prefixCode}\'} == {0:\'{key}\'}', then:'selected=selected')} value="{key}">{phoneNumberPrefix}</option>
 					</f:for>
 				</select>
-				<f:form.textfield name="communityUser[telephone]" value="{user.telephoneWithoutPrefix}" class="formfield-phoneNumber" additionalAttributes="{placeholder:'{f:translate(key:\'editProfile.placeholderMobile\')}'}" />
+				<f:form.textfield name="communityUser[telephone]" value="{user.telephoneWithoutPrefix}" class="formfield-phoneNumber" additionalAttributes="{maxlength: '7', placeholder:'{f:translate(key:\'editProfile.placeholderMobile\')}'}" />
 			</div>
 			<div class="form-row">
 				<f:form.textfield property="email" additionalAttributes="{required: required, placeholder:'{f:translate(key:\'editProfile.placeholderEmail\')}'}" />
