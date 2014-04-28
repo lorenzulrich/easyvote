@@ -38,12 +38,14 @@
 				<div class="action twitter">
 					<a href="https://twitter.com/share" class="twitter-share-button" data-count="vertical" data-url="{f:uri.action(arguments: {selectSingle:metaVotingProposal.uid}, absolute: 1)}" data-text="{votingProposal.shortTitle}" data-via="easyvote_ch" data-hashtags="easyvote">Tweet</a>
 				</div>
-				<div class="pull-right">
-					<f:render partial="MetaVotingProposal/Voting" arguments="{settings:settings, votingPropsalUid:votingProposal.uid}" />
-				</div>
-				<div class="pull-right">
-					Wie wirst<br />du abstimmen?
-				</div>
+				<f:if condition="{settings.desktopContext} == 1">
+					<div class="pull-right">
+						<f:render partial="MetaVotingProposal/Voting" arguments="{settings:settings, votingPropsalUid:votingProposal.uid}" />
+					</div>
+					<div class="pull-right">
+						Wie wirst<br />du abstimmen?
+					</div>
+				</f:if>
 			</div>
 			<div class="clearer"></div>
 			<div class="abstimmungsvorlage-content">
