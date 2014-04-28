@@ -322,8 +322,8 @@
 			</trans-unit>
 
 			<trans-unit id="votingAnswer.header">
-				<source>Meine Vote-Wecker-Kontakte</source>
-				<target>Mes contacts pour l'alarme de vote</target>
+				<source>Danke für deine Stimme!</source>
+				<target>Merci!</target>
 			</trans-unit>
 			<trans-unit id="votingAnswer.shareYourOpinion">
 				<source>Teile deine Meinung und überzeuge deine Freunde.</source>

@@ -324,8 +324,8 @@ Puoi disattivare la voto-sveglia per i tuoi amici in qualsiasi momento, se lo vu
 
 
 			<trans-unit id="votingAnswer.header">
-				<source>Meine Vote-Wecker-Kontakte</source>
-				<target>I miei contatti voto-sveglia</target>
+				<source>Danke für deine Stimme!</source>
+				<target>Grazie!</target>
 			</trans-unit>
 			<trans-unit id="votingAnswer.shareYourOpinion">
 				<source>Teile deine Meinung und überzeuge deine Freunde.</source>

@@ -255,7 +255,7 @@
 
 
 			<trans-unit id="votingAnswer.header">
-				<source>Meine Vote-Wecker-Kontakte</source>
+				<source>Danke für deine Stimme!</source>
 			</trans-unit>
 			<trans-unit id="votingAnswer.shareYourOpinion">
 				<source>Teile deine Meinung und überzeuge deine Freunde.</source>
