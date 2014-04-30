@@ -69,7 +69,7 @@ if (!defined('TYPO3_MODE')) {
 	)
 );
 
-/* Community-Plugins */
+/* Edit Profile */
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
 	'Visol.' . $_EXTKEY,
 	'Profile',
@@ -105,6 +105,19 @@ if (!defined('TYPO3_MODE')) {
 	// non-cacheable actions
 	array(
 		'CommunityUser' => 'editMobilizations',
+	)
+);
+
+/* Unsubscribe */
+\TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
+	'Visol.' . $_EXTKEY,
+	'Unsubscribe',
+	array(
+		'CommunityUser' => 'unsubscribeFromNotification',
+	),
+	// non-cacheable actions
+	array(
+		'CommunityUser' => 'unsubscribeFromNotification',
 	)
 );
 

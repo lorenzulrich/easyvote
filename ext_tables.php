@@ -71,6 +71,14 @@ $TCA['tt_content']['types']['list']['subtypes_addlist'][$pluginSignature] = 'pi_
 	'EXT:easyvote/ext_icon.gif'
 );
 
+/* Unsubscribe */
+\TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin(
+	$_EXTKEY,
+	'Unsubscribe',
+	'Vote-Wecker abmelden',
+	'EXT:easyvote/ext_icon.gif'
+);
+
 /* Easyvote Backend Module */
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerModule(
 	'Visol.' . $_EXTKEY,
@@ -78,7 +86,7 @@ $TCA['tt_content']['types']['list']['subtypes_addlist'][$pluginSignature] = 'pi_
 	'easyvote',
 	'top',
 	array(
-		'CommunityUser' => 'backendDashboard,backendSmsMessagingIndex,backendSmsMessageSend,backendEmailExportIndex'
+		'CommunityUser' => 'backendDashboard,backendSmsMessagingIndex,backendSmsMessageSend,backendEmailExportIndex,backendEmailExportPerform'
 	),
 	array(
 		'access' => 'user,group',

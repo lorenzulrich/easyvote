@@ -1,0 +1,27 @@
+{namespace bu = TYPO3\CMS\Beuser\ViewHelpers}
+
+<f:layout name="Default" />
+
+<f:section name="iconButtons">
+</f:section>
+
+<f:section name="content">
+
+	<h3>E-Mail-Export</h3>
+
+	<div class="collapsibleSection clearfix">
+		<f:form action="backendEmailExportPerform">
+			<f:render partial="CommunityUser/Filters/UserLanguage" arguments="{demand: demand, languages:languages}" />
+			<f:render partial="CommunityUser/Filters/Kanton" arguments="{demand: demand, kantons:kantons}" />
+			<div class="form-row clearfix">
+				<div class="label">
+					&nbsp;
+				</div>
+				<div class="fields">
+					<f:form.submit value="Adressen exportieren" /><br />
+				</div>
+			</div>
+		</f:form>
+	</div>
+
+</f:section>

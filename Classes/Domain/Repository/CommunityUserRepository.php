@@ -43,7 +43,7 @@ class CommunityUserRepository extends \TYPO3\CMS\Extbase\Domain\Repository\Front
 				$constraints[] = $query->equals('notificationSmsActive', 1);
 			}
 			if ($filterDemand['type'] === \Visol\Easyvote\Domain\Model\MessagingJob::JOBTYPE_EMAIL) {
-				$constraints[] = $query->equals('notificationEmailActive', 1);
+				$constraints[] = $query->equals('notificationMailActive', 1);
 			}
 		}
 
@@ -80,6 +80,20 @@ class CommunityUserRepository extends \TYPO3\CMS\Extbase\Domain\Repository\Front
 		} else {
 			return FALSE;
 		}
+	}
+
+	/**
+	 * Find a user by its mobilized user
+	 *
+	 * @param $mobilizedUser \Visol\Easyvote\Domain\Model\CommunityUser
+	 * @return object
+	 */
+	public function findOneByMobilizedUser($mobilizedUser) {
+		$query = $this->createQuery();
+		$query->matching(
+			$query->contains('notificationRelatedUsers', $mobilizedUser)
+		);
+		return $query->execute()->getFirst();
 	}
 
 }

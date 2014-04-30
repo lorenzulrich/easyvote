@@ -27,6 +27,7 @@ namespace Visol\Easyvote\Controller;
 use TYPO3\CMS\Core\Utility\DebugUtility;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
+use Visol\Easyvote\Domain\Model\CommunityUser;
 
 /**
  *
@@ -107,7 +108,7 @@ class CommunityUserController extends \Visol\Easyvote\Controller\AbstractControl
 	 */
 	public function loginPanelAction() {
 		$communityUser = $this->getLoggedInUser();
-		if ($communityUser instanceof \Visol\Easyvote\Domain\Model\CommunityUser) {
+		if ($communityUser instanceof CommunityUser) {
 			$this->view->assign('user', $communityUser);
 		}
 	}
@@ -119,7 +120,7 @@ class CommunityUserController extends \Visol\Easyvote\Controller\AbstractControl
 		$communityUser = $this->getLoggedInUser();
 		$kantons = $this->kantonRepository->findAll();
 
-		if ($communityUser instanceof \Visol\Easyvote\Domain\Model\CommunityUser) {
+		if ($communityUser instanceof CommunityUser) {
 			$fullPhoneNumber = $communityUser->getTelephone();
 			$prefixCode = substr($fullPhoneNumber, 0, 4);
 			$phoneNumber = substr($fullPhoneNumber, 4);
@@ -134,11 +135,11 @@ class CommunityUserController extends \Visol\Easyvote\Controller\AbstractControl
 	/**
 	 * action updateProfile
 	 *
-	 * @param \Visol\Easyvote\Domain\Model\CommunityUser $communityUser
+	 * @param CommunityUser $communityUser
 	 * @param string $phoneNumberPrefix
 	 * @dontverifyrequesthash $communityUser
 	 */
-	public function updateProfileAction(\Visol\Easyvote\Domain\Model\CommunityUser $communityUser, $phoneNumberPrefix = '4175') {
+	public function updateProfileAction(CommunityUser $communityUser, $phoneNumberPrefix = '4175') {
 		$loggedInUser = $this->getLoggedInUser();
 		/** Todo: Sanitize properties that should never be updated by the user. */
 		if ($loggedInUser->getUid() === $communityUser->getUid()) {
@@ -158,10 +159,10 @@ class CommunityUserController extends \Visol\Easyvote\Controller\AbstractControl
 	/**
 	 * action removeProfile
 	 *
-	 * @param \Visol\Easyvote\Domain\Model\CommunityUser $communityUser
+	 * @param CommunityUser $communityUser
 	 * @dontvalidate $communityUser
 	 */
-	public function removeProfileAction(\Visol\Easyvote\Domain\Model\CommunityUser $communityUser) {
+	public function removeProfileAction(CommunityUser $communityUser) {
 		$loggedInUser = $this->getLoggedInUser();
 		if ($loggedInUser->getUid() === $communityUser->getUid()) {
 			$communityUser->setEmail('');
@@ -194,7 +195,7 @@ class CommunityUserController extends \Visol\Easyvote\Controller\AbstractControl
 	 */
 	public function editNotificationsAction() {
 		$communityUser = $this->getLoggedInUser();
-		if ($communityUser instanceof \Visol\Easyvote\Domain\Model\CommunityUser) {
+		if ($communityUser instanceof CommunityUser) {
 			$fullPhoneNumber = $communityUser->getTelephone();
 			$prefixCode = substr($fullPhoneNumber, 0, 4);
 			$phoneNumber = substr($fullPhoneNumber, 4);
@@ -208,12 +209,12 @@ class CommunityUserController extends \Visol\Easyvote\Controller\AbstractControl
 	/**
 	 * action updateNotifications
 	 *
-	 * @param \Visol\Easyvote\Domain\Model\CommunityUser $communityUser
+	 * @param CommunityUser $communityUser
 	 * @param string $phoneNumberPrefix
 	 * @dontverifyrequesthash $communityUser
 	 * @dontvalidate $communityUser
 	 */
-	public function updateNotificationsAction(\Visol\Easyvote\Domain\Model\CommunityUser $communityUser, $phoneNumberPrefix = '4175') {
+	public function updateNotificationsAction(CommunityUser $communityUser, $phoneNumberPrefix = '4175') {
 		$loggedInUser = $this->getLoggedInUser();
 		/** Todo: Sanitize properties that should never be updated by the user. */
 		if ($loggedInUser->getUid() === $communityUser->getUid()) {
@@ -236,7 +237,7 @@ class CommunityUserController extends \Visol\Easyvote\Controller\AbstractControl
 	public function editMobilizationsAction() {
 		$communityUser = $this->getLoggedInUser();
 		$nextVotingDay = $this->votingDayRepository->findNextVotingDay();
-		if ($communityUser instanceof \Visol\Easyvote\Domain\Model\CommunityUser) {
+		if ($communityUser instanceof CommunityUser) {
 			$this->view->assign('user', $communityUser);
 			$this->view->assign('nextVotingDay', $nextVotingDay);
 		}
@@ -249,7 +250,7 @@ class CommunityUserController extends \Visol\Easyvote\Controller\AbstractControl
 	 */
 	public function listMobilizedCommunityUsersAction() {
 		$communityUser = $this->getLoggedInUser();
-		if ($communityUser instanceof \Visol\Easyvote\Domain\Model\CommunityUser) {
+		if ($communityUser instanceof CommunityUser) {
 			$this->view->assign('user', $communityUser);
 			$content = $this->view->render();
 			return json_encode($content);
@@ -273,14 +274,14 @@ class CommunityUserController extends \Visol\Easyvote\Controller\AbstractControl
 	/**
 	 * action createMobilizedCommunityUser
 	 *
-	 * @param \Visol\Easyvote\Domain\Model\CommunityUser $newCommunityUser
+	 * @param CommunityUser $newCommunityUser
 	 * @dontverifyrequesthash $newCommunityUser
 	 * @dontvalidate $newCommunityUser
 	 * @return string
 	 */
-	public function createMobilizedCommunityUserAction(\Visol\Easyvote\Domain\Model\CommunityUser $newCommunityUser) {
+	public function createMobilizedCommunityUserAction(CommunityUser $newCommunityUser) {
 		$communityUser = $this->getLoggedInUser();
-		if ($communityUser instanceof \Visol\Easyvote\Domain\Model\CommunityUser) {
+		if ($communityUser instanceof CommunityUser) {
 			// user is authorized to add users to his profile
 			if (GeneralUtility::validEmail($newCommunityUser->getEmail())) {
 				if (!count($this->communityUserRepository->findByEmail($newCommunityUser->getEmail()))) {
@@ -331,14 +332,14 @@ class CommunityUserController extends \Visol\Easyvote\Controller\AbstractControl
 	/**
 	 * action removeMobilizedCommunityUser
 	 *
-	 * @param \Visol\Easyvote\Domain\Model\CommunityUser $notificationRelatedUser
+	 * @param CommunityUser $notificationRelatedUser
 	 * @dontverifyrequesthash $notificationRelatedUser
 	 * @dontvalidate $notificationRelatedUser
 	 * @return string
 	 */
-	public function removeMobilizedCommunityUserAction(\Visol\Easyvote\Domain\Model\CommunityUser $notificationRelatedUser) {
+	public function removeMobilizedCommunityUserAction(CommunityUser $notificationRelatedUser) {
 		$communityUser = $this->getLoggedInUser();
-		if ($communityUser instanceof \Visol\Easyvote\Domain\Model\CommunityUser) {
+		if ($communityUser instanceof CommunityUser) {
 			// user is logged in
 			if ($notificationRelatedUser->getCommunityUser()->getUid() === $communityUser->getUid()) {
 				// is it really a child of the logged in user
@@ -354,8 +355,196 @@ class CommunityUserController extends \Visol\Easyvote\Controller\AbstractControl
 		}
 	}
 
-	public function backendDashboardAction() {
+	/**
+	 * Unsubscribe user from notification
+	 */
+	public function unsubscribeFromNotificationAction() {
+		$arguments = GeneralUtility::_GET();
+		if (isset($arguments['cuid']) && isset($arguments['verify'])) {
+			$communityUserUid = (int)base64_decode($arguments['cuid']);
+			$validVerificationCode = GeneralUtility::stdAuthCode($communityUserUid);
+			if ($validVerificationCode === $arguments['verify']) {
+				$message = 'valid';
+				/** @var \Visol\Easyvote\Domain\Model\CommunityUser $communityUser */
+				$communityUser = $this->communityUserRepository->findByUid($communityUserUid);
+				$userGroups = $communityUser->getUsergroup();
+				$userGroupArray = array();
+				foreach ($userGroups as $userGroup) {
+					/** @var $userGroup \TYPO3\CMS\Extbase\Domain\Model\FrontendUserGroup */
+					$userGroupArray[] = $userGroup->getUid();
+				}
+				if (count($userGroupArray)) {
+					if (in_array($this->settings['communityUserGroupUid'], $userGroupArray)) {
+						// Facebook: Deactivate notification mail
+						$communityUser->setNotificationMailActive(FALSE);
+						$this->communityUserRepository->update($communityUser);
+						$this->persistenceManager->persistAll();
+						$message = 	LocalizationUtility::translate('unsubscribe.notificationMailDisabled', 'easyvote');
+					} elseif (in_array($this->settings['notificationRelatedUserGroupUid'], $userGroupArray)) {
+						// Vote-Wecker only: Remove user, inform parent
 
+						/** @var \Visol\Easyvote\Domain\Model\CommunityUser $parentUser */
+						$parentUser = $this->communityUserRepository->findOneByMobilizedUser($communityUser);
+						if ($parentUser instanceof \Visol\Easyvote\Domain\Model\CommunityUser) {
+							// Parent user found, so inform him
+							/** @var \Visol\Easyvote\Domain\Model\MessagingJob $messagingJob */
+							/*$standaloneView = $this->objectManager->create('TYPO3\CMS\Fluid\View\StandaloneView');
+							$standaloneView->setFormat('html');
+							$extbaseConfiguration = $this->configurationManager->getConfiguration(\TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface::CONFIGURATION_TYPE_FRAMEWORK, 'easyvote', 'easyvote');
+							$templateRootPath = GeneralUtility::getFileAbsFileName($extbaseConfiguration['view']['templateRootPath']);
+							$templatePathAndFilename = $templateRootPath . 'Email/MobilizedUnsubscribeNotification.html';
+							$standaloneView->setTemplatePathAndFilename($templatePathAndFilename);
+							$standaloneView->assign('parentUser', $parentUser);
+							$standaloneView->assign('mobilizedUser', $communityUser);
+							$content = $standaloneView->render();
+							$messagingJob = $this->objectManager->create('Visol\Easyvote\Domain\Model\MessagingJob');
+							$messagingJob->setContent($content);
+							$messagingJob->setSubject(LocalizationUtility::translate('mobilizedWelcomeMail.subject', 'easyvote'));
+							$messagingJob->setCommunityUser($newCommunityUser);
+							$messagingJob->setDistributionTime(new \DateTime());
+							$messagingJob->setType($messagingJob::JOBTYPE_EMAIL);
+							$this->messagingJobRepository->add($messagingJob);*/
+						}
+						$this->communityUserRepository->remove($communityUser);
+						$this->persistenceManager->persistAll();
+						$message = LocalizationUtility::translate('unsubscribe.mobilizedCommunityUserDeleted', 'easyvote');
+					} else {
+						$message = LocalizationUtility::translate('unsubscribe.invalidRequest', 'easyvote');
+					}
+				} else {
+					$message = LocalizationUtility::translate('unsubscribe.invalidRequest', 'easyvote');
+				}
+			} else {
+				$message = LocalizationUtility::translate('unsubscribe.invalidRequest', 'easyvote');
+			}
+		} else {
+			$message = LocalizationUtility::translate('unsubscribe.invalidRequest', 'easyvote');
+		}
+		$this->view->assign('message', $message);
+	}
+
+	/**
+	 * The backend dashboard
+	 */
+	public function backendDashboardAction() {
+	}
+
+	/**
+	 * Interface for exporting mail addresses
+	 */
+	public function backendEmailExportIndexAction() {
+		$languages = array(
+			'Deutsch' => CommunityUser::USERLANGUAGE_GERMAN,
+			'Französisch' => CommunityUser::USERLANGUAGE_FRENCH,
+			'Italienisch' => CommunityUser::USERLANGUAGE_ITALIAN
+		);
+
+		$kantons = $this->kantonRepository->findAll();
+
+		$dateTime = new \DateTime();
+		$dateTime = $dateTime->format('Y-m-d\TH:i:s');
+
+		$this->view->assignMultiple(array(
+			'languages' => $languages,
+			'kantons' => $kantons,
+			'dateTime' => $dateTime,
+		));
+	}
+
+	/**
+	 * @param array $demand
+	 */
+	public function backendEmailExportPerformAction($demand = array()) {
+		if (is_array($demand['filter'])) {
+			$demand['filter']['type'] = \Visol\Easyvote\Domain\Model\MessagingJob::JOBTYPE_EMAIL;
+			$communityUsers = $this->communityUserRepository->findByFilterDemand($demand['filter']);
+
+			// Create new PHPExcel object
+			$objPHPExcel = new \PHPExcel();
+
+			// Set document properties
+			$objPHPExcel->getProperties()->setCreator("easyvote")
+				->setLastModifiedBy("easyvote")
+				->setTitle("easyvote Datenexport")
+				->setSubject("easyvote Datenexport");
+
+			$rowIndex = 1;
+
+			// Add headers
+			$objPHPExcel->setActiveSheetIndex(0)
+				->setCellValue('A' . $rowIndex, 'Vorname')
+				->setCellValue('B' . $rowIndex, 'Nachname')
+				->setCellValue('C' . $rowIndex, 'E-Mail')
+				->setCellValue('D' . $rowIndex, 'Kanton')
+				->setCellValue('E' . $rowIndex, 'Sprache')
+				->setCellValue('F' . $rowIndex, 'Typ')
+				->setCellValue('G' . $rowIndex, 'Abmelde-Link');
+			$rowIndex++;
+
+			// Add content
+			foreach ($communityUsers as $communityUser) {
+				/** @var $communityUser CommunityUser */
+
+				// kanton
+				$kanton = is_object($communityUser->getKanton()) ? $communityUser->getKanton()->getName() : '';
+
+				$unsubscribeUrl = array();
+				$unsubscribeUrl[] = $this->settings['unsubscribeHost'];
+				//$unsubscribeUrl[] = '?id=' . $this->settings['unsubscribePid'];
+
+				// user language
+				$userLanguage = $communityUser->getUserLanguage();
+				if ($userLanguage === CommunityUser::USERLANGUAGE_GERMAN) {
+					$userLanguage = 'Deutsch';
+					$unsubscribeUrl[] = 'de/community/abmelden/';
+				}
+				if ($userLanguage === CommunityUser::USERLANGUAGE_FRENCH) {
+					$userLanguage = 'Français';
+					$unsubscribeUrl[] = 'fr/community/supprimer/';
+				}
+				if ($userLanguage === CommunityUser::USERLANGUAGE_ITALIAN) {
+					$userLanguage = 'Italiano';
+					$unsubscribeUrl[] = 'it/community/cancellare/';
+				}
+
+				$unsubscribeUrl[] = '?cuid=' . base64_encode($communityUser->getUid());
+				$unsubscribeUrl[] = '&verify=' . GeneralUtility::stdAuthCode($communityUser->getUid());
+
+				// user groups
+				$usergroups = $communityUser->getUsergroup();
+				$userGroupsArray = array();
+				foreach ($usergroups as $usergroup) {
+					/** var @usergroup \TYPO3\CMS\Extbase\Domain\Model\FrontendUserGroup */
+					$userGroupsArray[] = $usergroup->getTitle();
+				}
+				$userGroupsCsv = implode(',', $userGroupsArray);
+
+				$objPHPExcel->setActiveSheetIndex(0)
+					->setCellValue('A' . $rowIndex, $communityUser->getFirstName())
+					->setCellValue('B' . $rowIndex, $communityUser->getLastName())
+					->setCellValue('C' . $rowIndex, $communityUser->getEmail())
+					->setCellValue('D' . $rowIndex, $kanton)
+					->setCellValue('E' . $rowIndex, $userLanguage)
+					->setCellValue('F' . $rowIndex, $userGroupsCsv)
+					->setCellValue('G' . $rowIndex, implode($unsubscribeUrl));
+				$rowIndex++;
+			}
+
+			// Set active sheet index to the first sheet, so Excel opens this as the first sheet
+			$objPHPExcel->setActiveSheetIndex(0);
+
+			// Redirect output to a client’s web browser (Excel2007)
+			header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+			header('Content-Disposition: attachment;filename="easyvote.xlsx"');
+			header('Cache-Control: max-age=0');
+
+			$objWriter = \PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel2007');
+			$objWriter->save('php://output');
+			die();
+		} else {
+			$this->flashMessageContainer->add('Fehler: Keine Filter-Anfrage für Versand.', '', \TYPO3\CMS\Core\Messaging\FlashMessage::ERROR);
+			$this->redirect('backendEmailExportIndex');
+		}
 	}
 
 	/**
@@ -363,9 +552,9 @@ class CommunityUserController extends \Visol\Easyvote\Controller\AbstractControl
 	 */
 	public function backendSmsMessagingIndexAction() {
 		$languages = array(
-			'Deutsch' => \Visol\Easyvote\Domain\Model\CommunityUser::USERLANGUAGE_GERMAN,
-			'Französisch' => \Visol\Easyvote\Domain\Model\CommunityUser::USERLANGUAGE_FRENCH,
-			'Italienisch' => \Visol\Easyvote\Domain\Model\CommunityUser::USERLANGUAGE_ITALIAN
+			'Deutsch' => CommunityUser::USERLANGUAGE_GERMAN,
+			'Französisch' => CommunityUser::USERLANGUAGE_FRENCH,
+			'Italienisch' => CommunityUser::USERLANGUAGE_ITALIAN
 		);
 
 		$kantons = $this->kantonRepository->findAll();
@@ -387,7 +576,7 @@ class CommunityUserController extends \Visol\Easyvote\Controller\AbstractControl
 	/**
 	 * @param array $demand
 	 */
-	public function backendSmsMessageSendAction($demand) {
+	public function backendSmsMessageSendAction($demand = array()) {
 		if ((int)$demand['sendToTestUser'] === 1) {
 			// no need to process filter demand, we just queue one message
 			$messagingJob = new \Visol\Easyvote\Domain\Model\MessagingJob();

@@ -94,6 +94,8 @@ plugin.tx_easyvote {
 		notificationRelatedUserGroupUid = 5
 		loginPid = 193
 		communityAjaxPid = 194
+		unsubscribePid = 202
+		unsubscribeHost = http://www.easyvote.dev/
 		votingPid = 139
 		communityVoteweckerPid = 199
 		communityMobilizePid = 200

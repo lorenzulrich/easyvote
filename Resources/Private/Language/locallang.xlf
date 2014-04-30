@@ -351,6 +351,20 @@
 				]]></source>
 			</trans-unit>
 
+			<trans-unit id="unsubscribe.header">
+				<source>Votewecker-Abmeldung</source>
+			</trans-unit>
+			<trans-unit id="unsubscribe.invalidRequest">
+				<source>Der Abmelde-Link ist unvollständig oder ungültig.</source>
+			</trans-unit>
+			<trans-unit id="unsubscribe.notificationMailDisabled">
+				<source>Danke für deine Abmeldung. Du erhältst künftig keinen Vote-Wecker mehr per E-Mail.</source>
+			</trans-unit>
+			<trans-unit id="unsubscribe.mobilizedCommunityUserDeleted">
+				<source>Danke für deine Abmeldung. Du erhältst künftig keinen Vote-Wecker mehr per E-Mail.</source>
+			</trans-unit>
+
+
 			<trans-unit id="mobilizedCommunityUser.remove">
 				<source>löschen</source>
 			</trans-unit>
