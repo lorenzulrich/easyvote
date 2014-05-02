@@ -382,28 +382,29 @@ class CommunityUserController extends \Visol\Easyvote\Controller\AbstractControl
 						$message = 	LocalizationUtility::translate('unsubscribe.notificationMailDisabled', 'easyvote');
 					} elseif (in_array($this->settings['notificationRelatedUserGroupUid'], $userGroupArray)) {
 						// Vote-Wecker only: Remove user, inform parent
-
-						/** @var \Visol\Easyvote\Domain\Model\CommunityUser $parentUser */
-						$parentUser = $this->communityUserRepository->findOneByMobilizedUser($communityUser);
-						if ($parentUser instanceof \Visol\Easyvote\Domain\Model\CommunityUser) {
+						$lazyLoadingFix = $communityUser->getCommunityUser()->getFirstName();
+						if ($communityUser->getCommunityUser() instanceof \Visol\Easyvote\Domain\Model\CommunityUser) {
 							// Parent user found, so inform him
 							/** @var \Visol\Easyvote\Domain\Model\MessagingJob $messagingJob */
-							/*$standaloneView = $this->objectManager->create('TYPO3\CMS\Fluid\View\StandaloneView');
+							$standaloneView = $this->objectManager->create('TYPO3\CMS\Fluid\View\StandaloneView');
 							$standaloneView->setFormat('html');
 							$extbaseConfiguration = $this->configurationManager->getConfiguration(\TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface::CONFIGURATION_TYPE_FRAMEWORK, 'easyvote', 'easyvote');
 							$templateRootPath = GeneralUtility::getFileAbsFileName($extbaseConfiguration['view']['templateRootPath']);
-							$templatePathAndFilename = $templateRootPath . 'Email/MobilizedUnsubscribeNotification.html';
+							$templatePathAndFilename = $templateRootPath . 'Email/MobilizedUnsubscribedNotification.html';
 							$standaloneView->setTemplatePathAndFilename($templatePathAndFilename);
-							$standaloneView->assign('parentUser', $parentUser);
+							$standaloneView->assign('parentUser', $communityUser->getCommunityUser());
 							$standaloneView->assign('mobilizedUser', $communityUser);
+							/** @var \Visol\Easyvote\Domain\Model\VotingDay $nextVotingDay */
+							$nextVotingDay = $this->votingDayRepository->findNextVotingDay();
+							$standaloneView->assign('nextVotingDay', $nextVotingDay);
 							$content = $standaloneView->render();
 							$messagingJob = $this->objectManager->create('Visol\Easyvote\Domain\Model\MessagingJob');
 							$messagingJob->setContent($content);
-							$messagingJob->setSubject(LocalizationUtility::translate('mobilizedWelcomeMail.subject', 'easyvote'));
-							$messagingJob->setCommunityUser($newCommunityUser);
+							$messagingJob->setSubject($communityUser->getFirstName() . ' ' . LocalizationUtility::translate('mobilizedUnsubscribedNotification.subject', 'easyvote'));
+							$messagingJob->setCommunityUser($communityUser->getCommunityUser());
 							$messagingJob->setDistributionTime(new \DateTime());
 							$messagingJob->setType($messagingJob::JOBTYPE_EMAIL);
-							$this->messagingJobRepository->add($messagingJob);*/
+							$this->messagingJobRepository->add($messagingJob);
 						}
 						$this->communityUserRepository->remove($communityUser);
 						$this->persistenceManager->persistAll();

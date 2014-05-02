@@ -571,6 +571,46 @@
 				<target>Une alarme de vote a été installée pour toi</target>
 			</trans-unit>
 
+			<trans-unit id="mobilizedUnsubscribedNotification.subject">
+				<source>geht nicht stimmen!</source>
+				<target>ne va pas voter!</target>
+			</trans-unit>
+			<trans-unit id="mobilizedUnsubscribedNotification.hello">
+				<source>Hallo</source>
+				<target>Salut</target>
+			</trans-unit>
+			<trans-unit id="mobilizedUnsubscribedNotification.text1">
+				<source>Wir haben schlechte Nachrichten: </source>
+				<target>Nous avons de mauvaises nouvelles: </target>
+			</trans-unit>
+			<trans-unit id="mobilizedUnsubscribedNotification.text2">
+				<source>hat den easyvote Vote-Wecker deaktiviert und wird an den Abstimmungen vom </source>
+				<target>a désactivé l’alarme easyvote et ne prendra probablement pas part aux votations du </target>
+			</trans-unit>
+			<trans-unit id="mobilizedUnsubscribedNotification.text3">
+				<source>vermutlich nicht teilnehmen. Falls du dies ändern möchtest, kannst du den Vote-Wecker für </source>
+				<target>. Si tu souhaites changer cela, tu peux réactiver l’alarme de vote pour </target>
+			</trans-unit>
+			<trans-unit id="mobilizedUnsubscribedNotification.text4">
+				<source><![CDATA[
+					auf <a href="http://www.easyvote.ch">www.easyvote.ch</a> erneut stellen.
+				]]></source>
+				<target><![CDATA[
+					sur <a href="http://www.easyvote.ch">www.easyvote.ch</a>.
+				]]></target>
+			</trans-unit>
+			<trans-unit id="mobilizedUnsubscribedNotification.text5">
+				<source><![CDATA[
+					<p>Herzlichen Dank, dass du mithilfst, die Stimmbeteiligung der Jungen zu erhöhen.</p>
+					<p>Beste Grüsse<br />
+					dein easyvote-Team</p>
+				]]></source>
+				<target><![CDATA[
+					<p>Nous te remercions chaleureusement de contribuer à augmenter la participation politique des jeunes.</p>
+					<p>Meilleures salutations<br />
+					Ton équipe easyvote</p>
+				]]></target>
+			</trans-unit>
 
 			<trans-unit id="error.1245107351">
 				<source>Bitte die rot hinterlegten Felder korrigieren.</source>

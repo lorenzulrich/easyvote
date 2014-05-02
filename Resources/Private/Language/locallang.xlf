@@ -439,6 +439,33 @@
 				<source>Ein Vote-Wecker wurde für dich gestellt</source>
 			</trans-unit>
 
+			<trans-unit id="mobilizedUnsubscribedNotification.subject">
+				<source>geht nicht stimmen!</source>
+			</trans-unit>
+			<trans-unit id="mobilizedUnsubscribedNotification.hello">
+				<source>Hallo</source>
+			</trans-unit>
+			<trans-unit id="mobilizedUnsubscribedNotification.text1">
+				<source>Wir haben schlechte Nachrichten: </source>
+			</trans-unit>
+			<trans-unit id="mobilizedUnsubscribedNotification.text2">
+				<source>hat den easyvote Vote-Wecker deaktiviert und wird an den Abstimmungen vom </source>
+			</trans-unit>
+			<trans-unit id="mobilizedUnsubscribedNotification.text3">
+				<source>vermutlich nicht teilnehmen. Falls du dies ändern möchtest, kannst du den Vote-Wecker für </source>
+			</trans-unit>
+			<trans-unit id="mobilizedUnsubscribedNotification.text4">
+				<source><![CDATA[
+					auf <a href="http://www.easyvote.ch">www.easyvote.ch</a> erneut stellen.
+				]]></source>
+			</trans-unit>
+			<trans-unit id="mobilizedUnsubscribedNotification.text5">
+				<source><![CDATA[
+					<p>Herzlichen Dank, dass du mithilfst, die Stimmbeteiligung der Jungen zu erhöhen.</p>
+					<p>Beste Grüsse<br />
+					dein easyvote-Team</p>
+				]]></source>
+			</trans-unit>
 
 			<trans-unit id="error.1245107351">
 				<source>Bitte die rot hinterlegten Felder korrigieren.</source>
