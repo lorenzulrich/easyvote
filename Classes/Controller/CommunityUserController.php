@@ -309,6 +309,9 @@ class CommunityUserController extends \Visol\Easyvote\Controller\AbstractControl
 					$standaloneView->assign('mobilizedUser', $newCommunityUser);
 					$content = $standaloneView->render();
 					$messagingJob = $this->objectManager->create('Visol\Easyvote\Domain\Model\MessagingJob');
+					$messagingJob->setSenderName($communityUser->getFirstName() . ' ' . $communityUser->getLastName());
+					$messagingJob->setReturnPath($communityUser->getEmail());
+					$messagingJob->setReplyTo($communityUser->getEmail());
 					$messagingJob->setContent($content);
 					$messagingJob->setSubject(LocalizationUtility::translate('mobilizedWelcomeMail.subject', 'easyvote'));
 					$messagingJob->setCommunityUser($newCommunityUser);
