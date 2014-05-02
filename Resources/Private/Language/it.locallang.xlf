@@ -254,7 +254,7 @@ Puoi disattivare la voto-sveglia per i tuoi amici in qualsiasi momento, se lo vu
 					</div>
 				]]></source>
 				<target><![CDATA[
-					<p style="clear: both;">Es wird folgender Text verschickt:</p>
+					<p style="clear: both;">È stato inviato il seguente testo:</p>
 					<div class="mobilization-notification-example">
 						<p>Ciao Nome</p>
 						<p>Ho impostato per te una voto-sveglia su easyvote.ch, in questo modo non potrai più dimenticarti, o dormire troppo a lungo, delle votazioni in arrivo.
@@ -299,6 +299,7 @@ Puoi disattivare la voto-sveglia per i tuoi amici in qualsiasi momento, se lo vu
 					Wie wirst<br />du abstimmen?
 				]]></source>
 				<target><![CDATA[
+					Che cosa<br />voterai?
 				]]></target>
 			</trans-unit>
 			<trans-unit id="voting.alreadyVotedUndo">

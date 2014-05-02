@@ -298,6 +298,7 @@
 					Wie wirst<br />du abstimmen?
 				]]></source>
 				<target><![CDATA[
+					Que vas-tu<br />voter?
 				]]></target>
 			</trans-unit>
 			<trans-unit id="voting.alreadyVotedUndo">
@@ -542,7 +543,7 @@
 			</trans-unit>
 			<trans-unit id="userFunctions.mobilizeUsers">
 				<source>Freunde mobilisieren</source>
-				<target>Mobiliser des amis</target>
+				<target>Mobilise des amis</target>
 			</trans-unit>
 			<trans-unit id="userOverview.years">
 				<source>Jahre</source>
