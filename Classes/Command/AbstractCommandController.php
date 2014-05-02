@@ -51,9 +51,10 @@ class AbstractCommandController extends \TYPO3\CMS\Extbase\Mvc\Controller\Comman
 	/**
 	 * @param $content
 	 * @param \Visol\Easyvote\Domain\Model\CommunityUser $communityUser
+	 * @param array $arguments
 	 * @return string
 	 */
-	protected function renderContentWithFluid($content, \Visol\Easyvote\Domain\Model\CommunityUser $communityUser) {
+	protected function renderContentWithFluid($content, \Visol\Easyvote\Domain\Model\CommunityUser $communityUser = NULL, $arguments = array()) {
 		/** @var \TYPO3\CMS\Fluid\View\StandaloneView $standaloneView */
 		$standaloneView = $this->objectManager->create('TYPO3\CMS\Fluid\View\StandaloneView');
 		$standaloneView->setFormat('html');
@@ -70,7 +71,9 @@ class AbstractCommandController extends \TYPO3\CMS\Extbase\Mvc\Controller\Comman
 			$standaloneView->setTemplateSource($content);
 		}
 
+		$standaloneView->assign('parentUser', $communityUser->getCommunityUser());
 		$standaloneView->assign('user', $communityUser);
+		$standaloneView->assignMultiple($arguments);
 		return $standaloneView->render();
 	}
 
@@ -90,6 +93,19 @@ class AbstractCommandController extends \TYPO3\CMS\Extbase\Mvc\Controller\Comman
 		$message->setBody($content, 'text/html');
 		$message->send();
 		return $message->isSent();
+	}
+
+	/**
+	 * @param \Visol\Easyvote\Domain\Model\MessagingJob $messagingJob
+	 * @return array
+	 */
+	protected function getFluidArgumentArrayFromMessagingJobProperties(\Visol\Easyvote\Domain\Model\MessagingJob $messagingJob) {
+		return array(
+			'recipientName' => $messagingJob->getRecipientName(),
+			'recipientEmail' => $messagingJob->getRecipientEmail(),
+			'senderName' => $messagingJob->getSenderName(),
+			'senderEmail' => $messagingJob->getSenderEmail(),
+		);
 	}
 
 	/**
