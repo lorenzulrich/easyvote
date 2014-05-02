@@ -352,16 +352,18 @@
 			</trans-unit>
 
 			<trans-unit id="unsubscribe.header">
-				<source>Votewecker-Abmeldung</source>
+				<source>Vote-Wecker-Abmeldung</source>
 			</trans-unit>
 			<trans-unit id="unsubscribe.invalidRequest">
-				<source>Der Abmelde-Link ist unvollständig oder ungültig.</source>
+				<source><![CDATA[
+					Der Abmeldelink ist unvollständig oder ungültig. Bitte melde dich bei <a href="mailto:info@easyvote.ch">info@easyvote.ch</a>.
+				]]></source>
 			</trans-unit>
 			<trans-unit id="unsubscribe.notificationMailDisabled">
-				<source>Danke für deine Abmeldung. Du erhältst künftig keinen Vote-Wecker mehr per E-Mail.</source>
+				<source>Danke für deine Abmeldung. Du erhälst künftig keinen Vote-Wecker mehr per E-Mail.</source>
 			</trans-unit>
 			<trans-unit id="unsubscribe.mobilizedCommunityUserDeleted">
-				<source>Danke für deine Abmeldung. Du erhältst künftig keinen Vote-Wecker mehr per E-Mail.</source>
+				<source>Danke für deine Abmeldung. Du erhälst künftig keinen Vote-Wecker mehr per E-Mail, sofern er dir von deinen Freunden nicht erneut gestellt wird.</source>
 			</trans-unit>
 
 

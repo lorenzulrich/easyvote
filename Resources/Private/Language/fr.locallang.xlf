@@ -452,6 +452,28 @@
 				]]></target>
 			</trans-unit>
 
+			<trans-unit id="unsubscribe.header">
+				<source>Vote-Wecker-Abmeldung</source>
+				<target>Désabonnement à l’alarme de vote</target>
+			</trans-unit>
+			<trans-unit id="unsubscribe.invalidRequest">
+				<source><![CDATA[
+					Der Abmeldelink ist unvollständig oder ungültig. Bitte melde dich bei <a href="mailto:info@easyvote.ch">info@easyvote.ch</a>.
+				]]></source>
+				<target><![CDATA[
+					Le lien de désabonnement ne fonctionne pas ou est incomplet. Pour toutes questions: <a href="mailto:info@easyvote.ch">info@easyvote.ch</a>.
+				]]></target>
+			</trans-unit>
+			<trans-unit id="unsubscribe.notificationMailDisabled">
+				<source>Danke für deine Abmeldung. Du erhälst künftig keinen Vote-Wecker mehr per E-Mail.</source>
+				<target>Merci pour ton désabonnement. Tu ne recevras plus d’alarme de vote par email.</target>
+			</trans-unit>
+			<trans-unit id="unsubscribe.mobilizedCommunityUserDeleted">
+				<source>Danke für deine Abmeldung. Du erhälst künftig keinen Vote-Wecker mehr per E-Mail, sofern er dir von deinen Freunden nicht erneut gestellt wird.</source>
+				<target>Merci pour ton désabonnement. Tu ne recevras plus d’alarme de vote par email, à moins que des amis t’abonnent à nouveau.</target>
+			</trans-unit>
+
+
 			<trans-unit id="mobilizedCommunityUser.remove">
 				<source>löschen</source>
 				<target>supprimer</target>

@@ -454,6 +454,27 @@ Puoi disattivare la voto-sveglia per i tuoi amici in qualsiasi momento, se lo vu
 				]]></target>
 			</trans-unit>
 
+			<trans-unit id="unsubscribe.header">
+				<source>Vote-Wecker-Abmeldung</source>
+				<target>Disattivare la voto-sveglia</target>
+			</trans-unit>
+			<trans-unit id="unsubscribe.invalidRequest">
+				<source><![CDATA[
+					Der Abmeldelink ist unvollständig oder ungültig. Bitte melde dich bei <a href="mailto:info@easyvote.ch">info@easyvote.ch</a>.
+				]]></source>
+				<target><![CDATA[
+					Il link per la disattivazione non è valido o è incompleto. Per favore rivolgiti a <a href="mailto:info@easyvote.ch">info@easyvote.ch</a>.
+				]]></target>
+			</trans-unit>
+			<trans-unit id="unsubscribe.notificationMailDisabled">
+				<source>Danke für deine Abmeldung. Du erhälst künftig keinen Vote-Wecker mehr per E-Mail.</source>
+				<target>Grazie per la disattivazione. In futuro non disporrai più della voto-sveglia e non riceverai più e-mail.</target>
+			</trans-unit>
+			<trans-unit id="unsubscribe.mobilizedCommunityUserDeleted">
+				<source>Danke für deine Abmeldung. Du erhälst künftig keinen Vote-Wecker mehr per E-Mail, sofern er dir von deinen Freunden nicht erneut gestellt wird.</source>
+				<target>Grazie per la disattivazione. In futuro non disporrai più della voto-sveglia e non riceverai più e-mail, a patto che non venga nuovamente attivata per te da uno dei tuoi amici.</target>
+			</trans-unit>
+
 			<trans-unit id="mobilizedCommunityUser.remove">
 				<source>löschen</source>
 				<target>elimina</target>
