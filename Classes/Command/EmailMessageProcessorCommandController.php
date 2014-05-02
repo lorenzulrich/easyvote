@@ -24,6 +24,7 @@ namespace Visol\Easyvote\Command;
  *
  *  This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
+use TYPO3\CMS\Core\Utility\GeneralUtility;
 
 /**
  *
@@ -55,10 +56,19 @@ class EmailMessageProcessorCommandController extends \Visol\Easyvote\Command\Abs
 			/** @var \Visol\Easyvote\Domain\Model\MessagingJob $job */
 
 			if ($job->getCommunityUser() instanceof \Visol\Easyvote\Domain\Model\CommunityUser) {
-				$emailContent = $this->renderContentWithFluid($job->getContent(), $job->getCommunityUser());
-				$sender = array($this->extensionConfiguration['settings']['senderEmail'] => $this->extensionConfiguration['settings']['senderName']);
-				$recipient = array($job->getCommunityUser()->getEmail() => $job->getCommunityUser()->getFirstName() . ' ' . $job->getCommunityUser()->getLastName());
-				$success = $this->sendEmail($recipient, $sender, $job->getSubject(), $emailContent);
+				$emailContent = $this->renderContentWithFluid($job->getContent(), $job->getCommunityUser(), $this->getFluidArgumentArrayFromMessagingJobProperties($job));
+
+				// sender in job overrides sender from configuration
+				$senderName = $job->getSenderName() !== '' ? $job->getSenderName() : $this->extensionConfiguration['settings']['senderName'];
+				$senderEmail = $job->getSenderEmail() !== '' && GeneralUtility::validEmail($job->getSenderEmail()) ? $job->getSenderEmail() : $this->extensionConfiguration['settings']['senderEmail'];
+				$sender = array($senderEmail => $senderName);
+
+				// recipient in job overwrites recipient from communityUser
+				$recipientName = $job->getRecipientName() !== '' ? $job->getRecipientName() : $job->getCommunityUser()->getFirstName() . ' ' . $job->getCommunityUser()->getLastName();
+				$recipientEmail = $job->getRecipientEmail() !== '' && GeneralUtility::validEmail($job->getRecipientEmail()) ? $job->getRecipientEmail() : $job->getCommunityUser()->getEmail();
+				$recipient = array($recipientEmail => $recipientName);
+
+				$success = $this->sendEmail($recipient, $sender, $job->getSubject(), $emailContent, $job->getReplyTo(), $job->getReturnPath());
 				if ($success) {
 					$job->setTimeDistributed(new \DateTime());
 				} else {

@@ -82,13 +82,21 @@ class AbstractCommandController extends \TYPO3\CMS\Extbase\Mvc\Controller\Comman
 	 * @param array $sender
 	 * @param $subject
 	 * @param $content
+	 * @param string $replyTo
+	 * @param string $returnPath
 	 * @return bool
 	 */
-	protected function sendEmail(array $recipient, array $sender, $subject, $content) {
+	protected function sendEmail(array $recipient, array $sender, $subject, $content, $replyTo = '', $returnPath = '') {
 		/** @var $message \TYPO3\CMS\Core\Mail\MailMessage */
 		$message = GeneralUtility::makeInstance('TYPO3\CMS\Core\Mail\MailMessage');
 		$message->setTo($recipient);
 		$message->setFrom($sender);
+		if (!empty($replyTo) && GeneralUtility::validEmail($replyTo)) {
+			$message->addReplyTo($replyTo);
+		}
+		if (!empty($returnPath) && GeneralUtility::validEmail($returnPath)) {
+			$message->setReturnPath($returnPath);
+		}
 		$message->setSubject($subject);
 		$message->setBody($content, 'text/html');
 		$message->send();
