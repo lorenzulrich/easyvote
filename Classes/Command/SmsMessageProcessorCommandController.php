@@ -72,7 +72,9 @@ class SmsMessageProcessorCommandController extends \Visol\Easyvote\Command\Abstr
 			}
 			$gatewayUrl .= '?recipientAddressList=' . $recipient;
 
-			$gatewayUrl .= '&messageContent=' . urlencode(utf8_decode($job->getContent()));
+			$renderedContent = $this->renderContentWithFluid($job->getContent(), $job->getCommunityUser(), $this->getFluidArgumentArrayFromMessagingJobProperties($job));
+
+			$gatewayUrl .= '&messageContent=' . urlencode(utf8_decode($renderedContent));
 			if ((int)$this->extensionConfiguration['settings']['smsGatewayTest'] === 1) {
 				$gatewayUrl .= '&test=true';
 				\TYPO3\CMS\Core\Utility\DebugUtility::debug(GeneralUtility::getUrl($gatewayUrl), 'SMS-Gateway-Testmodus');
