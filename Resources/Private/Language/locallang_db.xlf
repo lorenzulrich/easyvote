@@ -184,6 +184,24 @@
 			<trans-unit id="tx_easyvote_domain_model_messagingjob.subject">
 				<source>Subject</source>
 			</trans-unit>
+			<trans-unit id="tx_easyvote_domain_model_messagingjob.recipient_name">
+				<source>Name of recipient (overrides name from user)</source>
+			</trans-unit>
+			<trans-unit id="tx_easyvote_domain_model_messagingjob.recipient_email">
+				<source>E-mail of recipient (overrides e-mail from user)</source>
+			</trans-unit>
+			<trans-unit id="tx_easyvote_domain_model_messagingjob.sender_name">
+				<source>Name of sender (overwrites configured standard sender name)</source>
+			</trans-unit>
+			<trans-unit id="tx_easyvote_domain_model_messagingjob.sender_email">
+				<source>E-mail of recipient (overwrites configured standard sender e-mail)</source>
+			</trans-unit>
+			<trans-unit id="tx_easyvote_domain_model_messagingjob.return_path">
+				<source>Return path e-mail</source>
+			</trans-unit>
+			<trans-unit id="tx_easyvote_domain_model_messagingjob.reply_to">
+				<source>Reply to e-mail</source>
+			</trans-unit>
 			<trans-unit id="tx_easyvote_domain_model_messagingjob.content">
 				<source>Content</source>
 			</trans-unit>

@@ -6,7 +6,7 @@ if (!defined ('TYPO3_MODE')) {
 $TCA['tx_easyvote_domain_model_messagingjob'] = array(
 	'ctrl' => $TCA['tx_easyvote_domain_model_messagingjob']['ctrl'],
 	'types' => array(
-		'1' => array('showitem' => 'type, community_user, subject, content, distribution_time, time_distributed, time_error, error_code'),
+		'1' => array('showitem' => 'type, community_user, recipient_name, recipient_email, sender_name, sender_email, return_path, reply_to, subject, content, distribution_time, time_distributed, time_error, error_code'),
 	),
 	'palettes' => array(
 		'1' => array('showitem' => ''),
@@ -40,6 +40,60 @@ $TCA['tx_easyvote_domain_model_messagingjob'] = array(
 		'subject' => array(
 			'exclude' => 1,
 			'label' => 'LLL:EXT:easyvote/Resources/Private/Language/locallang_db.xlf:tx_easyvote_domain_model_messagingjob.subject',
+			'config' => array(
+				'type' => 'input',
+				'size' => 30,
+				'eval' => 'trim',
+			),
+		),
+		'recipient_name' => array(
+			'exclude' => 1,
+			'label' => 'LLL:EXT:easyvote/Resources/Private/Language/locallang_db.xlf:tx_easyvote_domain_model_messagingjob.recipient_name',
+			'config' => array(
+				'type' => 'input',
+				'size' => 30,
+				'eval' => 'trim',
+			),
+		),
+		'recipient_email' => array(
+			'exclude' => 1,
+			'label' => 'LLL:EXT:easyvote/Resources/Private/Language/locallang_db.xlf:tx_easyvote_domain_model_messagingjob.recipient_email',
+			'config' => array(
+				'type' => 'input',
+				'size' => 30,
+				'eval' => 'trim',
+			),
+		),
+		'sender_name' => array(
+			'exclude' => 1,
+			'label' => 'LLL:EXT:easyvote/Resources/Private/Language/locallang_db.xlf:tx_easyvote_domain_model_messagingjob.sender_name',
+			'config' => array(
+				'type' => 'input',
+				'size' => 30,
+				'eval' => 'trim',
+			),
+		),
+		'sender_email' => array(
+			'exclude' => 1,
+			'label' => 'LLL:EXT:easyvote/Resources/Private/Language/locallang_db.xlf:tx_easyvote_domain_model_messagingjob.sender_email',
+			'config' => array(
+				'type' => 'input',
+				'size' => 30,
+				'eval' => 'trim',
+			),
+		),
+		'return_path' => array(
+			'exclude' => 1,
+			'label' => 'LLL:EXT:easyvote/Resources/Private/Language/locallang_db.xlf:tx_easyvote_domain_model_messagingjob.return_path',
+			'config' => array(
+				'type' => 'input',
+				'size' => 30,
+				'eval' => 'trim',
+			),
+		),
+		'reply_to' => array(
+			'exclude' => 1,
+			'label' => 'LLL:EXT:easyvote/Resources/Private/Language/locallang_db.xlf:tx_easyvote_domain_model_messagingjob.reply_to',
 			'config' => array(
 				'type' => 'input',
 				'size' => 30,

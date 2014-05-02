@@ -52,6 +52,48 @@ class MessagingJob extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	protected $communityUser;
 
 	/**
+	 * Recipient name
+	 *
+	 * @var \string
+	 */
+	protected $recipientName;
+
+	/**
+	 * Recipient e-mail
+	 *
+	 * @var \string
+	 */
+	protected $recipientEmail;
+
+	/**
+	 * Sender name
+	 *
+	 * @var \string
+	 */
+	protected $senderName;
+
+	/**
+	 * Sender e-mail
+	 *
+	 * @var \string
+	 */
+	protected $senderEmail;
+
+	/**
+	 * $returnPath
+	 *
+	 * @var \string
+	 */
+	protected $returnPath;
+
+	/**
+	 * $replyTo
+	 *
+	 * @var \string
+	 */
+	protected $replyTo;
+
+	/**
 	 * Subject for message
 	 *
 	 * @var \string
@@ -204,6 +246,90 @@ class MessagingJob extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	 */
 	public function setSubject($subject) {
 		$this->subject = $subject;
+	}
+
+	/**
+	 * @return string
+	 */
+	public function getRecipientName() {
+		return $this->recipientName;
+	}
+
+	/**
+	 * @param string $recipientName
+	 */
+	public function setRecipientName($recipientName) {
+		$this->recipientName = $recipientName;
+	}
+
+	/**
+	 * @return string
+	 */
+	public function getRecipientEmail() {
+		return $this->recipientEmail;
+	}
+
+	/**
+	 * @param string $recipientEmail
+	 */
+	public function setRecipientEmail($recipientEmail) {
+		$this->recipientEmail = $recipientEmail;
+	}
+
+	/**
+	 * @return string
+	 */
+	public function getSenderName() {
+		return $this->senderName;
+	}
+
+	/**
+	 * @param string $senderName
+	 */
+	public function setSenderName($senderName) {
+		$this->senderName = $senderName;
+	}
+
+	/**
+	 * @return string
+	 */
+	public function getSenderEmail() {
+		return $this->senderEmail;
+	}
+
+	/**
+	 * @param string $senderEmail
+	 */
+	public function setSenderEmail($senderEmail) {
+		$this->senderEmail = $senderEmail;
+	}
+
+	/**
+	 * @return string
+	 */
+	public function getReturnPath() {
+		return $this->returnPath;
+	}
+
+	/**
+	 * @param string $returnPath
+	 */
+	public function setReturnPath($returnPath) {
+		$this->returnPath = $returnPath;
+	}
+
+	/**
+	 * @return string
+	 */
+	public function getReplyTo() {
+		return $this->replyTo;
+	}
+
+	/**
+	 * @param string $replyTo
+	 */
+	public function setReplyTo($replyTo) {
+		$this->replyTo = $replyTo;
 	}
 
 }
