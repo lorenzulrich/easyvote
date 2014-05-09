@@ -5,8 +5,8 @@
 		<f:form.textfield style="width: 220px;" property="email" additionalAttributes="{required: required, placeholder:'{f:translate(key:\'editProfile.placeholderEmail\')}'}" />
 		<select style="width: 90px" name="tx_easyvote_communityajax[newCommunityUser][userLanguage]">
 			<option value="1">Deutsch</option>
-			<option value="2">Français</option>
-			<option value="3">Italiano</option>
+			<option {f:if(condition:'{sysLanguageUid} == 1', then:'selected="selected"')} value="2">Français</option>
+			<option {f:if(condition:'{sysLanguageUid} == 2', then:'selected="selected"')} value="3">Italiano</option>
 		</select>
 		<button type="submit"><f:translate key="LLL:EXT:easyvote/Resources/Private/Language/locallang.xlf:mobilizedCommunityUser.save" /></button>
 	</f:form>

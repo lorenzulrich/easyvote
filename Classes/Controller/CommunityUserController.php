@@ -266,6 +266,7 @@ class CommunityUserController extends \Visol\Easyvote\Controller\AbstractControl
 	 */
 	public function newMobilizedCommunityUserAction() {
 		$newCommunityUser = $this->objectManager->create('Visol\Easyvote\Domain\Model\CommunityUser');
+		$this->view->assign('sysLanguageUid', $GLOBALS['TSFE']->sys_language_uid);
 		$this->view->assign('newCommunityUser', $newCommunityUser);
 		$content = $this->view->render();
 		return json_encode($content);
