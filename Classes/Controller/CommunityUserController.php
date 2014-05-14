@@ -587,7 +587,7 @@ class CommunityUserController extends \Visol\Easyvote\Controller\AbstractControl
 			$messagingJob = new \Visol\Easyvote\Domain\Model\MessagingJob();
 			$messagingJob->setContent($demand['message']);
 			$messagingJob->setType(\Visol\Easyvote\Domain\Model\MessagingJob::JOBTYPE_SMS);
-			$distributionTime = date_create($demand['distrubutionTime']);
+			$distributionTime = date_create($demand['distributionTime']);
 			$messagingJob->setDistributionTime($distributionTime);
 			$testUser = $this->communityUserRepository->findByUid($this->settings['smsTestUserUid']);
 			$messagingJob->setCommunityUser($testUser);
@@ -599,7 +599,7 @@ class CommunityUserController extends \Visol\Easyvote\Controller\AbstractControl
 			if (is_array($demand['filter'])) {
 				$demand['filter']['type'] = \Visol\Easyvote\Domain\Model\MessagingJob::JOBTYPE_SMS;
 				$communityUsers = $this->communityUserRepository->findByFilterDemand($demand['filter']);
-				$distributionTime = date_create($demand['distrubutionTime']);
+				$distributionTime = date_create($demand['distributionTime']);
 				$jobRandomValue = uniqid();
 				$iterator = 1;
 				foreach ($communityUsers as $communityUser) {
