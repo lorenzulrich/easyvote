@@ -363,6 +363,7 @@ CREATE TABLE tx_easyvote_domain_model_messagingjob (
 	time_distributed int(11) unsigned DEFAULT '0' NOT NULL,
 	time_error int(11) unsigned DEFAULT '0' NOT NULL,
 	error_code int(11) DEFAULT '0' NOT NULL,
+	processor_response text NOT NULL,
 
 	tstamp int(11) unsigned DEFAULT '0' NOT NULL,
 	crdate int(11) unsigned DEFAULT '0' NOT NULL,

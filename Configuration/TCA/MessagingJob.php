@@ -6,7 +6,7 @@ if (!defined ('TYPO3_MODE')) {
 $TCA['tx_easyvote_domain_model_messagingjob'] = array(
 	'ctrl' => $TCA['tx_easyvote_domain_model_messagingjob']['ctrl'],
 	'types' => array(
-		'1' => array('showitem' => 'type, community_user, recipient_name, recipient_email, sender_name, sender_email, return_path, reply_to, subject, content, distribution_time, time_distributed, time_error, error_code'),
+		'1' => array('showitem' => 'type, community_user, recipient_name, recipient_email, sender_name, sender_email, return_path, reply_to, subject, content, distribution_time, time_distributed, time_error, error_code, processor_response'),
 	),
 	'palettes' => array(
 		'1' => array('showitem' => ''),
@@ -147,6 +147,16 @@ $TCA['tx_easyvote_domain_model_messagingjob'] = array(
 				'type' => 'input',
 				'size' => 14,
 				'eval' => 'trim,int'
+			),
+		),
+		'processor_response' => array(
+			'exclude' => 1,
+			'label' => 'LLL:EXT:easyvote/Resources/Private/Language/locallang_db.xlf:tx_easyvote_domain_model_messagingjob.processor_response',
+			'config' => array(
+				'type' => 'text',
+				'cols' => 40,
+				'rows' => 15,
+				'eval' => 'trim',
 			),
 		),
 	),

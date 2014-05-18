@@ -137,6 +137,13 @@ class MessagingJob extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	protected $errorCode;
 
 	/**
+	 * Response from message processor
+	 *
+	 * @var \string
+	 */
+	protected $processorResponse;
+
+	/**
 	 * @return int
 	 */
 	public function getType() {
@@ -330,6 +337,20 @@ class MessagingJob extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	 */
 	public function setReplyTo($replyTo) {
 		$this->replyTo = $replyTo;
+	}
+
+	/**
+	 * @return string
+	 */
+	public function getProcessorResponse() {
+		return $this->processorResponse;
+	}
+
+	/**
+	 * @param string $processorResponse
+	 */
+	public function setProcessorResponse($processorResponse) {
+		$this->processorResponse = $processorResponse;
 	}
 
 }

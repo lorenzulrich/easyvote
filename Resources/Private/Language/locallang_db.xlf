@@ -220,6 +220,9 @@
 			<trans-unit id="tx_easyvote_domain_model_messagingjob.error_code">
 				<source>Error code</source>
 			</trans-unit>
+			<trans-unit id="tx_easyvote_domain_model_messagingjob.processor_response">
+				<source>Response from message processor</source>
+			</trans-unit>
 
 		</body>
 	</file>

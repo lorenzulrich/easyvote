@@ -35,9 +35,10 @@ class MessagingJobRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
 
 	/**
 	 * @param $jobType
+	 * @param integer $limit
 	 * @return array|\TYPO3\CMS\Extbase\Persistence\QueryResultInterface
 	 */
-	public function findPendingJobs($jobType) {
+	public function findPendingJobs($jobType, $limit) {
 		$query = $this->createQuery();
 
 		$query->matching(
@@ -48,6 +49,8 @@ class MessagingJobRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
 				$query->equals('timeError', 0)
 			)
 		);
+
+		$query->setLimit((int)$limit);
 
 		return $query->execute();
 	}

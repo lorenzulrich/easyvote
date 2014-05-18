@@ -50,7 +50,7 @@ class EmailMessageProcessorCommandController extends \Visol\Easyvote\Command\Abs
 	public function queueWorkerCommand($itemsPerRun = 20) {
 		$this->initializeCommand();
 
-		$pendingJobs = $this->messagingJobRepository->findPendingJobs(EmailMessageProcessorCommandController::JOBTYPE);
+		$pendingJobs = $this->messagingJobRepository->findPendingJobs(EmailMessageProcessorCommandController::JOBTYPE, $itemsPerRun);
 
 		foreach ($pendingJobs as $job) {
 			/** @var \Visol\Easyvote\Domain\Model\MessagingJob $job */

@@ -43,14 +43,6 @@ class SmsMessageProcessorCommandController extends \Visol\Easyvote\Command\Abstr
 	protected $messagingJobRepository;
 
 	/**
-	 * @param \Visol\Easyvote\Domain\Model\MessagingJob $messagingJob
-	 * @return mixed
-	 */
-	public function writeLog(\Visol\Easyvote\Domain\Model\MessagingJob $messagingJob) {
-		return TRUE;
-	}
-
-	/**
 	 * Process SMS message queue
 	 *
 	 * @param int $itemsPerRun
@@ -58,10 +50,11 @@ class SmsMessageProcessorCommandController extends \Visol\Easyvote\Command\Abstr
 	public function queueWorkerCommand($itemsPerRun = 20) {
 		$this->initializeCommand();
 
-		$pendingJobs = $this->messagingJobRepository->findPendingJobs(SmsMessageProcessorCommandController::JOBTYPE);
+		$pendingJobs = $this->messagingJobRepository->findPendingJobs(SmsMessageProcessorCommandController::JOBTYPE, $itemsPerRun);
 
-		$gatewayUrl = 'https://' . urlencode($this->extensionConfiguration['settings']['smsGatewayUsername']) . ':' . $this->extensionConfiguration['settings']['smsGatewayPassword'] . '@api.websms.com/rest/smsmessaging/simple';
 		foreach ($pendingJobs as $job) {
+			$gatewayUrl = 'https://' . urlencode($this->extensionConfiguration['settings']['smsGatewayUsername']) . ':' . $this->extensionConfiguration['settings']['smsGatewayPassword'] . '@api.websms.com/rest/smsmessaging/simple';
+
 			/** @var \Visol\Easyvote\Domain\Model\MessagingJob $job */
 			$recipient = $job->getCommunityUser()->getTelephone();
 			if (empty($recipient) || strlen($recipient) !== 11) {
@@ -82,13 +75,16 @@ class SmsMessageProcessorCommandController extends \Visol\Easyvote\Command\Abstr
 				$response = GeneralUtility::getUrl($gatewayUrl);
 				if (GeneralUtility::isFirstPartOfStr($response, 'statusCode=2000')) {
 					$job->setTimeDistributed(new \DateTime());
+					$job->setProcessorResponse('Request: ' . $gatewayUrl . LF . 'Response: ' . $response);
 				} else {
 					$job->setTimeError(new \DateTime());
 					$job->setErrorCode(AbstractCommandController::ERRORCODE_SMSGATEWAY);
+					$job->setProcessorResponse('Request: ' . $gatewayUrl . LF . 'Response: ' . $response);
 				}
 				$this->messagingJobRepository->update($job);
 			}
-
+			// don't "overload" the SMS gateway
+			usleep(100000);
 		}
 
 	}
