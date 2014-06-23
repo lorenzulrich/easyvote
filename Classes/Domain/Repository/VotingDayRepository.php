@@ -55,6 +55,19 @@ class VotingDayRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
 	}
 
 	/**
+	 * Find an item that can also be hidden (because a voting day may not yet be online, but needed for upload)
+	 *
+	 * @param $uid
+	 * @return object
+	 */
+	public function findVisibleAndHiddenByUid($uid) {
+		$query = $this->createQuery();
+		$query->getQuerySettings()->setIgnoreEnableFields(TRUE);
+		$object = $query->matching($query->equals('uid', $uid))->execute()->getFirst();
+		return $object;
+	}
+
+	/**
 	 * @return \TYPO3\CMS\Extbase\Persistence\QueryInterface
 	 */
 	public function findUploadAllowedVotingDays() {
