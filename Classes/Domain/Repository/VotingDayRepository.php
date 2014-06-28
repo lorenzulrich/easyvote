@@ -58,7 +58,7 @@ class VotingDayRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
 	 * Find an item that can also be hidden (because a voting day may not yet be online, but needed for upload)
 	 *
 	 * @param $uid
-	 * @return object
+	 * @return \Visol\Easyvote\Domain\Model\VotingDay
 	 */
 	public function findVisibleAndHiddenByUid($uid) {
 		$query = $this->createQuery();

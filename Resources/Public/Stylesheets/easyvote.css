@@ -541,16 +541,16 @@ table.advantages tr td {
 }
 
 /* User Profile Forms */
-.community-plugins .inputForm {
+.inputForm {
     margin-bottom: 10px;
 }
 
-.community-plugins .form-row {
+.form-row {
     margin-bottom: 10px;
     clear: both;
 }
 
-.community-plugins .form-row:after {
+.form-row:after {
     content: ".";
     display: block;
     clear: both;
@@ -559,46 +559,46 @@ table.advantages tr td {
     height: 0;
 }
 
-.community-plugins form input[type=text],
-.community-plugins form select,
-.community-plugins form textarea {
+form input[type=text],
+form select,
+form textarea {
     width: 280px;
     border: 0;
     padding: 5px;
 }
 
-.community-plugins form input[readonly], input[readonly="readonly"] {
+form input[readonly], input[readonly="readonly"] {
     background: #e3e3e3;
 }
 
-.community-plugins form select {
+form select {
     width: 290px;
 }
 
-.community-plugins form input.formfield-zip {
+form input.formfield-zip {
     width: 40px;
     float: left;
     margin-right: 10px;
 }
 
-.community-plugins form input.formfield-city {
+form input.formfield-city {
     width: 220px;
     float: left;
 }
 
-.community-plugins form select.formfield-phoneNumberPrefix {
+form select.formfield-phoneNumberPrefix {
     height: 26px;
     width: 60px;
     float: left;
     margin-right: 10px;
 }
 
-.community-plugins form input.formfield-phoneNumber {
+form input.formfield-phoneNumber {
     width: 210px;
     float: left;
 }
 
-.community-plugins .form-row.form-row-radio label {
+.form-row.form-row-radio label {
     margin-right: 10px;
 }
 

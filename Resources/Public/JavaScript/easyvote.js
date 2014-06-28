@@ -445,10 +445,3 @@ $(function() {
 		);
 	});
 })
-
-$(function() {
-	$('.siteheader-countdown.notAuthenticated').click(function() {
-		var modalContent = $('.login-panel a.hasModal').next('div').html();
-		displayModal(modalContent);
-	})
-})
