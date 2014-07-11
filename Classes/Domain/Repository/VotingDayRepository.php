@@ -63,6 +63,7 @@ class VotingDayRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
 	public function findVisibleAndHiddenByUid($uid) {
 		$query = $this->createQuery();
 		$query->getQuerySettings()->setIgnoreEnableFields(TRUE);
+		$query->getQuerySettings()->setRespectSysLanguage(FALSE);
 		$object = $query->matching($query->equals('uid', $uid))->execute()->getFirst();
 		return $object;
 	}
