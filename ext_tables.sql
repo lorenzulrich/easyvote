@@ -381,22 +381,6 @@ CREATE TABLE tx_easyvote_domain_model_messagingjob (
 
 );
 
-
-#
-# Table structure for table 'tt_content'
-#
-CREATE TABLE tt_content (
-  tx_easyvote_contentclass tinytext
-);
-
-#
-# Table structure for table 'pages'
-#
-CREATE TABLE pages (
-  tx_easyvote_pageclass tinytext
-);
-
-
 #
 # Table structure for table 'fe_users'
 #
