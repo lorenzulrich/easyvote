@@ -93,10 +93,10 @@ class MetaVotingProposalController extends \TYPO3\CMS\Extbase\Mvc\Controller\Act
 		// search by query string
 		if (isset($request['query'])) {
 			// we have a search query, so we use it
-			$queryString = mysql_real_escape_string($request['query']);
+			$queryString = $GLOBALS['TYPO3_DB']->escapeStrForLike($GLOBALS['TYPO3_DB']->quoteStr($request['query'], 'tx_easyvote_domain_model_metavotingproposal'), 'tx_easyvote_domain_model_metavotingproposal');
 			if (!empty($queryString)) {
 				$demand['query'] = '%' . $queryString . '%';
-				$filteredRequest['query'] = $queryString;
+				$filteredRequest['query'] = htmlspecialchars($request['query']);
 			}
 		}
 
