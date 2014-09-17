@@ -444,4 +444,4 @@ $(function() {
 			function(response) {}
 		);
 	});
-})
+});
