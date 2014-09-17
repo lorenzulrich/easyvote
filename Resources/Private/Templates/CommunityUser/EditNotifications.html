@@ -9,7 +9,7 @@
 		</p>
 		<f:flashMessages renderMode="div" />
 		<f:render partial="FormErrors" arguments="{for: ''}" />
-		<f:form class="inputForm" action="updateNotifications" name="communityUser" object="{user}">
+		<f:form noCacheHash="true" class="inputForm" action="updateNotifications" name="communityUser" object="{user}">
 			<h3><f:translate key="editNotifications.sectionEmailHeader" /></h3>
 			<div class="form-row">
 				<f:form.textfield property="email" additionalAttributes="{required: required, placeholder:'{f:translate(key:\'editProfile.placeholderEmail\')}'}" />

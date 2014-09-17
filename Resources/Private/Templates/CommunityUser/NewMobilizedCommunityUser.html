@@ -1,5 +1,5 @@
 <div class="form-row">
-	<f:form class="inputForm newMobilizedCommunityUser" action="createMobilizedCommunityUser" name="newCommunityUser" object="{newCommunityUser}">
+	<f:form noCacheHash="true" class="inputForm newMobilizedCommunityUser" action="createMobilizedCommunityUser" name="newCommunityUser" object="{newCommunityUser}">
 		<f:form.textfield style="width: 105px;" property="firstName" additionalAttributes="{required: required, placeholder:'{f:translate(key:\'editProfile.placeholderFirstName\')}'}" />
 		<f:form.textfield style="width: 105px;" property="lastName"  additionalAttributes="{required: required, placeholder:'{f:translate(key:\'editProfile.placeholderLastName\')}'}" />
 		<f:form.textfield style="width: 220px;" property="email" additionalAttributes="{required: required, placeholder:'{f:translate(key:\'editProfile.placeholderEmail\')}'}" />

@@ -10,7 +10,7 @@
 	<h3>SMS-Versand</h3>
 
 	<div class="collapsibleSection clearfix">
-		<f:form action="backendSmsMessageSend">
+		<f:form action="backendSmsMessageSend" noCacheHash="true">
 			<f:render partial="CommunityUser/Filters/UserLanguage" arguments="{demand: demand, languages:languages}" />
 			<f:render partial="CommunityUser/Filters/Kanton" arguments="{demand: demand, kantons:kantons}" />
 			<div class="form-row clearfix">

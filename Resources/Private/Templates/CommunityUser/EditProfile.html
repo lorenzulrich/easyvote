@@ -11,7 +11,7 @@
 			<input type="text" readonly value="{user.firstName} {user.lastName}" />
 		</div>
 		</form>
-		<f:form class="inputForm" action="updateProfile" name="communityUser" object="{user}">
+		<f:form noCacheHash="true" class="inputForm" action="updateProfile" name="communityUser" object="{user}">
 			<div class="form-row">
 				<f:form.textarea property="address" additionalAttributes="{placeholder:'{f:translate(key:\'editProfile.placeholderAddress\')}'}" />
 			</div>
