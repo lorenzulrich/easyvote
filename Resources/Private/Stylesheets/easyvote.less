@@ -63,16 +63,19 @@
 }
 
 .abstimmungsvorlage h3.toggle-trigger div.toggle-handle {
-	.fontello-icon('\e829');
+	&:before {
+		.fontello-icon('\e829');
+	}
     position: absolute;
     right: 0;
     top: 8px;
-    height: 14px;
-    width: 14px;
+    width: 16px;
 }
 
 .abstimmungsvorlage h3.toggle-trigger div.toggle-handle-plus {
-	.fontello-icon('\e827');
+	&:before {
+		.fontello-icon('\e827');
+	}
 }
 
 .abstimmungsvorlage .toggle-closed {
