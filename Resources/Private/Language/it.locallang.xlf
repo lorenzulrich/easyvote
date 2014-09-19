@@ -379,10 +379,10 @@ Puoi disattivare la voto-sveglia per i tuoi amici in qualsiasi momento, se lo vu
 			</trans-unit>
 			<trans-unit id="editNotifications.saved">
 				<source><![CDATA[
-					<i class="icon icon-check-sign"></i> Deine Vote-Wecker wurden aktualisiert!
+					<i class="evicon-ok-squared"></i> Deine Vote-Wecker wurden aktualisiert!
 				]]></source>
 				<target><![CDATA[
-					<i class="icon icon-check-sign"></i> La tua voto-sveglia è stata aggiornanata!
+					<i class="evicon-ok-squared"></i> La tua voto-sveglia è stata aggiornanata!
 				]]></target>
 			</trans-unit>
 
@@ -448,10 +448,10 @@ Puoi disattivare la voto-sveglia per i tuoi amici in qualsiasi momento, se lo vu
 			</trans-unit>
 			<trans-unit id="editProfile.saved">
 				<source><![CDATA[
-					<i class="icon icon-check-sign"></i> Dein Profil wurde aktualisiert!
+					<i class="evicon-ok-squared"></i> Dein Profil wurde aktualisiert!
 				]]></source>
 				<target><![CDATA[
-					<i class="icon icon-check-sign"></i> Il tuo profilo è stato aggiornato!
+					<i class="evicon-ok-squared"></i> Il tuo profilo è stato aggiornato!
 				]]></target>
 			</trans-unit>
 

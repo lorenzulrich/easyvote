@@ -377,10 +377,10 @@
 			</trans-unit>
 			<trans-unit id="editNotifications.saved">
 				<source><![CDATA[
-					<i class="icon icon-check-sign"></i> Deine Vote-Wecker wurden aktualisiert!
+					<i class="evicon-ok-squared"></i> Deine Vote-Wecker wurden aktualisiert!
 				]]></source>
 				<target><![CDATA[
-					<i class="icon icon-check-sign"></i> Ton alarme de vote a été actualisée!
+					<i class="evicon-ok-squared"></i> Ton alarme de vote a été actualisée!
 				]]></target>
 			</trans-unit>
 
@@ -446,10 +446,10 @@
 			</trans-unit>
 			<trans-unit id="editProfile.saved">
 				<source><![CDATA[
-					<i class="icon icon-check-sign"></i> Dein Profil wurde aktualisiert!
+					<i class="evicon-ok-squared"></i> Dein Profil wurde aktualisiert!
 				]]></source>
 				<target><![CDATA[
-					<i class="icon icon-check-sign"></i> Ton profil a été actualisé!
+					<i class="evicon-ok-squared"></i> Ton profil a été actualisé!
 				]]></target>
 			</trans-unit>
 

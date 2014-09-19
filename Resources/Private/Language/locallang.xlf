@@ -296,7 +296,7 @@
 			</trans-unit>
 			<trans-unit id="editNotifications.saved">
 				<source><![CDATA[
-					<i class="icon icon-check-sign"></i> Deine Vote-Wecker wurden aktualisiert!
+					<i class="evicon-ok-squared"></i> Deine Vote-Wecker wurden aktualisiert!
 				]]></source>
 			</trans-unit>
 
@@ -347,7 +347,7 @@
 			</trans-unit>
 			<trans-unit id="editProfile.saved">
 				<source><![CDATA[
-					<i class="icon icon-check-sign"></i> Dein Profil wurde aktualisiert!
+					<i class="evicon-ok-squared"></i> Dein Profil wurde aktualisiert!
 				]]></source>
 			</trans-unit>
 

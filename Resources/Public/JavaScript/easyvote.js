@@ -19,7 +19,7 @@ $(function() {
 
 	$('.searchResults .abstimmungsvorlage-header').click(function(e) {
 		$('.abstimmungsvorlage-content', $(this).parent()).slideToggle('slow', function() {
-			$('i', $(this).parent()).toggleClass('icon-chevron-down');
+			$('i', $(this).parent()).toggleClass('evicon-down-open');
 		});
 	})
 
@@ -148,7 +148,7 @@ function bindToolTips() {
 function displayModal(message) {
 	var $flashMessageContainer = $('#flashMessageContainer');
 	var $contentWrap = $('#contentWrap');
-	$flashMessageContainer.html('<a class="pull-right qtip-close" aria-label="schliessen"><i class="icon icon-remove"></i></a>' + message);
+	$flashMessageContainer.html('<a class="pull-right qtip-close" aria-label="schliessen"><i class="evicon-cancel"></i></a>' + message);
 
 	$contentWrap.qtip({
 		content: {
@@ -196,7 +196,7 @@ function displayModal(message) {
 function displayFlashMessage(message) {
 	var $flashMessageContainer = $('#flashMessageContainer');
 	var $contentWrap = $('#contentWrap');
-	$flashMessageContainer.html('<a class="pull-right qtip-close" aria-label="schliessen"><i class="icon icon-remove"></i></a>' + message);
+	$flashMessageContainer.html('<a class="pull-right qtip-close" aria-label="schliessen"><i class="evicon-cancel"></i></a>' + message);
 	$contentWrap.qtip({
 		show: '',
 		hide: {
