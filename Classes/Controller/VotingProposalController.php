@@ -147,9 +147,11 @@ class VotingProposalController extends \Visol\Easyvote\Controller\AbstractContro
 		$loggedInUser = $this->getLoggedInUser();
 		if ($loggedInUser) {
 			$activeVote = $this->pollRepository->findByVotingProposalAndUser($votingProposal, $loggedInUser)->getFirst();
-			$this->pollRepository->remove($activeVote);
-			$this->persistenceManager->persistAll();
-			return json_encode(TRUE);
+			if ($activeVote instanceof \Visol\Easyvote\Domain\Model\Poll) {
+				$this->pollRepository->remove($activeVote);
+				$this->persistenceManager->persistAll();
+				return json_encode(TRUE);
+			}
 		}
 		return json_encode(FALSE);
 	}
