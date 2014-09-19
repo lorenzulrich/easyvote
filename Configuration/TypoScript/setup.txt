@@ -37,7 +37,6 @@ plugin.tx_easyvote._CSS_DEFAULT_STYLE (
 		vertical-align:top;
 	}
 )
-plugin.tx_opauth.features.rewrittenPropertyMapper = 1
 
 # skip default arguments in request --> RealURL optimization
 plugin.tx_easyvote {

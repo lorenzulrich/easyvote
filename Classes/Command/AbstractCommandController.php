@@ -56,7 +56,7 @@ class AbstractCommandController extends \TYPO3\CMS\Extbase\Mvc\Controller\Comman
 	 */
 	protected function renderContentWithFluid($content, \Visol\Easyvote\Domain\Model\CommunityUser $communityUser = NULL, $arguments = array()) {
 		/** @var \TYPO3\CMS\Fluid\View\StandaloneView $standaloneView */
-		$standaloneView = $this->objectManager->create('TYPO3\CMS\Fluid\View\StandaloneView');
+		$standaloneView = $this->objectManager->get('TYPO3\CMS\Fluid\View\StandaloneView');
 		$standaloneView->setFormat('html');
 
 		if (substr($content, 0, 9) === 'Template:') {

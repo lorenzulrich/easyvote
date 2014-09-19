@@ -156,7 +156,7 @@ class VotingProposalController extends \Visol\Easyvote\Controller\AbstractContro
 
 	/**
 	 * @param \Visol\Easyvote\Domain\Model\VotingProposal $votingProposal
-	 * @param $value int
+	 * @param integer $value
 	 * @return string
 	 */
 	public function voteForVotingProposalAction(\Visol\Easyvote\Domain\Model\VotingProposal $votingProposal, $value) {
@@ -174,7 +174,7 @@ class VotingProposalController extends \Visol\Easyvote\Controller\AbstractContro
 			$metaVotingProposal = $this->metaVotingProposalRepository->findOneByVotingProposal($votingProposal);
 
 			/** @var \TYPO3\CMS\Fluid\View\StandaloneView $standaloneView */
-			$standaloneView = $this->objectManager->create('TYPO3\CMS\Fluid\View\StandaloneView');
+			$standaloneView = $this->objectManager->get('TYPO3\CMS\Fluid\View\StandaloneView');
 			$standaloneView->setFormat('html');
 			$standaloneView->setTemplatePathAndFilename('typo3conf/ext/easyvote/Resources/Private/Partials/VotingProposal/VotingAnswer.html');
 			$standaloneView->assignMultiple(array(

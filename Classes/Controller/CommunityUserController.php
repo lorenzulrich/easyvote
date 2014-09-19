@@ -133,11 +133,20 @@ class CommunityUserController extends \Visol\Easyvote\Controller\AbstractControl
 	}
 
 	/**
+	 * Allow all properties of communityUser
+	 * Convert birthdate to DateTime
+	 */
+	protected function initializeUpdateProfileAction(){
+		$propertyMappingConfiguration = $this->arguments['communityUser']->getPropertyMappingConfiguration();
+		$propertyMappingConfiguration->allowAllProperties();
+		$propertyMappingConfiguration->forProperty('birthdate')->setTypeConverterOption('TYPO3\\CMS\\Extbase\\Property\\TypeConverter\\DateTimeConverter', \TYPO3\CMS\Extbase\Property\TypeConverter\DateTimeConverter::CONFIGURATION_DATE_FORMAT, 'd.m.Y');
+	}
+
+	/**
 	 * action updateProfile
 	 *
 	 * @param CommunityUser $communityUser
 	 * @param string $phoneNumberPrefix
-	 * @dontverifyrequesthash $communityUser
 	 */
 	public function updateProfileAction(CommunityUser $communityUser, $phoneNumberPrefix = '4175') {
 		$loggedInUser = $this->getLoggedInUser();
@@ -150,7 +159,6 @@ class CommunityUserController extends \Visol\Easyvote\Controller\AbstractControl
 			}
 			$this->communityUserRepository->update($communityUser);
 			$this->persistenceManager->persistAll();
-			$this->flashMessageContainer->add('');
 			$this->flashMessageContainer->add(LocalizationUtility::translate('editProfile.saved', 'easyvote'));
 		}
 		$this->redirect('editProfile');
@@ -211,7 +219,6 @@ class CommunityUserController extends \Visol\Easyvote\Controller\AbstractControl
 	 *
 	 * @param CommunityUser $communityUser
 	 * @param string $phoneNumberPrefix
-	 * @dontverifyrequesthash $communityUser
 	 * @dontvalidate $communityUser
 	 */
 	public function updateNotificationsAction(CommunityUser $communityUser, $phoneNumberPrefix = '4175') {
@@ -265,7 +272,7 @@ class CommunityUserController extends \Visol\Easyvote\Controller\AbstractControl
 	 * @return string
 	 */
 	public function newMobilizedCommunityUserAction() {
-		$newCommunityUser = $this->objectManager->create('Visol\Easyvote\Domain\Model\CommunityUser');
+		$newCommunityUser = $this->objectManager->get('Visol\Easyvote\Domain\Model\CommunityUser');
 		$this->view->assign('sysLanguageUid', $GLOBALS['TSFE']->sys_language_uid);
 		$this->view->assign('newCommunityUser', $newCommunityUser);
 		$content = $this->view->render();
@@ -273,10 +280,17 @@ class CommunityUserController extends \Visol\Easyvote\Controller\AbstractControl
 	}
 
 	/**
+	 * Allow all properties of communityUser
+	 */
+	protected function initializeCreateMobilizedCommunityUserAction(){
+		$propertyMappingConfiguration = $this->arguments['newCommunityUser']->getPropertyMappingConfiguration();
+		$propertyMappingConfiguration->allowAllProperties();
+	}
+
+	/**
 	 * action createMobilizedCommunityUser
 	 *
 	 * @param CommunityUser $newCommunityUser
-	 * @dontverifyrequesthash $newCommunityUser
 	 * @dontvalidate $newCommunityUser
 	 * @return string
 	 */
@@ -298,7 +312,7 @@ class CommunityUserController extends \Visol\Easyvote\Controller\AbstractControl
 					$this->persistenceManager->persistAll();
 
 					/** @var \Visol\Easyvote\Domain\Model\MessagingJob $messagingJob */
-					$standaloneView = $this->objectManager->create('TYPO3\CMS\Fluid\View\StandaloneView');
+					$standaloneView = $this->objectManager->get('TYPO3\CMS\Fluid\View\StandaloneView');
 					$standaloneView->setFormat('html');
 					$extbaseConfiguration = $this->configurationManager->getConfiguration(\TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface::CONFIGURATION_TYPE_FRAMEWORK, 'easyvote', 'easyvote');
 					$templateRootPath = GeneralUtility::getFileAbsFileName($extbaseConfiguration['view']['templateRootPath']);
@@ -309,7 +323,7 @@ class CommunityUserController extends \Visol\Easyvote\Controller\AbstractControl
 					$standaloneView->assign('parentUser', $communityUser);
 					$standaloneView->assign('mobilizedUser', $newCommunityUser);
 					$content = $standaloneView->render();
-					$messagingJob = $this->objectManager->create('Visol\Easyvote\Domain\Model\MessagingJob');
+					$messagingJob = $this->objectManager->get('Visol\Easyvote\Domain\Model\MessagingJob');
 					$messagingJob->setSenderName($communityUser->getFirstName() . ' ' . $communityUser->getLastName());
 					$messagingJob->setReturnPath($communityUser->getEmail());
 					$messagingJob->setReplyTo($communityUser->getEmail());
@@ -337,7 +351,6 @@ class CommunityUserController extends \Visol\Easyvote\Controller\AbstractControl
 	 * action removeMobilizedCommunityUser
 	 *
 	 * @param CommunityUser $notificationRelatedUser
-	 * @dontverifyrequesthash $notificationRelatedUser
 	 * @dontvalidate $notificationRelatedUser
 	 * @return string
 	 */
@@ -390,7 +403,7 @@ class CommunityUserController extends \Visol\Easyvote\Controller\AbstractControl
 						if ($communityUser->getCommunityUser() instanceof \Visol\Easyvote\Domain\Model\CommunityUser) {
 							// Parent user found, so inform him
 							/** @var \Visol\Easyvote\Domain\Model\MessagingJob $messagingJob */
-							$standaloneView = $this->objectManager->create('TYPO3\CMS\Fluid\View\StandaloneView');
+							$standaloneView = $this->objectManager->get('TYPO3\CMS\Fluid\View\StandaloneView');
 							$standaloneView->setFormat('html');
 							$extbaseConfiguration = $this->configurationManager->getConfiguration(\TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface::CONFIGURATION_TYPE_FRAMEWORK, 'easyvote', 'easyvote');
 							$templateRootPath = GeneralUtility::getFileAbsFileName($extbaseConfiguration['view']['templateRootPath']);
@@ -402,7 +415,7 @@ class CommunityUserController extends \Visol\Easyvote\Controller\AbstractControl
 							$nextVotingDay = $this->votingDayRepository->findNextVotingDay();
 							$standaloneView->assign('nextVotingDay', $nextVotingDay);
 							$content = $standaloneView->render();
-							$messagingJob = $this->objectManager->create('Visol\Easyvote\Domain\Model\MessagingJob');
+							$messagingJob = $this->objectManager->get('Visol\Easyvote\Domain\Model\MessagingJob');
 							$messagingJob->setContent($content);
 							$messagingJob->setSubject($communityUser->getFirstName() . ' ' . LocalizationUtility::translate('mobilizedUnsubscribedNotification.subject', 'easyvote'));
 							$messagingJob->setCommunityUser($communityUser->getCommunityUser());
