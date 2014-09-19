@@ -429,14 +429,16 @@ div.login-panel .login-status .user-name {
 
 table.advantages {
     border: 0;
-}
+	tr:hover td {
+    	background-color: transparent;
+	}
 
-table.advantages tr:hover td {
-    background-color: transparent;
-}
-
-table.advantages tr td {
-    border: 0;
+	tr td {
+    	border: 0;
+		i {
+			color: @dark-blue;
+		}
+	}
 }
 
 /* User Profile Forms */
