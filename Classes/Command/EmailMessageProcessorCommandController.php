@@ -74,6 +74,7 @@ class EmailMessageProcessorCommandController extends \Visol\Easyvote\Command\Abs
 				} else {
 					$job->setTimeError(new \DateTime());
 				}
+				$this->messagingJobRepository->update($job);
 			} else {
 				// user is no longer present, delete job
 				$this->messagingJobRepository->remove($job);
