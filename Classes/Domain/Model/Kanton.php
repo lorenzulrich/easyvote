@@ -180,7 +180,7 @@ class Kanton extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	/**
 	 * Removes a Language
 	 *
-	 * @param \Visol\Easyvote\Domain\Model\City $cityToRemove The City to be removed
+	 * @param \Visol\Easyvote\Domain\Model\Language $languageToRemove The language to be removed
 	 * @return void
 	 */
 	public function removeLanguage(\Visol\Easyvote\Domain\Model\Language $languageToRemove) {

@@ -1,11 +1,13 @@
 <?php
 namespace Visol\Easyvote\Domain\Repository;
 
+
 /***************************************************************
+ *
  *  Copyright notice
  *
- *  (c) 2013 Lorenz Ulrich <lorenz.ulrich@visol.ch>, visol digitale Dienstleistungen GmbH
- *  
+ *  (c) 2014 Lorenz Ulrich <lorenz.ulrich@visol.ch>, visol digitale Dienstleistungen GmbH
+ *
  *  All rights reserved
  *
  *  This script is part of the TYPO3 project. The TYPO3 project is
@@ -26,12 +28,16 @@ namespace Visol\Easyvote\Domain\Repository;
  ***************************************************************/
 
 /**
- *
- *
- * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
- *
+ * The repository for Cities
  */
 class CityRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
 
+	public function findCitiesByPostalCodePart($queryString) {
+		$query = $this->createQuery();
+		$query->matching(
+			$query->like('postalCode', $queryString . '%')
+		);
+		return $query->execute()->toArray();
+	}
+
 }
-?>

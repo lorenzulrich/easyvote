@@ -27,6 +27,7 @@ namespace Visol\Easyvote\Controller;
 use TYPO3\CMS\Core\Utility\DebugUtility;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
+use Visol\Easyvote\Domain\Model\City;
 use Visol\Easyvote\Domain\Model\CommunityUser;
 
 /**
@@ -157,6 +158,9 @@ class CommunityUserController extends \Visol\Easyvote\Controller\AbstractControl
 			} else {
 				$communityUser->setTelephone($this->allowedPhoneNumberPrefixes[0] . preg_replace('/\D/', '', $communityUser->getTelephone()));
 			}
+			if ($communityUser->getCitySelection() instanceof City) {
+				$communityUser->setKanton($communityUser->getCitySelection()->getKanton());
+			}
 			$this->communityUserRepository->update($communityUser);
 			$this->persistenceManager->persistAll();
 			$this->flashMessageContainer->add(LocalizationUtility::translate('editProfile.saved', 'easyvote'));
@@ -183,7 +187,15 @@ class CommunityUserController extends \Visol\Easyvote\Controller\AbstractControl
 			$communityUser->setAddress('');
 			$communityUser->setZip('');
 			$communityUser->setCity('');
+			$communityUser->setBirthdate(NULL);
+			$communityUser->setCitySelection(NULL);
+			foreach ($communityUser->getUsergroup() as $usergroup) {
+				/** @var $usergroup \TYPO3\CMS\Extbase\Domain\Model\FrontendUserGroup */
+				$communityUser->removeUsergroup($usergroup);
+			}
 			$communityUserGroup = $this->frontendUserGroupRepository->findByUid($this->settings['communityUserGroupUid']);
+			$communityUser->removeUsergroup($communityUserGroup);
+			$communityUserGroup = $this->frontendUserGroupRepository->findByUid($this->settings['communityFacebookUserGroupUid']);
 			$communityUser->removeUsergroup($communityUserGroup);
 			$this->communityUserRepository->update($communityUser);
 			// get all notificationRelatedUsers and remove them as well

@@ -119,13 +119,25 @@
 			</trans-unit>
 
 			<trans-unit id="tx_easyvote_domain_model_city">
-				<source>Ort</source>
-			</trans-unit>
-			<trans-unit id="tx_easyvote_domain_model_city.zip">
-				<source>Postleitzahl</source>
+				<source>City</source>
 			</trans-unit>
 			<trans-unit id="tx_easyvote_domain_model_city.name">
-				<source>Ortsname</source>
+				<source>Name</source>
+			</trans-unit>
+			<trans-unit id="tx_easyvote_domain_model_city.postal_code">
+				<source>Postal Code</source>
+			</trans-unit>
+			<trans-unit id="tx_easyvote_domain_model_city.municipality">
+				<source>Municipality</source>
+			</trans-unit>
+			<trans-unit id="tx_easyvote_domain_model_city.longitude">
+				<source>Longitude</source>
+			</trans-unit>
+			<trans-unit id="tx_easyvote_domain_model_city.latitude">
+				<source>Latitude</source>
+			</trans-unit>
+			<trans-unit id="tx_easyvote_domain_model_city.kanton">
+				<source>Kanton</source>
 			</trans-unit>
 
 			<trans-unit id="tx_easyvote_domain_model_language">
@@ -176,6 +188,9 @@
 			</trans-unit>
 			<trans-unit id="tx_easyvote_domain_model_communityuser.community_user">
 				<source>Parent user</source>
+			</trans-unit>
+			<trans-unit id="tx_easyvote_domain_model_communityuser.city_selection">
+				<source>City</source>
 			</trans-unit>
 
 			<trans-unit id="tx_easyvote_domain_model_messagingjob">

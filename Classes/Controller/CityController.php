@@ -24,6 +24,7 @@ namespace Visol\Easyvote\Controller;
  *
  *  This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
+use TYPO3\CMS\Core\Utility\GeneralUtility;
 
 /**
  *
@@ -34,6 +35,14 @@ namespace Visol\Easyvote\Controller;
 class CityController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController {
 
 	/**
+	 * kantonRepository
+	 *
+	 * @var \Visol\Easyvote\Domain\Repository\KantonRepository
+	 * @inject
+	 */
+	protected $kantonRepository;
+
+	/**
 	 * cityRepository
 	 *
 	 * @var \Visol\Easyvote\Domain\Repository\CityRepository
@@ -42,23 +51,28 @@ class CityController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController 
 	protected $cityRepository;
 
 	/**
-	 * action list
+	 * action listCitiesByPostalCode
 	 *
-	 * @return void
+	 * @return string
 	 */
-	public function listAction() {
-		$cities = $this->cityRepository->findAll();
-		$this->view->assign('cities', $cities);
-	}
+	public function listCitiesByPostalCodeAction() {
+		$queryString = $GLOBALS['TYPO3_DB']->escapeStrForLike($GLOBALS['TYPO3_DB']->quoteStr(GeneralUtility::_GP('q'), 'tx_easyvote_domain_model_city'), 'tx_easyvote_domain_model_city');
+		$cities = $this->cityRepository->findCitiesByPostalCodePart($queryString);
 
-	/**
-	 * action show
-	 *
-	 * @param \Visol\Easyvote\Domain\Model\City $city
-	 * @return void
-	 */
-	public function showAction(\Visol\Easyvote\Domain\Model\City $city) {
-		$this->view->assign('city', $city);
+		$returnArray['results'] = array();
+		foreach ($cities as $city) {
+			/** @var $city \Visol\Easyvote\Domain\Model\City */
+			$returnArray['results'][] = array(
+				'id' => $city->getUid(),
+				'text' => $city->getPostalCode() . ' ' . $city->getName(),
+				'postalCode' => $city->getPostalCode(),
+				'city' => $city->getName(),
+				'kanton' => $city->getKanton()->getUid(),
+				'kantonName' => $city->getKanton()->getName()
+			);
+		}
+		$returnArray['more'] = FALSE;
+		return json_encode($returnArray);
 	}
 
 }

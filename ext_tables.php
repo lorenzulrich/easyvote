@@ -253,11 +253,13 @@ $TCA['tx_easyvote_domain_model_city'] = array(
 		'crdate' => 'crdate',
 		'cruser_id' => 'cruser_id',
 		'dividers2tabs' => TRUE,
+		'label' => 'name',
+		'label_alt' => 'postal_code, municipality',
+		'label_alt_force' => TRUE,
 
 		'versioningWS' => 2,
 		'versioning_followPages' => TRUE,
 
-		'origUid' => 't3_origuid',
 		'languageField' => 'sys_language_uid',
 		'transOrigPointerField' => 'l10n_parent',
 		'transOrigDiffSourceField' => 'l10n_diffsource',
@@ -265,10 +267,8 @@ $TCA['tx_easyvote_domain_model_city'] = array(
 		'delete' => 'deleted',
 		'enablecolumns' => array(
 			'disabled' => 'hidden',
-			'starttime' => 'starttime',
-			'endtime' => 'endtime',
 		),
-		'searchFields' => 'zip,name,',
+		'searchFields' => 'name,postal_code,municipality,longitude,latitude,kanton,',
 		'dynamicConfigFile' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath($_EXTKEY) . 'Configuration/TCA/City.php',
 		'iconfile' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extRelPath($_EXTKEY) . 'Resources/Public/Icons/tx_easyvote_domain_model_city.gif'
 	),
@@ -434,6 +434,20 @@ $communityUserColumns = array(
 			'type' => 'select',
 			'foreign_table' => 'fe_users',
 			'readOnly' => 1,
+			'items'   => array(
+				array('', ''),
+			),
+		),
+	),
+	'city_selection' => array(
+		'exclude' => 1,
+		'label' => 'LLL:EXT:easyvote/Resources/Private/Language/locallang_db.xlf:tx_easyvote_domain_model_communityuser.city_selection',
+		'config' => array(
+			'type' => 'select',
+			'foreign_table' => 'tx_easyvote_domain_model_city',
+			'items'   => array(
+				array('', ''),
+			),
 		),
 	),
 );
@@ -443,6 +457,9 @@ $communityUserColumns = array(
 
 $TCA['fe_users']['types']['Tx_Easyvote_CommunityUser']['showitem'] = $TCA['fe_users']['types']['Tx_Extbase_Domain_Model_FrontendUser']['showitem'];
 $TCA['fe_users']['types']['Tx_Easyvote_CommunityUser']['showitem'] .= ',--div--;LLL:EXT:easyvote/Resources/Private/Language/locallang_db.xlf:tx_easyvote_domain_model_communityuser';
-$TCA['fe_users']['types']['Tx_Easyvote_CommunityUser']['showitem'] .= ',gender, kanton, user_language, birthdate, notification_mail_active, notification_sms_active,notification_related_users, community_user';
+$TCA['fe_users']['types']['Tx_Easyvote_CommunityUser']['showitem'] .= ',gender, city_selection, kanton, user_language, birthdate, notification_mail_active, notification_sms_active,notification_related_users, community_user';
+
+$TCA['fe_users']['ctrl']['label_alt'] = 'last_name,first_name';
+$TCA['fe_users']['ctrl']['label_alt_force'] = TRUE;
 
 ?>

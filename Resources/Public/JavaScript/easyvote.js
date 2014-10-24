@@ -1,4 +1,6 @@
 $(function() {
+	var $body = $('body');
+
 	if ($('#votingsDashboard').length > 0) {
 		initializeVotings();
 		bindNavigation();
@@ -444,4 +446,36 @@ $(function() {
 			function(response) {}
 		);
 	});
+});
+
+$(function() {
+	if (typeof postalCodeServiceUrl === 'string') {
+		var $postalCodeSelector = $("#communityUser-citySelection");
+		$postalCodeSelector.select2({
+			placeholder: "PLZ eingeben...",
+			minimumInputLength: 2,
+			ajax: {
+				url: postalCodeServiceUrl,
+				dataType: 'json',
+				data: function (term, page) {
+					return {
+						q: term // search term
+					};
+				},
+				results: function (data, page) {
+					return {results: data.results};
+				}
+			},
+			initSelection: function (element, callback) {
+				//callback({ id: initialValue, text: initialValue });
+			},
+			dropdownCssClass: "bigdrop",
+			escapeMarkup: function (m) { return m; }
+		}).on('change', function(e) {
+			var data = $(this).select2('data');
+			$('#communityUser-citySelection').val(data.id);
+			var selectedCityName = data.postalCode + ' ' + data.city + ' (' + data.kantonName + ')';
+			$('#communityUser-cityOutput').val(selectedCityName);
+		});
+	}
 });

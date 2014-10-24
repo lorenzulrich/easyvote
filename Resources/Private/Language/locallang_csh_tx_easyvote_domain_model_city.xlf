@@ -1,14 +1,25 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <xliff version="1.0">
-	<file source-language="en" datatype="plaintext" original="messages" date="2013-09-19T13:43:14Z" product-name="easyvote">
+	<file source-language="en" datatype="plaintext" original="messages" date="2014-09-23T19:52:30Z" product-name="easyvote">
 		<header/>
 		<body>
-
-			<trans-unit id="zip.description">
-				<source>Postleitzahl</source>
-			</trans-unit>
 			<trans-unit id="name.description">
-				<source>Ortsname</source>
+				<source>Name</source>
+			</trans-unit>
+			<trans-unit id="postal_code.description">
+				<source>Postal Code</source>
+			</trans-unit>
+			<trans-unit id="municipality.description">
+				<source>Municipality</source>
+			</trans-unit>
+			<trans-unit id="longitude.description">
+				<source>Longitude</source>
+			</trans-unit>
+			<trans-unit id="latitude.description">
+				<source>Latitude</source>
+			</trans-unit>
+			<trans-unit id="kanton.description">
+				<source>Kanton</source>
 			</trans-unit>
 		</body>
 	</file>

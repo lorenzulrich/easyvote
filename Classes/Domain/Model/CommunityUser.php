@@ -93,6 +93,11 @@ class CommunityUser extends \TYPO3\CMS\Extbase\Domain\Model\FrontendUser {
 	protected $prefixCode;
 
 	/**
+	 * @var \Visol\Easyvote\Domain\Model\City
+	 */
+	protected $citySelection;
+
+	/**
 	 * Users that were subscribed for notifications by this user
 	 *
 	 * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Visol\Easyvote\Domain\Model\CommunityUser>
@@ -306,6 +311,20 @@ class CommunityUser extends \TYPO3\CMS\Extbase\Domain\Model\FrontendUser {
 	 */
 	public function setPrefixCode($prefixCode) {
 		$this->prefixCode = $prefixCode;
+	}
+
+	/**
+	 * @return \Visol\Easyvote\Domain\Model\City
+	 */
+	public function getCitySelection() {
+		return $this->citySelection;
+	}
+
+	/**
+	 * @param \Visol\Easyvote\Domain\Model\City $citySelection
+	 */
+	public function setCitySelection($citySelection) {
+		$this->citySelection = $citySelection;
 	}
 
 }
