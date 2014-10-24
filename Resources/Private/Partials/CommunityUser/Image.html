@@ -1,0 +1,12 @@
+<f:security.ifHasRole role="{settings.communityFacebookUserGroupUid}">
+	<img class="user-image" src="https://graph.facebook.com/{user.username}/picture?width={size}&height={size}" height="{size}" width="{size}" alt="{user.firstName} {user.lastName}">
+</f:security.ifHasRole>
+<f:security.ifHasRole role="{settings.communityEmailUserGroupUid}">
+	<f:if condition="{user.image}">
+		<f:then>
+			<f:image class="user-image" alt="{user.firstName} {user.lastName}" src="uploads/pics/{user.image}" width="{size}" height="{size}c"/>
+		</f:then>
+		<f:else>
+		</f:else>
+	</f:if>
+</f:security.ifHasRole>

@@ -50,6 +50,8 @@ plugin.tx_easyvote {
 			youtubeHeight = 360
 		}
 		communityUserGroupUid = 4
+		communityFacebookUserGroupUid = 6
+		communityEmailUserGroupUid = 7
 		notificationRelatedUserGroupUid = 5
 		loginPid = 193
 		communityAjaxPid = 194
@@ -83,6 +85,17 @@ module.tx_easyvote {
 		templateRootPath = {$module.tx_easyvote.view.templateRootPath}
 		partialRootPath = {$module.tx_easyvote.view.partialRootPath}
 		layoutRootPath = {$module.tx_easyvote.view.layoutRootPath}
+	}
+}
+
+lib.feLogin < plugin.tx_felogin_pi1
+lib.feLogin {
+	storagePid = 144
+	templateFile = EXT:usereasyvotetemplate/Resources/Private/Extensions/Felogin/login-community.html
+	showForgotPasswordLink = 1
+	_LOCAL_LANG.de {
+		username = E-Mail-Adresse
+		password = Passwort
 	}
 }
 

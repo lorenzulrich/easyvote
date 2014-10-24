@@ -7,7 +7,7 @@ if (!defined('TYPO3_MODE')) {
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin(
 	$_EXTKEY,
 	'Currentvotings',
-	'Aktuelle Abstimmungen',
+	'easyvote Abstimmungen: Aktuelle Abstimmungen',
 	'EXT:easyvote/ext_icon.gif'
 );
 
@@ -15,7 +15,7 @@ if (!defined('TYPO3_MODE')) {
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin(
 	$_EXTKEY,
 	'Kantonnavigation',
-	'Kantons-Navigation',
+	'easyvote Abstimmungen/Wahlen: Kantons-Navigation',
 	'EXT:easyvote/ext_icon.gif'
 );
 
@@ -23,7 +23,7 @@ if (!defined('TYPO3_MODE')) {
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin(
 	$_EXTKEY,
 	'Archive',
-	'Abstimmungs-Archiv',
+	'easyvote Abstimmungen: Archiv',
 	'EXT:easyvote/ext_icon.gif'
 );
 
@@ -31,7 +31,7 @@ if (!defined('TYPO3_MODE')) {
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin(
 	$_EXTKEY,
 	'CommunityAjax',
-	'AJAX-Funktionen für Community',
+	'easyvote Community: AJAX-Funktionen',
 	'EXT:easyvote/ext_icon.gif'
 );
 
@@ -39,7 +39,7 @@ if (!defined('TYPO3_MODE')) {
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin(
 	$_EXTKEY,
 	'Community',
-	'Community-Plugins',
+	'easyvote Community: Widgets',
 	'EXT:easyvote/ext_icon.gif'
 );
 
@@ -51,7 +51,7 @@ $TCA['tt_content']['types']['list']['subtypes_addlist'][$pluginSignature] = 'pi_
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin(
 	$_EXTKEY,
 	'Profile',
-	'Profil bearbeiten',
+	'easyvote Community: Profil bearbeiten',
 	'EXT:easyvote/ext_icon.gif'
 );
 
@@ -59,7 +59,7 @@ $TCA['tt_content']['types']['list']['subtypes_addlist'][$pluginSignature] = 'pi_
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin(
 	$_EXTKEY,
 	'Notifications',
-	'Eigener Vote-Wecker',
+	'easyvote Community: Eigener Vote-Wecker',
 	'EXT:easyvote/ext_icon.gif'
 );
 
@@ -67,7 +67,7 @@ $TCA['tt_content']['types']['list']['subtypes_addlist'][$pluginSignature] = 'pi_
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin(
 	$_EXTKEY,
 	'Mobilize',
-	'Freunde mobilisieren',
+	'easyvote Community: Freunde mobilisieren',
 	'EXT:easyvote/ext_icon.gif'
 );
 
@@ -75,7 +75,7 @@ $TCA['tt_content']['types']['list']['subtypes_addlist'][$pluginSignature] = 'pi_
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin(
 	$_EXTKEY,
 	'Unsubscribe',
-	'Vote-Wecker abmelden',
+	'easyvote Community: Vote-Wecker abmelden',
 	'EXT:easyvote/ext_icon.gif'
 );
 

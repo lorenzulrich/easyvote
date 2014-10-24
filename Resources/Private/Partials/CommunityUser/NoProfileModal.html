@@ -1,19 +1,6 @@
 <h2><f:translate key="loginPanel.modalHeader" /></h2>
-<div class="ym-clearfix">
-	<div class="pull-left" style="width: 50%;">
-		<p class="introduction">
-			<f:translate key="loginPanel.modalFacebookHeader" />
-		</p>
-		<p>
-			<f:link.action extensionName="vifbauth" pluginName="Auth" pageUid="{settings.loginPid}" controller="Authentication" action="login">
-				<f:image src="EXT:easyvote/Resources/Public/Images/button-facebook-login.png" alt="Log in with Facebook" />
-			</f:link.action>
-		</p>
-	</div>
-	<div class="pull-right" style="width: 50%;">
-		<p class="introduction">
-			<f:translate key="loginPanel.modalAdvantages" />
-		</p>
+<div class="no-profile">
+	<div class="pull-left">
 		<table class="advantages">
 			<tr>
 				<td>
@@ -40,6 +27,9 @@
 				</td>
 			</tr>
 		</table>
+	</div>
+	<div class="pull-right">
+		<f:render partial="CommunityUser/Registration" arguments="{_all}" />
 	</div>
 </div>
 <p>

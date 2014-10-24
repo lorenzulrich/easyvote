@@ -442,6 +442,14 @@ Puoi disattivare la voto-sveglia per i tuoi amici in qualsiasi momento, se lo vu
 				<source>E-Mail-Adresse</source>
 				<target>Indirizzo e-mail </target>
 			</trans-unit>
+			<trans-unit id="editProfile.placeholderGender">
+				<source>Geschlecht</source>
+				<target>Genere</target>
+			</trans-unit>
+			<trans-unit id="editProfile.placeholderLanguage">
+				<source>Sprache</source>
+				<target>Lingua</target>
+			</trans-unit>
 			<trans-unit id="editProfile.placeholderBirthdate">
 				<source>Geburtsdatum, z.B. 01.01.2000</source>
 				<target>Data di nascita, per es. 01.01.2000</target>
@@ -488,6 +496,10 @@ Puoi disattivare la voto-sveglia per i tuoi amici in qualsiasi momento, se lo vu
 			<trans-unit id="loginPanel.loggedInAs">
 				<source>eingeloggt als</source>
 				<target>login come </target>
+			</trans-unit>
+			<trans-unit id="loginPanel.login">
+				<source>Anmelden</source>
+				<target>Login</target>
 			</trans-unit>
 			<trans-unit id="loginPanel.logout">
 				<source>Abmelden</source>

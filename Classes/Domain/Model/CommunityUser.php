@@ -75,6 +75,11 @@ class CommunityUser extends \TYPO3\CMS\Extbase\Domain\Model\FrontendUser {
 	protected $notificationSmsActive;
 
 	/**
+	 * @var integer
+	 */
+	protected $disable;
+
+	/**
 	 * @validate EmailAddress
 	 * @var string
 	 */
@@ -311,6 +316,20 @@ class CommunityUser extends \TYPO3\CMS\Extbase\Domain\Model\FrontendUser {
 	 */
 	public function setPrefixCode($prefixCode) {
 		$this->prefixCode = $prefixCode;
+	}
+
+	/**
+	 * @return integer
+	 */
+	public function getDisable() {
+		return $this->disable;
+	}
+
+	/**
+	 * @param integer $disable
+	 */
+	public function setDisable($disable) {
+		$this->disable = $disable;
 	}
 
 	/**

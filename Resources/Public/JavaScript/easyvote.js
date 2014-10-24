@@ -77,79 +77,81 @@ function resetForm() {
     $("#searchForm").find("input[type=checkbox]").attr('checked', false);
 }
 
-/* Modals */
-function bindModals() {
-	$('.hasModal').click(function(e) {
-		e.preventDefault();
-		var requestedLink = $(e.target).attr('href');
-		var $modalContentContainer = $(this).next('div');
-		var modalContent = $modalContentContainer.html();
-		$(this).qtip({
-			content: {
-				text: $modalContentContainer
-			},
-			hide: false,
-			show: {
-				ready: true,
-				modal: {
-					on: true,
-					blur: false
-				}
-			},
-			position: {
-				my: 'center', at: 'center',
-				target: $(window)
-			},
-			style: {
-				classes: 'qtip-easyvote qtip-rounded qtip-modal'
-			},
-			events: {
-				render: function(event, api) {
-					event.preventDefault();
-					$('button.button-confirm', api.elements.content).click(function(e) {
-						window.location = requestedLink;
-					});
-					$('a.qtip-close', api.elements.content).click(function(e) {
-						api.hide(e);
-					});
-					$('button.button-cancel', api.elements.content).click(function(e) {
-						api.hide(e);
-					});
+var Easyvote = {
+	/* tooltips */
+	bindToolTips: function() {
+		$('.hasTooltip').each(function() {
+			$(this).qtip({
+				content: {
+					text: $(this).next('div')
 				},
-				hide: function(event, api) {
-					$(e.target).after('<div class="hidden">' + modalContent + '</div>');
-					api.destroy();
+				hide: {
+					delay: 200,
+					fixed: true
+				},
+				show: {
+					solo: true
+				},
+				style: {
+					classes: 'qtip-easyvote qtip-rounded qtip-shadow qtip-easyvote-narrow'
 				}
-			}
+			});
 		});
-	});
-}
+	},
 
-/* Flashing tooltips */
-function bindToolTips() {
-	$('.hasTooltip').each(function() {
-		$(this).qtip({
-			content: {
-				text: $(this).next('div')
-			},
-			hide: {
-				delay: 200,
-				fixed: true
-			},
-			show: {
-				solo: true
-			},
-			style: {
-				classes: 'qtip-easyvote qtip-rounded qtip-shadow qtip-easyvote-narrow'
-			}
+	/* Modals */
+	bindModals: function() {
+		$body.on('click', '.hasModal', function(e) {
+			e.preventDefault();
+			var requestedLink = $(e.target).attr('href');
+			var $modalContentContainer = $(this).next('div');
+			var modalContent = $modalContentContainer.html();
+			$(this).qtip({
+				content: {
+					text: $modalContentContainer
+				},
+				hide: false,
+				show: {
+					ready: true,
+					modal: {
+						on: true,
+						blur: false
+					}
+				},
+				position: {
+					my: 'center', at: 'center',
+					target: $(window)
+				},
+				style: {
+					classes: 'qtip-easyvote qtip-rounded qtip-modal'
+				},
+				events: {
+					render: function(event, api) {
+						event.preventDefault();
+						$('button.button-confirm', api.elements.content).click(function(e) {
+							window.location = requestedLink;
+						});
+						$('a.qtip-close', api.elements.content).click(function(e) {
+							api.hide(e);
+						});
+						$('button.button-cancel', api.elements.content).click(function(e) {
+							api.hide(e);
+						});
+					},
+					hide: function(event, api) {
+						$(e.target).closest('a').after('<div class="hidden">' + modalContent + '</div>');
+						api.destroy();
+					}
+				}
+			});
 		});
-	});
-}
+	}
+};
 
 /* Display a passed modal */
 function displayModal(message) {
 	var $flashMessageContainer = $('#flashMessageContainer');
-	var $contentWrap = $('#contentWrap');
+	var $contentWrap = $('.container');
 	$flashMessageContainer.html('<a class="pull-right qtip-close" aria-label="schliessen"><i class="evicon-cancel"></i></a>' + message);
 
 	$contentWrap.qtip({
@@ -197,7 +199,7 @@ function displayModal(message) {
 /* Display a passed flash message */
 function displayFlashMessage(message) {
 	var $flashMessageContainer = $('#flashMessageContainer');
-	var $contentWrap = $('#contentWrap');
+	var $contentWrap = $('.container');
 	$flashMessageContainer.html('<a class="pull-right qtip-close" aria-label="schliessen"><i class="evicon-cancel"></i></a>' + message);
 	$contentWrap.qtip({
 		show: '',
@@ -242,7 +244,7 @@ function loadPollResult(votingProposal) {
 
 			$voteUpHandle.after('<div class="hidden">' + data['voteUpText'] + '</div>');
 			$voteDownHandle.after('<div class="hidden">' + data['voteDownText'] + '</div>');
-			bindToolTips();
+			Easyvote.bindToolTips();
 			if (typeof data['voteValue'] != 'undefined') {
 				if (data['voteValue'] > 0) {
 					/* classes documentation:
@@ -399,8 +401,8 @@ $(function() {
 		});
 	});
 
-	bindToolTips();
-	bindModals();
+	Easyvote.bindToolTips();
+	Easyvote.bindModals();
 });
 
 $(function() {

@@ -33,6 +33,19 @@ namespace Visol\Easyvote\Domain\Repository;
  */
 class CommunityUserRepository extends \TYPO3\CMS\Extbase\Domain\Repository\FrontendUserRepository {
 
+	/**
+	 * @param int $uid
+	 * @return \Visol\Easyvote\Domain\Model\CommunityUser|NULL
+	 */
+	public function findHiddenByUid($uid) {
+		$query = $this->createQuery();
+		$query->getQuerySettings()->setIgnoreEnableFields(TRUE);
+		$query->matching(
+			$query->equals('uid', (int)$uid)
+		);
+		return $query->execute()->getFirst();
+	}
+
 	public function findByFilterDemand($filterDemand) {
 		$query = $this->createQuery();
 

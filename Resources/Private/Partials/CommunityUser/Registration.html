@@ -1,0 +1,44 @@
+<div class="registration">
+	<f:link.action extensionName="vifbauth" pluginName="Auth" controller="Authentication" action="login">
+		<f:image src="EXT:easyvote/Resources/Public/Images/button-facebook-login.png" alt="Log in with Facebook" />
+	</f:link.action>
+	<h2 class="header-line"><span><f:translate key="registration.or" /></span></h2>
+	<f:form.validationResults for="{object}">
+		<f:if condition="{validationResults.flattenedErrors}">
+			<ul class="validationResults">
+				<f:for each="{validationResults.flattenedErrors}" key="propertyPath" as="errors">
+					<li>
+						<f:translate key="error.propertyPath.{propertyPath}" />:
+						<ul>
+							<f:for each="{errors}" as="error">
+								<li>{error}</li>
+							</f:for>
+						</ul>
+					</li>
+				</f:for>
+			</ul>
+		</f:if>
+	</f:form.validationResults>
+	<f:flashMessages renderMode="div" />
+	<f:form action="createAccount" controller="CommunityUser" noCacheHash="true" pageUid="{settings.communityRegistrationPid}">
+		<div class="form-group">
+			<label for="firstName"><f:translate key="registration.firstName" /></label>
+			<f:form.textfield class="form-control" name="firstName" id="firstName" errorClass="has-error" />
+		</div>
+		<div class="form-group">
+			<label for="lastName"><f:translate key="registration.lastName" /></label>
+			<f:form.textfield class="form-control" name="lastName" id="lastName" errorClass="has-error" />
+		</div>
+		<div class="form-group">
+			<label for="username"><f:translate key="registration.username" /></label>
+			<f:form.textfield class="form-control" name="username" id="username" errorClass="has-error" />
+		</div>
+		<div class="form-group">
+			<label for="password"><f:translate key="registration.password" /></label>
+			<f:form.password class="form-control" name="password" id="password" errorClass="has-error" />
+		</div>
+		<div class="form-group">
+			<button type="submit" class="btn btn-primary"><f:translate key="registration.register" /></button>
+		</div>
+	</f:form>
+</div>

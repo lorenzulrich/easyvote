@@ -1,63 +1,85 @@
 {namespace v=Tx_Vhs_ViewHelpers}
 {namespace ev=Tx_Easyvote_ViewHelpers}
 
-<div class="community-plugins">
-	<div class="csc-default box box-lightblue">
-		<h2><f:translate key="editProfile.header" /></h2>
-		<f:flashMessages renderMode="div" />
-		<f:render partial="FormErrors" arguments="{for: ''}" />
-		<form class="inputForm">
-		<div class="form-row">
-			<input type="text" readonly value="{user.firstName} {user.lastName}" />
+<div class="content-box">
+	<h2><f:translate key="editProfile.header" /></h2>
+	<f:flashMessages renderMode="div" />
+	<f:render partial="FormErrors" arguments="{for: ''}" />
+	<form>
+	<div class="form-group">
+		<input type="text" class="form-control" readonly value="{user.firstName} {user.lastName}" />
+	</div>
+	</form>
+	<f:form noCacheHash="true" class="inputForm" action="updateProfile" name="communityUser" object="{user}">
+		<div class="form-group">
+			<label for="address">{f:translate(key:'editProfile.placeholderAddress')}</label>
+			<f:form.textarea class="form-control" id="address" property="address" />
 		</div>
-		</form>
-		<f:form noCacheHash="true" class="inputForm" action="updateProfile" name="communityUser" object="{user}">
-			<div class="form-row">
-				<f:form.textarea property="address" additionalAttributes="{placeholder:'{f:translate(key:\'editProfile.placeholderAddress\')}'}" />
-			</div>
-			<div class="form-row">
-				<f:form.textfield class="formfield-zip" property="zip" additionalAttributes="{required: required, placeholder:'{f:translate(key:\'editProfile.placeholderZip\')}'}" />
-				<f:form.textfield class="formfield-city" property="city" additionalAttributes="{required: required, placeholder:'{f:translate(key:\'editProfile.placeholderCity\')}'}" />
-			</div>
-			<div class="form-row">
-				<ev:form.select property="kanton" options="{kantons}" optionValueField="uid" optionLabelField="name" additionalAttributes="{required: required}" prependOptionLabel="{f:translate(key:'editProfile.emptySelectKanton')}" prependOptionValue="0" />
-			</div>
-			<div class="form-row">
-				<select name="tx_easyvote_profile[phoneNumberPrefix]" class="formfield-phoneNumberPrefix">
-					<f:for each="{phoneNumberPrefixes}" as="phoneNumberPrefix" key="key">
-						<option {f:if(condition:'{0: \'{user.prefixCode}\'} == {0:\'{key}\'}', then:'selected=selected')} value="{key}">{phoneNumberPrefix}</option>
-					</f:for>
-				</select>
-				<f:form.textfield name="communityUser[telephone]" value="{user.telephoneWithoutPrefix}" class="formfield-phoneNumber" additionalAttributes="{maxlength: '7', placeholder:'{f:translate(key:\'editProfile.placeholderMobile\')}'}" />
-			</div>
-			<div class="form-row">
-				<f:form.textfield property="email" additionalAttributes="{required: required, placeholder:'{f:translate(key:\'editProfile.placeholderEmail\')}'}" />
-			</div>
-			<div class="form-row">
-				<f:form.textfield property="birthdate" additionalAttributes="{required: required, placeholder:'{f:translate(key:\'editProfile.placeholderBirthdate\')}'}" value="{user.birthdate -> f:format.date(format:'d.m.Y')}">
-					<f:format.date format="d.m.Y">{user.birthdate}</f:format.date>
-				</f:form.textfield>
-			</div>
-			<div class="form-row form-row-radio">
-				<f:form.radio id="userLanguage-1" name="communityUser[userLanguage]" value="1" checked="{user.userLanguage} == 1" /> <label for="userLanguage-1">Deutsch</label>
-				<f:form.radio id="userLanguage-2" name="communityUser[userLanguage]" value="2" checked="{user.userLanguage} == 2" /> <label for="userLanguage-2">Français</label>
-				<f:form.radio id="userLanguage-3" name="communityUser[userLanguage]" value="3" checked="{user.userLanguage} == 3" /> <label for="userLanguage-3">Italiano</label>
-			</div>
-			<div class="form-row form-row-radio">
-				<f:form.radio id="gender-1" name="communityUser[gender]" value="1" checked="{user.gender} == 1" /> <label for="gender-1"><i class="evicon-male"></i></label>
-				<f:form.radio id="gender-2" name="communityUser[gender]" value="2" checked="{user.gender} == 2" /> <label for="gender-2"><i class="evicon-female"></i></label>
-			</div>
-			<div class="form-row">
-				<button type="submit"><f:translate key="editProfile.save" /></button>
-			</div>
-			<f:link.action controller="CommunityUser" action="removeProfile" arguments="{communityUser:user}" class="hasModal"><f:translate key="editProfile.remove" /></f:link.action>
-			<div class="hidden">
-				<div class="community-plugins">
-					<p><f:translate key="editProfile.removeInformation" /></p>
-					<button class="pull-left button-cancel"><f:translate key="editProfile.removeCancel" /></button>
-					<button class="pull-right button-confirm"><f:translate key="editProfile.removeConfirm" /></button>
+		<div class="form-group">
+		</div>
+		<div class="form-group">
+			<label>{f:translate(key:'editProfile.placeholderCity')}</label>
+			<f:if condition="{user.citySelection}">
+				<input type="text" id="communityUser-cityOutput" class="form-control" readonly value="{user.citySelection.postalCode} {user.citySelection.name} ({user.citySelection.kanton.name})" />
+			</f:if>
+			<f:form.textfield id="communityUser-citySelection" class="form-control" property="citySelection" additionalAttributes="{required: required}" />
+		</div>
+		<div class="form-group">
+			<label for="phoneNumber">{f:translate(key:'editProfile.placeholderMobile')}</label>
+			<div class="row">
+				<div class="col-xs-3">
+					<select name="tx_easyvote_profile[phoneNumberPrefix]" class="form-control">
+						<f:for each="{phoneNumberPrefixes}" as="phoneNumberPrefix" key="key">
+							<option {f:if(condition:'{0: \'{user.prefixCode}\'} == {0:\'{key}\'}', then:'selected=selected')} value="{key}">{phoneNumberPrefix}</option>
+						</f:for>
+					</select>
+				</div>
+				<div class="col-xs-9">
+					<f:form.textfield id="phoneNumber" name="communityUser[telephone]" value="{user.telephoneWithoutPrefix}" class="form-control" additionalAttributes="{maxlength: '7'}" />
 				</div>
 			</div>
-		</f:form>
-	</div>
+		</div>
+		<f:comment>
+			// Problem da E-Mail-Adresse = Benutzername
+			<div class="form-group">
+				<label for="email">{f:translate(key:'editProfile.placeholderEmail')}</label>
+				<f:form.textfield id="email" class="form-control" property="email" additionalAttributes="{required: required}" />
+			</div>
+		</f:comment>
+		<div class="form-group">
+			<label for="birthday">{f:translate(key:'editProfile.placeholderBirthdate')}</label>
+			<f:form.textfield id="birthday" class="form-control" property="birthdate" additionalAttributes="{required: required}" value="{user.birthdate -> f:format.date(format:'d.m.Y')}">
+				<f:format.date format="d.m.Y">{user.birthdate}</f:format.date>
+			</f:form.textfield>
+		</div>
+		<div class="form-group form-row-radio">
+			<label>{f:translate(key:'editProfile.placeholderLanguage')}</label>
+			<div class="input-group">
+				<label class="radio-inline" for="userLanguage-1"><f:form.radio id="userLanguage-1" name="communityUser[userLanguage]" value="1" checked="{user.userLanguage} == 1" /> Deutsch</label>
+				<label class="radio-inline" for="userLanguage-2"><f:form.radio id="userLanguage-2" name="communityUser[userLanguage]" value="2" checked="{user.userLanguage} == 2" /> Français</label>
+				<label class="radio-inline" for="userLanguage-3"><f:form.radio id="userLanguage-3" name="communityUser[userLanguage]" value="3" checked="{user.userLanguage} == 3" /> Italiano</label>
+			</div>
+		</div>
+		<div class="form-group form-row-radio">
+			<label>{f:translate(key:'editProfile.placeholderGender')}</label>
+			<div class="input-group">
+				<label class="radio-inline" for="gender-1"><f:form.radio id="gender-1" name="communityUser[gender]" value="1" checked="{user.gender} == 1" /> <i class="evicon-male"></i></label>
+				<label class="radio-inline" for="gender-2"><f:form.radio id="gender-2" name="communityUser[gender]" value="2" checked="{user.gender} == 2" /> <i class="evicon-female"></i></label>
+			</div>
+		</div>
+		<div class="form-group">
+			<button class="btn btn-primary" type="submit"><f:translate key="editProfile.save" /></button>
+		</div>
+		<f:link.action controller="CommunityUser" action="removeProfile" arguments="{communityUser:user}" class="hasModal"><f:translate key="editProfile.remove" /></f:link.action>
+		<div class="hidden">
+			<div class="community-plugins">
+				<p><f:translate key="editProfile.removeInformation" /></p>
+				<button class="pull-left button-cancel"><f:translate key="editProfile.removeCancel" /></button>
+				<button class="pull-right button-confirm"><f:translate key="editProfile.removeConfirm" /></button>
+			</div>
+		</div>
+	</f:form>
 </div>
+<script>
+	var postalCodeServiceUrl = "{f:uri.action(controller: 'City', action:'listCitiesByPostalCode', pluginName: 'communityAjax', absolute: 'TRUE', noCacheHash: 'TRUE', pageType: 999, pageUid: settings.communityAjaxPid)}";
+</script>

@@ -2,19 +2,14 @@
 {namespace ev=Tx_Easyvote_ViewHelpers}
 
 <div class="community-plugins">
-	<f:if condition="{user.image}">
-		<f:then>
-			<f:image class="user-image" alt="{user.firstName} {user.lastName}" src="uploads/pics/{user.image}" width="260" height="260c"/>
-		</f:then>
-		<f:else>
-			<img class="user-image" src="https://graph.facebook.com/{user.username}/picture?width=260&height=260" height="260" width="260" alt="{user.firstName} {user.lastName}">
-		</f:else>
-	</f:if>
+	<f:render partial="CommunityUser/Image" arguments="{user:user, settings:settings, size: '263'}" />
 	<div class="csc-default box box-pink">
 		<h2>{user.firstName} {user.lastName}</h2>
 		<p>
 			<f:if condition="{user.age}">{user.age} <f:translate key="userOverview.years" /><br /></f:if>
-			{user.city}
+			<f:if condition="{user.citySelection}">
+				{user.citySelection.postalCode} {user.citySelection.name}
+			</f:if>
 		</p>
 	</div>
 </div>

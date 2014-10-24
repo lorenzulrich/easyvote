@@ -33,7 +33,18 @@
                                         <numIndex index="0">No Profile Notification</numIndex>
                                         <numIndex index="1">CommunityUser->noProfileNotification</numIndex>
                                     </numIndex>
-
+                                    <numIndex index="4">
+                                        <numIndex index="0">Not Authenticated Modal Content (Hidden)</numIndex>
+                                        <numIndex index="1">CommunityUser->notAuthenticatedModal</numIndex>
+                                    </numIndex>
+                                    <numIndex index="5">
+                                        <numIndex index="0">Profile Picture</numIndex>
+                                        <numIndex index="1">CommunityUser->profilePicture</numIndex>
+                                    </numIndex>
+                                    <numIndex index="5">
+                                        <numIndex index="0">User Registration</numIndex>
+                                        <numIndex index="1">CommunityUser->create;CommunityUser->activate</numIndex>
+                                    </numIndex>
                                 </items>
                             </config>
                         </TCEforms>

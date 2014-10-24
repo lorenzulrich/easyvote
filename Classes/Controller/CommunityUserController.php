@@ -87,6 +87,16 @@ class CommunityUserController extends \Visol\Easyvote\Controller\AbstractControl
 	}
 
 	/**
+	 * action profilePicture
+	 *
+	 * @return void
+	 */
+	public function profilePictureAction() {
+		$communityUser = $this->getLoggedInUser();
+		$this->view->assign('user', $communityUser);
+	}
+
+	/**
 	 * action userFunctions
 	 *
 	 * @return void
@@ -100,6 +110,14 @@ class CommunityUserController extends \Visol\Easyvote\Controller\AbstractControl
 	 * @return void
 	 */
 	public function noProfileNotificationAction() {
+	}
+
+	/**
+	 * action notAuthenticatedModal
+	 *
+	 * @return void
+	 */
+	public function notAuthenticatedModalAction() {
 	}
 
 	/**
@@ -206,7 +224,14 @@ class CommunityUserController extends \Visol\Easyvote\Controller\AbstractControl
 			$this->persistenceManager->persistAll();
 			$siteHomeUri = $this->uriBuilder->setTargetPageUid($this->settings['siteHomePid'])->setArguments(array('logintype' => 'logout'))->setCreateAbsoluteUri(TRUE)->build();
 			$arguments = array('redirectUri' => $siteHomeUri);
-			$this->redirect('revokePermissions', 'Authentication', 'Vifbauth', $arguments, $this->settings['loginPid']);
+			foreach ($communityUser->getUsergroup() as $usergroup) {
+				/** @var $usergroup \TYPO3\CMS\Extbase\Domain\Model\FrontendUserGroup */
+				if ($usergroup->getUid() === (int)$this->settings['communityFacebookUserGroupUid']) {
+					$this->redirect('revokePermissions', 'Authentication', 'Vifbauth', $arguments, $this->settings['loginPid']);
+				}
+			}
+			$this->redirectToUri($siteHomeUri);
+
 		}
 	}
 
@@ -372,7 +397,7 @@ class CommunityUserController extends \Visol\Easyvote\Controller\AbstractControl
 			// user is logged in
 			if ($notificationRelatedUser->getCommunityUser()->getUid() === $communityUser->getUid()) {
 				// is it really a child of the logged in user
-				// TODO in future: Check is user has change account to a real account and prevent deletion
+				// TODO in future: Check is user has changed account to a real account and prevent deletion
 				$this->communityUserRepository->remove($notificationRelatedUser);
 				$this->persistenceManager->persistAll();
 				return json_encode(LocalizationUtility::translate('editMobilizations.removed', 'easyvote'));
@@ -648,6 +673,136 @@ class CommunityUserController extends \Visol\Easyvote\Controller\AbstractControl
 		}
 		$this->persistenceManager->persistAll();
 		$this->redirect('backendSmsMessagingIndex');
+	}
+
+	/**
+	 * If someone wants to login on this action, this will fail because of missing arguments
+	 * Redirect user to home page in this case
+	 */
+	public function initializeCreateAction() {
+		$loginType = GeneralUtility::_GP('logintype');
+		if (!empty($loginType) && in_array($loginType, array('login', 'logout'))) {
+			$loginUri = $this->uriBuilder->setTargetPageUid($this->settings['loginPid'])->setCreateAbsoluteUri(TRUE)->build();
+			$this->redirectToUri($loginUri);
+		}
+	}
+
+	/**
+	 * Create (inactive) e-mail based account
+	 *
+	 * @param string $username
+	 * @validate $username EmailAddress
+	 * @validate $username Visol\Easyvote\Validation\Validator\UniqueUsernameValidator
+	 * @param string $password
+	 * @validate $password NotEmpty
+	 * @param string $firstName
+	 * @validate $firstName NotEmpty
+	 * @param string $lastName
+	 * @validate $lastName NotEmpty
+	 */
+	public function createAction($username, $password, $firstName, $lastName) {
+		// MD5 as fallback
+		$saltedPassword = md5($password);
+		// Create salted password
+		if (\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::isLoaded('saltedpasswords')) {
+			if (\TYPO3\CMS\Saltedpasswords\Utility\SaltedPasswordsUtility::isUsageEnabled('FE')) {
+				$objSalt = \TYPO3\CMS\Saltedpasswords\Salt\SaltFactory::getSaltingInstance(NULL);
+				if (is_object($objSalt)) {
+					$saltedPassword = $objSalt->getHashedPassword($password);
+				}
+			}
+		}
+
+		$userLanguage = CommunityUser::USERLANGUAGE_GERMAN;
+		if ((int)$GLOBALS['TSFE']->sys_language_uid === 1) {
+			$userLanguage = CommunityUser::USERLANGUAGE_FRENCH;
+		}
+		if ((int)$GLOBALS['TSFE']->sys_language_uid === 2) {
+			$userLanguage = CommunityUser::USERLANGUAGE_ITALIAN;
+		}
+
+
+		/** @var \Visol\Easyvote\Domain\Model\CommunityUser $communityUser */
+		$communityUser = $this->objectManager->get('Visol\Easyvote\Domain\Model\CommunityUser');
+		$communityUser->setUsername($username);
+		$communityUser->setEmail($username);
+		$communityUser->setPassword($saltedPassword);
+		$communityUser->setFirstName($firstName);
+		$communityUser->setLastName($lastName);
+		$communityUser->setPid($this->settings['userStoragePid']);
+		$communityUser->setNotificationMailActive(1);
+		$communityUser->setUserLanguage($userLanguage);
+		$communityUserGroup = $this->frontendUserGroupRepository->findByUid($this->settings['communityUserGroupUid']);
+		$communityUser->addUsergroup($communityUserGroup);
+		$communityEmailUserGroup = $this->frontendUserGroupRepository->findByUid($this->settings['communityEmailUserGroupUid']);
+		$communityUser->addUsergroup($communityEmailUserGroup);
+		$communityUser->setDisable(1);
+		$this->communityUserRepository->add($communityUser);
+		$this->persistenceManager->persistAll();
+
+		// generate optin uri
+		$arguments = array(
+			array('tx_easyvote_community' =>
+				array(
+					'controller' => 'CommunityUser',
+					'action' => 'activate',
+					'cuid' => base64_encode($communityUser->getUid()),
+					'verify' => GeneralUtility::stdAuthCode($communityUser->getUid()),
+				)
+			)
+		);
+		$optinUri = $this->uriBuilder->reset()->setUseCacheHash(FALSE)->setTargetPageUid($this->settings['communityRegistrationPid'])->setCreateAbsoluteUri(TRUE)->setArguments($arguments)->build();
+
+		// send optin mail
+		/** @var \TYPO3\CMS\Fluid\View\StandaloneView $standaloneView */
+		$standaloneView = $this->objectManager->get('TYPO3\CMS\Fluid\View\StandaloneView');
+		$standaloneView->setFormat('html');
+		$extbaseConfiguration = $this->configurationManager->getConfiguration(\TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface::CONFIGURATION_TYPE_FRAMEWORK, 'easyvote', 'easyvote');
+		$templateRootPath = GeneralUtility::getFileAbsFileName($extbaseConfiguration['view']['templateRootPath']);
+		$templatePathAndFilename = $templateRootPath . 'Email/CreateOptin.html';
+		$standaloneView->setTemplatePathAndFilename($templatePathAndFilename);
+		$standaloneView->assign('communityUser', $communityUser);
+		$standaloneView->assign('optinUri', $optinUri);
+		$content = $standaloneView->render();
+
+		/** @var $message \TYPO3\CMS\Core\Mail\MailMessage */
+		$message = GeneralUtility::makeInstance('TYPO3\CMS\Core\Mail\MailMessage');
+		$message->setTo(array($username => $firstName . ' ' . $lastName));
+		$message->setFrom(array($this->settings['senderEmail'] => $this->settings['senderName']));
+		$message->setSubject(LocalizationUtility::translate('create.optinMail.subject', 'easyvote'));
+		$message->setBody($content, 'text/html');
+		$message->send();
+
+	}
+
+	/**
+	 * Activate e-mail based account
+	 */
+	public function activateAction() {
+		$arguments = $this->request->getArguments();
+		if (isset($arguments['cuid']) && isset($arguments['verify'])) {
+			$communityUserUid = (int)base64_decode($arguments['cuid']);
+			$validVerificationCode = GeneralUtility::stdAuthCode($communityUserUid);
+			if ($validVerificationCode === $arguments['verify']) {
+				/** @var \Visol\Easyvote\Domain\Model\CommunityUser $communityUser */
+				$communityUser = $this->communityUserRepository->findHiddenByUid($communityUserUid);
+				if ($communityUser instanceof CommunityUser) {
+					$communityUser->setDisable(0);
+					$this->communityUserRepository->update($communityUser);
+					$this->persistenceManager->persistAll();
+					$this->view->assign('message', LocalizationUtility::translate('activate.successMessage', 'easyvote'));
+				} else {
+					// user not found
+					$this->view->assign('message', LocalizationUtility::translate('activate.userNotFoundMessage', 'easyvote'));
+				}
+			} else {
+				// provided verification code is incorrect
+				$this->view->assign('message', LocalizationUtility::translate('activate.invalidLinkMessage', 'easyvote'));
+			}
+		} else {
+			// link parts are missing
+			$this->view->assign('message', LocalizationUtility::translate('activate.missingLinkPartsMessage', 'easyvote'));
+		}
 	}
 
 	/**

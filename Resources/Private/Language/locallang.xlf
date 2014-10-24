@@ -96,13 +96,25 @@
 			</trans-unit>
 			
 			<trans-unit id="tx_easyvote_domain_model_city">
-				<source>Ort</source>
-			</trans-unit>
-			<trans-unit id="tx_easyvote_domain_model_city.zip">
-				<source>Postleitzahl</source>
+				<source>City</source>
 			</trans-unit>
 			<trans-unit id="tx_easyvote_domain_model_city.name">
-				<source>Ortsname</source>
+				<source>Name</source>
+			</trans-unit>
+			<trans-unit id="tx_easyvote_domain_model_city.postal_code">
+				<source>Postal Code</source>
+			</trans-unit>
+			<trans-unit id="tx_easyvote_domain_model_city.municipality">
+				<source>Municipality</source>
+			</trans-unit>
+			<trans-unit id="tx_easyvote_domain_model_city.longitude">
+				<source>Longitude</source>
+			</trans-unit>
+			<trans-unit id="tx_easyvote_domain_model_city.latitude">
+				<source>Latitude</source>
+			</trans-unit>
+			<trans-unit id="tx_easyvote_domain_model_city.kanton">
+				<source>Kanton</source>
 			</trans-unit>
 
 			<trans-unit id="widget.pagination.previous">
@@ -342,6 +354,12 @@
 			<trans-unit id="editProfile.placeholderEmail">
 				<source>E-Mail-Adresse</source>
 			</trans-unit>
+			<trans-unit id="editProfile.placeholderGender">
+				<source>Geschlecht</source>
+			</trans-unit>
+			<trans-unit id="editProfile.placeholderLanguage">
+				<source>Sprache</source>
+			</trans-unit>
 			<trans-unit id="editProfile.placeholderBirthdate">
 				<source>Geburtsdatum, z.B. 01.01.2000</source>
 			</trans-unit>
@@ -377,6 +395,9 @@
 			<trans-unit id="loginPanel.loggedInAs">
 				<source>eingeloggt als</source>
 			</trans-unit>
+			<trans-unit id="loginPanel.login">
+				<source>Anmelden</source>
+			</trans-unit>
 			<trans-unit id="loginPanel.logout">
 				<source>Abmelden</source>
 			</trans-unit>
@@ -389,6 +410,9 @@
 			<trans-unit id="loginPanel.modalHeaderNotAuthenticated">
 				<source>Registrierung</source>
 			</trans-unit>
+			<trans-unit id="loginPanel.modalHeaderLogin">
+				<source>Anmeldung</source>
+			</trans-unit>
 			<trans-unit id="loginPanel.modalSubheaderNotAuthenticated">
 				<source>Registriere dich jetzt bei easyvote, um die angewählte Funktion verwenden zu können.</source>
 			</trans-unit>
@@ -397,6 +421,9 @@
 			</trans-unit>
 			<trans-unit id="loginPanel.modalAdvantages">
 				<source>Vorteile</source>
+			</trans-unit>
+			<trans-unit id="loginPanel.modalNativeLoginHeader">
+				<source>Anmelden mit easyvote</source>
 			</trans-unit>
 			<trans-unit id="loginPanel.modalAdvantage.1">
 				<source>Informiere dich einfach und neutral über Abstimmungen und Wahlen!</source>
@@ -470,6 +497,85 @@
 			<trans-unit id="error.1245107351">
 				<source>Bitte die rot hinterlegten Felder korrigieren.</source>
 			</trans-unit>
+			<trans-unit id="error.1413988036">
+				<source>Es ist bereits ein Benutzer mit dieser E-Mail-Adresse registriert.</source>
+			</trans-unit>
+			<trans-unit id="error.propertyPath.username">
+				<source>E-Mail-Adresse</source>
+			</trans-unit>
+			<trans-unit id="error.propertyPath.password">
+				<source>Passwort</source>
+			</trans-unit>
+			<trans-unit id="error.propertyPath.firstName">
+				<source>Vorname</source>
+			</trans-unit>
+			<trans-unit id="error.propertyPath.lastName">
+				<source>Nachname</source>
+			</trans-unit>
+
+			<trans-unit id="registration.username">
+				<source>E-Mail-Adresse</source>
+			</trans-unit>
+			<trans-unit id="registration.password">
+				<source>Passwort</source>
+			</trans-unit>
+			<trans-unit id="registration.firstName">
+				<source>Vorname</source>
+			</trans-unit>
+			<trans-unit id="registration.lastName">
+				<source>Nachname</source>
+			</trans-unit>
+			<trans-unit id="registration.or">
+				<source>oder</source>
+			</trans-unit>
+			<trans-unit id="registration.register">
+				<source>Registrieren</source>
+			</trans-unit>
+
+
+			<trans-unit id="create.header">
+				<source>Registration erfolgreich</source>
+			</trans-unit>
+			<trans-unit id="create.optinMessage">
+				<source>Dein easyvote-Benutzerkonto wurde erfolgreich erstellt. Bitte klicke auf den Link in der Bestätigungs-E-Mail, um dein Konto freizuschalten. Dann kannst du loslegen!</source>
+			</trans-unit>
+			<trans-unit id="create.optinMail.subject">
+				<source>easyvote: Bestätige deine E-Mail-Adresse</source>
+			</trans-unit>
+
+			<trans-unit id="create.optinMail.hello">
+				<source>Hallo</source>
+			</trans-unit>
+			<trans-unit id="create.optinMail.introduction">
+				<source>Vielen Dank für dein Interesse an easyvote. Bestätige deine Registrierung mit einem Klick auf den folgenden Link:</source>
+			</trans-unit>
+			<trans-unit id="create.optinMail.linkText">
+				<source>easyvote-Konto aktivieren</source>
+			</trans-unit>
+			<trans-unit id="create.optinMail.ending">
+				<source><![CDATA[
+					<p>Beste Grüsse<br />
+					dein easyvote-Team</p>
+				]]></source>
+			</trans-unit>
+
+			<trans-unit id="activate.header">
+				<source>Aktivierung</source>
+			</trans-unit>
+			<trans-unit id="activate.successMessage">
+				<source>Dein Konto wurde erfolgreich aktiviert. Du kannst dich nun einloggen und bist Teil der easyvote-Community!</source>
+			</trans-unit>
+			<trans-unit id="activate.userNotFoundMessage">
+				<source>Das Konto konnte nicht aktiviert werden, weil der Benutzer nicht gefunden wurde.</source>
+			</trans-unit>
+			<trans-unit id="activate.missingLinkPartsMessage">
+				<source>Dein Konto konnte nicht aktiviert werden, da der Aktivierungslink nicht vollständig ist.</source>
+			</trans-unit>
+			<trans-unit id="activate.invalidLinkMessage">
+				<source>Dein Konto konnte nicht aktiviert werden, da der Aktivierungslink ungültig ist.</source>
+			</trans-unit>
+
+
 		</body>
 	</file>
 </xliff>
