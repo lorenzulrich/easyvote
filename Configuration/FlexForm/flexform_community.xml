@@ -38,13 +38,13 @@
                                         <numIndex index="1">CommunityUser->notAuthenticatedModal</numIndex>
                                     </numIndex>
                                     <numIndex index="5">
-                                        <numIndex index="0">Profile Picture</numIndex>
-                                        <numIndex index="1">CommunityUser->profilePicture</numIndex>
-                                    </numIndex>
-                                    <numIndex index="5">
                                         <numIndex index="0">User Registration</numIndex>
                                         <numIndex index="1">CommunityUser->create;CommunityUser->activate</numIndex>
                                     </numIndex>
+									<numIndex index="6">
+										<numIndex index="0">Profile Picture</numIndex>
+										<numIndex index="1">CommunityUser->profilePicture</numIndex>
+									</numIndex>
                                 </items>
                             </config>
                         </TCEforms>
