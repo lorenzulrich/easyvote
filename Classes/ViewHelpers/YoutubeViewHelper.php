@@ -52,7 +52,7 @@
  * @package Vhs
  * @subpackage ViewHelpers\Format
  */
-class Tx_Easyvote_ViewHelpers_YoutubeViewHelper extends Tx_Fluid_Core_ViewHelper_AbstractViewHelper {
+class Tx_Easyvote_ViewHelpers_YoutubeViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHelper {
 
 	/**
 	 * @param string $videoUrl
@@ -65,9 +65,9 @@ class Tx_Easyvote_ViewHelpers_YoutubeViewHelper extends Tx_Fluid_Core_ViewHelper
 		if (!empty($videoUrl)) {
 			$urlArray = @parse_url($videoUrl);
 			$videoQuery = $urlArray['query'];
-			$videoId = t3lib_div::trimExplode('=', $videoQuery);
+			$videoId = \TYPO3\CMS\Core\Utility\GeneralUtility::trimExplode('=', $videoQuery);
 			$videoId = $videoId[1];
-			$embedCode = '<iframe width="' . $width . '" height="' . $height . '" src="//www.youtube.com/embed/' . $videoId . '?html5=1&rel=0" frameborder="0" allowfullscreen></iframe>';
+			$embedCode = '<div class="youtube-embed"><iframe src="//www.youtube.com/embed/' . $videoId . '?theme=light&html5=1&rel=0" frameborder="0" allowfullscreen></iframe></div>';
 		}
 		return $embedCode;
 	}
