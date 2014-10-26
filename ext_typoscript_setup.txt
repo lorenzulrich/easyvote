@@ -2,7 +2,14 @@ config.tx_extbase{
     persistence{
         classes{
 
-
+			Visol\Easyvote\Domain\Model\FileReference {
+				mapping {
+					tableName = sys_file_reference
+					columns {
+						uid_local.mapOnProperty = originalFileIdentifier
+					}
+				}
+			}
             TYPO3\CMS\Extbase\Domain\Model\FrontendUser {
                 subclasses {
                     Tx_Easyvote_CommunityUser = Visol\Easyvote\Domain\Model\CommunityUser
@@ -22,4 +29,7 @@ config.tx_extbase{
             
     	}
     }
+	objects {
+		TYPO3\CMS\Extbase\Domain\Model\FileReference.className = Visol\Easyvote\Domain\Model\FileReference
+	}
 }

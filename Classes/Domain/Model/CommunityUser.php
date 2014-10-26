@@ -118,6 +118,11 @@ class CommunityUser extends \TYPO3\CMS\Extbase\Domain\Model\FrontendUser {
 	 */
 	protected $communityUser;
 
+	/**
+	 * @var \TYPO3\CMS\Extbase\Domain\Model\FileReference
+	 */
+	protected $falImage;
+
 	const USERLANGUAGE_GERMAN = 1;
 	const USERLANGUAGE_FRENCH = 2;
 	const USERLANGUAGE_ITALIAN = 3;
@@ -344,6 +349,20 @@ class CommunityUser extends \TYPO3\CMS\Extbase\Domain\Model\FrontendUser {
 	 */
 	public function setCitySelection($citySelection) {
 		$this->citySelection = $citySelection;
+	}
+
+	/**
+	 * @return \TYPO3\CMS\Extbase\Domain\Model\FileReference
+	 */
+	public function getFalImage() {
+		return $this->falImage;
+	}
+
+	/**
+	 * @param \TYPO3\CMS\Extbase\Domain\Model\FileReference $falImage
+	 */
+	public function setFalImage($falImage) {
+		$this->falImage = $falImage;
 	}
 
 }

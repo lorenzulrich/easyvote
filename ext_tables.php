@@ -450,6 +450,22 @@ $communityUserColumns = array(
 			),
 		),
 	),
+	'fal_image' => array(
+		'exclude' => 1,
+		'label' => 'FAL Image',
+		'config' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::getFileFieldTCAConfig('fal_image', array(
+				'appearance' => array(
+					'createNewRelationLinkTitle' => 'LLL:EXT:cms/locallang_ttc.xlf:images.addFileReference'
+				),
+				'foreign_match_fields' => array(
+					'fieldname' => 'falimage',
+					'tablenames' => 'fe_users',
+					'table_local' => 'sys_file',
+				),
+				'minitems' => 0,
+				'maxitems' => 1,
+			), $GLOBALS['TYPO3_CONF_VARS']['GFX']['imagefile_ext']),
+	),
 );
 
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addTCAcolumns('fe_users', $communityUserColumns);
@@ -457,7 +473,7 @@ $communityUserColumns = array(
 
 $TCA['fe_users']['types']['Tx_Easyvote_CommunityUser']['showitem'] = $TCA['fe_users']['types']['Tx_Extbase_Domain_Model_FrontendUser']['showitem'];
 $TCA['fe_users']['types']['Tx_Easyvote_CommunityUser']['showitem'] .= ',--div--;LLL:EXT:easyvote/Resources/Private/Language/locallang_db.xlf:tx_easyvote_domain_model_communityuser';
-$TCA['fe_users']['types']['Tx_Easyvote_CommunityUser']['showitem'] .= ',gender, city_selection, kanton, user_language, birthdate, notification_mail_active, notification_sms_active,notification_related_users, community_user';
+$TCA['fe_users']['types']['Tx_Easyvote_CommunityUser']['showitem'] .= ',gender, city_selection, kanton, user_language, birthdate, fal_image, notification_mail_active, notification_sms_active,notification_related_users, community_user';
 
 $TCA['fe_users']['ctrl']['label_alt'] = 'last_name,first_name';
 $TCA['fe_users']['ctrl']['label_alt_force'] = TRUE;

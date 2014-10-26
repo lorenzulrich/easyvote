@@ -363,6 +363,9 @@
 			<trans-unit id="editProfile.placeholderBirthdate">
 				<source>Geburtsdatum, z.B. 01.01.2000</source>
 			</trans-unit>
+			<trans-unit id="editProfile.placeholderImage">
+				<source>Profilbild</source>
+			</trans-unit>
 			<trans-unit id="editProfile.saved">
 				<source><![CDATA[
 					<i class="evicon-ok-squared"></i> Dein Profil wurde aktualisiert!

@@ -396,6 +396,7 @@ CREATE TABLE fe_users (
   notification_related_users int(11) unsigned DEFAULT '0' NOT NULL,
   city_selection int(11) unsigned DEFAULT '0' NOT NULL,
   community_user int(11) unsigned DEFAULT '0' NOT NULL,
+  fal_image int(11) unsigned DEFAULT '0' NOT NULL,
 	tx_extbase_type varchar(255) DEFAULT '' NOT NULL,
 
 );

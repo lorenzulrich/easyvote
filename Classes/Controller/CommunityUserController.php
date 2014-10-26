@@ -29,6 +29,8 @@ use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
 use Visol\Easyvote\Domain\Model\City;
 use Visol\Easyvote\Domain\Model\CommunityUser;
+use Visol\Easyvote\Property\TypeConverter\UploadedFileReferenceConverter;
+use TYPO3\CMS\Extbase\Property\PropertyMappingConfiguration;
 
 /**
  *
@@ -157,7 +159,16 @@ class CommunityUserController extends \Visol\Easyvote\Controller\AbstractControl
 	 */
 	protected function initializeUpdateProfileAction(){
 		$propertyMappingConfiguration = $this->arguments['communityUser']->getPropertyMappingConfiguration();
+		$uploadConfiguration = array(
+			UploadedFileReferenceConverter::CONFIGURATION_ALLOWED_FILE_EXTENSIONS => $GLOBALS['TYPO3_CONF_VARS']['GFX']['imagefile_ext'],
+			UploadedFileReferenceConverter::CONFIGURATION_UPLOAD_FOLDER => '1:/userimages/',
+		);
 		$propertyMappingConfiguration->allowAllProperties();
+		$propertyMappingConfiguration->forProperty('image')
+			->setTypeConverterOptions(
+				'Visol\\Easyvote\\Property\\TypeConverter\\UploadedFileReferenceConverter',
+				$uploadConfiguration
+			);
 		$propertyMappingConfiguration->forProperty('birthdate')->setTypeConverterOption('TYPO3\\CMS\\Extbase\\Property\\TypeConverter\\DateTimeConverter', \TYPO3\CMS\Extbase\Property\TypeConverter\DateTimeConverter::CONFIGURATION_DATE_FORMAT, 'd.m.Y');
 	}
 
@@ -803,6 +814,19 @@ class CommunityUserController extends \Visol\Easyvote\Controller\AbstractControl
 			// link parts are missing
 			$this->view->assign('message', LocalizationUtility::translate('activate.missingLinkPartsMessage', 'easyvote'));
 		}
+	}
+
+	/**
+	 *
+	 */
+	public function dataCompletionRequestAction() {
+		$this->view->assign('user', $this->getLoggedInUser());
+	}
+
+	/**
+	 * @param string $argumentName
+	 */
+	protected function setTypeConverterConfigurationForImageUpload($argumentName) {
 	}
 
 	/**

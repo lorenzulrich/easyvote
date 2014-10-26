@@ -1,5 +1,6 @@
 {namespace v=Tx_Vhs_ViewHelpers}
 {namespace ev=Tx_Easyvote_ViewHelpers}
+{namespace vi=Visol\Easyvote\ViewHelpers}
 
 <div class="content-box">
 	<h2><f:translate key="editProfile.header" /></h2>
@@ -10,12 +11,10 @@
 		<input type="text" class="form-control" readonly value="{user.firstName} {user.lastName}" />
 	</div>
 	</form>
-	<f:form noCacheHash="true" class="inputForm" action="updateProfile" name="communityUser" object="{user}">
+	<f:form noCacheHash="true" enctype="multipart/form-data" class="inputForm" action="updateProfile" name="communityUser" object="{user}">
 		<div class="form-group">
 			<label for="address">{f:translate(key:'editProfile.placeholderAddress')}</label>
 			<f:form.textarea class="form-control" id="address" property="address" />
-		</div>
-		<div class="form-group">
 		</div>
 		<div class="form-group">
 			<label>{f:translate(key:'editProfile.placeholderCity')}</label>
@@ -52,6 +51,12 @@
 				<f:format.date format="d.m.Y">{user.birthdate}</f:format.date>
 			</f:form.textfield>
 		</div>
+		<f:security.ifHasRole role="{settings.communityEmailUserGroupUid}">
+			<div class="form-group">
+				<label for="image">{f:translate(key:'editProfile.placeholderImage')}</label>
+				<vi:form.upload id="image" property="falImage" />
+			</div>
+		</f:security.ifHasRole>
 		<div class="form-group form-row-radio">
 			<label>{f:translate(key:'editProfile.placeholderLanguage')}</label>
 			<div class="input-group">
