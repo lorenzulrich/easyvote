@@ -164,7 +164,7 @@ class CommunityUserController extends \Visol\Easyvote\Controller\AbstractControl
 			UploadedFileReferenceConverter::CONFIGURATION_UPLOAD_FOLDER => '1:/userimages/',
 		);
 		$propertyMappingConfiguration->allowAllProperties();
-		$propertyMappingConfiguration->forProperty('image')
+		$propertyMappingConfiguration->forProperty('falImage')
 			->setTypeConverterOptions(
 				'Visol\\Easyvote\\Property\\TypeConverter\\UploadedFileReferenceConverter',
 				$uploadConfiguration
