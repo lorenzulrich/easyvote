@@ -423,7 +423,10 @@
 				<source>Vorteile</source>
 			</trans-unit>
 			<trans-unit id="loginPanel.modalNativeLoginHeader">
-				<source>Anmelden mit easyvote</source>
+				<source>Anmelden mit E-Mail</source>
+			</trans-unit>
+			<trans-unit id="loginPanel.registrationLink">
+				<source>Noch kein Profil? Jetzt registieren.</source>
 			</trans-unit>
 			<trans-unit id="loginPanel.modalAdvantage.1">
 				<source>Informiere dich einfach und neutral über Abstimmungen und Wahlen!</source>

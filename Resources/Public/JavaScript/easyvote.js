@@ -481,3 +481,11 @@ $(function() {
 		});
 	}
 });
+
+$(function() {
+	// trigger registration modal on clicking the registration link in login modal
+	$('#loginModalRegistrationLink').on('click', function(e) {
+		e.preventDefault();
+		$('.register-link').trigger('click');
+	})
+})
