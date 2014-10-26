@@ -7,6 +7,7 @@
 			<f:image class="user-image" alt="{user.firstName} {user.lastName}" src="uploads/pics/{user.image}" width="{size}" height="{size}c"/>
 		</f:then>
 		<f:else>
+			<f:image class="user-image" alt="{user.firstName} {user.lastName}" src="/typo3conf/ext/easyvote/Resources/Public/Images/profilepicture-placeholder.png" width="{size}" height="{size}c"/>
 		</f:else>
 	</f:if>
 </f:security.ifHasRole>
