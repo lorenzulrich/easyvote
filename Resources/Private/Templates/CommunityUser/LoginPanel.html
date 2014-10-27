@@ -18,8 +18,8 @@
 	<f:security.ifAuthenticated>
 		<f:then>
 			<f:security.ifHasRole role="{settings.communityUserGroupUid}">
-				<f:comment><f:link.page class="link-box" pageUid="{settings.siteHomePid}" additionalParams="{logintype:'logout'}"><f:translate key="loginPanel.logout" /></f:link.page></f:comment>
-				<f:link.page class="link-box" additionalParams="{logintype:'logout'}"><f:translate key="loginPanel.logout" /></f:link.page>
+				<f:link.page class="link-box" pageUid="{settings.siteHomePid}" additionalParams="{logintype:'logout'}"><f:translate key="loginPanel.logout" /></f:link.page>
+				<f:comment><f:link.page class="link-box" additionalParams="{logintype:'logout'}"><f:translate key="loginPanel.logout" /></f:link.page></f:comment>
 			</f:security.ifHasRole>
 		</f:then>
 		<f:else>
