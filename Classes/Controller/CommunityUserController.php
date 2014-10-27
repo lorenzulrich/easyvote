@@ -26,6 +26,7 @@ namespace Visol\Easyvote\Controller;
  ***************************************************************/
 use TYPO3\CMS\Core\Utility\DebugUtility;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Extbase\Domain\Model\FileReference;
 use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
 use Visol\Easyvote\Domain\Model\City;
 use Visol\Easyvote\Domain\Model\CommunityUser;
@@ -818,10 +819,41 @@ class CommunityUserController extends \Visol\Easyvote\Controller\AbstractControl
 	}
 
 	/**
-	 *
+	 * Request completion of user data
 	 */
 	public function dataCompletionRequestAction() {
-		$this->view->assign('user', $this->getLoggedInUser());
+		// try to get logged in user
+		$communityUser = $this->getLoggedInUser();
+
+		$dataCompletionRequestNecessary = FALSE;
+
+		if ($communityUser instanceof CommunityUser) {
+			// check if modal has been displayed in current user session
+			$modalWasDisplayedInSession = (boolean)$GLOBALS['TSFE']->fe_user->getKey('ses', 'tx_easyvote_datacompletionrequestmodal');
+			if (!$modalWasDisplayedInSession) {
+				// if not, check if it's necessary to display it because some needed fields are empty
+				if (!$communityUser->getCitySelection() instanceof City) {
+					$dataCompletionRequestNecessary = TRUE;
+				}
+				if (!$communityUser->getBirthdate() instanceof \DateTime) {
+					$dataCompletionRequestNecessary = TRUE;
+				}
+				if (!$communityUser->getFalImage() instanceof FileReference) {
+					foreach ($communityUser->getUsergroup() as $usergroup) {
+						/** @var $usergroup \TYPO3\CMS\Extbase\Domain\Model\FrontendUserGroup */
+						if ($usergroup->getUid() === (int)$this->settings['communityEmailUserGroupUid']) {
+							$dataCompletionRequestNecessary = TRUE;
+						}
+					}
+				}
+				$this->view->assign('communityUser', $communityUser);
+				// set session value to prevent the modal from being displayed another time in the current session
+				$GLOBALS['TSFE']->fe_user->setKey('ses', 'tx_easyvote_datacompletionrequestmodal', 1);
+				$GLOBALS['TSFE']->fe_user->sesData_change = TRUE;
+				$GLOBALS['TSFE']->fe_user->storeSessionData();
+			}
+		}
+		$this->view->assign('dataCompletionRequestNecessary', $dataCompletionRequestNecessary);
 	}
 
 	/**

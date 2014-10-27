@@ -145,56 +145,103 @@ var Easyvote = {
 				}
 			});
 		});
-	}
-};
+	},
 
-/* Display a passed modal */
-function displayModal(message) {
-	var $flashMessageContainer = $('#flashMessageContainer');
-	var $contentWrap = $('.container');
-	$flashMessageContainer.html('<a class="pull-right qtip-close" aria-label="schliessen"><i class="evicon-cancel"></i></a>' + message);
-
-	$contentWrap.qtip({
-		content: {
-			prerender: true, // important
-			text: $flashMessageContainer.html()
-		},
-		hide: false,
-		show: {
-			ready: true,
-			modal: {
-				on: true,
-				blur: false
+	/* File Reader */
+	readFile: function(input, targetSelector) {
+		if (input.files && input.files[0]) {
+			var reader = new FileReader();
+			reader.onload = function(e) {
+				$(targetSelector).attr('src', e.target.result);
 			}
-		},
-		position: {
-			my: 'center', at: 'center',
-			target: $(window)
-		},
-		style: {
-			classes: 'qtip-easyvote qtip-rounded qtip-modal qtip-shadow'
-		},
-		events: {
-			render: function(e, api) {
-				e.preventDefault();
-				$('button.button-confirm', api.elements.content).click(function(e) {
-					window.location = requestedLink;
-				});
-				$('a.qtip-close', api.elements.content).click(function(e) {
-					api.hide(e);
-				});
-				$('button.button-cancel', api.elements.content).click(function(e) {
-					api.hide(e);
-				});
-				FB.XFBML.parse();
-				twttr.widgets.load();
-			},
-			hide: function(e, api) {
-				api.destroy();
-			}
+			reader.readAsDataURL(input.files[0]);
 		}
-	}).qtip('show');
-}
+	},
+	/* Display a passed modal */
+	displayModal: function(message) {
+		var $flashMessageContainer = $('#flashMessageContainer');
+		var $contentWrap = $('.container');
+		$flashMessageContainer.html('<a class="pull-right qtip-close" aria-label="schliessen"><i class="evicon-cancel"></i></a>' + message);
+		$contentWrap.qtip({
+			content: {
+				prerender: true, // important
+				text: $flashMessageContainer.html()
+			},
+			hide: false,
+			show: {
+				ready: true,
+				modal: {
+					on: true,
+					blur: false
+				}
+			},
+			position: {
+				my: 'center', at: 'center',
+				target: $(window)
+			},
+			style: {
+				classes: 'qtip-easyvote qtip-rounded qtip-modal qtip-shadow'
+			},
+			events: {
+				render: function(e, api) {
+					e.preventDefault();
+					$('button.button-confirm', api.elements.content).click(function(e) {
+						window.location = requestedLink;
+					});
+					$('a.qtip-close', api.elements.content).click(function(e) {
+						api.hide(e);
+					});
+					$('button.button-cancel', api.elements.content).click(function(e) {
+						api.hide(e);
+					});
+					if (typeof(FB) === 'object') {
+						FB.XFBML.parse();
+					}
+					if (typeof(twttr) === 'object') {
+						twttr.widgets.load();
+					}
+				},
+				hide: function(e, api) {
+					api.destroy();
+				}
+			}
+		}).qtip('show');
+	},
+	/* Postal code selection for forms */
+	bindPostalCodeSelection: function() {
+		if (typeof postalCodeServiceUrl === 'string') {
+			console.log('hier');
+			var $postalCodeSelector = $(".communityUser-citySelection");
+			$postalCodeSelector.select2({
+				placeholder: "PLZ eingeben...",
+				minimumInputLength: 2,
+				ajax: {
+					url: postalCodeServiceUrl,
+					dataType: 'json',
+					data: function (term, page) {
+						return {
+							q: term // search term
+						};
+					},
+					results: function (data, page) {
+						return {results: data.results};
+					}
+				},
+				initSelection: function (element, callback) {
+					//callback({ id: initialValue, text: initialValue });
+				},
+				dropdownCssClass: "bigdrop",
+				escapeMarkup: function (m) { return m; }
+			}).on('change', function(e) {
+				var data = $(this).select2('data');
+				$('.communityUser-citySelection').val(data.id);
+				var selectedCityName = data.postalCode + ' ' + data.city + ' (' + data.kantonName + ')';
+				$('.communityUser-cityOutput').val(selectedCityName);
+			});
+		}
+	}
+
+};
 
 /* Display a passed flash message */
 function displayFlashMessage(message) {
@@ -306,7 +353,7 @@ $(function() {
 		$.ajax({
 			url: ajaxCallUri,
 			success: function(data) {
-				displayModal(data['successText']);
+				Easyvote.displayModal(data['successText']);
 				loadPollResult(votingProposalUid);
 			}
 		});
@@ -321,7 +368,7 @@ $(function() {
 		$.ajax({
 			url: ajaxCallUri,
 			success: function(data) {
-				displayModal(data['successText']);
+				Easyvote.displayModal(data['successText']);
 				loadPollResult(votingProposalUid);
 			}
 		});
@@ -330,7 +377,7 @@ $(function() {
 	/* notAuthenticatedNotification when user clicks voteUp or voteDown without being authenticated*/
 	$body.on('click', '.vote-notAuthenticated', function() {
 		var message = $('#notAuthenticatedNotificationModal').html();
-		displayModal(message);
+		Easyvote.displayModal(message);
 	});
 });
 
@@ -448,44 +495,33 @@ $(function() {
 			function(response) {}
 		);
 	});
+
 });
 
+
+
 $(function() {
-	if (typeof postalCodeServiceUrl === 'string') {
-		var $postalCodeSelector = $("#communityUser-citySelection");
-		$postalCodeSelector.select2({
-			placeholder: "PLZ eingeben...",
-			minimumInputLength: 2,
-			ajax: {
-				url: postalCodeServiceUrl,
-				dataType: 'json',
-				data: function (term, page) {
-					return {
-						q: term // search term
-					};
-				},
-				results: function (data, page) {
-					return {results: data.results};
-				}
-			},
-			initSelection: function (element, callback) {
-				//callback({ id: initialValue, text: initialValue });
-			},
-			dropdownCssClass: "bigdrop",
-			escapeMarkup: function (m) { return m; }
-		}).on('change', function(e) {
-			var data = $(this).select2('data');
-			$('#communityUser-citySelection').val(data.id);
-			var selectedCityName = data.postalCode + ' ' + data.city + ' (' + data.kantonName + ')';
-			$('#communityUser-cityOutput').val(selectedCityName);
-		});
+
+	if ($('.editProfileForm').length > 0) {
+		Easyvote.bindPostalCodeSelection();
 	}
-});
 
-$(function() {
 	// trigger registration modal on clicking the registration link in login modal
 	$('#loginModalRegistrationLink').on('click', function(e) {
 		e.preventDefault();
 		$('.register-link').trigger('click');
-	})
+	});
+
+	var $dataCompletionRequestModal = $('#dataCompletionRequestModal');
+	if ($dataCompletionRequestModal.length > 0) {
+		var message = $dataCompletionRequestModal.html();
+		$dataCompletionRequestModal.empty();
+		Easyvote.displayModal(message);
+		Easyvote.bindPostalCodeSelection();
+	};
+
+	// display selected file in dataCompletionRequestModal
+	$body.on('change', '#dataCompletionRequestModalFalImage', function(e) {
+		Easyvote.readFile(this, '.dataCompletionRequestModalPreviewImage');
+	});
 })

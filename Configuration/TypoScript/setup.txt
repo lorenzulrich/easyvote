@@ -61,6 +61,7 @@ plugin.tx_easyvote {
 		communityVoteweckerPid = 199
 		communityMobilizePid = 200
 		communityHomePid = 192
+		communityEditProfilePid = 193
 		siteHomePid = 4
 		userStoragePid = 144
 		senderEmail = info@easyvote.ch
@@ -111,6 +112,21 @@ lib.loginPanel {
     switchableControllerActions {
         CommunityUser {
             1 = loginPanel
+        }
+    }
+}
+
+lib.dataCompletionRequestModal = USER_INT
+lib.dataCompletionRequestModal {
+	userFunc = TYPO3\CMS\Extbase\Core\Bootstrap->run
+    pluginName    = Community
+    extensionName = Easyvote
+    vendorName    = Visol
+    controller    = CommunityUser
+    action        = dataCompletionRequest
+    switchableControllerActions {
+        CommunityUser {
+            1 = dataCompletionRequest
         }
     }
 }

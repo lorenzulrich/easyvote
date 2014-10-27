@@ -45,6 +45,10 @@
 										<numIndex index="0">Profile Picture</numIndex>
 										<numIndex index="1">CommunityUser->profilePicture</numIndex>
 									</numIndex>
+									<numIndex index="7">
+										<numIndex index="0">Data Completion Request (Hidden)</numIndex>
+										<numIndex index="1">CommunityUser->dataCompletionRequest</numIndex>
+									</numIndex>
                                 </items>
                             </config>
                         </TCEforms>

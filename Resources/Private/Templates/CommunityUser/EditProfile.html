@@ -11,7 +11,7 @@
 		<input type="text" class="form-control" readonly value="{user.firstName} {user.lastName}" />
 	</div>
 	</form>
-	<f:form noCacheHash="true" enctype="multipart/form-data" class="inputForm" action="updateProfile" name="communityUser" object="{user}">
+	<f:form noCacheHash="true" enctype="multipart/form-data" class="editProfileForm" action="updateProfile" name="communityUser" object="{user}">
 		<div class="form-group">
 			<label for="address">{f:translate(key:'editProfile.placeholderAddress')}</label>
 			<f:form.textarea class="form-control" id="address" property="address" />
@@ -21,7 +21,7 @@
 			<f:if condition="{user.citySelection}">
 				<input type="text" id="communityUser-cityOutput" class="form-control" readonly value="{user.citySelection.postalCode} {user.citySelection.name} ({user.citySelection.kanton.name})" />
 			</f:if>
-			<f:form.textfield id="communityUser-citySelection" class="form-control" property="citySelection" additionalAttributes="{required: required}" />
+			<f:form.textfield class="form-control communityUser-citySelection" property="citySelection" additionalAttributes="{required: required}" />
 		</div>
 		<div class="form-group">
 			<label for="phoneNumber">{f:translate(key:'editProfile.placeholderMobile')}</label>

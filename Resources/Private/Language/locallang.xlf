@@ -371,6 +371,9 @@
 					<i class="evicon-ok-squared"></i> Dein Profil wurde aktualisiert!
 				]]></source>
 			</trans-unit>
+			<trans-unit id="editProfile.dataCompletionRequestModalHeader">
+				<source>Vervollständige dein Profil...</source>
+			</trans-unit>
 
 			<trans-unit id="unsubscribe.header">
 				<source>Vote-Wecker-Abmeldung</source>
