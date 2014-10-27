@@ -353,7 +353,7 @@ class CommunityUserController extends \Visol\Easyvote\Controller\AbstractControl
 					$newCommunityUser->addUsergroup($notificationRelatedUserGroup);
 					$newCommunityUser->setCommunityUser($communityUser);
 					$newCommunityUser->setNotificationMailActive(1);
-					$newCommunityUser->setUsername($newCommunityUser->getEmail());
+					$newCommunityUser->setUsername('vw-' . $newCommunityUser->getEmail());
 					$newCommunityUser->setPassword(md5(GeneralUtility::generateRandomBytes(40)));
 					$newCommunityUser->setPid($this->settings['userStoragePid']);
 					$this->communityUserRepository->add($newCommunityUser);
