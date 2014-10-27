@@ -569,7 +569,10 @@
 				<source>Aktivierung</source>
 			</trans-unit>
 			<trans-unit id="activate.successMessage">
-				<source>Dein Konto wurde erfolgreich aktiviert. Du kannst dich nun einloggen und bist Teil der easyvote-Community!</source>
+				<source>Dein Konto wurde erfolgreich aktiviert!</source>
+			</trans-unit>
+			<trans-unit id="activate.communityHomeLinkLabel">
+				<source>Jetzt loslegen!</source>
 			</trans-unit>
 			<trans-unit id="activate.userNotFoundMessage">
 				<source>Das Konto konnte nicht aktiviert werden, weil der Benutzer nicht gefunden wurde.</source>

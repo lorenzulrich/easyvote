@@ -24,6 +24,7 @@ namespace Visol\Easyvote\Controller;
  *
  *  This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
+use TYPO3\CMS\Core\Utility\GeneralUtility;
 
 /**
  *
@@ -55,6 +56,27 @@ class AbstractController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControl
 		} else {
 			return FALSE;
 		}
+	}
+
+	/**
+	 * TYPO3 user login
+	 * @param string $username
+	 * @return boolean
+	 */
+	public function loginUser($username) {
+		$loginData = array();
+		$loginData['uname'] = $username;
+		$loginData['status'] = 'login';
+
+		$GLOBALS['TSFE']->fe_user->checkPid = 0;
+		$info = $GLOBALS['TSFE']->fe_user->getAuthInfoArray();
+		$storagePid = $this->settings['userStoragePid'];
+		$info['db_user']['checkPidList'] = 1;
+		$info['db_user']['check_pid_clause'] = 'AND pid IN(' . $storagePid . ')';
+		$user = $GLOBALS['TSFE']->fe_user->fetchUserRecord($info['db_user'], $loginData['uname']);
+		$GLOBALS['TSFE']->fe_user->createUserSession($user);
+		$GLOBALS['TSFE']->fe_user->loginSessionStarted = TRUE;
+		$GLOBALS['TSFE']->fe_user->user = $GLOBALS['TSFE']->fe_user->fetchUserSession();
 	}
 
 }
