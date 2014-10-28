@@ -41,8 +41,18 @@ class VotingDayRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
 	 * @return \TYPO3\CMS\Extbase\Persistence\QueryInterface
 	 */
 	public function findCurrentVotingDay() {
-		$query = $this->createQuery()->setLimit(1)->execute();
-		return $query->getFirst();
+		$query = $this->createQuery();
+		$query->matching(
+			$query->logicalAnd(
+				$query->greaterThan('votingDate', time()),
+				$query->equals('archived', FALSE)
+			)
+		);
+		$query->setOrderings(array(
+			'votingDate' => \TYPO3\CMS\Extbase\Persistence\QueryInterface::ORDER_ASCENDING,
+		));
+		$query->setLimit(1);
+		return $query->execute()->getFirst();
 	}
 	
 	/**
@@ -50,7 +60,7 @@ class VotingDayRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
 	 */
 	public function findNextVotingDay() {
 		$query = $this->createQuery();
-		$query->statement('SELECT * FROM tx_easyvote_domain_model_votingday WHERE voting_date > ' . time() . ' AND deleted = 0 ORDER BY voting_date asc LIMIT 1');
+		$query->statement('SELECT * FROM tx_easyvote_domain_model_votingday WHERE voting_date > ' . time() . ' AND deleted = 0 ORDER BY voting_date ASC LIMIT 1');
 		return $query->execute()->getFirst();
 	}
 
