@@ -43,9 +43,7 @@ class VotingDayRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
 	public function findCurrentVotingDay() {
 		$query = $this->createQuery();
 		$query->matching(
-			$query->logicalAnd(
-				$query->equals('archived', FALSE)
-			)
+			$query->equals('archived', FALSE)
 		);
 		$query->setOrderings(array(
 			'votingDate' => \TYPO3\CMS\Extbase\Persistence\QueryInterface::ORDER_ASCENDING,
