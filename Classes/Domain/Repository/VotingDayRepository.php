@@ -44,7 +44,6 @@ class VotingDayRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
 		$query = $this->createQuery();
 		$query->matching(
 			$query->logicalAnd(
-				$query->greaterThan('votingDate', time()),
 				$query->equals('archived', FALSE)
 			)
 		);
