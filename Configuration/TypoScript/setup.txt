@@ -90,15 +90,6 @@ module.tx_easyvote {
 }
 
 lib.feLogin < plugin.tx_felogin_pi1
-lib.feLogin {
-	storagePid = 144
-	templateFile = EXT:usereasyvotetemplate/Resources/Private/Extensions/Felogin/login-community.html
-	showForgotPasswordLink = 1
-	_LOCAL_LANG.de {
-		username = E-Mail-Adresse
-		password = Passwort
-	}
-}
 
 lib.loginPanel = USER_INT
 lib.loginPanel {

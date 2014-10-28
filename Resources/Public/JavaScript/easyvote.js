@@ -506,6 +506,11 @@ $(function() {
 		Easyvote.bindPostalCodeSelection();
 	}
 
+	// re-open login modal on login error
+	if ($('.felogin-error').length > 0) {
+		$('.login-link').trigger('click');
+	}
+
 	// trigger registration modal on clicking the registration link in login modal
 	$('#loginModalRegistrationLink').on('click', function(e) {
 		e.preventDefault();
