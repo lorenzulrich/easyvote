@@ -76,6 +76,15 @@ class VotingDayRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
 	}
 
 	/**
+	 * @return array|\TYPO3\CMS\Extbase\Persistence\QueryResultInterface
+	 */
+	public function findAllVisibleAndHidden() {
+		$query = $this->createQuery();
+		$query->getQuerySettings()->setIgnoreEnableFields(TRUE);
+		return $query->execute();
+	}
+
+	/**
 	 * @return \TYPO3\CMS\Extbase\Persistence\QueryInterface
 	 */
 	public function findUploadAllowedVotingDays() {
