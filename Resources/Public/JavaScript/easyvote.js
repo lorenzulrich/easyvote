@@ -1,85 +1,47 @@
 $(function() {
 	var $body = $('body');
 
+	/* Gegenvorschlag navigation */
+	$('a#goToGegenvorschlag').click(function(e) {
+		var jumpToId = $(this).closest('div.abstimmungsvorlage').next().attr('id');
+		Easyvote.scrollToElement('#' + jumpToId);
+		e.stopPropagation();
+	});
+	$('a#goToHauptvorlage').click(function(e) {
+		var jumpToId = $(this).closest('div.abstimmungsvorlage').prev().attr('id');
+		Easyvote.scrollToElement('#' + jumpToId);
+		e.stopPropagation();
+	});
+
+	/* Toggle sections in a voting proposal */
+	$('.toggle-trigger').click(function(e) {
+		Easyvote.toggleBlock(this);
+		e.stopPropagation();
+	});
+
+	/* Initialize votings */
 	if ($('#votingsDashboard').length > 0) {
-		initializeVotings();
-		bindNavigation();
+		Easyvote.initializeVotings();
 	}
 
-	$('a#goToGegenvorschlag').click(function() {
-		var jumpToId = $(this).closest('div.abstimmungsvorlage').next().attr('id');
-		scrollToElement('#' + jumpToId);
-	});
-	$('a#goToHauptvorlage').click(function() {
-		var jumpToId = $(this).closest('div.abstimmungsvorlage').prev().attr('id');
-		scrollToElement('#' + jumpToId);
-	});
-
-	$('.toggle-trigger').click(function() {
-		toggleBlock(this);
+	/* Initialize infinite scrolling for archive */
+	$('.searchResults').jscroll({
+		autoTrigger: false,
+		nextSelector: 'a.votingsearch-next',
+		contentSelector: '.searchResults',
+		loadingHtml: '<div class="records-loading">laden...</div>',
+		refresh: true
 	});
 
-	$('.searchResults .abstimmungsvorlage-header').click(function(e) {
-		$('.abstimmungsvorlage-content', $(this).parent()).slideToggle('slow', function() {
-			$('i', $(this).parent()).toggleClass('evicon-down-open');
-		});
-	})
 
 });
-
-function initializeVotings() {
-    if (typeof metaVotingProposalId != 'undefined') {
-        openVoting(metaVotingProposalId);
-
-    } else {
-        var firstVoting = $('.meta-abstimmungsvorlage').first().attr('id').split('-')[2];
-        openVoting(firstVoting);
-    }
-}
-
-function bindNavigation() {
-    $('.meta-abstimmungsvorlage-navi').click(function() {
-        var metaVotingId = $(this).attr('id').split('-')[3];
-        $('.meta-abstimmungsvorlage-navi').unbind('click');
-        openVoting(metaVotingId);
-    });
-}
-
-function openVoting(metaVotingId) {
-
-    $('#meta-abstimmungsvorlage-navi-' + metaVotingId).slideUp(300, function() {
-        $('.meta-abstimmungsvorlage').not('#meta-abstimmungsvorlage-' + metaVotingId).slideUp(300, function() {
-            $('#meta-abstimmungsvorlage-' + metaVotingId).slideDown(300, function() {
-                $('.meta-abstimmungsvorlage-navi').not('#meta-abstimmungsvorlage-navi-' + metaVotingId).slideDown(300, function() {
-                    $('#votingsDashboard').show();
-                });
-            });
-        });
-    });
-    bindNavigation();
-
-}
-
-function scrollToElement(elementId){
-    $('html, body').animate({
-        scrollTop: $(elementId).offset().top
-    }, 1000);
-}
-
-function toggleBlock(trigger) {
-    $('.toggle-handle', trigger).toggleClass('toggle-handle-plus').promise().done(function() {
-        $(trigger).next().slideToggle('fast').toggleClass('toggle-closed');
-    })
-}
-
-function resetForm() {
-    $("#searchForm").find("input[type=text], textarea, select").val("");
-    $("#searchForm").find("input[type=checkbox]").attr('checked', false);
-}
 
 var Easyvote = {
 	/* tooltips */
 	bindToolTips: function() {
+		if (Modernizr.touch) {
+			return true;
+		};
 		$('.hasTooltip').each(function() {
 			$(this).qtip({
 				content: {
@@ -160,7 +122,7 @@ var Easyvote = {
 	/* Display a passed modal */
 	displayModal: function(message) {
 		var $flashMessageContainer = $('#flashMessageContainer');
-		var $contentWrap = $('.container');
+		var $contentWrap = $('.container-fluid');
 		$flashMessageContainer.html('<a class="pull-right qtip-close" aria-label="schliessen"><i class="evicon-cancel"></i></a>' + message);
 		$contentWrap.qtip({
 			content: {
@@ -210,7 +172,6 @@ var Easyvote = {
 	/* Postal code selection for forms */
 	bindPostalCodeSelection: function() {
 		if (typeof postalCodeServiceUrl === 'string') {
-			console.log('hier');
 			var $postalCodeSelector = $(".communityUser-citySelection");
 			$postalCodeSelector.select2({
 				placeholder: "PLZ eingeben...",
@@ -239,44 +200,124 @@ var Easyvote = {
 				$('.communityUser-cityOutput').val(selectedCityName);
 			});
 		}
-	}
+	},
 
+	scrollToElement: function(elementId) {
+		$('html, body').animate({
+			scrollTop: $(elementId).offset().top
+		}, 1000);
+	},
+
+	initializeVotings: function() {
+		if (typeof votingProposalId != 'undefined') {
+			Easyvote.openVoting(votingProposalId);
+		} else {
+			var firstVoting = $('.meta-abstimmungsvorlage').first().find('.abstimmungsvorlage').first().attr('id').split('-')[1];
+			Easyvote.openVoting(firstVoting);
+		}
+	},
+
+	openVoting: function(votingId) {
+		$('#abstimmungsvorlage-' + votingId).find('.toggle i').trigger('click');
+		Easyvote.scrollToElement('#abstimmungsvorlage-' + votingId);
+	},
+
+
+	toggleBlock: function(trigger) {
+		$('.toggle-handle', trigger).toggleClass('toggle-handle-plus').promise().done(function() {
+			$(trigger).next().slideToggle('fast').toggleClass('toggle-closed');
+		})
+	},
+
+	resetForm: function(formSelector) {
+		var $form = $(formSelector);
+		$form.find("input[type=text], textarea, select").val("");
+		$form.find("input[type=checkbox]").attr('checked', false);
+	},
+
+	/* Display a passed flash message */
+	displayFlashMessage: function(message) {
+		var $flashMessageContainer = $('#flashMessageContainer');
+		var $contentWrap = $('.container-fluid');
+		$flashMessageContainer.html('<a class="pull-right qtip-close" aria-label="schliessen"><i class="evicon-cancel"></i></a>' + message);
+		var flashMessage = $contentWrap.qtip({
+			show: '',
+			//hide: {
+			//	fixed: true,
+			//	inactive: 2000,
+			//	delay: 4000
+			//},
+			content: {
+				prerender: true, // important
+				text: $flashMessageContainer.html()
+			},
+			style: {
+				classes: 'qtip-easyvote qtip-rounded qtip-modal qtip-shadow'
+			},
+			position: {
+				my: 'center', at: 'center',
+				target: $(window)
+			},
+			events: {
+				render: function(event, api) {
+					$closeButton = $('a.qtip-close', api.elements.content);
+					$body.on('click', $closeButton, function(e) {
+						api.hide(e);
+					});
+					FB.XFBML.parse();
+					twttr.widgets.load();
+				}
+			}
+		}).qtip('show');
+	},
+
+	loadMobilizedCommunityUsers: function() {
+		var ajaxDataUri = ajaxUri + '&tx_easyvote_communityajax[controller]=CommunityUser&tx_easyvote_communityajax[action]=listMobilizedCommunityUsers';
+		$.ajax({
+			url: ajaxDataUri,
+			success: function(data) {
+				$('#mobilizedCommunityUsers').html(data);
+			}
+		});
+	},
+	newMobilizedCommunityUser: function(callback) {
+		var ajaxDataUri = ajaxUri + '&tx_easyvote_communityajax[controller]=CommunityUser&tx_easyvote_communityajax[action]=newMobilizedCommunityUser';
+		$.ajax({
+			url: ajaxDataUri,
+			success: function(data) {
+				$('#newMobilizedCommunityUserPlaceholder').append(data);
+				if (typeof(callback) == 'function') {
+					callback();
+				}
+			}
+		});
+	}
 };
 
-/* Display a passed flash message */
-function displayFlashMessage(message) {
-	var $flashMessageContainer = $('#flashMessageContainer');
-	var $contentWrap = $('.container');
-	$flashMessageContainer.html('<a class="pull-right qtip-close" aria-label="schliessen"><i class="evicon-cancel"></i></a>' + message);
-	$contentWrap.qtip({
-		show: '',
-		hide: {
-			fixed: true,
-			inactive: 2000,
-			delay: 4000
-		},
-		content: {
-			prerender: true, // important
-			text: $flashMessageContainer.html()
-		},
-		style: {
-			classes: 'qtip-easyvote qtip-rounded qtip-modal qtip-shadow'
-		},
-		position: {
-			my: 'center', at: 'center',
-			target: $(window)
-		},
-		events: {
-			render: function(event, api) {
-				$('a.qtip-close', api.elements.content).click(function(e) {
-					api.hide(e);
-				});
-				FB.XFBML.parse();
-				twttr.widgets.load();
-			}
+// The functions in namespace EasyvoteApp are invoked by the easyvote App
+var EasyvoteApp = {
+	insertAddress: function(id, lastName, firstName, email, phone) {
+		// phone not yet implemented
+		if (lastName + firstName + email === '') {
+			// don't try to submit empty rows
+			return true;
 		}
-	}).qtip('show');
-}
+		// remove empty rows
+		$.each($('.newMobilizedCommunityUser'), function() {
+			var $this = $(this);
+			if (!$this.find('.firstName').val() && !$this.find('.lastName').val() && !$this.find('.email').val()) {
+				$this.remove();
+			}
+		});
+		var callback = function() {
+			var $newMobilizedCommunityUser = $('.newMobilizedCommunityUser').last();
+			$newMobilizedCommunityUser.find('.firstName').val(firstName);
+			$newMobilizedCommunityUser.find('.lastName').val(lastName);
+			$newMobilizedCommunityUser.find('.email').val(email);
+		};
+		Easyvote.newMobilizedCommunityUser(callback);
+	}
+};
 
 /* Load poll result */
 function loadPollResult(votingProposal) {
@@ -325,112 +366,107 @@ var $body = $('body');
 
 /* Load poll results for all votingProposals on loading the site */
 $(function() {
-	$('.abstimmungsvorlage').each(function() {
-		var votingProposalUid = $(this).attr('id').split('-')[1];
-		loadPollResult(votingProposalUid);
-	});
+	if (typeof(ajaxUri) !== 'undefined') {
 
-	/* Undo vote */
-	$body.on('click', '.vote-active', function() {
-		var $trigger = $(this);
-		$trigger.removeClass('vote-active');
-		var votingProposalUid = $trigger.closest('.abstimmungsvorlage').attr('id').split('-')[1];
-		var ajaxCallUri = ajaxUri + '&tx_easyvote_communityajax[action]=undoUserVoteForVotingProposal&tx_easyvote_communityajax[votingProposal]=' + votingProposalUid;
-		$.ajax({
-			url: ajaxCallUri,
-			success: function(data) {
-				loadPollResult(votingProposalUid);
-			}
+		$('.abstimmungsvorlage').each(function() {
+			var votingProposalUid = $(this).attr('id').split('-')[1];
+			loadPollResult(votingProposalUid);
 		});
-	});
 
-	/* upVote */
-	$body.on('click', '.vote-up.vote-enabled', function() {
-		var $trigger = $(this);
-		$trigger.removeClass('vote-up');
-		var votingProposalUid = $trigger.closest('.abstimmungsvorlage').attr('id').split('-')[1];
-		var ajaxCallUri = ajaxUri + '&tx_easyvote_communityajax[action]=voteForVotingProposal&tx_easyvote_communityajax[value]=1&tx_easyvote_communityajax[votingProposal]=' + votingProposalUid;
-		$.ajax({
-			url: ajaxCallUri,
-			success: function(data) {
-				Easyvote.displayModal(data['successText']);
-				loadPollResult(votingProposalUid);
-			}
+		/* Undo vote */
+		$body.on('click', '.vote-active', function(e) {
+			var $trigger = $(this);
+			$trigger.removeClass('vote-active');
+			var votingProposalUid = $trigger.closest('.abstimmungsvorlage').attr('id').split('-')[1];
+			var ajaxCallUri = ajaxUri + '&tx_easyvote_communityajax[action]=undoUserVoteForVotingProposal&tx_easyvote_communityajax[votingProposal]=' + votingProposalUid;
+			$.ajax({
+				url: ajaxCallUri,
+				success: function(data) {
+					loadPollResult(votingProposalUid);
+				}
+			});
+			e.stopPropagation();
 		});
-	});
 
-	/* downVote */
-	$body.on('click', '.vote-down.vote-enabled', function() {
-		var $trigger = $(this);
-		$trigger.removeClass('vote-down');
-		var votingProposalUid = $trigger.closest('.abstimmungsvorlage').attr('id').split('-')[1];
-		var ajaxCallUri = ajaxUri + '&tx_easyvote_communityajax[action]=voteForVotingProposal&tx_easyvote_communityajax[value]=2&tx_easyvote_communityajax[votingProposal]=' + votingProposalUid;
-		$.ajax({
-			url: ajaxCallUri,
-			success: function(data) {
-				Easyvote.displayModal(data['successText']);
-				loadPollResult(votingProposalUid);
-			}
+		/* upVote */
+		$body.on('click', '.vote-up.vote-enabled', function(e) {
+			var $trigger = $(this);
+			$trigger.removeClass('vote-up');
+			var votingProposalUid = $trigger.closest('.abstimmungsvorlage').attr('id').split('-')[1];
+			var ajaxCallUri = ajaxUri + '&tx_easyvote_communityajax[action]=voteForVotingProposal&tx_easyvote_communityajax[value]=1&tx_easyvote_communityajax[votingProposal]=' + votingProposalUid;
+			$.ajax({
+				url: ajaxCallUri,
+				success: function(data) {
+					Easyvote.displayModal(data['successText']);
+					loadPollResult(votingProposalUid);
+				}
+			});
+			e.stopPropagation();
 		});
-	});
 
-	/* notAuthenticatedNotification when user clicks voteUp or voteDown without being authenticated*/
-	$body.on('click', '.vote-notAuthenticated', function() {
-		var message = $('#notAuthenticatedNotificationModal').html();
-		Easyvote.displayModal(message);
-	});
-});
+		/* downVote */
+		$body.on('click', '.vote-down.vote-enabled', function(e) {
+			var $trigger = $(this);
+			$trigger.removeClass('vote-down');
+			var votingProposalUid = $trigger.closest('.abstimmungsvorlage').attr('id').split('-')[1];
+			var ajaxCallUri = ajaxUri + '&tx_easyvote_communityajax[action]=voteForVotingProposal&tx_easyvote_communityajax[value]=2&tx_easyvote_communityajax[votingProposal]=' + votingProposalUid;
+			$.ajax({
+				url: ajaxCallUri,
+				success: function(data) {
+					Easyvote.displayModal(data['successText']);
+					loadPollResult(votingProposalUid);
+				}
+			});
+			e.stopPropagation();
+		});
 
-/* Load mobilized community users */
-$(function() {
-	if ($('#mobilizedCommunityUsers').length > 0) {
-		newMobilizedCommunityUser();
-		loadMobilizedCommunityUsers();
+		/* notAuthenticatedNotification when user clicks voteUp or voteDown without being authenticated*/
+		$body.on('click', '.vote-notAuthenticated', function(e) {
+			var message = $('#notAuthenticatedNotificationModal').html();
+			Easyvote.displayModal(message);
+			e.stopPropagation();
+		});
 	}
-});
 
-function loadMobilizedCommunityUsers() {
-	var ajaxDataUri = ajaxUri + '&tx_easyvote_communityajax[controller]=CommunityUser&tx_easyvote_communityajax[action]=listMobilizedCommunityUsers';
-	$.ajax({
-		url: ajaxDataUri,
-		success: function(data) {
-			$('#mobilizedCommunityUsers').html(data);
-		}
-	});
-}
+	/* Load mobilized community users */
+	if ($('#mobilizedCommunityUsers').length > 0) {
+		// add 3 empty fields
+		Easyvote.newMobilizedCommunityUser();
+		Easyvote.newMobilizedCommunityUser();
+		Easyvote.newMobilizedCommunityUser();
+		Easyvote.loadMobilizedCommunityUsers();
+	}
 
-$(function() {
 	/* Add new mobilized community user */
-	$body.on('click', '#newMobilizedCommunityUser', function() {
-		newMobilizedCommunityUser();
-	});
-});
-
-function newMobilizedCommunityUser() {
-	var ajaxDataUri = ajaxUri + '&tx_easyvote_communityajax[controller]=CommunityUser&tx_easyvote_communityajax[action]=newMobilizedCommunityUser';
-	$.ajax({
-		url: ajaxDataUri,
-		success: function(data) {
-			$('#newMobilizedCommunityUserPlaceholder').append(data);
-		}
-	});
-}
-
-$(function() {
-	$body.on('submit', '.newMobilizedCommunityUser', function(e) {
+	$body.on('click', '#newMobilizedCommunityUser', function(e) {
 		e.preventDefault();
-		$(this).closest('div').remove();
-		var $formData = $(this).serializeArray();
-		var ajaxDataUri = ajaxUri + '&tx_easyvote_communityajax[controller]=CommunityUser&tx_easyvote_communityajax[action]=createMobilizedCommunityUser';
-		$.ajax({
-			url: ajaxDataUri,
-			data: $formData,
-			success: function(returnValue) {
-				displayFlashMessage(returnValue);
-				loadMobilizedCommunityUsers();
-				newMobilizedCommunityUser();
+		Easyvote.newMobilizedCommunityUser();
+	});
+
+	/* Add a new mobilized community users */
+	$body.on('click', '#saveMobilizedCommunityUsers', function(e) {
+		e.preventDefault();
+		$('form.newMobilizedCommunityUser').each(function() {
+			var $this = $(this);
+			var firstName = $.trim($this.find('.firstName').val());
+			var lastName = $.trim($this.find('.lastName').val());
+			var email = $.trim($this.find('.email').val());
+			if (firstName + lastName + email === '') {
+				// don't try to submit empty rows
+				return true;
 			}
+			$(this).remove();
+			var $formData = $(this).serializeArray();
+			var ajaxDataUri = ajaxUri + '&tx_easyvote_communityajax[controller]=CommunityUser&tx_easyvote_communityajax[action]=createMobilizedCommunityUser';
+			$.ajax({
+				url: ajaxDataUri,
+				data: $formData,
+				success: function(returnValue) {
+					Easyvote.displayFlashMessage(returnValue);
+				}
+			});
 		});
+		Easyvote.loadMobilizedCommunityUsers();
 	});
 
 	/* Remove a mobilized community user */
@@ -442,17 +478,16 @@ $(function() {
 			url: ajaxDataUri,
 			data: $formData,
 			success: function(returnValue) {
-				displayFlashMessage(returnValue);
-				loadMobilizedCommunityUsers();
+				Easyvote.displayFlashMessage(returnValue);
+				Easyvote.loadMobilizedCommunityUsers();
 			}
 		});
 	});
 
 	Easyvote.bindToolTips();
 	Easyvote.bindModals();
-});
 
-$(function() {
+	// AJAX spinner
 	var spinnerOptions = {
 		lines: 13, // The number of lines to draw
 		length: 25, // The length of each line
@@ -480,10 +515,7 @@ $(function() {
 		});
 	});
 
-
-});
-
-$(function() {
+	// Facebook Share Link
 	$body.on('click', '.fb-share-link', function(e) {
 		$trigger = $(e.target).closest('a');
 		FB.ui(
@@ -496,12 +528,7 @@ $(function() {
 		);
 	});
 
-});
-
-
-
-$(function() {
-
+	// Bind postal code selection
 	if ($('.editProfileForm').length > 0) {
 		Easyvote.bindPostalCodeSelection();
 	}
@@ -512,9 +539,9 @@ $(function() {
 	}
 
 	// trigger registration modal on clicking the registration link in login modal
-	$('#loginModalRegistrationLink').on('click', function(e) {
+	$('.loginModalRegistrationLink').on('click', function(e) {
 		e.preventDefault();
-		$('.register-link').trigger('click');
+		$('.register-link').first().trigger('click');
 	});
 
 	var $dataCompletionRequestModal = $('#dataCompletionRequestModal');
