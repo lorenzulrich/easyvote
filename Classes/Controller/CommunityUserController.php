@@ -862,6 +862,34 @@ class CommunityUserController extends \Visol\Easyvote\Controller\AbstractControl
 	}
 
 	/**
+	 * Generates configuration for the mobile app
+	 *
+	 * @return string
+	 */
+	public function appConfigurationAction() {
+		// try to get logged in user
+		$communityUser = $this->getLoggedInUser();
+
+		if ($communityUser instanceof CommunityUser) {
+			$appConfiguration = array();
+			$appConfiguration['results']['token'] = $communityUser->getAuthToken();
+			$appConfiguration['results']['PushChannels'] = array();
+			$appConfiguration['results']['PushChannels']['Channel1'] = 'userid_' . $communityUser->getUid();
+			$i = 2;
+			foreach ($this->settings['pushChannels'] as $pushChannel) {
+				$appConfiguration['results']['PushChannels']['Channel' . $i] = $pushChannel;
+				$i++;
+			}
+
+			return json_encode($appConfiguration);
+
+		} else {
+			return json_encode(array());
+		}
+
+	}
+
+	/**
 	 * @param string $argumentName
 	 */
 	protected function setTypeConverterConfigurationForImageUpload($argumentName) {

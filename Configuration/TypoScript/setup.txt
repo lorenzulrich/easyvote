@@ -71,6 +71,10 @@ plugin.tx_easyvote {
 		smsGatewayPassword = 
 		smsGatewayTest = 0
 		privacyStatementPid = 258
+		pushChannels {
+			1 = easyvote News
+			2 = easyvote Abstimmungen
+		}
 	}
 }
 
@@ -121,3 +125,35 @@ lib.dataCompletionRequestModal {
         }
     }
 }
+
+[globalString = ENV:HTTP_XEASYVOTEAPP = true]
+lib.appConfiguration = USER_INT
+lib.appConfiguration {
+	userFunc = TYPO3\CMS\Extbase\Core\Bootstrap->run
+	extensionName = Easyvote
+	pluginName = Community
+	vendorName = Visol
+	controller = CommunityUser
+	action = appConfiguration
+	switchableControllerActions {
+		CommunityUser {
+			1 = appConfiguration
+		}
+	}
+	view < plugin.tx_meineExtension.view
+	persistence < plugin.tx_meineExtension.persistence
+	settings < plugin.tx_meineExtension.settings
+}
+
+jsonView = PAGE
+jsonView {
+	typeNum = 20141208
+	config {
+		disableAllHeaderCode = 1
+		xhtml_cleaning = 0
+		admPanel = 0
+		additionalHeaders = Content-type: text/plain
+	}
+	10 < lib.appConfiguration
+}
+[global]
