@@ -24,6 +24,7 @@ namespace Visol\Easyvote\Command;
  *
  *  This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
+use TYPO3\CMS\Backend\Utility\BackendUtility;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 
 /**
@@ -45,6 +46,12 @@ class ImportCommandController extends \Visol\Easyvote\Command\AbstractCommandCon
 	 * @inject
 	 */
 	protected $kantonRepository;
+
+	/**
+	 * @var \Visol\Easyvote\Domain\Repository\CommunityUserRepository
+	 * @inject
+	 */
+	protected $communityUserRepository;
 
 	/**
 	 * persistenceManager
@@ -103,6 +110,25 @@ class ImportCommandController extends \Visol\Easyvote\Command\AbstractCommandCon
 			$this->response->setExitCode(2);
 		}
 
+	}
+
+	/**
+	 * Generate an auth token for each community user and update the community user with it
+	 */
+	public function generateAuthTokenForCommunityUsersCommand() {
+		$communityUsers = $this->communityUserRepository->findAll();
+		$i = 0;
+		foreach ($communityUsers as $communityUser) {
+			/** @var \Visol\Easyvote\Domain\Model\CommunityUser $communityUser */
+			$token = \Visol\Easyvote\Utility\Algorithms::generateRandomToken(20);
+			$communityUser->setAuthToken($token);
+			$this->communityUserRepository->update($communityUser);
+			if ($i % 50) {
+				$this->persistenceManager->persistAll();
+			}
+			$i++;
+		}
+		$this->persistenceManager->persistAll();
 	}
 
 }
