@@ -121,7 +121,7 @@
 					<source>zurück</source>
 			</trans-unit>
 			<trans-unit id="widget.pagination.next">
-					<source>weiter</source>
+					<source>Weitere anzeigen</source>
 			</trans-unit>
 			<trans-unit id="widget.pagination.first">
 					<source>erste</source>
@@ -206,6 +206,9 @@
 			<trans-unit id="editMobilizations.newMobilizedCommunityUserHeader">
 					<source>Vote-Wecker stellen</source>
 			</trans-unit>
+			<trans-unit id="editMobilizations.importFromAddressBook">
+					<source>Kontakte aus Adressbuch importieren</source>
+			</trans-unit>
 			<trans-unit id="editMobilizations.addMobilizedCommunityUser">
 					<source>Weitere Freunde hinzufügen</source>
 			</trans-unit>
@@ -246,7 +249,7 @@
 
 			<trans-unit id="voting.yourOpinion">
 				<source><![CDATA[
-					Wie wirst<br />du abstimmen?
+					Wie wirst du ab&shy;stimmen?
 				]]></source>
 			</trans-unit>
 			<trans-unit id="voting.alreadyVotedUndo">
@@ -395,7 +398,7 @@
 				<source>löschen</source>
 			</trans-unit>
 			<trans-unit id="mobilizedCommunityUser.save">
-				<source>stellen</source>
+				<source>Vote-Wecker stellen</source>
 			</trans-unit>
 
 			<trans-unit id="loginPanel.loggedInAs">
@@ -432,7 +435,7 @@
 				<source>Anmelden mit E-Mail</source>
 			</trans-unit>
 			<trans-unit id="loginPanel.registrationLink">
-				<source>Noch kein Profil? Jetzt registieren.</source>
+				<source>Noch kein Profil? Jetzt registrieren.</source>
 			</trans-unit>
 			<trans-unit id="loginPanel.modalAdvantage.1">
 				<source>Informiere dich einfach und neutral über Abstimmungen und Wahlen!</source>

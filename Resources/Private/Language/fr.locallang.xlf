@@ -120,7 +120,7 @@
 					<target>Précédent</target>
 			</trans-unit>
 			<trans-unit id="widget.pagination.next">
-					<source>weiter</source>
+					<source>Weitere anzeigen</source>
 					<target>Suivant</target>
 			</trans-unit>
 			<trans-unit id="widget.pagination.first">
@@ -295,10 +295,10 @@
 
 			<trans-unit id="voting.yourOpinion">
 				<source><![CDATA[
-					Wie wirst<br />du abstimmen?
+					Wie wirst du ab&shy;stimmen?
 				]]></source>
 				<target><![CDATA[
-					Que vas-tu<br />voter?
+					Que vas-tu voter?
 				]]></target>
 			</trans-unit>
 			<trans-unit id="voting.alreadyVotedUndo">
@@ -488,8 +488,8 @@
 				<target>supprimer</target>
 			</trans-unit>
 			<trans-unit id="mobilizedCommunityUser.save">
-				<source>stellen</source>
-				<target>appliquer</target>
+				<source>Vote-Wecker stellen</source>
+				<target>Installer l'alarme de vote</target>
 			</trans-unit>
 
 			<trans-unit id="loginPanel.loggedInAs">

@@ -177,6 +177,9 @@
 			<trans-unit id="tx_easyvote_domain_model_communityuser.birthdate">
 				<source>Birth date</source>
 			</trans-unit>
+			<trans-unit id="tx_easyvote_domain_model_communityuser.auth_token">
+				<source>Authentication Token</source>
+			</trans-unit>
 			<trans-unit id="tx_easyvote_domain_model_communityuser.notification_mail_active">
 				<source>Receive voting notification by e-mail</source>
 			</trans-unit>

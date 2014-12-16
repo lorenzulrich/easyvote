@@ -120,7 +120,7 @@
 					<target>indietro</target>
 			</trans-unit>
 			<trans-unit id="widget.pagination.next">
-					<source>weiter</source>
+					<source>Weitere anzeigen</source>
 					<target>avanti</target>
 			</trans-unit>
 			<trans-unit id="widget.pagination.first">
@@ -234,7 +234,7 @@ Puoi disattivare la voto-sveglia per i tuoi amici in qualsiasi momento, se lo vu
 				]]></target>
 			</trans-unit>
 			<trans-unit id="editMobilizations.newMobilizedCommunityUserHeader">
-					<source>Vote-Wecker stellen</source>
+				<source>Vote-Wecker stellen</source>
 				<target>impostare la voto-sveglia </target>
 			</trans-unit>
 			<trans-unit id="editMobilizations.addMobilizedCommunityUser">
@@ -296,10 +296,10 @@ Puoi disattivare la voto-sveglia per i tuoi amici in qualsiasi momento, se lo vu
 
 			<trans-unit id="voting.yourOpinion">
 				<source><![CDATA[
-					Wie wirst<br />du abstimmen?
+					Wie wirst du ab&shy;stimmen?
 				]]></source>
 				<target><![CDATA[
-					Che cosa<br />voterai?
+					Che cosa voterai?
 				]]></target>
 			</trans-unit>
 			<trans-unit id="voting.alreadyVotedUndo">
@@ -489,8 +489,8 @@ Puoi disattivare la voto-sveglia per i tuoi amici in qualsiasi momento, se lo vu
 				<target>elimina</target>
 			</trans-unit>
 			<trans-unit id="mobilizedCommunityUser.save">
-				<source>stellen</source>
-				<target>salvare</target>
+				<source>Vote-Wecker stellen</source>
+				<target>impostare la voto-sveglia</target>
 			</trans-unit>
 
 			<trans-unit id="loginPanel.loggedInAs">
