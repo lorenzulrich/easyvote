@@ -25,6 +25,7 @@ namespace Visol\Easyvote\Controller;
  *  This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
 use TYPO3\CMS\Core\Utility\DebugUtility;
+use Visol\Easyvote\Domain\Model\VotingProposal;
 
 /**
  *
@@ -65,9 +66,10 @@ class VotingDayController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContro
 	 * action showCurrentVotingDay
 	 *
 	 * @param \Visol\Easyvote\Domain\Model\Kanton $kanton requested Kanton
+	 * @param \Visol\Easyvote\Domain\Model\VotingProposal $selectSingle
 	 * @return void
 	 */
-	public function showCurrentVotingDayAction(\Visol\Easyvote\Domain\Model\Kanton $kanton = NULL) {
+	public function showCurrentVotingDayAction(\Visol\Easyvote\Domain\Model\Kanton $kanton = NULL, \Visol\Easyvote\Domain\Model\VotingProposal $selectSingle = NULL) {
 		$votingDay = $this->votingDayRepository->findCurrentVotingDay();
 		// view can be set via TypoScript
 		$this->view->setTemplatePathAndFilename(\TYPO3\CMS\Core\Utility\GeneralUtility::getFileAbsFileName($this->settings['votingDayViewTemplate']));
@@ -76,14 +78,8 @@ class VotingDayController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContro
 			'requestedKanton' => $kanton
 		));
 
-		$requestArguments = $this->request->getArguments();
-		if (isset($requestArguments['selectSingle']) && is_int((int)$requestArguments['selectSingle'])) {
-			$this->view->assign('selectMetaVotingProposal', (int)$requestArguments['selectSingle']);
-			/** @var \Visol\Easyvote\Domain\Model\MetaVotingProposal $metaVotingPropsal */
-			$metaVotingPropsal = $this->metaVotingProposalRepository->findByUid((int)$requestArguments['selectSingle']);
-			$votingProposals = $metaVotingPropsal->getVotingProposals()->toArray();
-			$firstVotingProposal = $votingProposals[0];
-			$this->view->assign('requestedVotingProposal', $firstVotingProposal);
+		if ($selectSingle instanceof VotingProposal) {
+			$this->view->assign('requestedVotingProposal', $selectSingle);
 		}
 
 	}
