@@ -397,6 +397,15 @@ $communityUserColumns = array(
 			'max'  => '20'
 		)
 	),
+	'auth_token' => array(
+		'exclude' => 1,
+		'label' => 'LLL:EXT:easyvote/Resources/Private/Language/locallang_db.xlf:tx_easyvote_domain_model_communityuser.auth_token',
+		'config' => array(
+			'type' => 'input',
+			'size' => 30,
+			'eval' => 'trim'
+		),
+	),
 	'notification_mail_active' => array(
 		'exclude' => 1,
 		'label' => 'LLL:EXT:easyvote/Resources/Private/Language/locallang_db.xlf:tx_easyvote_domain_model_communityuser.notification_mail_active',
@@ -473,7 +482,7 @@ $communityUserColumns = array(
 
 $TCA['fe_users']['types']['Tx_Easyvote_CommunityUser']['showitem'] = $TCA['fe_users']['types']['Tx_Extbase_Domain_Model_FrontendUser']['showitem'];
 $TCA['fe_users']['types']['Tx_Easyvote_CommunityUser']['showitem'] .= ',--div--;LLL:EXT:easyvote/Resources/Private/Language/locallang_db.xlf:tx_easyvote_domain_model_communityuser';
-$TCA['fe_users']['types']['Tx_Easyvote_CommunityUser']['showitem'] .= ',gender, city_selection, kanton, user_language, birthdate, fal_image, notification_mail_active, notification_sms_active,notification_related_users, community_user';
+$TCA['fe_users']['types']['Tx_Easyvote_CommunityUser']['showitem'] .= ',gender, city_selection, kanton, user_language, birthdate, fal_image, auth_token, notification_mail_active, notification_sms_active,notification_related_users, community_user';
 
 $TCA['fe_users']['ctrl']['label_alt'] = 'last_name,first_name';
 $TCA['fe_users']['ctrl']['label_alt_force'] = TRUE;
