@@ -168,6 +168,7 @@ $TCA['tx_easyvote_domain_model_metavotingproposal'] = array(
 				'autoSizeMax' => 30,
 				'maxitems' => 9999,
 				'multiple' => 0,
+				'enableMultiSelectFilterTextfield' => TRUE,
 				'wizards' => array(
 					'_PADDING' => 1,
 					'_VERTICAL' => 1,
