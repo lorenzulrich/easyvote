@@ -44,6 +44,11 @@ class CommunityUser extends \TYPO3\CMS\Extbase\Domain\Model\FrontendUser {
 	protected $birthdate = NULL;
 
 	/**
+	 * @var string
+	 */
+	protected $authToken;
+
+	/**
 	 * Korrespondenzsprache
 	 *
 	 * @var \integer
@@ -363,6 +368,20 @@ class CommunityUser extends \TYPO3\CMS\Extbase\Domain\Model\FrontendUser {
 	 */
 	public function setFalImage($falImage) {
 		$this->falImage = $falImage;
+	}
+
+	/**
+	 * @return string
+	 */
+	public function getAuthToken() {
+		return $this->authToken;
+	}
+
+	/**
+	 * @param string $authToken
+	 */
+	public function setAuthToken($authToken) {
+		$this->authToken = $authToken;
 	}
 
 }

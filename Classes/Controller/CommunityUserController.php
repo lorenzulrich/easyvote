@@ -191,6 +191,10 @@ class CommunityUserController extends \Visol\Easyvote\Controller\AbstractControl
 			if ($communityUser->getCitySelection() instanceof City) {
 				$communityUser->setKanton($communityUser->getCitySelection()->getKanton());
 			}
+			if (empty($communityUser->getAuthToken())) {
+				// generate an auth token if user doesn't have one yet
+				$communityUser->setAuthToken(\Visol\Easyvote\Utility\Algorithms::generateRandomToken(20));
+			}
 			$this->communityUserRepository->update($communityUser);
 			$this->persistenceManager->persistAll();
 			$this->flashMessageContainer->add(LocalizationUtility::translate('editProfile.saved', 'easyvote'));
@@ -744,6 +748,7 @@ class CommunityUserController extends \Visol\Easyvote\Controller\AbstractControl
 		$communityUser->setPid($this->settings['userStoragePid']);
 		$communityUser->setNotificationMailActive(1);
 		$communityUser->setUserLanguage($userLanguage);
+		$communityUser->setAuthToken(\Visol\Easyvote\Utility\Algorithms::generateRandomToken(20));
 		$communityUserGroup = $this->frontendUserGroupRepository->findByUid($this->settings['communityUserGroupUid']);
 		$communityUser->addUsergroup($communityUserGroup);
 		$communityEmailUserGroup = $this->frontendUserGroupRepository->findByUid($this->settings['communityEmailUserGroupUid']);
@@ -870,7 +875,6 @@ class CommunityUserController extends \Visol\Easyvote\Controller\AbstractControl
 	public function getErrorFlashMessage() {
 		return FALSE;
 	}
-
 
 }
 ?>
