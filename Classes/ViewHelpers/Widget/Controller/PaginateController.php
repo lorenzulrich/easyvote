@@ -66,7 +66,7 @@ class Tx_Easyvote_ViewHelpers_Widget_Controller_PaginateController extends Tx_Fl
 		$this->objects = $this->widgetConfiguration['objects'];
 		$this->additionalParams = $this->widgetConfiguration['additionalParams'];
 		$this->additionalParamsPrefix = $this->widgetConfiguration['additionalParamsPrefix'];
-		$this->configuration = t3lib_div::array_merge_recursive_overrule($this->configuration, $this->widgetConfiguration['configuration'], TRUE);
+		$this->configuration = \TYPO3\CMS\Core\Utility\GeneralUtility::array_merge_recursive_overrule($this->configuration, $this->widgetConfiguration['configuration'], TRUE);
 		$this->numberOfPages = ceil(count($this->objects) / (integer)$this->configuration['itemsPerPage']);
 		$this->maximumNumberOfLinks = (integer)$this->configuration['maximumNumberOfLinks'];
 	}
