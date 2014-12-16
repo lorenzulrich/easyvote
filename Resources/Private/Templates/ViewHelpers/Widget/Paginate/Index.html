@@ -10,57 +10,29 @@
 </f:if>
 
 <f:section name="paginator">
+	<f:if condition="{pagination.nextPage}">
+		<f:then>
+			<div class="records-navigation">
+				<ev:widget.link class="votingsearch-next" arguments="{currentPage: pagination.nextPage}" additionalParams="{additionalParams}" additionalParamsPrefix="{additionalParamsPrefix}"><f:translate key="widget.pagination.next" /></ev:widget.link>
+			</div>
+		</f:then>
+	</f:if>
+	<f:comment>
 	<div class="pagination">
 		<f:if condition="{pagination.previousPage}">
 			<f:then>
 				<div class="previous">
 					<f:if condition="{pagination.previousPage} >= 1">
 						<f:then>
-							<ev:widget.link arguments="{currentPage: pagination.previousPage}" additionalParams="{additionalParams}" additionalParamsPrefix="{additionalParamsPrefix}"><f:translate key="widget.pagination.previous" /></ev:widget.link>
+							<ev:widget.link class="btn btn-primary" arguments="{currentPage: pagination.previousPage}" additionalParams="{additionalParams}" additionalParamsPrefix="{additionalParamsPrefix}"><f:translate key="widget.pagination.previous" /></ev:widget.link>
 						</f:then>
 					</f:if>
 				</div>
 			</f:then>
 			<f:else>
-				<div class="previous"></div>
+				<div class="col-md-3 previous"></div>
 			</f:else>
 		</f:if>
-		<f:comment>
-		<f:if condition="{pagination.displayRangeStart} > 1">
-			<li class="first">
-				<ev:widget.link>1</ev:widget.link>
-			</li>
-		</f:if>
-		<f:if condition="{pagination.hasLessPages}">
-			<li>...</li>
-		</f:if>
-		<f:for each="{pagination.pages}" as="page">
-			<f:if condition="{page.isCurrent}">
-				<f:then>
-					<li class="current">
-						{page.number}
-					</li>
-				</f:then>
-				<f:else>
-					<li>
-						<f:if condition="{page.number} > 1">
-							<f:then>
-								<ev:widget.link arguments="{currentPage: page.number}" additionalParams="{additionalParams}" additionalParamsPrefix="{additionalParamsPrefix}">{page.number}</ev:widget.link>
-							</f:then>
-						</f:if>
-					</li>
-				</f:else>
-			</f:if>
-		</f:for>
-		<f:if condition="{pagination.hasMorePages}">
-			<li>...</li>
-		</f:if>
-		<f:if condition="{pagination.displayRangeEnd} < {pagination.numberOfPages}">
-			<li class="last">
-				<ev:widget.link arguments="{currentPage: pagination.numberOfPages}">{pagination.numberOfPages}</ev:widget.link>
-			</li>
-		</f:if>
-		</f:comment>
 		<div class="stat">
 			<f:for each="{pagination.pages}" as="page">
 				<f:if condition="{page.isCurrent}">
@@ -71,7 +43,7 @@
 		<f:if condition="{pagination.nextPage}">
 			<f:then>
 				<div class="next">
-					<ev:widget.link arguments="{currentPage: pagination.nextPage}" additionalParams="{additionalParams}" additionalParamsPrefix="{additionalParamsPrefix}"><f:translate key="widget.pagination.next" /></ev:widget.link>
+					<ev:widget.link class="btn btn-primary" arguments="{currentPage: pagination.nextPage}" additionalParams="{additionalParams}" additionalParamsPrefix="{additionalParamsPrefix}"><f:translate key="widget.pagination.next" /></ev:widget.link>
 				</div>
 			</f:then>
 			<f:else>
@@ -79,4 +51,5 @@
 			</f:else>
 		</f:if>
 	</div>
+	</f:comment>
 </f:section>

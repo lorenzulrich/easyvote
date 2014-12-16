@@ -1,39 +1,49 @@
 {namespace v=Tx_Vhs_ViewHelpers}
 {namespace ev=Tx_Easyvote_ViewHelpers}
-<div class="community-plugins">
-	<div class="csc-default box box-lightblue">
-		<h2><f:translate key="editNotifications.header" /></h2>
-		<h3><f:translate key="editNotifications.whatIs" /></h3>
-		<p>
-			<f:translate key="editNotifications.introduction" />
-		</p>
-		<f:flashMessages renderMode="div" />
-		<f:render partial="FormErrors" arguments="{for: ''}" />
-		<f:form noCacheHash="true" class="inputForm" action="updateNotifications" name="communityUser" object="{user}">
-			<h3><f:translate key="editNotifications.sectionEmailHeader" /></h3>
-			<div class="form-row">
-				<f:form.textfield property="email" additionalAttributes="{required: required, placeholder:'{f:translate(key:\'editProfile.placeholderEmail\')}'}" />
+<div class="content-box">
+	<h2><f:translate key="editNotifications.header" /></h2>
+	<h3><f:translate key="editNotifications.whatIs" /></h3>
+	<p>
+		<f:translate key="editNotifications.introduction" />
+	</p>
+	<f:flashMessages renderMode="div" />
+	<f:render partial="FormErrors" arguments="{for: ''}" />
+	<f:form noCacheHash="true" action="updateNotifications" name="communityUser" object="{user}">
+		<h3><f:translate key="editNotifications.sectionEmailHeader" /></h3>
+		<div class="form-group">
+			<label for="email">{f:translate(key:'editProfile.placeholderEmail')}</label>
+			<f:form.textfield property="email" class="form-control" id="email" additionalAttributes="{required: required}" />
+		</div>
+		<div class="form-group form-row-radio">
+			<div class="input-group">
+				<label class="radio-inline" for="notificationMailActive-1"><f:form.radio id="notificationMailActive-1" name="communityUser[notificationMailActive]" value="1" checked="{user.notificationMailActive} == 1" /> <f:translate key="editNotifications.stateActive" /></label>
+				<label class="radio-inline" for="notificationMailActive-0"><f:form.radio id="notificationMailActive-0" name="communityUser[notificationMailActive]" value="0" checked="{user.notificationMailActive} == 0" /> <f:translate key="editNotifications.stateInactive" /></label>
 			</div>
-			<div class="form-row form-row-radio">
-				<f:form.radio id="notificationMailActive-1" name="communityUser[notificationMailActive]" value="1" checked="{user.notificationMailActive} == 1" /> <label for="notificationMailActive-1"><f:translate key="editNotifications.stateActive" /></label>
-				<f:form.radio id="notificationMailActive-0" name="communityUser[notificationMailActive]" value="0" checked="{user.notificationMailActive} == 0" /> <label for="notificationMailActive-0"><f:translate key="editNotifications.stateInactive" /></label>
+		</div>
+		<h3><f:translate key="editNotifications.sectionSmsHeader" /></h3>
+		<div class="form-group">
+			<label for="phoneNumber">{f:translate(key:'editProfile.placeholderMobile')}</label>
+			<div class="row">
+				<div class="col-xs-3">
+					<select name="tx_easyvote_notifications[phoneNumberPrefix]" class="form-control">
+						<f:for each="{phoneNumberPrefixes}" as="phoneNumberPrefix" key="key">
+							<option {f:if(condition:'{0: \'{user.prefixCode}\'} == {0:\'{key}\'}', then:'selected=selected')} value="{key}">{phoneNumberPrefix}</option>
+						</f:for>
+					</select>
+				</div>
+				<div class="col-xs-9">
+					<f:form.textfield id="phoneNumber" name="communityUser[telephone]" value="{user.telephoneWithoutPrefix}" class="form-control" additionalAttributes="{maxlength: '7'}" />
+				</div>
 			</div>
-			<h3><f:translate key="editNotifications.sectionSmsHeader" /></h3>
-			<div class="form-row">
-				<select name="tx_easyvote_notifications[phoneNumberPrefix]" class="formfield-phoneNumberPrefix">
-					<f:for each="{phoneNumberPrefixes}" as="phoneNumberPrefix" key="key">
-						<option {f:if(condition:'{0: \'{user.prefixCode}\'} == {0:\'{key}\'}', then:'selected=selected')} value="{key}">{phoneNumberPrefix}</option>
-					</f:for>
-				</select>
-				<f:form.textfield name="communityUser[telephone]" value="{user.telephoneWithoutPrefix}" class="formfield-phoneNumber" additionalAttributes="{maxlength: '7', placeholder:'{f:translate(key:\'editProfile.placeholderMobile\')}'}" />
+		</div>
+		<div class="form-group form-row-radio">
+			<div class="input-group">
+				<label class="radio-inline" for="notificationSmsActive-1"><f:form.radio id="notificationSmsActive-1" name="communityUser[notificationSmsActive]" value="1" checked="{user.notificationSmsActive} == 1" /> <f:translate key="editNotifications.stateActive" /></label>
+				<label class="radio-inline" for="notificationSmsActive-0"><f:form.radio id="notificationSmsActive-0" name="communityUser[notificationSmsActive]" value="0" checked="{user.notificationSmsActive} == 0" /> <f:translate key="editNotifications.stateInactive" /></label>
 			</div>
-			<div class="form-row form-row-radio">
-				<f:form.radio id="notificationSmsActive-1" name="communityUser[notificationSmsActive]" value="1" checked="{user.notificationSmsActive} == 1" /> <label for="notificationSmsActive-1"><f:translate key="editNotifications.stateActive" /></label>
-				<f:form.radio id="notificationSmsActive-0" name="communityUser[notificationSmsActive]" value="0" checked="{user.notificationSmsActive} == 0" /> <label for="notificationSmsActive-0"><f:translate key="editNotifications.stateInactive" /></label>
-			</div>
-			<div class="form-row">
-				<button class="btn btn-primary" type="submit"><f:translate key="editNotifications.save" /></button>
-			</div>
-		</f:form>
-	</div>
+		</div>
+		<div class="form-group">
+			<button class="btn btn-primary" type="submit"><f:translate key="editNotifications.save" /></button>
+		</div>
+	</f:form>
 </div>

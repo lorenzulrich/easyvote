@@ -5,10 +5,10 @@
 	<f:security.ifAuthenticated>
 		<f:then>
 			<f:security.ifHasRole role="{settings.communityUserGroupUid}">
-				<f:link.page pageUid="{settings.communityHomePid}">
+				<f:link.page class="community-home-link" pageUid="{settings.communityHomePid}">
 					<f:render partial="CommunityUser/Image" arguments="{user:user, settings:settings, size:'50'}" />
 				</f:link.page>
-				<f:translate key="loginPanel.loggedInAs" />
+				<span class="loggedin-as"><f:translate key="loginPanel.loggedInAs" /></span>
 				<div class="user-name"><f:link.page pageUid="{settings.communityHomePid}">{user.firstName} {user.lastName}</f:link.page></div>
 			</f:security.ifHasRole>
 		</f:then>
@@ -18,8 +18,8 @@
 	<f:security.ifAuthenticated>
 		<f:then>
 			<f:security.ifHasRole role="{settings.communityUserGroupUid}">
-				<f:link.page class="link-box" pageUid="{settings.siteHomePid}" additionalParams="{logintype:'logout'}"><f:translate key="loginPanel.logout" /></f:link.page>
-				<f:comment><f:link.page class="link-box" additionalParams="{logintype:'logout'}"><f:translate key="loginPanel.logout" /></f:link.page></f:comment>
+				<f:link.page class="link-box" noCacheHash="TRUE" pageUid="{settings.siteHomePid}" additionalParams="{logintype:'logout'}"><f:translate key="loginPanel.logout" /></f:link.page>
+				<f:comment><f:link.page class="link-box" noCacheHash="TRUE" additionalParams="{logintype:'logout'}"><f:translate key="loginPanel.logout" /></f:link.page></f:comment>
 			</f:security.ifHasRole>
 		</f:then>
 		<f:else>

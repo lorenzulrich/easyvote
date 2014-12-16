@@ -7,9 +7,9 @@
 	<f:flashMessages renderMode="div" />
 	<f:render partial="FormErrors" arguments="{for: ''}" />
 	<form>
-	<div class="form-group">
-		<input type="text" class="form-control" readonly value="{user.firstName} {user.lastName}" />
-	</div>
+		<div class="form-group">
+			<input type="text" class="form-control" readonly value="{user.firstName} {user.lastName}" />
+		</div>
 	</form>
 	<f:form noCacheHash="true" enctype="multipart/form-data" class="editProfileForm" action="updateProfile" name="communityUser" object="{user}">
 		<div class="form-group">

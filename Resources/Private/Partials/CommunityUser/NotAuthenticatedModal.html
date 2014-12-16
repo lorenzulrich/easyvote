@@ -7,46 +7,57 @@
 		<p class="introduction">
 			<f:translate key="loginPanel.modalSubheaderNotAuthenticated" />
 		</p>
-		<div class="pull-left" style="width: 50%;">
-			<p class="introduction">
-				<f:translate key="loginPanel.modalFacebookHeader" />
-			</p>
-			<p>
-				<f:link.action extensionName="vifbauth" pluginName="Auth" controller="Authentication" action="login">
-					<f:image src="EXT:easyvote/Resources/Public/Images/button-facebook-login.png" alt="Log in with Facebook" />
-				</f:link.action>
-			</p>
-		</div>
-		<div class="pull-right" style="width: 50%;">
-			<p class="introduction">
-				<f:translate key="loginPanel.modalAdvantages" />
-			</p>
-			<table class="advantages">
-				<tr>
-					<td>
-						<i class="evicon-broschuere evicon-40"></i>
-					</td>
-					<td>
-						<f:translate key="loginPanel.modalAdvantage.1" />
-					</td>
-				</tr>
-				<tr>
-					<td>
-						<i class="evicon-wecker evicon-40"></i>
-					</td>
-					<td>
-						<f:translate key="loginPanel.modalAdvantage.2" />
-					</td>
-				</tr>
-				<tr>
-					<td>
-						<i class="evicon-sprechblase evicon-40"></i>
-					</td>
-					<td>
-						<f:translate key="loginPanel.modalAdvantage.3" />
-					</td>
-				</tr>
-			</table>
+		<div class="row">
+			<div class="col-md-6">
+				<p class="introduction">
+					<f:translate key="loginPanel.modalFacebookHeader" />
+				</p>
+				<p>
+					<f:if condition="{settings.context} != 'app'">
+						<f:then>
+							<f:link.action noCacheHash="TRUE" extensionName="vifbauth" pluginName="Auth" controller="Authentication" action="login">
+								<f:image src="EXT:easyvote/Resources/Public/Images/button-facebook-login.png" alt="Log in with Facebook" />
+							</f:link.action>
+						</f:then>
+						<f:else>
+							<a href="facebooklogin://{f:uri.page(addQueryString:'TRUE', noCacheHash: 'TRUE', absolute: 'TRUE', additionalParams:'{logintype:\'login\'}')}">
+								<f:image src="EXT:easyvote/Resources/Public/Images/button-facebook-login.png" alt="Log in with Facebook" />
+							</a>
+						</f:else>
+					</f:if>
+				</p>
+			</div>
+			<div class="col-md-6">
+				<p class="introduction">
+					<f:translate key="loginPanel.modalAdvantages" />
+				</p>
+				<table class="advantages">
+					<tr>
+						<td>
+							<i class="evicon-broschuere evicon-40"></i>
+						</td>
+						<td>
+							<f:translate key="loginPanel.modalAdvantage.1" />
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<i class="evicon-wecker evicon-40"></i>
+						</td>
+						<td>
+							<f:translate key="loginPanel.modalAdvantage.2" />
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<i class="evicon-sprechblase evicon-40"></i>
+						</td>
+						<td>
+							<f:translate key="loginPanel.modalAdvantage.3" />
+						</td>
+					</tr>
+				</table>
+			</div>
 		</div>
 	</div>
 	<p>

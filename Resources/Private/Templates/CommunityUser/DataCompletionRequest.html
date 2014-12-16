@@ -3,8 +3,8 @@
 	<div class="hidden" id="dataCompletionRequestModal">
 		<h2><f:translate key="editProfile.dataCompletionRequestModalHeader" /></h2>
 		<f:form noCacheHash="true" enctype="multipart/form-data" pageUid="{settings.communityEditProfilePid}" pluginName="Profile" action="updateProfile" name="communityUser" object="{communityUser}">
-			<div id="dataCompletionRequestModalContent">
-				<div class="pull-left" id="dataCompletionRequestModalLeft">
+			<div id="dataCompletionRequestModalContent" class="row">
+				<div class="col-xs-12 col-md-6" id="dataCompletionRequestModalLeft">
 					<f:if condition="{communityUser.citySelection}">
 						<f:else>
 							<div class="form-group">
@@ -27,7 +27,7 @@
 						</f:else>
 					</f:if>
 				</div>
-				<div class="pull-right" id="dataCompletionRequestModalRight">
+				<div class="col-xs-12 col-md-6" id="dataCompletionRequestModalRight">
 					<f:security.ifHasRole role="{settings.communityEmailUserGroupUid}">
 						<f:if condition="{communityUser.falImage}">
 							<f:else>

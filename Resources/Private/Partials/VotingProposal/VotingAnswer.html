@@ -1,16 +1,101 @@
+{namespace v=Tx_Vhs_ViewHelpers}
+
 <h2><f:translate key="LLL:EXT:easyvote/Resources/Private/Language/locallang.xlf:votingAnswer.header" /></h2>
-<p><f:translate key="LLL:EXT:easyvote/Resources/Private/Language/locallang.xlf:votingAnswer.shareYourOpinion" /></p>
+<h3><f:translate key="LLL:EXT:easyvote/Resources/Private/Language/locallang.xlf:votingAnswer.shareYourOpinion" /></h3>
 <f:if condition="{value} == {voteUpValue}">
 	<f:then>
-		<a class="fb-share-link" data-description="{f:translate(key:'LLL:EXT:easyvote/Resources/Private/Language/locallang.xlf:votingAnswer.iSayYes')}!" data-href="{f:uri.page(absolute: 'TRUE', pageUid:settings.votingPid, additionalParams:{L:'0', tx_easyvote_currentvotings:{selectSingle:metaVotingProposal.uid}})}">
-			<f:image src="EXT:easyvote/Resources/Public/Images/button-facebook-share.png" alt="Share" />
-		</a>
-		<a href="https://twitter.com/share" class="twitter-share-button" data-text="{f:translate(key:'LLL:EXT:easyvote/Resources/Private/Language/locallang.xlf:votingAnswer.iSayYes')} - '{votingProposal.shortTitle}'. {f:translate(key:'LLL:EXT:easyvote/Resources/Private/Language/locallang.xlf:votingAnswer.getInformation')} " data-url="http://www.easyvote.ch/{f:uri.page(pageUid:settings.votingPid, absolute: TRUE, additionalParams:{tx_easyvote_currentvotings:{selectSingle:metaVotingProposal.uid}})}" data-via="easyvote_ch" data-count="none">Tweet</a>
+		<div class="share-preview-container">
+			<div class="left">
+				<div class="share-links">
+					<a class="fb-share-link share-popup" data-description="{f:translate(key:'LLL:EXT:easyvote/Resources/Private/Language/locallang.xlf:votingAnswer.iSayYes')}!" data-href="{f:uri.page(absolute: 'TRUE', pageUid:settings.votingPid, additionalParams:{L:'0', tx_easyvote_currentvotings:{selectSingle:votingProposal.uid}})}">
+						<span class="facebook"></span>
+					</a>
+				</div>
+			</div>
+			<div class="right">
+				<div class="right-inner-left">
+					<f:if condition="{votingProposal.image}">
+						<f:then>
+							<img src="{v:uri.image(relative: false, src: 'uploads/tx_easyvote/{votingProposal.image}')}" />
+						</f:then>
+						<f:else>
+							<img src="/typo3conf/ext/easyvote/Resources/Public/Images/easyvote-logo-fb.png" />
+						</f:else>
+					</f:if>
+				</div>
+				<div class="right-inner-right">
+					<h3>
+						{votingProposal.shortTitle} - easyvote.ch
+					</h3>
+					<p>
+						www.easyvote.ch<br />
+						{f:translate(key:'LLL:EXT:easyvote/Resources/Private/Language/locallang.xlf:votingAnswer.iSayYes')}!
+					</p>
+				</div>
+			</div>
+		</div>
+		<div class="share-preview-container">
+			<div class="left">
+				<div class="share-links">
+					<a class="share-popup" href="https://twitter.com/home?status={f:translate(key:'LLL:EXT:easyvote/Resources/Private/Language/locallang.xlf:votingAnswer.iSayYes')} - '{votingProposal.shortTitle}'. {f:translate(key:'LLL:EXT:easyvote/Resources/Private/Language/locallang.xlf:votingAnswer.getInformation')} {f:uri.page(pageUid:settings.votingPid, absolute: 1, additionalParams:{tx_easyvote_currentvotings:{selectSingle:votingProposal.uid}})} @easyvote_ch">
+						<span class="twitter"></span>
+					</a>
+				</div>
+			</div>
+			<div class="right">
+				<p>
+					{f:translate(key:'LLL:EXT:easyvote/Resources/Private/Language/locallang.xlf:votingAnswer.iSayYes')} - '{votingProposal.shortTitle}'. {f:translate(key:'LLL:EXT:easyvote/Resources/Private/Language/locallang.xlf:votingAnswer.getInformation')}
+					{f:uri.page(pageUid:settings.votingPid, absolute: 1, additionalParams:{tx_easyvote_currentvotings:{selectSingle:votingProposal.uid}})}
+				</p>
+			</div>
+		</div>
 	</f:then>
 	<f:else>
-		<a class="fb-share-link" data-description="{f:translate(key:'LLL:EXT:easyvote/Resources/Private/Language/locallang.xlf:votingAnswer.iSayNo')}!" data-href="{f:uri.page(absolute: 'TRUE', pageUid:settings.votingPid, additionalParams:{tx_easyvote_currentvotings:{selectSingle:metaVotingProposal.uid}})}">
-			<f:image src="EXT:easyvote/Resources/Public/Images/button-facebook-share.png" alt="Share" />
-		</a>
-		<a href="https://twitter.com/share" class="twitter-share-button" data-text="{f:translate(key:'LLL:EXT:easyvote/Resources/Private/Language/locallang.xlf:votingAnswer.iSayNo')} - '{votingProposal.shortTitle}'. {f:translate(key:'LLL:EXT:easyvote/Resources/Private/Language/locallang.xlf:votingAnswer.getInformation')} " data-url="http://www.easyvote.ch/{f:uri.page(pageUid:settings.votingPid, absolute: TRUE, additionalParams:{tx_easyvote_currentvotings:{selectSingle:metaVotingProposal.uid}})}" data-via="easyvote_ch" data-count="none">Tweet</a>
+		<div class="share-preview-container">
+			<div class="left">
+				<div class="share-links">
+					<a class="fb-share-link share-popup" data-description="{f:translate(key:'LLL:EXT:easyvote/Resources/Private/Language/locallang.xlf:votingAnswer.iSayNo')}!" data-href="{f:uri.page(absolute: 'TRUE', pageUid:settings.votingPid, additionalParams:{L:'0', tx_easyvote_currentvotings:{selectSingle:votingProposal.uid}})}">
+						<span class="facebook"></span>
+					</a>
+				</div>
+			</div>
+			<div class="right">
+				<div class="right-inner-left">
+					<f:if condition="{votingProposal.image}">
+						<f:then>
+							<img src="{v:uri.image(relative: false, src: 'uploads/tx_easyvote/{votingProposal.image}')}" />
+						</f:then>
+						<f:else>
+							<img src="/typo3conf/ext/easyvote/Resources/Public/Images/easyvote-logo-fb.png" />
+						</f:else>
+					</f:if>
+				</div>
+				<div class="right-inner-right">
+					<h3>
+						{votingProposal.shortTitle} - easyvote.ch
+					</h3>
+					<p>
+						www.easyvote.ch<br />
+						{f:translate(key:'LLL:EXT:easyvote/Resources/Private/Language/locallang.xlf:votingAnswer.iSayNo')}!
+					</p>
+				</div>
+			</div>
+		</div>
+		<div class="share-preview-container">
+			<div class="left">
+				<div class="share-links">
+					<a class="share-popup" href="https://twitter.com/home?status={f:translate(key:'LLL:EXT:easyvote/Resources/Private/Language/locallang.xlf:votingAnswer.iSayNo')} - '{votingProposal.shortTitle}'. {f:translate(key:'LLL:EXT:easyvote/Resources/Private/Language/locallang.xlf:votingAnswer.getInformation')} {f:uri.page(pageUid:settings.votingPid, absolute: 1, additionalParams:{tx_easyvote_currentvotings:{selectSingle:votingProposal.uid}})} @easyvote_ch">
+						<span class="twitter"></span>
+					</a>
+				</div>
+			</div>
+			<div class="right">
+				<p>
+					{f:translate(key:'LLL:EXT:easyvote/Resources/Private/Language/locallang.xlf:votingAnswer.iSayNo')} - '{votingProposal.shortTitle}'. {f:translate(key:'LLL:EXT:easyvote/Resources/Private/Language/locallang.xlf:votingAnswer.getInformation')}
+					{f:uri.page(pageUid:settings.votingPid, absolute: 1, additionalParams:{tx_easyvote_currentvotings:{selectSingle:votingProposal.uid}})}
+				</p>
+			</div>
+		</div>
 	</f:else>
 </f:if>
+</div>

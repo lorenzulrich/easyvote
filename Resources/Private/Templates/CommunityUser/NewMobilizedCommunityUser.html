@@ -1,13 +1,21 @@
-<div class="form-row">
-	<f:form noCacheHash="true" class="inputForm newMobilizedCommunityUser" action="createMobilizedCommunityUser" name="newCommunityUser" object="{newCommunityUser}">
-		<f:form.textfield style="width: 105px;" property="firstName" additionalAttributes="{required: required, placeholder:'{f:translate(key:\'editProfile.placeholderFirstName\')}'}" />
-		<f:form.textfield style="width: 105px;" property="lastName"  additionalAttributes="{required: required, placeholder:'{f:translate(key:\'editProfile.placeholderLastName\')}'}" />
-		<f:form.textfield style="width: 220px;" property="email" additionalAttributes="{required: required, placeholder:'{f:translate(key:\'editProfile.placeholderEmail\')}'}" />
-		<select style="width: 90px" name="tx_easyvote_communityajax[newCommunityUser][userLanguage]">
-			<option value="1">Deutsch</option>
-			<option {f:if(condition:'{sysLanguageUid} == 1', then:'selected="selected"')} value="2">Français</option>
-			<option {f:if(condition:'{sysLanguageUid} == 2', then:'selected="selected"')} value="3">Italiano</option>
-		</select>
-		<button class="btn btn-primary" type="submit"><f:translate key="LLL:EXT:easyvote/Resources/Private/Language/locallang.xlf:mobilizedCommunityUser.save" /></button>
-	</f:form>
-</div>
+<f:form noCacheHash="true" class="newMobilizedCommunityUser" action="createMobilizedCommunityUser" name="newCommunityUser" object="{newCommunityUser}">
+	<div class="form-group">
+		<div class="row">
+			<div class="col-md-2">
+				<f:form.textfield property="firstName" class="form-control firstName" additionalAttributes="{placeholder:'{f:translate(key:\'editProfile.placeholderFirstName\')}'}" />
+			</div>
+			<div class="col-md-2">
+				<f:form.textfield property="lastName" class="form-control lastName" additionalAttributes="{placeholder:'{f:translate(key:\'editProfile.placeholderLastName\')}'}" />
+			</div>
+			<div class="col-md-6">
+				<f:form.textfield property="email" class="form-control email" additionalAttributes="{placeholder:'{f:translate(key:\'editProfile.placeholderEmail\')}'}" />
+			</div>
+			<div class="col-md-2">
+				<select class="form-control" name="tx_easyvote_communityajax[newCommunityUser][userLanguage]">
+					<option value="1">Deutsch</option>
+					<option {f:if(condition:'{sysLanguageUid} == 1', then:'selected="selected"')} value="2">Français</option>
+					<option {f:if(condition:'{sysLanguageUid} == 2', then:'selected="selected"')} value="3">Italiano</option>
+				</select>
+			</div>
+		</div>
+</f:form>

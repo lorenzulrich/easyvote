@@ -1,7 +1,16 @@
 <div class="registration">
-	<f:link.action extensionName="vifbauth" pluginName="Auth" controller="Authentication" action="login">
-		<f:image src="EXT:easyvote/Resources/Public/Images/button-facebook-login.png" alt="Log in with Facebook" />
-	</f:link.action>
+	<f:if condition="{settings.context} != 'app'">
+		<f:then>
+			<f:link.action noCacheHash="TRUE" extensionName="vifbauth" pluginName="Auth" controller="Authentication" action="login">
+				<f:image src="EXT:easyvote/Resources/Public/Images/button-facebook-login.png" alt="Log in with Facebook" />
+			</f:link.action>
+		</f:then>
+		<f:else>
+			<a href="facebooklogin://{f:uri.page(addQueryString:'TRUE', noCacheHash: 'TRUE', absolute: 'TRUE', additionalParams:'{logintype:\'login\'}')}">
+				<f:image src="EXT:easyvote/Resources/Public/Images/button-facebook-login.png" alt="Log in with Facebook" />
+			</a>
+		</f:else>
+	</f:if>
 	<h2 class="header-line"><span><f:translate key="registration.or" /></span></h2>
 	<f:form.validationResults for="{object}">
 		<f:if condition="{validationResults.flattenedErrors}">

@@ -2,94 +2,108 @@
 {namespace ev=Tx_Easyvote_ViewHelpers}
 <div class="meta-abstimmungsvorlage {f:if(condition: '{metaVotingProposal.type} == 1', then: 'meta-abstimmungsvorlage-normal', else: 'meta-abstimmungsvorlage-gegenvorschlag')}"  id="meta-abstimmungsvorlage-{metaVotingProposal.uid}">
 	<f:for each="{metaVotingProposal.votingProposals}" as="votingProposal" iteration="iterator">
-		<div class="abstimmungsvorlage abstimmungsvorlage-meta-{metaVotingProposal.uid}" id="abstimmungsvorlage-{votingProposal.uid}">
-			<div class="abstimmungsvorlage-header">
-				<div class="abstimmungsvorlage-subheader-left">
-					<f:if condition="{metaVotingProposal.scope} == 1">
-						<f:then>
-							<div class="flag-voting flag-ch"></div>
-						</f:then>
-						<f:else>
-							<div class="flag-voting flag-{v:format.case(string: metaVotingProposal.kanton.abbreviation, case: 'lower')}"></div>
-						</f:else>
-					</f:if>
-				</div>
-				<div class="abstimmungsvorlage-subheader-right">
-					<h2>{votingProposal.shortTitle}</h2>
-					<f:if condition="{metaVotingProposal.type} == 2">
-						<f:if condition="{iterator.isFirst}">
+		<div class="content-box content-box-expandable abstimmungsvorlage abstimmungsvorlage-meta-{metaVotingProposal.uid}" id="abstimmungsvorlage-{votingProposal.uid}">
+			<div class="box-teaser">
+				<div class="row">
+					<div class="col-xs-2 col-md-2">
+						<f:if condition="{metaVotingProposal.scope} == 1">
 							<f:then>
-								<p class="multipleVotingsNavi"><i class="evicon-right-hand pull-left"></i><f:translate key="tx_easyvote_archive.gegenvorschlagNotice" /></p>
+								<div class="flag-voting flag-ch"></div>
 							</f:then>
 							<f:else>
-								<p class="multipleVotingsNavi"><i class="evicon-right-hand pull-left"></i><f:translate key="tx_easyvote_archive.gegenvorschlagBack" /></p>
+								<div class="flag-voting flag-{v:format.case(string: metaVotingProposal.kanton.abbreviation, case: 'lower')}"></div>
 							</f:else>
 						</f:if>
-					</f:if>
-					<div class="handle"><i class="evicon-up-open evicon-down-open"></i></div>
-				</div>
-				<div class="clearer"></div>
-			</div>
-			<div class="clearer"></div>
-			<div class="actions">
-				<div class="action facebook">
-					<div class="fb-like" data-width="84" data-href="{f:uri.action(arguments: {selectSingle:metaVotingProposal.uid}, absolute: 1)}" data-colorscheme="light" data-layout="box_count" data-action="recommend" data-show-faces="false" data-send="true"></div>
-				</div>
-				<div class="action twitter">
-					<a href="https://twitter.com/share" class="twitter-share-button" data-count="vertical" data-url="{f:uri.action(arguments: {selectSingle:metaVotingProposal.uid}, absolute: 1)}" data-text="{votingProposal.shortTitle}" data-via="easyvote_ch" data-hashtags="easyvote">Tweet</a>
-				</div>
-				<f:if condition="{settings.desktopContext} == 1">
-					<div class="pull-right">
-						<f:render partial="MetaVotingProposal/Voting" arguments="{settings:settings, votingPropsalUid:votingProposal.uid}" />
 					</div>
-					<div class="pull-right">
-						<f:translate key="voting.yourOpinion" />
-					</div>
-				</f:if>
-			</div>
-			<div class="clearer"></div>
-			<div class="abstimmungsvorlage-content">
-				<f:if condition="{votingProposal.youtubeUrl}">
-					<f:then>
-						<ev:youtube videoUrl="{votingProposal.youtubeUrl}" width="{settings.votingProposal.youtubeWidth}" height="{settings.votingProposal.youtubeHeight}" />
-						<p class="abstimmungsvorlage-teaser">
-							<span class="abstimmungsvorlage-datum">
-								<f:format.date format="d.m.Y">{votingDay.votingDate}</f:format.date>
-							</span>
-							&nbsp;•&nbsp;
+					<div class="col-xs-10 col-md-10">
+						<div class="actions">
+							<div class="action share">
+								<f:if condition="{settings.context} != 'app'">
+									<f:then>
+										<a href="#" class="hasModal shareTrigger">
+											<i class="evicon-share hasTooltip"></i>
+											<div class="hidden">
+												Teile diese Abstimmungsvorlage
+											</div>
+										</a>
+										<div class="hidden">
+											<a class="pull-right qtip-close" aria-label="schliessen">
+												<i class="evicon-cancel"></i>
+											</a>
+											<f:render partial="VotingProposal/Share" arguments="{_all}" />
+										</div>
+									</f:then>
+									<f:else>
+										<a href="share://title={votingProposal.shortTitle}&text={votingProposal.officialTitle}&url={f:uri.action(arguments: {selectSingle:votingProposal.uid}, absolute: 1)}">
+											<i class="evicon-share"></i>
+										</a>
+									</f:else>
+								</f:if>
+							</div>
+							<div class="action toggle handle">
+								<i class="evicon-down-open"></i>
+							</div>
+						</div>
+						<h2>{votingProposal.shortTitle}</h2>
+						<h3>
+							<f:format.date format="d.m.Y">{votingDay.votingDate}</f:format.date>
+							&nbsp;–&nbsp;
 							{votingProposal.officialTitle}
-						</p>
-						<h3 class="toggle-trigger"><f:translate key="tx_easyvote_domain_model_votingproposal.goal" /><div class="toggle-handle toggle-handle-plus"></div></h3>
-						<div class="toggle-closed"><f:format.html parseFuncTSPath="lib.parseFunc_tagged">{votingProposal.goal}</f:format.html></div>
+						</h3>
+						<f:if condition="{metaVotingProposal.type} == 2">
+							<f:if condition="{iterator.isFirst}">
+								<f:then>
+									<p class="multipleVotingsNavi"><i class="evicon-right-hand pull-left"></i><f:translate key="tx_easyvote_archive.gegenvorschlagNotice" /></p>
+								</f:then>
+								<f:else>
+									<p class="multipleVotingsNavi"><i class="evicon-right-hand pull-left"></i><f:translate key="tx_easyvote_archive.gegenvorschlagBack" /></p>
+								</f:else>
+							</f:if>
+						</f:if>
+					</div>
+				</div>
+			</div>
+			<div class="box-content">
+				<f:if condition="{votingProposal.youtubeUrl}">
+					<ev:youtube videoUrl="{votingProposal.youtubeUrl}" width="{settings.votingProposal.youtubeWidth}" height="{settings.votingProposal.youtubeHeight}" />
+				</f:if>
+				<f:if condition="{settings.context} != 'facebook'">
+					<f:then>
+						<f:if condition="{request}">
+							<f:then>
+								<f:comment>
+									Don't display voting in archive search results
+								</f:comment>
+							</f:then>
+							<f:else>
+								<f:render partial="MetaVotingProposal/Voting" arguments="{settings:settings, votingPropsalUid:votingProposal.uid}" />
+							</f:else>
+						</f:if>
 					</f:then>
 					<f:else>
-						<p class="abstimmungsvorlage-teaser">
-							<span class="abstimmungsvorlage-datum">
-								<f:format.date format="d.m.Y">{votingDay.votingDate}</f:format.date>
-							</span>
-							&nbsp;•&nbsp;
-							{votingProposal.officialTitle}
-						</p>
-						<h3 class="noLine"><f:translate key="tx_easyvote_domain_model_votingproposal.goal" /></h3>
-						<div><f:format.html parseFuncTSPath="lib.parseFunc_tagged">{votingProposal.goal}</f:format.html></div>
+						<f:comment>
+							Don't display voting in Facebook TabApp.
+						</f:comment>
 					</f:else>
 				</f:if>
+				<h3 class="toggle-trigger noLine"><f:translate key="tx_easyvote_domain_model_votingproposal.goal" /><div class="toggle-handle toggle-handle-plus"></div></h3>
+				<div class="toggle-closed toggle-content"><f:format.html parseFuncTSPath="lib.parseFunc_tagged">{votingProposal.goal}</f:format.html></div>
 				<h3 class="toggle-trigger"><f:translate key="tx_easyvote_domain_model_votingproposal.initial_status" /><div class="toggle-handle toggle-handle-plus"></div></h3>
-				<div class="toggle-closed"><f:format.html parseFuncTSPath="lib.parseFunc_tagged">{votingProposal.initialStatus}</f:format.html></div>
+				<div class="toggle-closed toggle-content"><f:format.html parseFuncTSPath="lib.parseFunc_tagged">{votingProposal.initialStatus}</f:format.html></div>
 				<h3 class="toggle-trigger"><f:translate key="tx_easyvote_domain_model_votingproposal.consequence" /><div class="toggle-handle toggle-handle-plus"></div></h3>
-				<div class="toggle-closed"><f:format.html parseFuncTSPath="lib.parseFunc_tagged">{votingProposal.consequence}</f:format.html></div>
+				<div class="toggle-closed toggle-content"><f:format.html parseFuncTSPath="lib.parseFunc_tagged">{votingProposal.consequence}</f:format.html></div>
 				<h3 class="toggle-trigger"><f:translate key="tx_easyvote_domain_model_votingproposal.pro_arguments" /><div class="toggle-handle toggle-handle-plus"></div></h3>
-				<div class="toggle-closed"><f:format.html parseFuncTSPath="lib.parseFunc_tagged">{votingProposal.proArguments}</f:format.html></div>
+				<div class="toggle-closed toggle-content"><f:format.html parseFuncTSPath="lib.parseFunc_tagged">{votingProposal.proArguments}</f:format.html></div>
 				<h3 class="toggle-trigger"><f:translate key="tx_easyvote_domain_model_votingproposal.contra_arguments" /><div class="toggle-handle toggle-handle-plus"></div></h3>
-				<div class="toggle-closed"><f:format.html parseFuncTSPath="lib.parseFunc_tagged">{votingProposal.contraArguments}</f:format.html></div>
+				<div class="toggle-closed toggle-content"><f:format.html parseFuncTSPath="lib.parseFunc_tagged">{votingProposal.contraArguments}</f:format.html></div>
 				<f:if condition="{votingProposal.additionalInformationHeader}">
 					<h3 class="toggle-trigger">{votingProposal.additionalInformationHeader}<div class="toggle-handle toggle-handle-plus"></div></h3>
-					<div class="toggle-closed"><f:format.html parseFuncTSPath="lib.parseFunc_tagged">{votingProposal.additionalInformationContent}</f:format.html></div>
+					<div class="toggle-closed toggle-content"><f:format.html parseFuncTSPath="lib.parseFunc_tagged">{votingProposal.additionalInformationContent}</f:format.html></div>
 				</f:if>
 				<h3 class="toggle-trigger"><f:translate key="tx_easyvote_domain_model_votingproposal.government_opinion" /><div class="toggle-handle toggle-handle-plus"></div></h3>
-				<div class="toggle-closed"><f:format.html parseFuncTSPath="lib.parseFunc_tagged">{votingProposal.governmentOpinion}</f:format.html></div>
+				<div class="toggle-closed toggle-content"><f:format.html parseFuncTSPath="lib.parseFunc_tagged">{votingProposal.governmentOpinion}</f:format.html></div>
 				<h3 class="toggle-trigger"><f:translate key="tx_easyvote_domain_model_votingproposal.links" /><div class="toggle-handle toggle-handle-plus"></div></h3>
-				<div class="toggle-closed"><f:format.html parseFuncTSPath="lib.parseFunc_tagged">{votingProposal.links}</f:format.html></div>
+				<div class="toggle-closed toggle-content"><f:format.html parseFuncTSPath="lib.parseFunc_tagged">{votingProposal.links}</f:format.html></div>
 			</div>
 
 		</div>

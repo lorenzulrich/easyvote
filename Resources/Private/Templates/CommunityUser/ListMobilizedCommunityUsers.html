@@ -1,26 +1,28 @@
-<table>
-	<tbody>
-		<f:for each="{user.notificationRelatedUsers}" as="notificationRelatedUser">
-			<tr>
-				<td>{notificationRelatedUser.firstName} {notificationRelatedUser.lastName}</td>
-				<td style="width: 220px;">{notificationRelatedUser.email}</td>
-				<td style="width: 100px">
-					<f:if condition="{notificationRelatedUser.userLanguage} == 1">
-						Deutsch
-					</f:if>
-					<f:if condition="{notificationRelatedUser.userLanguage} == 2">
-						Français
-					</f:if>
-					<f:if condition="{notificationRelatedUser.userLanguage} == 3">
-						Italiano
-					</f:if>
-				</td>
-				<td style="width: 180px;">
-					<f:form noCacheHash="true" class="inputForm removeMobilizedCommunityUser" action="removeMobilizedCommunityUser" name="notificationRelatedUser" object="{notificationRelatedUser}">
-						<button class="btn btn-primary" type="submit"><i class="evicon-cancel"></i> <f:translate key="LLL:EXT:easyvote/Resources/Private/Language/locallang.xlf:mobilizedCommunityUser.remove" /></button>
-					</f:form>
-				</td>
-			</tr>
-		</f:for>
-	</tbody>
-</table>
+<div class="table-responsive">
+	<table id="listMobilizedCommunityUsers" class="table table-striped">
+		<tbody>
+			<f:for each="{user.notificationRelatedUsers}" as="notificationRelatedUser">
+				<tr>
+					<td width="30%">{notificationRelatedUser.firstName} {notificationRelatedUser.lastName}</td>
+					<td width="30%">{notificationRelatedUser.email}</td>
+					<td width="20%">
+						<f:if condition="{notificationRelatedUser.userLanguage} == 1">
+							Deutsch
+						</f:if>
+						<f:if condition="{notificationRelatedUser.userLanguage} == 2">
+							Français
+						</f:if>
+						<f:if condition="{notificationRelatedUser.userLanguage} == 3">
+							Italiano
+						</f:if>
+					</td>
+					<td width="20%">
+						<f:form noCacheHash="true" class="removeMobilizedCommunityUser" action="removeMobilizedCommunityUser" name="notificationRelatedUser" object="{notificationRelatedUser}">
+							<button class="btn btn-primary" type="submit"><i class="evicon-cancel"></i> <f:translate key="LLL:EXT:easyvote/Resources/Private/Language/locallang.xlf:mobilizedCommunityUser.remove" /></button>
+						</f:form>
+					</td>
+				</tr>
+			</f:for>
+		</tbody>
+	</table>
+</div>

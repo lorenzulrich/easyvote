@@ -1,19 +1,28 @@
 <h2><f:translate key="loginPanel.modalHeaderLogin" /></h2>
-<div class="clearfix">
-	<div class="pull-left" style="width: 50%;">
+<div class="row">
+	<div class="col-md-6">
 		<p>
-			<f:link.action extensionName="vifbauth" pluginName="Auth" controller="Authentication" action="login">
-				<f:image src="EXT:easyvote/Resources/Public/Images/button-facebook-login.png" alt="Log in with Facebook" />
-			</f:link.action>
+			<f:if condition="{settings.context} != 'app'">
+				<f:then>
+					<f:link.action noCacheHash="TRUE" extensionName="vifbauth" pluginName="Auth" controller="Authentication" action="login">
+						<f:image src="EXT:easyvote/Resources/Public/Images/button-facebook-login.png" alt="Log in with Facebook" />
+					</f:link.action>
+				</f:then>
+				<f:else>
+					<a href="facebooklogin://{f:uri.page(addQueryString:'TRUE', noCacheHash: 'TRUE', absolute: 'TRUE', additionalParams:'{logintype:\'login\'}')}">
+						<f:image src="EXT:easyvote/Resources/Public/Images/button-facebook-login.png" alt="Log in with Facebook" />
+					</a>
+				</f:else>
+			</f:if>
 		</p>
 	</div>
-	<div class="pull-right" style="width: 50%;">
+	<div class="col-md-6">
 		<p class="introduction">
 			<f:translate key="loginPanel.modalNativeLoginHeader" />
 		</p>
 		<f:cObject typoscriptObjectPath="lib.feLogin" />
 		<p>
-			<a href="#" id="loginModalRegistrationLink">
+			<a href="#" class="loginModalRegistrationLink">
 				<f:translate key="loginPanel.registrationLink" />
 			</a>
 		</p>

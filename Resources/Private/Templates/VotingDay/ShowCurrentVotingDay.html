@@ -4,7 +4,7 @@
 
 <f:section name="main">
 	<div id="votingsDashboard">
-		<section class="col-md-3 col-xs-3">
+		<section class="hidden-xs hidden-sm col-md-3">
 			<f:if condition="{requestedKanton}">
 				<f:then>
 					<div class="flag-big flag-{v:format.case(string: requestedKanton.abbreviation, case: 'lower')}"></div>
@@ -14,7 +14,7 @@
 				</f:else>
 			</f:if>
 		</section>
-		<section class="col-md-6 col-xs-6">
+		<section class="col-xs-12 col-md-6">
 			<f:for each="{votingDay.metaVotingProposals}" as="metaVotingProposal" iteration="metaIterator">
 				<f:if condition="{metaVotingProposal.scope} == 1">
 					<f:then>
@@ -28,23 +28,12 @@
 				</f:if>
 			</f:for>
 		</section>
-		<section class="col-md-3 col-xs-3">
-			<f:for each="{votingDay.metaVotingProposals}" as="metaVotingProposal">
-				<f:if condition="{metaVotingProposal.scope} == 1">
-					<f:then>
-						<f:render partial="MetaVotingProposal/SingleNaviItem" arguments="{metaVotingProposal:metaVotingProposal, votingDay:votingDay}" />
-					</f:then>
-					<f:else>
-						<f:if condition="{metaVotingProposal.kanton.uid} == {requestedKanton.uid}">
-							<f:render partial="MetaVotingProposal/SingleNaviItem" arguments="{metaVotingProposal:metaVotingProposal, votingDay:votingDay}" />
-						</f:if>
-					</f:else>
-				</f:if>
-			</f:for>
+		<section class="hidden-xs col-md-3">
 		</section>
 	</div>
 	<script>
 		var ajaxUri = '<f:uri.page pageUid="{settings.communityAjaxPid}" absolute="TRUE" pageType="999" />'
 	</script>
 	<f:render partial="CommunityUser/NotAuthenticatedModal" />
+	<f:render partial="VotingDay/HeadTags" arguments="{_all}" />
 </f:section>
