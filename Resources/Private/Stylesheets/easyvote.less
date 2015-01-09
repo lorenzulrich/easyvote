@@ -439,16 +439,6 @@ form input.formfield-phoneNumber {
 
 .editMobilizations-intro {
 	margin-bottom: 40px;
-	.col-md-2 {
-		.evicon-wecker {
-			&:before {
-				color: @pink;
-				font-size: 100px;
-				text-align: left;
-				margin-left: 0;
-			}
-		}
-	}
 }
 
 .mobilization-notification-example {
@@ -462,6 +452,26 @@ form input.formfield-phoneNumber {
 #newMobilizedCommunityUserPlaceholder {
     margin-bottom: 10px;
 }
+
+@media (min-width: @screen-md-min) {
+	#newMobilizedCommunityUserPlaceholder {
+		.col-firstName {
+			padding-right: 5px;
+		}
+		.col-lastName {
+			padding-left: 5px;
+			padding-right: 5px;
+		}
+		.col-eMail {
+			padding-left: 5px;
+			padding-right: 5px;
+		}
+		.col-language {
+			padding-left: 5px;
+		}
+	}
+}
+
 
 table#listMobilizedCommunityUsers {
 	form {

@@ -1,16 +1,16 @@
 <f:form noCacheHash="true" class="newMobilizedCommunityUser" action="createMobilizedCommunityUser" name="newCommunityUser" object="{newCommunityUser}">
 	<div class="form-group">
 		<div class="row">
-			<div class="col-md-2">
+			<div class="col-md-3 col-firstName">
 				<f:form.textfield property="firstName" class="form-control firstName" additionalAttributes="{placeholder:'{f:translate(key:\'editProfile.placeholderFirstName\')}'}" />
 			</div>
-			<div class="col-md-2">
+			<div class="col-md-3 col-lastName">
 				<f:form.textfield property="lastName" class="form-control lastName" additionalAttributes="{placeholder:'{f:translate(key:\'editProfile.placeholderLastName\')}'}" />
 			</div>
-			<div class="col-md-6">
+			<div class="col-md-3 col-eMail">
 				<f:form.textfield property="email" class="form-control email" additionalAttributes="{placeholder:'{f:translate(key:\'editProfile.placeholderEmail\')}'}" />
 			</div>
-			<div class="col-md-2">
+			<div class="col-md-3 col-language">
 				<select class="form-control" name="tx_easyvote_communityajax[newCommunityUser][userLanguage]">
 					<option value="1">Deutsch</option>
 					<option {f:if(condition:'{sysLanguageUid} == 1', then:'selected="selected"')} value="2">Français</option>
