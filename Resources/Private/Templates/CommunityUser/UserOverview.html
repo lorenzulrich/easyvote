@@ -1,9 +1,10 @@
 {namespace v=Tx_Vhs_ViewHelpers}
 {namespace ev=Tx_Easyvote_ViewHelpers}
 
-<div class="community-plugins">
-	<f:render partial="CommunityUser/Image" arguments="{user:user, settings:settings, size: '263'}" />
-	<div class="csc-default box box-pink">
+	<div class="box-userimage">
+		<f:render partial="CommunityUser/Image" arguments="{user:user, settings:settings, size: '263'}" />
+	</div>
+	<div class="box-userinfo">
 		<h2>{user.firstName} {user.lastName}</h2>
 		<p>
 			<f:if condition="{user.age}">{user.age} <f:translate key="userOverview.years" /><br /></f:if>
@@ -12,4 +13,3 @@
 			</f:if>
 		</p>
 	</div>
-</div>
