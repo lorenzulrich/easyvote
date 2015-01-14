@@ -55,7 +55,7 @@ var Easyvote = {
 					solo: true
 				},
 				style: {
-					classes: 'qtip-easyvote qtip-rounded qtip-shadow qtip-easyvote-narrow'
+					classes: 'qtip-easyvote qtip-shadow qtip-easyvote-narrow'
 				}
 			});
 		});
@@ -85,7 +85,7 @@ var Easyvote = {
 					target: $(window)
 				},
 				style: {
-					classes: 'qtip-easyvote qtip-rounded qtip-modal'
+					classes: 'qtip-easyvote qtip-modal'
 				},
 				events: {
 					render: function(event, api) {
