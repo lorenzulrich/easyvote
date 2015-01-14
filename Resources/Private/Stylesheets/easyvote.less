@@ -493,6 +493,24 @@ table#listMobilizedCommunityUsers {
 div.no-profile {
 	.clearfix();
 	margin-bottom: 20px;
+	.registration {
+		.mail-registration {
+			display: block;
+		}
+	}
+}
+
+@media (max-width: @screen-sm-max) {
+	div.no-profile {
+		.registration {
+			.displayMailRegistrationForm {
+				margin-bottom: 20px;
+			}
+			.mail-registration {
+				display: none;
+			}
+		}
+	}
 }
 
 ul.validationResults {

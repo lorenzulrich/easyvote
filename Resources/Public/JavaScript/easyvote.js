@@ -556,4 +556,17 @@ $(function() {
 	$body.on('change', '#dataCompletionRequestModalFalImage', function(e) {
 		Easyvote.readFile(this, '.dataCompletionRequestModalPreviewImage');
 	});
+
+	// display mail registration form on small devices
+	$body.on('click', '.displayMailRegistrationForm', function(e) {
+		e.preventDefault();
+		var $this = $(this);
+		var $parent = $this.parent();
+		$parent.find('.header-line').hide();
+		$parent.find('.facebook-login').hide();
+		$parent.find('.mail-registration').slideDown();
+		$parent.parent().parent().find('.advantages').hide();
+		$this.remove();
+	});
+
 })

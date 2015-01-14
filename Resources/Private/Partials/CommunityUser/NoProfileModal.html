@@ -1,7 +1,7 @@
 <h2><f:translate key="loginPanel.modalHeader" /></h2>
 <div class="no-profile row">
 	<div class="col-md-6">
-		<table class="advantages">
+		<table class="advantages hidden-xs hidden-sm">
 			<tr>
 				<td>
 					<i class="evicon-broschuere evicon-40"></i>
@@ -32,6 +32,6 @@
 		<f:render partial="CommunityUser/Registration" arguments="{_all}" />
 	</div>
 </div>
-<p>
+<p class="legal-info">
 	<f:translate key="loginPanel.modalLegalInfo" htmlEscape="false" arguments="{1: '{f:uri.page(pageUid:settings.privacyStatementPid, absolute:\'TRUE\')}'}" />
 </p>
