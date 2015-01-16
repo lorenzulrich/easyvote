@@ -437,6 +437,35 @@ form input.formfield-phoneNumber {
 	}
 }
 
+#useroverview-mobile {
+	display: table;
+	.row {
+		display: table-row;
+		.col-xs-4 {
+			padding: 0;
+			img {
+				width: 100%;
+				height: auto;
+			}
+		}
+		.col-xs-8 {
+			background: @blue;
+			color: @white;
+			padding: 10px;
+			border-left: 5px solid @box-background;
+			h3 {
+				color: @white;
+				margin-bottom: 5px;
+			}
+		}
+		.sameheight {
+			display: table-cell;
+			float: none;
+			vertical-align: middle;
+		}
+	}
+}
+
 .editMobilizations-intro {
 	margin-bottom: 40px;
 }

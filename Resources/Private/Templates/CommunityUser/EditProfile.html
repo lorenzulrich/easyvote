@@ -6,8 +6,24 @@
 	<h2><f:translate key="editProfile.header" /></h2>
 	<f:flashMessages renderMode="div" />
 	<f:render partial="FormErrors" arguments="{for: ''}" />
+	<div id="useroverview-mobile" class="hidden-md hidden-lg">
+		<div class="row">
+			<div class="col-xs-4 sameheight">
+				<f:render partial="CommunityUser/Image" arguments="{user:user, settings:settings, size: '263'}" />
+			</div>
+			<div class="col-xs-8 sameheight">
+				<h3>{user.firstName} {user.lastName}</h3>
+				<p>
+					<f:if condition="{user.age}">{user.age} <f:translate key="userOverview.years" /><br /></f:if>
+					<f:if condition="{user.citySelection}">
+						{user.citySelection.postalCode} {user.citySelection.name}
+					</f:if>
+				</p>
+			</div>
+		</div>
+	</div>
 	<form>
-		<div class="form-group">
+		<div class="form-group hidden-xs hidden-sm">
 			<input type="text" class="form-control" readonly value="{user.firstName} {user.lastName}" />
 		</div>
 	</form>
