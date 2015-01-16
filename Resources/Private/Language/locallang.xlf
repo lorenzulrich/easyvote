@@ -437,6 +437,9 @@
 			<trans-unit id="loginPanel.registrationLink">
 				<source>Noch kein Profil? Jetzt registrieren.</source>
 			</trans-unit>
+			<trans-unit id="loginPanel.forgotPasswordLink">
+				<source>Kennwort vergessen?</source>
+			</trans-unit>
 			<trans-unit id="loginPanel.modalAdvantage.1">
 				<source>Informiere dich einfach und neutral über Abstimmungen und Wahlen!</source>
 			</trans-unit>
