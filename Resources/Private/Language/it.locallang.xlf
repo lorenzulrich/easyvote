@@ -627,7 +627,110 @@ Puoi disattivare la voto-sveglia per i tuoi amici in qualsiasi momento, se lo vu
 
 			<trans-unit id="error.1245107351">
 				<source>Bitte die rot hinterlegten Felder korrigieren.</source>
-				<target>per favore correggi i campi marcati in rosso.</target>
+				<target>Per favore correggere i campi evidenziati in rosso.</target>
+			</trans-unit>
+			<trans-unit id="error.1413988036">
+				<source>Es ist bereits ein Benutzer mit dieser E-Mail-Adresse registriert.</source>
+				<target>Esiste gi` un utente registrato con questo indirizzo e-mail.</target>
+			</trans-unit>
+			<trans-unit id="error.propertyPath.username">
+				<source>E-Mail-Adresse</source>
+				<target>Indirizzo e-mail</target>
+			</trans-unit>
+			<trans-unit id="error.propertyPath.password">
+				<source>Passwort</source>
+				<target>Password</target>
+			</trans-unit>
+			<trans-unit id="error.propertyPath.firstName">
+				<source>Vorname</source>
+				<target>Nome</target>
+			</trans-unit>
+			<trans-unit id="error.propertyPath.lastName">
+				<source>Nachname</source>
+				<target>Cognome</target>
+			</trans-unit>
+
+			<trans-unit id="registration.username">
+				<source>E-Mail-Adresse</source>
+				<target>Indirizzo e-mail</target>
+			</trans-unit>
+			<trans-unit id="registration.password">
+				<source>Passwort</source>
+				<target>Password</target>
+			</trans-unit>
+			<trans-unit id="registration.firstName">
+				<source>Vorname</source>
+				<target>Nome</target>
+			</trans-unit>
+			<trans-unit id="registration.lastName">
+				<source>Nachname</source>
+				<target>Cognome</target>
+			</trans-unit>
+			<trans-unit id="registration.or">
+				<source>oder</source>
+				<target>o</target>
+			</trans-unit>
+			<trans-unit id="registration.register">
+				<source>Registrieren</source>
+				<target>Registrare</target>
+			</trans-unit>
+
+
+			<trans-unit id="create.header">
+				<source>Registration erfolgreich</source>
+				<target>La registrazione avvenuta con successo</target>
+			</trans-unit>
+			<trans-unit id="create.optinMessage">
+				<source>Dein easyvote-Benutzerkonto wurde erfolgreich erstellt. Bitte klicke auf den Link in der Bestätigungs-E-Mail, um dein Konto freizuschalten. Dann kannst du loslegen!</source>
+				<target>Il tuo account easyvote è stato creato con successo. Per attivare il tuo account clicca per favore sul link che trovi nell'e-mail di conferma. Poi potrai cominciare!</target>
+			</trans-unit>
+			<trans-unit id="create.optinMail.subject">
+				<source>easyvote: Bestätige deine E-Mail-Adresse</source>
+				<target>easyvote: Conferma il tuo indirizzo e-mail</target>
+			</trans-unit>
+
+			<trans-unit id="create.optinMail.hello">
+				<source>Hallo</source>
+				<target>Ciao</target>
+			</trans-unit>
+			<trans-unit id="create.optinMail.introduction">
+				<source>Vielen Dank für dein Interesse an easyvote. Bestätige deine Registrierung mit einem Klick auf den folgenden Link:</source>
+				<target>Grazie mille del tuo interesse per easyvote. Conferma la tua registrazione cliccando sul link seguente:</target>
+			</trans-unit>
+			<trans-unit id="create.optinMail.linkText">
+				<source>easyvote-Konto aktivieren</source>
+				<target>Attivare l'account easyvote</target>
+			</trans-unit>
+			<trans-unit id="create.optinMail.ending">
+				<source><![CDATA[
+					<p>Beste Grüsse<br />
+					dein easyvote-Team</p>
+				]]></source>
+				<target><![CDATA[
+					<p>I nostri migliori saluti<br />
+					il tuo Team easyvote</p>
+				]]></target>
+			</trans-unit>
+
+			<trans-unit id="activate.header">
+				<source>Aktivierung</source>
+				<target>Attivazione</target>
+			</trans-unit>
+			<trans-unit id="activate.successMessage">
+				<source>Dein Konto wurde erfolgreich aktiviert. Du kannst dich nun einloggen und bist Teil der easyvote-Community!</source>
+				<target>Il tuo account è stato attivato con successo. Ora puoi accedere e far parte della comunità easyvote!</target>
+			</trans-unit>
+			<trans-unit id="activate.userNotFoundMessage">
+				<source>Das Konto konnte nicht aktiviert werden, weil der Benutzer nicht gefunden wurde.</source>
+				<target>L'account non ha potuto essere attivato perché l'utente non è stato trovato.</target>
+			</trans-unit>
+			<trans-unit id="activate.missingLinkPartsMessage">
+				<source>Dein Konto konnte nicht aktiviert werden, da der Aktivierungslink nicht vollständig ist.</source>
+				<target>Il tuo account non ha potuto essere attivato perché il link di attivazione non è completo.</target>
+			</trans-unit>
+			<trans-unit id="activate.invalidLinkMessage">
+				<source>Dein Konto konnte nicht aktiviert werden, da der Aktivierungslink ungültig ist.</source>
+				<target>Il tuo account non ha potuto essere attivato perché il link di attivazione non è valido.</target>
 			</trans-unit>
 		</body>
 	</file>
