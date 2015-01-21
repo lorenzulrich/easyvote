@@ -367,9 +367,7 @@ class CommunityUserController extends \Visol\Easyvote\Controller\AbstractControl
 					/** @var \Visol\Easyvote\Domain\Model\MessagingJob $messagingJob */
 					$standaloneView = $this->objectManager->get('TYPO3\CMS\Fluid\View\StandaloneView');
 					$standaloneView->setFormat('html');
-					$extbaseConfiguration = $this->configurationManager->getConfiguration(\TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface::CONFIGURATION_TYPE_FRAMEWORK, 'easyvote', 'easyvote');
-					$templateRootPath = GeneralUtility::getFileAbsFileName($extbaseConfiguration['view']['templateRootPath']);
-					$templatePathAndFilename = $templateRootPath . 'Email/MobilizedWelcomeMail.html';
+					$templatePathAndFilename = $this->resolveViewFileForStandaloneView('Template', 'Email/MobilizedWelcomeMail.html');
 					$standaloneView->setTemplatePathAndFilename($templatePathAndFilename);
 					$nextVotingDay = $this->votingDayRepository->findNextVotingDay();
 					$standaloneView->assign('nextVotingDay', $nextVotingDay);
@@ -458,9 +456,7 @@ class CommunityUserController extends \Visol\Easyvote\Controller\AbstractControl
 							/** @var \Visol\Easyvote\Domain\Model\MessagingJob $messagingJob */
 							$standaloneView = $this->objectManager->get('TYPO3\CMS\Fluid\View\StandaloneView');
 							$standaloneView->setFormat('html');
-							$extbaseConfiguration = $this->configurationManager->getConfiguration(\TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface::CONFIGURATION_TYPE_FRAMEWORK, 'easyvote', 'easyvote');
-							$templateRootPath = GeneralUtility::getFileAbsFileName($extbaseConfiguration['view']['templateRootPath']);
-							$templatePathAndFilename = $templateRootPath . 'Email/MobilizedUnsubscribedNotification.html';
+							$templatePathAndFilename = $this->resolveViewFileForStandaloneView('Template', 'Email/MobilizedUnsubscribedNotification.html');
 							$standaloneView->setTemplatePathAndFilename($templatePathAndFilename);
 							$standaloneView->assign('parentUser', $communityUser->getCommunityUser());
 							$standaloneView->assign('mobilizedUser', $communityUser);
@@ -774,9 +770,7 @@ class CommunityUserController extends \Visol\Easyvote\Controller\AbstractControl
 		/** @var \TYPO3\CMS\Fluid\View\StandaloneView $standaloneView */
 		$standaloneView = $this->objectManager->get('TYPO3\CMS\Fluid\View\StandaloneView');
 		$standaloneView->setFormat('html');
-		$extbaseConfiguration = $this->configurationManager->getConfiguration(\TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface::CONFIGURATION_TYPE_FRAMEWORK, 'easyvote', 'easyvote');
-		$templateRootPath = GeneralUtility::getFileAbsFileName($extbaseConfiguration['view']['templateRootPath']);
-		$templatePathAndFilename = $templateRootPath . 'Email/CreateOptin.html';
+		$templatePathAndFilename = $this->resolveViewFileForStandaloneView('Template', 'Email/CreateOptin.html');
 		$standaloneView->setTemplatePathAndFilename($templatePathAndFilename);
 		$standaloneView->assign('communityUser', $communityUser);
 		$standaloneView->assign('optinUri', $optinUri);

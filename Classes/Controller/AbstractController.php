@@ -79,5 +79,27 @@ class AbstractController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControl
 		$GLOBALS['TSFE']->fe_user->user = $GLOBALS['TSFE']->fe_user->fetchUserSession();
 	}
 
+	/**
+	 * @param string $viewType One of Template, Partial, Layout
+	 * @param string $filename Filename of requested template/partial/layout, may be prefixed with subfolders
+	 * @return string
+	 */
+	public function resolveViewFileForStandaloneView($viewType, $filename) {
+		$extbaseConfiguration = $this->configurationManager->getConfiguration(\TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface::CONFIGURATION_TYPE_FRAMEWORK, 'easyvote', 'easyvote');
+		if (array_key_exists(lcfirst($viewType) . 'RootPath', $extbaseConfiguration['view'])) {
+			// deprecated singular setting
+			return GeneralUtility::getFileAbsFileName($extbaseConfiguration['view']['templateRootPath'] . $filename);
+		} else {
+			// new setting, reverse array (because highest priority is last)
+			$viewTypeConfigurationArray = array_reverse($extbaseConfiguration['view'][lcfirst($viewType) . 'RootPaths']);
+			// check if the requested file exists at location and return the first file found
+			foreach ($viewTypeConfigurationArray as $viewTypeConfiguration) {
+				if (file_exists(GeneralUtility::getFileAbsFileName($viewTypeConfiguration . $filename))) {
+					return GeneralUtility::getFileAbsFileName($viewTypeConfiguration . $filename);
+				}
+			}
+		}
+	}
+
 }
 ?>
