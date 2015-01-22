@@ -79,10 +79,6 @@ plugin.tx_easyvote {
 	}
 }
 
-plugin.tx_easyvote.settings {
-    smsGatewayUsername = nicola.jorio@dsj.ch
-    smsGatewayPassword = Xdug8EzHXv
-}
 module.tx_easyvote < plugin.tx_easyvote
 
  # Module configuration
