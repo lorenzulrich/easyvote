@@ -57,7 +57,14 @@ class SmsMessageProcessorCommandController extends \Visol\Easyvote\Command\Abstr
 
 			/** @var \Visol\Easyvote\Domain\Model\MessagingJob $job */
 			$recipient = $job->getCommunityUser()->getTelephone();
-			if (empty($recipient) || strlen($recipient) !== 11) {
+			foreach ($this->extensionConfiguration['settings']['allowedPhoneNumberPrefixes'] as $key => $phoneNumberPrefix) {
+				if (GeneralUtility::isFirstPartOfStr($recipient, $key)) {
+					$lengthOfPrefixAndNumber = $phoneNumberPrefix['lengthOfPrefixAndNumber'];
+					break;
+				}
+			}
+
+			if (empty($recipient) || strlen($recipient) !== (int)$lengthOfPrefixAndNumber) {
 				$job->setTimeError(new \DateTime());
 				$job->setErrorCode(AbstractCommandController::ERRORCODE_SMSINVALIDNUMBER);
 				$this->messagingJobRepository->update($job);

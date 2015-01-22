@@ -76,6 +76,28 @@ plugin.tx_easyvote {
 			1 = easyvote News
 			2 = easyvote Abstimmungen
 		}
+		allowedPhoneNumberPrefixes {
+			4175 {
+				label = 075
+				lengthOfPrefixAndNumber = 11
+			}
+			4176 {
+				label = 076
+				lengthOfPrefixAndNumber = 11
+			}
+			4177 {
+				label = 077
+				lengthOfPrefixAndNumber = 11
+			}
+			4178 {
+				label = 078
+				lengthOfPrefixAndNumber = 11
+			}
+			4179 {
+				label = 079
+				lengthOfPrefixAndNumber = 11
+			}
+		}
 	}
 }
 

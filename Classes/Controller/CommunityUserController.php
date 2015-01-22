@@ -71,14 +71,6 @@ class CommunityUserController extends \Visol\Easyvote\Controller\AbstractControl
 	 */
 	protected $persistenceManager;
 
-	protected $allowedPhoneNumberPrefixes = array(
-		'4175' => '075',
-		'4176' => '076',
-		'4177' => '077',
-		'4178' => '078',
-		'4179' => '079'
-	);
-
 	/**
 	 * action userOverview
 	 *
@@ -144,13 +136,19 @@ class CommunityUserController extends \Visol\Easyvote\Controller\AbstractControl
 
 		if ($communityUser instanceof CommunityUser) {
 			$fullPhoneNumber = $communityUser->getTelephone();
-			$prefixCode = substr($fullPhoneNumber, 0, 4);
-			$phoneNumber = substr($fullPhoneNumber, 4);
+			$allowedPhoneNumberPrefixes = $this->settings['allowedPhoneNumberPrefixes'];
+			foreach ($allowedPhoneNumberPrefixes as $key => $phoneNumberPrefix) {
+				if (GeneralUtility::isFirstPartOfStr($fullPhoneNumber, $key)) {
+					$prefixCode = substr($fullPhoneNumber, 0, strlen($key));
+					$phoneNumber = substr($fullPhoneNumber, strlen($key));
+					break;
+				}
+			}
 			$communityUser->setPrefixCode($prefixCode);
 			$communityUser->setTelephoneWithoutPrefix($phoneNumber);
 			$this->view->assign('user', $communityUser);
 			$this->view->assign('kantons', $kantons);
-			$this->view->assign('phoneNumberPrefixes', $this->allowedPhoneNumberPrefixes);
+			$this->view->assign('phoneNumberPrefixes', $allowedPhoneNumberPrefixes);
 		}
 	}
 
@@ -183,10 +181,10 @@ class CommunityUserController extends \Visol\Easyvote\Controller\AbstractControl
 		$loggedInUser = $this->getLoggedInUser();
 		/** Todo: Sanitize properties that should never be updated by the user. */
 		if ($loggedInUser->getUid() === $communityUser->getUid()) {
-			if (array_key_exists($phoneNumberPrefix, $this->allowedPhoneNumberPrefixes)) {
+			if (array_key_exists($phoneNumberPrefix, $this->settings['allowedPhoneNumberPrefixes'])) {
 				$communityUser->setTelephone($phoneNumberPrefix . preg_replace('/\D/', '', $communityUser->getTelephone()));
 			} else {
-				$communityUser->setTelephone($this->allowedPhoneNumberPrefixes[0] . preg_replace('/\D/', '', $communityUser->getTelephone()));
+				$communityUser->setTelephone($this->settings['allowedPhoneNumberPrefixes'][0] . preg_replace('/\D/', '', $communityUser->getTelephone()));
 			}
 			if ($communityUser->getCitySelection() instanceof City) {
 				$communityUser->setKanton($communityUser->getCitySelection()->getKanton());
@@ -258,12 +256,18 @@ class CommunityUserController extends \Visol\Easyvote\Controller\AbstractControl
 		$communityUser = $this->getLoggedInUser();
 		if ($communityUser instanceof CommunityUser) {
 			$fullPhoneNumber = $communityUser->getTelephone();
-			$prefixCode = substr($fullPhoneNumber, 0, 4);
-			$phoneNumber = substr($fullPhoneNumber, 4);
+			$allowedPhoneNumberPrefixes = $this->settings['allowedPhoneNumberPrefixes'];
+			foreach ($allowedPhoneNumberPrefixes as $key => $phoneNumberPrefix) {
+				if (GeneralUtility::isFirstPartOfStr($fullPhoneNumber, $key)) {
+					$prefixCode = substr($fullPhoneNumber, 0, strlen($key));
+					$phoneNumber = substr($fullPhoneNumber, strlen($key));
+					break;
+				}
+			}
 			$communityUser->setPrefixCode($prefixCode);
 			$communityUser->setTelephoneWithoutPrefix($phoneNumber);
 			$this->view->assign('user', $communityUser);
-			$this->view->assign('phoneNumberPrefixes', $this->allowedPhoneNumberPrefixes);
+			$this->view->assign('phoneNumberPrefixes', $this->settings['allowedPhoneNumberPrefixes']);
 		}
 	}
 
@@ -278,10 +282,10 @@ class CommunityUserController extends \Visol\Easyvote\Controller\AbstractControl
 		$loggedInUser = $this->getLoggedInUser();
 		/** Todo: Sanitize properties that should never be updated by the user. */
 		if ($loggedInUser->getUid() === $communityUser->getUid()) {
-			if (array_key_exists($phoneNumberPrefix, $this->allowedPhoneNumberPrefixes)) {
+			if (array_key_exists($phoneNumberPrefix, $this->settings['allowedPhoneNumberPrefixes'])) {
 				$communityUser->setTelephone($phoneNumberPrefix . preg_replace('/\D/', '', $communityUser->getTelephone()));
 			} else {
-				$communityUser->setTelephone($this->allowedPhoneNumberPrefixes[0] . preg_replace('/\D/', '', $communityUser->getTelephone()));
+				$communityUser->setTelephone('4175' . preg_replace('/\D/', '', $communityUser->getTelephone()));
 			}
 			$this->communityUserRepository->update($communityUser);
 			$this->persistenceManager->persistAll();
