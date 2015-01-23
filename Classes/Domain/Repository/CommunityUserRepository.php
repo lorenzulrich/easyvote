@@ -46,6 +46,21 @@ class CommunityUserRepository extends \TYPO3\CMS\Extbase\Domain\Repository\Front
 		return $query->execute()->getFirst();
 	}
 
+	/**
+	 * findByUsername function not respecting enableFields
+	 *
+	 * @param string $username
+	 * @return \TYPO3\CMS\Extbase\Persistence\QueryResultInterface
+	 */
+	public function findByUsername($username) {
+		$query = $this->createQuery();
+		$query->getQuerySettings()->setIgnoreEnableFields(TRUE);
+		$query->matching(
+			$query->equals('username', (string)$username)
+		);
+		return $query->execute();
+	}
+
 	public function findByFilterDemand($filterDemand) {
 		$query = $this->createQuery();
 
