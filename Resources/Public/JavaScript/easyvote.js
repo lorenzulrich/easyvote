@@ -14,7 +14,7 @@ $(function() {
 	});
 
 	/* Toggle sections in a voting proposal */
-	$('.toggle-trigger').click(function(e) {
+	$body.on('click', '.toggle-trigger', function(e) {
 		Easyvote.toggleBlock(this);
 		e.stopPropagation();
 	});
