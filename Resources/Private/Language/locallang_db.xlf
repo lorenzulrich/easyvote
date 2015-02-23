@@ -195,6 +195,9 @@
 			<trans-unit id="tx_easyvote_domain_model_communityuser.city_selection">
 				<source>City</source>
 			</trans-unit>
+			<trans-unit id="tx_easyvote_domain_model_communityuser.tx_easyvoteeducation_panels">
+				<source>Panels</source>
+			</trans-unit>
 
 			<trans-unit id="tx_easyvote_domain_model_messagingjob">
 				<source>Messaging Job</source>
