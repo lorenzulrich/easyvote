@@ -35,9 +35,9 @@
 		<div class="form-group">
 			<label>{f:translate(key:'editProfile.placeholderCity')}</label>
 			<f:if condition="{user.citySelection}">
-				<input type="text" id="communityUser-cityOutput" class="form-control" readonly value="{user.citySelection.postalCode} {user.citySelection.name} ({user.citySelection.kanton.name})" />
+				<input type="text" class="cityOutput form-control" readonly value="{user.citySelection.postalCode} {user.citySelection.name} ({user.citySelection.kanton.name})" />
 			</f:if>
-			<f:form.textfield class="form-control communityUser-citySelection" property="citySelection" additionalAttributes="{required: required}" />
+			<f:form.textfield class="form-control citySelection" property="citySelection" additionalAttributes="{required: required}" />
 		</div>
 		<div class="form-group">
 			<label for="phoneNumber">{f:translate(key:'editProfile.placeholderMobile')}</label>

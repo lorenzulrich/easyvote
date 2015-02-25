@@ -172,7 +172,7 @@ var Easyvote = {
 	/* Postal code selection for forms */
 	bindPostalCodeSelection: function() {
 		if (typeof postalCodeServiceUrl === 'string') {
-			var $postalCodeSelector = $(".communityUser-citySelection");
+			var $postalCodeSelector = $(".citySelection");
 			$postalCodeSelector.select2({
 				placeholder: "PLZ eingeben...",
 				minimumInputLength: 2,
@@ -195,9 +195,9 @@ var Easyvote = {
 				escapeMarkup: function (m) { return m; }
 			}).on('change', function(e) {
 				var data = $(this).select2('data');
-				$('.communityUser-citySelection').val(data.id);
+				$('.citySelection').val(data.id);
 				var selectedCityName = data.postalCode + ' ' + data.city + ' (' + data.kantonName + ')';
-				$('.communityUser-cityOutput').val(selectedCityName);
+				$('.cityOutput').val(selectedCityName);
 			});
 		}
 	},
