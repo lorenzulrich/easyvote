@@ -116,6 +116,14 @@ class CommunityUser extends \TYPO3\CMS\Extbase\Domain\Model\FrontendUser {
 	protected $notificationRelatedUsers;
 
 	/**
+	 * Panels added through EXT:easyvote_education
+	 *
+	 * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Visol\EasyvoteEducation\Domain\Model\Panel>
+	 * @lazy
+	 */
+	protected $panels;
+
+	/**
 	 * Parent Community User
 	 *
 	 * @var \Visol\Easyvote\Domain\Model\CommunityUser
@@ -150,6 +158,7 @@ class CommunityUser extends \TYPO3\CMS\Extbase\Domain\Model\FrontendUser {
 	 */
 	protected function initStorageObjects() {
 		$this->notificationRelatedUsers = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
+		$this->panels = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
 	}
 	/**
 	 * Adds a related user
@@ -382,6 +391,13 @@ class CommunityUser extends \TYPO3\CMS\Extbase\Domain\Model\FrontendUser {
 	 */
 	public function setAuthToken($authToken) {
 		$this->authToken = $authToken;
+	}
+
+	/**
+	 * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Visol\EasyvoteEducation\Domain\Model\Panel> $panels
+	 */
+	public function getPanels() {
+		return $this->panels;
 	}
 
 }

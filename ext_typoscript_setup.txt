@@ -24,6 +24,9 @@ config.tx_extbase{
                 mapping {
                     tableName = fe_users
                     recordType = Tx_Easyvote_CommunityUser
+                    columns {
+                    	tx_easyvoteeducation_panels.mapOnProperty = panels
+                    }
                 }
             }
             
