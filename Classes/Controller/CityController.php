@@ -5,7 +5,7 @@ namespace Visol\Easyvote\Controller;
  *  Copyright notice
  *
  *  (c) 2013 Lorenz Ulrich <lorenz.ulrich@visol.ch>, visol digitale Dienstleistungen GmbH
- *  
+ *
  *  All rights reserved
  *
  *  This script is part of the TYPO3 project. The TYPO3 project is
@@ -68,7 +68,8 @@ class CityController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController 
 				'postalCode' => $city->getPostalCode(),
 				'city' => $city->getName(),
 				'kanton' => $city->getKanton()->getUid(),
-				'kantonName' => $city->getKanton()->getName()
+				'latitude' => $city->getLatitude(),
+				'longitude' => $city->getLongitude(),
 			);
 		}
 		$returnArray['more'] = FALSE;
