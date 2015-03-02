@@ -872,11 +872,9 @@ class CommunityUserController extends \Visol\Easyvote\Controller\AbstractControl
 			$appConfiguration = array();
 			$appConfiguration['results']['token'] = $communityUser->getAuthToken();
 			$appConfiguration['results']['PushChannels'] = array();
-			$appConfiguration['results']['PushChannels']['Channel1'] = 'userid_' . $communityUser->getUid();
-			$i = 2;
-			foreach ($this->settings['pushChannels'] as $pushChannel) {
-				$appConfiguration['results']['PushChannels']['Channel' . $i] = $pushChannel;
-				$i++;
+			$appConfiguration['results']['PushChannels']['Channel0'] = 'userid_' . $communityUser->getUid();
+			foreach ($this->settings['pushChannels'] as $key => $pushChannel) {
+				$appConfiguration['results']['PushChannels']['Channel' . $key] = $pushChannel;
 			}
 
 			return json_encode($appConfiguration);
