@@ -65,6 +65,7 @@ var Easyvote = {
 	bindModals: function() {
 		$body.on('click', '.hasModal', function(e) {
 			e.preventDefault();
+			e.stopPropagation();
 			var requestedLink = $(e.target).attr('href');
 			var $modalContentContainer = $(this).next('div');
 			var modalContent = $modalContentContainer.html();
@@ -120,7 +121,7 @@ var Easyvote = {
 		}
 	},
 	/* Display a passed modal */
-	displayModal: function(message) {
+	displayModal: function(message, callback) {
 		var $flashMessageContainer = $('#flashMessageContainer');
 		var $contentWrap = $('.container-fluid');
 		$flashMessageContainer.html('<a class="pull-right qtip-close" aria-label="schliessen"><i class="evicon-cancel"></i></a>' + message);
@@ -149,6 +150,13 @@ var Easyvote = {
 					e.preventDefault();
 					$('button.button-confirm', api.elements.content).click(function(e) {
 						window.location = requestedLink;
+					});
+					$('button.button-returntrue', api.elements.content).click(function(e) {
+						var $button = $(e.target);
+						var selection = $button.attr('data-selection');
+						// return to the callback function, pass possible selection
+						callback(selection);
+						api.hide(e);
 					});
 					$('a.qtip-close', api.elements.content).click(function(e) {
 						api.hide(e);
