@@ -79,6 +79,9 @@ class CloneService implements \TYPO3\CMS\Core\SingletonInterface {
 			$copiedValue = NULL;
 			if ($copyMethod !== NULL && $copyMethod !== 'ignore') {
 				$originalValue = $object->$getter();
+				if ($originalValue instanceof \TYPO3\CMS\Extbase\Persistence\Generic\LazyLoadingProxy) {
+					$originalValue = $originalValue->_loadRealInstance();
+				}
 				if ($copyMethod == 'reference') {
 					$copiedValue = $this->copyAsReference($originalValue);
 				} elseif ($copyMethod == 'clone') {
