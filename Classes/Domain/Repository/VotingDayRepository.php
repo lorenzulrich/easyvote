@@ -38,7 +38,7 @@ class VotingDayRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
 	);
 
 	/**
-	 * @return \TYPO3\CMS\Extbase\Persistence\QueryInterface
+	 * @return \Visol\Easyvote\Domain\Model\VotingDay
 	 */
 	public function findCurrentVotingDay() {
 		$query = $this->createQuery();
@@ -53,7 +53,7 @@ class VotingDayRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
 	}
 	
 	/**
-	 * @return \TYPO3\CMS\Extbase\Persistence\QueryInterface
+	 * @return \Visol\Easyvote\Domain\Model\VotingDay
 	 */
 	public function findNextVotingDay() {
 		$query = $this->createQuery();
@@ -95,4 +95,3 @@ class VotingDayRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
 	}
 
 }
-?>
