@@ -1,0 +1,41 @@
+<div class="content-box content-box-expandable {f:if(condition:user.pendingPoliticianOrPolitician, then:'content-box-expanded')}">
+	<div class="box-teaser">
+		<div class="actions">
+			<div class="action toggle handle">
+				<i class="evicon-down-open"></i>
+			</div>
+		</div>
+		<h2><f:translate key="editProfile.politician.header" /></h2>
+	</div>
+	<div class="box-content">
+		<f:flashMessages renderMode="div" />
+		<f:render partial="FormErrors" arguments="{for: ''}" />
+		<f:form noCacheHash="true" enctype="multipart/form-data" class="editProfileForm" action="updateProfile" name="communityUser" object="{user}">
+			<div class="checkbox">
+				<label for="politician">
+					<f:form.checkbox id="politician" name="politician" value="1" checked="{user.pendingPoliticianOrPolitician}" /> <f:translate key="editProfile.politician.enabled" />
+				</label>
+			</div>
+			<f:if condition="{user.pendingPolitician}">
+				<p><f:translate key="editProfile.politician.party.pendingConfirmationNotice" /></p>
+			</f:if>
+			<div class="form-group">
+				<label>{f:translate(key:'editProfile.politician.party')}</label>
+				<f:form.select class="form-control" property="party" options="{parties}" optionLabelField="title" optionValueField="uid" prependOptionLabel="" prependOptionValue="0" />
+			</div>
+			<div class="form-group">
+				<label>{f:translate(key:'editProfile.politician.city')}</label>
+				<f:if condition="{user.citySelection}">
+					<input type="text" class="cityOutput form-control" readonly value="{user.citySelection.postalCode} {user.citySelection.name} ({user.citySelection.kanton.name})" />
+				</f:if>
+				<f:form.textfield class="form-control citySelection" property="citySelection" additionalAttributes="{required: required}" />
+			</div>
+			<f:comment>
+				TODO later: "Connect to Smartvote" button
+			</f:comment>
+			<div class="form-group">
+				<button class="btn btn-primary" type="submit"><f:translate key="editProfile.save" /></button>
+			</div>
+		</f:form>
+	</div>
+</div>

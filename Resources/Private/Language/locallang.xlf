@@ -357,6 +357,9 @@
 			<trans-unit id="editProfile.placeholderEmail">
 				<source>E-Mail-Adresse</source>
 			</trans-unit>
+			<trans-unit id="editProfile.email.politicianNotice">
+				<source>Benutze deine Partei-E-Mail-Adresse, falls du Politiker bist.</source>
+			</trans-unit>
 			<trans-unit id="editProfile.placeholderGender">
 				<source>Geschlecht</source>
 			</trans-unit>
@@ -376,6 +379,22 @@
 			</trans-unit>
 			<trans-unit id="editProfile.dataCompletionRequestModalHeader">
 				<source>Vervollständige dein Profil...</source>
+			</trans-unit>
+
+			<trans-unit id="editProfile.politician.header">
+				<source>Bist du in der Politik aktiv?</source>
+			</trans-unit>
+			<trans-unit id="editProfile.politician.enabled">
+				<source>Ich bin in der Politik aktiv</source>
+			</trans-unit>
+			<trans-unit id="editProfile.politician.party">
+				<source>Partei</source>
+			</trans-unit>
+			<trans-unit id="editProfile.politician.city">
+				<source>Wohnort</source>
+			</trans-unit>
+			<trans-unit id="editProfile.politician.party.pendingConfirmationNotice">
+				<source>Sobald der Administrator deiner Partei deine Mitgliedschaft bestätigt hat, werden weitere Funktionen freigeschaltet.</source>
 			</trans-unit>
 
 			<trans-unit id="unsubscribe.header">

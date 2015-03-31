@@ -60,10 +60,22 @@ class CommunityUserController extends \Visol\Easyvote\Controller\AbstractControl
 	protected $frontendUserGroupRepository;
 
 	/**
+	 * @var \Visol\Easyvote\Domain\Repository\PartyRepository
+	 * @inject
+	 */
+	protected $partyRepository;
+
+	/**
 	 * @var \Visol\Easyvote\Domain\Repository\MessagingJobRepository
 	 * @inject
 	 */
 	protected $messagingJobRepository;
+
+	/**
+	 * @var \Visol\Easyvote\Service\CommunityUserService
+	 * @inject
+	 */
+	protected $communityUserService;
 
 	/**
 	 * @var \TYPO3\CMS\Extbase\Persistence\Generic\PersistenceManager
@@ -146,6 +158,7 @@ class CommunityUserController extends \Visol\Easyvote\Controller\AbstractControl
 			}
 			$communityUser->setPrefixCode($prefixCode);
 			$communityUser->setTelephoneWithoutPrefix($phoneNumber);
+			$this->view->assign('parties', $this->partyRepository->findAll());
 			$this->view->assign('user', $communityUser);
 			$this->view->assign('kantons', $kantons);
 			$this->view->assign('phoneNumberPrefixes', $allowedPhoneNumberPrefixes);
@@ -176,8 +189,10 @@ class CommunityUserController extends \Visol\Easyvote\Controller\AbstractControl
 	 *
 	 * @param CommunityUser $communityUser
 	 * @param string $phoneNumberPrefix
+	 * @param boolean $politician
 	 */
-	public function updateProfileAction(CommunityUser $communityUser, $phoneNumberPrefix = '4175') {
+	public function updateProfileAction(CommunityUser $communityUser, $phoneNumberPrefix = '4175', $politician = FALSE) {
+
 		$loggedInUser = $this->getLoggedInUser();
 		/** Todo: Sanitize properties that should never be updated by the user. */
 		if ($loggedInUser->getUid() === $communityUser->getUid()) {
@@ -192,6 +207,17 @@ class CommunityUserController extends \Visol\Easyvote\Controller\AbstractControl
 			if (empty($communityUser->getAuthToken())) {
 				// generate an auth token if user doesn't have one yet
 				$communityUser->setAuthToken(\Visol\Easyvote\Utility\Algorithms::generateRandomToken(20));
+			}
+			if ($politician && !$loggedInUser->isPendingPoliticianOrPolitician()) {
+				// User changed state to politician, so we add them to the pendingPolitician usergroup
+				$communityUser->addUsergroup($this->communityUserService->getUserGroup('pendingPolitician'));
+				// TODO notify partyAdministrator of pending member
+			} elseif (!$politician && $loggedInUser->isPendingPolitician()) {
+				// User changed state to non-politician, so we remove the group
+				$communityUser->removeUsergroup($this->communityUserService->getUserGroup('pendingPolitician'));
+			} elseif (!$politician && $loggedInUser->isPolitician()) {
+				// User changed state to non-politician, so we remove the group
+				$communityUser->removeUsergroup($this->communityUserService->getUserGroup('politician'));
 			}
 			$this->communityUserRepository->update($communityUser);
 			$this->persistenceManager->persistAll();

@@ -25,13 +25,13 @@ namespace Visol\Easyvote\Domain\Model;
  *  This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
 
-/**
- *
- *
- * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
- *
- */
 class CommunityUser extends \TYPO3\CMS\Extbase\Domain\Model\FrontendUser {
+
+	/**
+	 * @var \Visol\Easyvote\Service\CommunityUserService
+	 * @inject
+	 */
+	protected $communityUserService = NULL;
 
 	/**
 	 * @var \integer
@@ -130,6 +130,42 @@ class CommunityUser extends \TYPO3\CMS\Extbase\Domain\Model\FrontendUser {
 	 * @lazy
 	 */
 	protected $communityUser;
+
+	/**
+	 * @var \Visol\Easyvote\Domain\Model\Party
+	 * @lazy
+	 */
+	protected $party = NULL;
+
+	/**
+	 * @var \boolean
+	 * @transient
+	 */
+	protected $isTeacher;
+
+	/**
+	 * @var \boolean
+	 * @transient
+	 */
+	protected $isPolitician;
+
+	/**
+	 * @var \boolean
+	 * @transient
+	 */
+	protected $isPendingPolitician;
+
+	/**
+	 * @var \boolean
+	 * @transient
+	 */
+	protected $isPendingPoliticianOrPolitician;
+
+	/**
+	 * @var \boolean
+	 * @transient
+	 */
+	protected $isPartyAdministrator;
 
 	/**
 	 * @var \TYPO3\CMS\Extbase\Domain\Model\FileReference
@@ -400,5 +436,53 @@ class CommunityUser extends \TYPO3\CMS\Extbase\Domain\Model\FrontendUser {
 		return $this->panels;
 	}
 
+	/**
+	 * @return boolean
+	 */
+	public function isPartyAdministrator() {
+		return $this->communityUserService->hasRole($this, 'partyAdministrator');
+	}
+
+	/**
+	 * @return boolean
+	 */
+	public function isPolitician() {
+		return $this->communityUserService->hasRole($this, 'politician');
+	}
+
+	/**
+	 * @return boolean
+	 */
+	public function isPendingPolitician() {
+		return $this->communityUserService->hasRole($this, 'pendingPolitician');
+	}
+
+	/**
+	 * @return boolean
+	 */
+	public function isTeacher() {
+		return $this->communityUserService->hasRole($this, 'teacher');
+	}
+
+	/**
+	 * @return boolean
+	 */
+	public function isPendingPoliticianOrPolitician() {
+		return $this->isPendingPolitician() || $this->isPolitician();
+	}
+
+	/**
+	 * @return Party
+	 */
+	public function getParty() {
+		return $this->party;
+	}
+
+	/**
+	 * @param Party $party
+	 */
+	public function setParty($party) {
+		$this->party = $party;
+	}
+
 }
-?>
