@@ -3,8 +3,26 @@ if (!defined ('TYPO3_MODE')) {
 	die ('Access denied.');
 }
 
-$TCA['tx_easyvote_domain_model_messagingjob'] = array(
-	'ctrl' => $TCA['tx_easyvote_domain_model_messagingjob']['ctrl'],
+$GLOBALS['TCA']['tx_easyvote_domain_model_messagingjob'] = array(
+	'ctrl' => array(
+		'title'	=> 'LLL:EXT:easyvote/Resources/Private/Language/locallang_db.xlf:tx_easyvote_domain_model_messagingjob',
+		'label' => 'community_user',
+		'label_alt' => 'subject',
+		'label_alt_force' => TRUE,
+		'tstamp' => 'tstamp',
+		'crdate' => 'crdate',
+		'cruser_id' => 'cruser_id',
+		'dividers2tabs' => TRUE,
+		'sortby' => 'distribution_time',
+
+		'origUid' => 't3_origuid',
+		'languageField' => 'sys_language_uid',
+		'transOrigPointerField' => 'l10n_parent',
+		'transOrigDiffSourceField' => 'l10n_diffsource',
+
+		'delete' => 'deleted',
+		'iconfile' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extRelPath('easyvote') . 'Resources/Public/Icons/tx_easyvote_domain_model_messagingjob.gif'
+	),
 	'types' => array(
 		'1' => array('showitem' => 'type, community_user, recipient_name, recipient_email, sender_name, sender_email, return_path, reply_to, subject, content, distribution_time, time_distributed, time_error, error_code, processor_response'),
 	),

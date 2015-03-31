@@ -3,8 +3,32 @@ if (!defined ('TYPO3_MODE')) {
 	die ('Access denied.');
 }
 
-$TCA['tx_easyvote_domain_model_votingproposal'] = array(
-	'ctrl' => $TCA['tx_easyvote_domain_model_votingproposal']['ctrl'],
+$GLOBALS['TCA']['tx_easyvote_domain_model_votingproposal'] = array(
+	'ctrl' => array(
+		'title'	=> 'LLL:EXT:easyvote/Resources/Private/Language/locallang_db.xlf:tx_easyvote_domain_model_votingproposal',
+		'label' => 'short_title',
+		'tstamp' => 'tstamp',
+		'crdate' => 'crdate',
+		'cruser_id' => 'cruser_id',
+		'dividers2tabs' => TRUE,
+		'sortby' => 'sorting',
+		'versioningWS' => 2,
+		'versioning_followPages' => TRUE,
+
+		'origUid' => 't3_origuid',
+		'languageField' => 'sys_language_uid',
+		'transOrigPointerField' => 'l10n_parent',
+		'transOrigDiffSourceField' => 'l10n_diffsource',
+
+		'delete' => 'deleted',
+		'enablecolumns' => array(
+			'disabled' => 'hidden',
+			'starttime' => 'starttime',
+			'endtime' => 'endtime',
+		),
+		'searchFields' => 'short_title,official_title,youtube_url,goal,initial_status,consequence,pro_arguments,contra_arguments,government_opinion,links,proposal_approval,',
+		'iconfile' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extRelPath('easyvote') . 'Resources/Public/Icons/tx_easyvote_domain_model_votingproposal.gif'
+	),
 	'interface' => array(
 		'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, short_title, official_title, youtube_url, image, goal, initial_status, consequence, pro_arguments, contra_arguments, additional_information_header, additional_information_content, government_opinion, links, proposal_approval, kanton_majority',
 	),

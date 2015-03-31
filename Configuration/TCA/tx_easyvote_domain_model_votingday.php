@@ -3,13 +3,37 @@ if (!defined ('TYPO3_MODE')) {
 	die ('Access denied.');
 }
 
-$TCA['tx_easyvote_domain_model_kanton'] = array(
-	'ctrl' => $TCA['tx_easyvote_domain_model_kanton']['ctrl'],
+$GLOBALS['TCA']['tx_easyvote_domain_model_votingday'] = array(
+	'ctrl' => array(
+		'title'	=> 'LLL:EXT:easyvote/Resources/Private/Language/locallang_db.xlf:tx_easyvote_domain_model_votingday',
+		'label' => 'voting_date',
+		'tstamp' => 'tstamp',
+		'crdate' => 'crdate',
+		'cruser_id' => 'cruser_id',
+		'dividers2tabs' => TRUE,
+
+		'versioningWS' => 2,
+		'versioning_followPages' => TRUE,
+
+		'origUid' => 't3_origuid',
+		'languageField' => 'sys_language_uid',
+		'transOrigPointerField' => 'l10n_parent',
+		'transOrigDiffSourceField' => 'l10n_diffsource',
+
+		'delete' => 'deleted',
+		'enablecolumns' => array(
+			'disabled' => 'hidden',
+			'starttime' => 'starttime',
+			'endtime' => 'endtime',
+		),
+		'searchFields' => 'voting_date,archived,meta_voting_proposals,',
+		'iconfile' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extRelPath('easyvote') . 'Resources/Public/Icons/tx_easyvote_domain_model_votingday.gif'
+	),
 	'interface' => array(
-		'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, name, abbreviation, cities',
+		'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, voting_date, archived, meta_voting_proposals',
 	),
 	'types' => array(
-		'1' => array('showitem' => 'sys_language_uid;;;;1-1-1, l10n_parent, l10n_diffsource, hidden;;1, name, abbreviation, languages, cities,--div--;LLL:EXT:cms/locallang_ttc.xlf:tabs.access,starttime, endtime'),
+		'1' => array('showitem' => 'sys_language_uid;;;;1-1-1, l10n_parent, l10n_diffsource, hidden;;1, voting_date, archived, upload_allowed, meta_voting_proposals,--div--;LLL:EXT:cms/locallang_ttc.xlf:tabs.access,starttime, endtime'),
 	),
 	'palettes' => array(
 		'1' => array('showitem' => ''),
@@ -38,8 +62,8 @@ $TCA['tx_easyvote_domain_model_kanton'] = array(
 				'items' => array(
 					array('', 0),
 				),
-				'foreign_table' => 'tx_easyvote_domain_model_kanton',
-				'foreign_table_where' => 'AND tx_easyvote_domain_model_kanton.pid=###CURRENT_PID### AND tx_easyvote_domain_model_kanton.sys_language_uid IN (-1,0)',
+				'foreign_table' => 'tx_easyvote_domain_model_votingday',
+				'foreign_table_where' => 'AND tx_easyvote_domain_model_votingday.pid=###CURRENT_PID### AND tx_easyvote_domain_model_votingday.sys_language_uid IN (-1,0)',
 			),
 		),
 		'l10n_diffsource' => array(
@@ -60,6 +84,13 @@ $TCA['tx_easyvote_domain_model_kanton'] = array(
 		'hidden' => array(
 			'exclude' => 1,
 			'label' => 'LLL:EXT:lang/locallang_general.xlf:LGL.hidden',
+			'config' => array(
+				'type' => 'check',
+			),
+		),
+		'upload_allowed' => array(
+			'exclude' => 1,
+			'label' => 'Upload-Freigabe',
 			'config' => array(
 				'type' => 'check',
 			),
@@ -96,35 +127,37 @@ $TCA['tx_easyvote_domain_model_kanton'] = array(
 				),
 			),
 		),
-		'name' => array(
+		'voting_date' => array(
 			'exclude' => 1,
-			'label' => 'LLL:EXT:easyvote/Resources/Private/Language/locallang_db.xlf:tx_easyvote_domain_model_kanton.name',
+			'label' => 'LLL:EXT:easyvote/Resources/Private/Language/locallang_db.xlf:tx_easyvote_domain_model_votingday.voting_date',
 			'config' => array(
 				'type' => 'input',
-				'size' => 30,
-				'eval' => 'trim,required'
+				'size' => 7,
+				'eval' => 'date,required',
+				'checkbox' => 1,
+				'default' => time()
 			),
 		),
-		'abbreviation' => array(
+		'archived' => array(
 			'exclude' => 1,
-			'label' => 'LLL:EXT:easyvote/Resources/Private/Language/locallang_db.xlf:tx_easyvote_domain_model_kanton.abbreviation',
+			'label' => 'LLL:EXT:easyvote/Resources/Private/Language/locallang_db.xlf:tx_easyvote_domain_model_votingday.archived',
 			'config' => array(
-				'type' => 'input',
-				'size' => 30,
-				'eval' => 'trim,required'
+				'type' => 'check',
+				'default' => 0
 			),
 		),
-		'cities' => array(
+		'meta_voting_proposals' => array(
 			'exclude' => 1,
-			'label' => 'LLL:EXT:easyvote/Resources/Private/Language/locallang_db.xlf:tx_easyvote_domain_model_kanton.cities',
+			'label' => 'LLL:EXT:easyvote/Resources/Private/Language/locallang_db.xlf:tx_easyvote_domain_model_votingday.meta_voting_proposals',
 			'config' => array(
 				'type' => 'select',
-				'foreign_table' => 'tx_easyvote_domain_model_city',
-				'MM' => 'tx_easyvote_kanton_city_mm',
+				'foreign_table' => 'tx_easyvote_domain_model_metavotingproposal',
+				'MM' => 'tx_easyvote_votingday_metavotingproposal_mm',
 				'size' => 10,
 				'autoSizeMax' => 30,
 				'maxitems' => 9999,
 				'multiple' => 0,
+				'enableMultiSelectFilterTextfield' => TRUE,
 				'wizards' => array(
 					'_PADDING' => 1,
 					'_VERTICAL' => 1,
@@ -136,21 +169,18 @@ $TCA['tx_easyvote_domain_model_kanton'] = array(
 						'popup_onlyOpenIfSelected' => 1,
 						'JSopenParams' => 'height=350,width=580,status=0,menubar=0,scrollbars=1',
 						),
+					'add' => Array(
+						'type' => 'script',
+						'title' => 'Create new',
+						'icon' => 'add.gif',
+						'params' => array(
+							'table' => 'tx_easyvote_domain_model_metavotingproposal',
+							'pid' => '###CURRENT_PID###',
+							'setValue' => 'prepend'
+							),
+						'script' => 'wizard_add.php',
+					),
 				),
-			),
-		),
-		'languages' => array(
-			'exclude' => 1,
-			'label' => 'LLL:EXT:easyvote/Resources/Private/Language/locallang_db.xlf:tx_easyvote_domain_model_kanton.languages',
-			'config' => array(
-				'type' => 'select',
-				'foreign_table' => 'tx_easyvote_domain_model_language',
-				'foreign_table_where' => 'ORDER BY tx_easyvote_domain_model_language.title',
-				'MM' => 'tx_easyvote_kanton_language_mm',
-				'size' => 5,
-				'autoSizeMax' => 30,
-				'maxitems' => 9999,
-				'multiple' => 0,
 			),
 		),
 	),

@@ -3,8 +3,20 @@ if (!defined ('TYPO3_MODE')) {
 	die ('Access denied.');
 }
 
-$TCA['tx_easyvote_domain_model_poll'] = array(
-	'ctrl' => $TCA['tx_easyvote_domain_model_poll']['ctrl'],
+$GLOBALS['TCA']['tx_easyvote_domain_model_poll'] = array(
+	'ctrl' => array(
+		'title'	=> 'LLL:EXT:easyvote/Resources/Private/Language/locallang_db.xlf:tx_easyvote_domain_model_poll',
+		'label' => 'value',
+		'label_alt' => 'voting_proposal, community_user',
+		'label_alt_force' => TRUE,
+		'tstamp' => 'tstamp',
+		'crdate' => 'crdate',
+		'cruser_id' => 'cruser_id',
+		'dividers2tabs' => TRUE,
+		'sortby' => 'crdate',
+		'delete' => 'deleted',
+		'iconfile' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extRelPath('easyvote') . 'Resources/Public/Icons/tx_easyvote_domain_model_poll.gif'
+	),
 	'types' => array(
 		'1' => array('showitem' => 'value, voting_proposal, community_user'),
 	),
