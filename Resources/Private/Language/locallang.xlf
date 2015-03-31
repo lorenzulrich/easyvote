@@ -396,6 +396,13 @@
 			<trans-unit id="editProfile.politician.party.pendingConfirmationNotice">
 				<source>Sobald der Administrator deiner Partei deine Mitgliedschaft bestätigt hat, werden weitere Funktionen freigeschaltet.</source>
 			</trans-unit>
+			<trans-unit id="editProfile.teacher.header">
+				<source>Bist du eine Lehrperson?</source>
+			</trans-unit>
+			<trans-unit id="editProfile.teacher.enabled">
+				<source>Ich bin eine Lehrperson</source>
+			</trans-unit>
+
 
 			<trans-unit id="unsubscribe.header">
 				<source>Vote-Wecker-Abmeldung</source>

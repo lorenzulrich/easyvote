@@ -190,12 +190,15 @@ class CommunityUserController extends \Visol\Easyvote\Controller\AbstractControl
 	 * @param CommunityUser $communityUser
 	 * @param string $phoneNumberPrefix
 	 * @param boolean $politician
+	 * @param boolean $teacher
 	 */
-	public function updateProfileAction(CommunityUser $communityUser, $phoneNumberPrefix = '4175', $politician = FALSE) {
+	public function updateProfileAction(CommunityUser $communityUser, $phoneNumberPrefix = '4175', $politician = NULL, $teacher = NULL) {
 
 		$loggedInUser = $this->getLoggedInUser();
 		/** Todo: Sanitize properties that should never be updated by the user. */
 		if ($loggedInUser->getUid() === $communityUser->getUid()) {
+
+			// General functions
 			if (array_key_exists($phoneNumberPrefix, $this->settings['allowedPhoneNumberPrefixes'])) {
 				$communityUser->setTelephone($phoneNumberPrefix . preg_replace('/\D/', '', $communityUser->getTelephone()));
 			} else {
@@ -208,17 +211,31 @@ class CommunityUserController extends \Visol\Easyvote\Controller\AbstractControl
 				// generate an auth token if user doesn't have one yet
 				$communityUser->setAuthToken(\Visol\Easyvote\Utility\Algorithms::generateRandomToken(20));
 			}
-			if ($politician && !$loggedInUser->isPendingPoliticianOrPolitician()) {
+
+			// Teacher functions
+			if ($teacher === TRUE && !$loggedInUser->isTeacher()) {
+				// User changed state to teacher
+				$communityUser->addUsergroup($this->communityUserService->getUserGroup('teacher'));
+			} elseif ($teacher === FALSE && $loggedInUser->isTeacher()) {
+				// User changed state to non-politician, so we remove the group
+				$communityUser->removeUsergroup($this->communityUserService->getUserGroup('teacher'));
+			}
+
+			// Politician functions
+			if ($politician === TRUE && !$loggedInUser->isPendingPoliticianOrPolitician()) {
 				// User changed state to politician, so we add them to the pendingPolitician usergroup
 				$communityUser->addUsergroup($this->communityUserService->getUserGroup('pendingPolitician'));
 				// TODO notify partyAdministrator of pending member
-			} elseif (!$politician && $loggedInUser->isPendingPolitician()) {
+			} elseif ($politician === FALSE && $loggedInUser->isPendingPolitician()) {
 				// User changed state to non-politician, so we remove the group
 				$communityUser->removeUsergroup($this->communityUserService->getUserGroup('pendingPolitician'));
-			} elseif (!$politician && $loggedInUser->isPolitician()) {
+				$communityUser->setParty(NULL);
+			} elseif ($politician === FALSE && $loggedInUser->isPolitician()) {
 				// User changed state to non-politician, so we remove the group
 				$communityUser->removeUsergroup($this->communityUserService->getUserGroup('politician'));
+				$communityUser->setParty(NULL);
 			}
+
 			$this->communityUserRepository->update($communityUser);
 			$this->persistenceManager->persistAll();
 			$this->flashMessageContainer->add(LocalizationUtility::translate('editProfile.saved', 'easyvote'));

@@ -1,4 +1,5 @@
 <f:render partial="CommunityUser/EditProfile/Main" arguments="{_all}" />
+<f:render partial="CommunityUser/EditProfile/Teacher" arguments="{_all}" />
 <f:render partial="CommunityUser/EditProfile/Politician" arguments="{_all}" />
 <script>
 	var postalCodeServiceUrl = "{f:uri.action(controller: 'City', action:'listCitiesByPostalCode', pluginName: 'communityAjax', absolute: 'TRUE', noCacheHash: 'TRUE', pageType: 999, pageUid: settings.communityAjaxPid)}";

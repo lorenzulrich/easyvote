@@ -1,0 +1,27 @@
+<div class="content-box content-box-expandable {f:if(condition:user.teacher, then:'content-box-expanded')}">
+	<div class="box-teaser">
+		<div class="actions">
+			<div class="action toggle handle">
+				<i class="evicon-down-open"></i>
+			</div>
+		</div>
+		<h2><f:translate key="editProfile.teacher.header" /></h2>
+	</div>
+	<div class="box-content">
+		<f:flashMessages renderMode="div" />
+		<f:render partial="FormErrors" arguments="{for: ''}" />
+		<f:form noCacheHash="true" enctype="multipart/form-data" class="editProfileForm" action="updateProfile" name="communityUser" object="{user}">
+			<div class="checkbox">
+				<label for="teacher">
+					<f:form.checkbox id="teacher" name="teacher" value="1" checked="{user.teacher}" /> <f:translate key="editProfile.teacher.enabled" />
+				</label>
+			</div>
+			<f:comment>
+				TODO later: Additional school related fields
+			</f:comment>
+			<div class="form-group">
+				<button class="btn btn-primary" type="submit"><f:translate key="editProfile.save" /></button>
+			</div>
+		</f:form>
+	</div>
+</div>
