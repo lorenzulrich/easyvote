@@ -245,6 +245,34 @@
 				<source>Response from message processor</source>
 			</trans-unit>
 
+			<trans-unit id="tx_easyvote_domain_model_party">
+				<source>Partei</source>
+			</trans-unit>
+			<trans-unit id="tx_easyvote_domain_model_party.title">
+				<source>Name</source>
+			</trans-unit>
+			<trans-unit id="tx_easyvote_domain_model_party.short_title">
+				<source>Abkürzung</source>
+			</trans-unit>
+			<trans-unit id="tx_easyvote_domain_model_party.description">
+				<source>Beschreibung</source>
+			</trans-unit>
+			<trans-unit id="tx_easyvote_domain_model_party.image">
+				<source>Logo</source>
+			</trans-unit>
+			<trans-unit id="tx_easyvote_domain_model_party.facebook_profile">
+				<source>Facebook-Profiladresse</source>
+			</trans-unit>
+			<trans-unit id="tx_easyvote_domain_model_party.website">
+				<source>Website</source>
+			</trans-unit>
+			<trans-unit id="tx_easyvote_domain_model_party.is_young_party">
+				<source>Ist eine Jungpartei</source>
+			</trans-unit>
+			<trans-unit id="tx_easyvote_domain_model_party.candidates">
+				<source>Kandidaten</source>
+			</trans-unit>
+
 		</body>
 	</file>
 </xliff>

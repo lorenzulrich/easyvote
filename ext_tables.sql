@@ -402,3 +402,40 @@ CREATE TABLE fe_users (
 	tx_extbase_type varchar(255) DEFAULT '' NOT NULL,
 
 );
+
+
+#
+# Table structure for table 'tx_easyvote_domain_model_party'
+#
+CREATE TABLE tx_easyvote_domain_model_party (
+
+  uid int(11) NOT NULL auto_increment,
+  pid int(11) DEFAULT '0' NOT NULL,
+
+  title varchar(255) DEFAULT '' NOT NULL,
+  short_title varchar(255) DEFAULT '' NOT NULL,
+  description text NOT NULL,
+  image int(11) unsigned NOT NULL default '0',
+  facebook_profile varchar(255) DEFAULT '' NOT NULL,
+  website varchar(255) DEFAULT '' NOT NULL,
+  smartvote_id varchar(255) DEFAULT '' NOT NULL,
+  is_young_party tinyint(4) unsigned DEFAULT '0' NOT NULL,
+  candidates int(11) unsigned DEFAULT '0',
+
+  tstamp int(11) unsigned DEFAULT '0' NOT NULL,
+  crdate int(11) unsigned DEFAULT '0' NOT NULL,
+  cruser_id int(11) unsigned DEFAULT '0' NOT NULL,
+  deleted tinyint(4) unsigned DEFAULT '0' NOT NULL,
+  hidden tinyint(4) unsigned DEFAULT '0' NOT NULL,
+
+  sys_language_uid int(11) DEFAULT '0' NOT NULL,
+  l10n_parent int(11) DEFAULT '0' NOT NULL,
+  l10n_diffsource mediumblob,
+
+  PRIMARY KEY (uid),
+  KEY parent (pid),
+  KEY smartvote_id (smartvote_id),
+
+  KEY language (l10n_parent,sys_language_uid)
+
+);
