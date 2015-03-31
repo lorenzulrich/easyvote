@@ -389,6 +389,7 @@ CREATE TABLE fe_users (
 
 	gender int(1) unsigned DEFAULT '0' NOT NULL,
 	kanton int(11) unsigned DEFAULT '0' NOT NULL,
+  party int(11) unsigned DEFAULT '0' NOT NULL,
 	user_language int(11) unsigned DEFAULT '0' NOT NULL,
 	birthdate int(11) unsigned DEFAULT '0' NOT NULL,
 	notification_mail_active int(1) unsigned DEFAULT '0' NOT NULL,
