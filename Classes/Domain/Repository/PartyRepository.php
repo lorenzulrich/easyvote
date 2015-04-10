@@ -21,5 +21,17 @@ class PartyRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
 		'title' => \TYPO3\CMS\Extbase\Persistence\QueryInterface::ORDER_ASCENDING,
 	);
 
+	/**
+	 * @return array|\TYPO3\CMS\Extbase\Persistence\QueryResultInterface
+	 */
+	public function findYoungParties() {
+		$query = $this->createQuery();
+		$query->getQuerySettings()->setRespectStoragePage(FALSE);
+		$query->matching(
+			$query->equals('isYoungParty', TRUE)
+		);
+		return $query->execute();
+	}
+
 }
 
