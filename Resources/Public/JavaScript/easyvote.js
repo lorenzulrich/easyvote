@@ -116,7 +116,7 @@ var Easyvote = {
 			var reader = new FileReader();
 			reader.onload = function(e) {
 				$(targetSelector).attr('src', e.target.result);
-			}
+			};
 			reader.readAsDataURL(input.files[0]);
 		}
 	},
