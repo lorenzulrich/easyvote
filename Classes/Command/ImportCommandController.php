@@ -68,8 +68,6 @@ class ImportCommandController extends \Visol\Easyvote\Command\AbstractCommandCon
 	 */
 	public function importCityDataCommand($sourcePathAndFilename) {
 		if (is_file($sourcePathAndFilename)) {
-			$this->cityRepository->removeAll();
-			$this->persistenceManager->persistAll();
 			$handle = fopen($sourcePathAndFilename, 'r');
 			$i = 0;
 			$messages = array();
@@ -79,26 +77,53 @@ class ImportCommandController extends \Visol\Easyvote\Command\AbstractCommandCon
 				if ($i == 1) {
 					continue;
 				}
-				$city = new \Visol\Easyvote\Domain\Model\City;
-				$city->setName(utf8_encode($data[0]));
-				$city->setPostalCode($data[1]);
-				$city->setMunicipality(utf8_encode($data[3]));
-				$city->setLongitude($data[5]);
-				$city->setLatitude($data[6]);
-				$this->cityRepository->add($city);
-
-				if (!empty($data[4])) {
+				if ($data[4] === 'LI') {
+					// Ignore Fürstentum Liechtenstein
+					continue;
+				}
+				if (empty($data[4])) {
+					// Don't import cities without Kanton
+					continue;
+				}
+				$existingCity = $this->cityRepository->findOneByNamePostalCodeMunicipality(utf8_encode($data[0]), $data[1], utf8_encode($data[3]));
+				if ($existingCity instanceof \Visol\Easyvote\Domain\Model\City) {
+					/** @var $existingCity \Visol\Easyvote\Domain\Model\City */
+					$existingCity->setLongitude($data[5]);
+					$existingCity->setLatitude($data[6]);
 					/** @var \Visol\Easyvote\Domain\Model\Kanton $kanton */
 					$kanton = $this->kantonRepository->findOneByAbbreviation($data[4]);
-					$kanton->addCity($city);
-					$this->kantonRepository->update($kanton);
+					if ($kanton instanceof \Visol\Easyvote\Domain\Model\Kanton) {
+						$kanton->addCity($existingCity);
+						$existingCity->setKanton($kanton);
+						$this->kantonRepository->update($kanton);
+					} else {
+						$messages[] = '!!! Kein Kanton gefunden für Gemeinde ' . $existingCity->getName() . '.' . LF;
+					}
+					$this->cityRepository->update($existingCity);
+					$messages[] = 'Gemeinde ' . $existingCity->getName() . ' aktualisiert.' . LF;
+
 				} else {
-					$messages[] = '!!! Kein Kanton gefunden für Gemeinde ' . $city->getName() . '.' . LF;
+					$city = new \Visol\Easyvote\Domain\Model\City;
+					$city->setName(utf8_encode($data[0]));
+					$city->setPostalCode($data[1]);
+					$city->setMunicipality(utf8_encode($data[3]));
+					$city->setLongitude($data[5]);
+					$city->setLatitude($data[6]);
+					if (!empty($data[4])) {
+						/** @var \Visol\Easyvote\Domain\Model\Kanton $kanton */
+						$kanton = $this->kantonRepository->findOneByAbbreviation(utf8_encode($data[4]));
+						$kanton->addCity($city);
+						$city->setKanton($kanton);
+						$this->kantonRepository->update($kanton);
+					} else {
+						$messages[] = '!!! Kein Kanton gefunden für Gemeinde ' . $city->getName() . '.' . LF;
+					}
+					$this->cityRepository->add($city);
+					$messages[] = 'Gemeinde ' . $city->getName() . ' importiert.' . LF;
+
 				}
+
 				$this->persistenceManager->persistAll();
-
-				$messages[] = 'Gemeinde ' . $city->getName() . ' importiert.' . LF;
-
 
 			}
 

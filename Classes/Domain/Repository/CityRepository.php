@@ -40,4 +40,22 @@ class CityRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
 		return $query->execute()->toArray();
 	}
 
+	/**
+	 * @param $name
+	 * @param $postalCode
+	 * @param $municipality
+	 * @return \Visol\Easyvote\Domain\Model\City|NULL
+	 */
+	public function findOneByNamePostalCodeMunicipality($name, $postalCode, $municipality) {
+		$query = $this->createQuery();
+		$query->matching(
+			$query->logicalAnd(
+				$query->like('name', $name),
+				$query->like('postalCode', $postalCode),
+				$query->like('municipality', $municipality)
+			)
+		);
+		return $query->execute()->getFirst();
+	}
+
 }
