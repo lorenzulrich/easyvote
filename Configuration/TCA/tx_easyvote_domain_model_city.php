@@ -138,9 +138,10 @@ $GLOBALS['TCA']['tx_easyvote_domain_model_city'] = array(
 			'label' => 'LLL:EXT:easyvote/Resources/Private/Language/locallang_db.xlf:tx_easyvote_domain_model_city.kanton',
 			'config' => array(
 				'type' => 'select',
+				'items' => array(
+					array('', 0),
+				),
 				'foreign_table' => 'tx_easyvote_domain_model_kanton',
-				'MM' => 'tx_easyvote_kanton_city_mm',
-				'MM_opposite_field' => 'cities',
 				'size' => 1,
 				'autoSizeMax' => 1,
 				'maxitems' => 1,
