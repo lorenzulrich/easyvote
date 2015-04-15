@@ -32,14 +32,6 @@ namespace Visol\Easyvote\Domain\Repository;
  */
 class CityRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
 
-	public function findCitiesByPostalCodePart($queryString) {
-		$query = $this->createQuery();
-		$query->matching(
-			$query->like('postalCode', $queryString . '%')
-		);
-		return $query->execute()->toArray();
-	}
-
 	/**
 	 * @param $name
 	 * @param $postalCode

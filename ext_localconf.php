@@ -48,7 +48,6 @@ if (!defined('TYPO3_MODE')) {
 	array(
 		'VotingProposal' => 'showPollForVotingProposal,undoUserVoteForVotingProposal,voteForVotingProposal',
 		'CommunityUser' => 'listMobilizedCommunityUsers,newMobilizedCommunityUser,createMobilizedCommunityUser,removeMobilizedCommunityUser',
-		'City' => 'listCitiesByPostalCode'
 	),
 	// non-cacheable actions
 	array(
@@ -132,4 +131,5 @@ if (TYPO3_MODE === 'BE') {
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerTypeConverter('Visol\\Easyvote\\Property\\TypeConverter\\UploadedFileReferenceConverter');
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerTypeConverter('Visol\\Easyvote\\Property\\TypeConverter\\ObjectStorageConverter');
 
-?>
+// Register EID for Postal Code Service
+$GLOBALS['TYPO3_CONF_VARS']['FE']['eID_include']['easyvote_cityselection'] = 'EXT:easyvote/Resources/Private/Eid/CitySelectionService.php';

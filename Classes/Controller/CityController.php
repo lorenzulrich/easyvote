@@ -50,31 +50,4 @@ class CityController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController 
 	 */
 	protected $cityRepository;
 
-	/**
-	 * action listCitiesByPostalCode
-	 *
-	 * @return string
-	 */
-	public function listCitiesByPostalCodeAction() {
-		$queryString = $GLOBALS['TYPO3_DB']->escapeStrForLike($GLOBALS['TYPO3_DB']->quoteStr(GeneralUtility::_GP('q'), 'tx_easyvote_domain_model_city'), 'tx_easyvote_domain_model_city');
-		$cities = $this->cityRepository->findCitiesByPostalCodePart($queryString);
-
-		$returnArray['results'] = array();
-		foreach ($cities as $city) {
-			/** @var $city \Visol\Easyvote\Domain\Model\City */
-			$returnArray['results'][] = array(
-				'id' => $city->getUid(),
-				'text' => $city->getPostalCode() . ' ' . $city->getName(),
-				'postalCode' => $city->getPostalCode(),
-				'city' => $city->getName(),
-				'kanton' => $city->getKanton()->getUid(),
-				'latitude' => $city->getLatitude(),
-				'longitude' => $city->getLongitude(),
-			);
-		}
-		$returnArray['more'] = FALSE;
-		return json_encode($returnArray);
-	}
-
 }
-?>

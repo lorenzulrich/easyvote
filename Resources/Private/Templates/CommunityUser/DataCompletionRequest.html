@@ -11,9 +11,6 @@
 								<label>{f:translate(key:'editProfile.placeholderCity')}</label>
 								<f:form.textfield class="form-control citySelection" property="citySelection" />
 							</div>
-							<script>
-								var postalCodeServiceUrl = "{f:uri.action(controller: 'City', action:'listCitiesByPostalCode', pluginName: 'communityAjax', absolute: 'TRUE', noCacheHash: 'TRUE', pageType: 999, pageUid: settings.communityAjaxPid)}";
-							</script>
 						</f:else>
 					</f:if>
 					<f:if condition="{communityUser.birthdate}">
