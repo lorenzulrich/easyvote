@@ -138,6 +138,11 @@ class CommunityUser extends \TYPO3\CMS\Extbase\Domain\Model\FrontendUser {
 	protected $party = NULL;
 
 	/**
+	 * @var string
+	 */
+	protected $partyVerificationCode;
+
+	/**
 	 * @var \boolean
 	 * @transient
 	 */
@@ -483,6 +488,20 @@ class CommunityUser extends \TYPO3\CMS\Extbase\Domain\Model\FrontendUser {
 	 */
 	public function setParty($party) {
 		$this->party = $party;
+	}
+
+	/**
+	 * @return mixed
+	 */
+	public function getPartyVerificationCode() {
+		return $this->partyVerificationCode;
+	}
+
+	/**
+	 * @param mixed $partyVerificationCode
+	 */
+	public function setPartyVerificationCode($partyVerificationCode) {
+		$this->partyVerificationCode = $partyVerificationCode;
 	}
 
 }

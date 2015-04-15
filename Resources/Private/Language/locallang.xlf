@@ -390,6 +390,9 @@
 			<trans-unit id="editProfile.politician.party">
 				<source>Partei</source>
 			</trans-unit>
+			<trans-unit id="editProfile.politician.partyVerificationCode">
+				<source>Verifizierungs-Code</source>
+			</trans-unit>
 			<trans-unit id="editProfile.politician.city">
 				<source>Wohnort</source>
 			</trans-unit>

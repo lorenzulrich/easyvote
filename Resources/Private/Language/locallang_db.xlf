@@ -201,6 +201,9 @@
 			<trans-unit id="tx_easyvote_domain_model_communityuser.party">
 				<source>Party</source>
 			</trans-unit>
+			<trans-unit id="tx_easyvote_domain_model_communityuser.party_verification_code">
+				<source>Party</source>
+			</trans-unit>
 
 			<trans-unit id="tx_easyvote_domain_model_messagingjob">
 				<source>Messaging Job</source>
