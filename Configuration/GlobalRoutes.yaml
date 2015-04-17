@@ -19,3 +19,10 @@
     '@controller': 'Party'
     '@action':     'listMembersByDemand'
   httpMethods: ['GET']
+-
+  name: 'PartyMember'
+  uriPattern: '{@controller}/{@action}/{object}'
+  defaults:
+    '@package':    'Visol.Easyvote'
+    '@plugin':     'Partyfunctions'
+  httpMethods: ['GET', 'POST']

@@ -92,6 +92,7 @@ class PartyController extends \Visol\Easyvote\Controller\AbstractController {
 			}
 
 			$this->view->assign('demand', $demand);
+			$this->view->assign('communityUser', $communityUser);
 
 			$allMembers = $this->communityUserRepository->findByParty($communityUser->getParty());
 			$this->view->assign('allMembers', $allMembers);

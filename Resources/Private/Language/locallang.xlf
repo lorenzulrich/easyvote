@@ -576,7 +576,6 @@
 				<source>Registrieren</source>
 			</trans-unit>
 
-
 			<trans-unit id="create.header">
 				<source>Registration erfolgreich</source>
 			</trans-unit>
@@ -668,6 +667,74 @@
 				<source>Filter entfernen</source>
 			</trans-unit>
 
+			<trans-unit id="party.pendingMember.information">
+				<source>Dieses Mitglied wurde noch nicht bestätigt.</source>
+			</trans-unit>
+			<trans-unit id="party.member.isAdmin">
+				<source>Dieses Mitglied ist ebenfalls Administrator.</source>
+			</trans-unit>
+			<trans-unit id="party.member.isYou">
+				<source>Das bist du.</source>
+			</trans-unit>
+
+			<trans-unit id="party.pendingMember.confirm">
+				<source>bestätigen</source>
+			</trans-unit>
+			<trans-unit id="party.pendingMember.confirm.modal.informationNoVerificationCode">
+				<source>Bitte beachte, dass wir leider nicht garantieren können, dass es sich beim Profil nicht um eine
+				Fälschung handelt. Überprüfe die Glaubwürdigkeit des Antrags anhand von E-Mail-Adresse und Alter
+				oder halte mit dem Mitglied kurz Rücksprache.</source>
+			</trans-unit>
+			<trans-unit id="party.pendingMember.confirm.modal.informationVerificationCode">
+				<source>Dieses Mitglied hat den folgenden Bestätigungs-Code hinterlegt: %s</source>
+			</trans-unit>
+			<trans-unit id="party.pendingMember.confirm.modal.cancel">
+				<source>abbrechen</source>
+			</trans-unit>
+			<trans-unit id="party.pendingMember.confirm.modal.confirm">
+				<source>bestätigen</source>
+			</trans-unit>
+
+			<trans-unit id="party.pendingMember.decline">
+				<source>ablehnen</source>
+			</trans-unit>
+			<trans-unit id="party.pendingMember.decline.modal.information">
+				<source>Bitte bestätige, dass du %1$s %2$s ablehnen möchtest.</source>
+			</trans-unit>
+			<trans-unit id="party.pendingMember.decline.modal.cancel">
+				<source>abbrechen</source>
+			</trans-unit>
+			<trans-unit id="party.pendingMember.decline.modal.decline">
+				<source>ablehnen</source>
+			</trans-unit>
+
+			<trans-unit id="party.member.grantAdmin">
+				<source>Zum Administrator machen</source>
+			</trans-unit>
+			<trans-unit id="party.member.grantAdmin.modal.information">
+				<source>Wenn du %1$s %2$s zum Administrator machst, kann er wie du andere Mitglieder bestätigen
+				oder ablehnen, weitere Mitglieder zum Administrator machen und Teilnehmer für Podien eintragen.</source>
+			</trans-unit>
+			<trans-unit id="party.member.grantAdmin.modal.cancel">
+				<source>abbrechen</source>
+			</trans-unit>
+			<trans-unit id="party.member.grantAdmin.modal.confirm">
+				<source>bestätigen</source>
+			</trans-unit>
+
+			<trans-unit id="party.member.remove">
+				<source>entfernen</source>
+			</trans-unit>
+			<trans-unit id="party.member.remove.modal.information">
+				<source>Wenn du %1$s %2$s entfernst, kann er oder sie nicht mehr an Podien teilnehmen und im Namen
+				deiner Partei auf easyvote auftreten.</source>
+			</trans-unit>
+			<trans-unit id="party.member.remove.modal.cancel">
+				<source>abbrechen</source>
+			</trans-unit>
+			<trans-unit id="party.member.remove.modal.confirm">
+				<source>entfernen</source>
+			</trans-unit>
 
 		</body>
 	</file>

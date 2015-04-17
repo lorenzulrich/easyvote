@@ -127,10 +127,12 @@ if (!defined('TYPO3_MODE')) {
 	'Partyfunctions',
 	array(
 		'Party' => 'manageMembers,memberFilter,listMembersByDemand',
+		'PartyMember' => 'confirm,decline,grantAdmin,remove',
 	),
 	// non-cacheable actions
 	array(
 		'Party' => 'manageMembers,listMembersByDemand',
+		'PartyMember' => 'confirm,decline,grantAdmin,remove',
 	)
 );
 

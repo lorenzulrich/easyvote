@@ -17,6 +17,12 @@ namespace Visol\Easyvote\Service;
 class CommunityUserService implements \TYPO3\CMS\Core\SingletonInterface {
 
 	/**
+	 * @var \Visol\Easyvote\Domain\Repository\CommunityUserRepository
+	 * @inject
+	 */
+	protected $communityUserRepository;
+
+	/**
 	 * @var \TYPO3\CMS\Extbase\Domain\Repository\FrontendUserGroupRepository
 	 * @inject
 	 */
@@ -54,6 +60,22 @@ class CommunityUserService implements \TYPO3\CMS\Core\SingletonInterface {
 			}
 		}
 		return $hasRole;
+	}
+
+	/**
+	 * @return \Visol\Easyvote\Domain\Model\CommunityUser|bool
+	 */
+	public function getCommunityUser() {
+		if ((int)$GLOBALS['TSFE']->fe_user->user['uid'] > 0) {
+			$communityUser = $this->communityUserRepository->findByUid($GLOBALS['TSFE']->fe_user->user['uid']);
+			if ($communityUser instanceof \Visol\Easyvote\Domain\Model\CommunityUser) {
+				return $communityUser;
+			} else {
+				return FALSE;
+			}
+		} else {
+			return FALSE;
+		}
 	}
 
 	/**
