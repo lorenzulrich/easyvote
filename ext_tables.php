@@ -43,7 +43,7 @@ if (!defined('TYPO3_MODE')) {
 	'EXT:easyvote/ext_icon.gif'
 );
 
-$pluginSignature = str_replace('_','',$_EXTKEY) . '_community';
+$pluginSignature = str_replace('_', '', $_EXTKEY) . '_community';
 $TCA['tt_content']['types']['list']['subtypes_addlist'][$pluginSignature] = 'pi_flexform';
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addPiFlexFormValue($pluginSignature, 'FILE:EXT:' . $_EXTKEY . '/Configuration/FlexForm/flexform_community.xml');
 
@@ -87,37 +87,57 @@ $TCA['tt_content']['types']['list']['subtypes_addlist'][$pluginSignature] = 'pi_
 	'EXT:easyvote/ext_icon.gif'
 );
 
-$pluginSignature = str_replace('_','',$_EXTKEY) . '_partyfunctions';
+$pluginSignature = str_replace('_', '', $_EXTKEY) . '_partyfunctions';
 $TCA['tt_content']['types']['list']['subtypes_addlist'][$pluginSignature] = 'pi_flexform';
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addPiFlexFormValue($pluginSignature, 'FILE:EXT:' . $_EXTKEY . '/Configuration/FlexForm/flexform_party.xml');
-
-
-
-/* Easyvote Backend Module */
-\TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerModule(
-	'Visol.' . $_EXTKEY,
-	'user',
-	'easyvote',
-	'top',
-	array(
-		'CommunityUser' => 'backendDashboard,backendSmsMessagingIndex,backendSmsMessageSend,backendEmailExportIndex,backendEmailExportPerform'
-	),
-	array(
-		'access' => 'user,group',
-		'icon' => 'EXT:easyvote/ext_icon.gif',
-		'labels' => 'LLL:EXT:easyvote/Resources/Private/Language/locallang_module.xlf'
-	)
-);
 
 /* TypoScript-Konfiguration */
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addStaticFile($_EXTKEY, 'Configuration/TypoScript', 'easyvote');
 
-/* Allow all tables on standard pages */
-\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::allowTableOnStandardPages('tx_easyvote_domain_model_metavotingproposal');
-\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::allowTableOnStandardPages('tx_easyvote_domain_model_votingproposal');
-\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::allowTableOnStandardPages('tx_easyvote_domain_model_poll');
-\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::allowTableOnStandardPages('tx_easyvote_domain_model_kanton');
-\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::allowTableOnStandardPages('tx_easyvote_domain_model_votingday');
-\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::allowTableOnStandardPages('tx_easyvote_domain_model_city');
-\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::allowTableOnStandardPages('tx_easyvote_domain_model_language');
-\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::allowTableOnStandardPages('tx_easyvote_domain_model_messagingjob');
+if (TYPO3_MODE == 'BE') {
+
+	/* Allow all tables on standard pages */
+	\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::allowTableOnStandardPages('tx_easyvote_domain_model_metavotingproposal');
+	\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::allowTableOnStandardPages('tx_easyvote_domain_model_votingproposal');
+	\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::allowTableOnStandardPages('tx_easyvote_domain_model_poll');
+	\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::allowTableOnStandardPages('tx_easyvote_domain_model_kanton');
+	\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::allowTableOnStandardPages('tx_easyvote_domain_model_votingday');
+	\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::allowTableOnStandardPages('tx_easyvote_domain_model_city');
+	\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::allowTableOnStandardPages('tx_easyvote_domain_model_language');
+	\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::allowTableOnStandardPages('tx_easyvote_domain_model_messagingjob');
+
+	// Add easyvote main module before 'user'
+	// There are not API for doing this... ;(
+	if (!isset($GLOBALS['TBE_MODULES']['easyvote'])) {
+		$modules = array();
+		foreach ($GLOBALS['TBE_MODULES'] as $key => $val) {
+			if ($key == 'user') {
+				$modules['easyvote'] = '';
+			}
+			$modules[$key] = $val;
+		}
+		$GLOBALS['TBE_MODULES'] = $modules;
+		\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addModule(
+			'easyvote',
+			'',
+			'',
+			\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath('easyvote') . 'mod/easyvote/');
+	}
+
+	/* Easyvote Backend Module */
+	\TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerModule(
+		'Visol.' . $_EXTKEY,
+		'easyvote',
+		'easyvote',
+		'top',
+		array(
+			'CommunityUser' => 'backendDashboard,backendSmsMessagingIndex,backendSmsMessageSend,backendEmailExportIndex,backendEmailExportPerform'
+		),
+		array(
+			'access' => 'user,group',
+			'icon' => 'EXT:easyvote/Resources/Public/Icons/votewecker.png',
+			'labels' => 'LLL:EXT:easyvote/Resources/Private/Language/votewecker_module.xlf'
+		)
+	);
+}
+
