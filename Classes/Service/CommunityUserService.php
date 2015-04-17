@@ -68,4 +68,15 @@ class CommunityUserService implements \TYPO3\CMS\Core\SingletonInterface {
 		return $this->frontendUserGroupRepository->findByUid($roleUid);
 	}
 
+	/**
+	 * Get a user group uid defined in EXT:easyvote TypoScript settings with a pre-defined syntax [name]UserGroupUid
+	 *
+	 * @param string $role
+	 * @return integer
+	 */
+	public function getUserGroupUid($role) {
+		$this->settings = $this->configurationManager->getConfiguration(\TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface::CONFIGURATION_TYPE_SETTINGS, 'easyvote', 'easyvote');
+		return (int)$this->settings[$role . 'UserGroupUid'];
+	}
+
 }

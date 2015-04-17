@@ -1,0 +1,21 @@
+#####################
+# easyvote
+#####################
+-
+  name: 'PartyFunctions'
+  uriPattern: 'partymembers/{demand}'
+  defaults:
+    '@package':    'Visol.Easyvote'
+    '@plugin':     'Partyfunctions'
+    '@controller': 'Party'
+    '@action':     'listMembersByDemanddd'
+  httpMethods: ['GET']
+-
+  name: 'PartyFunctions'
+  uriPattern: 'partymembers'
+  defaults:
+    '@package':    'Visol.Easyvote'
+    '@plugin':     'Partyfunctions'
+    '@controller': 'Party'
+    '@action':     'listMembersByDemand'
+  httpMethods: ['GET']

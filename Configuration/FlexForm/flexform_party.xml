@@ -1,0 +1,35 @@
+<T3DataStructure>
+    <meta>
+        <langDisable>1</langDisable>
+    </meta>
+    <sheets>
+        <sDEF>
+            <ROOT>
+                <TCEforms>
+                    <sheetTitle>Konfiguration</sheetTitle>
+                </TCEforms>
+                <type>array</type>
+                <el>
+                    <switchableControllerActions>
+                        <TCEforms>
+                            <label>Funktion</label>
+                            <config>
+                                <type>select</type>
+                                <items>
+                                    <numIndex index="0">
+                                        <numIndex index="0">Manage Party Members</numIndex>
+                                        <numIndex index="1">Party->manageMembers</numIndex>
+                                    </numIndex>
+                                    <numIndex index="1">
+                                        <numIndex index="0">Filter Party Members</numIndex>
+                                        <numIndex index="1">Party->memberFilter</numIndex>
+                                    </numIndex>
+                                </items>
+                            </config>
+                        </TCEforms>
+                    </switchableControllerActions>
+                </el>
+            </ROOT>
+        </sDEF>
+    </sheets>
+</T3DataStructure>

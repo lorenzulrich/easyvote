@@ -79,6 +79,20 @@ $TCA['tt_content']['types']['list']['subtypes_addlist'][$pluginSignature] = 'pi_
 	'EXT:easyvote/ext_icon.gif'
 );
 
+/* Party functions */
+\TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin(
+	$_EXTKEY,
+	'Partyfunctions',
+	'easyvote Community: Parteifunktionen',
+	'EXT:easyvote/ext_icon.gif'
+);
+
+$pluginSignature = str_replace('_','',$_EXTKEY) . '_partyfunctions';
+$TCA['tt_content']['types']['list']['subtypes_addlist'][$pluginSignature] = 'pi_flexform';
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addPiFlexFormValue($pluginSignature, 'FILE:EXT:' . $_EXTKEY . '/Configuration/FlexForm/flexform_party.xml');
+
+
+
 /* Easyvote Backend Module */
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerModule(
 	'Visol.' . $_EXTKEY,

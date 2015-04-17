@@ -33,6 +33,17 @@ namespace Visol\Easyvote\Domain\Repository;
  */
 class CommunityUserRepository extends \TYPO3\CMS\Extbase\Domain\Repository\FrontendUserRepository {
 
+	protected $defaultOrderings = array(
+		'lastName' => \TYPO3\CMS\Extbase\Persistence\QueryInterface::ORDER_ASCENDING,
+		'firstName' => \TYPO3\CMS\Extbase\Persistence\QueryInterface::ORDER_ASCENDING,
+	);
+
+	/**
+	 * @var \Visol\Easyvote\Service\CommunityUserService
+	 * @inject
+	 */
+	protected $communityUserService = NULL;
+
 	/**
 	 * @param int $uid
 	 * @return \Visol\Easyvote\Domain\Model\CommunityUser|NULL
@@ -61,6 +72,13 @@ class CommunityUserRepository extends \TYPO3\CMS\Extbase\Domain\Repository\Front
 		return $query->execute();
 	}
 
+	/**
+	 * Query users by kanton, language and jobtype
+	 * Used for sending SMS messages and exporting e-mail addresses for the Votewecker
+	 *
+	 * @param $filterDemand
+	 * @return array|bool|\TYPO3\CMS\Extbase\Persistence\QueryResultInterface
+	 */
 	public function findByFilterDemand($filterDemand) {
 		$query = $this->createQuery();
 
@@ -108,6 +126,63 @@ class CommunityUserRepository extends \TYPO3\CMS\Extbase\Domain\Repository\Front
 		} else {
 			return FALSE;
 		}
+	}
+
+	/**
+	 * Party administrators can filter their members by query, kanton or status
+	 *
+	 * @param \Visol\Easyvote\Domain\Model\Party $party
+	 * @param array|NULL $demand
+	 * @return array|\TYPO3\CMS\Extbase\Persistence\QueryResultInterface
+	 */
+	public function findPoliticiansByPartyAndDemand(\Visol\Easyvote\Domain\Model\Party $party, $demand) {
+		$query = $this->createQuery();
+		$communityUsersTable = 'fe_users';
+		$constraints = [];
+		$constraints[] = $query->equals('party', $party);
+
+		if (is_array($demand)) {
+			if (isset($demand['query'])) {
+				// query constraint
+				$queryString = '%' . $GLOBALS['TYPO3_DB']->escapeStrForLike($GLOBALS['TYPO3_DB']->quoteStr($demand['query'], $communityUsersTable), $communityUsersTable) . '%';
+				$constraints[] = $query->logicalOr(
+					$query->like('firstName', $queryString),
+					$query->like('lastName', $queryString),
+					$query->like('citySelection.name', $queryString)
+				);
+			}
+
+			if (isset($demand['kanton']) && (int)$demand['kanton'] > 0) {
+				// kanton constraint
+				$constraints[] = $query->equals('citySelection.kanton', (int)$demand['kanton']);
+			}
+
+			if (isset($demand['status']) && in_array($demand['status'], array('politician', 'pendingPolitician'))) {
+				// politician or pending politician constraint
+				$constraints[] = $query->contains('usergroup', $this->communityUserService->getUserGroupUid($demand['status']));
+			}
+
+		}
+
+		if (!empty($constraints)) {
+			$query->matching(
+				$query->logicalAnd($constraints)
+			);
+		}
+
+		return $query->execute();
+	}
+
+	/**
+	 * @param \Visol\Easyvote\Domain\Model\Party $party
+	 * @return array|\TYPO3\CMS\Extbase\Persistence\QueryResultInterface
+	 */
+	public function findPendingPoliticiansByParty(\Visol\Easyvote\Domain\Model\Party $party) {
+		$query = $this->createQuery();
+		$query->matching(
+			$query->contains('usergroup', $this->communityUserService->getUserGroupUid('pendingPolitician'))
+		);
+		return $query->execute();
 	}
 
 }

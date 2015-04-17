@@ -1,0 +1,9 @@
+<div class="party-members">
+	<script>
+		$(function() {
+			EasyvoteGeneral.getData('/routing/partymembers').done(function(data) {
+				$('.party-members').html(data);
+			});
+		})
+	</script>
+</div>

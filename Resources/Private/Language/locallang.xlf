@@ -622,6 +622,52 @@
 				<source>Dein Konto konnte nicht aktiviert werden, da der Aktivierungslink ungültig ist.</source>
 			</trans-unit>
 
+			<trans-unit id="party.memberFilter.title">
+				<source>Politiker finden</source>
+			</trans-unit>
+			<trans-unit id="party.memberFilter.filter.search">
+				<source>Suche</source>
+			</trans-unit>
+			<trans-unit id="party.memberFilter.filter.kanton">
+				<source>Kanton</source>
+			</trans-unit>
+			<trans-unit id="party.memberFilter.filter.status">
+				<source>Status</source>
+			</trans-unit>
+			<trans-unit id="party.memberFilter.filter.status.confirmed">
+				<source>bestätigte Mitglieder</source>
+			</trans-unit>
+			<trans-unit id="party.memberFilter.filter.status.pending">
+				<source>ausstehende Anfragen</source>
+			</trans-unit>
+			<trans-unit id="party.memberFilter.submit">
+				<source>Filtern</source>
+			</trans-unit>
+			<trans-unit id="party.memberFilter.noResults">
+				<source>Es wurden keine Personen gefunden, die den Kriterien entsprechen.</source>
+			</trans-unit>
+			<trans-unit id="party.member.pending">
+				<source>Dieses Mitglied wurde noch nicht bestätigt.</source>
+			</trans-unit>
+			<trans-unit id="party.members">
+				<source>Mitglieder</source>
+			</trans-unit>
+			<trans-unit id="party.numberOfMembers">
+				<source>%s Mitglieder deiner Partei haben ein Profil bei easyvote.</source>
+			</trans-unit>
+			<trans-unit id="party.numberOfPendingMembers">
+				<source>Zur Zeit warten %s Mitglieder auf deine Bestätigung.</source>
+			</trans-unit>
+			<trans-unit id="party.pendingMembers.filter">
+				<source>anzeigen</source>
+			</trans-unit>
+			<trans-unit id="party.filteredView">
+				<source>Gefilterte Ansicht - %s Mitglieder</source>
+			</trans-unit>
+			<trans-unit id="party.pendingMembers.cancelFilter">
+				<source>Filter entfernen</source>
+			</trans-unit>
+
 
 		</body>
 	</file>

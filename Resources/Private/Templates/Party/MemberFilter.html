@@ -1,0 +1,20 @@
+<div class="content-box">
+	<h2><f:translate key="party.memberFilter.title" /></h2>
+	<f:form id="memberFilter" additionalAttributes="{data-role: 'ajaxSubmit', data-action: 'partymembers', data-target: '.party-members'}">
+		<div class="form-group">
+			<label for="memberFilter-search">{f:translate(key:'party.memberFilter.filter.search')}</label>
+			<f:form.textfield id="memberFilter-search" class="form-control" name="demand[query]" />
+		</div>
+		<div class="form-group">
+			<label for="memberFilter-kanton">{f:translate(key:'party.memberFilter.filter.kanton')}</label>
+			<f:form.select id="memberFilter-kanton" class="form-control" name="demand[kanton]" options="{kantons}" optionLabelField="name" optionValueField="uid" prependOptionLabel="" prependOptionValue="0" />
+		</div>
+		<div class="form-group">
+			<label for="memberFilter-status">{f:translate(key:'party.memberFilter.filter.status')}</label>
+			<f:form.select id="memberFilter-status" class="form-control" name="demand[status]" options="{statusFilters}" optionLabelField="value" optionValueField="key" prependOptionLabel="" prependOptionValue="" />
+		</div>
+		<div class="form-group">
+			<button class="btn btn-primary" type="submit"><f:translate key="party.memberFilter.submit" /></button>
+		</div>
+	</f:form>
+</div>

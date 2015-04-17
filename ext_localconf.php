@@ -121,6 +121,19 @@ if (!defined('TYPO3_MODE')) {
 	)
 );
 
+/* Party functions */
+\TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
+	'Visol.' . $_EXTKEY,
+	'Partyfunctions',
+	array(
+		'Party' => 'manageMembers,memberFilter,listMembersByDemand',
+	),
+	// non-cacheable actions
+	array(
+		'Party' => 'manageMembers,listMembersByDemand',
+	)
+);
+
 /* Command Controllers */
 if (TYPO3_MODE === 'BE') {
 	$GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['extbase']['commandControllers'][] = 'Visol\\Easyvote\\Command\\SmsMessageProcessorCommandController';
@@ -130,6 +143,9 @@ if (TYPO3_MODE === 'BE') {
 
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerTypeConverter('Visol\\Easyvote\\Property\\TypeConverter\\UploadedFileReferenceConverter');
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerTypeConverter('Visol\\Easyvote\\Property\\TypeConverter\\ObjectStorageConverter');
+
+// Register global route
+$GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['routing']['globalRoutes'][] = 'EXT:easyvote/Configuration/GlobalRoutes.yaml';
 
 // Register EID for Postal Code Service
 $GLOBALS['TYPO3_CONF_VARS']['FE']['eID_include']['easyvote_cityselection'] = 'EXT:easyvote/Resources/Private/Eid/CitySelectionService.php';

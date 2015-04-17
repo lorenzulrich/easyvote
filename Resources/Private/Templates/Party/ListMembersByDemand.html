@@ -1,0 +1,54 @@
+<div class="content-box">
+	<h2><f:translate key="party.members" /></h2>
+	<p><f:translate key="party.numberOfMembers" arguments="{0: '{allMembers -> f:count()}'}" /></p>
+	<f:if condition="{pendingMembers}">
+		<p>
+			<f:translate key="party.numberOfPendingMembers" arguments="{0: '{pendingMembers -> f:count()}'}" /><br />
+			<button class="btn btn-primary btn-sm" type="button" id="setPendingMembersFilter"><f:translate key="party.pendingMembers.filter" /></button>
+		</p>
+ 	</f:if>
+</div>
+
+<f:if condition="{allMembers -> f:count()} > {filteredMembers -> f:count()}">
+	<button class="btn btn-primary btn-fullwidth" type="button" id="cancelMembersFilter"><f:translate key="party.filteredView" arguments="{0: '{filteredMembers -> f:count()}'}" /> | <f:translate key="party.pendingMembers.cancelFilter" /></button>
+</f:if>
+
+
+<f:if condition="{filteredMembers}">
+	<f:then>
+		<f:for each="{filteredMembers}" as="member">
+			<div class="content-box content-box-expandable">
+				<div class="box-teaser">
+					<div class="row">
+						<div class="col-xs-3 col-md-3">
+							<f:render partial="CommunityUser/Image" arguments="{user:member, size: 300}" />
+						</div>
+						<div class="col-xs-9 col-md-9">
+							<div class="actions">
+								<f:if condition="{member.pendingPolitician}">
+									<div class="action status">
+										<i class="evicon-spin animate-spin" title="{f:translate(key:'party.member.pending')}"></i>
+									</div>
+								</f:if>
+								<div class="action toggle handle">
+									<i class="evicon-down-open"></i>
+								</div>
+							</div>
+							<h2>
+								{member.firstName} {member.lastName}
+							</h2>
+						</div>
+					</div>
+				</div>
+				<div class="box-content">
+					lalalal
+				</div>
+			</div>
+		</f:for>
+	</f:then>
+	<f:else>
+		<div class="content-box">
+			<f:translate key="party.memberFilter.noResults" />
+		</div>
+	</f:else>
+</f:if>
