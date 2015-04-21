@@ -661,7 +661,7 @@
 				<source>anzeigen</source>
 			</trans-unit>
 			<trans-unit id="party.filteredView">
-				<source>Gefilterte Ansicht - %s Mitglieder</source>
+				<source>Gefilterte Ansicht (%s Resultate)</source>
 			</trans-unit>
 			<trans-unit id="party.pendingMembers.cancelFilter">
 				<source>Filter entfernen</source>
