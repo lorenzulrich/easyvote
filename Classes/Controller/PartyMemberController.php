@@ -19,6 +19,7 @@ use TYPO3\CMS\Extbase\Domain\Model\FileReference;
 use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
 use Visol\Easyvote\Domain\Model\City;
 use Visol\Easyvote\Domain\Model\CommunityUser;
+use Visol\Easyvote\Domain\Model\Party;
 use Visol\Easyvote\Property\TypeConverter\UploadedFileReferenceConverter;
 use TYPO3\CMS\Extbase\Property\PropertyMappingConfiguration;
 
@@ -133,6 +134,43 @@ class PartyMemberController extends \Visol\Easyvote\Controller\CommunityUserCont
 			return json_encode(array('namespace' => 'Easyvote', 'function' => 'getPartyMembers', 'arguments' => $object->getUid()));
 		} else {
 			// TODO access denied - party administrator of another party
+		}
+	}
+
+	/**
+	 * Returns members of the party of the currently authenticated party administrator
+	 * Optionally finds the members by their first name, last name and city through a given queryString
+	 * This method is called by a select2 search field
+	 *
+	 * @return string
+	 */
+	public function getMembersOfCurrentPartyAction() {
+		$communityUser = $this->getCommunityUserService()->getCommunityUser();
+		if ($communityUser || $communityUser->isPartyAdministrator()) {
+			// Party is a lazy property of CommunityUser
+			if ($communityUser->getParty() instanceof \TYPO3\CMS\Extbase\Persistence\Generic\LazyLoadingProxy) {
+				$communityUser->getParty()->_loadRealInstance();
+			}
+			// query string
+			$q = \TYPO3\CMS\Core\Utility\GeneralUtility::_GP('q');
+			$usersTable = 'fe_users';
+			$queryString = $GLOBALS['TYPO3_DB']->escapeStrForLike($GLOBALS['TYPO3_DB']->quoteStr($q, $usersTable), $usersTable);
+			$partyMembers = $this->communityUserRepository->findPoliticiansByPartyAndQueryString($communityUser->getParty(), $queryString);
+			$returnArray['results'] = array();
+			foreach ($partyMembers as $partyMember) {
+				/** @var $partyMember \Visol\Easyvote\Domain\Model\CommunityUser */
+				$label = $partyMember->getCitySelection() instanceof City ?
+					$partyMember->getFirstName() . ' ' . $partyMember->getLastName() . ', ' . $partyMember->getCitySelection()->getName() :
+					$partyMember->getFirstName() . ' ' . $partyMember->getLastName();
+				$returnArray['results'][] = array(
+					'id' => $partyMember->getUid(),
+					'text' => $label
+				);
+			}
+			$returnArray['more'] = FALSE;
+			return json_encode($returnArray);
+		} else {
+			// TODO access denied
 		}
 	}
 

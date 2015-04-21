@@ -185,5 +185,25 @@ class CommunityUserRepository extends \TYPO3\CMS\Extbase\Domain\Repository\Front
 		return $query->execute();
 	}
 
+	/**
+	 * @param \Visol\Easyvote\Domain\Model\Party $party
+	 * @param string $queryString
+	 * @return array|\TYPO3\CMS\Extbase\Persistence\QueryResultInterface
+	 */
+	public function findPoliticiansByPartyAndQueryString(\Visol\Easyvote\Domain\Model\Party $party, $queryString) {
+		$query = $this->createQuery();
+		$query->matching(
+			$query->logicalAnd(
+				$query->contains('usergroup', $this->communityUserService->getUserGroupUid('politician')),
+				$query->logicalOr(
+					$query->like('firstName', $queryString . '%'),
+					$query->like('lastName', $queryString . '%'),
+					$query->like('citySelection.name', $queryString . '%')
+				)
+			)
+		);
+		return $query->execute();
+	}
+
 }
 ?>
