@@ -21,7 +21,7 @@
   httpMethods: ['GET']
 -
   name: 'PartyMember'
-  uriPattern: '{@controller}/{@action}/{object}'
+  uriPattern: 'ev/{@controller}/{@action}/{object}'
   defaults:
     '@package':    'Visol.Easyvote'
     '@plugin':     'Partyfunctions'
