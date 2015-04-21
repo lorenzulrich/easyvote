@@ -8,7 +8,7 @@
     '@package':    'Visol.Easyvote'
     '@plugin':     'Partyfunctions'
     '@controller': 'Party'
-    '@action':     'listMembersByDemanddd'
+    '@action':     'listMembersByDemand'
   httpMethods: ['GET']
 -
   name: 'PartyFunctions'
