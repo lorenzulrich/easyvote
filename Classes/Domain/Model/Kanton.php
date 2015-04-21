@@ -1,36 +1,19 @@
 <?php
 namespace Visol\Easyvote\Domain\Model;
 
-/***************************************************************
- *  Copyright notice
- *
- *  (c) 2013 Lorenz Ulrich <lorenz.ulrich@visol.ch>, visol digitale Dienstleistungen GmbH
- *  
- *  All rights reserved
- *
- *  This script is part of the TYPO3 project. The TYPO3 project is
- *  free software; you can redistribute it and/or modify
- *  it under the terms of the GNU General Public License as published by
- *  the Free Software Foundation; either version 3 of the License, or
- *  (at your option) any later version.
- *
- *  The GNU General Public License can be found at
- *  http://www.gnu.org/copyleft/gpl.html.
- *
- *  This script is distributed in the hope that it will be useful,
- *  but WITHOUT ANY WARRANTY; without even the implied warranty of
- *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *  GNU General Public License for more details.
- *
- *  This copyright notice MUST APPEAR in all copies of the script!
- ***************************************************************/
-
 /**
+ * This file is part of the TYPO3 CMS project.
  *
+ * It is free software; you can redistribute it and/or modify it under
+ * the terms of the GNU General Public License, either version 2
+ * of the License, or any later version.
  *
- * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
+ * For the full copyright and license information, please read the
+ * LICENSE.txt file that was distributed with this source code.
  *
+ * The TYPO3 project - inspiring people to share!
  */
+
 class Kanton extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 
 	/**
@@ -66,12 +49,18 @@ class Kanton extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	protected $languages;
 
 	/**
+	 * Limit the number of panels that can be created
+	 *
+	 * @var int
+	 */
+	protected $panelLimit;
+
+	/**
 	 * __construct
 	 *
 	 * @return Kanton
 	 */
 	public function __construct() {
-		//Do not remove the next line: It would break the functionality
 		$this->initStorageObjects();
 	}
 
@@ -81,11 +70,6 @@ class Kanton extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	 * @return void
 	 */
 	protected function initStorageObjects() {
-		/**
-		 * Do not modify this method!
-		 * It will be rewritten on each save in the extension builder
-		 * You may modify the constructor of this class instead
-		 */
 		$this->cities = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
 		$this->languages = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
 	}
@@ -204,6 +188,20 @@ class Kanton extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	 */
 	public function setLanguages(\TYPO3\CMS\Extbase\Persistence\ObjectStorage $languages) {
 		$this->languages = $languages;
+	}
+
+	/**
+	 * @return int
+	 */
+	public function getPanelLimit() {
+		return $this->panelLimit;
+	}
+
+	/**
+	 * @param int $panelLimit
+	 */
+	public function setPanelLimit($panelLimit) {
+		$this->panelLimit = $panelLimit;
 	}
 
 }

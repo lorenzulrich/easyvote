@@ -112,6 +112,7 @@ CREATE TABLE tx_easyvote_domain_model_kanton (
 	abbreviation varchar(255) DEFAULT '' NOT NULL,
 	cities int(11) unsigned DEFAULT '0' NOT NULL,
 	languages int(11) unsigned DEFAULT '0' NOT NULL,
+	panel_limit int(11) DEFAULT NULL,
 
 	tstamp int(11) unsigned DEFAULT '0' NOT NULL,
 	crdate int(11) unsigned DEFAULT '0' NOT NULL,
