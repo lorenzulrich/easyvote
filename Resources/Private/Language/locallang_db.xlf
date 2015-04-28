@@ -99,7 +99,7 @@
 				<source>Abkürzung</source>
 			</trans-unit>
 			<trans-unit id="tx_easyvote_domain_model_kanton.panel_limit">
-				<source>Maximale Anzahl Podien (leer = unlimitiert)</source>
+				<source>Maximale Anzahl Podien mit Politikern (leer = unlimitiert)</source>
 			</trans-unit>
 			<trans-unit id="tx_easyvote_domain_model_kanton.cities">
 				<source>Orte</source>

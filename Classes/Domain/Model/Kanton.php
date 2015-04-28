@@ -49,7 +49,7 @@ class Kanton extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	protected $languages;
 
 	/**
-	 * Limit the number of panels that can be created
+	 * Limit the number of panels with panelInvitations
 	 *
 	 * @var int
 	 */
