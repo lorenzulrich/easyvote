@@ -68,7 +68,9 @@ class EmailMessageProcessorCommandController extends \Visol\Easyvote\Command\Abs
 				$recipientEmail = $job->getRecipientEmail() !== '' && GeneralUtility::validEmail($job->getRecipientEmail()) ? $job->getRecipientEmail() : $job->getCommunityUser()->getEmail();
 				$recipient = array($recipientEmail => $recipientName);
 
-				$success = $this->sendEmail($recipient, $sender, $job->getSubject(), $emailContent, $job->getReplyTo(), $job->getReturnPath());
+				$returnPath = $job->getReturnPath() !== '' && GeneralUtility::validEmail($job->getReturnPath()) ? $job->getReturnPath() : $this->extensionConfiguration['settings']['senderEmail'];
+
+				$success = $this->sendEmail($recipient, $sender, $job->getSubject(), $emailContent, $job->getReplyTo(), $returnPath);
 				if ($success) {
 					$job->setTimeDistributed(new \DateTime());
 				} else {

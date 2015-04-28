@@ -40,6 +40,7 @@ class MessagingJobRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
 	 */
 	public function findPendingJobs($jobType, $limit) {
 		$query = $this->createQuery();
+		$query->getQuerySettings()->setRespectStoragePage(FALSE);
 
 		$query->matching(
 			$query->logicalAnd(
