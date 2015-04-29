@@ -35,16 +35,6 @@ class MetaVotingProposalController extends \TYPO3\CMS\Extbase\Mvc\Controller\Act
 	protected $votingDayRepository;
 
 	/**
-	 * action list
-	 *
-	 * @return void
-	 */
-	public function listAction() {
-		$metaVotingProposals = $this->metaVotingProposalRepository->findAll();
-		$this->view->assign('metaVotingProposals', $metaVotingProposals);
-	}
-
-	/**
 	 * action archive
 	 *
 	 * @return void
