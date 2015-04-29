@@ -65,13 +65,16 @@ class MetaVotingProposalController extends \TYPO3\CMS\Extbase\Mvc\Controller\Act
 			$votingProposalUid = (int)$this->request->getArgument('selectSingle');
 			/** @var \Visol\Easyvote\Domain\Model\VotingProposal $votingProposal */
 			$votingProposal = $this->votingProposalRepository->findByUid($votingProposalUid);
-			/** @var \Visol\Easyvote\Domain\Model\MetaVotingProposal $metaVotingProposal */
-			$metaVotingProposal = $this->metaVotingProposalRepository->findOneByVotingProposal($votingProposal);
-			// The archive displays MetaVotingProposals and needs a QueryResult, so we determine the MetaVotingProposal
-			// and get a query result containing just this MetaVotingProposal
-			$metaVotingProposals = $this->metaVotingProposalRepository->getQueryResultByUid($metaVotingProposal->getUid());
-			// We simulate that this result was found by its title
-			$filteredRequest['query'] = $votingProposal->getShortTitle();
+			if ($votingProposal instanceof \Visol\Easyvote\Domain\Model\VotingProposal) {
+				$this->view->assign('requestedVotingProposal', $votingProposal);
+				/** @var \Visol\Easyvote\Domain\Model\MetaVotingProposal $metaVotingProposal */
+				$metaVotingProposal = $this->metaVotingProposalRepository->findOneByVotingProposal($votingProposal);
+				// The archive displays MetaVotingProposals and needs a QueryResult, so we determine the MetaVotingProposal
+				// and get a query result containing just this MetaVotingProposal
+				$metaVotingProposals = $this->metaVotingProposalRepository->getQueryResultByUid($metaVotingProposal->getUid());
+				// We simulate that this result was found by its title
+				$filteredRequest['query'] = $votingProposal->getShortTitle();
+			}
 		} else {
 			// request comes from a search through the form
 			$request = $this->request->getArguments();
