@@ -1,12 +1,12 @@
 <h2><f:translate key="tx_easyvote_domain_model_votingproposal.share" /></h2>
 <div class="share-links">
-	<a class="share-popup" href="https://www.facebook.com/sharer/sharer.php?u={baseUri}permalink/v/{votingProposal.uid}">
+	<a class="share-popup" href="https://www.facebook.com/sharer/sharer.php?u={votingProposal.permalink}">
 		<span class="facebook"></span>
 	</a>
-	<a class="share-popup" href="https://twitter.com/home?status={votingProposal.shortTitle} - {baseUri}permalink/v/{votingProposal.uid} @easyvote_ch">
+	<a class="share-popup" href="https://twitter.com/home?status={votingProposal.shortTitle} - {votingProposal.permalink} @easyvote_ch">
 		<span class="twitter"></span>
 	</a>
 </div>
 <div class="share-uri">
-	<input type="text" onclick="select()" id="votingProposalLink" value="{baseUri}permalink/v/{votingProposal.uid}" />
+	<input type="text" onclick="select()" id="votingProposalLink" value="{votingProposal.permalink}" />
 </div>

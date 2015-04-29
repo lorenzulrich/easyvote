@@ -74,8 +74,7 @@ class VotingDayController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContro
 		$this->view->setTemplatePathAndFilename(\TYPO3\CMS\Core\Utility\GeneralUtility::getFileAbsFileName($this->settings['votingDayViewTemplate']));
 		$this->view->assignMultiple(array(
 			'votingDay' => $votingDay,
-			'requestedKanton' => $kanton,
-			'baseUri' => $GLOBALS['TSFE']->tmpl->setup['config.']['baseURL']
+			'requestedKanton' => $kanton
 		));
 
 		if ($selectSingle instanceof VotingProposal) {

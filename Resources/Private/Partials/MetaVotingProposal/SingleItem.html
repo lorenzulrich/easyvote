@@ -34,7 +34,7 @@
 										</div>
 									</f:then>
 									<f:else>
-										<a href="share://title={votingProposal.shortTitle -> f:format.urlencode()}&text={votingProposal.officialTitle -> f:format.urlencode()}&url={f:uri.action(arguments: {selectSingle:votingProposal.uid}, absolute: 1) -> f:format.urlencode()}">
+										<a href="share://title={votingProposal.shortTitle -> f:format.urlencode()}&text={votingProposal.officialTitle -> f:format.urlencode()}&url={votingProposal.permalink -> f:format.urlencode()}">
 											<i class="evicon-share"></i>
 										</a>
 									</f:else>
