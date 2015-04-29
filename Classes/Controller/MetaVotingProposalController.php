@@ -126,14 +126,4 @@ class MetaVotingProposalController extends \TYPO3\CMS\Extbase\Mvc\Controller\Act
 
 	}
 
-	/**
-	 * action show
-	 *
-	 * @param \Visol\Easyvote\Domain\Model\MetaVotingProposal $metaVotingProposal
-	 * @return void
-	 */
-	public function showAction(\Visol\Easyvote\Domain\Model\MetaVotingProposal $metaVotingProposal) {
-		$this->view->assign('metaVotingProposal', $metaVotingProposal);
-	}
-
 }
