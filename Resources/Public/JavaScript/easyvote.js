@@ -537,19 +537,6 @@ $(function() {
 		});
 	});
 
-	// Facebook Share Link
-	$body.on('click', '.fb-share-link', function(e) {
-		$trigger = $(e.target).closest('a');
-		FB.ui(
-			{
-				method: 'feed',
-				link: $trigger.attr('data-href'),
-				description: $trigger.attr('data-description')
-			},
-			function(response) {}
-		);
-	});
-
 	// Bind postal code selection
 	if ($('.editProfileForm').length > 0) {
 		Easyvote.bindPostalCodeSelection();
