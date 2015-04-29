@@ -146,9 +146,9 @@ class CommunityUserRepository extends \TYPO3\CMS\Extbase\Domain\Repository\Front
 				// query constraint
 				$queryString = '%' . $GLOBALS['TYPO3_DB']->escapeStrForLike($GLOBALS['TYPO3_DB']->quoteStr($demand['query'], $communityUsersTable), $communityUsersTable) . '%';
 				$constraints[] = $query->logicalOr(
-					$query->like('firstName', $queryString),
-					$query->like('lastName', $queryString),
-					$query->like('citySelection.name', $queryString)
+					$query->like('firstName', $queryString, FALSE),
+					$query->like('lastName', $queryString, FALSE),
+					$query->like('citySelection.name', $queryString, FALSE)
 				);
 			}
 
@@ -196,9 +196,9 @@ class CommunityUserRepository extends \TYPO3\CMS\Extbase\Domain\Repository\Front
 			$query->logicalAnd(
 				$query->contains('usergroup', $this->communityUserService->getUserGroupUid('politician')),
 				$query->logicalOr(
-					$query->like('firstName', $queryString . '%'),
-					$query->like('lastName', $queryString . '%'),
-					$query->like('citySelection.name', $queryString . '%')
+					$query->like('firstName', $queryString . '%', FALSE),
+					$query->like('lastName', $queryString . '%', FALSE),
+					$query->like('citySelection.name', $queryString . '%', FALSE)
 				)
 			)
 		);
