@@ -168,13 +168,13 @@
 			<trans-unit id="tx_easyvote_domain_model_communityuser.user_language">
 				<source>Language of correspondence</source>
 			</trans-unit>
-			<trans-unit id="tx_easyvote_domain_model_communityuser.user_language.1">
+			<trans-unit id="tx_easyvote_domain_model_communityuser.user_language.german">
 				<source>Deutsch</source>
 			</trans-unit>
-			<trans-unit id="tx_easyvote_domain_model_communityuser.user_language.2">
+			<trans-unit id="tx_easyvote_domain_model_communityuser.user_language.french">
 				<source>French</source>
 			</trans-unit>
-			<trans-unit id="tx_easyvote_domain_model_communityuser.user_language.3">
+			<trans-unit id="tx_easyvote_domain_model_communityuser.user_language.italian">
 				<source>Italian</source>
 			</trans-unit>
 			<trans-unit id="tx_easyvote_domain_model_communityuser.birthdate">
