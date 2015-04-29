@@ -27,6 +27,14 @@ if (!defined('TYPO3_MODE')) {
 	'EXT:easyvote/ext_icon.gif'
 );
 
+/* Permalink for meta voting proposals */
+\TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin(
+	$_EXTKEY,
+	'Permalink',
+	'easyvote Abstimmungen: Permalink',
+	'EXT:easyvote/ext_icon.gif'
+);
+
 /* AJAX functions for community plugins */
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin(
 	$_EXTKEY,

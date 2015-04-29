@@ -26,3 +26,13 @@
     '@package':    'Visol.Easyvote'
     '@plugin':     'Partyfunctions'
   httpMethods: ['GET', 'POST']
+
+-
+  name: 'Permalink VotingProposal'
+  uriPattern: 'v/{votingProposal}'
+  defaults:
+    '@package':    'Visol.Easyvote'
+    '@controller': 'VotingProposal'
+    '@action': 'permalink'
+    '@plugin':     'Permalink'
+  httpMethods: ['GET']

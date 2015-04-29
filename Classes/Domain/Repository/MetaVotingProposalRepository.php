@@ -37,8 +37,8 @@ class MetaVotingProposalRepository extends \TYPO3\CMS\Extbase\Persistence\Reposi
 	);
 
 	/**
-	 * @param $demand
-	 * @return Tx_Extbase_Persistence_QueryResultInterface
+	 * @param array $demand
+	 * @return array|\TYPO3\CMS\Extbase\Persistence\QueryResultInterface
 	 */
 	public function findByDemand($demand) {
 		$query = $this->createQuery();
@@ -129,6 +129,24 @@ class MetaVotingProposalRepository extends \TYPO3\CMS\Extbase\Persistence\Reposi
 			);
 		}
 
+		return $query->execute();
+	}
+
+	/**
+	 * Get a query result containing just one requested object
+	 * This is necessary because the archive works with a query result, but a single record must be selectable
+	 *
+	 * @param $metaVotingProposalUid
+	 * @return object
+	 */
+	public function getQueryResultByUid($metaVotingProposalUid) {
+		$query = $this->createQuery();
+		$query->matching(
+			$query->logicalAnd(
+				$query->equals('uid', $metaVotingProposalUid),
+				$query->equals('votingDay.archived', TRUE)
+			)
+		);
 		return $query->execute();
 	}
 

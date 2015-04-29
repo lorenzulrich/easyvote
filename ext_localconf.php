@@ -41,6 +41,19 @@ if (!defined('TYPO3_MODE')) {
 	)
 );
 
+/* Permalink for meta voting proposals */
+\TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
+	'Visol.' . $_EXTKEY,
+	'Permalink',
+	array(
+		'VotingProposal' => 'permalink',
+	),
+	// non-cacheable actions
+	array(
+		'VotingProposal' => 'permalink',
+	)
+);
+
 /* AJAX functions for community plugins */
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
 	'Visol.' . $_EXTKEY,

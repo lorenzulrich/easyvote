@@ -17,6 +17,12 @@ namespace Visol\Easyvote\Controller;
 class MetaVotingProposalController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController {
 
 	/**
+	 * @var \Visol\Easyvote\Domain\Repository\VotingProposalRepository
+	 * @inject
+	 */
+	protected $votingProposalRepository;
+
+	/**
 	 * @var \Visol\Easyvote\Domain\Repository\MetaVotingProposalRepository
 	 * @inject
 	 */
@@ -64,40 +70,55 @@ class MetaVotingProposalController extends \TYPO3\CMS\Extbase\Mvc\Controller\Act
 		}
 		$this->view->assign('kantons', $kantons);
 
-		// perform search
-		$request = $this->request->getArguments();
-		$demand = array();
-		$filteredRequest = array();
+		if ($this->request->hasArgument('selectSingle')) {
+			// Request comes from a permalink requesting a VotingProposal
+			$votingProposalUid = (int)$this->request->getArgument('selectSingle');
+			/** @var \Visol\Easyvote\Domain\Model\VotingProposal $votingProposal */
+			$votingProposal = $this->votingProposalRepository->findByUid($votingProposalUid);
+			/** @var \Visol\Easyvote\Domain\Model\MetaVotingProposal $metaVotingProposal */
+			$metaVotingProposal = $this->metaVotingProposalRepository->findOneByVotingProposal($votingProposal);
+			// The archive displays MetaVotingProposals and needs a QueryResult, so we determine the MetaVotingProposal
+			// and get a query result containing just this MetaVotingProposal
+			$metaVotingProposals = $this->metaVotingProposalRepository->getQueryResultByUid($metaVotingProposal->getUid());
+			// We simulate that this result was found by its title
+			$filteredRequest['query'] = $votingProposal->getShortTitle();
+		} else {
+			// request comes from a search through the form
+			$request = $this->request->getArguments();
+			$demand = array();
+			$filteredRequest = array();
 
-		// search by query string
-		if (isset($request['query'])) {
-			// we have a search query, so we use it
-			$queryString = $GLOBALS['TYPO3_DB']->escapeStrForLike($GLOBALS['TYPO3_DB']->quoteStr($request['query'], 'tx_easyvote_domain_model_metavotingproposal'), 'tx_easyvote_domain_model_metavotingproposal');
-			if (!empty($queryString)) {
-				$demand['query'] = '%' . $queryString . '%';
-				$filteredRequest['query'] = htmlspecialchars($request['query']);
+			// search by query string
+			if (isset($request['query'])) {
+				// we have a search query, so we use it
+				$queryString = $GLOBALS['TYPO3_DB']->escapeStrForLike($GLOBALS['TYPO3_DB']->quoteStr($request['query'], 'tx_easyvote_domain_model_metavotingproposal'), 'tx_easyvote_domain_model_metavotingproposal');
+				if (!empty($queryString)) {
+					$demand['query'] = '%' . $queryString . '%';
+					$filteredRequest['query'] = htmlspecialchars($request['query']);
+				}
 			}
-		}
 
-		// filter by national
-		if (isset($request['kantons'])) {
-			$demand['kantons'] = $request['kantons'];
-			$filteredRequest['kantons'] = $request['kantons'];
-		}
+			// filter by national
+			if (isset($request['kantons'])) {
+				$demand['kantons'] = $request['kantons'];
+				$filteredRequest['kantons'] = $request['kantons'];
+			}
 
-		// filter by national
-		if (isset($request['national'])) {
-			$demand['national'] = $request['national'];
-			$filteredRequest['national'] = $request['national'];
-		}
+			// filter by national
+			if (isset($request['national'])) {
+				$demand['national'] = $request['national'];
+				$filteredRequest['national'] = $request['national'];
+			}
 
-		// filter by years
-		if (isset($request['years'])) {
-			$demand['years'] = $request['years'];
-			$filteredRequest['years'] = $request['years'];
-		}
+			// filter by years
+			if (isset($request['years'])) {
+				$demand['years'] = $request['years'];
+				$filteredRequest['years'] = $request['years'];
+			}
 
-		$metaVotingProposals = $this->metaVotingProposalRepository->findByDemand($demand);
+			$metaVotingProposals = $this->metaVotingProposalRepository->findByDemand($demand);
+
+		}
 
 		$this->view->assign('metaVotingProposals', $metaVotingProposals);
 		$this->view->assign('request', $filteredRequest);

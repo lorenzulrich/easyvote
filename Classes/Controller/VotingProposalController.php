@@ -149,4 +149,42 @@ class VotingProposalController extends \Visol\Easyvote\Controller\AbstractContro
 		return json_encode(array('successText' => '<p>Fehler.</p>'));
 	}
 
+	/**
+	 * Checks if the link requests a votingProposal and the votingProposal exists
+	 * Redirects to the current votings page if an error occurs
+	 *
+	 * @throws \TYPO3\CMS\Extbase\Mvc\Exception\NoSuchArgumentException
+	 * @throws \TYPO3\CMS\Extbase\Mvc\Exception\StopActionException
+	 * @throws \TYPO3\CMS\Extbase\Mvc\Exception\UnsupportedRequestTypeException
+	 */
+	public function initializePermalinkAction() {
+		if ($this->request->hasArgument('votingProposal')) {
+			if (is_null($this->votingProposalRepository->findByUid((int)$this->request->getArgument('votingProposal')))) {
+				$targetUri = $this->uriBuilder->setTargetPageUid((int)$this->settings['currentVotingsPid'])->build();
+				$this->redirectToUri($targetUri);
+			}
+		} else {
+			$targetUri = $this->uriBuilder->setTargetPageUid((int)$this->settings['currentVotingsPid'])->build();
+			$this->redirectToUri($targetUri);
+		}
+	}
+
+	/**
+	 * Resolves a permalink to a votingProposal and opens it either in the archive or on the current votings page
+	 *
+	 * @param \Visol\Easyvote\Domain\Model\VotingProposal|NULL $votingProposal
+	 */
+	public function permalinkAction(\Visol\Easyvote\Domain\Model\VotingProposal $votingProposal = NULL) {
+		$metaVotingProposal = $this->metaVotingProposalRepository->findOneByVotingProposal($votingProposal);
+		if ($metaVotingProposal instanceof \Visol\Easyvote\Domain\Model\MetaVotingProposal) {
+			if ($metaVotingProposal->getVotingDay()->isArchived()) {
+				$redirectUri = $this->uriBuilder->setTargetPageUid((int)$this->settings['votingArchivePid'])->setArguments(array('tx_easyvote_archive' => array('selectSingle' => $votingProposal->getUid())))->build();
+				$this->redirectToUri($redirectUri);
+			} else {
+				$redirectUri = $this->uriBuilder->setTargetPageUid((int)$this->settings['currentVotingsPid'])->setArguments(array('tx_easyvote_currentvotings' => array('selectSingle' => $votingProposal->getUid())))->build();
+				$this->redirectToUri($redirectUri);
+			}
+		}
+	}
+
 }
