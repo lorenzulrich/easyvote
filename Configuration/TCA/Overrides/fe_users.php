@@ -181,3 +181,12 @@ $GLOBALS['TCA']['fe_users']['types']['Tx_Easyvote_CommunityUser']['showitem'] .=
 
 $GLOBALS['TCA']['fe_users']['ctrl']['label_alt'] = 'last_name,first_name';
 $GLOBALS['TCA']['fe_users']['ctrl']['label_alt_force'] = TRUE;
+
+// Exclude more fields from TCA.
+$tca = array(
+	'grid' => array(
+		'excluded_fields' => $GLOBALS['TCA']['fe_users']['grid']['excluded_fields'] . ', fal_image',
+	),
+);
+
+\TYPO3\CMS\Core\Utility\ArrayUtility::mergeRecursiveWithOverrule($GLOBALS['TCA']['fe_users'], $tca);

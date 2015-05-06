@@ -147,5 +147,26 @@ if (TYPO3_MODE == 'BE') {
 			'labels' => 'LLL:EXT:easyvote/Resources/Private/Language/votewecker_module.xlf'
 		)
 	);
-}
 
+	// Default User TSConfig to be added in any case.
+	TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addUserTSConfig('
+		# User TSconfig defining default pid for "fe_users" in Vidi:
+		tx_vidi {
+			dataType {
+				fe_users {
+					storagePid = 147
+				}
+			}
+		}
+
+		# User TSconfig defining default pid for "fe_users" in Vidi:
+		tx_vidi {
+			dataType {
+				fe_groups {
+					storagePid = 144
+				}
+			}
+		}
+	');
+
+}
