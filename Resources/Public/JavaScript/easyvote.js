@@ -312,6 +312,7 @@ var Easyvote = {
 				$(elementId).find('.toggle i').trigger('click');
 				Easyvote.scrollToElement(elementId);
 			}
+			Easyvote.bindToolTips();
 		});
 	}
 };
