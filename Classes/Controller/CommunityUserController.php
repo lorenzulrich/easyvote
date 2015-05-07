@@ -212,12 +212,17 @@ class CommunityUserController extends \Visol\Easyvote\Controller\AbstractControl
 				$communityUser->setAuthToken(\Visol\Easyvote\Utility\Algorithms::generateRandomToken(20));
 			}
 
+			// This needs to be the first message
+			$this->addFlashMessage(LocalizationUtility::translate('editProfile.saved', 'easyvote'));
+
 			// Teacher functions
 			if ($teacher === TRUE && !$loggedInUser->isTeacher()) {
 				// User changed state to teacher
 				$communityUser->addUsergroup($this->communityUserService->getUserGroup('teacher'));
+				$managePanelsUri = $this->uriBuilder->setTargetPageUid($this->settings['managePanelsPid'])->build();
+				$this->addFlashMessage(LocalizationUtility::translate('editProfile.teacherFunctionsEnabled', 'easyvote', array($managePanelsUri)));
 			} elseif ($teacher === FALSE && $loggedInUser->isTeacher()) {
-				// User changed state to non-politician, so we remove the group
+				// User changed state to non-teacher, so we remove the group
 				$communityUser->removeUsergroup($this->communityUserService->getUserGroup('teacher'));
 			}
 
@@ -225,6 +230,7 @@ class CommunityUserController extends \Visol\Easyvote\Controller\AbstractControl
 			if ($politician === TRUE && !$loggedInUser->isPendingPoliticianOrPolitician()) {
 				// User changed state to politician, so we add them to the pendingPolitician usergroup
 				$communityUser->addUsergroup($this->communityUserService->getUserGroup('pendingPolitician'));
+				$this->addFlashMessage(LocalizationUtility::translate('editProfile.pendingPoliticianNotification', 'easyvote'));
 				// TODO notify partyAdministrator of pending member
 			} elseif ($politician === FALSE && $loggedInUser->isPendingPolitician()) {
 				// User changed state to non-politician, so we remove the group
@@ -238,7 +244,6 @@ class CommunityUserController extends \Visol\Easyvote\Controller\AbstractControl
 
 			$this->communityUserRepository->update($communityUser);
 			$this->persistenceManager->persistAll();
-			$this->addFlashMessage(LocalizationUtility::translate('editProfile.saved', 'easyvote'));
 		}
 		$this->redirect('editProfile');
 	}

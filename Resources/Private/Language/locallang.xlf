@@ -399,11 +399,19 @@
 			<trans-unit id="editProfile.politician.party.pendingConfirmationNotice">
 				<source>Sobald der Administrator deiner Partei deine Mitgliedschaft bestätigt hat, werden weitere Funktionen freigeschaltet.</source>
 			</trans-unit>
+			<trans-unit id="editProfile.pendingPoliticianNotification">
+				<source>Sobald der Administrator deiner Partei deine Mitgliedschaft bestätigt hast, werden dir weitere Funktionen freigeschaltet. Du wirst darüber auch per E-Mail informiert.</source>
+			</trans-unit>
 			<trans-unit id="editProfile.teacher.header">
 				<source>Bist du eine Lehrperson?</source>
 			</trans-unit>
 			<trans-unit id="editProfile.teacher.enabled">
 				<source>Ich bin eine Lehrperson</source>
+			</trans-unit>
+			<trans-unit id="editProfile.teacherFunctionsEnabled">
+				<source><![CDATA[
+					Du bist nun als Lehrperson freigeschaltet und darfst <a href="%s">Podien organisieren</a>.
+				]]></source>
 			</trans-unit>
 
 
