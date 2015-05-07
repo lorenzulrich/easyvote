@@ -605,7 +605,7 @@ class CommunityUserController extends \Visol\Easyvote\Controller\AbstractControl
 				/** @var $communityUser CommunityUser */
 
 				// kanton
-				$kanton = is_object($communityUser->getKanton()) ? $communityUser->getKanton()->getName() : '';
+				$kanton = is_object($communityUser->getCitySelection()) ? $communityUser->getCitySelection()->getKanton()->getName() : '';
 
 				$unsubscribeUrl = array();
 				$unsubscribeUrl[] = $this->settings['unsubscribeHost'];
