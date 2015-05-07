@@ -238,7 +238,7 @@ class CommunityUserController extends \Visol\Easyvote\Controller\AbstractControl
 
 			$this->communityUserRepository->update($communityUser);
 			$this->persistenceManager->persistAll();
-			$this->flashMessageContainer->add(LocalizationUtility::translate('editProfile.saved', 'easyvote'));
+			$this->addFlashMessage(LocalizationUtility::translate('editProfile.saved', 'easyvote'));
 		}
 		$this->redirect('editProfile');
 	}
@@ -332,7 +332,7 @@ class CommunityUserController extends \Visol\Easyvote\Controller\AbstractControl
 			}
 			$this->communityUserRepository->update($communityUser);
 			$this->persistenceManager->persistAll();
-			$this->flashMessageContainer->add(LocalizationUtility::translate('editNotifications.saved', 'easyvote'));
+			$this->addFlashMessage(LocalizationUtility::translate('editNotifications.saved', 'easyvote'));
 
 		}
 		$this->redirect('editNotifications');
@@ -656,7 +656,7 @@ class CommunityUserController extends \Visol\Easyvote\Controller\AbstractControl
 			$objWriter->save('php://output');
 			die();
 		} else {
-			$this->flashMessageContainer->add('Fehler: Keine Filter-Anfrage für Versand.', '', \TYPO3\CMS\Core\Messaging\FlashMessage::ERROR);
+			$this->addFlashMessage('Fehler: Keine Filter-Anfrage für Versand.', '', \TYPO3\CMS\Core\Messaging\FlashMessage::ERROR);
 			$this->redirect('backendEmailExportIndex');
 		}
 	}
@@ -702,7 +702,7 @@ class CommunityUserController extends \Visol\Easyvote\Controller\AbstractControl
 			$messagingJob->setCommunityUser($testUser);
 			$messagingJob->setSubject('SMS-Test-Job');
 			$this->messagingJobRepository->add($messagingJob);
-			$this->flashMessageContainer->add('Test-SMS wurde in Warteschlange gestellt.');
+			$this->addFlashMessage('Test-SMS wurde in Warteschlange gestellt.');
 		} else {
 			// we queue the message for all users
 			if (is_array($demand['filter'])) {
@@ -725,9 +725,9 @@ class CommunityUserController extends \Visol\Easyvote\Controller\AbstractControl
 					$iterator++;
 				}
 				$communityUsersCount = $communityUsers->count();
-				$this->flashMessageContainer->add('Es wurden ' . $communityUsersCount . ' SMS in die Warteschlange gestellt.');
+				$this->addFlashMessage('Es wurden ' . $communityUsersCount . ' SMS in die Warteschlange gestellt.');
 			} else {
-				$this->flashMessageContainer->add('Fehler: Keine Filter-Anfrage für Versand.', '', \TYPO3\CMS\Core\Messaging\FlashMessage::ERROR);
+				$this->addFlashMessage('Fehler: Keine Filter-Anfrage für Versand.', '', \TYPO3\CMS\Core\Messaging\FlashMessage::ERROR);
 			}
 		}
 		$this->persistenceManager->persistAll();
