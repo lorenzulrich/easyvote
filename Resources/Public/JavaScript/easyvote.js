@@ -164,12 +164,6 @@ var Easyvote = {
 					$('button.button-cancel', api.elements.content).click(function(e) {
 						api.hide(e);
 					});
-					if (typeof(FB) === 'object') {
-						FB.XFBML.parse();
-					}
-					if (typeof(twttr) === 'object') {
-						twttr.widgets.load();
-					}
 				},
 				hide: function(e, api) {
 					api.destroy();
@@ -270,8 +264,6 @@ var Easyvote = {
 					$body.on('click', $closeButton, function(e) {
 						api.hide(e);
 					});
-					FB.XFBML.parse();
-					twttr.widgets.load();
 				}
 			}
 		}).qtip('show');
