@@ -390,6 +390,10 @@ CREATE TABLE fe_users (
   fal_image int(11) unsigned DEFAULT '0' NOT NULL,
 	tx_extbase_type varchar(255) DEFAULT '' NOT NULL,
 	party_verification_code varchar(255) DEFAULT '' NOT NULL,
+	organization varchar(255) DEFAULT '' NOT NULL,
+	organization_website varchar(255) DEFAULT '' NOT NULL,
+  organization_city int(11) unsigned DEFAULT '0' NOT NULL
+
 );
 
 

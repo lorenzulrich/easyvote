@@ -224,6 +224,10 @@ class CommunityUserController extends \Visol\Easyvote\Controller\AbstractControl
 			} elseif ($teacher === FALSE && $loggedInUser->isTeacher()) {
 				// User changed state to non-teacher, so we remove the group
 				$communityUser->removeUsergroup($this->communityUserService->getUserGroup('teacher'));
+				// Empty the school-related fields
+				$communityUser->setOrganization('');
+				$communityUser->setOrganizationWebsite('');
+				$communityUser->setOrganizationCity(NULL);
 			}
 
 			// Politician functions

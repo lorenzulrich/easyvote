@@ -143,6 +143,21 @@ class CommunityUser extends \TYPO3\CMS\Extbase\Domain\Model\FrontendUser {
 	protected $partyVerificationCode;
 
 	/**
+	 * @var string
+	 */
+	protected $organization;
+
+	/**
+	 * @var string
+	 */
+	protected $organizationWebsite;
+
+	/**
+	 * @var \Visol\Easyvote\Domain\Model\City
+	 */
+	protected $organizationCity;
+
+	/**
 	 * @var \boolean
 	 * @transient
 	 */
@@ -502,6 +517,48 @@ class CommunityUser extends \TYPO3\CMS\Extbase\Domain\Model\FrontendUser {
 	 */
 	public function setPartyVerificationCode($partyVerificationCode) {
 		$this->partyVerificationCode = $partyVerificationCode;
+	}
+
+	/**
+	 * @return string
+	 */
+	public function getOrganization() {
+		return $this->organization;
+	}
+
+	/**
+	 * @param string $organization
+	 */
+	public function setOrganization($organization) {
+		$this->organization = $organization;
+	}
+
+	/**
+	 * @return City
+	 */
+	public function getOrganizationCity() {
+		return $this->organizationCity;
+	}
+
+	/**
+	 * @param City $organizationCity
+	 */
+	public function setOrganizationCity($organizationCity) {
+		$this->organizationCity = $organizationCity;
+	}
+
+	/**
+	 * @return mixed
+	 */
+	public function getOrganizationWebsite() {
+		return $this->organizationWebsite;
+	}
+
+	/**
+	 * @param mixed $organizationWebsite
+	 */
+	public function setOrganizationWebsite($organizationWebsite) {
+		$this->organizationWebsite = $organizationWebsite;
 	}
 
 }

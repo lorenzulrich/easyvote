@@ -16,9 +16,36 @@
 					<f:form.checkbox id="teacher" name="teacher" value="1" checked="{user.teacher}" /> <f:translate key="editProfile.teacher.enabled" />
 				</label>
 			</div>
-			<f:comment>
-				TODO later: Additional school related fields
-			</f:comment>
+			<div class="form-group">
+				<label for="organization">{f:translate(key:'editProfile.teacher.organization')}</label>
+				<f:form.textfield id="organization" class="form-control" property="organization" additionalAttributes="{required: required}" />
+			</div>
+			<div class="form-group">
+				<label for="organizationWebsite">{f:translate(key:'editProfile.teacher.organization_website')}</label>
+				<f:form.textfield id="organizationWebsite" class="form-control" property="organizationWebsite" additionalAttributes="{required: required}" />
+			</div>
+			<div class="form-group">
+				<label>{f:translate(key:'editProfile.teacher.organization_city')}</label>
+				<f:if condition="{user.organizationCity}">
+					<input type="text" class="cityOutput form-control" readonly value="{user.organizationCity.postalCode} {user.organizationCity.name} ({user.organizationCity.kanton.name})" />
+				</f:if>
+				<f:form.textfield class="form-control citySelection" property="organizationCity" additionalAttributes="{required: required}" />
+			</div>
+			<div class="form-group">
+				<label for="phoneNumber">{f:translate(key:'editProfile.placeholderMobile')}</label>
+				<div class="row">
+					<div class="col-xs-3">
+						<select name="tx_easyvote_profile[phoneNumberPrefix]" class="form-control">
+							<f:for each="{phoneNumberPrefixes}" as="phoneNumberPrefix" key="key">
+								<option {f:if(condition:'{0: \'{user.prefixCode}\'} == {0:\'{key}\'}', then:'selected=selected')} value="{key}">{phoneNumberPrefix.label}</option>
+							</f:for>
+						</select>
+					</div>
+					<div class="col-xs-9">
+						<f:form.textfield id="phoneNumber" name="communityUser[telephone]" value="{user.telephoneWithoutPrefix}" class="form-control" additionalAttributes="{maxlength: '7'}" />
+					</div>
+				</div>
+			</div>
 			<div class="form-group">
 				<button class="btn btn-primary" type="submit"><f:translate key="editProfile.save" /></button>
 			</div>

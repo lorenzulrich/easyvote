@@ -207,6 +207,15 @@
 			<trans-unit id="tx_easyvote_domain_model_communityuser.party_verification_code">
 				<source>Verification Code</source>
 			</trans-unit>
+			<trans-unit id="tx_easyvote_domain_model_communityuser.organization">
+				<source>School: Name</source>
+			</trans-unit>
+			<trans-unit id="tx_easyvote_domain_model_communityuser.organization_website">
+				<source>School: Website</source>
+			</trans-unit>
+			<trans-unit id="tx_easyvote_domain_model_communityuser.organization_city">
+				<source>School: City</source>
+			</trans-unit>
 
 			<trans-unit id="tx_easyvote_domain_model_messagingjob">
 				<source>Messaging Job</source>
