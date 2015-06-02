@@ -121,8 +121,9 @@ class CommunityUser extends \TYPO3\CMS\Extbase\Domain\Model\FrontendUser {
 	protected $communityUser;
 
 	/**
+	 * Needs to be eager loading because _isDirty is incorrect for LazyLoading, see CommunityUserController:updateAction
+	 *
 	 * @var \Visol\Easyvote\Domain\Model\Party
-	 * @lazy
 	 */
 	protected $party = NULL;
 

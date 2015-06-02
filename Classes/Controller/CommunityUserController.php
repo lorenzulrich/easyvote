@@ -194,7 +194,6 @@ class CommunityUserController extends \Visol\Easyvote\Controller\AbstractControl
 		$loggedInUser = $this->getLoggedInUser();
 		/** Todo: Sanitize properties that should never be updated by the user. */
 		if ($loggedInUser->getUid() === $communityUser->getUid()) {
-
 			// General functions
 			if (array_key_exists($phoneNumberPrefix, $this->settings['allowedPhoneNumberPrefixes'])) {
 				$communityUser->setTelephone($phoneNumberPrefix . preg_replace('/\D/', '', $communityUser->getTelephone()));
@@ -241,6 +240,13 @@ class CommunityUserController extends \Visol\Easyvote\Controller\AbstractControl
 				// User changed state to non-politician, so we remove the group
 				$communityUser->removeUsergroup($this->communityUserService->getUserGroup('politician'));
 				$communityUser->setParty(NULL);
+			} elseif ($communityUser->_isDirty('party')) {
+				// Make politician a pending politician if party was changed
+				// _isDirty only works correctly if the party property has no @lazy annotation
+				$communityUser->removeUsergroup($this->communityUserService->getUserGroup('politician'));
+				$communityUser->addUsergroup($this->communityUserService->getUserGroup('pendingPolitician'));
+				$this->addFlashMessage(LocalizationUtility::translate('editProfile.pendingPoliticianNotification', 'easyvote'));
+				// TODO notify NEW partyAdministrator of pending member
 			}
 
 			$this->communityUserRepository->update($communityUser);

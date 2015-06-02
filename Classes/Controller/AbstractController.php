@@ -19,8 +19,6 @@ use TYPO3\CMS\Core\Utility\GeneralUtility;
 class AbstractController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController {
 
 	/**
-	 * communityUserRepository
-	 *
 	 * @var \Visol\Easyvote\Domain\Repository\CommunityUserRepository
 	 * @inject
 	 */
@@ -86,4 +84,3 @@ class AbstractController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControl
 	}
 
 }
-?>
