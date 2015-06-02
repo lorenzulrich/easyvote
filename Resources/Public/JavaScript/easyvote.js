@@ -195,10 +195,10 @@ var Easyvote = {
 			dropdownCssClass: "bigdrop",
 			escapeMarkup: function (m) { return m; }
 		}).on('change', function(e) {
-			var data = $(this).select2('data');
-			$('.citySelection').val(data.id);
+			var $this = $(this);
+			var data = $this.select2('data');
 			var selectedCityName = data.postalCode + ' ' + data.city;
-			$('.cityOutput').val(selectedCityName);
+			$this.closest('.form-group').find('.cityOutput').val(selectedCityName);
 		});
 	},
 
