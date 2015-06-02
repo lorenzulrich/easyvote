@@ -1,6 +1,5 @@
 <?php
 namespace Visol\Easyvote\Service;
-use TYPO3\CMS\Core\Utility\GeneralUtility;
 
 /**
  * This file is part of the TYPO3 CMS project.
@@ -14,6 +13,10 @@ use TYPO3\CMS\Core\Utility\GeneralUtility;
  *
  * The TYPO3 project - inspiring people to share!
  */
+
+use TYPO3\CMS\Core\Utility\GeneralUtility;
+use Visol\Easyvote\Domain\Model\CommunityUser;
+use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
 
 class TemplateEmailService {
 
@@ -31,7 +34,7 @@ class TemplateEmailService {
 	/**
 	 * @var string
 	 */
-	public $subject;
+	protected $subject;
 
 	/**
 	 * @var string
@@ -44,9 +47,24 @@ class TemplateEmailService {
 	public $senderEmail = '';
 
 	/**
-	 * @var \Visol\Easyvote\Domain\Model\CommunityUser
+	 * @var array
 	 */
-	public $recipient;
+	public $recipients;
+
+	/**
+	 * Template Name without file ending. Must exist relative to Resources/Private/Email
+	 * e.g. MyMail
+	 *
+	 * @var string
+	 */
+	public $templateName;
+
+	/**
+	 * Extension name identical to extension key
+	 *
+	 * @var string
+	 */
+	public $extensionName;
 
 	/**
 	 * @var \TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface
@@ -82,14 +100,31 @@ class TemplateEmailService {
 		$this->standaloneView->assign($key, $value);
 	}
 
+	public function setTemplateName($templateName) {
+		$this->templateName = $templateName;
+	}
+
+	public function getTemplateName() {
+		return $this->templateName;
+	}
+
+	public function setExtensionName($extensionName) {
+		$this->extensionName = $extensionName;
+	}
+
+	public function getExtensionName() {
+		return $this->extensionName;
+	}
+
 	/**
 	 * Set a template for the StandaloneView
 	 *
-	 * @param string $templatePathAndName
+	 * @param string $templateName
 	 * @param string $extensionName
+	 * @param string $languageSuffix
 	 */
-	public function setTemplate($templatePathAndName, $extensionName) {
-		$templatePathAndFilename = $this->resolveViewFileForStandaloneView('Template', $templatePathAndName, $extensionName);
+	public function setTemplate($templateName, $extensionName, $languageSuffix) {
+		$templatePathAndFilename = $this->resolveViewFileForStandaloneView('Template', $templateName, $extensionName, $languageSuffix);
 		$this->standaloneView->setTemplatePathAndFilename($templatePathAndFilename);
 	}
 
@@ -99,29 +134,50 @@ class TemplateEmailService {
 	 * @throws \TYPO3\CMS\Extbase\Persistence\Exception\IllegalObjectTypeException
 	 */
 	public function enqueue() {
-		$content = $this->standaloneView->render();
-		/** @var \Visol\Easyvote\Domain\Model\MessagingJob $messagingJob */
-		$messagingJob = $this->objectManager->get('Visol\Easyvote\Domain\Model\MessagingJob');
-		$messagingJob->setSenderName($this->getSenderName());
-		$messagingJob->setSenderEmail($this->getSenderEmail());
-		// SPF
-		$messagingJob->setReturnPath('info@easyvote.ch');
-		$messagingJob->setContent($content);
-		$messagingJob->setSubject($this->getSubject());
-		$messagingJob->setCommunityUser($this->getRecipient());
-		$messagingJob->setDistributionTime(new \DateTime());
-		$messagingJob->setType($messagingJob::JOBTYPE_EMAIL);
-		$this->messagingJobRepository->add($messagingJob);
+		foreach ($this->recipients as $recipient) {
+			/** @var \Visol\Easyvote\Domain\Model\CommunityUser $recipient */
+
+			// Empty language suffix means default language (German)
+			$languageSuffix = '';
+			if ($recipient->getUserLanguage() !== CommunityUser::USERLANGUAGE_GERMAN) {
+				if ($recipient->getUserLanguage() === CommunityUser::USERLANGUAGE_FRENCH) {
+					$languageSuffix = 'Fr';
+				} elseif ($recipient->getUserLanguage() === CommunityUser::USERLANGUAGE_ITALIAN) {
+					$languageSuffix = 'It';
+				}
+			}
+			$this->setTemplate($this->getTemplateName(), $this->getExtensionName(), $languageSuffix);
+			$this->standaloneView->assign('communityUser', $recipient);
+			$content = $this->standaloneView->render();
+			$this->setSubject($languageSuffix);
+
+
+			/** @var \Visol\Easyvote\Domain\Model\MessagingJob $messagingJob */
+			$messagingJob = $this->objectManager->get('Visol\Easyvote\Domain\Model\MessagingJob');
+			$messagingJob->setSenderName($this->getSenderName());
+			$messagingJob->setSenderEmail($this->getSenderEmail());
+			// SPF
+			$messagingJob->setReturnPath('info@easyvote.ch');
+			$messagingJob->setContent($content);
+			$messagingJob->setSubject($this->getSubject());
+			$messagingJob->setCommunityUser($recipient);
+			$messagingJob->setDistributionTime(new \DateTime());
+			$messagingJob->setType($messagingJob::JOBTYPE_EMAIL);
+			$this->messagingJobRepository->add($messagingJob);
+		}
 		$this->persistenceManager->persistAll();
 	}
 
 	/**
 	 * @param string $viewType One of Template, Partial, Layout
-	 * @param string $filename Filename of requested template/partial/layout, may be prefixed with subfolders
+	 * @param string $templateName Name of the template
 	 * @param string $extensionName
+	 * @param string $languageSuffix
 	 * @return string
 	 */
-	public function resolveViewFileForStandaloneView($viewType, $filename, $extensionName) {
+	public function resolveViewFileForStandaloneView($viewType, $templateName, $extensionName, $languageSuffix) {
+		// filename is in format Email/MyTemplate[Fr].html
+		$filename = 'Email/' . ucfirst($templateName) . $languageSuffix . '.html';
 		$extbaseConfiguration = $this->configurationManager->getConfiguration(\TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface::CONFIGURATION_TYPE_FRAMEWORK, $extensionName);
 		if (array_key_exists(lcfirst($viewType) . 'RootPath', $extbaseConfiguration['view'])) {
 			// deprecated singular setting
@@ -141,15 +197,16 @@ class TemplateEmailService {
 	/**
 	 * @return string
 	 */
-	public function getSubject() {
+	protected function getSubject() {
 		return $this->subject;
 	}
 
 	/**
-	 * @param string $subject
+	 * @param string $languageSuffix
 	 */
-	public function setSubject($subject) {
-		$this->subject = $subject;
+	protected function setSubject($languageSuffix) {
+		$key = 'email.subject.' . $this->getTemplateName() . $languageSuffix;
+		$this->subject = LocalizationUtility::translate($key, $this->getExtensionName());
 	}
 
 	/**
@@ -181,17 +238,17 @@ class TemplateEmailService {
 	}
 
 	/**
-	 * @return \Visol\Easyvote\Domain\Model\CommunityUser
+	 * @return array
 	 */
-	public function getRecipient() {
-		return $this->recipient;
+	public function getRecipients() {
+		return $this->recipients;
 	}
 
 	/**
 	 * @param \Visol\Easyvote\Domain\Model\CommunityUser $recipient
 	 */
-	public function setRecipient($recipient) {
-		$this->recipient = $recipient;
+	public function addRecipient($recipient) {
+		$this->recipients[] = $recipient;
 	}
 
 }
