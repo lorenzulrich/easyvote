@@ -400,17 +400,17 @@
 				<source>Sobald der Administrator deiner Partei deine Mitgliedschaft bestätigt hat, werden weitere Funktionen freigeschaltet.</source>
 			</trans-unit>
 			<trans-unit id="editProfile.pendingPoliticianNotification">
-				<source>Sobald der Administrator deiner Partei deine Mitgliedschaft bestätigt hast, werden dir weitere Funktionen freigeschaltet. Du wirst darüber auch per E-Mail informiert.</source>
+				<source>Dein Parteiadministrator überprüft deine Parteiangehörigkeit. Die Freischaltung wird dir per E-Mail bestätigt. </source>
 			</trans-unit>
 			<trans-unit id="editProfile.teacher.header">
-				<source>Bist du eine Lehrperson?</source>
+				<source>Sind Sie eine Lehrperson?</source>
 			</trans-unit>
 			<trans-unit id="editProfile.teacher.enabled">
 				<source>Ich bin eine Lehrperson</source>
 			</trans-unit>
 			<trans-unit id="editProfile.teacherFunctionsEnabled">
 				<source><![CDATA[
-					Du bist nun als Lehrperson freigeschaltet und darfst <a href="%s">Podien organisieren</a>.
+					Ihr Profil wurde aktualisiert! Sie sind nun als Lehrperson freigeschaltet und können <a href="%s">Polittalks organisieren</a>.
 				]]></source>
 			</trans-unit>
 
@@ -642,10 +642,10 @@
 				<source>Status</source>
 			</trans-unit>
 			<trans-unit id="party.memberFilter.filter.status.confirmed">
-				<source>bestätigte Mitglieder</source>
+				<source>Bestätigte Mitglieder</source>
 			</trans-unit>
 			<trans-unit id="party.memberFilter.filter.status.pending">
-				<source>ausstehende Anfragen</source>
+				<source>Ausstehende Anfragen</source>
 			</trans-unit>
 			<trans-unit id="party.memberFilter.submit">
 				<source>Filtern</source>
@@ -689,31 +689,29 @@
 				<source>bestätigen</source>
 			</trans-unit>
 			<trans-unit id="party.pendingMember.confirm.modal.informationNoVerificationCode">
-				<source>Bitte beachte, dass wir leider nicht garantieren können, dass es sich beim Profil nicht um eine
-				Fälschung handelt. Überprüfe die Glaubwürdigkeit des Antrags anhand von E-Mail-Adresse und Alter
-				oder halte mit dem Mitglied kurz Rücksprache.</source>
+				<source>Bitte beachte, dass wir leider nicht garantieren können, dass es sich beim Profil nicht um eine Fälschung handelt. Überprüfe die Glaubwürdigkeit des Antrags anhand von E-Mail-Adresse, Verifizierungs-Code und Alter oder halte mit dem Mitglied kurz Rücksprache.</source>
 			</trans-unit>
 			<trans-unit id="party.pendingMember.confirm.modal.informationVerificationCode">
-				<source>Dieses Mitglied hat den folgenden Bestätigungs-Code hinterlegt: %s</source>
+				<source>Dieses Mitglied hat den folgenden Verifizierungs-Code hinterlegt: %s</source>
 			</trans-unit>
 			<trans-unit id="party.pendingMember.confirm.modal.cancel">
-				<source>abbrechen</source>
+				<source>Abbrechen</source>
 			</trans-unit>
 			<trans-unit id="party.pendingMember.confirm.modal.confirm">
-				<source>bestätigen</source>
+				<source>Bestätigen</source>
 			</trans-unit>
 
 			<trans-unit id="party.pendingMember.decline">
-				<source>ablehnen</source>
+				<source>Ablehnen</source>
 			</trans-unit>
 			<trans-unit id="party.pendingMember.decline.modal.information">
 				<source>Bitte bestätige, dass du %1$s %2$s ablehnen möchtest.</source>
 			</trans-unit>
 			<trans-unit id="party.pendingMember.decline.modal.cancel">
-				<source>abbrechen</source>
+				<source>Abbrechen</source>
 			</trans-unit>
 			<trans-unit id="party.pendingMember.decline.modal.decline">
-				<source>ablehnen</source>
+				<source>Ablehnen</source>
 			</trans-unit>
 
 			<trans-unit id="party.member.grantAdmin">
@@ -721,7 +719,7 @@
 			</trans-unit>
 			<trans-unit id="party.member.grantAdmin.modal.information">
 				<source>Wenn du %1$s %2$s zum Administrator machst, kann er wie du andere Mitglieder bestätigen
-				oder ablehnen, weitere Mitglieder zum Administrator machen und Teilnehmer für Podien eintragen.</source>
+				oder ablehnen, weitere Mitglieder zum Administrator machen und Teilnehmer für Polittalks eintragen.</source>
 			</trans-unit>
 			<trans-unit id="party.member.grantAdmin.modal.cancel">
 				<source>abbrechen</source>
