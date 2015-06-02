@@ -147,6 +147,16 @@ class CommunityUser extends \TYPO3\CMS\Extbase\Domain\Model\FrontendUser {
 	protected $organizationCity;
 
 	/**
+	 * @var string
+	 */
+	protected $educationType;
+
+	/**
+	 * @var string
+	 */
+	protected $educationInstitution;
+
+	/**
 	 * @var \boolean
 	 * @transient
 	 */
@@ -548,6 +558,34 @@ class CommunityUser extends \TYPO3\CMS\Extbase\Domain\Model\FrontendUser {
 	 */
 	public function setOrganizationWebsite($organizationWebsite) {
 		$this->organizationWebsite = $organizationWebsite;
+	}
+
+	/**
+	 * @return string
+	 */
+	public function getEducationInstitution() {
+		return $this->educationInstitution;
+	}
+
+	/**
+	 * @param string $educationInstitution
+	 */
+	public function setEducationInstitution($educationInstitution) {
+		$this->educationInstitution = $educationInstitution;
+	}
+
+	/**
+	 * @return string
+	 */
+	public function getEducationType() {
+		return $this->educationType;
+	}
+
+	/**
+	 * @param string $educationType
+	 */
+	public function setEducationType($educationType) {
+		$this->educationType = $educationType;
 	}
 
 }

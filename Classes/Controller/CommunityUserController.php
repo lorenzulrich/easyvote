@@ -146,6 +146,19 @@ class CommunityUserController extends \Visol\Easyvote\Controller\AbstractControl
 			$this->view->assign('user', $communityUser);
 			$this->view->assign('kantons', $kantons);
 			$this->view->assign('phoneNumberPrefixes', $allowedPhoneNumberPrefixes);
+
+			// Education Types (selection saved as a string)
+			$educationTypes = [];
+			$grammarSchoolLabel = LocalizationUtility::translate('editProfile.politician.educationType.grammarSchool', $this->request->getControllerExtensionName());
+			$educationTypes[$grammarSchoolLabel] = $grammarSchoolLabel;
+			$vocationalBusinessSchoolLabel = LocalizationUtility::translate('editProfile.politician.educationType.vocationalBusinessSchool', $this->request->getControllerExtensionName());
+			$educationTypes[$vocationalBusinessSchoolLabel] = $vocationalBusinessSchoolLabel;
+			$specializedVocationalSchoolLabel = LocalizationUtility::translate('editProfile.politician.educationType.specializedVocationalSchool', $this->request->getControllerExtensionName());
+			$educationTypes[$specializedVocationalSchoolLabel] = $specializedVocationalSchoolLabel;
+			$otherLabel = LocalizationUtility::translate('editProfile.politician.educationType.other', $this->request->getControllerExtensionName());
+			$educationTypes[$otherLabel] = $otherLabel;
+			$this->view->assign('educationTypes', $educationTypes);
+
 		}
 	}
 

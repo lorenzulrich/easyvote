@@ -199,6 +199,24 @@ $communityUserColumns = array(
 			),
 		),
 	),
+	'education_type' => array(
+		'exclude' => 1,
+		'label' => 'LLL:EXT:easyvote/Resources/Private/Language/locallang_db.xlf:tx_easyvote_domain_model_communityuser.education_type',
+		'config' => array(
+			'type' => 'input',
+			'size' => 30,
+			'eval' => 'trim'
+		),
+	),
+	'education_institution' => array(
+		'exclude' => 1,
+		'label' => 'LLL:EXT:easyvote/Resources/Private/Language/locallang_db.xlf:tx_easyvote_domain_model_communityuser.education_institution',
+		'config' => array(
+			'type' => 'input',
+			'size' => 30,
+			'eval' => 'trim'
+		),
+	),
 );
 
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addTCAcolumns('fe_users', $communityUserColumns);
@@ -206,7 +224,8 @@ $communityUserColumns = array(
 
 $GLOBALS['TCA']['fe_users']['types']['Tx_Easyvote_CommunityUser']['showitem'] = $GLOBALS['TCA']['fe_users']['types']['Tx_Extbase_Domain_Model_FrontendUser']['showitem'];
 $GLOBALS['TCA']['fe_users']['types']['Tx_Easyvote_CommunityUser']['showitem'] .= ',--div--;LLL:EXT:easyvote/Resources/Private/Language/locallang_db.xlf:tx_easyvote_domain_model_communityuser';
-$GLOBALS['TCA']['fe_users']['types']['Tx_Easyvote_CommunityUser']['showitem'] .= ',gender, city_selection, kanton, party, party_verification_code, user_language, birthdate, fal_image, auth_token, notification_mail_active, notification_sms_active,notification_related_users, community_user, tx_easyvoteeducation_panels, organization, organization_website, organization_city';
+$GLOBALS['TCA']['fe_users']['types']['Tx_Easyvote_CommunityUser']['showitem'] .=
+	',gender, city_selection, kanton, party, party_verification_code, user_language, birthdate, fal_image, auth_token, notification_mail_active, notification_sms_active,notification_related_users, community_user, tx_easyvoteeducation_panels, organization, organization_website, organization_city, education_type, education_institution';
 
 $GLOBALS['TCA']['fe_users']['ctrl']['label_alt'] = 'last_name,first_name';
 $GLOBALS['TCA']['fe_users']['ctrl']['label_alt_force'] = TRUE;

@@ -396,12 +396,37 @@
 			<trans-unit id="editProfile.politician.city">
 				<source>Wohnort</source>
 			</trans-unit>
+			<trans-unit id="editProfile.politician.educationHeader">
+				<source>Infos zu deiner Schulausbildung</source>
+			</trans-unit>
+			<trans-unit id="editProfile.politician.educationHeader">
+				<source>Infos zu deiner Schulbildung</source>
+			</trans-unit>
+			<trans-unit id="editProfile.politician.educationType">
+				<source>Schultyp</source>
+			</trans-unit>
+			<trans-unit id="editProfile.politician.educationType.grammarSchool">
+				<source>Gymnasium</source>
+			</trans-unit>
+			<trans-unit id="editProfile.politician.educationType.vocationalBusinessSchool">
+				<source>Kaufmännische Berufsschule</source>
+			</trans-unit>
+			<trans-unit id="editProfile.politician.educationType.specializedVocationalSchool">
+				<source>Gewerbliche Berufsschule</source>
+			</trans-unit>
+			<trans-unit id="editProfile.politician.educationType.other">
+				<source>Andere</source>
+			</trans-unit>
+			<trans-unit id="editProfile.politician.educationInstitution">
+				<source>Name der Schule</source>
+			</trans-unit>
 			<trans-unit id="editProfile.politician.party.pendingConfirmationNotice">
 				<source>Sobald der Administrator deiner Partei deine Mitgliedschaft bestätigt hat, werden weitere Funktionen freigeschaltet.</source>
 			</trans-unit>
 			<trans-unit id="editProfile.pendingPoliticianNotification">
 				<source>Dein Parteiadministrator überprüft deine Parteiangehörigkeit. Die Freischaltung wird dir per E-Mail bestätigt. </source>
 			</trans-unit>
+
 			<trans-unit id="editProfile.teacher.header">
 				<source>Sind Sie eine Lehrperson?</source>
 			</trans-unit>

@@ -216,6 +216,12 @@
 			<trans-unit id="tx_easyvote_domain_model_communityuser.organization_city">
 				<source>School: City</source>
 			</trans-unit>
+			<trans-unit id="tx_easyvote_domain_model_communityuser.education_type">
+				<source>Politician: Education type</source>
+			</trans-unit>
+			<trans-unit id="tx_easyvote_domain_model_communityuser.education_institution">
+				<source>Politician: Education institution</source>
+			</trans-unit>
 
 			<trans-unit id="tx_easyvote_domain_model_messagingjob">
 				<source>Messaging Job</source>
