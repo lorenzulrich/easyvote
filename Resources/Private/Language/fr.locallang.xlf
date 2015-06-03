@@ -461,6 +461,40 @@
 				]]></target>
 			</trans-unit>
 
+			<trans-unit id="editProfile.politician.header">
+				<target>Tu es actif en politique ?</target>
+			</trans-unit>
+			<trans-unit id="editProfile.politician.enabled">
+				<target>Je suis actif en politique</target>
+			</trans-unit>
+			<trans-unit id="editProfile.politician.party">
+				<target>Parti</target>
+			</trans-unit>
+			<trans-unit id="editProfile.politician.partyVerificationCode">
+				<target>Code de vérification</target>
+			</trans-unit>
+			<trans-unit id="editProfile.politician.city">
+				<target>Domicile</target>
+			</trans-unit>
+			<trans-unit id="editProfile.politician.party.pendingConfirmationNotice">
+				<target>Dès que l'administrateur de ton parti aura confirmé ton appartenance au parti , tu pourras accéder à de nouvelles fonctions.</target>
+			</trans-unit>
+			<trans-unit id="editProfile.pendingPoliticianNotification">
+				<target>L'administrateur de ton parti a vérifié ton appartenance au parti. L'activation te sera confirmée par e-mail. </target>
+			</trans-unit>
+
+			<trans-unit id="editProfile.teacher.header">
+				<target>Vous êtes membre du personnel enseignant ?</target>
+			</trans-unit>
+			<trans-unit id="editProfile.teacher.enabled">
+				<target>Je suis membre du personnel enseignant</target>
+			</trans-unit>
+			<trans-unit id="editProfile.teacherFunctionsEnabled">
+				<target><![CDATA[
+					Vous êtes désormais enregistré comme membre du personnel enseignant et vous pouvez<a href="%s">organiser des Polittalks</a>.
+				]]></target>
+			</trans-unit>
+
 			<trans-unit id="unsubscribe.header">
 				<source>Vote-Wecker-Abmeldung</source>
 				<target>Désabonnement à l’alarme de vote</target>
@@ -730,6 +764,120 @@
 			<trans-unit id="activate.invalidLinkMessage">
 				<source>Dein Konto konnte nicht aktiviert werden, da der Aktivierungslink ungültig ist.</source>
 				<target>Ton compte n'a pas pu être activé car le lien d'activation n’est pas valide.</target>
+			</trans-unit>
+
+
+			<trans-unit id="party.memberFilter.title">
+				<target>Trouver un politicien</target>
+			</trans-unit>
+			<trans-unit id="party.memberFilter.filter.search">
+				<target>Rechercher</target>
+			</trans-unit>
+			<trans-unit id="party.memberFilter.filter.kanton">
+				<target>Canton</target>
+			</trans-unit>
+			<trans-unit id="party.memberFilter.filter.status">
+				<target>Statut</target>
+			</trans-unit>
+			<trans-unit id="party.memberFilter.filter.status.confirmed">
+				<target>Membres confirmés</target>
+			</trans-unit>
+			<trans-unit id="party.memberFilter.filter.status.pending">
+				<target>Demandes en suspens</target>
+			</trans-unit>
+			<trans-unit id="party.memberFilter.submit">
+				<target>Filtres</target>
+			</trans-unit>
+			<trans-unit id="party.memberFilter.noResults">
+				<target>Aucune personne ne correspond à vos critères de recherche.</target>
+			</trans-unit>
+			<trans-unit id="party.member.pending">
+				<target>Ce membre n'a pas encore été confirmé.</target>
+			</trans-unit>
+			<trans-unit id="party.members">
+				<target>Membres</target>
+			</trans-unit>
+			<trans-unit id="party.numberOfMembers">
+				<target>%s membres de ton parti ont un profil easyvote.</target>
+			</trans-unit>
+			<trans-unit id="party.numberOfPendingMembers">
+				<target>Actuellement %s membres attendent une confirmation de ta part.</target>
+			</trans-unit>
+			<trans-unit id="party.pendingMembers.filter">
+				<target>Afficher</target>
+			</trans-unit>
+			<trans-unit id="party.filteredView">
+				<target>Affichage filtré (%s résultats)</target>
+			</trans-unit>
+			<trans-unit id="party.pendingMembers.cancelFilter">
+				<target>Supprimer le filtre</target>
+			</trans-unit>
+
+			<trans-unit id="party.pendingMember.information">
+				<target>Ce membre n'a pas encore été confirmé.</target>
+			</trans-unit>
+			<trans-unit id="party.member.isAdmin">
+				<target>Ce membre est également administrateur.</target>
+			</trans-unit>
+			<trans-unit id="party.member.isYou">
+				<target>C'est toi.</target>
+			</trans-unit>
+
+			<trans-unit id="party.pendingMember.confirm">
+				<target>Confirmer</target>
+			</trans-unit>
+			<trans-unit id="party.pendingMember.confirm.modal.informationNoVerificationCode">
+				<target>Prière de tenir compte du fait que nous ne pouvons malheureusement pas garantir qu'il ne s'agisse pas d'un profil contrefait. Vérifiez la crédibilité de la demande relative grâce à l'adresse e-mail, au code de vérification et à l'âge ou en prenant contact avec le membre.</target>
+			</trans-unit>
+			<trans-unit id="party.pendingMember.confirm.modal.informationVerificationCode">
+				<target>Ce membre a entré le code de vérification suivant : %s</target>
+			</trans-unit>
+			<trans-unit id="party.pendingMember.confirm.modal.cancel">
+				<target>Annuler</target>
+			</trans-unit>
+			<trans-unit id="party.pendingMember.confirm.modal.confirm">
+				<target>Confirmer</target>
+			</trans-unit>
+
+			<trans-unit id="party.pendingMember.decline">
+				<target>Refuser</target>
+			</trans-unit>
+			<trans-unit id="party.pendingMember.decline.modal.information">
+				<target>Prière de confirmer que tu souhaites décliner %1$s %2$s.</target>
+			</trans-unit>
+			<trans-unit id="party.pendingMember.decline.modal.cancel">
+				<target>Annuler</target>
+			</trans-unit>
+			<trans-unit id="party.pendingMember.decline.modal.decline">
+				<target>Refuser</target>
+			</trans-unit>
+
+			<trans-unit id="party.member.grantAdmin">
+				<target>Accorder le statut d'administrateur</target>
+			</trans-unit>
+			<trans-unit id="party.member.grantAdmin.modal.information">
+				<target>Si tu accordes le statut d'administrateur à %1$s %2$s, il ou elle pourra également confirmer ou refuser d'autres membres,
+				accorder le statut d'administrateur à d'autres membres et inscrire les participants pour les Polittalks.</target>
+			</trans-unit>
+			<trans-unit id="party.member.grantAdmin.modal.cancel">
+				<target>Annuler</target>
+			</trans-unit>
+			<trans-unit id="party.member.grantAdmin.modal.confirm">
+				<target>Confirmer</target>
+			</trans-unit>
+
+			<trans-unit id="party.member.remove">
+				<target>Supprimer</target>
+			</trans-unit>
+			<trans-unit id="party.member.remove.modal.information">
+				<target>Si tu supprimes %1$s %2$s, il ou elle ne pourra plus participer aux débats
+				et agir au nom de ton parti sur easyvote.</target>
+			</trans-unit>
+			<trans-unit id="party.member.remove.modal.cancel">
+				<target>Annuler</target>
+			</trans-unit>
+			<trans-unit id="party.member.remove.modal.confirm">
+				<target>Supprimer</target>
 			</trans-unit>
 		</body>
 	</file>
