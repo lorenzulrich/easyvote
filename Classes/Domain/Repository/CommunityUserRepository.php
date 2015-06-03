@@ -194,6 +194,7 @@ class CommunityUserRepository extends \TYPO3\CMS\Extbase\Domain\Repository\Front
 		$query = $this->createQuery();
 		$query->matching(
 			$query->logicalAnd(
+				$query->equals('party', $party),
 				$query->contains('usergroup', $this->communityUserService->getUserGroupUid('politician')),
 				$query->logicalOr(
 					$query->like('firstName', $queryString . '%', FALSE),
