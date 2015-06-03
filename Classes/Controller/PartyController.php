@@ -59,6 +59,7 @@ class PartyController extends \Visol\Easyvote\Controller\AbstractController {
 	 * Container for manage members feature
 	 */
 	public function manageMembersAction() {
+		$this->view->assign('language', $this->getFrontendObject()->sys_language_uid);
 	}
 
 	/**
