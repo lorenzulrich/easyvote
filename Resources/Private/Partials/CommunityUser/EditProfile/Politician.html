@@ -1,4 +1,12 @@
-<div class="content-box content-box-expandable {f:if(condition:user.pendingPoliticianOrPolitician, then:'content-box-expanded')}">
+<f:if condition="{goToPoliticianProfile}">
+	<script>
+		$(function() {
+			Easyvote.scrollToElement('#editProfile-politician');
+			$('#editProfile-politician').addClass('content-box-expanded');
+		})
+	</script>
+</f:if>
+<div id="editProfile-politician" class="content-box content-box-expandable {f:if(condition:user.pendingPoliticianOrPolitician, then:'content-box-expanded')}">
 	<div class="box-teaser">
 		<div class="actions">
 			<div class="action toggle handle">

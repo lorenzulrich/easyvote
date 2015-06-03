@@ -17,6 +17,7 @@ namespace Visol\Easyvote\Controller;
 use TYPO3\CMS\Core\Utility\DebugUtility;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Domain\Model\FileReference;
+use TYPO3\CMS\Extbase\Utility\DebuggerUtility;
 use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
 use Visol\Easyvote\Domain\Model\City;
 use Visol\Easyvote\Domain\Model\CommunityUser;
@@ -125,10 +126,11 @@ class CommunityUserController extends \Visol\Easyvote\Controller\AbstractControl
 
 	/**
 	 * action editProfile
+	 * @param boolean $goToTeacherProfile
+	 * @param boolean $goToPoliticianProfile
 	 */
-	public function editProfileAction() {
+	public function editProfileAction($goToTeacherProfile = NULL, $goToPoliticianProfile = NULL) {
 		$communityUser = $this->getLoggedInUser();
-		$kantons = $this->kantonRepository->findAll();
 
 		if ($communityUser instanceof CommunityUser) {
 			$fullPhoneNumber = $communityUser->getTelephone();
@@ -142,10 +144,9 @@ class CommunityUserController extends \Visol\Easyvote\Controller\AbstractControl
 			}
 			$communityUser->setPrefixCode($prefixCode);
 			$communityUser->setTelephoneWithoutPrefix($phoneNumber);
+			$this->view->assign('phoneNumberPrefixes', $allowedPhoneNumberPrefixes);
 			$this->view->assign('parties', $this->partyRepository->findAll());
 			$this->view->assign('user', $communityUser);
-			$this->view->assign('kantons', $kantons);
-			$this->view->assign('phoneNumberPrefixes', $allowedPhoneNumberPrefixes);
 
 			// Education Types (selection saved as a string)
 			$educationTypes = [];
@@ -158,6 +159,13 @@ class CommunityUserController extends \Visol\Easyvote\Controller\AbstractControl
 			$otherLabel = LocalizationUtility::translate('editProfile.politician.educationType.other', $this->request->getControllerExtensionName());
 			$educationTypes[$otherLabel] = $otherLabel;
 			$this->view->assign('educationTypes', $educationTypes);
+
+			// Scroll to teacher and politician section
+			if (($goToTeacherProfile && $goToPoliticianProfile) || $goToTeacherProfile) {
+				$this->view->assign('goToTeacherProfile', TRUE);
+			} elseif ($goToPoliticianProfile) {
+				$this->view->assign('goToPoliticianProfile', TRUE);
+			}
 
 		}
 	}
@@ -188,9 +196,13 @@ class CommunityUserController extends \Visol\Easyvote\Controller\AbstractControl
 	 * @param string $phoneNumberPrefix
 	 * @param boolean $politician
 	 * @param boolean $teacher
+	 * @param boolean $goToPoliticianProfile
+	 * @param boolean $goToTeacherProfile
+	 * @throws \TYPO3\CMS\Extbase\Mvc\Exception\UnsupportedRequestTypeException
+	 * @throws \TYPO3\CMS\Extbase\Persistence\Exception\IllegalObjectTypeException
+	 * @throws \TYPO3\CMS\Extbase\Persistence\Generic\Exception\TooDirtyException
 	 */
-	public function updateProfileAction(CommunityUser $communityUser, $phoneNumberPrefix = '4175', $politician = NULL, $teacher = NULL) {
-
+	public function updateProfileAction(CommunityUser $communityUser, $phoneNumberPrefix = '4175', $politician = NULL, $teacher = NULL, $goToPoliticianProfile = NULL, $goToTeacherProfile = NULL) {
 		$loggedInUser = $this->getLoggedInUser();
 		/** Todo: Sanitize properties that should never be updated by the user. */
 		if ($loggedInUser->getUid() === $communityUser->getUid()) {
@@ -252,7 +264,11 @@ class CommunityUserController extends \Visol\Easyvote\Controller\AbstractControl
 			$this->communityUserRepository->update($communityUser);
 			$this->persistenceManager->persistAll();
 		}
-		$this->redirect('editProfile');
+		$arguments = [
+			'goToTeacherProfile' => $goToTeacherProfile,
+			'goToPoliticianProfile' => $goToPoliticianProfile,
+		];
+		$this->redirect('editProfile', NULL, NULL, $arguments);
 	}
 
 	/**
@@ -911,6 +927,7 @@ class CommunityUserController extends \Visol\Easyvote\Controller\AbstractControl
 				$GLOBALS['TSFE']->fe_user->storeSessionData();
 			}
 		}
+
 		$this->view->assign('dataCompletionRequestNecessary', $dataCompletionRequestNecessary);
 	}
 

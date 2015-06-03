@@ -23,6 +23,16 @@
 							</div>
 						</f:else>
 					</f:if>
+					<div class="checkbox">
+						<label for="goToTeacherProfile">
+							<f:form.checkbox id="goToTeacherProfile" name="goToTeacherProfile" value="1" /> <f:translate key="editProfile.teacher.enabled" />
+						</label>
+					</div>
+					<div class="checkbox">
+						<label for="goToPoliticianProfile">
+							<f:form.checkbox id="goToPoliticianProfile" name="goToPoliticianProfile" value="1" /> <f:translate key="editProfile.politician.enabled" />
+						</label>
+					</div>
 				</div>
 				<div class="col-xs-12 col-md-6" id="dataCompletionRequestModalRight">
 					<f:security.ifHasRole role="{settings.communityEmailUserGroupUid}">

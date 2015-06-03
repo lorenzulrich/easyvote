@@ -1,4 +1,12 @@
-<div class="content-box content-box-expandable {f:if(condition:user.teacher, then:'content-box-expanded')}">
+<f:if condition="{goToTeacherProfile}">
+	<script>
+		$(function() {
+			Easyvote.scrollToElement('#editProfile-teacher');
+			$('#editProfile-teacher').addClass('content-box-expanded');
+		})
+	</script>
+</f:if>
+<div id="editProfile-teacher" class="content-box content-box-expandable {f:if(condition:user.teacher, then:'content-box-expanded')}">
 	<div class="box-teaser">
 		<div class="actions">
 			<div class="action toggle handle">
