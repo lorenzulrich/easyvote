@@ -13,15 +13,10 @@ namespace Visol\Easyvote\Controller;
  *
  * The TYPO3 project - inspiring people to share!
  */
-use TYPO3\CMS\Core\Utility\DebugUtility;
-use TYPO3\CMS\Core\Utility\GeneralUtility;
-use TYPO3\CMS\Extbase\Domain\Model\FileReference;
-use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
+
 use Visol\Easyvote\Domain\Model\City;
 use Visol\Easyvote\Domain\Model\CommunityUser;
-use Visol\Easyvote\Domain\Model\Party;
-use Visol\Easyvote\Property\TypeConverter\UploadedFileReferenceConverter;
-use TYPO3\CMS\Extbase\Property\PropertyMappingConfiguration;
+
 
 /**
  *
