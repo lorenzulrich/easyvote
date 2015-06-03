@@ -1,5 +1,7 @@
 <div class="content-box">
-	<h2><f:translate key="party.members" /></h2>
+	<f:comment>
+		<h2><f:translate key="party.members" /></h2>
+	</f:comment>
 	<p><f:translate key="party.numberOfMembers" arguments="{0: '{allMembers -> f:count()}'}" /></p>
 	<f:if condition="{pendingMembers}">
 		<p>
@@ -17,7 +19,7 @@
 <f:if condition="{filteredMembers}">
 	<f:then>
 		<f:for each="{filteredMembers}" as="member">
-			<div class="content-box content-box-expandable" id="member-item-{member.uid}">
+			<div class="content-box" id="member-item-{member.uid}">
 				<div class="box-teaser">
 					<div class="row">
 						<div class="col-xs-3 col-md-3">
@@ -31,81 +33,79 @@
 										<div class="hidden">{f:translate(key:'party.member.pending')}</div>
 									</div>
 								</f:if>
-								<div class="action toggle handle">
-									<i class="evicon-down-open"></i>
-								</div>
 							</div>
 							<h2>
 								{member.firstName} {member.lastName}
 							</h2>
-						</div>
-					</div>
-				</div>
-				<div class="box-content">
-					<p>
-						<f:link.page pageUid="{member.email}">{member.email}</f:link.page>
-						<f:if condition="{member.citySelection}"><br />{member.citySelection.postalCode} {member.citySelection.name}</f:if>
-						<f:if condition="{member.age}"><br />{member.age} <f:translate key="userOverview.years" /></f:if>
-					</p>
-					<f:if condition="{member.pendingPolitician}">
-						<f:then>
-							<button class="btn btn-primary" type="button" data-role="ajaxObjectAction" data-confirm="true" data-prefix="ev" data-controller="PartyMember" data-action="confirm" data-uid="{member.uid}">
-								<f:translate key="party.pendingMember.confirm" />
-							</button>
-							<div class="hidden" id="modal-confirm-{member.uid}">
-								<f:if condition="{member.verificationCode}">
-									<f:then>
-										<p><f:translate key="party.pendingMember.confirm.modal.informationVerificationCode" arguments="{0: member.verificationCode}" /></p>
-									</f:then>
-									<f:else>
-										<p><f:translate key="party.pendingMember.confirm.modal.informationNoVerificationCode" /></p>
-									</f:else>
+							<p>
+								<f:if condition="{member.age}">{member.age} <f:translate key="userOverview.years" /></f:if><f:if condition="{member.citySelection}"> | {member.citySelection.postalCode} {member.citySelection.name}</f:if>
+								<br /><f:link.page pageUid="{member.email}">{member.email}</f:link.page> | <f:if condition="{member.telephone}">{member.telephone}</f:if>
+								<f:if condition="{member.educationType}">
+									<br />
+									<f:translate key="party.member.education" />: {member.educationType} | {member.educationInstitution}
 								</f:if>
-								<button class="pull-left btn btn-primary button-cancel"><f:translate key="party.pendingMember.confirm.modal.cancel" /></button>
-								<button class="pull-right btn btn-primary button-returntrue"><f:translate key="party.pendingMember.confirm.modal.confirm" /></button>
-							</div>
-							<button class="btn btn-primary" type="button" data-role="ajaxObjectAction" data-confirm="true" data-prefix="ev" data-controller="PartyMember" data-action="decline" data-uid="{member.uid}">
-								<f:translate key="party.pendingMember.decline" />
-							</button>
-							<div class="hidden" id="modal-decline-{member.uid}">
-								<p><f:translate key="party.pendingMember.decline.modal.information" arguments="{0: member.firstName, 1: member.lastName}" /></p>
-								<button class="pull-left btn btn-primary button-cancel"><f:translate key="party.pendingMember.decline.modal.cancel" /></button>
-								<button class="pull-right btn btn-primary button-returntrue"><f:translate key="party.pendingMember.decline.modal.decline" /></button>
-							</div>
-						</f:then>
-						<f:else>
-							<f:if condition="{member.partyAdministrator}">
+							</p>
+							<f:if condition="{member.pendingPolitician}">
 								<f:then>
-									<f:if condition="{member} == {communityUser}">
-										<f:then>
-											<p><f:translate key="party.member.isYou" /></p>
-										</f:then>
-										<f:else>
-											<p><f:translate key="party.member.isAdmin" /></p>
-										</f:else>
-									</f:if>
+									<button class="btn btn-primary" type="button" data-role="ajaxObjectAction" data-confirm="true" data-prefix="ev" data-controller="PartyMember" data-action="decline" data-uid="{member.uid}">
+										<f:translate key="party.pendingMember.decline" />
+									</button>
+									<div class="hidden" id="modal-decline-{member.uid}">
+										<p><f:translate key="party.pendingMember.decline.modal.information" arguments="{0: member.firstName, 1: member.lastName}" /></p>
+										<button class="pull-left btn btn-primary button-cancel"><f:translate key="party.pendingMember.decline.modal.cancel" /></button>
+										<button class="pull-right btn btn-primary button-returntrue"><f:translate key="party.pendingMember.decline.modal.decline" /></button>
+									</div>
+									<button class="btn btn-primary" type="button" data-role="ajaxObjectAction" data-confirm="true" data-prefix="ev" data-controller="PartyMember" data-action="confirm" data-uid="{member.uid}">
+										<f:translate key="party.pendingMember.confirm" />
+									</button>
+									<div class="hidden" id="modal-confirm-{member.uid}">
+										<f:if condition="{member.verificationCode}">
+											<f:then>
+												<p><f:translate key="party.pendingMember.confirm.modal.informationVerificationCode" arguments="{0: member.verificationCode}" /></p>
+											</f:then>
+											<f:else>
+												<p><f:translate key="party.pendingMember.confirm.modal.informationNoVerificationCode" /></p>
+											</f:else>
+										</f:if>
+										<button class="pull-left btn btn-primary button-cancel"><f:translate key="party.pendingMember.confirm.modal.cancel" /></button>
+										<button class="pull-right btn btn-primary button-returntrue"><f:translate key="party.pendingMember.confirm.modal.confirm" /></button>
+									</div>
 								</f:then>
 								<f:else>
-									<button class="btn btn-primary" type="button" data-role="ajaxObjectAction" data-confirm="true" data-prefix="ev" data-controller="PartyMember" data-action="grantAdmin" data-uid="{member.uid}">
-										<f:translate key="party.member.grantAdmin" />
-									</button>
-									<div class="hidden" id="modal-grantAdmin-{member.uid}">
-										<p><f:translate key="party.member.grantAdmin.modal.information" arguments="{0: member.firstName, 1: member.lastName}" /></p>
-										<button class="pull-left btn btn-primary button-cancel"><f:translate key="party.member.grantAdmin.modal.cancel" /></button>
-										<button class="pull-right btn btn-primary button-returntrue"><f:translate key="party.member.grantAdmin.modal.confirm" /></button>
-									</div>
-									<button class="btn btn-primary" type="button" data-role="ajaxObjectAction" data-confirm="true" data-prefix="ev" data-controller="PartyMember" data-action="remove" data-uid="{member.uid}">
-										<f:translate key="party.member.remove" />
-									</button>
-									<div class="hidden" id="modal-remove-{member.uid}">
-										<p><f:translate key="party.member.remove.modal.information" arguments="{0: member.firstName, 1: member.lastName}" /></p>
-										<button class="pull-left btn btn-primary button-cancel"><f:translate key="party.member.remove.modal.cancel" /></button>
-										<button class="pull-right btn btn-primary button-returntrue"><f:translate key="party.member.remove.modal.confirm" /></button>
-									</div>
+									<f:if condition="{member.partyAdministrator}">
+										<f:then>
+											<f:if condition="{member} == {communityUser}">
+												<f:then>
+													<p><f:translate key="party.member.isYou" /></p>
+												</f:then>
+												<f:else>
+													<p><f:translate key="party.member.isAdmin" /></p>
+												</f:else>
+											</f:if>
+										</f:then>
+										<f:else>
+											<button class="btn btn-primary" type="button" data-role="ajaxObjectAction" data-confirm="true" data-prefix="ev" data-controller="PartyMember" data-action="grantAdmin" data-uid="{member.uid}">
+												<f:translate key="party.member.grantAdmin" />
+											</button>
+											<div class="hidden" id="modal-grantAdmin-{member.uid}">
+												<p><f:translate key="party.member.grantAdmin.modal.information" arguments="{0: member.firstName, 1: member.lastName}" /></p>
+												<button class="pull-left btn btn-primary button-cancel"><f:translate key="party.member.grantAdmin.modal.cancel" /></button>
+												<button class="pull-right btn btn-primary button-returntrue"><f:translate key="party.member.grantAdmin.modal.confirm" /></button>
+											</div>
+											<button class="btn btn-primary" type="button" data-role="ajaxObjectAction" data-confirm="true" data-prefix="ev" data-controller="PartyMember" data-action="remove" data-uid="{member.uid}">
+												<f:translate key="party.member.remove" />
+											</button>
+											<div class="hidden" id="modal-remove-{member.uid}">
+												<p><f:translate key="party.member.remove.modal.information" arguments="{0: member.firstName, 1: member.lastName}" /></p>
+												<button class="pull-left btn btn-primary button-cancel"><f:translate key="party.member.remove.modal.cancel" /></button>
+												<button class="pull-right btn btn-primary button-returntrue"><f:translate key="party.member.remove.modal.confirm" /></button>
+											</div>
+										</f:else>
+									</f:if>
 								</f:else>
 							</f:if>
-						</f:else>
-					</f:if>
+						</div>
+					</div>
 				</div>
 			</div>
 		</f:for>

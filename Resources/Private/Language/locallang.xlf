@@ -712,6 +712,9 @@
 			<trans-unit id="party.pendingMember.information">
 				<source>Dieses Mitglied wurde noch nicht bestätigt.</source>
 			</trans-unit>
+			<trans-unit id="party.member.education">
+				<source>Ausbildung</source>
+			</trans-unit>
 			<trans-unit id="party.member.isAdmin">
 				<source>Dieses Mitglied ist ebenfalls Administrator.</source>
 			</trans-unit>
