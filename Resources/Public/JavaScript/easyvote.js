@@ -297,7 +297,7 @@ var Easyvote = {
 	 * @param openPartyMember
 	 */
 	getPartyMembers: function(openPartyMember) {
-		EasyvoteGeneral.getData('/routing/partymembers?L=' + EasyvoteLanguage).done(function(data) {
+		EasyvoteGeneral.getData('/routing/partymembers').done(function(data) {
 			$('.party-members').html(data);
 			if (openPartyMember) {
 				var elementId = '#member-item-' + openPartyMember;
