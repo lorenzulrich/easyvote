@@ -1,0 +1,41 @@
+<T3DataStructure>
+    <meta>
+        <langDisable>1</langDisable>
+    </meta>
+    <sheets>
+        <sDEF>
+            <ROOT>
+                <TCEforms>
+                    <sheetTitle>Konfiguration</sheetTitle>
+                </TCEforms>
+                <type>array</type>
+                <el>
+					<settings.displayMainArea>
+						<TCEforms>
+							<label>Zeige Haupt-Profilbereich</label>
+							<config>
+								<type>check</type>
+							</config>
+						</TCEforms>
+					</settings.displayMainArea>
+					<settings.displayTeacherArea>
+						<TCEforms>
+							<label>Zeige Lehrer-Profilbereich</label>
+							<config>
+								<type>check</type>
+							</config>
+						</TCEforms>
+					</settings.displayTeacherArea>
+					<settings.displayPoliticianArea>
+						<TCEforms>
+							<label>Zeige Politiker-Profilbereich</label>
+							<config>
+								<type>check</type>
+							</config>
+						</TCEforms>
+					</settings.displayPoliticianArea>
+                </el>
+            </ROOT>
+        </sDEF>
+    </sheets>
+</T3DataStructure>

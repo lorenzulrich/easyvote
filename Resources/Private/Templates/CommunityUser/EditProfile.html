@@ -1,3 +1,9 @@
-<f:render partial="CommunityUser/EditProfile/Main" arguments="{_all}" />
-<f:render partial="CommunityUser/EditProfile/Teacher" arguments="{_all}" />
-<f:render partial="CommunityUser/EditProfile/Politician" arguments="{_all}" />
+<f:if condition="{settings.displayMainArea}">
+	<f:render partial="CommunityUser/EditProfile/Main" arguments="{_all}" />
+</f:if>
+<f:if condition="{settings.displayTeacherArea}">
+	<f:render partial="CommunityUser/EditProfile/Teacher" arguments="{_all}" />
+</f:if>
+<f:if condition="{settings.displayPoliticianArea}">
+	<f:render partial="CommunityUser/EditProfile/Politician" arguments="{_all}" />
+</f:if>
