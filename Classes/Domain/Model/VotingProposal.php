@@ -415,7 +415,7 @@ class VotingProposal extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	 * @return string
 	 */
 	public function getPermalink() {
-		return $GLOBALS['TSFE']->tmpl->setup['config.']['baseURL'] . 'permalink/v/' . $this->getUid();
+		return $GLOBALS['TSFE']->tmpl->setup['config.']['baseURL'] . 'permalink/v/' . $this->getUid() . '-' . $GLOBALS['TSFE']->tmpl->setup['config.']['sys_language_uid'];
 	}
 
 }

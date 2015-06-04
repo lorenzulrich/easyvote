@@ -13,6 +13,7 @@ namespace Visol\Easyvote\Controller;
  *
  * The TYPO3 project - inspiring people to share!
  */
+use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
 
 class VotingProposalController extends \Visol\Easyvote\Controller\AbstractController {
@@ -159,7 +160,10 @@ class VotingProposalController extends \Visol\Easyvote\Controller\AbstractContro
 	 */
 	public function initializePermalinkAction() {
 		if ($this->request->hasArgument('votingProposal')) {
-			if (is_null($this->votingProposalRepository->findByUid((int)$this->request->getArgument('votingProposal')))) {
+			$votingProposalAndLanguage = GeneralUtility::trimExplode('-', $this->request->getArgument('votingProposal'));
+			$this->request->setArgument('votingProposal', (int)$votingProposalAndLanguage[0]);
+			$this->request->setArgument('language', (int)$votingProposalAndLanguage[1]);
+			if (is_null($this->votingProposalRepository->findByUid((int)$votingProposalAndLanguage[0]))) {
 				$targetUri = $this->uriBuilder->setTargetPageUid((int)$this->settings['currentVotingsPid'])->build();
 				$this->redirectToUri($targetUri);
 			}
@@ -173,15 +177,18 @@ class VotingProposalController extends \Visol\Easyvote\Controller\AbstractContro
 	 * Resolves a permalink to a votingProposal and opens it either in the archive or on the current votings page
 	 *
 	 * @param \Visol\Easyvote\Domain\Model\VotingProposal|NULL $votingProposal
+	 * @throws \TYPO3\CMS\Extbase\Mvc\Exception\StopActionException
+	 * @throws \TYPO3\CMS\Extbase\Mvc\Exception\UnsupportedRequestTypeException
 	 */
 	public function permalinkAction(\Visol\Easyvote\Domain\Model\VotingProposal $votingProposal = NULL) {
 		$metaVotingProposal = $this->metaVotingProposalRepository->findOneByVotingProposal($votingProposal);
+		$language = $this->request->getArgument('language');
 		if ($metaVotingProposal instanceof \Visol\Easyvote\Domain\Model\MetaVotingProposal) {
 			if ($metaVotingProposal->getVotingDay()->isArchived()) {
-				$redirectUri = $this->uriBuilder->setTargetPageUid((int)$this->settings['votingArchivePid'])->setArguments(array('tx_easyvote_archive' => array('selectSingle' => $votingProposal->getUid())))->build();
+				$redirectUri = $this->uriBuilder->setTargetPageUid((int)$this->settings['votingArchivePid'])->setArguments(array('tx_easyvote_archive' => array('selectSingle' => $votingProposal->getUid()), 'L' => $language))->build();
 				$this->redirectToUri($redirectUri);
 			} else {
-				$redirectUri = $this->uriBuilder->setTargetPageUid((int)$this->settings['currentVotingsPid'])->setArguments(array('tx_easyvote_currentvotings' => array('selectSingle' => $votingProposal->getUid())))->build();
+				$redirectUri = $this->uriBuilder->setTargetPageUid((int)$this->settings['currentVotingsPid'])->setArguments(array('tx_easyvote_currentvotings' => array('selectSingle' => $votingProposal->getUid()), 'L' => $language))->build();
 				$this->redirectToUri($redirectUri);
 			}
 		}
