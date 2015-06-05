@@ -207,7 +207,7 @@ class CommunityUserController extends \Visol\Easyvote\Controller\AbstractControl
 		/** Todo: Sanitize properties that should never be updated by the user. */
 		if ($loggedInUser->getUid() === $communityUser->getUid()) {
 			// General functions
-			if (array_key_exists($phoneNumberPrefix, $this->settings['allowedPhoneNumberPrefixes'])) {
+			if (array_key_exists($phoneNumberPrefix, $this->settings['allowedPhoneNumberPrefixes']) && $communityUser->_isDirty('telephone')) {
 				$communityUser->setTelephone($phoneNumberPrefix . preg_replace('/\D/', '', $communityUser->getTelephone()));
 			} else {
 				$communityUser->setTelephone($this->settings['allowedPhoneNumberPrefixes'][0] . preg_replace('/\D/', '', $communityUser->getTelephone()));
