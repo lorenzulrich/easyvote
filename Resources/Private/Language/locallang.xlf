@@ -397,10 +397,7 @@
 				<source>Wohnort</source>
 			</trans-unit>
 			<trans-unit id="editProfile.politician.educationHeader">
-				<source>Infos zu deiner Schulausbildung</source>
-			</trans-unit>
-			<trans-unit id="editProfile.politician.educationHeader">
-				<source>Infos zu deiner Schulbildung</source>
+				<source>Info zu deiner Schulbildung (nur betreffend Sek II)</source>
 			</trans-unit>
 			<trans-unit id="editProfile.politician.educationType">
 				<source>Schultyp</source>

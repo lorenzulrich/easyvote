@@ -476,6 +476,27 @@
 			<trans-unit id="editProfile.politician.city">
 				<target>Domicile</target>
 			</trans-unit>
+			<trans-unit id="editProfile.politician.educationHeader">
+				<source>Info sur ta formation scolaire (ne concerne que le secondaire II)</source>
+			</trans-unit>
+			<trans-unit id="editProfile.politician.educationType">
+				<source>Filière</source>
+			</trans-unit>
+			<trans-unit id="editProfile.politician.educationType.grammarSchool">
+				<source>Gymnase</source>
+			</trans-unit>
+			<trans-unit id="editProfile.politician.educationType.vocationalBusinessSchool">
+				<source>Ecole profesionnelle commerciale</source>
+			</trans-unit>
+			<trans-unit id="editProfile.politician.educationType.specializedVocationalSchool">
+				<source>Ecole professionnelle artisanale</source>
+			</trans-unit>
+			<trans-unit id="editProfile.politician.educationType.other">
+				<source>Autre</source>
+			</trans-unit>
+			<trans-unit id="editProfile.politician.educationInstitution">
+				<source>Nom de l’établissement</source>
+			</trans-unit>
 			<trans-unit id="editProfile.politician.party.pendingConfirmationNotice">
 				<target>Dès que l'administrateur de ton parti aura confirmé ton appartenance au parti , tu pourras accéder à de nouvelles fonctions.</target>
 			</trans-unit>

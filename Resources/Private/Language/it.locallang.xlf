@@ -478,6 +478,27 @@ Puoi disattivare la voto-sveglia per i tuoi amici in qualsiasi momento, se lo vu
 			<trans-unit id="editProfile.politician.city">
 				<target>Domicilio</target>
 			</trans-unit>
+			<trans-unit id="editProfile.politician.educationHeader">
+				<source>Informazioni sulla tua formazione scolastica (concerne unicamente il grado secondario II)</source>
+			</trans-unit>
+			<trans-unit id="editProfile.politician.educationType">
+				<source>Filiera</source>
+			</trans-unit>
+			<trans-unit id="editProfile.politician.educationType.grammarSchool">
+				<source>Liceo</source>
+			</trans-unit>
+			<trans-unit id="editProfile.politician.educationType.vocationalBusinessSchool">
+				<source>Scuola professionale commerciale</source>
+			</trans-unit>
+			<trans-unit id="editProfile.politician.educationType.specializedVocationalSchool">
+				<source>Scuola professionale artigianale</source>
+			</trans-unit>
+			<trans-unit id="editProfile.politician.educationType.other">
+				<source>Altro</source>
+			</trans-unit>
+			<trans-unit id="editProfile.politician.educationInstitution">
+				<source>Nome dell’istituto</source>
+			</trans-unit>
 			<trans-unit id="editProfile.politician.party.pendingConfirmationNotice">
 				<target>Non appena l’amministratore del tuo partito avrà confermato che sei membro del partito potrai accedere ad altre funzioni. </target>
 			</trans-unit>
