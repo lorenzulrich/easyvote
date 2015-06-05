@@ -25,11 +25,15 @@
 								<type>select</type>
 								<items>
 									<numIndex index="0">
-										<numIndex index="0">immer</numIndex>
-										<numIndex index="1">1</numIndex>
+										<numIndex index="0">nein</numIndex>
+										<numIndex index="1">0</numIndex>
 									</numIndex>
 									<numIndex index="1">
-										<numIndex index="0">wenn nicht bereits Lehrer</numIndex>
+										<numIndex index="0">ja</numIndex>
+										<numIndex index="1">1</numIndex>
+									</numIndex>
+									<numIndex index="2">
+										<numIndex index="0">nur wenn nicht bereits Lehrer</numIndex>
 										<numIndex index="1">2</numIndex>
 									</numIndex>
 								</items>
@@ -43,11 +47,15 @@
 								<type>select</type>
 								<items>
 									<numIndex index="0">
-										<numIndex index="0">immer</numIndex>
-										<numIndex index="1">1</numIndex>
+										<numIndex index="0">nein</numIndex>
+										<numIndex index="1">0</numIndex>
 									</numIndex>
 									<numIndex index="1">
-										<numIndex index="0">wenn nicht bereits Politiker</numIndex>
+										<numIndex index="0">ja</numIndex>
+										<numIndex index="1">1</numIndex>
+									</numIndex>
+									<numIndex index="2">
+										<numIndex index="0">nur wenn nicht bereits Politiker</numIndex>
 										<numIndex index="1">2</numIndex>
 									</numIndex>
 								</items>
