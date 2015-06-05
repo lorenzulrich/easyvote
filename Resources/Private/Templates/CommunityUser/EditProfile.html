@@ -1,9 +1,25 @@
 <f:if condition="{settings.displayMainArea}">
 	<f:render partial="CommunityUser/EditProfile/Main" arguments="{_all}" />
 </f:if>
-<f:if condition="{settings.displayTeacherArea}">
+
+<f:if condition="{settings.displayTeacherArea} == 1">
 	<f:render partial="CommunityUser/EditProfile/Teacher" arguments="{_all}" />
 </f:if>
-<f:if condition="{settings.displayPoliticianArea}">
+<f:if condition="{settings.displayTeacherArea} == 2">
+	<f:if condition="{user.teacher}">
+		<f:else>
+			<f:render partial="CommunityUser/EditProfile/Teacher" arguments="{_all}" />
+		</f:else>
+	</f:if>
+</f:if>
+
+<f:if condition="{settings.displayPoliticianArea} == 1">
 	<f:render partial="CommunityUser/EditProfile/Politician" arguments="{_all}" />
+</f:if>
+<f:if condition="{settings.displayPoliticianArea} == 2">
+	<f:if condition="{user.politician}">
+		<f:else>
+			<f:render partial="CommunityUser/EditProfile/Teacher" arguments="{_all}" />
+		</f:else>
+	</f:if>
 </f:if>

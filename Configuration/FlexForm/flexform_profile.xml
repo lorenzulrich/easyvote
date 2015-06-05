@@ -22,7 +22,17 @@
 						<TCEforms>
 							<label>Zeige Lehrer-Profilbereich</label>
 							<config>
-								<type>check</type>
+								<type>select</type>
+								<items>
+									<numIndex index="0">
+										<numIndex index="0">immer</numIndex>
+										<numIndex index="1">1</numIndex>
+									</numIndex>
+									<numIndex index="1">
+										<numIndex index="0">wenn nicht bereits Lehrer</numIndex>
+										<numIndex index="1">2</numIndex>
+									</numIndex>
+								</items>
 							</config>
 						</TCEforms>
 					</settings.displayTeacherArea>
@@ -30,7 +40,17 @@
 						<TCEforms>
 							<label>Zeige Politiker-Profilbereich</label>
 							<config>
-								<type>check</type>
+								<type>select</type>
+								<items>
+									<numIndex index="0">
+										<numIndex index="0">immer</numIndex>
+										<numIndex index="1">1</numIndex>
+									</numIndex>
+									<numIndex index="1">
+										<numIndex index="0">wenn nicht bereits Politiker</numIndex>
+										<numIndex index="1">2</numIndex>
+									</numIndex>
+								</items>
 							</config>
 						</TCEforms>
 					</settings.displayPoliticianArea>
