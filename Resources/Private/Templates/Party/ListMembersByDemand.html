@@ -44,6 +44,10 @@
 									<br />
 									<f:translate key="party.member.education" />: {member.educationType} | {member.educationInstitution}
 								</f:if>
+								<f:if condition="{member.partyVerificationCode}">
+									<br />
+									<f:translate key="editProfile.politician.partyVerificationCode" />: {member.partyVerificationCode}
+								</f:if>
 							</p>
 							<f:if condition="{member.pendingPolitician}">
 								<f:then>
