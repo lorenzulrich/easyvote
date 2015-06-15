@@ -292,6 +292,7 @@ class CommunityUserController extends \Visol\Easyvote\Controller\AbstractControl
 			$communityUser->setCity('');
 			$communityUser->setBirthdate(NULL);
 			$communityUser->setCitySelection(NULL);
+			$communityUser->setParty(NULL);
 			foreach ($communityUser->getUsergroup() as $usergroup) {
 				/** @var $usergroup \TYPO3\CMS\Extbase\Domain\Model\FrontendUserGroup */
 				$communityUser->removeUsergroup($usergroup);
