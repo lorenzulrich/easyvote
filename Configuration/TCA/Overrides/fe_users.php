@@ -125,7 +125,7 @@ $communityUserColumns = array(
 		'config' => array(
 			'type' => 'select',
 			'foreign_table' => 'tx_easyvote_domain_model_party',
-			'foreign_table_where' => ' ORDER BY short_title ASC, title ASC',
+			'foreign_table_where' => ' AND tx_easyvote_domain_model_party.sys_language_uid IN (-1,0) ORDER BY short_title ASC, title ASC',
 			'items'   => array(
 				array('', ''),
 			),
