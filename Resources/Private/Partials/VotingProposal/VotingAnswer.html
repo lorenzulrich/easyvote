@@ -9,7 +9,7 @@
 				<div class="share-preview-container">
 					<div class="left">
 						<div class="share-links">
-							<a class="fb-share-link share-popup" data-description="{f:translate(key:'LLL:EXT:easyvote/Resources/Private/Language/locallang.xlf:votingAnswer.iSayYes')}!" data-href="{f:uri.page(absolute: 'TRUE', pageUid:settings.votingPid, additionalParams:{L:'0', tx_easyvote_currentvotings:{selectSingle:votingProposal.uid}})}">
+							<a class="share-popup" href="https://www.facebook.com/sharer/sharer.php?u={votingProposal.permalink}">
 								<span class="facebook"></span>
 							</a>
 						</div>
@@ -39,7 +39,7 @@
 				<div class="share-preview-container">
 					<div class="left">
 						<div class="share-links">
-							<a class="share-popup" href="https://twitter.com/home?status={f:translate(key:'LLL:EXT:easyvote/Resources/Private/Language/locallang.xlf:votingAnswer.iSayYes')} - '{votingProposal.shortTitle}'. {f:translate(key:'LLL:EXT:easyvote/Resources/Private/Language/locallang.xlf:votingAnswer.getInformation')} {f:uri.page(pageUid:settings.votingPid, absolute: 1, additionalParams:{tx_easyvote_currentvotings:{selectSingle:votingProposal.uid}})} @easyvote_ch">
+							<a class="share-popup" href="https://twitter.com/home?status={f:translate(key:'LLL:EXT:easyvote/Resources/Private/Language/locallang.xlf:votingAnswer.iSayYes')} - '{votingProposal.shortTitle}'. {f:translate(key:'LLL:EXT:easyvote/Resources/Private/Language/locallang.xlf:votingAnswer.getInformation')} {votingProposal.permalink} @easyvote_ch">
 								<span class="twitter"></span>
 							</a>
 						</div>
@@ -59,7 +59,7 @@
 				<div class="share-preview-container">
 					<div class="left">
 						<div class="share-links">
-							<a class="share-app" href="share://title={votingProposal.shortTitle -> f:format.urlencode()}&text={f:translate(key:'LLL:EXT:easyvote/Resources/Private/Language/locallang.xlf:votingAnswer.iSayYes') -> f:format.urlencode()}&url={f:uri.action(arguments: {selectSingle:votingProposal.uid}, absolute: 1) -> f:format.urlencode()}">
+							<a class="share-app" href="share://title={votingProposal.shortTitle -> f:format.urlencode()}&text={f:translate(key:'LLL:EXT:easyvote/Resources/Private/Language/locallang.xlf:votingAnswer.iSayYes') -> f:format.urlencode()}&url={votingProposal.permalink -> f:format.urlencode()}">
 								<i class="evicon-share"></i>
 							</a>
 						</div>
@@ -67,7 +67,7 @@
 					<div class="right">
 						<p>
 							'{votingProposal.shortTitle}' - {f:translate(key:'LLL:EXT:easyvote/Resources/Private/Language/locallang.xlf:votingAnswer.iSayYes')}
-							{f:uri.page(pageUid:settings.votingPid, absolute: 1, additionalParams:{tx_easyvote_currentvotings:{selectSingle:votingProposal.uid}})}
+							{votingProposal.permalink}
 						</p>
 					</div>
 				</div>
@@ -80,7 +80,7 @@
 				<div class="share-preview-container">
 					<div class="left">
 						<div class="share-links">
-							<a class="fb-share-link share-popup" data-description="{f:translate(key:'LLL:EXT:easyvote/Resources/Private/Language/locallang.xlf:votingAnswer.iSayNo')}!" data-href="{f:uri.page(absolute: 'TRUE', pageUid:settings.votingPid, additionalParams:{L:'0', tx_easyvote_currentvotings:{selectSingle:votingProposal.uid}})}">
+							<a class="share-popup" href="https://www.facebook.com/sharer/sharer.php?u={votingProposal.permalink}">
 								<span class="facebook"></span>
 							</a>
 						</div>
@@ -110,7 +110,7 @@
 				<div class="share-preview-container">
 					<div class="left">
 						<div class="share-links">
-							<a class="share-popup" href="https://twitter.com/home?status={f:translate(key:'LLL:EXT:easyvote/Resources/Private/Language/locallang.xlf:votingAnswer.iSayNo')} - '{votingProposal.shortTitle}'. {f:translate(key:'LLL:EXT:easyvote/Resources/Private/Language/locallang.xlf:votingAnswer.getInformation')} {f:uri.page(pageUid:settings.votingPid, absolute: 1, additionalParams:{tx_easyvote_currentvotings:{selectSingle:votingProposal.uid}})} @easyvote_ch">
+							<a class="share-popup" href="https://twitter.com/home?status={f:translate(key:'LLL:EXT:easyvote/Resources/Private/Language/locallang.xlf:votingAnswer.iSayNo')} - '{votingProposal.shortTitle}'. {f:translate(key:'LLL:EXT:easyvote/Resources/Private/Language/locallang.xlf:votingAnswer.getInformation')} {votingProposal.permalink} @easyvote_ch">
 								<span class="twitter"></span>
 							</a>
 						</div>
@@ -118,7 +118,7 @@
 					<div class="right">
 						<p>
 							{f:translate(key:'LLL:EXT:easyvote/Resources/Private/Language/locallang.xlf:votingAnswer.iSayNo')} - '{votingProposal.shortTitle}'. {f:translate(key:'LLL:EXT:easyvote/Resources/Private/Language/locallang.xlf:votingAnswer.getInformation')}
-							{f:uri.page(pageUid:settings.votingPid, absolute: 1, additionalParams:{tx_easyvote_currentvotings:{selectSingle:votingProposal.uid}})}
+							{votingProposal.permalink}
 						</p>
 					</div>
 				</div>
@@ -130,7 +130,7 @@
 				<div class="share-preview-container">
 					<div class="left">
 						<div class="share-links">
-							<a class="share-app" href="share://title={votingProposal.shortTitle -> f:format.urlencode()}&text={f:translate(key:'LLL:EXT:easyvote/Resources/Private/Language/locallang.xlf:votingAnswer.iSayNo') -> f:format.urlencode()}&url={f:uri.action(arguments: {selectSingle:votingProposal.uid}, absolute: 1) -> f:format.urlencode()}">
+							<a class="share-app" href="share://title={votingProposal.shortTitle -> f:format.urlencode()}&text={f:translate(key:'LLL:EXT:easyvote/Resources/Private/Language/locallang.xlf:votingAnswer.iSayNo') -> f:format.urlencode()}&url={votingProposal.permalink -> f:format.urlencode()}">
 								<i class="evicon-share"></i>
 							</a>
 						</div>
@@ -138,7 +138,7 @@
 					<div class="right">
 						<p>
 							'{votingProposal.shortTitle}' - {f:translate(key:'LLL:EXT:easyvote/Resources/Private/Language/locallang.xlf:votingAnswer.iSayNo')}
-							{f:uri.page(pageUid:settings.votingPid, absolute: 1, additionalParams:{tx_easyvote_currentvotings:{selectSingle:votingProposal.uid}})}
+							{votingProposal.permalink}
 						</p>
 					</div>
 				</div>
