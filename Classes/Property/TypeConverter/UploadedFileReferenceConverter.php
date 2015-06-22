@@ -222,18 +222,19 @@ class UploadedFileReferenceConverter extends AbstractTypeConverter {
 	/**
 	 * @param FalFileReference $falFileReference
 	 * @param int $resourcePointer
-	 * @return \Helhum\UploadExample\Domain\Model\FileReference
+	 * @return \Visol\Easyvote\Domain\Model\FileReference
 	 */
 	protected function createFileReferenceFromFalFileReferenceObject(FalFileReference $falFileReference, $resourcePointer = NULL) {
 		if ($resourcePointer === NULL) {
-			/** @var $fileReference \Helhum\UploadExample\Domain\Model\FileReference */
-			$fileReference = $this->objectManager->get('TYPO3\\CMS\\Extbase\\Domain\\Model\\FileReference');
+			/** @var $fileReference \Visol\Easyvote\Domain\Model\FileReference */
+			$fileReference = $this->objectManager->get('Visol\\Easyvote\\Domain\\Model\\FileReference');
 
 		} else {
-			$fileReference = $this->persistenceManager->getObjectByIdentifier($resourcePointer, 'TYPO3\\CMS\\Extbase\\Domain\\Model\\FileReference', FALSE);
+			$fileReference = $this->persistenceManager->getObjectByIdentifier($resourcePointer, 'Visol\\Easyvote\\Domain\\Model\\FileReference', FALSE);
 		}
 
 		$fileReference->setOriginalResource($falFileReference);
+		$fileReference->_setProperty('_languageUid', -1);
 
 		return $fileReference;
 	}
