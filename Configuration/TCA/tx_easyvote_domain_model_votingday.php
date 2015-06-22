@@ -152,6 +152,7 @@ $GLOBALS['TCA']['tx_easyvote_domain_model_votingday'] = array(
 			'config' => array(
 				'type' => 'select',
 				'foreign_table' => 'tx_easyvote_domain_model_metavotingproposal',
+				'foreign_table_where' => ' AND tx_easyvote_domain_model_metavotingproposal.sys_language_uid IN (-1,0) ORDER BY private_title ASC',
 				'MM' => 'tx_easyvote_votingday_metavotingproposal_mm',
 				'size' => 10,
 				'autoSizeMax' => 30,
