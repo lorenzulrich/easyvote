@@ -192,4 +192,21 @@ class CommunityUserRepository extends \TYPO3\CMS\Extbase\Domain\Repository\Front
 		return $query->execute();
 	}
 
+	/**
+	 * Finds all administrators of a certain party
+	 *
+	 * @param \Visol\Easyvote\Domain\Model\Party $party
+	 * @return array|\TYPO3\CMS\Extbase\Persistence\QueryResultInterface
+	 */
+	public function findPartyAdministrators(\Visol\Easyvote\Domain\Model\Party $party) {
+		$query = $this->createQuery();
+		$query->matching(
+			$query->logicalAnd(
+				$query->equals('party', $party),
+				$query->contains('usergroup', $this->communityUserService->getUserGroupUid('partyAdministrator'))
+			)
+		);
+		return $query->execute();
+	}
+
 }

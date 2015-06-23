@@ -1,5 +1,6 @@
 <?php
 namespace Visol\Easyvote\Domain\Model;
+use TYPO3\CMS\Core\Utility\GeneralUtility;
 
 /**
  * This file is part of the TYPO3 CMS project.
@@ -90,6 +91,12 @@ class CommunityUser extends \TYPO3\CMS\Extbase\Domain\Model\FrontendUser {
 	 * @transient
 	 */
 	protected $prefixCode;
+
+	/**
+	 * @var string
+	 * @transient
+	 */
+	protected $formattedTelephone;
 
 	/**
 	 * @var \Visol\Easyvote\Domain\Model\City
@@ -391,6 +398,15 @@ class CommunityUser extends \TYPO3\CMS\Extbase\Domain\Model\FrontendUser {
 	 */
 	public function setPrefixCode($prefixCode) {
 		$this->prefixCode = $prefixCode;
+	}
+
+	/**
+	 * @return string
+	 */
+	public function getFormattedTelephone() {
+		if (GeneralUtility::isFirstPartOfStr($this->telephone, '41')) {
+			return '0' . substr($this->telephone, 2);
+		}
 	}
 
 	/**
