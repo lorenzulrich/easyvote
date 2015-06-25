@@ -3,9 +3,9 @@
 		Kantone
 	</div>
 	<div class="fields">
-		<input type="checkbox" name="tx_easyvote_user_easyvoteeasyvote[demand][filter][kantons][]" id="kanton-all" value="all" /> <label for="kanton-all">Schweiz</label><br />
+		<input type="checkbox" name="tx_easyvote_easyvote_easyvoteeasyvote[demand][filter][kantons][]" id="kanton-all" value="all" /> <label for="kanton-all">Schweiz</label><br />
 		<f:for each="{kantons}" as="kanton">
-			<input type="checkbox" name="tx_easyvote_user_easyvoteeasyvote[demand][filter][kantons][]" id="kanton-{kanton}" value="{kanton.uid}" /> <label for="kanton-{kanton}">{kanton.name}</label> <br />
+			<input type="checkbox" name="tx_easyvote_easyvote_easyvoteeasyvote[demand][filter][kantons][]" id="kanton-{kanton}" value="{kanton.uid}" /> <label for="kanton-{kanton}">{kanton.name}</label> <br />
 		</f:for>
 	</div>
 </div>
