@@ -415,6 +415,7 @@ CREATE TABLE tx_easyvote_domain_model_party (
   smartvote_id varchar(255) DEFAULT '' NOT NULL,
   is_young_party tinyint(4) unsigned DEFAULT '0' NOT NULL,
   candidates int(11) unsigned DEFAULT '0',
+  tx_easyvoteeducation_panelinvitations int(11) unsigned DEFAULT '0',
 
   tstamp int(11) unsigned DEFAULT '0' NOT NULL,
   crdate int(11) unsigned DEFAULT '0' NOT NULL,

@@ -129,6 +129,8 @@ $communityUserColumns = array(
 			'items'   => array(
 				array('', ''),
 			),
+			'minitems' => 0,
+			'maxitems' => 1,
 		),
 	),
 	'party_verification_code' => array(

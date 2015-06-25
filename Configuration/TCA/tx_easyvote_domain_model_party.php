@@ -148,5 +148,16 @@ $GLOBALS['TCA']['tx_easyvote_domain_model_party'] = array(
 				'type' => 'passthrough',
 			),
 		),
+		'tx_easyvoteeducation_panelinvitations' => array(
+			'config' => array(
+				'type' => 'group',
+				'internal_type' => 'db',
+				'allowed' => 'tx_easyvoteeducation_domain_model_panelinvitation',
+				'prepend_tname' => 1,
+				'size' => 5,
+				'maxitems' => 100,
+				'MM' => 'tx_easyvoteeducation_panelinvitation_party_mm'
+			)
+		),
 	),
 );
