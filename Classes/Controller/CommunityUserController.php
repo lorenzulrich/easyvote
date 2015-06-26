@@ -243,7 +243,19 @@ class CommunityUserController extends \Visol\Easyvote\Controller\AbstractControl
 				// User changed state to politician, so we add them to the pendingPolitician usergroup
 				$communityUser->addUsergroup($this->communityUserService->getUserGroup('pendingPolitician'));
 				$this->addFlashMessage(LocalizationUtility::translate('editProfile.pendingPoliticianNotification', 'easyvote'));
-				// TODO notify partyAdministrator of pending member
+
+				// Notify all party administrators
+				/** @var \Visol\Easyvote\Service\TemplateEmailService $templateEmail */
+				$templateEmail = $this->objectManager->get('Visol\Easyvote\Service\TemplateEmailService');
+				$templateEmail->setTemplateName('communityUserPendingPartyAdministrator');
+				$templateEmail->setExtensionName($this->request->getControllerExtensionName());
+				$templateEmail->assign('pendingPolitician', $communityUser);
+				$partyAdministrators = $this->communityUserRepository->findPartyAdministrators($communityUser->getParty());
+				foreach ($partyAdministrators as $partyAdministrator) {
+					/** @var $partyAdministrator \Visol\Easyvote\Domain\Model\CommunityUser */
+					$templateEmail->addRecipient($partyAdministrator);
+				}
+				$templateEmail->enqueue();
 			} elseif ($politician === FALSE && $loggedInUser->isPendingPolitician()) {
 				// User changed state to non-politician, so we remove the group
 				$communityUser->removeUsergroup($this->communityUserService->getUserGroup('pendingPolitician'));
@@ -256,9 +268,22 @@ class CommunityUserController extends \Visol\Easyvote\Controller\AbstractControl
 				// Make politician a pending politician if party was changed
 				// _isDirty only works correctly if the party property has no @lazy annotation
 				$communityUser->removeUsergroup($this->communityUserService->getUserGroup('politician'));
+				$communityUser->removeUsergroup($this->communityUserService->getUserGroup('partyAdministrator'));
 				$communityUser->addUsergroup($this->communityUserService->getUserGroup('pendingPolitician'));
 				$this->addFlashMessage(LocalizationUtility::translate('editProfile.pendingPoliticianNotification', 'easyvote'));
-				// TODO notify NEW partyAdministrator of pending member
+
+				// Notify all party administrators
+				/** @var \Visol\Easyvote\Service\TemplateEmailService $templateEmail */
+				$templateEmail = $this->objectManager->get('Visol\Easyvote\Service\TemplateEmailService');
+				$templateEmail->setTemplateName('communityUserPendingPartyAdministrator');
+				$templateEmail->setExtensionName($this->request->getControllerExtensionName());
+				$templateEmail->assign('pendingPolitician', $communityUser);
+				$partyAdministrators = $this->communityUserRepository->findPartyAdministrators($communityUser->getParty());
+				foreach ($partyAdministrators as $partyAdministrator) {
+					/** @var $partyAdministrator \Visol\Easyvote\Domain\Model\CommunityUser */
+					$templateEmail->addRecipient($partyAdministrator);
+				}
+				$templateEmail->enqueue();
 			}
 
 			$this->communityUserRepository->update($communityUser);

@@ -61,7 +61,16 @@ class PartyMemberController extends \Visol\Easyvote\Controller\CommunityUserCont
 			$object->addUsergroup($politicianUsergroup);
 			$this->communityUserRepository->update($object);
 			$this->persistenceManager->persistAll();
-			// TODO notify user
+
+			// Send confirmation e-mail
+			/** @var \Visol\Easyvote\Service\TemplateEmailService $templateEmail */
+			$templateEmail = $this->objectManager->get('Visol\Easyvote\Service\TemplateEmailService');
+			$templateEmail->addRecipient($object);
+			$templateEmail->setTemplateName('partyMemberConfirm');
+			$templateEmail->setExtensionName($this->request->getControllerExtensionName());
+			$templateEmail->assign('communityUser', $object);
+			$templateEmail->enqueue();
+
 			return json_encode(array('namespace' => 'Easyvote', 'function' => 'getPartyMembers', 'arguments' => $object->getUid()));
 		} else {
 			// TODO access denied - party administrator of another party
@@ -83,6 +92,16 @@ class PartyMemberController extends \Visol\Easyvote\Controller\CommunityUserCont
 			$object->setParty(NULL);
 			$this->communityUserRepository->update($object);
 			$this->persistenceManager->persistAll();
+
+			// Send confirmation e-mail
+			/** @var \Visol\Easyvote\Service\TemplateEmailService $templateEmail */
+			$templateEmail = $this->objectManager->get('Visol\Easyvote\Service\TemplateEmailService');
+			$templateEmail->addRecipient($object);
+			$templateEmail->setTemplateName('partyMemberDecline');
+			$templateEmail->setExtensionName($this->request->getControllerExtensionName());
+			$templateEmail->assign('communityUser', $object);
+			$templateEmail->enqueue();
+
 			return json_encode(array('namespace' => 'Easyvote', 'function' => 'getPartyMembers', 'arguments' => null));
 		} else {
 			// TODO access denied - party administrator of another party
@@ -105,6 +124,16 @@ class PartyMemberController extends \Visol\Easyvote\Controller\CommunityUserCont
 			$object->setParty(NULL);
 			$this->communityUserRepository->update($object);
 			$this->persistenceManager->persistAll();
+
+			// Send confirmation e-mail
+			/** @var \Visol\Easyvote\Service\TemplateEmailService $templateEmail */
+			$templateEmail = $this->objectManager->get('Visol\Easyvote\Service\TemplateEmailService');
+			$templateEmail->addRecipient($object);
+			$templateEmail->setTemplateName('partyMemberRemove');
+			$templateEmail->setExtensionName($this->request->getControllerExtensionName());
+			$templateEmail->assign('communityUser', $object);
+			$templateEmail->enqueue();
+
 			return json_encode(array('namespace' => 'Easyvote', 'function' => 'getPartyMembers', 'arguments' => null));
 		} else {
 			// TODO access denied - party administrator of another party

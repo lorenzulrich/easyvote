@@ -900,6 +900,46 @@ Puoi disattivare la voto-sveglia per i tuoi amici in qualsiasi momento, se lo vu
 				<target>Rimuovere</target>
 			</trans-unit>
 
+			<trans-unit id="email.subject.partyMemberConfirm">
+				<source>Polittalk easyvote – Parteizugehörigkeit bestätigt</source>
+			</trans-unit>
+			<trans-unit id="email.subject.partyMemberConfirmFr">
+				<source>Polittalk easyvote – Affiliation au parti</source>
+			</trans-unit>
+			<trans-unit id="email.subject.partyMemberConfirmIt">
+				<source>Polittalk easyvote</source>
+			</trans-unit>
+
+			<trans-unit id="email.subject.partyMemberDecline">
+				<source>Polittalk easyvote – Parteizugehörigkeit abgelehnt</source>
+			</trans-unit>
+			<trans-unit id="email.subject.partyMemberDeclineFr">
+				<source>Polittalk easyvote – Affiliation au parti contestée</source>
+			</trans-unit>
+			<trans-unit id="email.subject.partyMemberDeclineIt">
+				<source>Polittalk easyvote</source>
+			</trans-unit>
+
+			<trans-unit id="email.subject.partyMemberRemove">
+				<source>Polittalk easyvote – Parteizugehörigkeit gelöscht</source>
+			</trans-unit>
+			<trans-unit id="email.subject.partyMemberRemoveFr">
+				<source>Polittalk easyvote – Affiliation au parti supprimée</source>
+			</trans-unit>
+			<trans-unit id="email.subject.partyMemberRemoveIt">
+				<source>Polittalk easyvote</source>
+			</trans-unit>
+
+			<trans-unit id="email.subject.communityUserPendingPartyAdministrator">
+				<source>Polittalk easyvote – Neues Mitglied</source>
+			</trans-unit>
+			<trans-unit id="email.subject.communityUserPendingPartyAdministratorFr">
+				<source>Polittalk easyvote – Nouveaux membres</source>
+			</trans-unit>
+			<trans-unit id="email.subject.communityUserPendingPartyAdministratorIt">
+				<source>Polittalk easyvote</source>
+			</trans-unit>
+
 		</body>
 	</file>
 </xliff>
