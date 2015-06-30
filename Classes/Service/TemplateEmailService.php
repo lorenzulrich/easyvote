@@ -178,6 +178,7 @@ class TemplateEmailService {
 	public function resolveViewFileForStandaloneView($viewType, $templateName, $extensionName, $languageSuffix) {
 		// filename is in format Email/MyTemplate[Fr].html
 		$filename = 'Email/' . ucfirst($templateName) . $languageSuffix . '.html';
+		$extensionName = str_replace('_', '', $extensionName);
 		$extbaseConfiguration = $this->configurationManager->getConfiguration(\TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface::CONFIGURATION_TYPE_FRAMEWORK, $extensionName);
 		if (array_key_exists(lcfirst($viewType) . 'RootPath', $extbaseConfiguration['view'])) {
 			// deprecated singular setting
