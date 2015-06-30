@@ -55,7 +55,7 @@ class EmailMessageProcessorCommandController extends \Visol\Easyvote\Command\Abs
 		foreach ($pendingJobs as $job) {
 			/** @var \Visol\Easyvote\Domain\Model\MessagingJob $job */
 
-			if ($job->getCommunityUser() instanceof \Visol\Easyvote\Domain\Model\CommunityUser) {
+			if ($job->getCommunityUser() instanceof \Visol\Easyvote\Domain\Model\CommunityUser && GeneralUtility::validEmail($job->getCommunityUser()->getEmail())) {
 				$emailContent = $this->renderContentWithFluid($job->getContent(), $job->getCommunityUser(), $this->getFluidArgumentArrayFromMessagingJobProperties($job));
 
 				// sender in job overrides sender from configuration
@@ -78,14 +78,11 @@ class EmailMessageProcessorCommandController extends \Visol\Easyvote\Command\Abs
 				}
 				$this->messagingJobRepository->update($job);
 			} else {
-				// user is no longer present, delete job
+				// user is no longer present or has no e-mail address, delete job
 				$this->messagingJobRepository->remove($job);
 			}
 		}
 
 	}
 
-
-
 }
-?>
