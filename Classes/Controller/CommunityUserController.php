@@ -798,6 +798,18 @@ class CommunityUserController extends \Visol\Easyvote\Controller\AbstractControl
 			$loginUri = $this->uriBuilder->setTargetPageUid($this->settings['loginPid'])->setCreateAbsoluteUri(TRUE)->build();
 			$this->redirectToUri($loginUri);
 		}
+		/* Validate the username and redirect to the noProfileNotification if validation fails
+		 By default, Extbase would redirect the the original request action which doesn't work here because this
+		 action opens in a modal window. So we take care of it ourselves*/
+		if ($this->arguments->hasArgument('username')) {
+			/** @var \Visol\Easyvote\Validation\Validator\UniqueUsernameValidator $uniqueUsernameValidator */
+			$uniqueUsernameValidator = $this->objectManager->get('Visol\Easyvote\Validation\Validator\UniqueUsernameValidator');
+			$validatedUsername = $uniqueUsernameValidator->validate($this->request->getArgument('username'));
+			if (count($validatedUsername->getErrors())) {
+				$this->flashMessageContainer->add($validatedUsername->getFirstError()->getMessage(), $validatedUsername->getFirstError()->getTitle(), \TYPO3\CMS\Core\Messaging\AbstractMessage::ERROR);
+				$this->forward('noProfileNotification');
+			}
+		}
 	}
 
 	/**

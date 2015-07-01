@@ -31,7 +31,7 @@
 			</f:if>
 		</f:form.validationResults>
 		<f:flashMessages renderMode="div" />
-		<f:form action="createAccount" controller="CommunityUser" noCacheHash="true" pageUid="{settings.communityRegistrationPid}">
+		<f:form action="create" controller="CommunityUser" noCacheHash="true" pageUid="{settings.communityRegistrationPid}">
 			<div class="form-group">
 				<label for="firstName"><f:translate key="registration.firstName" /></label>
 				<f:form.textfield class="form-control" name="firstName" id="firstName" required="true" errorClass="has-error" />
