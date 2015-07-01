@@ -30,6 +30,7 @@
 	</div>
 	<div class="col-md-6">
 		<f:render partial="CommunityUser/Registration" arguments="{_all}" />
+		<f:link.page pageUid="{settings.forgotPasswordPid}" noCacheHash="true" additionalParams="{tx_felogin_pi1: {forgot: 1}}"><f:translate key="loginPanel.forgotPasswordLink" /></f:link.page>
 	</div>
 </div>
 <p class="legal-info">
