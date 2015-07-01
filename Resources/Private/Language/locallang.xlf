@@ -783,7 +783,7 @@
 				<source>Polittalk easyvote – Affiliation au parti</source>
 			</trans-unit>
 			<trans-unit id="email.subject.partyMemberConfirmIt">
-				<source>Polittalk easyvote</source>
+				<source>Polittalk easyvote – appartenenza al partito confermata</source>
 			</trans-unit>
 
 			<trans-unit id="email.subject.partyMemberDecline">
@@ -793,7 +793,7 @@
 				<source>Polittalk easyvote – Affiliation au parti contestée</source>
 			</trans-unit>
 			<trans-unit id="email.subject.partyMemberDeclineIt">
-				<source>Polittalk easyvote</source>
+				<source>Polittalk easyvote – appartenenza al partito negata</source>
 			</trans-unit>
 
 			<trans-unit id="email.subject.partyMemberRemove">
@@ -803,7 +803,7 @@
 				<source>Polittalk easyvote – Affiliation au parti supprimée</source>
 			</trans-unit>
 			<trans-unit id="email.subject.partyMemberRemoveIt">
-				<source>Polittalk easyvote</source>
+				<source>Polittalk easyvote – appartenenza al partito cancellata</source>
 			</trans-unit>
 
 			<trans-unit id="email.subject.communityUserPendingPartyAdministrator">
@@ -813,7 +813,7 @@
 				<source>Polittalk easyvote – Nouveaux membres</source>
 			</trans-unit>
 			<trans-unit id="email.subject.communityUserPendingPartyAdministratorIt">
-				<source>Polittalk easyvote</source>
+				<source>Polittalk easyvote – nuovo membro</source>
 			</trans-unit>
 
 

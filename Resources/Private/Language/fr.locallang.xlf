@@ -774,6 +774,9 @@
 				<source>Dein Konto wurde erfolgreich aktiviert. Du kannst dich nun einloggen und bist Teil der easyvote-Community!</source>
 				<target>Ton compte a été activé avec succès. Tu peux maintenant te connecter. Tu fais partie de la community-easyvote!</target>
 			</trans-unit>
+			<trans-unit id="activate.communityHomeLinkLabel">
+				<target>Accéder au compte maintenant !</target>
+			</trans-unit>
 			<trans-unit id="activate.userNotFoundMessage">
 				<source>Das Konto konnte nicht aktiviert werden, weil der Benutzer nicht gefunden wurde.</source>
 				<target>Le compte n’a pas pu être activé car l'utilisateur n'a pas été trouvé.</target>
@@ -902,44 +905,45 @@
 			</trans-unit>
 
 			<trans-unit id="email.subject.partyMemberConfirm">
-				<source>Polittalk easyvote – Parteizugehörigkeit bestätigt</source>
+				<target>Polittalk easyvote – Parteizugehörigkeit bestätigt</target>
 			</trans-unit>
 			<trans-unit id="email.subject.partyMemberConfirmFr">
-				<source>Polittalk easyvote – Affiliation au parti</source>
+				<target>Polittalk easyvote – Affiliation au parti</target>
 			</trans-unit>
 			<trans-unit id="email.subject.partyMemberConfirmIt">
-				<source>Polittalk easyvote</source>
+				<target>Polittalk easyvote – appartenenza al partito confermata</target>
 			</trans-unit>
 
 			<trans-unit id="email.subject.partyMemberDecline">
-				<source>Polittalk easyvote – Parteizugehörigkeit abgelehnt</source>
+				<target>Polittalk easyvote – Parteizugehörigkeit abgelehnt</target>
 			</trans-unit>
 			<trans-unit id="email.subject.partyMemberDeclineFr">
-				<source>Polittalk easyvote – Affiliation au parti contestée</source>
+				<target>Polittalk easyvote – Affiliation au parti contestée</target>
 			</trans-unit>
 			<trans-unit id="email.subject.partyMemberDeclineIt">
-				<source>Polittalk easyvote</source>
+				<target>Polittalk easyvote – appartenenza al partito negata</target>
 			</trans-unit>
 
 			<trans-unit id="email.subject.partyMemberRemove">
-				<source>Polittalk easyvote – Parteizugehörigkeit gelöscht</source>
+				<target>Polittalk easyvote – Parteizugehörigkeit gelöscht</target>
 			</trans-unit>
 			<trans-unit id="email.subject.partyMemberRemoveFr">
-				<source>Polittalk easyvote – Affiliation au parti supprimée</source>
+				<target>Polittalk easyvote – Affiliation au parti supprimée</target>
 			</trans-unit>
 			<trans-unit id="email.subject.partyMemberRemoveIt">
-				<source>Polittalk easyvote</source>
+				<target>Polittalk easyvote – appartenenza al partito cancellata</target>
 			</trans-unit>
 
 			<trans-unit id="email.subject.communityUserPendingPartyAdministrator">
-				<source>Polittalk easyvote – Neues Mitglied</source>
+				<target>Polittalk easyvote – Neues Mitglied</target>
 			</trans-unit>
 			<trans-unit id="email.subject.communityUserPendingPartyAdministratorFr">
-				<source>Polittalk easyvote – Nouveaux membres</source>
+				<target>Polittalk easyvote – Nouveaux membres</target>
 			</trans-unit>
 			<trans-unit id="email.subject.communityUserPendingPartyAdministratorIt">
-				<source>Polittalk easyvote</source>
+				<target>Polittalk easyvote – nuovo membro</target>
 			</trans-unit>
+
 		</body>
 	</file>
 </xliff>
