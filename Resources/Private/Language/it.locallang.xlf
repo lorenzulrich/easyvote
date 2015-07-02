@@ -775,6 +775,9 @@ Puoi disattivare la voto-sveglia per i tuoi amici in qualsiasi momento, se lo vu
 				<source>Dein Konto wurde erfolgreich aktiviert. Du kannst dich nun einloggen und bist Teil der easyvote-Community!</source>
 				<target>Il tuo account è stato attivato con successo. Ora puoi accedere e far parte della comunità easyvote!</target>
 			</trans-unit>
+			<trans-unit id="activate.communityHomeLinkLabel">
+				<target>Accedi al tuo account!</target>
+			</trans-unit>
 			<trans-unit id="activate.userNotFoundMessage">
 				<source>Das Konto konnte nicht aktiviert werden, weil der Benutzer nicht gefunden wurde.</source>
 				<target>L'account non ha potuto essere attivato perché l'utente non è stato trovato.</target>
