@@ -15,7 +15,18 @@ use TYPO3\CMS\Core\Utility\GeneralUtility;
  * The TYPO3 project - inspiring people to share!
  */
 
-class CommunityUser extends \TYPO3\CMS\Extbase\Domain\Model\FrontendUser {
+use TYPO3\CMS\Extbase\Domain\Model\FrontendUser;
+use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
+use Visol\EasyvoteSmartvote\Domain\Model\PersonalElectionList;
+
+/**
+ * Class CommunityUser
+ */
+class CommunityUser extends FrontendUser {
+
+	const USERLANGUAGE_GERMAN = 1;
+	const USERLANGUAGE_FRENCH = 2;
+	const USERLANGUAGE_ITALIAN = 3;
 
 	/**
 	 * @var \Visol\Easyvote\Service\CommunityUserService
@@ -199,9 +210,10 @@ class CommunityUser extends \TYPO3\CMS\Extbase\Domain\Model\FrontendUser {
 	 */
 	protected $falImage;
 
-	const USERLANGUAGE_GERMAN = 1;
-	const USERLANGUAGE_FRENCH = 2;
-	const USERLANGUAGE_ITALIAN = 3;
+	/**
+	 * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<Visol\EasyvoteSmartvote\Domain\Model\PersonalElectionList>
+	 */
+	protected $personalElectionLists;
 
 	/**
 	 * __construct
@@ -220,9 +232,11 @@ class CommunityUser extends \TYPO3\CMS\Extbase\Domain\Model\FrontendUser {
 	 * @return void
 	 */
 	protected function initStorageObjects() {
-		$this->notificationRelatedUsers = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
-		$this->panels = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
+		$this->notificationRelatedUsers = new ObjectStorage();
+		$this->panels = new ObjectStorage();
+		$this->personalElectionLists = new ObjectStorage();
 	}
+
 	/**
 	 * Adds a related user
 	 *
@@ -603,6 +617,38 @@ class CommunityUser extends \TYPO3\CMS\Extbase\Domain\Model\FrontendUser {
 	 */
 	public function setEducationType($educationType) {
 		$this->educationType = $educationType;
+	}
+
+	/**
+	 * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage
+	 */
+	public function getPersonalElectionLists() {
+		return $this->personalElectionLists;
+	}
+
+	/**
+	 * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage $personalElectionList
+	 * @return $this
+	 */
+	public function setPersonalElectionLists($personalElectionList) {
+		$this->personalElectionLists = $personalElectionList;
+		return $this;
+	}
+
+	/**
+	 * @param \Visol\EasyvoteSmartvote\Domain\Model\PersonalElectionList $personalElectionList
+	 * @return void
+	 */
+	public function addPersonalElectionList(PersonalElectionList $personalElectionList) {
+		$this->personalElectionLists->attach($personalElectionList);
+	}
+
+	/**
+	 * @param \Visol\EasyvoteSmartvote\Domain\Model\PersonalElectionList $personalElectionList
+	 * @return void
+	 */
+	public function removePersonalElectionList(PersonalElectionList $personalElectionList) {
+		$this->personalElectionLists->detach($personalElectionList);
 	}
 
 }

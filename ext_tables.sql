@@ -394,7 +394,8 @@ CREATE TABLE fe_users (
 	organization_website varchar(255) DEFAULT '' NOT NULL,
   organization_city int(11) unsigned DEFAULT '0' NOT NULL,
   education_type varchar(255) DEFAULT '' NOT NULL,
-  education_institution varchar(255) DEFAULT '' NOT NULL
+  education_institution varchar(255) DEFAULT '' NOT NULL,
+  personal_election_lists int(11) unsigned DEFAULT '0' NOT NULL
 );
 
 
