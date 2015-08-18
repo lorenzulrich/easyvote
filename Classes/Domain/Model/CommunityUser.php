@@ -216,6 +216,13 @@ class CommunityUser extends FrontendUser {
 	protected $personalElectionLists;
 
 	/**
+	 * Protect privacy of user
+	 *
+	 * @var boolean
+	 */
+	protected $privacyProtection;
+
+	/**
 	 * __construct
 	 *
 	 * @return \Visol\Easyvote\Domain\Model\CommunityUser
@@ -649,6 +656,20 @@ class CommunityUser extends FrontendUser {
 	 */
 	public function removePersonalElectionList(PersonalElectionList $personalElectionList) {
 		$this->personalElectionLists->detach($personalElectionList);
+	}
+
+	/**
+	 * @return boolean
+	 */
+	public function isPrivacyProtection() {
+		return $this->privacyProtection;
+	}
+
+	/**
+	 * @param boolean $privacyProtection
+	 */
+	public function setPrivacyProtection($privacyProtection) {
+		$this->privacyProtection = $privacyProtection;
 	}
 
 }

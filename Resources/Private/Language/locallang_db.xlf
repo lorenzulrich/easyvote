@@ -204,6 +204,9 @@
 			<trans-unit id="tx_easyvote_domain_model_communityuser.personal_election_lists">
 				<source>Personal election lists</source>
 			</trans-unit>
+			<trans-unit id="tx_easyvote_domain_model_communityuser.privacy_protection">
+				<source>Privacy Protection</source>
+			</trans-unit>
 			<trans-unit id="tx_easyvote_domain_model_communityuser.party">
 				<source>Party</source>
 			</trans-unit>
