@@ -191,62 +191,6 @@
 				<source>E-Mail-Export</source>
 			</trans-unit>
 
-			<trans-unit id="editMobilizations.introduction">
-				<source><![CDATA[
-					<h2>Freunde mobilisieren</h2>
-					<h3>Möchtest du deine Freunde per E-Mail daran erinnern, dass sie abstimmen gehen sollten? Abonniere für sie den Votewecker von easyvote!</h3>
-					<p>
-						Trage unten in den Feldern Name und Mailadresse deiner Freunde ein, damit sie die nächsten Abstimmungen nicht verschlafen. Dazu werden sie jeweils zwei mal vor Abstimmungen und Wahlen einfach und neutral über den bevorstehenden Urnengang informiert.
-					</p>
-					<p>
-						Den Vote-Wecker für deine Freunde kannst du jederzeit abschalten, sofern du dies überhaupt willst. Die Daten werden gemäss den Datenschutzrichtlinien behandelt.
-					</p>
-				]]></source>
-			</trans-unit>
-			<trans-unit id="editMobilizations.newMobilizedCommunityUserHeader">
-					<source>Vote-Wecker stellen</source>
-			</trans-unit>
-			<trans-unit id="editMobilizations.importFromAddressBook">
-					<source>Kontakte aus Adressbuch importieren</source>
-			</trans-unit>
-			<trans-unit id="editMobilizations.addMobilizedCommunityUser">
-					<source>Weitere Freunde hinzufügen</source>
-			</trans-unit>
-			<trans-unit id="editMobilizations.addMobilizedCommunityUserInformation">
-				<source><![CDATA[
-					<p style="clear: both;">Es wird folgender Text verschickt:</p>
-					<div class="mobilization-notification-example">
-						<p>Hallo Vorname</p>
-						<p>Ich habe für dich den Vote-Wecker auf easyvote.ch gestellt, damit du zukünftige Abstimmungen nicht mehr verschläfst oder versäumst.
-						Die nächste Abstimmung findet am <strong>%1$s</strong> statt.
-						Weitere Informationen dazu wird dir easyvote per E-Mail zustellen. Stelle den Votewecker jetzt auch für deine Freunde!</p>
-						<p>Beste Grüsse,<br>
-						%2$s %3$s</p>
-					</div>
-				]]></source>
-			</trans-unit>
-			<trans-unit id="editMobilizations.listMobilizedCommunityUsersHeader">
-				<source>Meine Vote-Wecker-Kontakte</source>
-			</trans-unit>
-			<trans-unit id="editMobilizations.saved">
-				<source>Der Vote-Wecker wurde gestellt.</source>
-			</trans-unit>
-			<trans-unit id="editMobilizations.notSavedAlreadyMobilized">
-				<source>Der Vote-Wecker konnte nicht gestellt werden, da für diese Person bereits ein Vote-Wecker gestellt wurde.</source>
-			</trans-unit>
-			<trans-unit id="editMobilizations.notSavedEmailInvalid">
-				<source>Der Vote-Wecker konnte nicht gestellt werden, da die E-Mail-Adresse ungültig war.</source>
-			</trans-unit>
-			<trans-unit id="editMobilizations.removed">
-				<source>Der Vote-Wecker-Kontakt wurde gelöscht.</source>
-			</trans-unit>
-			<trans-unit id="editMobilizations.permissionError">
-				<source>Du bist nicht berechtigt, diesen Vote-Wecker-Kontakt zu löschen.</source>
-			</trans-unit>
-			<trans-unit id="editMobilizations.notAuthenticated">
-				<source>Nicht eingeloggt.</source>
-			</trans-unit>
-
 			<trans-unit id="voting.yourOpinion">
 				<source><![CDATA[
 					Wie wirst du ab&shy;stimmen?
@@ -457,17 +401,6 @@
 			<trans-unit id="unsubscribe.notificationMailDisabled">
 				<source>Danke für deine Abmeldung. Du erhälst künftig keinen Vote-Wecker mehr per E-Mail.</source>
 			</trans-unit>
-			<trans-unit id="unsubscribe.mobilizedCommunityUserDeleted">
-				<source>Danke für deine Abmeldung. Du erhälst künftig keinen Vote-Wecker mehr per E-Mail, sofern er dir von deinen Freunden nicht erneut gestellt wird.</source>
-			</trans-unit>
-
-
-			<trans-unit id="mobilizedCommunityUser.remove">
-				<source>löschen</source>
-			</trans-unit>
-			<trans-unit id="mobilizedCommunityUser.save">
-				<source>Vote-Wecker stellen</source>
-			</trans-unit>
 
 			<trans-unit id="loginPanel.loggedInAs">
 				<source>eingeloggt als</source>
@@ -526,55 +459,8 @@
 			<trans-unit id="userFunctions.voteWecker">
 				<source>Stelle deinen Vote-Wecker!</source>
 			</trans-unit>
-			<trans-unit id="userFunctions.mobilizeUsers">
-				<source>Freunde mobilisieren</source>
-			</trans-unit>
 			<trans-unit id="userOverview.years">
 				<source>Jahre</source>
-			</trans-unit>
-
-			<trans-unit id="mobilizedWelcomeMail.hello">
-				<source>Hallo</source>
-			</trans-unit>
-			<trans-unit id="mobilizedWelcomeMail.text1">
-				<source>Ich habe für dich den Vote-Wecker auf easyvote.ch gestellt, damit du zukünftige Abstimmungen nicht mehr verschläfst oder versäumst. Die nächste Abstimmung findet am</source>
-			</trans-unit>
-			<trans-unit id="mobilizedWelcomeMail.text2">
-				<source>statt. Weitere Informationen dazu wird dir easyvote per E-Mail zustellen. Stelle den Votewecker jetzt auch für deine Freunde!</source>
-			</trans-unit>
-			<trans-unit id="mobilizedWelcomeMail.bestRegards">
-				<source>Beste Grüsse,</source>
-			</trans-unit>
-			<trans-unit id="mobilizedWelcomeMail.subject">
-				<source>Ein Vote-Wecker wurde für dich gestellt</source>
-			</trans-unit>
-
-			<trans-unit id="mobilizedUnsubscribedNotification.subject">
-				<source>geht nicht stimmen!</source>
-			</trans-unit>
-			<trans-unit id="mobilizedUnsubscribedNotification.hello">
-				<source>Hallo</source>
-			</trans-unit>
-			<trans-unit id="mobilizedUnsubscribedNotification.text1">
-				<source>Wir haben schlechte Nachrichten: </source>
-			</trans-unit>
-			<trans-unit id="mobilizedUnsubscribedNotification.text2">
-				<source>hat den easyvote Vote-Wecker deaktiviert und wird an den Abstimmungen vom </source>
-			</trans-unit>
-			<trans-unit id="mobilizedUnsubscribedNotification.text3">
-				<source>vermutlich nicht teilnehmen. Falls du dies ändern möchtest, kannst du den Vote-Wecker für </source>
-			</trans-unit>
-			<trans-unit id="mobilizedUnsubscribedNotification.text4">
-				<source><![CDATA[
-					auf <a href="http://www.easyvote.ch">www.easyvote.ch</a> erneut stellen.
-				]]></source>
-			</trans-unit>
-			<trans-unit id="mobilizedUnsubscribedNotification.text5">
-				<source><![CDATA[
-					<p>Herzlichen Dank, dass du mithilfst, die Stimmbeteiligung der Jungen zu erhöhen.</p>
-					<p>Beste Grüsse<br />
-					dein easyvote-Team</p>
-				]]></source>
 			</trans-unit>
 
 			<trans-unit id="error.1245107351">

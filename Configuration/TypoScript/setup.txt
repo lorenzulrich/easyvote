@@ -52,7 +52,6 @@ plugin.tx_easyvote {
 		communityUserGroupUid = 4
 		communityFacebookUserGroupUid = 6
 		communityEmailUserGroupUid = 7
-		notificationRelatedUserGroupUid = 5
 		loginPid = 193
 		forgotPasswordPid = 273
 		communityAjaxPid = 194

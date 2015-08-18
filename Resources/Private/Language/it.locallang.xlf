@@ -211,89 +211,6 @@
 				<target>esporta e-mail</target>
 			</trans-unit>
 
-			<trans-unit id="editMobilizations.introduction">
-				<source><![CDATA[
-					<h2>Freunde mobilisieren</h2>
-					<h3>Möchtest du deine Freunde per E-Mail daran erinnern, dass sie abstimmen gehen sollten? Abonniere für sie den Votewecker von easyvote!</h3>
-					<p>
-						Trage unten in den Feldern Name und Mailadresse deiner Freunde ein, damit sie die nächsten Abstimmungen nicht verschlafen. Dazu werden sie jeweils zwei mal vor Abstimmungen und Wahlen einfach und neutral über den bevorstehenden Urnengang informiert.
-					</p>
-					<p>
-						Den Vote-Wecker für deine Freunde kannst du jederzeit abschalten, sofern du dies überhaupt willst. Die Daten werden gemäss den Datenschutzrichtlinien behandelt.
-					</p>
-				]]></source>
-				<target><![CDATA[
-					<h2>mobilita amici</h2>
-					<h3>Vuoi ricordare ai tuoi amici con un e-mail che bisogna andare a votare? Imposta la voto-sveglia anche per loro!</h3>
-					<p>
-						Inserisci il nome e l’indirizzo e-mail dei tuoi amici, in questo modo non si dimenticheranno delle votazioni. Inoltre ogni volta prima delle votazioni o delle elezioni verranno informati due volte in modo semplice e neutrale dell’appuntamento in arrivo.
-					</p>
-					<p>
-Puoi disattivare la voto-sveglia per i tuoi amici in qualsiasi momento, se lo vuoi. I dati verranno trattati in modo coforme alle linee guida della protezione dei dati.
-					</p>
-				]]></target>
-			</trans-unit>
-			<trans-unit id="editMobilizations.newMobilizedCommunityUserHeader">
-				<source>Vote-Wecker stellen</source>
-				<target>impostare la voto-sveglia </target>
-			</trans-unit>
-			<trans-unit id="editMobilizations.addMobilizedCommunityUser">
-					<source>Weitere Freunde hinzufügen</source>
-				<target>aggiungi altri amici</target>
-			</trans-unit>
-			<trans-unit id="editMobilizations.addMobilizedCommunityUserInformation">
-				<source><![CDATA[
-					<p style="clear: both;">Es wird folgender Text verschickt:</p>
-					<div class="mobilization-notification-example">
-						<p>Hallo Vorname</p>
-						<p>Ich habe für dich den Vote-Wecker auf easyvote.ch gestellt, damit du zukünftige Abstimmungen nicht mehr verschläfst oder versäumst.
-						Die nächste Abstimmung findet am <strong>%1$s</strong> statt.
-						Weitere Informationen dazu wird dir easyvote per E-Mail zustellen. Stelle den Votewecker jetzt auch für deine Freunde!</p>
-						<p>Beste Grüsse,<br>
-						%2$s %3$s</p>
-					</div>
-				]]></source>
-				<target><![CDATA[
-					<p style="clear: both;">È stato inviato il seguente testo:</p>
-					<div class="mobilization-notification-example">
-						<p>Ciao Nome</p>
-						<p>Ho impostato per te una voto-sveglia su easyvote.ch, in questo modo non potrai più dimenticarti, o dormire troppo a lungo, delle votazioni in arrivo.
-						La prossima votazione avrà luogo il <strong>%1$s</strong>.
-						Riceverai ulteriori informazioni per e-mail da easyvote. Crea ora il tuo profilo su easyvote.ch e invita anche tu i tuoi amici!</p>
-						<p>I migliori saluti,<br>
-						%2$s %3$s</p>
-					</div>
-				]]></target>
-			</trans-unit>
-			<trans-unit id="editMobilizations.listMobilizedCommunityUsersHeader">
-				<source>Meine Vote-Wecker-Kontakte</source>
-				<target>I miei contatti voto-sveglia</target>
-			</trans-unit>
-			<trans-unit id="editMobilizations.saved">
-				<source>Der Vote-Wecker wurde gestellt.</source>
-				<target>La voto-sveglia è stata impostata.</target>
-			</trans-unit>
-			<trans-unit id="editMobilizations.notSavedAlreadyMobilized">
-				<source>Der Vote-Wecker konnte nicht gestellt werden, da für diese Person bereits ein Vote-Wecker gestellt wurde.</source>
-				<target>La voto-sveglia non è stata impostata, visto che per questa persona esiste già una voto-sveglia.</target>
-			</trans-unit>
-			<trans-unit id="editMobilizations.notSavedEmailInvalid">
-				<source>Der Vote-Wecker konnte nicht gestellt werden, da die E-Mail-Adresse ungültig war.</source>
-				<target>Impossibile impostare la voto-sveglia, l’indirizzo e-mail indicato non è valido.</target>
-			</trans-unit>
-			<trans-unit id="editMobilizations.removed">
-				<source>Der Vote-Wecker-Kontakt wurde gelöscht.</source>
-				<target>Il contatto voto-sveglia è stato cancellato.</target>
-			</trans-unit>
-			<trans-unit id="editMobilizations.permissionError">
-				<source>Du bist nicht berechtigt, diesen Vote-Wecker-Kontakt zu löschen.</source>
-				<target>Non sei autorizzato a eliminare questo contatto.</target>
-			</trans-unit>
-			<trans-unit id="editMobilizations.notAuthenticated">
-				<source>Nicht eingeloggt.</source>
-				<target>Non hai effettuato il login.</target>
-			</trans-unit>
-
 			<trans-unit id="voting.yourOpinion">
 				<source><![CDATA[
 					Wie wirst du ab&shy;stimmen?
@@ -534,19 +451,6 @@ Puoi disattivare la voto-sveglia per i tuoi amici in qualsiasi momento, se lo vu
 				<source>Danke für deine Abmeldung. Du erhälst künftig keinen Vote-Wecker mehr per E-Mail.</source>
 				<target>Grazie per la disattivazione. In futuro non disporrai più della voto-sveglia e non riceverai più e-mail.</target>
 			</trans-unit>
-			<trans-unit id="unsubscribe.mobilizedCommunityUserDeleted">
-				<source>Danke für deine Abmeldung. Du erhälst künftig keinen Vote-Wecker mehr per E-Mail, sofern er dir von deinen Freunden nicht erneut gestellt wird.</source>
-				<target>Grazie per la disattivazione. In futuro non disporrai più della voto-sveglia e non riceverai più e-mail, a patto che non venga nuovamente attivata per te da uno dei tuoi amici.</target>
-			</trans-unit>
-
-			<trans-unit id="mobilizedCommunityUser.remove">
-				<source>löschen</source>
-				<target>elimina</target>
-			</trans-unit>
-			<trans-unit id="mobilizedCommunityUser.save">
-				<source>Vote-Wecker stellen</source>
-				<target>impostare la voto-sveglia</target>
-			</trans-unit>
 
 			<trans-unit id="loginPanel.loggedInAs">
 				<source>eingeloggt als</source>
@@ -609,75 +513,9 @@ Puoi disattivare la voto-sveglia per i tuoi amici in qualsiasi momento, se lo vu
 				<source>Stelle deinen Vote-Wecker!</source>
 				<target>Imposta la tua voto-sveglia!</target>
 			</trans-unit>
-			<trans-unit id="userFunctions.mobilizeUsers">
-				<source>Freunde mobilisieren</source>
-				<target>mobilita amici</target>
-			</trans-unit>
 			<trans-unit id="userOverview.years">
 				<source>Jahre</source>
 				<target>anni</target>
-			</trans-unit>
-
-			<trans-unit id="mobilizedWelcomeMail.hello">
-				<source>Hallo</source>
-				<target>Ciao</target>
-			</trans-unit>
-			<trans-unit id="mobilizedWelcomeMail.text1">
-				<source>Ich habe für dich den Vote-Wecker auf easyvote.ch gestellt, damit du zukünftige Abstimmungen nicht mehr verschläfst oder versäumst. Die nächste Abstimmung findet am</source>
-				<target> Ho impostato per te una voto-sveglia su easyvote.ch, in questo modo non potrai più dimenticarti, o dormire troppo a lungo, delle votazioni in arrivo. La prossima votazione avrà luogo il</target>
-			</trans-unit>
-			<trans-unit id="mobilizedWelcomeMail.text2">
-				<source>statt. Weitere Informationen dazu wird dir easyvote per E-Mail zustellen. Stelle den Votewecker jetzt auch für deine Freunde!</source>
-				<target> Riceverai ulteriori informazioni per e-mail da easyvote. Crea ora il tuo profilo su easyvote.ch e invita anche tu i tuoi amici </target>
-			</trans-unit>
-			<trans-unit id="mobilizedWelcomeMail.bestRegards">
-				<source>Beste Grüsse,</source>
-				<target>I migliori saluti,</target>
-			</trans-unit>
-			<trans-unit id="mobilizedWelcomeMail.subject">
-				<source>Ein Vote-Wecker wurde für dich gestellt</source>
-				<target>È stata creata una voto-sveglia per te</target>
-			</trans-unit>
-
-			<trans-unit id="mobilizedUnsubscribedNotification.subject">
-				<source>geht nicht stimmen!</source>
-				<target>non va a votare!</target>
-			</trans-unit>
-			<trans-unit id="mobilizedUnsubscribedNotification.hello">
-				<source>Hallo</source>
-				<target>Ciao</target>
-			</trans-unit>
-			<trans-unit id="mobilizedUnsubscribedNotification.text1">
-				<source>Wir haben schlechte Nachrichten: </source>
-				<target>Abbiamo cattive notizie: </target>
-			</trans-unit>
-			<trans-unit id="mobilizedUnsubscribedNotification.text2">
-				<source>hat den easyvote Vote-Wecker deaktiviert und wird an den Abstimmungen vom </source>
-				<target>ha disattivato la voto-sveglia e molto probabilmente il </target>
-			</trans-unit>
-			<trans-unit id="mobilizedUnsubscribedNotification.text3">
-				<source>vermutlich nicht teilnehmen. Falls du dies ändern möchtest, kannst du den Vote-Wecker für </source>
-				<target>non andrà a votare. Nel caso tu voglia cambiare le cose, puoi attivare nuovamente la voto-sveglia per </target>
-			</trans-unit>
-			<trans-unit id="mobilizedUnsubscribedNotification.text4">
-				<source><![CDATA[
-					auf <a href="http://www.easyvote.ch">www.easyvote.ch</a> erneut stellen.
-				]]></source>
-				<target><![CDATA[
-					su <a href="http://www.easyvote.ch">www.easyvote.ch</a>.
-				]]></target>
-			</trans-unit>
-			<trans-unit id="mobilizedUnsubscribedNotification.text5">
-				<source><![CDATA[
-					<p>Herzlichen Dank, dass du mithilfst, die Stimmbeteiligung der Jungen zu erhöhen.</p>
-					<p>Beste Grüsse<br />
-					dein easyvote-Team</p>
-				]]></source>
-				<target><![CDATA[
-					<p>Grazie di cuore perché ci aiuti a aumentare la partecipazione al voto dei giovani.</p>
-					<p>Cordiali saluti<br />
-					Il tuo team easyvote</p>
-				]]></target>
 			</trans-unit>
 
 			<trans-unit id="error.1245107351">

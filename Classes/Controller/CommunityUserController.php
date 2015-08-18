@@ -327,11 +327,6 @@ class CommunityUserController extends \Visol\Easyvote\Controller\AbstractControl
 			$communityUserGroup = $this->frontendUserGroupRepository->findByUid($this->settings['communityFacebookUserGroupUid']);
 			$communityUser->removeUsergroup($communityUserGroup);
 			$this->communityUserRepository->update($communityUser);
-			// get all notificationRelatedUsers and remove them as well
-			$notificationRelatedUsers = $communityUser->getNotificationRelatedUsers();
-			foreach ($notificationRelatedUsers as $notificationRelatedUser) {
-				$this->communityUserRepository->remove($notificationRelatedUser);
-			}
 			$this->persistenceManager->persistAll();
 			$siteHomeUri = $this->uriBuilder->setTargetPageUid($this->settings['siteHomePid'])->setArguments(array('logintype' => 'logout'))->setCreateAbsoluteUri(TRUE)->build();
 			$arguments = array('redirectUri' => $siteHomeUri);
@@ -369,6 +364,13 @@ class CommunityUserController extends \Visol\Easyvote\Controller\AbstractControl
 	}
 
 	/**
+	 * action editMobilizations
+	 */
+	public function editMobilizationsAction() {
+		// TODO
+	}
+
+	/**
 	 * action updateNotifications
 	 *
 	 * @param CommunityUser $communityUser
@@ -390,138 +392,6 @@ class CommunityUserController extends \Visol\Easyvote\Controller\AbstractControl
 
 		}
 		$this->redirect('editNotifications');
-	}
-
-	/**
-	 * action editNotifications
-	 */
-	public function editMobilizationsAction() {
-		$communityUser = $this->getLoggedInUser();
-		$nextVotingDay = $this->votingDayRepository->findNextVotingDay();
-		if ($communityUser instanceof CommunityUser) {
-			$this->view->assign('user', $communityUser);
-			$this->view->assign('nextVotingDay', $nextVotingDay);
-		}
-	}
-
-	/**
-	 * action listMobilizedCommunityUsers
-	 *
-	 * @return string|boolean
-	 */
-	public function listMobilizedCommunityUsersAction() {
-		$communityUser = $this->getLoggedInUser();
-		if ($communityUser instanceof CommunityUser) {
-			$this->view->assign('user', $communityUser);
-			$content = $this->view->render();
-			return json_encode($content);
-		} else {
-			return json_encode(FALSE);
-		}
-	}
-
-	/**
-	 * action newMobilizedCommunityUser
-	 *
-	 * @return string
-	 */
-	public function newMobilizedCommunityUserAction() {
-		$newCommunityUser = $this->objectManager->get('Visol\Easyvote\Domain\Model\CommunityUser');
-		$this->view->assign('sysLanguageUid', $GLOBALS['TSFE']->sys_language_uid);
-		$this->view->assign('newCommunityUser', $newCommunityUser);
-		$content = $this->view->render();
-		return json_encode($content);
-	}
-
-	/**
-	 * Allow all properties of communityUser
-	 */
-	protected function initializeCreateMobilizedCommunityUserAction(){
-		$propertyMappingConfiguration = $this->arguments['newCommunityUser']->getPropertyMappingConfiguration();
-		$propertyMappingConfiguration->allowAllProperties();
-	}
-
-	/**
-	 * action createMobilizedCommunityUser
-	 *
-	 * @param CommunityUser $newCommunityUser
-	 * @dontvalidate $newCommunityUser
-	 * @return string
-	 */
-	public function createMobilizedCommunityUserAction(CommunityUser $newCommunityUser) {
-		$communityUser = $this->getLoggedInUser();
-		if ($communityUser instanceof CommunityUser) {
-			// user is authorized to add users to his profile
-			if (GeneralUtility::validEmail($newCommunityUser->getEmail())) {
-				if (!count($this->communityUserRepository->findByEmail($newCommunityUser->getEmail()))) {
-					$notificationRelatedUserGroupUid = (int)$this->settings['notificationRelatedUserGroupUid'];
-					$notificationRelatedUserGroup = $this->frontendUserGroupRepository->findByUid($notificationRelatedUserGroupUid);
-					$newCommunityUser->addUsergroup($notificationRelatedUserGroup);
-					$newCommunityUser->setCommunityUser($communityUser);
-					$newCommunityUser->setNotificationMailActive(1);
-					$newCommunityUser->setUsername('vw-' . $newCommunityUser->getEmail());
-					$newCommunityUser->setPassword(md5(GeneralUtility::generateRandomBytes(40)));
-					$newCommunityUser->setPid($this->settings['userStoragePid']);
-					$this->communityUserRepository->add($newCommunityUser);
-					$this->persistenceManager->persistAll();
-
-					/** @var \Visol\Easyvote\Domain\Model\MessagingJob $messagingJob */
-					$standaloneView = $this->objectManager->get('TYPO3\CMS\Fluid\View\StandaloneView');
-					$standaloneView->setFormat('html');
-					$templatePathAndFilename = $this->resolveViewFileForStandaloneView('Template', 'Email/MobilizedWelcomeMail.html');
-					$standaloneView->setTemplatePathAndFilename($templatePathAndFilename);
-					$nextVotingDay = $this->votingDayRepository->findNextVotingDay();
-					$standaloneView->assign('nextVotingDay', $nextVotingDay);
-					$standaloneView->assign('parentUser', $communityUser);
-					$standaloneView->assign('mobilizedUser', $newCommunityUser);
-					$content = $standaloneView->render();
-					$messagingJob = $this->objectManager->get('Visol\Easyvote\Domain\Model\MessagingJob');
-					$messagingJob->setSenderName($communityUser->getFirstName() . ' ' . $communityUser->getLastName());
-					$messagingJob->setReturnPath($communityUser->getEmail());
-					$messagingJob->setReplyTo($communityUser->getEmail());
-					$messagingJob->setContent($content);
-					$messagingJob->setSubject(LocalizationUtility::translate('mobilizedWelcomeMail.subject', 'easyvote'));
-					$messagingJob->setCommunityUser($newCommunityUser);
-					$messagingJob->setDistributionTime(new \DateTime());
-					$messagingJob->setType($messagingJob::JOBTYPE_EMAIL);
-					$this->messagingJobRepository->add($messagingJob);
-
-					return json_encode(LocalizationUtility::translate('editMobilizations.saved', 'easyvote'));
-				} else {
-					return json_encode(LocalizationUtility::translate('editMobilizations.notSavedAlreadyMobilized', 'easyvote'));
-				}
-			} else {
-				// e-mail invalid
-				return json_encode(LocalizationUtility::translate('editMobilizations.notSavedEmailInvalid', 'easyvote'));
-			}
-		} else {
-			return json_encode(FALSE);
-		}
-	}
-
-	/**
-	 * action removeMobilizedCommunityUser
-	 *
-	 * @param CommunityUser $notificationRelatedUser
-	 * @dontvalidate $notificationRelatedUser
-	 * @return string
-	 */
-	public function removeMobilizedCommunityUserAction(CommunityUser $notificationRelatedUser) {
-		$communityUser = $this->getLoggedInUser();
-		if ($communityUser instanceof CommunityUser) {
-			// user is logged in
-			if ($notificationRelatedUser->getCommunityUser()->getUid() === $communityUser->getUid()) {
-				// is it really a child of the logged in user
-				// TODO in future: Check is user has changed account to a real account and prevent deletion
-				$this->communityUserRepository->remove($notificationRelatedUser);
-				$this->persistenceManager->persistAll();
-				return json_encode(LocalizationUtility::translate('editMobilizations.removed', 'easyvote'));
-			} else {
-				return json_encode(LocalizationUtility::translate('editMobilizations.permissionError', 'easyvote'));
-			}
-		} else {
-			return json_encode(LocalizationUtility::translate('editMobilizations.notAuthenticated', 'easyvote'));
-		}
 	}
 
 	/**
@@ -549,33 +419,6 @@ class CommunityUserController extends \Visol\Easyvote\Controller\AbstractControl
 						$this->communityUserRepository->update($communityUser);
 						$this->persistenceManager->persistAll();
 						$message = 	LocalizationUtility::translate('unsubscribe.notificationMailDisabled', 'easyvote');
-					} elseif (in_array($this->settings['notificationRelatedUserGroupUid'], $userGroupArray)) {
-						// Vote-Wecker only: Remove user, inform parent
-						$lazyLoadingFix = $communityUser->getCommunityUser()->getFirstName();
-						if ($communityUser->getCommunityUser() instanceof \Visol\Easyvote\Domain\Model\CommunityUser) {
-							// Parent user found, so inform him
-							/** @var \Visol\Easyvote\Domain\Model\MessagingJob $messagingJob */
-							$standaloneView = $this->objectManager->get('TYPO3\CMS\Fluid\View\StandaloneView');
-							$standaloneView->setFormat('html');
-							$templatePathAndFilename = $this->resolveViewFileForStandaloneView('Template', 'Email/MobilizedUnsubscribedNotification.html');
-							$standaloneView->setTemplatePathAndFilename($templatePathAndFilename);
-							$standaloneView->assign('parentUser', $communityUser->getCommunityUser());
-							$standaloneView->assign('mobilizedUser', $communityUser);
-							/** @var \Visol\Easyvote\Domain\Model\VotingDay $nextVotingDay */
-							$nextVotingDay = $this->votingDayRepository->findNextVotingDay();
-							$standaloneView->assign('nextVotingDay', $nextVotingDay);
-							$content = $standaloneView->render();
-							$messagingJob = $this->objectManager->get('Visol\Easyvote\Domain\Model\MessagingJob');
-							$messagingJob->setContent($content);
-							$messagingJob->setSubject($communityUser->getFirstName() . ' ' . LocalizationUtility::translate('mobilizedUnsubscribedNotification.subject', 'easyvote'));
-							$messagingJob->setCommunityUser($communityUser->getCommunityUser());
-							$messagingJob->setDistributionTime(new \DateTime());
-							$messagingJob->setType($messagingJob::JOBTYPE_EMAIL);
-							$this->messagingJobRepository->add($messagingJob);
-						}
-						$this->communityUserRepository->remove($communityUser);
-						$this->persistenceManager->persistAll();
-						$message = LocalizationUtility::translate('unsubscribe.mobilizedCommunityUserDeleted', 'easyvote');
 					} else {
 						$message = LocalizationUtility::translate('unsubscribe.invalidRequest', 'easyvote');
 					}

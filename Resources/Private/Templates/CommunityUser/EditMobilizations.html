@@ -2,26 +2,5 @@
 {namespace ev=Tx_Easyvote_ViewHelpers}
 
 <div class="content-box">
-	<div class="editMobilizations-intro">
-		<f:translate key="editMobilizations.introduction" htmlEscape="false" />
-	</div>
-	<f:flashMessages renderMode="div" />
-	<h2><f:translate key="editMobilizations.newMobilizedCommunityUserHeader" /></h2>
-	<f:if condition="{settings.context} == 'app'">
-		<p>
-			<a href="getadr://id=1"><f:translate key="editMobilizations.importFromAddressBook" /></a>
-		</p>
-	</f:if>
-	<div id="newMobilizedCommunityUserPlaceholder">
-	</div>
-	<p>
-		<a id="newMobilizedCommunityUser" href="#" style="margin-bottom: 20px;"><i class="evicon-plus"></i><f:translate key="editMobilizations.addMobilizedCommunityUser" /></a>
-	</p>
-	<button type="button" class="btn btn-primary" id="saveMobilizedCommunityUsers" class="clearfix" style="margin-bottom: 20px;"> <f:translate key="mobilizedCommunityUser.save" /></button>
-	<f:translate key="editMobilizations.addMobilizedCommunityUserInformation" htmlEscape="false" arguments="{1: '{nextVotingDay.votingDate -> f:format.date(format: \'d.m.Y\')}', 2: '{user.firstName}', 3: '{user.lastName}'}"></f:translate>
-	<h2><f:translate key="editMobilizations.listMobilizedCommunityUsersHeader" /></h2>
-	<div id="mobilizedCommunityUsers"></div>
+	TODO
 </div>
-<script>
-	var ajaxUri = '<f:uri.page pageUid="{settings.communityAjaxPid}" absolute="TRUE" pageType="999" />'
-</script>

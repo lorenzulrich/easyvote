@@ -211,88 +211,6 @@
 				<target>Envoi d'e-mails</target>
 			</trans-unit>
 
-			<trans-unit id="editMobilizations.introduction">
-				<source><![CDATA[
-					<h2>Freunde mobilisieren</h2>
-					<h3>Möchtest du deine Freunde per E-Mail daran erinnern, dass sie abstimmen gehen sollten? Abonniere für sie den Votewecker von easyvote!</h3>
-					<p>
-						Trage unten in den Feldern Name und Mailadresse deiner Freunde ein, damit sie die nächsten Abstimmungen nicht verschlafen. Dazu werden sie jeweils zwei mal vor Abstimmungen und Wahlen einfach und neutral über den bevorstehenden Urnengang informiert.
-					</p>
-					<p>
-						Den Vote-Wecker für deine Freunde kannst du jederzeit abschalten, sofern du dies überhaupt willst. Die Daten werden gemäss den Datenschutzrichtlinien behandelt.
-					</p>
-				]]></source>
-				<target><![CDATA[
-					<h2>Mobiliser des amis</h2>
-					<h3>Tu souhaiterais qu'un e-mail soit régulièrement envoyé à tes amis pour leur rappeler d'aller voter? Abonne-les à l'alarme de vote easyvote!</h3>
-					<p>
-						Complète les champs ci-dessous avec les noms et les adresses e-mail de tes amis, afin qu'ils ne manquent pas les prochaines votations. Ils recevront ainsi deux fois avant chaque votation ou élection une documentation accessible et neutre sur le prochain scrutin.
-					</p>
-					<p>
-						Tu peux à tout moment désactiver l'alarme de vote que reçoivent tes amis, si tu le souhaites. Les données sont traitées conformément aux règles relatives à la protection des données.					</p>
-				]]></target>
-			</trans-unit>
-			<trans-unit id="editMobilizations.newMobilizedCommunityUserHeader">
-				<source>Vote-Wecker stellen</source>
-				<target>Installer l'alarme de vote</target>
-			</trans-unit>
-			<trans-unit id="editMobilizations.addMobilizedCommunityUser">
-				<source>Weitere Freunde hinzufügen</source>
-				<target>Ajouter d'autres amis</target>
-			</trans-unit>
-			<trans-unit id="editMobilizations.addMobilizedCommunityUserInformation">
-				<source><![CDATA[
-					<p style="clear: both;">Es wird folgender Text verschickt:</p>
-					<div class="mobilization-notification-example">
-						<p>Hallo Vorname</p>
-						<p>Ich habe für dich den Vote-Wecker auf easyvote.ch gestellt, damit du zukünftige Abstimmungen nicht mehr verschläfst oder versäumst.
-						Die nächste Abstimmung findet am <strong>%1$s</strong> statt.
-						Weitere Informationen dazu wird dir easyvote per E-Mail zustellen. Stelle den Votewecker jetzt auch für deine Freunde!</p>
-						<p>Beste Grüsse,<br>
-						%2$s %3$s</p>
-					</div>
-				]]></source>
-				<target><![CDATA[
-					<p style="clear: both;">Le texte suivant sera envoyé:</p>
-					<div class="mobilization-notification-example">
-						<p>Salut Prénom</p>
-						<p>J'ai installé pour toi une alarme de vote sur easyvote.ch, afin qu'à l'avenir tu ne manques plus les votations.
-						Le prochain scrutin a lieu le <strong>%1$s</strong>.
-						easyvote t'enverra par e-mail de plus amples informations sur le sujet. N'hésite pas à activer l'alarme de vote également pour tes amis!</p>
-						<p>Meilleures salutations,<br>
-						%2$s %3$s</p>
-					</div>
-				]]></target>
-			</trans-unit>
-			<trans-unit id="editMobilizations.listMobilizedCommunityUsersHeader">
-				<source>Meine Vote-Wecker-Kontakte</source>
-				<target>Mes contacts pour l'alarme de vote</target>
-			</trans-unit>
-			<trans-unit id="editMobilizations.saved">
-				<source>Der Vote-Wecker wurde gestellt.</source>
-				<target>L'alarme de vote a été installée.</target>
-			</trans-unit>
-			<trans-unit id="editMobilizations.notSavedAlreadyMobilized">
-				<source>Der Vote-Wecker konnte nicht gestellt werden, da für diese Person bereits ein Vote-Wecker gestellt wurde.</source>
-				<target>L'alarme de vote n'a pas pu être installée, car elle a déjà activée pour cette personne.</target>
-			</trans-unit>
-			<trans-unit id="editMobilizations.notSavedEmailInvalid">
-				<source>Der Vote-Wecker konnte nicht gestellt werden, da die E-Mail-Adresse ungültig war.</source>
-				<target>L'alarme de vote n'a pas pu être installée, car l'adresse e-mail n'est pas valable.</target>
-			</trans-unit>
-			<trans-unit id="editMobilizations.removed">
-				<source>Der Vote-Wecker-Kontakt wurde gelöscht.</source>
-				<target>Ce contact pour l'alarme de vote a été supprimé.</target>
-			</trans-unit>
-			<trans-unit id="editMobilizations.permissionError">
-				<source>Du bist nicht berechtigt, diesen Vote-Wecker-Kontakt zu löschen.</source>
-				<target>Tu n'es pas autorisé-e à supprimer ce contact pour l'alarme de vote.</target>
-			</trans-unit>
-			<trans-unit id="editMobilizations.notAuthenticated">
-				<source>Nicht eingeloggt.</source>
-				<target>Non connecté.</target>
-			</trans-unit>
-
 			<trans-unit id="voting.yourOpinion">
 				<source><![CDATA[
 					Wie wirst du ab&shy;stimmen?
@@ -532,20 +450,6 @@
 				<source>Danke für deine Abmeldung. Du erhälst künftig keinen Vote-Wecker mehr per E-Mail.</source>
 				<target>Merci pour ton désabonnement. Tu ne recevras plus d’alarme de vote par email.</target>
 			</trans-unit>
-			<trans-unit id="unsubscribe.mobilizedCommunityUserDeleted">
-				<source>Danke für deine Abmeldung. Du erhälst künftig keinen Vote-Wecker mehr per E-Mail, sofern er dir von deinen Freunden nicht erneut gestellt wird.</source>
-				<target>Merci pour ton désabonnement. Tu ne recevras plus d’alarme de vote par email, à moins que des amis t’abonnent à nouveau.</target>
-			</trans-unit>
-
-
-			<trans-unit id="mobilizedCommunityUser.remove">
-				<source>löschen</source>
-				<target>supprimer</target>
-			</trans-unit>
-			<trans-unit id="mobilizedCommunityUser.save">
-				<source>Vote-Wecker stellen</source>
-				<target>Installer l'alarme de vote</target>
-			</trans-unit>
 
 			<trans-unit id="loginPanel.loggedInAs">
 				<source>eingeloggt als</source>
@@ -608,75 +512,9 @@
 				<source>Stelle deinen Vote-Wecker!</source>
 				<target>Installe ton alarme de vote!</target>
 			</trans-unit>
-			<trans-unit id="userFunctions.mobilizeUsers">
-				<source>Freunde mobilisieren</source>
-				<target>Mobilise des amis</target>
-			</trans-unit>
 			<trans-unit id="userOverview.years">
 				<source>Jahre</source>
 				<target>ans</target>
-			</trans-unit>
-
-			<trans-unit id="mobilizedWelcomeMail.hello">
-				<source>Hallo</source>
-				<target>Salut</target>
-			</trans-unit>
-			<trans-unit id="mobilizedWelcomeMail.text1">
-				<source>Ich habe für dich den Vote-Wecker auf easyvote.ch gestellt, damit du zukünftige Abstimmungen nicht mehr verschläfst oder versäumst. Die nächste Abstimmung findet am</source>
-				<target>J'ai installé pour toi une alarme de vote sur easyvote.ch, afin qu'à l'avenir tu ne manques plus les votations. Le prochain scrutin a lieu le</target>
-			</trans-unit>
-			<trans-unit id="mobilizedWelcomeMail.text2">
-				<source>statt. Weitere Informationen dazu wird dir easyvote per E-Mail zustellen. Stelle den Votewecker jetzt auch für deine Freunde!</source>
-				<target>statt. easyvote t'enverra par e-mail de plus amples informations sur le sujet. N'hésite pas à activer l'alarme de vote également pour tes amis!</target>
-			</trans-unit>
-			<trans-unit id="mobilizedWelcomeMail.bestRegards">
-				<source>Beste Grüsse,</source>
-				<target>Meilleures salutations,</target>
-			</trans-unit>
-			<trans-unit id="mobilizedWelcomeMail.subject">
-				<source>Ein Vote-Wecker wurde für dich gestellt</source>
-				<target>Une alarme de vote a été installée pour toi</target>
-			</trans-unit>
-
-			<trans-unit id="mobilizedUnsubscribedNotification.subject">
-				<source>geht nicht stimmen!</source>
-				<target>ne va pas voter!</target>
-			</trans-unit>
-			<trans-unit id="mobilizedUnsubscribedNotification.hello">
-				<source>Hallo</source>
-				<target>Salut</target>
-			</trans-unit>
-			<trans-unit id="mobilizedUnsubscribedNotification.text1">
-				<source>Wir haben schlechte Nachrichten: </source>
-				<target>Nous avons de mauvaises nouvelles: </target>
-			</trans-unit>
-			<trans-unit id="mobilizedUnsubscribedNotification.text2">
-				<source>hat den easyvote Vote-Wecker deaktiviert und wird an den Abstimmungen vom </source>
-				<target>a désactivé l’alarme easyvote et ne prendra probablement pas part aux votations du </target>
-			</trans-unit>
-			<trans-unit id="mobilizedUnsubscribedNotification.text3">
-				<source>vermutlich nicht teilnehmen. Falls du dies ändern möchtest, kannst du den Vote-Wecker für </source>
-				<target>. Si tu souhaites changer cela, tu peux réactiver l’alarme de vote pour </target>
-			</trans-unit>
-			<trans-unit id="mobilizedUnsubscribedNotification.text4">
-				<source><![CDATA[
-					auf <a href="http://www.easyvote.ch">www.easyvote.ch</a> erneut stellen.
-				]]></source>
-				<target><![CDATA[
-					sur <a href="http://www.easyvote.ch">www.easyvote.ch</a>.
-				]]></target>
-			</trans-unit>
-			<trans-unit id="mobilizedUnsubscribedNotification.text5">
-				<source><![CDATA[
-					<p>Herzlichen Dank, dass du mithilfst, die Stimmbeteiligung der Jungen zu erhöhen.</p>
-					<p>Beste Grüsse<br />
-					dein easyvote-Team</p>
-				]]></source>
-				<target><![CDATA[
-					<p>Nous te remercions chaleureusement de contribuer à augmenter la participation politique des jeunes.</p>
-					<p>Meilleures salutations<br />
-					Ton équipe easyvote</p>
-				]]></target>
 			</trans-unit>
 
 			<trans-unit id="error.1245107351">

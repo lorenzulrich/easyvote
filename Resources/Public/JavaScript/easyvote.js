@@ -269,28 +269,6 @@ var Easyvote = {
 		}).qtip('show');
 	},
 
-	loadMobilizedCommunityUsers: function() {
-		var ajaxDataUri = ajaxUri + '&tx_easyvote_communityajax[controller]=CommunityUser&tx_easyvote_communityajax[action]=listMobilizedCommunityUsers';
-		$.ajax({
-			url: ajaxDataUri,
-			success: function(data) {
-				$('#mobilizedCommunityUsers').html(data);
-			}
-		});
-	},
-	newMobilizedCommunityUser: function(callback) {
-		var ajaxDataUri = ajaxUri + '&tx_easyvote_communityajax[controller]=CommunityUser&tx_easyvote_communityajax[action]=newMobilizedCommunityUser';
-		$.ajax({
-			url: ajaxDataUri,
-			success: function(data) {
-				$('#newMobilizedCommunityUserPlaceholder').append(data);
-				if (typeof(callback) == 'function') {
-					callback();
-				}
-			}
-		});
-	},
-
 	/**
 	 * Get members of a party and open if a single member was requested
 	 *
@@ -310,27 +288,10 @@ var Easyvote = {
 };
 
 // The functions in namespace EasyvoteApp are invoked by the easyvote App
+// TODO no longer needed because functionality was removed, but stays here as an example of a phonebook integration
 var EasyvoteApp = {
 	insertAddress: function(id, lastName, firstName, email, phone) {
 		// phone not yet implemented
-		if (lastName + firstName + email === '') {
-			// don't try to submit empty rows
-			return true;
-		}
-		// remove empty rows
-		$.each($('.newMobilizedCommunityUser'), function() {
-			var $this = $(this);
-			if (!$this.find('.firstName').val() && !$this.find('.lastName').val() && !$this.find('.email').val()) {
-				$this.remove();
-			}
-		});
-		var callback = function() {
-			var $newMobilizedCommunityUser = $('.newMobilizedCommunityUser').last();
-			$newMobilizedCommunityUser.find('.firstName').val(firstName);
-			$newMobilizedCommunityUser.find('.lastName').val(lastName);
-			$newMobilizedCommunityUser.find('.email').val(email);
-		};
-		Easyvote.newMobilizedCommunityUser(callback);
 	}
 };
 
@@ -442,62 +403,6 @@ $(function() {
 			e.stopPropagation();
 		});
 	}
-
-	/* Load mobilized community users */
-	if ($('#mobilizedCommunityUsers').length > 0) {
-		// add 3 empty fields
-		Easyvote.newMobilizedCommunityUser();
-		Easyvote.newMobilizedCommunityUser();
-		Easyvote.newMobilizedCommunityUser();
-		Easyvote.loadMobilizedCommunityUsers();
-	}
-
-	/* Add new mobilized community user */
-	$body.on('click', '#newMobilizedCommunityUser', function(e) {
-		e.preventDefault();
-		Easyvote.newMobilizedCommunityUser();
-	});
-
-	/* Add a new mobilized community users */
-	$body.on('click', '#saveMobilizedCommunityUsers', function(e) {
-		e.preventDefault();
-		$('form.newMobilizedCommunityUser').each(function() {
-			var $this = $(this);
-			var firstName = $.trim($this.find('.firstName').val());
-			var lastName = $.trim($this.find('.lastName').val());
-			var email = $.trim($this.find('.email').val());
-			if (firstName + lastName + email === '') {
-				// don't try to submit empty rows
-				return true;
-			}
-			$(this).remove();
-			var $formData = $(this).serializeArray();
-			var ajaxDataUri = ajaxUri + '&tx_easyvote_communityajax[controller]=CommunityUser&tx_easyvote_communityajax[action]=createMobilizedCommunityUser';
-			$.ajax({
-				url: ajaxDataUri,
-				data: $formData,
-				success: function(returnValue) {
-					Easyvote.displayFlashMessage(returnValue);
-				}
-			});
-		});
-		Easyvote.loadMobilizedCommunityUsers();
-	});
-
-	/* Remove a mobilized community user */
-	$body.on('submit', '.removeMobilizedCommunityUser', function(e) {
-		e.preventDefault();
-		var $formData = $(this).serializeArray();
-		var ajaxDataUri = ajaxUri + '&tx_easyvote_communityajax[controller]=CommunityUser&tx_easyvote_communityajax[action]=removeMobilizedCommunityUser';
-		$.ajax({
-			url: ajaxDataUri,
-			data: $formData,
-			success: function(returnValue) {
-				Easyvote.displayFlashMessage(returnValue);
-				Easyvote.loadMobilizedCommunityUsers();
-			}
-		});
-	});
 
 	Easyvote.bindToolTips();
 	Easyvote.bindModals();
