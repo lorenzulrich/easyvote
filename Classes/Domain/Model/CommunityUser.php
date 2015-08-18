@@ -115,17 +115,17 @@ class CommunityUser extends FrontendUser {
 	protected $citySelection;
 
 	/**
-	 * Users that were subscribed for notifications by this user
+	 * Followers of this user
 	 *
-	 * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Visol\Easyvote\Domain\Model\CommunityUser>
+	 * @var ObjectStorage<\Visol\Easyvote\Domain\Model\CommunityUser>
 	 * @lazy
 	 */
-	protected $notificationRelatedUsers;
+	protected $followers;
 
 	/**
 	 * Panels added through EXT:easyvote_education
 	 *
-	 * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Visol\EasyvoteEducation\Domain\Model\Panel>
+	 * @var ObjectStorage<\Visol\EasyvoteEducation\Domain\Model\Panel>
 	 * @lazy
 	 */
 	protected $panels;
@@ -211,7 +211,7 @@ class CommunityUser extends FrontendUser {
 	protected $falImage;
 
 	/**
-	 * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<Visol\EasyvoteSmartvote\Domain\Model\PersonalElectionList>
+	 * @var ObjectStorage<Visol\EasyvoteSmartvote\Domain\Model\PersonalElectionList>
 	 */
 	protected $personalElectionLists;
 
@@ -232,48 +232,48 @@ class CommunityUser extends FrontendUser {
 	 * @return void
 	 */
 	protected function initStorageObjects() {
-		$this->notificationRelatedUsers = new ObjectStorage();
+		$this->followers = new ObjectStorage();
 		$this->panels = new ObjectStorage();
 		$this->personalElectionLists = new ObjectStorage();
 	}
 
 	/**
-	 * Adds a related user
+	 * Adds a follower
 	 *
 	 * @param \Visol\Easyvote\Domain\Model\CommunityUser $communityUser
 	 * @return void
 	 */
-	public function addNotificationRelatedUser(\Visol\Easyvote\Domain\Model\CommunityUser $communityUser) {
-		$this->notificationRelatedUsers->attach($communityUser);
+	public function addFollower(\Visol\Easyvote\Domain\Model\CommunityUser $communityUser) {
+		$this->followers->attach($communityUser);
 	}
 
 	/**
-	 * Removes a related user
+	 * Removes a follower
 	 *
 	 * @param \Visol\Easyvote\Domain\Model\CommunityUser $communityUser
 	 * @return void
 	 */
-	public function removeNotificationRelatedUser(\Visol\Easyvote\Domain\Model\CommunityUser $communityUser) {
-		$this->notificationRelatedUsers->detach($communityUser);
+	public function removeFollower(\Visol\Easyvote\Domain\Model\CommunityUser $communityUser) {
+		$this->followers->detach($communityUser);
 	}
 
 	/**
-	 * Returns the related users
+	 * Returns the followers
 	 *
-	 * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Visol\Easyvote\Domain\Model\CommunityUser> $notificationRelatedUsers
+	 * @return ObjectStorage<\Visol\Easyvote\Domain\Model\CommunityUser> $followers
 	 */
-	public function getNotificationRelatedUsers() {
-		return $this->notificationRelatedUsers;
+	public function getFollowers() {
+		return $this->followers;
 	}
 
 	/**
-	 * Sets the related users
+	 * Sets the followers
 	 *
-	 * @param $notificationRelatedUsers \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Visol\Easyvote\Domain\Model\CommunityUser>
+	 * @param $followers ObjectStorage<\Visol\Easyvote\Domain\Model\CommunityUser>
 	 * @return void
 	 */
-	public function setNotificationRelatedUsers(\TYPO3\CMS\Extbase\Persistence\ObjectStorage $notificationRelatedUsers) {
-		$this->notificationRelatedUsers = $notificationRelatedUsers;
+	public function setFollowers(ObjectStorage $followers) {
+		$this->followers = $followers;
 	}
 
 	/**
@@ -480,7 +480,7 @@ class CommunityUser extends FrontendUser {
 	}
 
 	/**
-	 * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Visol\EasyvoteEducation\Domain\Model\Panel> $panels
+	 * @return ObjectStorage<\Visol\EasyvoteEducation\Domain\Model\Panel> $panels
 	 */
 	public function getPanels() {
 		return $this->panels;
@@ -620,14 +620,14 @@ class CommunityUser extends FrontendUser {
 	}
 
 	/**
-	 * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage
+	 * @return ObjectStorage
 	 */
 	public function getPersonalElectionLists() {
 		return $this->personalElectionLists;
 	}
 
 	/**
-	 * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage $personalElectionList
+	 * @param ObjectStorage $personalElectionList
 	 * @return $this
 	 */
 	public function setPersonalElectionLists($personalElectionList) {
