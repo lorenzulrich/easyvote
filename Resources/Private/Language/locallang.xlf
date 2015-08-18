@@ -389,6 +389,20 @@
 				]]></source>
 			</trans-unit>
 
+			<trans-unit id="anonymous">
+				<source>anonym</source>
+			</trans-unit>
+
+			<trans-unit id="mobilizations.followers">
+				<source>Deine Follower</source>
+			</trans-unit>
+			<trans-unit id="mobilizations.follower.from">
+				<source>aus</source>
+			</trans-unit>
+			<trans-unit id="mobilizations.follower.years">
+				<source>Jahre</source>
+			</trans-unit>
+
 
 			<trans-unit id="unsubscribe.header">
 				<source>Vote-Wecker-Abmeldung</source>

@@ -1,0 +1,15 @@
+<f:if condition="{user.privacyProtection}">
+	<f:then>
+		<f:image class="user-image" alt="{f:translate(key: 'anonymous')}" src="/typo3conf/ext/easyvote/Resources/Public/Images/profilepicture-placeholder.png" width="{size}" height="{size}c"/>
+	</f:then>
+	<f:else>
+		<f:if condition="{user.falImage}">
+			<f:then>
+				<f:image class="user-image" alt="{user.firstName} {user.lastName}" src="{user.falImage.uid}" treatIdAsReference="1" width="{size}" height="{size}c"/>
+			</f:then>
+			<f:else>
+				<f:image class="user-image" alt="{user.firstName} {user.lastName}" src="/typo3conf/ext/easyvote/Resources/Public/Images/profilepicture-placeholder.png" width="{size}" height="{size}c"/>
+			</f:else>
+		</f:if>
+	</f:else>
+</f:if>

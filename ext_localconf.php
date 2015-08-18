@@ -111,11 +111,11 @@ if (!defined('TYPO3_MODE')) {
 	'Visol.' . $_EXTKEY,
 	'Mobilize',
 	array(
-		'CommunityUser' => 'editMobilizations',
+		'CommunityUser' => 'mobilizations',
 	),
 	// non-cacheable actions
 	array(
-		'CommunityUser' => 'editMobilizations',
+		'CommunityUser' => 'mobilizations',
 	)
 );
 

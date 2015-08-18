@@ -1,0 +1,21 @@
+<f:for each="{followers}" as="follower">
+	<div class="row follower">
+		<div class="col-xs-4 col-sm-3 col-md-2">
+			<f:render partial="CommunityUser/Mobilizations/ImageRespectingPrivacy" arguments="{user: follower, size: 250}" />
+		</div>
+		<div class="col-xs-8 col-sm-9 col-md-10">
+			<f:if condition="{follower.privacyProtection}">
+				<f:then>
+					<span class="name"><f:translate key="anonymous" /></span>
+				</f:then>
+				<f:else>
+					<span class="name">{follower.firstName} <f:format.crop maxCharacters="1" append=".">{follower.lastName}</f:format.crop></span>
+					<span class="additional">
+						<f:if condition="{follower.citySelection}"><f:translate key="mobilizations.follower.from" /> {follower.citySelection.name}</f:if>
+						<f:if condition="{follower.age}"> | {follower.age} <f:translate key="mobilizations.follower.years" /></f:if>
+					</span>
+				</f:else>
+			</f:if>
+		</div>
+	</div>
+</f:for>

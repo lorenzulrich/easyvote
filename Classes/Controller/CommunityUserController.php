@@ -364,13 +364,6 @@ class CommunityUserController extends \Visol\Easyvote\Controller\AbstractControl
 	}
 
 	/**
-	 * action editMobilizations
-	 */
-	public function editMobilizationsAction() {
-		// TODO
-	}
-
-	/**
 	 * action updateNotifications
 	 *
 	 * @param CommunityUser $communityUser
@@ -432,6 +425,16 @@ class CommunityUserController extends \Visol\Easyvote\Controller\AbstractControl
 			$message = LocalizationUtility::translate('unsubscribe.invalidRequest', 'easyvote');
 		}
 		$this->view->assign('message', $message);
+	}
+
+	/**
+	 * action editMobilizations
+	 */
+	public function mobilizationsAction() {
+		$communityUser = $this->getLoggedInUser();
+		if ($communityUser instanceof CommunityUser) {
+			$this->view->assign('communityUser', $communityUser);
+		}
 	}
 
 	/**

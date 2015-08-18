@@ -1,0 +1,11 @@
+{namespace v=Tx_Vhs_ViewHelpers}
+{namespace ev=Tx_Easyvote_ViewHelpers}
+
+<div class="content-box">
+	TODO
+</div>
+
+<div class="content-box" id="community-user-followers">
+	<h2><f:translate key="mobilizations.followers" /> (<f:count>{communityUser.followers}</f:count>)</h2>
+	<f:render partial="CommunityUser/Mobilizations/FollowerList" arguments="{followers: communityUser.followers}" />
+</div>
