@@ -117,7 +117,7 @@ class CommunityUser extends FrontendUser {
 	/**
 	 * Followers of this user
 	 *
-	 * @var ObjectStorage<\Visol\Easyvote\Domain\Model\CommunityUser>
+	 * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Visol\Easyvote\Domain\Model\CommunityUser>
 	 * @lazy
 	 */
 	protected $followers;
@@ -125,7 +125,7 @@ class CommunityUser extends FrontendUser {
 	/**
 	 * Panels added through EXT:easyvote_education
 	 *
-	 * @var ObjectStorage<\Visol\EasyvoteEducation\Domain\Model\Panel>
+	 * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Visol\EasyvoteEducation\Domain\Model\Panel>
 	 * @lazy
 	 */
 	protected $panels;
@@ -211,7 +211,7 @@ class CommunityUser extends FrontendUser {
 	protected $falImage;
 
 	/**
-	 * @var ObjectStorage<Visol\EasyvoteSmartvote\Domain\Model\PersonalElectionList>
+	 * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<Visol\EasyvoteSmartvote\Domain\Model\PersonalElectionList>
 	 */
 	protected $personalElectionLists;
 
@@ -260,7 +260,7 @@ class CommunityUser extends FrontendUser {
 	/**
 	 * Returns the followers
 	 *
-	 * @return ObjectStorage<\Visol\Easyvote\Domain\Model\CommunityUser> $followers
+	 * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Visol\Easyvote\Domain\Model\CommunityUser> $followers
 	 */
 	public function getFollowers() {
 		return $this->followers;
@@ -269,7 +269,7 @@ class CommunityUser extends FrontendUser {
 	/**
 	 * Sets the followers
 	 *
-	 * @param $followers ObjectStorage<\Visol\Easyvote\Domain\Model\CommunityUser>
+	 * @param $followers \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Visol\Easyvote\Domain\Model\CommunityUser>
 	 * @return void
 	 */
 	public function setFollowers(ObjectStorage $followers) {
@@ -480,7 +480,7 @@ class CommunityUser extends FrontendUser {
 	}
 
 	/**
-	 * @return ObjectStorage<\Visol\EasyvoteEducation\Domain\Model\Panel> $panels
+	 * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Visol\EasyvoteEducation\Domain\Model\Panel> $panels
 	 */
 	public function getPanels() {
 		return $this->panels;
@@ -620,14 +620,14 @@ class CommunityUser extends FrontendUser {
 	}
 
 	/**
-	 * @return ObjectStorage
+	 * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage
 	 */
 	public function getPersonalElectionLists() {
 		return $this->personalElectionLists;
 	}
 
 	/**
-	 * @param ObjectStorage $personalElectionList
+	 * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage $personalElectionList
 	 * @return $this
 	 */
 	public function setPersonalElectionLists($personalElectionList) {
