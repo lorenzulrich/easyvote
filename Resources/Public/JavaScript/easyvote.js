@@ -33,6 +33,13 @@ $(function() {
 		refresh: true
 	});
 
+	/* Cancel election supporters filter */
+	$body.on('click', '#cancelElectionSupportersFilter', function() {
+		var $electionSupportersFilter = $('#electionSupportersFilter');
+		$electionSupportersFilter.trigger('reset');
+		$electionSupportersFilter.find('.citySelection').select2('val', '');
+		$electionSupportersFilter.trigger('submit');
+	});
 
 });
 
@@ -302,6 +309,8 @@ var Easyvote = {
 			Easyvote.bindToolTips();
 			/* Lazy load images */
 			$("img.lazy").lazyload();
+			Easyvote.bindPostalCodeSelection();
+
 		});
 	}
 

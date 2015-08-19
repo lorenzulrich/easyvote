@@ -432,6 +432,12 @@
 			<trans-unit id="mobilizations.directory.filter.noResults">
 				<source>Es wurden keine Personen gefunden, die den Kriterien entsprechen.</source>
 			</trans-unit>
+			<trans-unit id="mobilizations.directory.filteredView">
+				<source>Gefilterte Ansicht (%s Resultate)</source>
+			</trans-unit>
+			<trans-unit id="mobilizations.directory.cancelFilter">
+				<source>Filter entfernen</source>
+			</trans-unit>
 
 
 			<trans-unit id="unsubscribe.header">

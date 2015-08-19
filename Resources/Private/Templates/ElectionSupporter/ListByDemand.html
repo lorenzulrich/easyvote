@@ -1,20 +1,6 @@
-<f:comment>
-	<div class="content-box">
-		<f:comment>
-			<h2><f:translate key="party.members" /></h2>
-		</f:comment>
-		<p><f:translate key="party.numberOfMembers" arguments="{0: '{allElectionSupporters -> f:count()}'}" /></p>
-		<f:if condition="{pendingMembers}">
-			<p>
-				<f:translate key="party.numberOfPendingMembers" arguments="{0: '{pendingMembers -> f:count()}'}" /><br />
-				<button class="btn btn-primary btn-sm" type="button" id="setPendingMembersFilter"><f:translate key="party.pendingMembers.filter" /></button>
-			</p>
-		</f:if>
-	</div>
-	<f:if condition="{allElectionSupporters -> f:count()} > {filteredElectionSupporters -> f:count()}">
-		<button class="btn btn-primary btn-fullwidth" type="button" id="cancelMembersFilter"><f:translate key="party.filteredView" arguments="{0: '{filteredElectionSupporters -> f:count()}'}" /> | <f:translate key="party.pendingMembers.cancelFilter" /></button>
-	</f:if>
-</f:comment>
+<f:if condition="{allElectionSupporters -> f:count()} > {filteredElectionSupporters -> f:count()}">
+	<button class="btn btn-primary btn-fullwidth" type="button" id="cancelElectionSupportersFilter"><f:translate key="mobilizations.directory.filteredView" arguments="{0: '{filteredElectionSupporters -> f:count()}'}" /> | <f:translate key="mobilizations.directory.cancelFilter" /></button>
+</f:if>
 
 <f:if condition="{filteredElectionSupporters}">
 	<f:then>

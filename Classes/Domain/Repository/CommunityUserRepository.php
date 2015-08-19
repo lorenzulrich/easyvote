@@ -236,13 +236,13 @@ class CommunityUserRepository extends \TYPO3\CMS\Extbase\Domain\Repository\Front
 			if (isset($demand['query'])) {
 				// query constraint
 				$queryString = '%' . $GLOBALS['TYPO3_DB']->escapeStrForLike($GLOBALS['TYPO3_DB']->quoteStr($demand['query'], $this->tableName), $this->tableName) . '%';
-				$constraints[] = $query->logicalOr(
-					$query->like('firstName', $queryString, FALSE),
-					$query->like('lastName', $queryString, FALSE)
-				);
+				$constraints[] = $query->like('firstName', $queryString, FALSE);
 			}
 
-			// TODO use city constraint
+			if (isset($demand['city']) && (int)$demand['city'] > 0) {
+				// city constraint
+				$constraints[] = $query->equals('citySelection', (int)$demand['city']);
+			}
 
 			if (isset($demand['kanton']) && (int)$demand['kanton'] > 0) {
 				// kanton constraint
