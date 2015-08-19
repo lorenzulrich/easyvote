@@ -206,6 +206,12 @@ class CommunityUser extends FrontendUser {
 	protected $isPartyAdministrator;
 
 	/**
+	 * @var \boolean
+	 * @transient
+	 */
+	protected $isCommunityFacebookUser;
+
+	/**
 	 * @var \TYPO3\CMS\Extbase\Domain\Model\FileReference
 	 */
 	protected $falImage;
@@ -527,6 +533,15 @@ class CommunityUser extends FrontendUser {
 	public function isPendingPoliticianOrPolitician() {
 		return $this->isPendingPolitician() || $this->isPolitician();
 	}
+
+	/**
+	 * @return boolean
+	 */
+	public function isCommunityFacebookUser() {
+		return $this->communityUserService->hasRole($this, 'communityFacebook');
+	}
+
+
 
 	/**
 	 * @return Party
