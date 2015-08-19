@@ -8,7 +8,14 @@
 				<f:image class="user-image" alt="{user.firstName} {user.lastName}" src="{user.falImage.uid}" treatIdAsReference="1" width="{size}" height="{size}c"/>
 			</f:then>
 			<f:else>
-				<f:image class="user-image" alt="{user.firstName} {user.lastName}" src="/typo3conf/ext/easyvote/Resources/Public/Images/profilepicture-placeholder.png" width="{size}" height="{size}c"/>
+				<f:if condition="{user.communityFacebookUser}">
+					<f:then>
+						<img class="user-image" src="https://graph.facebook.com/{user.username}/picture?width={size}&height={size}" height="{size}" width="{size}" alt="{user.firstName} {user.lastName}">
+					</f:then>
+					<f:else>
+						<f:image class="user-image" alt="{user.firstName} {user.lastName}" src="/typo3conf/ext/easyvote/Resources/Public/Images/profilepicture-placeholder.png" width="{size}" height="{size}c"/>
+					</f:else>
+				</f:if>
 			</f:else>
 		</f:if>
 	</f:else>

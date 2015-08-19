@@ -402,6 +402,36 @@
 			<trans-unit id="mobilizations.follower.years">
 				<source>Jahre</source>
 			</trans-unit>
+			<trans-unit id="mobilizations.directory.from">
+				<source>aus</source>
+			</trans-unit>
+			<trans-unit id="mobilizations.directory.years">
+				<source>Jahre</source>
+			</trans-unit>
+			<trans-unit id="mobilizations.directory.follower">
+				<source>Follower</source>
+			</trans-unit>
+			<trans-unit id="mobilizations.directory.follow">
+				<source>Folgen</source>
+			</trans-unit>
+			<trans-unit id="mobilizations.directory.filter.title">
+				<source>Wahlhelfer finden</source>
+			</trans-unit>
+			<trans-unit id="mobilizations.directory.filter.name">
+				<source>Name</source>
+			</trans-unit>
+			<trans-unit id="mobilizations.directory.filter.city">
+				<source>Ort</source>
+			</trans-unit>
+			<trans-unit id="mobilizations.directory.filter.kanton">
+				<source>Kanton</source>
+			</trans-unit>
+			<trans-unit id="mobilizations.directory.filter.submit">
+				<source>Filtern</source>
+			</trans-unit>
+			<trans-unit id="mobilizations.directory.filter.noResults">
+				<source>Es wurden keine Personen gefunden, die den Kriterien entsprechen.</source>
+			</trans-unit>
 
 
 			<trans-unit id="unsubscribe.header">

@@ -60,6 +60,7 @@ plugin.tx_easyvote {
 		votingPid = 139
 		communityVoteweckerPid = 199
 		communityMobilizePid = 200
+		electionSupporterPid = 339
 		communityHomePid = 192
 		communityEditProfilePid = 193
 		siteHomePid = 4

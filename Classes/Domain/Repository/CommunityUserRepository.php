@@ -22,6 +22,13 @@ class CommunityUserRepository extends \TYPO3\CMS\Extbase\Domain\Repository\Front
 	);
 
 	/**
+	 * Name of the table for this repository
+	 *
+	 * @var string
+	 */
+	protected $tableName = 'fe_users';
+
+	/**
 	 * @var \Visol\Easyvote\Service\CommunityUserService
 	 * @inject
 	 */
@@ -120,14 +127,13 @@ class CommunityUserRepository extends \TYPO3\CMS\Extbase\Domain\Repository\Front
 	 */
 	public function findPoliticiansByPartyAndDemand(\Visol\Easyvote\Domain\Model\Party $party, $demand) {
 		$query = $this->createQuery();
-		$communityUsersTable = 'fe_users';
 		$constraints = [];
 		$constraints[] = $query->equals('party', $party);
 
 		if (is_array($demand)) {
 			if (isset($demand['query'])) {
 				// query constraint
-				$queryString = '%' . $GLOBALS['TYPO3_DB']->escapeStrForLike($GLOBALS['TYPO3_DB']->quoteStr($demand['query'], $communityUsersTable), $communityUsersTable) . '%';
+				$queryString = '%' . $GLOBALS['TYPO3_DB']->escapeStrForLike($GLOBALS['TYPO3_DB']->quoteStr($demand['query'], $this->tableName), $this->tableName) . '%';
 				$constraints[] = $query->logicalOr(
 					$query->like('firstName', $queryString, FALSE),
 					$query->like('lastName', $queryString, FALSE),
@@ -207,6 +213,58 @@ class CommunityUserRepository extends \TYPO3\CMS\Extbase\Domain\Repository\Front
 			)
 		);
 		return $query->execute();
+	}
+
+	/**
+	 * Find all or filtered election supporters
+	 *
+	 * @param array|NULL $demand
+	 * @return array|\TYPO3\CMS\Extbase\Persistence\QueryResultInterface
+	 */
+	public function findElectionSupporters($demand = NULL) {
+		$query = $this->createQuery();
+		$constraints = [];
+		// TODO make sure relation field is updated
+		// Only select users with followers
+		$constraints[] = $query->logicalNot(
+			$query->equals('followers', 0)
+		);
+		// Make sure user is a Community user (exclude deleted users)
+		$constraints[] = $query->contains('usergroup', $this->communityUserService->getUserGroupUid('community'));
+
+		if (is_array($demand)) {
+			if (isset($demand['query'])) {
+				// query constraint
+				$queryString = '%' . $GLOBALS['TYPO3_DB']->escapeStrForLike($GLOBALS['TYPO3_DB']->quoteStr($demand['query'], $this->tableName), $this->tableName) . '%';
+				$constraints[] = $query->logicalOr(
+					$query->like('firstName', $queryString, FALSE),
+					$query->like('lastName', $queryString, FALSE)
+				);
+			}
+
+			// TODO use city constraint
+
+			if (isset($demand['kanton']) && (int)$demand['kanton'] > 0) {
+				// kanton constraint
+				$constraints[] = $query->equals('citySelection.kanton', (int)$demand['kanton']);
+			}
+		}
+
+		if (!empty($constraints)) {
+			$query->matching(
+				$query->logicalAnd($constraints)
+			);
+		}
+
+		// Sort by number of followers
+		$query->setOrderings(array(
+			'followers' => \TYPO3\CMS\Extbase\Persistence\QueryInterface::ORDER_DESCENDING,
+			'lastName' => \TYPO3\CMS\Extbase\Persistence\QueryInterface::ORDER_ASCENDING,
+			'firstName' => \TYPO3\CMS\Extbase\Persistence\QueryInterface::ORDER_ASCENDING,
+		));
+
+		return $query->execute();
+
 	}
 
 }

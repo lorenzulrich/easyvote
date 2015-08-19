@@ -1,0 +1,20 @@
+<div class="content-box supporter-filter">
+	<h2><f:translate key="mobilizations.directory.filter.title" /></h2>
+	<f:form id="memberFilter" additionalAttributes="{data-role: 'ajaxSubmit', data-action: 'electionsupporters', data-target: '.election-supporters'}">
+		<div class="form-group">
+			<label for="supporterFilter-search">{f:translate(key:'mobilizations.directory.filter.name')}</label>
+			<f:form.textfield id="supporterFilter-search" class="form-control" name="demand[query]" value="{demand.query}" />
+		</div>
+		<div class="form-group">
+			<label for="supporterFilter-city">{f:translate(key:'mobilizations.directory.filter.city')}</label>
+			@TODO
+		</div>
+		<div class="form-group">
+			<label for="supporterFilter-kanton">{f:translate(key:'mobilizations.directory.filter.kanton')}</label>
+			<f:form.select id="supporterFilter-kanton" class="form-control" name="demand[kanton]" value="{demand.kanton}" options="{kantons}" optionLabelField="name" optionValueField="uid" prependOptionLabel="" prependOptionValue="0" />
+		</div>
+		<div class="form-group">
+			<button class="btn btn-primary" type="submit"><f:translate key="mobilizations.directory.filter.submit" /></button>
+		</div>
+	</f:form>
+</div>

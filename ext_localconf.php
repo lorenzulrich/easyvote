@@ -147,6 +147,20 @@ if (!defined('TYPO3_MODE')) {
 	)
 );
 
+/* Election supporter functions */
+\TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
+	'Visol.' . $_EXTKEY,
+	'Electionsupporterfunctions',
+	array(
+		'ElectionSupporter' => 'electionSupporterDirectory,filter,listByDemand',
+	),
+	// non-cacheable actions
+	array(
+		// TODO cache what can be cached
+		'ElectionSupporter' => 'electionSupporterDirectory,filter,listByDemand',
+	)
+);
+
 /* Command Controllers */
 if (TYPO3_MODE === 'BE') {
 	$GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['extbase']['commandControllers'][] = 'Visol\\Easyvote\\Command\\SmsMessageProcessorCommandController';

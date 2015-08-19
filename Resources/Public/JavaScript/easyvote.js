@@ -284,6 +284,23 @@ var Easyvote = {
 			}
 			Easyvote.bindToolTips();
 		});
+	},
+
+	/**
+	 * Get members of a party and open if a single member was requested
+	 *
+	 * @param openPartyMember
+	 */
+	getElectionSupporters: function(openPartyMember) {
+		EasyvoteGeneral.getData('/routing/electionsupporters').done(function(data) {
+			$('.election-supporters').html(data);
+			//if (openPartyMember) {
+			//	var elementId = '#member-item-' + openPartyMember;
+			//	$(elementId).find('.toggle i').trigger('click');
+			//	Easyvote.scrollToElement(elementId);
+			//}
+			Easyvote.bindToolTips();
+		});
 	}
 };
 
