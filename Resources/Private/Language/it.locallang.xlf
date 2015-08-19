@@ -399,7 +399,7 @@
 				<target>Informazioni sulla tua formazione scolastica (concerne unicamente il grado secondario II)</target>
 			</trans-unit>
 			<trans-unit id="editProfile.politician.educationType">
-				<target>Filiera</target>
+				<target>Tipo di scuola</target>
 			</trans-unit>
 			<trans-unit id="editProfile.politician.educationType.grammarSchool">
 				<target>Liceo</target>
@@ -428,6 +428,15 @@
 			</trans-unit>
 			<trans-unit id="editProfile.teacher.enabled">
 				<target>Sono insegnante</target>
+			</trans-unit>
+			<trans-unit id="editProfile.teacher.organization">
+				<target>Nome della scuola</target>
+			</trans-unit>
+			<trans-unit id="editProfile.teacher.organization_website">
+				<target>Sito internet della scuola</target>
+			</trans-unit>
+			<trans-unit id="editProfile.teacher.organization_city">
+				<target>Luogo della scuola</target>
 			</trans-unit>
 			<trans-unit id="editProfile.teacherFunctionsEnabled">
 				<target><![CDATA[
