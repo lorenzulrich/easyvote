@@ -84,6 +84,26 @@ class AbstractController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControl
 	}
 
 	/**
+	 * Debugs a SQL query from a QueryResult
+	 *
+	 * @param \TYPO3\CMS\Extbase\Persistence\Generic\QueryResult $queryResult
+	 * @param boolean $explainOutput
+	 * @return void
+	 */
+	public function debugQuery(\TYPO3\CMS\Extbase\Persistence\Generic\QueryResult $queryResult, $explainOutput = FALSE) {
+		$GLOBALS['TYPO3_DB']->debugOuput = 2;
+		if ($explainOutput) {
+			$GLOBALS['TYPO3_DB']->explainOutput = TRUE;
+		}
+		$GLOBALS['TYPO3_DB']->store_lastBuiltQuery = TRUE;
+		$queryResult->toArray();
+		var_dump($GLOBALS['TYPO3_DB']->debug_lastBuiltQuery);
+		$GLOBALS['TYPO3_DB']->store_lastBuiltQuery = FALSE;
+		$GLOBALS['TYPO3_DB']->explainOutput = FALSE;
+		$GLOBALS['TYPO3_DB']->debugOuput = FALSE;
+	}
+
+	/**
 	 * Returns an instance of the Frontend object.
 	 *
 	 * @return \TYPO3\CMS\Frontend\Controller\TypoScriptFrontendController
