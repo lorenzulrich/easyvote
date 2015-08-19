@@ -300,8 +300,11 @@ var Easyvote = {
 			//	Easyvote.scrollToElement(elementId);
 			//}
 			Easyvote.bindToolTips();
+			/* Lazy load images */
+			$("img.lazy").lazyload();
 		});
 	}
+
 };
 
 // The functions in namespace EasyvoteApp are invoked by the easyvote App

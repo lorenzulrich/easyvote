@@ -5,12 +5,17 @@
 	<f:else>
 		<f:if condition="{user.falImage}">
 			<f:then>
-				<f:image class="user-image" alt="{user.firstName} {user.lastName}" src="{user.falImage.uid}" treatIdAsReference="1" width="{size}" height="{size}c"/>
+				<img class="user-image lazy" alt="{user.firstName} {user.lastName}" width="{size}" height="{size}"
+					 src="/typo3conf/ext/easyvote/Resources/Public/Images/profilepicture-placeholder.png"
+					 data-original="{f:uri.image(src: '{user.falImage.uid}', treatIdAsReference: 1, width: '{size}' height: '{size}c')}" />
 			</f:then>
 			<f:else>
 				<f:if condition="{user.communityFacebookUser}">
 					<f:then>
-						<img class="user-image" src="https://graph.facebook.com/{user.username}/picture?width={size}&height={size}" height="{size}" width="{size}" alt="{user.firstName} {user.lastName}">
+						<img class="user-image lazy"
+							 src="/typo3conf/ext/easyvote/Resources/Public/Images/profilepicture-placeholder.png"
+							 data-original="https://graph.facebook.com/{user.username}/picture?width={size}&height={size}"
+							 height="{size}" width="{size}" alt="{user.firstName} {user.lastName}" />
 					</f:then>
 					<f:else>
 						<f:image class="user-image" alt="{user.firstName} {user.lastName}" src="/typo3conf/ext/easyvote/Resources/Public/Images/profilepicture-placeholder.png" width="{size}" height="{size}c"/>
