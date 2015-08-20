@@ -681,6 +681,13 @@ class CommunityUser extends FrontendUser {
 	}
 
 	/**
+	 * @return boolean
+	 */
+	public function getPrivacyProtection() {
+		return $this->privacyProtection;
+	}
+
+	/**
 	 * @param boolean $privacyProtection
 	 */
 	public function setPrivacyProtection($privacyProtection) {

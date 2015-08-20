@@ -89,11 +89,24 @@ class ElectionSupporterController extends \Visol\Easyvote\Controller\AbstractCon
 
 		$this->view->assign('demand', $demand);
 
-		$filteredElectionSupporters = $this->communityUserRepository->findElectionSupporters($demand);
+		// Check if the current user has a Wahlhelfer themselves
+		$excludeSupporter = NULL;
+		if ($communityUser = $this->getLoggedInUser()) {
+			if (!is_null($communityUser->getCommunityUser())) {
+				$excludeSupporter = $communityUser->getCommunityUser();
+				// This is the Wahlhelfer of the current user
+				$this->view->assign('userElectionSupporter', $excludeSupporter);
+			}
+		}
+
+		$filteredElectionSupporters = $this->communityUserRepository->findElectionSupporters($demand, $excludeSupporter);
 		$this->view->assign('filteredElectionSupporters', $filteredElectionSupporters);
 
-		$allElectionSupporters = $this->communityUserRepository->findElectionSupporters();
-		$this->view->assign('allElectionSupporters', $allElectionSupporters);
+		// Results are filtered if there are more supporters in total than in the filtered result
+		$allElectionSupporters = $this->communityUserRepository->findElectionSupporters(NULL, $excludeSupporter);
+		$isFiltered = $allElectionSupporters->count() > $filteredElectionSupporters->count();
+		$this->view->assign('isFiltered', $isFiltered);
+
 	}
 
 	/**

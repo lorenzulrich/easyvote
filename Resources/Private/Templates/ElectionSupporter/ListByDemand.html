@@ -1,113 +1,15 @@
-<f:if condition="{allElectionSupporters -> f:count()} > {filteredElectionSupporters -> f:count()}">
+<f:if condition="{isFiltered}">
 	<button class="btn btn-primary btn-fullwidth" type="button" id="cancelElectionSupportersFilter"><f:translate key="mobilizations.directory.filteredView" arguments="{0: '{filteredElectionSupporters -> f:count()}'}" /> | <f:translate key="mobilizations.directory.cancelFilter" /></button>
+</f:if>
+
+<f:if condition="{userElectionSupporter}">
+	<f:render partial="CommunityUser/Mobilizations/ElectionSupporter" arguments="{supporter:userElectionSupporter, isUserElectionSupporter: 1}" />
 </f:if>
 
 <f:if condition="{filteredElectionSupporters}">
 	<f:then>
 		<f:for each="{filteredElectionSupporters}" as="supporter">
-			<div class="content-box supporter" id="supporter-item-{supporter.uid}">
-				<div class="box-teaser">
-					<div class="row">
-						<div class="col-xs-3 col-md-3">
-							<f:render partial="CommunityUser/Mobilizations/ImageRespectingPrivacy" arguments="{user:supporter, size: 300}" />
-						</div>
-						<div class="col-xs-9 col-md-9">
-							<div class="actions">
-								<f:comment>
-									@TODO Share Icon
-								</f:comment>
-							</div>
-							<h2>
-								<span class="name">{supporter.firstName} <f:format.crop maxCharacters="1" append="." respectHtml="FALSE">{supporter.lastName}</f:format.crop></span>
-								<span class="additional">
-									<f:if condition="{supporter.citySelection}"><f:translate key="mobilizations.directory.from" /> {supporter.citySelection.name}</f:if>
-									<f:if condition="{supporter.age}"> | {supporter.age} <f:translate key="mobilizations.directory.years" /></f:if>
-								</span>
-							</h2>
-							<div class="followers">
-								<f:for each="{supporter.followers}" as="follower" iteration="followerIterator">
-									<f:if condition="{followerIterator.cycle} < 11">
-										<f:then>
-											<f:render partial="CommunityUser/Mobilizations/ImageRespectingPrivacy" arguments="{user:follower, size: 50}" />
-										</f:then>
-									</f:if>
-								</f:for>
-							</div>
-							<div class="row">
-								<div class="col-sm-6">
-									<span class="number"><f:count>{supporter.followers}</f:count></span> <f:translate key="mobilizations.directory.follower" />
-								</div>
-								<div class="col-sm-6">
-									<f:comment>
-										<button class="btn btn-primary btn-fullwidth" href="#">{f:translate(key: 'mobilizations.directory.follow')}</button>
-									</f:comment>
-								</div>
-							</div>
-<f:comment>
-							<f:if condition="{supporter.pendingPolitician}">
-								<f:then>
-									<button class="btn btn-primary" type="button" data-role="ajaxObjectAction" data-confirm="true" data-prefix="ev" data-controller="PartyMember" data-action="decline" data-uid="{supporter.uid}">
-										<f:translate key="party.pendingMember.decline" />
-									</button>
-									<div class="hidden" id="modal-decline-{supporter.uid}">
-										<p><f:translate key="party.pendingMember.decline.modal.information" arguments="{0: member.firstName, 1: member.lastName}" /></p>
-										<button class="pull-left btn btn-primary button-cancel"><f:translate key="party.pendingMember.decline.modal.cancel" /></button>
-										<button class="pull-right btn btn-primary button-returntrue"><f:translate key="party.pendingMember.decline.modal.decline" /></button>
-									</div>
-									<button class="btn btn-primary" type="button" data-role="ajaxObjectAction" data-confirm="true" data-prefix="ev" data-controller="PartyMember" data-action="confirm" data-uid="{supporter.uid}">
-										<f:translate key="party.pendingMember.confirm" />
-									</button>
-									<div class="hidden" id="modal-confirm-{supporter.uid}">
-										<f:if condition="{supporter.verificationCode}">
-											<f:then>
-												<p><f:translate key="party.pendingMember.confirm.modal.informationVerificationCode" arguments="{0: member.verificationCode}" /></p>
-											</f:then>
-											<f:else>
-												<p><f:translate key="party.pendingMember.confirm.modal.informationNoVerificationCode" /></p>
-											</f:else>
-										</f:if>
-										<button class="pull-left btn btn-primary button-cancel"><f:translate key="party.pendingMember.confirm.modal.cancel" /></button>
-										<button class="pull-right btn btn-primary button-returntrue"><f:translate key="party.pendingMember.confirm.modal.confirm" /></button>
-									</div>
-								</f:then>
-								<f:else>
-									<f:if condition="{supporter.partyAdministrator}">
-										<f:then>
-											<f:if condition="{member} == {communityUser}">
-												<f:then>
-													<p><f:translate key="party.member.isYou" /></p>
-												</f:then>
-												<f:else>
-													<p><f:translate key="party.member.isAdmin" /></p>
-												</f:else>
-											</f:if>
-										</f:then>
-										<f:else>
-											<button class="btn btn-primary" type="button" data-role="ajaxObjectAction" data-confirm="true" data-prefix="ev" data-controller="PartyMember" data-action="grantAdmin" data-uid="{supporter.uid}">
-												<f:translate key="party.member.grantAdmin" />
-											</button>
-											<div class="hidden" id="modal-grantAdmin-{supporter.uid}">
-												<p><f:translate key="party.member.grantAdmin.modal.information" arguments="{0: member.firstName, 1: member.lastName}" /></p>
-												<button class="pull-left btn btn-primary button-cancel"><f:translate key="party.member.grantAdmin.modal.cancel" /></button>
-												<button class="pull-right btn btn-primary button-returntrue"><f:translate key="party.member.grantAdmin.modal.confirm" /></button>
-											</div>
-											<button class="btn btn-primary" type="button" data-role="ajaxObjectAction" data-confirm="true" data-prefix="ev" data-controller="PartyMember" data-action="remove" data-uid="{supporter.uid}">
-												<f:translate key="party.member.remove" />
-											</button>
-											<div class="hidden" id="modal-remove-{supporter.uid}">
-												<p><f:translate key="party.member.remove.modal.information" arguments="{0: member.firstName, 1: member.lastName}" /></p>
-												<button class="pull-left btn btn-primary button-cancel"><f:translate key="party.member.remove.modal.cancel" /></button>
-												<button class="pull-right btn btn-primary button-returntrue"><f:translate key="party.member.remove.modal.confirm" /></button>
-											</div>
-										</f:else>
-									</f:if>
-								</f:else>
-							</f:if>
-</f:comment>
-						</div>
-					</div>
-				</div>
-			</div>
+			<f:render partial="CommunityUser/Mobilizations/ElectionSupporter" arguments="{supporter:supporter, isUserElectionSupporter: 0}" />
 		</f:for>
 	</f:then>
 	<f:else>

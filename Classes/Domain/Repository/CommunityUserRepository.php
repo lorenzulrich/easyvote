@@ -219,9 +219,10 @@ class CommunityUserRepository extends \TYPO3\CMS\Extbase\Domain\Repository\Front
 	 * Find all or filtered election supporters
 	 *
 	 * @param array|NULL $demand
+	 * @param \Visol\Easyvote\Domain\Model\CommunityUser|NULL $excludeSupporter
 	 * @return array|\TYPO3\CMS\Extbase\Persistence\QueryResultInterface
 	 */
-	public function findElectionSupporters($demand = NULL) {
+	public function findElectionSupporters($demand = NULL, $excludeSupporter = NULL) {
 		$query = $this->createQuery();
 		$constraints = [];
 		// TODO make sure relation field is updated
@@ -231,6 +232,14 @@ class CommunityUserRepository extends \TYPO3\CMS\Extbase\Domain\Repository\Front
 		);
 		// Make sure user is a Community user (exclude deleted users)
 		$constraints[] = $query->contains('usergroup', $this->communityUserService->getUserGroupUid('community'));
+
+		// Exclude a supporter if requested, this is used to exclude the election supporter's supporter because they
+		// should be sorted first
+		if ($excludeSupporter) {
+			$constraints[] = $query->logicalNot(
+				$query->equals('uid', $excludeSupporter->getUid())
+			);
+		}
 
 		if (is_array($demand)) {
 			if (isset($demand['query'])) {
