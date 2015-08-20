@@ -9,7 +9,7 @@
 					<span class="name"><f:translate key="anonymous" /></span>
 				</f:then>
 				<f:else>
-					<span class="name">{follower.firstName} <f:format.crop maxCharacters="1" append=".">{follower.lastName}</f:format.crop></span>
+					<span class="name">{follower.firstName} <f:format.crop maxCharacters="1" append="." respectWordBoundaries="FALSE" respectHtml="FALSE">{follower.lastName}</f:format.crop></span>
 					<span class="additional">
 						<f:if condition="{follower.citySelection}"><f:translate key="mobilizations.follower.from" /> {follower.citySelection.name}</f:if>
 						<f:if condition="{follower.age}"> | {follower.age} <f:translate key="mobilizations.follower.years" /></f:if>

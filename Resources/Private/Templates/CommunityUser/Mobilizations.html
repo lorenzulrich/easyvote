@@ -9,5 +9,7 @@
 
 <div class="content-box" id="community-user-followers">
 	<h2><f:translate key="mobilizations.followers" /> (<f:count>{communityUser.followers}</f:count>)</h2>
-	<f:render partial="CommunityUser/Mobilizations/FollowerList" arguments="{followers: communityUser.followers}" />
+	<v:iterator.sort subject="{communityUser.followers}" as="sortedFollowers" sortBy="firstName" order="ASC" sortFlags="SORT_REGULAR">
+		<f:render partial="CommunityUser/Mobilizations/FollowerList" arguments="{followers: sortedFollowers}" />
+	</v:iterator.sort>
 </div>
