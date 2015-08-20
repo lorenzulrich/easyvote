@@ -334,7 +334,10 @@ var Easyvote = {
 				nextSelector: '.election-supporters-next',
 				//contentSelector: '.election-supporters',
 				loadingHtml: '<div class="records-loading">laden...</div>',
-				refresh: true
+				refresh: true,
+				callback: function() {
+					$("img.lazy").lazyload();
+				}
 			});
 		});
 	}
