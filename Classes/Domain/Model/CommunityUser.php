@@ -541,7 +541,13 @@ class CommunityUser extends FrontendUser {
 		return $this->communityUserService->hasRole($this, 'communityFacebook');
 	}
 
-
+	/**
+	 * This getter is needed for the lazy loading parent user ($communityUser)
+	 * @return boolean
+	 */
+	public function getCommunityFacebookUser() {
+		return $this->communityUserService->hasRole($this, 'communityFacebook');
+	}
 
 	/**
 	 * @return Party
@@ -681,6 +687,7 @@ class CommunityUser extends FrontendUser {
 	}
 
 	/**
+	 * This getter is needed for the lazy loading parent user ($communityUser)
 	 * @return boolean
 	 */
 	public function getPrivacyProtection() {

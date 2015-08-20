@@ -41,6 +41,16 @@ $(function() {
 		$electionSupportersFilter.trigger('submit');
 	});
 
+	/* Cancel election supporters filter */
+	$body.on('mouseenter mouseleave', '.electionsupporter-unfollow', function(e) {
+		var $this = $(this);
+		if (e.type == 'mouseenter') {
+			$this.text($this.data('label-alt'));
+		} else {
+			$this.text($this.data('label-original'));
+		}
+	});
+
 });
 
 var Easyvote = {
@@ -294,20 +304,19 @@ var Easyvote = {
 	},
 
 	/**
-	 * Get members of a party and open if a single member was requested
+	 * Get all election supporters, scroll to top if requested
 	 *
-	 * @param openPartyMember
+	 * @param scrollTop Whether or not to scroll to top after executing
 	 */
-	getElectionSupporters: function(openPartyMember) {
+	getElectionSupporters: function(scrollTop) {
 		EasyvoteGeneral.getData('/routing/electionsupporters').done(function(data) {
 			var $electionSupporters = $('.election-supporters');
 			$electionSupporters.html(data);
-			//if (openPartyMember) {
-			//	var elementId = '#member-item-' + openPartyMember;
-			//	$(elementId).find('.toggle i').trigger('click');
-			//	Easyvote.scrollToElement(elementId);
-			//}
+			if (scrollTop) {
+				$('html, body').animate({ scrollTop: 0 });
+			}
 			Easyvote.bindToolTips();
+
 			/* Lazy load images */
 			$("img.lazy").lazyload();
 

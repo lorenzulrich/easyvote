@@ -152,12 +152,12 @@ if (!defined('TYPO3_MODE')) {
 	'Visol.' . $_EXTKEY,
 	'Electionsupporterfunctions',
 	array(
-		'ElectionSupporter' => 'electionSupporterDirectory,filter,listByDemand',
+		'ElectionSupporter' => 'electionSupporterDirectory,filter,listByDemand,follow,unfollow',
 	),
 	// non-cacheable actions
 	array(
 		// TODO cache what can be cached
-		'ElectionSupporter' => 'electionSupporterDirectory,filter,listByDemand',
+		'ElectionSupporter' => 'filter,listByDemand,follow,unfollow',
 	)
 );
 

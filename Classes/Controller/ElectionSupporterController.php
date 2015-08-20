@@ -15,6 +15,7 @@ namespace Visol\Easyvote\Controller;
  */
 
 use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
+use Visol\Easyvote\Domain\Model\CommunityUser;
 
 /**
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
@@ -40,17 +41,10 @@ class ElectionSupporterController extends \Visol\Easyvote\Controller\AbstractCon
 	protected $kantonRepository;
 
 	/**
-	 * Access check
+	 * @var \TYPO3\CMS\Extbase\Persistence\Generic\PersistenceManager
+	 * @inject
 	 */
-	public function initializeAction() {
-//		if (!$this->getLoggedInUser()) {
-//			$code = 401;
-//			$message = 'Authorization Required';
-//			$this->response->setStatus($code, $message);
-//			$this->response->shutdown();
-//			die($message);
-//		}
-	}
+	protected $persistenceManager;
 
 	/**
 	 * Container for election supporter directory feature
@@ -91,7 +85,7 @@ class ElectionSupporterController extends \Visol\Easyvote\Controller\AbstractCon
 		// Check if the current user has a Wahlhelfer themselves
 		$excludeSupporter = NULL;
 		if (!$moreResultsOnly) {
-			if ($communityUser = $this->getLoggedInUser()) {
+			if ($communityUser = $this->getCommunityUserService()->getCommunityUser()) {
 				if (!is_null($communityUser->getCommunityUser())) {
 					$excludeSupporter = $communityUser->getCommunityUser();
 					// This is the Wahlhelfer of the current user
@@ -110,6 +104,62 @@ class ElectionSupporterController extends \Visol\Easyvote\Controller\AbstractCon
 			$this->view->assign('isFiltered', $isFiltered);
 		}
 
+	}
+
+	/**
+	 * Access check
+	 */
+	public function initializeFollowAction() {
+		if (!$this->getCommunityUserService()->getCommunityUser()) {
+			$code = 401;
+			$message = 'Authorization Required';
+			$this->response->setStatus($code, $message);
+			$this->response->shutdown();
+			die($message);
+		}
+	}
+
+	/**
+	 * Makes the authenticated user follow the given another user
+	 *
+	 * @param CommunityUser $object
+	 * @throws \TYPO3\CMS\Extbase\Persistence\Exception\IllegalObjectTypeException
+	 * @return string
+	 */
+	public function followAction(CommunityUser $object) {
+		$communityUser = $this->getCommunityUserService()->getCommunityUser();
+		$communityUser->setCommunityUser($object);
+		$this->communityUserRepository->update($communityUser);
+		$this->persistenceManager->persistAll();
+		return json_encode(array('namespace' => 'Easyvote', 'function' => 'getElectionSupporters', 'arguments' => TRUE));
+	}
+
+	/**
+	 * Access check
+	 */
+	public function initializeUnfollowAction() {
+		if (!$this->getCommunityUserService()->getCommunityUser()) {
+			$code = 401;
+			$message = 'Authorization Required';
+			$this->response->setStatus($code, $message);
+			$this->response->shutdown();
+			die($message);
+		}
+	}
+
+	/**
+	 * Removes the election supporter from the authenticated user
+	 *
+	 * @param CommunityUser $object
+	 * @throws \TYPO3\CMS\Extbase\Persistence\Exception\IllegalObjectTypeException
+	 * @return string
+	 */
+	public function unfollowAction(CommunityUser $object) {
+		$communityUser = $this->getCommunityUserService()->getCommunityUser();
+		$communityUser->setCommunityUser(NULL);
+		$this->communityUserRepository->update($communityUser);
+		$this->persistenceManager->persistAll();
+		return json_encode(array('namespace' => 'Easyvote', 'function' => 'getElectionSupporters', 'arguments' => TRUE));
 	}
 
 	/**
@@ -158,6 +208,13 @@ class ElectionSupporterController extends \Visol\Easyvote\Controller\AbstractCon
 			$demand['query'] = htmlspecialchars(strip_tags($demand['query']));
 			return $demand;
 		}
+	}
+
+	/**
+	 * @return \Visol\Easyvote\Service\CommunityUserService
+	 */
+	public function getCommunityUserService() {
+		return $this->objectManager->get('Visol\Easyvote\Service\CommunityUserService');
 	}
 
 }

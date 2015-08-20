@@ -37,6 +37,14 @@
     '@action':     'listByDemand'
   httpMethods: ['GET']
 
+-
+  name: 'ElectionSupporterActions'
+  uriPattern: 'eves/{@controller}/{@action}/{object}'
+  defaults:
+    '@package':    'Visol.Easyvote'
+    '@plugin':     'Electionsupporterfunctions'
+  httpMethods: ['GET', 'POST']
+
 
 -
   name: 'Permalink VotingProposal'

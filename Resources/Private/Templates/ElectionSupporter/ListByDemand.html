@@ -10,7 +10,7 @@
 	<f:then>
 		<f:widget.paginate objects="{filteredElectionSupporters}" as="paginatedFilteredElectionSupporters" configuration="{itemsPerPage: 10, insertAbove: 0, insertBelow: 1}">
 			<f:for each="{paginatedFilteredElectionSupporters}" as="supporter">
-				<f:render partial="CommunityUser/Mobilizations/ElectionSupporter" arguments="{supporter:supporter, isUserElectionSupporter: 0}" />
+				<f:render partial="CommunityUser/Mobilizations/ElectionSupporter" arguments="{supporter:supporter, userElectionSupporter:userElectionSupporter, isUserElectionSupporter: 0}" />
 			</f:for>
 		</f:widget.paginate>
 	</f:then>
