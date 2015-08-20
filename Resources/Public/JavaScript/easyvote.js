@@ -300,7 +300,8 @@ var Easyvote = {
 	 */
 	getElectionSupporters: function(openPartyMember) {
 		EasyvoteGeneral.getData('/routing/electionsupporters').done(function(data) {
-			$('.election-supporters').html(data);
+			var $electionSupporters = $('.election-supporters');
+			$electionSupporters.html(data);
 			//if (openPartyMember) {
 			//	var elementId = '#member-item-' + openPartyMember;
 			//	$(elementId).find('.toggle i').trigger('click');
@@ -309,8 +310,18 @@ var Easyvote = {
 			Easyvote.bindToolTips();
 			/* Lazy load images */
 			$("img.lazy").lazyload();
+
+			/* Postal code selection for filter */
 			Easyvote.bindPostalCodeSelection();
 
+			/* Initialize infinite scrolling for election supporter directory */
+			$electionSupporters.jscroll({
+				autoTrigger: false,
+				nextSelector: '.election-supporters-next',
+				//contentSelector: '.election-supporters',
+				loadingHtml: '<div class="records-loading">laden...</div>',
+				refresh: true
+			});
 		});
 	}
 

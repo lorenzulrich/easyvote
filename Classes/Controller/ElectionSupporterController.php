@@ -75,10 +75,11 @@ class ElectionSupporterController extends \Visol\Easyvote\Controller\AbstractCon
 	 * List all election supporters filtered by an eventually provided demand
 	 *
 	 * @param array $demand
+	 * @param boolean $moreResultsOnly
 	 * @dontverifyrequesthash
 	 * @return string
 	 */
-	public function listByDemandAction($demand = NULL) {
+	public function listByDemandAction($demand = NULL, $moreResultsOnly = FALSE) {
 		if ($demand) {
 			// Save demand to user session
 			$this->saveDemandInSession($demand);
@@ -91,21 +92,25 @@ class ElectionSupporterController extends \Visol\Easyvote\Controller\AbstractCon
 
 		// Check if the current user has a Wahlhelfer themselves
 		$excludeSupporter = NULL;
-		if ($communityUser = $this->getLoggedInUser()) {
-			if (!is_null($communityUser->getCommunityUser())) {
-				$excludeSupporter = $communityUser->getCommunityUser();
-				// This is the Wahlhelfer of the current user
-				$this->view->assign('userElectionSupporter', $excludeSupporter);
+		if (!$moreResultsOnly) {
+			if ($communityUser = $this->getLoggedInUser()) {
+				if (!is_null($communityUser->getCommunityUser())) {
+					$excludeSupporter = $communityUser->getCommunityUser();
+					// This is the Wahlhelfer of the current user
+					$this->view->assign('userElectionSupporter', $excludeSupporter);
+				}
 			}
 		}
 
 		$filteredElectionSupporters = $this->communityUserRepository->findElectionSupporters($demand, $excludeSupporter);
 		$this->view->assign('filteredElectionSupporters', $filteredElectionSupporters);
 
-		// Results are filtered if there are more supporters in total than in the filtered result
-		$allElectionSupporters = $this->communityUserRepository->findElectionSupporters(NULL, $excludeSupporter);
-		$isFiltered = $allElectionSupporters->count() > $filteredElectionSupporters->count();
-		$this->view->assign('isFiltered', $isFiltered);
+		if (!$moreResultsOnly) {
+			// Results are filtered if there are more supporters in total than in the filtered result
+			$allElectionSupporters = $this->communityUserRepository->findElectionSupporters(NULL, $excludeSupporter);
+			$isFiltered = $allElectionSupporters->count() > $filteredElectionSupporters->count();
+			$this->view->assign('isFiltered', $isFiltered);
+		}
 
 	}
 

@@ -438,6 +438,9 @@
 			<trans-unit id="mobilizations.directory.cancelFilter">
 				<source>Filter entfernen</source>
 			</trans-unit>
+			<trans-unit id="mobilizations.directory.paginate.next">
+				<source>Weitere anzeigen</source>
+			</trans-unit>
 
 
 			<trans-unit id="unsubscribe.header">

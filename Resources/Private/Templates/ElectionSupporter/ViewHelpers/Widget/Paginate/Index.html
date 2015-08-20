@@ -1,0 +1,20 @@
+{namespace ev=Tx_Easyvote_ViewHelpers}
+<f:if condition="{configuration.insertAbove}">
+	<f:render section="paginator" arguments="{pagination: pagination, additionalParams: additionalParams, additionalParamsPrefix: additionalParamsPrefix}" />
+</f:if>
+
+<f:renderChildren arguments="{contentArguments}" />
+
+<f:if condition="{configuration.insertBelow}">
+	<f:render section="paginator" arguments="{pagination: pagination, additionalParams: additionalParams, additionalParamsPrefix: additionalParamsPrefix}" />
+</f:if>
+
+<f:section name="paginator">
+	<f:if condition="{pagination.nextPage}">
+		<f:then>
+			<div class="records-navigation">
+				<ev:widget.link class="election-supporters-next" arguments="{currentPage: pagination.nextPage}" additionalParams="{tx_easyvote_electionsupporterfunctions: {moreResultsOnly: 1}}" additionalParamsPrefix="{additionalParamsPrefix}"><f:translate extensionName="easyvote" key="mobilizations.directory.paginate.next" /></ev:widget.link>
+			</div>
+		</f:then>
+	</f:if>
+</f:section>
