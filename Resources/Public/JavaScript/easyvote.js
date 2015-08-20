@@ -51,6 +51,11 @@ $(function() {
 		}
 	});
 
+	$body.on('click', '.electionsupporter-follow-notAuthenticated', function(e) {
+		e.preventDefault();
+		$('.login-link').trigger('click');
+	});
+
 });
 
 var Easyvote = {

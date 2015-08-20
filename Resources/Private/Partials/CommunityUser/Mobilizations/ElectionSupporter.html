@@ -31,55 +31,65 @@
 						<span class="number"><f:count>{supporter.followers}</f:count></span> <f:translate key="mobilizations.directory.follower" />
 					</div>
 					<div class="col-sm-6">
-						<f:if condition="{isUserElectionSupporter}">
+						<f:if condition="{authenticatedUser}">
 							<f:then>
-								<f:comment>The current Election Supporter of the user</f:comment>
-								<button class="btn btn-primary btn-fullwidth electionsupporter-unfollow" data-label-original="{f:translate(key: 'mobilizations.directory.i_follow')}" data-label-alt="{f:translate(key: 'mobilizations.directory.unfollow')}"
-										type="button" data-role="ajaxObjectAction" data-confirm="false" data-prefix="eves" data-controller="ElectionSupporter" data-action="unfollow" data-uid="{supporter.uid}">
-									{f:translate(key: 'mobilizations.directory.i_follow')}
-								</button>
-							</f:then>
-							<f:else>
-								<f:if condition="{userElectionSupporter}">
+								<f:if condition="{isUserElectionSupporter}">
 									<f:then>
-										<f:comment>User has an election supporter, but not this one. So we want to confirm the change.</f:comment>
-										<button class="btn btn-primary btn-fullwidth"
-												type="button" data-role="ajaxObjectAction" data-confirm="true" data-prefix="eves" data-controller="ElectionSupporter" data-action="follow" data-uid="{supporter.uid}">
-											{f:translate(key: 'mobilizations.directory.follow')}
+										<f:comment>The current Election Supporter of the user</f:comment>
+										<button class="btn btn-primary btn-fullwidth electionsupporter-unfollow" data-label-original="{f:translate(key: 'mobilizations.directory.i_follow')}" data-label-alt="{f:translate(key: 'mobilizations.directory.unfollow')}"
+												type="button" data-role="ajaxObjectAction" data-confirm="false" data-prefix="eves" data-controller="ElectionSupporter" data-action="unfollow" data-uid="{supporter.uid}">
+											{f:translate(key: 'mobilizations.directory.i_follow')}
 										</button>
-										<div class="hidden" id="modal-follow-{supporter.uid}">
-											<f:if condition="{userElectionSupporter.privacyProtection}">
-												<f:then>
-													<p><f:translate key="mobilizations.follow.modal.changeInformationAnonymous" /></p>
-												</f:then>
-												<f:else>
-													<p><f:translate key="mobilizations.follow.modal.changeInformation" arguments="{0: userElectionSupporter.firstName, 1: '{userElectionSupporter.lastName -> f:format.crop(maxCharacters: 1, append:\'.\', respectHtml:FALSE)}'}" /></p>
-												</f:else>
-											</f:if>
-											<button class="pull-left btn btn-primary button-cancel"><f:translate key="mobilizations.follow.modal.cancel" /></button>
-											<button class="pull-right btn btn-primary button-returntrue"><f:translate key="mobilizations.follow.modal.confirm" /></button>
-										</div>
 									</f:then>
 									<f:else>
-										<f:comment>User has no election supporter yet.</f:comment>
-										<button class="btn btn-primary btn-fullwidth"
-												type="button" data-role="ajaxObjectAction" data-confirm="true" data-prefix="eves" data-controller="ElectionSupporter" data-action="follow" data-uid="{supporter.uid}">
-											{f:translate(key: 'mobilizations.directory.follow')}
-										</button>
-										<div class="hidden" id="modal-follow-{supporter.uid}">
-											<f:if condition="{userElectionSupporter.privacyProtection}">
-												<f:then>
-													<p><f:translate key="mobilizations.follow.modal.followInformation" /></p>
-												</f:then>
-												<f:else>
-													<p><f:translate key="mobilizations.follow.modal.followInformationNoPrivacyProtection" arguments="{0: 'http://www.foo.bar'}" /></p>
-												</f:else>
-											</f:if>
-											<button class="pull-left btn btn-primary button-cancel"><f:translate key="mobilizations.follow.modal.cancel" /></button>
-											<button class="pull-right btn btn-primary button-returntrue"><f:translate key="mobilizations.follow.modal.confirm" /></button>
-										</div>
+										<f:if condition="{userElectionSupporter}">
+											<f:then>
+												<f:comment>User has an election supporter, but not this one. So we want to confirm the change.</f:comment>
+												<button class="btn btn-primary btn-fullwidth"
+														type="button" data-role="ajaxObjectAction" data-confirm="true" data-prefix="eves" data-controller="ElectionSupporter" data-action="follow" data-uid="{supporter.uid}">
+													{f:translate(key: 'mobilizations.directory.follow')}
+												</button>
+												<div class="hidden" id="modal-follow-{supporter.uid}">
+													<f:if condition="{userElectionSupporter.privacyProtection}">
+														<f:then>
+															<p><f:translate key="mobilizations.follow.modal.changeInformationAnonymous" /></p>
+														</f:then>
+														<f:else>
+															<p><f:translate key="mobilizations.follow.modal.changeInformation" arguments="{0: userElectionSupporter.firstName, 1: '{userElectionSupporter.lastName -> f:format.crop(maxCharacters: 1, append:\'.\', respectHtml:FALSE)}'}" /></p>
+														</f:else>
+													</f:if>
+													<button class="pull-left btn btn-primary button-cancel"><f:translate key="mobilizations.follow.modal.cancel" /></button>
+													<button class="pull-right btn btn-primary button-returntrue"><f:translate key="mobilizations.follow.modal.confirm" /></button>
+												</div>
+											</f:then>
+											<f:else>
+												<f:comment>User has no election supporter yet.</f:comment>
+												<button class="btn btn-primary btn-fullwidth"
+														type="button" data-role="ajaxObjectAction" data-confirm="true" data-prefix="eves" data-controller="ElectionSupporter" data-action="follow" data-uid="{supporter.uid}">
+													{f:translate(key: 'mobilizations.directory.follow')}
+												</button>
+												<div class="hidden" id="modal-follow-{supporter.uid}">
+													<f:if condition="{userElectionSupporter.privacyProtection}">
+														<f:then>
+															<p><f:translate key="mobilizations.follow.modal.followInformation" /></p>
+														</f:then>
+														<f:else>
+															<p><f:translate key="mobilizations.follow.modal.followInformationNoPrivacyProtection" arguments="{0: 'http://www.foo.bar'}" /></p>
+														</f:else>
+													</f:if>
+													<button class="pull-left btn btn-primary button-cancel"><f:translate key="mobilizations.follow.modal.cancel" /></button>
+													<button class="pull-right btn btn-primary button-returntrue"><f:translate key="mobilizations.follow.modal.confirm" /></button>
+												</div>
+											</f:else>
+										</f:if>
 									</f:else>
 								</f:if>
+							</f:then>
+							<f:else>
+								<f:comment>No user is authenticated, display the "not authenticated" modal on clicking "follow"</f:comment>
+								<button class="btn btn-primary btn-fullwidth electionsupporter-follow-notAuthenticated" type="button">
+									{f:translate(key: 'mobilizations.directory.follow')}
+								</button>
 							</f:else>
 						</f:if>
 					</div>

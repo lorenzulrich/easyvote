@@ -82,12 +82,15 @@ class ElectionSupporterController extends \Visol\Easyvote\Controller\AbstractCon
 
 		$this->view->assign('demand', $demand);
 
+		$authenticatedUser = $this->getCommunityUserService()->getCommunityUser();
+		$this->view->assign('authenticatedUser', $authenticatedUser);
+
 		// Check if the current user has a Wahlhelfer themselves
 		$excludeSupporter = NULL;
 		if (!$moreResultsOnly) {
-			if ($communityUser = $this->getCommunityUserService()->getCommunityUser()) {
-				if (!is_null($communityUser->getCommunityUser())) {
-					$excludeSupporter = $communityUser->getCommunityUser();
+			if ($authenticatedUser) {
+				if (!is_null($authenticatedUser->getCommunityUser())) {
+					$excludeSupporter = $authenticatedUser->getCommunityUser();
 					// This is the Wahlhelfer of the current user
 					$this->view->assign('userElectionSupporter', $excludeSupporter);
 				}
