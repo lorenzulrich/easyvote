@@ -26,6 +26,7 @@ class AbstractController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControl
 
 	/**
 	 * @return \Visol\Easyvote\Domain\Model\CommunityUser|bool
+	 * @deprecated use \Visol\Easyvote\Service\CommunityUserService->getCommunityUser() instead
 	 */
 	protected function getLoggedInUser() {
 		if ((int)$GLOBALS['TSFE']->fe_user->user['uid'] > 0) {
