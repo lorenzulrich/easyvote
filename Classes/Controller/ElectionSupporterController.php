@@ -61,13 +61,11 @@ class ElectionSupporterController extends \Visol\Easyvote\Controller\AbstractCon
 
 	/**
 	 * Output of the filter box
-	 * Filter by: query string (firstName, lastName, citySelection.name), kanton and status
+	 * Filter by: query string (firstName), city, kanton
 	 */
 	public function filterAction() {
 		$kantons = $this->kantonRepository->findAll();
 		$this->view->assign('demand', $this->getDemandFromSession(TRUE));
-		// TODO filter by name
-		// TODO filter by city
 		$this->view->assign('kantons', $kantons);
 	}
 
