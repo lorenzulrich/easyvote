@@ -323,7 +323,7 @@ var Easyvote = {
 			Easyvote.bindToolTips();
 
 			/* Lazy load images */
-			$("img.lazy").lazyload();
+			EasyvoteGeneral.bindImageLazyLoading();
 
 			/* Postal code selection for filter */
 			Easyvote.bindPostalCodeSelection();
@@ -335,9 +335,7 @@ var Easyvote = {
 				//contentSelector: '.election-supporters',
 				loadingHtml: '<div class="records-loading">laden...</div>',
 				refresh: true,
-				callback: function() {
-					$("img.lazy").lazyload();
-				}
+				callback: EasyvoteGeneral.bindImageLazyLoading()
 			});
 		});
 	}
