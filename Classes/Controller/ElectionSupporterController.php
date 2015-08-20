@@ -48,8 +48,14 @@ class ElectionSupporterController extends \Visol\Easyvote\Controller\AbstractCon
 
 	/**
 	 * Container for election supporter directory feature
+	 * @param string $follow
 	 */
-	public function electionSupporterDirectoryAction() {
+	public function electionSupporterDirectoryAction($follow = NULL) {
+		if ($follow) {
+			// User wants to follow a certain user
+			$targetUserUid = base64_decode($follow);
+			$this->view->assign('targetUserUid', $targetUserUid);
+		}
 		$this->view->assign('language', $this->getFrontendObject()->sys_language_uid);
 	}
 
@@ -68,10 +74,11 @@ class ElectionSupporterController extends \Visol\Easyvote\Controller\AbstractCon
 	 *
 	 * @param array $demand
 	 * @param boolean $moreResultsOnly
+	 * @param string $topDisplay
 	 * @dontverifyrequesthash
 	 * @return string
 	 */
-	public function listByDemandAction($demand = NULL, $moreResultsOnly = FALSE) {
+	public function listByDemandAction($demand = NULL, $moreResultsOnly = FALSE, $topDisplay = NULL) {
 		if ($demand) {
 			// Save demand to user session
 			$this->saveDemandInSession($demand);
@@ -93,6 +100,17 @@ class ElectionSupporterController extends \Visol\Easyvote\Controller\AbstractCon
 					$excludeSupporter = $authenticatedUser->getCommunityUser();
 					// This is the Wahlhelfer of the current user
 					$this->view->assign('userElectionSupporter', $excludeSupporter);
+				}
+			}
+		}
+
+		// Check if a user is requested to be displayed on top
+		if (!$moreResultsOnly && $topDisplay) {
+			// We only display it on top if the user doesn't already follow this user
+			if (!($excludeSupporter && $excludeSupporter->getUid() === (int)$topDisplay)) {
+				$topDisplayUser = $this->communityUserRepository->findByUid((int)$topDisplay);
+				if ($topDisplayUser instanceof CommunityUser) {
+					$this->view->assign('topDisplayUser', $topDisplayUser);
 				}
 			}
 		}
@@ -134,7 +152,7 @@ class ElectionSupporterController extends \Visol\Easyvote\Controller\AbstractCon
 		$communityUser->setCommunityUser($object);
 		$this->communityUserRepository->update($communityUser);
 		$this->persistenceManager->persistAll();
-		return json_encode(array('namespace' => 'Easyvote', 'function' => 'getElectionSupporters', 'arguments' => TRUE));
+		return json_encode(array('namespace' => 'Easyvote', 'function' => 'getElectionSupporters', 'arguments' => 'scrollTop'));
 	}
 
 	/**
@@ -162,7 +180,7 @@ class ElectionSupporterController extends \Visol\Easyvote\Controller\AbstractCon
 		$communityUser->setCommunityUser(NULL);
 		$this->communityUserRepository->update($communityUser);
 		$this->persistenceManager->persistAll();
-		return json_encode(array('namespace' => 'Easyvote', 'function' => 'getElectionSupporters', 'arguments' => TRUE));
+		return json_encode(array('namespace' => 'Easyvote', 'function' => 'getElectionSupporters', 'arguments' => 'scrollTop'));
 	}
 
 	/**

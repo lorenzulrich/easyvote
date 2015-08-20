@@ -157,7 +157,7 @@ if (!defined('TYPO3_MODE')) {
 	// non-cacheable actions
 	array(
 		// TODO cache what can be cached
-		'ElectionSupporter' => 'filter,listByDemand,follow,unfollow',
+		'ElectionSupporter' => 'electionSupporterDirectory,filter,listByDemand,follow,unfollow',
 	)
 );
 

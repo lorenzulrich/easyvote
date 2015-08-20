@@ -434,6 +434,16 @@ class CommunityUserController extends \Visol\Easyvote\Controller\AbstractControl
 		$communityUser = $this->getLoggedInUser();
 		if ($communityUser instanceof CommunityUser) {
 			$this->view->assign('communityUser', $communityUser);
+
+			$shareUri = $this->uriBuilder->setTargetPageUid($this->settings['electionSupporterPid'])
+				// TODO enable
+				//->setAbsoluteUriScheme('https')
+				->setUseCacheHash(FALSE)
+				->setArguments(array('tx_easyvote_electionsupporterfunctions' => array('follow' => base64_encode($communityUser->getUid()))))
+				->setCreateAbsoluteUri(TRUE)->build();
+
+			$this->view->assign('encodedShareUri', urlencode($shareUri));
+			$this->view->assign('shareUri', $shareUri);
 		}
 	}
 

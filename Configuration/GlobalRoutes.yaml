@@ -29,6 +29,16 @@
 
 -
   name: 'ElectionSupporterFunctions'
+  uriPattern: 'electionsupporters/{topDisplay}'
+  defaults:
+    '@package':    'Visol.Easyvote'
+    '@plugin':     'Electionsupporterfunctions'
+    '@controller': 'ElectionSupporter'
+    '@action':     'listByDemand'
+  httpMethods: ['GET']
+
+-
+  name: 'ElectionSupporterFunctions'
   uriPattern: 'electionsupporters'
   defaults:
     '@package':    'Visol.Easyvote'

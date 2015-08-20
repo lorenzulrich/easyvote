@@ -313,11 +313,15 @@ var Easyvote = {
 	 *
 	 * @param scrollTop Whether or not to scroll to top after executing
 	 */
-	getElectionSupporters: function(scrollTop) {
-		EasyvoteGeneral.getData('/routing/electionsupporters').done(function(data) {
+	getElectionSupporters: function(command) {
+		var topDisplay = '';
+		if ($.isNumeric(command)) {
+			var topDisplay = '/' + command;
+		}
+		EasyvoteGeneral.getData('/routing/electionsupporters' + topDisplay).done(function(data) {
 			var $electionSupporters = $('.election-supporters');
 			$electionSupporters.html(data);
-			if (scrollTop) {
+			if (command === 'scrollTop') {
 				$('html, body').animate({ scrollTop: 0 });
 			}
 			Easyvote.bindToolTips();

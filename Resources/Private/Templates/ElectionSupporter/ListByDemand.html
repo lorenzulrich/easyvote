@@ -1,3 +1,7 @@
+<f:if condition="{topDisplayUser}">
+	<f:render partial="CommunityUser/Mobilizations/ElectionSupporter" arguments="{supporter:topDisplayUser, authenticatedUser:authenticatedUser, isTopDisplayUser: 1}" />
+</f:if>
+
 <f:if condition="{userElectionSupporter}">
 	<f:render partial="CommunityUser/Mobilizations/ElectionSupporter" arguments="{supporter:userElectionSupporter, authenticatedUser:authenticatedUser, isUserElectionSupporter: 1}" />
 </f:if>

@@ -393,6 +393,26 @@
 				<source>anonym</source>
 			</trans-unit>
 
+			<trans-unit id="mobilizations.header">
+				<source>Mobilisiere deine Freunde!</source>
+			</trans-unit>
+			<trans-unit id="mobilizations.introduction">
+				<source><![CDATA[
+					<p>Teile einen personalisierten Link, mit dem deine Freunde dich zu ihrem Wahlhelfer machen können.
+					Bitte beachte, dass du danach in unserem Wahlhelfer-Verzeichnis mit Profilbild und einigen wenigen
+					Angaben (Nicola J. aus Bern, 18 Jahre) erscheinst. Wir werden nie deinen vollen Namen oder weitere
+					Kontaktangaben teilen.</p>
+					<p>Falls du nicht mit Name erscheinen möchtest, kannst du den Schutz der Privatsphäre in deinem
+					Profil (LINK) aktivieren.</p>
+				]]></source>
+			</trans-unit>
+			<trans-unit id="mobilizations.share.title">
+				<source>Wähle mit mir!</source>
+			</trans-unit>
+			<trans-unit id="mobilizations.share.text">
+				<source>Ich wähle am nationalen Vote-Event vom 8. Oktober. Tu auch du mit mir am Briefkasten rumhängen,
+				dein Couvert einrühren und ein Bierli trinken.</source>
+			</trans-unit>
 			<trans-unit id="mobilizations.followers">
 				<source>Deine Follower</source>
 			</trans-unit>
