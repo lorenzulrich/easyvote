@@ -24,7 +24,7 @@ $GLOBALS['TCA']['tx_easyvote_domain_model_party'] = array(
 		'iconfile' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extRelPath('easyvote') . 'Resources/Public/Icons/tx_easyvote_domain_model_party.gif'
 	),
 	'types' => array(
-		'1' => array('showitem' => 'sys_language_uid;;;;1-1-1, l10n_parent, l10n_diffsource, hidden;;1, title, short_title, description, image, facebook_profile, website, is_young_party, candidates'),
+		'1' => array('showitem' => 'sys_language_uid;;;;1-1-1, l10n_parent, l10n_diffsource, hidden;;1, title, short_title, description, image, video_url, facebook_profile, link_to_twitter, website, email, is_young_party, easyvote_supporter, ch2055, incumbent_politicians_content, incumbent_politicians_images, position_retirement_provision, position_european_union, position_migration, position_energy, candidates'),
 	),
 	'palettes' => array(
 		'1' => array('showitem' => ''),
@@ -116,6 +116,15 @@ $GLOBALS['TCA']['tx_easyvote_domain_model_party'] = array(
 				'eval' => 'trim'
 			),
 		),
+		'link_to_twitter' => array(
+			'exclude' => 1,
+			'label' => 'LLL:EXT:easyvote/Resources/Private/Language/locallang_db.xlf:tx_easyvote_domain_model_party.link_to_twitter',
+			'config' => array(
+				'type' => 'input',
+				'size' => 30,
+				'eval' => 'trim'
+			),
+		),
 		'website' => array(
 			'exclude' => 1,
 			'label' => 'LLL:EXT:easyvote/Resources/Private/Language/locallang_db.xlf:tx_easyvote_domain_model_party.website',
@@ -133,6 +142,14 @@ $GLOBALS['TCA']['tx_easyvote_domain_model_party'] = array(
 				'default' => 0
 			)
 		),
+		'easyvote_supporter' => array(
+			'exclude' => 1,
+			'label' => 'LLL:EXT:easyvote/Resources/Private/Language/locallang_db.xlf:tx_easyvote_domain_model_party.easyvote_supporter',
+			'config' => array(
+				'type' => 'check',
+				'default' => 0
+			)
+		),
 		'smartvote_id' => array(
 			'exclude' => 1,
 			'label' => 'LLL:EXT:easyvote/Resources/Private/Language/locallang_db.xlf:tx_easyvote_domain_model_party.smartvote_id',
@@ -142,10 +159,131 @@ $GLOBALS['TCA']['tx_easyvote_domain_model_party'] = array(
 				'eval' => 'trim'
 			),
 		),
-		// TODO for later use
-		'candidates' => array(
+		'ch2055' => array(
+			'exclude' => 1,
+			'label' => 'LLL:EXT:easyvote/Resources/Private/Language/locallang_db.xlf:tx_easyvote_domain_model_party.ch2055',
 			'config' => array(
-				'type' => 'passthrough',
+				'type' => 'text',
+				'cols' => 40,
+				'rows' => 15,
+				'eval' => 'trim',
+				'wizards' => array(
+					'RTE' => array(
+						'icon' => 'wizard_rte2.gif',
+						'notNewRecords'=> 1,
+						'RTEonly' => 1,
+						'script' => 'wizard_rte.php',
+						'title' => 'LLL:EXT:cms/locallang_ttc.xlf:bodytext.W.RTE',
+						'type' => 'script'
+					)
+				)
+			),
+			'defaultExtras' => 'richtext:rte_transform[flag=rte_enabled|mode=ts]',
+		),
+		'video_url' => array(
+			'exclude' => 1,
+			'label' => 'LLL:EXT:easyvote/Resources/Private/Language/locallang_db.xlf:tx_easyvote_domain_model_party.video_url',
+			'config' => array(
+				'type' => 'input',
+				'size' => 30,
+				'eval' => 'trim'
+			),
+		),
+		'email' => array(
+			'exclude' => 1,
+			'label' => 'LLL:EXT:easyvote/Resources/Private/Language/locallang_db.xlf:tx_easyvote_domain_model_party.email',
+			'config' => array(
+				'type' => 'input',
+				'size' => 30,
+				'eval' => 'trim'
+			),
+		),
+		'incumbent_politicians_content' => array(
+			'exclude' => 1,
+			'label' => 'LLL:EXT:easyvote/Resources/Private/Language/locallang_db.xlf:tx_easyvote_domain_model_party.incumbent_politicians_content',
+			'config' => array(
+				'type' => 'text',
+				'cols' => 40,
+				'rows' => 15,
+				'eval' => 'trim',
+				'wizards' => array(
+					'RTE' => array(
+						'icon' => 'wizard_rte2.gif',
+						'notNewRecords'=> 1,
+						'RTEonly' => 1,
+						'script' => 'wizard_rte.php',
+						'title' => 'LLL:EXT:cms/locallang_ttc.xlf:bodytext.W.RTE',
+						'type' => 'script'
+					)
+				)
+			),
+			'defaultExtras' => 'richtext:rte_transform[flag=rte_enabled|mode=ts]',
+		),
+		'incumbent_politicians_images' => array(
+			'exclude' => 1,
+			'label' => 'LLL:EXT:easyvote/Resources/Private/Language/locallang_db.xlf:tx_easyvote_domain_model_party.incumbent_politicians_images',
+			'config' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::getFileFieldTCAConfig(
+				'incumbent_politicians_images',
+				array('maxitems' => 999)
+			),
+		),
+		'position_retirement_provision' => array(
+			'exclude' => 1,
+			'label' => 'LLL:EXT:easyvote/Resources/Private/Language/locallang_db.xlf:tx_easyvote_domain_model_party.position_retirement_provision',
+			'config' => array(
+				'type' => 'text',
+				'cols' => 40,
+				'rows' => 15,
+				'eval' => 'trim'
+			)
+		),
+		'position_european_union' => array(
+			'exclude' => 1,
+			'label' => 'LLL:EXT:easyvote/Resources/Private/Language/locallang_db.xlf:tx_easyvote_domain_model_party.position_european_union',
+			'config' => array(
+				'type' => 'text',
+				'cols' => 40,
+				'rows' => 15,
+				'eval' => 'trim'
+			)
+		),
+		'position_migration' => array(
+			'exclude' => 1,
+			'label' => 'LLL:EXT:easyvote/Resources/Private/Language/locallang_db.xlf:tx_easyvote_domain_model_party.position_migration',
+			'config' => array(
+				'type' => 'text',
+				'cols' => 40,
+				'rows' => 15,
+				'eval' => 'trim'
+			)
+		),
+		'position_energy' => array(
+			'exclude' => 1,
+			'label' => 'LLL:EXT:easyvote/Resources/Private/Language/locallang_db.xlf:tx_easyvote_domain_model_party.position_energy',
+			'config' => array(
+				'type' => 'text',
+				'cols' => 40,
+				'rows' => 15,
+				'eval' => 'trim'
+			)
+		),
+		'candidates' => array(
+			'exclude' => 1,
+			'label' => 'LLL:EXT:easyvote/Resources/Private/Language/locallang_db.xlf:tx_easyvote_domain_model_party.candidates',
+			'config' => array(
+				'type' => 'inline',
+				'foreign_table' => 'tx_easyvotesmartvote_domain_model_candidate',
+				'foreign_field' => 'national_party',
+				'foreign_sortby' => 'last_name',
+				'maxitems'      => 9999,
+				'appearance' => array(
+					'collapseAll' => 1,
+					'levelLinksPosition' => 'none',
+					'showSynchronizationLink' => 0,
+					'showPossibleLocalizationRecords' => 0,
+					'useSortable' => 0,
+					'showAllLocalizationLink' => 0
+				),
 			),
 		),
 		'tx_easyvoteeducation_panelinvitations' => array(

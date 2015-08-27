@@ -302,6 +302,39 @@
 			<trans-unit id="tx_easyvote_domain_model_party.candidates">
 				<source>Kandidaten</source>
 			</trans-unit>
+			<trans-unit id="tx_easyvote_domain_model_party.ch2055">
+				<source>Die Schweiz im Jahr 2055</source>
+			</trans-unit>
+			<trans-unit id="tx_easyvote_domain_model_party.video_url">
+				<source>YouTube Video-URL</source>
+			</trans-unit>
+			<trans-unit id="tx_easyvote_domain_model_party.link_to_twitter">
+				<source>Twitter-Adresse</source>
+			</trans-unit>
+			<trans-unit id="tx_easyvote_domain_model_party.email">
+				<source>E-Mail-Adresse</source>
+			</trans-unit>
+			<trans-unit id="tx_easyvote_domain_model_party.incumbent_politicians_content">
+				<source>Inhalt aktive Politiker</source>
+			</trans-unit>
+			<trans-unit id="tx_easyvote_domain_model_party.incumbent_politicians_images">
+				<source>Bilder aktive Politiker</source>
+			</trans-unit>
+			<trans-unit id="tx_easyvote_domain_model_party.position_retirement_provision">
+				<source>Altersvorsorge in der Schweiz</source>
+			</trans-unit>
+			<trans-unit id="tx_easyvote_domain_model_party.position_european_union">
+				<source>Die EU und die Schweiz</source>
+			</trans-unit>
+			<trans-unit id="tx_easyvote_domain_model_party.position_migration">
+				<source>Die Migration und die Schweiz</source>
+			</trans-unit>
+			<trans-unit id="tx_easyvote_domain_model_party.position_energy">
+				<source>Energieproduktion in der Schweiz</source>
+			</trans-unit>
+			<trans-unit id="tx_easyvote_domain_model_party.easyvote_supporter">
+				<source>easyvote-Götti</source>
+			</trans-unit>
 
 		</body>
 	</file>

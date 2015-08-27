@@ -56,6 +56,87 @@ class Party extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	protected $isYoungParty;
 
 	/**
+	 * @var string
+	 */
+	protected $ch2055;
+
+	/**
+	 * @var string
+	 */
+	protected $videoUrl;
+
+	/**
+	 * @var string
+	 */
+	protected $linkToTwitter;
+
+	/**
+	 * @var string
+	 */
+	protected $email;
+
+	/**
+	 * @var string
+	 */
+	protected $incumbentPoliticiansContent;
+
+	/**
+	 * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\TYPO3\CMS\Extbase\Domain\Model\FileReference>
+	 * @lazy
+	 */
+	protected $incumbentPoliticiansImages;
+
+	/**
+	 * @var boolean
+	 */
+	protected $easyvoteSupporter;
+
+	/**
+	 * @var string
+	 */
+	protected $positionRetirementProvision;
+
+	/**
+	 * @var string
+	 */
+	protected $positionEuropeanUnion;
+
+	/**
+	 * @var string
+	 */
+	protected $positionMigration;
+
+	/**
+	 * @var string
+	 */
+	protected $positionEnergy;
+
+	/**
+	 * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Visol\EasyvoteSmartvote\Domain\Model\Candidate>
+	 * @lazy
+	 */
+	protected $candidates;
+
+	/**
+	 * __construct
+	 *
+	 * @return Party
+	 */
+	public function __construct() {
+		//Do not remove the next line: It would break the functionality
+		$this->initStorageObjects();
+	}
+
+	/**
+	 * Initializes all ObjectStorage properties.
+	 *
+	 * @return void
+	 */
+	protected function initStorageObjects() {
+		$this->incumbentPoliticiansImages = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
+	}
+
+	/**
 	 * @return string
 	 */
 	public function getDescription() {
@@ -165,6 +246,174 @@ class Party extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	 */
 	public function setWebsite($website) {
 		$this->website = $website;
+	}
+
+	/**
+	 * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Visol\EasyvoteSmartvote\Domain\Model\Candidate> $candidates
+	 */
+	public function getCandidates() {
+		return $this->candidates;
+	}
+
+	/**
+	 * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Visol\EasyvoteSmartvote\Domain\Model\Candidate> $candidates
+	 */
+	public function setCandidates($candidates) {
+		$this->candidates = $candidates;
+	}
+
+	/**
+	 * @return string
+	 */
+	public function getCh2055() {
+		return $this->ch2055;
+	}
+
+	/**
+	 * @param string $ch2055
+	 */
+	public function setCh2055($ch2055) {
+		$this->ch2055 = $ch2055;
+	}
+
+	/**
+	 * @return boolean
+	 */
+	public function isEasyvoteSupporter() {
+		return $this->easyvoteSupporter;
+	}
+
+	/**
+	 * @param boolean $easyvoteSupporter
+	 */
+	public function setEasyvoteSupporter($easyvoteSupporter) {
+		$this->easyvoteSupporter = $easyvoteSupporter;
+	}
+
+	/**
+	 * @return string
+	 */
+	public function getEmail() {
+		return $this->email;
+	}
+
+	/**
+	 * @param string $email
+	 */
+	public function setEmail($email) {
+		$this->email = $email;
+	}
+
+	/**
+	 * @return string
+	 */
+	public function getIncumbentPoliticiansContent() {
+		return $this->incumbentPoliticiansContent;
+	}
+
+	/**
+	 * @param string $incumbentPoliticiansContent
+	 */
+	public function setIncumbentPoliticiansContent($incumbentPoliticiansContent) {
+		$this->incumbentPoliticiansContent = $incumbentPoliticiansContent;
+	}
+
+	/**
+	 * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\TYPO3\CMS\Extbase\Domain\Model\FileReference> $incumbentPoliticiansImages
+	 */
+	public function getIncumbentPoliticiansImages() {
+		return $this->incumbentPoliticiansImages;
+	}
+
+	/**
+	 * @param mixed $incumbentPoliticiansImages
+	 */
+	public function setIncumbentPoliticiansImages($incumbentPoliticiansImages) {
+		$this->incumbentPoliticiansImages = $incumbentPoliticiansImages;
+	}
+
+	/**
+	 * @return string
+	 */
+	public function getLinkToTwitter() {
+		return $this->linkToTwitter;
+	}
+
+	/**
+	 * @param string $linkToTwitter
+	 */
+	public function setLinkToTwitter($linkToTwitter) {
+		$this->linkToTwitter = $linkToTwitter;
+	}
+
+	/**
+	 * @return string
+	 */
+	public function getVideoUrl() {
+		return $this->videoUrl;
+	}
+
+	/**
+	 * @param string $videoUrl
+	 */
+	public function setVideoUrl($videoUrl) {
+		$this->videoUrl = $videoUrl;
+	}
+
+	/**
+	 * @return string
+	 */
+	public function getPositionEnergy() {
+		return $this->positionEnergy;
+	}
+
+	/**
+	 * @param string $positionEnergy
+	 */
+	public function setPositionEnergy($positionEnergy) {
+		$this->positionEnergy = $positionEnergy;
+	}
+
+	/**
+	 * @return string
+	 */
+	public function getPositionEuropeanUnion() {
+		return $this->positionEuropeanUnion;
+	}
+
+	/**
+	 * @param string $positionEuropeanUnion
+	 */
+	public function setPositionEuropeanUnion($positionEuropeanUnion) {
+		$this->positionEuropeanUnion = $positionEuropeanUnion;
+	}
+
+	/**
+	 * @return string
+	 */
+	public function getPositionMigration() {
+		return $this->positionMigration;
+	}
+
+	/**
+	 * @param string $positionMigration
+	 */
+	public function setPositionMigration($positionMigration) {
+		$this->positionMigration = $positionMigration;
+	}
+
+	/**
+	 * @return string
+	 */
+	public function getPositionRetirementProvision() {
+		return $this->positionRetirementProvision;
+	}
+
+	/**
+	 * @param string $positionRetirementProvision
+	 */
+	public function setPositionRetirementProvision($positionRetirementProvision) {
+		$this->positionRetirementProvision = $positionRetirementProvision;
 	}
 
 }

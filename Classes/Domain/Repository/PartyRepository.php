@@ -35,27 +35,20 @@ class PartyRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
 	}
 
 	/**
-	 * Find all with TYPO3 DatabaseConnection and return it as a raw array
+	 * Find all parties, exclude party "Andere"
 	 *
-	 * @return array|NULL
+	 * @return array|\TYPO3\CMS\Extbase\Persistence\QueryResultInterface
 	 */
-	public function findAllAsRawArray(){
-		$tableName = 'tx_easyvote_domain_model_party';
-
-		$clause = '1=1';
-		// exclude party "Andere"
-		$clause .= ' AND uid NOT IN (28)';
-		$clause .= $this->getDeleteClauseAndEnableFieldsConstraint($tableName);
-		$clause .= ' AND (sys_language_uid IN (-1,0) OR (sys_language_uid = ' . $GLOBALS['TSFE']->sys_language_uid. ' AND l10n_parent = 0))';
-
-		$fields = ' *';
-		$parties = $this->getDatabaseConnection()->exec_SELECTgetRows($fields, $tableName, $clause, '', 'title ASC');
-		if (count($parties)) {
-			foreach ($parties as $key => $row) {
-				$parties[$key] = $this->getPageRepository()->getRecordOverlay($tableName, $row, $GLOBALS['TSFE']->sys_language_content, $GLOBALS['TSFE']->sys_language_contentOL);
-			}
-		}
-		return $parties;
+	public function findAllWithoutOthers() {
+		$query = $this->createQuery();
+		$query->getQuerySettings()->setRespectStoragePage(FALSE);
+		$query->matching(
+			$query->logicalNot(
+				// Party 'Andere'
+				$query->equals('uid', 28)
+			)
+		);
+		return $query->execute();
 	}
 
 	/**
