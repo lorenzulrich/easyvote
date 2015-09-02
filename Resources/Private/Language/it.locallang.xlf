@@ -475,11 +475,11 @@
 			</trans-unit>
 			<trans-unit id="loginPanel.register">
 				<source>Noch kein Profil?</source>
-				<target>ancora senza profilo?</target>
+				<target>Ancora senza profilo?</target>
 			</trans-unit>
 			<trans-unit id="loginPanel.modalHeader">
 				<source>Noch kein Profil?</source>
-				<target> ancora senza profilo?</target>
+				<target>Ancora senza profilo?</target>
 			</trans-unit>
 			<trans-unit id="loginPanel.modalHeaderNotAuthenticated">
 				<source>Registrierung</source>
@@ -513,9 +513,15 @@
 				<source><![CDATA[
 					Wenn du fortfährst, bestätigst Du, dass Du unsere <a target="_blank" href="%1$s">Datenschutzrichtlinien</a> gelesen und akzeptiert hast.
 				]]></source>
-				<target><![CDATA[
-					Continuando confermi di aver letto le nostre <a target="_blank" href="%1$s">linee guida per la protezione dati</a> e averle accettate.
-				]]></target>
+			</trans-unit>
+			<trans-unit id="loginPanel.modalNativeLoginHeader">
+				<target>Login con e-mail</target>
+			</trans-unit>
+			<trans-unit id="loginPanel.registrationLink">
+				<target>Ancora senza profilo? Registrati adesso.</target>
+			</trans-unit>
+			<trans-unit id="loginPanel.forgotPasswordLink">
+				<target>Password dimenticata</target>
 			</trans-unit>
 
 			<trans-unit id="userFunctions.voteWecker">

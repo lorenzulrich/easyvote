@@ -500,12 +500,18 @@
 				<target>Participe à l'évaluation des votations et partage ton opinion! D'autres documents suivront...</target>
 			</trans-unit>
 			<trans-unit id="loginPanel.modalLegalInfo">
-				<source><![CDATA[
-					Wenn du fortfährst, bestätigst Du, dass Du unsere <a target="_blank" href="%1$s">Datenschutzrichtlinien</a> gelesen und akzeptiert hast.
-				]]></source>
 				<target><![CDATA[
 					En poursuivant, tu confirmes avoir lu et accepté notre <a target="_blank" href="%1$s">Règles relatives à la protection des données</a>.
 				]]></target>
+			</trans-unit>
+			<trans-unit id="loginPanel.modalNativeLoginHeader">
+				<target>Se connecter avec e-mail</target>
+			</trans-unit>
+			<trans-unit id="loginPanel.registrationLink">
+				<target>Pas encore inscrit? S'enregistrer maintenant.</target>
+			</trans-unit>
+			<trans-unit id="loginPanel.forgotPasswordLink">
+				<target>Mot de passe oublié</target>
 			</trans-unit>
 
 			<trans-unit id="userFunctions.voteWecker">
