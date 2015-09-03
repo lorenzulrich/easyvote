@@ -4,12 +4,12 @@
 <div class="content-box">
 	<h2><f:translate key="mobilizations.header" /></h2>
 	<f:translate key="mobilizations.introduction" />
-	<f:render partial="CommunityUser/Mobilizations/Share" arguments="{_all}" />
+	<f:render partial="Event/Share" arguments="{_all}" />
 </div>
 
 <div class="content-box" id="community-user-followers">
 	<h2><f:translate key="mobilizations.followers" /> (<f:count>{communityUser.followers}</f:count>)</h2>
 	<v:iterator.sort subject="{communityUser.followers}" as="sortedFollowers" sortBy="firstName" order="ASC" sortFlags="SORT_REGULAR">
-		<f:render partial="CommunityUser/Mobilizations/FollowerList" arguments="{followers: sortedFollowers}" />
+		<f:render partial="Event/FollowerList" arguments="{followers: sortedFollowers}" />
 	</v:iterator.sort>
 </div>

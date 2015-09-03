@@ -2,7 +2,7 @@
 	<div class="box-teaser">
 		<div class="row">
 			<div class="col-xs-3 col-md-3">
-				<f:render partial="CommunityUser/Mobilizations/ImageRespectingPrivacy" arguments="{user:supporter, size: 300}" />
+				<f:render partial="CommunityUser/ImageRespectingPrivacy" arguments="{user:supporter, size: 300}" />
 			</div>
 			<div class="col-xs-9 col-md-9">
 				<div class="actions">
@@ -21,7 +21,7 @@
 					<f:for each="{supporter.followers}" as="follower" iteration="followerIterator">
 						<f:if condition="{followerIterator.cycle} < 11">
 							<f:then>
-								<f:render partial="CommunityUser/Mobilizations/ImageRespectingPrivacy" arguments="{user:follower, size: 50}" />
+								<f:render partial="CommunityUser/ImageRespectingPrivacy" arguments="{user:follower, size: 50}" />
 							</f:then>
 						</f:if>
 					</f:for>
