@@ -336,6 +336,25 @@
 				<source>easyvote-Götti</source>
 			</trans-unit>
 
+			<trans-unit id="tx_easyvote_domain_model_event">
+				<source>Event</source>
+			</trans-unit>
+			<trans-unit id="tx_easyvote_domain_model_event.location">
+				<source>Location</source>
+			</trans-unit>
+			<trans-unit id="tx_easyvote_domain_model_event.community_user">
+				<source>Community-User</source>
+			</trans-unit>
+			<trans-unit id="tx_easyvote_domain_model_event.date">
+				<source>Datum</source>
+			</trans-unit>
+			<trans-unit id="tx_easyvote_domain_model_event.from_time">
+				<source>Startzeit</source>
+			</trans-unit>
+			<trans-unit id="tx_easyvote_domain_model_event.comment">
+				<source>Bemerkung</source>
+			</trans-unit>
+
 		</body>
 	</file>
 </xliff>
