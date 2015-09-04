@@ -189,6 +189,9 @@
 			<trans-unit id="tx_easyvote_domain_model_communityuser.notification_sms_active">
 				<source>Receive voting notification by SMS</source>
 			</trans-unit>
+			<trans-unit id="tx_easyvote_domain_model_communityuser.community_news_mail_active">
+				<source>Receive community news by e-mail</source>
+			</trans-unit>
 			<trans-unit id="tx_easyvote_domain_model_communityuser.followers">
 				<source>Followers</source>
 			</trans-unit>

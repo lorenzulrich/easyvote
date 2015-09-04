@@ -74,6 +74,14 @@ $communityUserColumns = array(
 			'default' => 0
 		),
 	),
+	'community_news_mail_active' => array(
+		'exclude' => 1,
+		'label' => 'LLL:EXT:easyvote/Resources/Private/Language/locallang_db.xlf:tx_easyvote_domain_model_communityuser.community_news_mail_active',
+		'config' => array(
+			'type' => 'check',
+			'default' => 0
+		),
+	),
 	'notification_sms_active' => array(
 		'exclude' => 1,
 		'label' => 'LLL:EXT:easyvote/Resources/Private/Language/locallang_db.xlf:tx_easyvote_domain_model_communityuser.notification_sms_active',
@@ -263,7 +271,7 @@ $communityUserColumns = array(
 $GLOBALS['TCA']['fe_users']['types']['Tx_Easyvote_CommunityUser']['showitem'] = $GLOBALS['TCA']['fe_users']['types']['Tx_Extbase_Domain_Model_FrontendUser']['showitem'];
 $GLOBALS['TCA']['fe_users']['types']['Tx_Easyvote_CommunityUser']['showitem'] .= ',--div--;LLL:EXT:easyvote/Resources/Private/Language/locallang_db.xlf:tx_easyvote_domain_model_communityuser';
 $GLOBALS['TCA']['fe_users']['types']['Tx_Easyvote_CommunityUser']['showitem'] .=
-	',gender, privacy_protection, city_selection, kanton, party, party_verification_code, user_language, birthdate, fal_image, auth_token, notification_mail_active, notification_sms_active,followers, events, community_user, tx_easyvoteeducation_panels, organization, organization_website, organization_city, education_type, education_institution, personal_election_lists';
+	',gender, privacy_protection, city_selection, kanton, party, party_verification_code, user_language, birthdate, fal_image, auth_token, notification_mail_active, notification_sms_active,community_news_mail_active,followers, events, community_user, tx_easyvoteeducation_panels, organization, organization_website, organization_city, education_type, education_institution, personal_election_lists';
 
 $GLOBALS['TCA']['fe_users']['ctrl']['label_alt'] = 'last_name,first_name';
 $GLOBALS['TCA']['fe_users']['ctrl']['label_alt_force'] = TRUE;

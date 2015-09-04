@@ -83,6 +83,11 @@ class CommunityUser extends FrontendUser {
 	/**
 	 * @var integer
 	 */
+	protected $communityNewsMailActive;
+
+	/**
+	 * @var integer
+	 */
 	protected $disable;
 
 	/**
@@ -411,6 +416,20 @@ class CommunityUser extends FrontendUser {
 	 */
 	public function setNotificationSmsActive($notificationSmsActive) {
 		$this->notificationSmsActive = $notificationSmsActive;
+	}
+
+	/**
+	 * @return integer
+	 */
+	public function getCommunityNewsMailActive() {
+		return $this->communityNewsMailActive;
+	}
+
+	/**
+	 * @param integer $communityNewsMailActive
+	 */
+	public function setCommunityNewsMailActive($communityNewsMailActive) {
+		$this->communityNewsMailActive = $communityNewsMailActive;
 	}
 
 	/**

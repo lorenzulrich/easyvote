@@ -9,18 +9,9 @@
 	<f:flashMessages renderMode="div" />
 	<f:render partial="FormErrors" arguments="{for: ''}" />
 	<f:form noCacheHash="true" action="updateNotifications" name="communityUser" object="{user}">
-		<h3><f:translate key="editNotifications.sectionEmailHeader" /></h3>
-		<div class="form-group">
-			<label for="email">{f:translate(key:'editProfile.placeholderEmail')}</label>
-			<f:form.textfield property="email" class="form-control" id="email" additionalAttributes="{required: required}" />
-		</div>
-		<div class="form-group form-row-radio">
-			<div class="input-group">
-				<label class="radio-inline" for="notificationMailActive-1"><f:form.radio id="notificationMailActive-1" name="communityUser[notificationMailActive]" value="1" checked="{user.notificationMailActive} == 1" /> <f:translate key="editNotifications.stateActive" /></label>
-				<label class="radio-inline" for="notificationMailActive-0"><f:form.radio id="notificationMailActive-0" name="communityUser[notificationMailActive]" value="0" checked="{user.notificationMailActive} == 0" /> <f:translate key="editNotifications.stateInactive" /></label>
-			</div>
-		</div>
-		<h3><f:translate key="editNotifications.sectionSmsHeader" /></h3>
+
+		<h3><f:translate key="editNotifications.sectionContactHeader" /></h3>
+
 		<div class="form-group">
 			<label for="phoneNumber">{f:translate(key:'editProfile.placeholderMobile')}</label>
 			<div class="row">
@@ -36,10 +27,42 @@
 				</div>
 			</div>
 		</div>
+		<div class="form-group">
+			<label for="email">{f:translate(key:'editProfile.placeholderEmail')}</label>
+			<f:form.textfield property="email" class="form-control" id="email" additionalAttributes="{required: required}" />
+		</div>
+
+		<h3><f:translate key="editNotifications.sectionSmsHeader" /></h3>
+		<div><f:translate key="editNotifications.sectionSmsIntroduction" /></div>
 		<div class="form-group form-row-radio">
 			<div class="input-group">
 				<label class="radio-inline" for="notificationSmsActive-1"><f:form.radio id="notificationSmsActive-1" name="communityUser[notificationSmsActive]" value="1" checked="{user.notificationSmsActive} == 1" /> <f:translate key="editNotifications.stateActive" /></label>
 				<label class="radio-inline" for="notificationSmsActive-0"><f:form.radio id="notificationSmsActive-0" name="communityUser[notificationSmsActive]" value="0" checked="{user.notificationSmsActive} == 0" /> <f:translate key="editNotifications.stateInactive" /></label>
+			</div>
+		</div>
+
+		<h3><f:translate key="editNotifications.sectionEmailHeader" /></h3>
+		<div><f:translate key="editNotifications.sectionEmailIntroduction" /></div>
+		<div class="form-group form-row-radio">
+			<div class="input-group">
+				<label class="radio-inline" for="notificationMailActive-1"><f:form.radio id="notificationMailActive-1" name="communityUser[notificationMailActive]" value="1" checked="{user.notificationMailActive} == 1" /> <f:translate key="editNotifications.stateActive" /></label>
+				<label class="radio-inline" for="notificationMailActive-0"><f:form.radio id="notificationMailActive-0" name="communityUser[notificationMailActive]" value="0" checked="{user.notificationMailActive} == 0" /> <f:translate key="editNotifications.stateInactive" /></label>
+			</div>
+		</div>
+		<h3><f:translate key="editNotifications.sectionCommunityNewsHeader" /></h3>
+		<div><f:translate key="editNotifications.sectionCommunityNewsIntroduction" /></div>
+		<div class="form-group form-row-radio">
+			<div class="input-group">
+				<label class="radio-inline" for="communityNewsMailActive-1"><f:form.radio id="communityNewsMailActive-1" name="communityUser[communityNewsMailActive]" value="1" checked="{user.communityNewsMailActive} == 1" /> <f:translate key="editNotifications.stateActive" /></label>
+				<label class="radio-inline" for="communityNewsMailActive-0"><f:form.radio id="communityNewsMailActive-0" name="communityUser[communityNewsMailActive]" value="0" checked="{user.communityNewsMailActive} == 0" /> <f:translate key="editNotifications.stateInactive" /></label>
+			</div>
+		</div>
+		<h3><f:translate key="editNotifications.sectionPrivacyProtectionHeader" /></h3>
+		<div><f:translate key="editNotifications.sectionPrivacyProtectionIntroduction" /></div>
+		<div class="form-group form-row-radio">
+			<div class="input-group">
+				<label class="radio-inline" for="privacyProtection-1"><f:form.radio id="privacyProtection-1" name="communityUser[privacyProtection]" value="1" checked="{user.privacyProtection} == 1" /> <f:translate key="editNotifications.stateActive" /></label>
+				<label class="radio-inline" for="privacyProtection-0"><f:form.radio id="privacyProtection-0" name="communityUser[privacyProtection]" value="0" checked="{user.privacyProtection} == 0" /> <f:translate key="editNotifications.stateInactive" /></label>
 			</div>
 		</div>
 		<div class="form-group">

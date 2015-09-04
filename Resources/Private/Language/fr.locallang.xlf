@@ -262,41 +262,24 @@
 			</trans-unit>
 
 			<trans-unit id="editNotifications.header">
-				<source>Vote-Wecker</source>
 				<target>Alarme de vote</target>
 			</trans-unit>
-			<trans-unit id="editNotifications.whatIs">
-				<source>Was ist der Vote-Wecker?</source>
-				<target>Qu'est-ce que l'alarme de vote?</target>
-			</trans-unit>
-			<trans-unit id="editNotifications.introduction">
-				<source>Damit du die nächsten Abstimmungen nicht vergisst oder verschläfst, kannst du hier deinen Votewecker stellen. Er erinnert dich und deine Freunde per E-Mail und SMS über bevorstehende Abstimmungen und Wahlen.</source>
-				<target>Tu peux installer ici ton alarme de vote afin de ne pas manquer les prochaines votations. Tu recevras, toi et tes amis, un e-mail ainsi qu'un sms pour te rappeler les prochaines votations ou élections.</target>
-			</trans-unit>
 			<trans-unit id="editNotifications.sectionEmailHeader">
-				<source>Vote-Wecker per E-Mail</source>
 				<target>Alarme de vote par e-mail</target>
 			</trans-unit>
-			<trans-unit id="editNotifications.sectionSms">
-				<source>Vote-Wecker per SMS</source>
+			<trans-unit id="editNotifications.sectionSmsHeader">
 				<target>Alarme de vote par SMS</target>
 			</trans-unit>
 			<trans-unit id="editNotifications.stateActive">
-				<source>aktiviert</source>
 				<target>activée</target>
 			</trans-unit>
 			<trans-unit id="editNotifications.stateInactive">
-				<source>deaktiviert</source>
 				<target>désactivée</target>
 			</trans-unit>
 			<trans-unit id="editNotifications.save">
-				<source>speichern</source>
 				<target>sauvegarder</target>
 			</trans-unit>
 			<trans-unit id="editNotifications.saved">
-				<source><![CDATA[
-					<i class="evicon-ok-squared"></i> Deine Vote-Wecker wurden aktualisiert!
-				]]></source>
 				<target><![CDATA[
 					<i class="evicon-ok-squared"></i> Ton alarme de vote a été actualisée!
 				]]></target>

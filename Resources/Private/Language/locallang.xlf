@@ -230,19 +230,35 @@
 			</trans-unit>
 
 			<trans-unit id="editNotifications.header">
-				<source>Vote-Wecker</source>
+				<source>Benachrichtigungen</source>
 			</trans-unit>
-			<trans-unit id="editNotifications.whatIs">
-				<source>Was ist der Vote-Wecker?</source>
+			<trans-unit id="editNotifications.sectionContactHeader">
+				<source>Kontaktangaben</source>
 			</trans-unit>
-			<trans-unit id="editNotifications.introduction">
-				<source>Damit du die nächsten Abstimmungen nicht vergisst oder verschläfst, kannst du hier deinen Votewecker stellen. Er erinnert dich und deine Freunde per E-Mail und SMS über bevorstehende Abstimmungen und Wahlen.</source>
+
+			<trans-unit id="editNotifications.sectionSmsHeader">
+				<source>Vote-Wecker per SMS</source>
+			</trans-unit>
+			<trans-unit id="editNotifications.sectionSmsIntroduction">
+				<source>Wir informieren dich per SMS rechtzeitig und mehrmals vor Wahlen und Abstimmungen.</source>
 			</trans-unit>
 			<trans-unit id="editNotifications.sectionEmailHeader">
 				<source>Vote-Wecker per E-Mail</source>
 			</trans-unit>
-			<trans-unit id="editNotifications.sectionSms">
-				<source>Vote-Wecker per SMS</source>
+			<trans-unit id="editNotifications.sectionEmailIntroduction">
+				<source>Wir informieren dich per E-Mail rechtzeitig und mehrmals vor Wahlen und Abstimmungen.</source>
+			</trans-unit>
+			<trans-unit id="editNotifications.sectionCommunityNewsHeader">
+				<source>Community-News per E-Mail</source>
+			</trans-unit>
+			<trans-unit id="editNotifications.sectionCommunityNewsIntroduction">
+				<source>Wir informieren dich vor Wahlen und Abstimmungen wöchentlich über das Neueste aus unserer Community.</source>
+			</trans-unit>
+			<trans-unit id="editNotifications.sectionPrivacyProtectionHeader">
+				<source>Erhöhte Privatsphäre</source>
+			</trans-unit>
+			<trans-unit id="editNotifications.sectionPrivacyProtectionIntroduction">
+				<source>Aktionen in der easyvote-Community wie Inhalte teilen, Freunde mobilisieren und Teilnahme an Wettbewerben sowie dein Name und dein Foto sind anonymisiert.</source>
 			</trans-unit>
 			<trans-unit id="editNotifications.stateActive">
 				<source>aktiviert</source>
@@ -255,7 +271,7 @@
 			</trans-unit>
 			<trans-unit id="editNotifications.saved">
 				<source><![CDATA[
-					<i class="evicon-ok-squared"></i> Deine Vote-Wecker wurden aktualisiert!
+					<i class="evicon-ok-squared"></i> Deine Benachrichtigungs-Einstellungen wurden aktualisiert!
 				]]></source>
 			</trans-unit>
 
