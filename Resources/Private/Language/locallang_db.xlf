@@ -213,6 +213,9 @@
 			<trans-unit id="tx_easyvote_domain_model_communityuser.party_verification_code">
 				<source>Verification Code</source>
 			</trans-unit>
+			<trans-unit id="tx_easyvote_domain_model_communityuser.events">
+				<source>Events</source>
+			</trans-unit>
 			<trans-unit id="tx_easyvote_domain_model_communityuser.organization">
 				<source>School: Name</source>
 			</trans-unit>

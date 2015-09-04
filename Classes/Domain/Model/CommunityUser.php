@@ -123,6 +123,14 @@ class CommunityUser extends FrontendUser {
 	protected $followers;
 
 	/**
+	 * Events of this user
+	 *
+	 * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Visol\Easyvote\Domain\Model\Event>
+	 * @lazy
+	 */
+	protected $events;
+
+	/**
 	 * Panels added through EXT:easyvote_education
 	 *
 	 * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Visol\EasyvoteEducation\Domain\Model\Panel>
@@ -246,6 +254,7 @@ class CommunityUser extends FrontendUser {
 	 */
 	protected function initStorageObjects() {
 		$this->followers = new ObjectStorage();
+		$this->events = new ObjectStorage();
 		$this->panels = new ObjectStorage();
 		$this->personalElectionLists = new ObjectStorage();
 	}
@@ -287,6 +296,25 @@ class CommunityUser extends FrontendUser {
 	 */
 	public function setFollowers(ObjectStorage $followers) {
 		$this->followers = $followers;
+	}
+
+	/**
+	 * Returns the events
+	 *
+	 * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Visol\Easyvote\Domain\Model\Event> $events
+	 */
+	public function getEvents() {
+		return $this->events;
+	}
+
+	/**
+	 * Sets the events
+	 *
+	 * @param $events \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Visol\Easyvote\Domain\Model\Event>
+	 * @return void
+	 */
+	public function setEvents($events) {
+		$this->events = $events;
 	}
 
 	/**
