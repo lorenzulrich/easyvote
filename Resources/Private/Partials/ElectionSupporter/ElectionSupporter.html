@@ -17,6 +17,25 @@
 						<f:if condition="{supporter.age}"> | {supporter.age} <f:translate key="mobilizations.directory.years" /></f:if>
 					</span>
 				</h2>
+				<f:for each="{supporter.events}" as="event">
+					<f:comment>There can be only one event per user ATM.</f:comment>
+					<div class="event">
+						{f:translate(key:'mobilizations.directory.votesOn')} <f:format.date format="%A, %e. %B %Y">{event.date}</f:format.date>
+						{f:translate(key:'mobilizations.directory.atTime')} <f:format.date format="%R">{event.fromTime}</f:format.date> {f:translate(key:'mobilizations.directory.oclock')}
+						{f:translate(key:'mobilizations.directory.atPlace')}:
+						<f:if condition="{event.location.locationType.uid} == 1">
+							<f:comment>Briefkasten</f:comment>
+							{f:translate(key: 'post_box', extensionName: 'easyvote_location')}, {event.location.street}, {event.location.zip} {event.location.city}
+						</f:if>
+						<f:if condition="{event.location.locationType.uid} == 10">
+							<f:comment>#VoteNow2015</f:comment>
+							{event.location.name}, {event.location.street}, {event.location.zip} {event.location.city}
+						</f:if>
+					</div>
+					<div class="comment">
+						<em><f:format.nl2br>{event.comment}</f:format.nl2br></em>
+					</div>
+				</f:for>
 				<div class="followers">
 					<f:for each="{supporter.followers}" as="follower" iteration="followerIterator">
 						<f:if condition="{followerIterator.cycle} < 11">

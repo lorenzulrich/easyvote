@@ -446,11 +446,23 @@
 			<trans-unit id="mobilizations.directory.years">
 				<source>Jahre</source>
 			</trans-unit>
+			<trans-unit id="mobilizations.directory.votesOn">
+				<source>wählt am</source>
+			</trans-unit>
+			<trans-unit id="mobilizations.directory.atTime">
+				<source>um</source>
+			</trans-unit>
+			<trans-unit id="mobilizations.directory.oclock">
+				<source>Uhr</source>
+			</trans-unit>
+			<trans-unit id="mobilizations.directory.atPlace">
+				<source>hier</source>
+			</trans-unit>
 			<trans-unit id="mobilizations.directory.follower">
-				<source>Follower</source>
+				<source>Freunde mobilisiert</source>
 			</trans-unit>
 			<trans-unit id="mobilizations.directory.follow">
-				<source>Folgen</source>
+				<source>Teilnehmen</source>
 			</trans-unit>
 			<trans-unit id="mobilizations.directory.i_follow">
 				<source>Folge ich</source>
