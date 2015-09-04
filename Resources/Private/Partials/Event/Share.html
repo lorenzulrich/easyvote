@@ -40,7 +40,7 @@
 					<strong><f:translate key="mobilizations.share.title" /></strong>
 				</h3>
 				<p>
-					{shareUri}
+					<span class="uri">{shareUri}</span>
 				</p>
 			</div>
 		</div>
@@ -58,8 +58,21 @@
 				</h3>
 				<p>
 					<f:translate key="mobilizations.share.text" /><br />
-					{shareUri}
+					<span class="uri">{shareUri}</span>
 				</p>
+			</div>
+		</div>
+		<div class="share-preview-container link">
+			<div class="left">
+				<div class="share-links">
+					<a target="_blank" href="{shareUri}">
+						<span class="link"></span>
+					</a>
+				</div>
+			</div>
+			<div class="right">
+				<f:translate key="mobilizations.share.link" /><br />
+				<input type="text" value="{shareUri}" onfocus="this.select();" style="width: 100%;" />
 			</div>
 		</div>
 	</f:then>

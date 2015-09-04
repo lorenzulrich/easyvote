@@ -1,0 +1,58 @@
+{namespace vi=Visol\Easyvote\ViewHelpers}
+
+<div id="event-form" class="content-box">
+	<h2><f:translate key="event.header" /></h2>
+	<p><f:translate key="event.introduction" /></p>
+	<f:flashMessages renderMode="div" />
+	<f:render partial="FormErrors" arguments="{for: ''}" />
+	<form>
+		<div class="form-group">
+			<label>
+				<f:translate key="tx_easyvote_domain_model_event.location" />
+			</label>
+			<f:if condition="{event.location}">
+				<f:then>
+					<input type="text" id="event-location-text" class="form-control" readonly value="{event.location.name}, {event.location.street}, {event.location.zip} {event.location.city}" />
+				</f:then>
+				<f:else>
+					<input type="text" id="event-location-text" class="form-control" readonly value="" />
+				</f:else>
+			</f:if>
+		</div>
+		<div class="form-group">
+			<button type="button" onclick="Easyvote.changeEventLocation()" class="change-location-trigger btn btn-primary">{f:translate(key: 'event.changeLocation')}</button>
+		</div>
+	</form>
+	<f:form noCacheHash="true" enctype="multipart/form-data" class="editEventForm" action="save" name="event" object="{event}">
+		<f:form.hidden property="location" id="event-location-uid" />
+		<div class="input-group">
+			<label for="date">
+				<f:translate key="tx_easyvote_domain_model_event.date" /><br />
+			</label>
+			<f:form.textfield type="text" id="date" class="form-control date-picker" additionalAttributes="{required: required}" property="date"  value="{event.date->f:format.date(format:'d.m.y')}" />
+		</div>
+		<div class="input-group">
+			<label for="fromTime">
+				<f:translate key="tx_easyvote_domain_model_event.fromTime" />
+			</label>
+			<f:form.textfield type="text" id="fromTime" class="form-control time-picker" additionalAttributes="{required: required}" property="fromTime"  value="{f:if(condition:'{event.fromTime}', then:'{event.fromTime->f:format.date(format:\'%R\')}')}" />
+		</div>
+		<div class="form-group">
+			<label for="comment">
+				<f:translate key="tx_easyvote_domain_model_event.comment" />
+			</label>
+			<f:form.textarea id="comment" class="form-control" property="comment" cols="40" rows="8" />
+		</div>
+		<div class="form-group">
+			<button class="btn btn-primary" type="submit"><f:translate key="event.save" /></button>
+		</div>
+		<f:if condition="{event.uid}">
+			<f:link.action controller="Event" action="remove" arguments="{event:event}" class="hasModal"><f:translate key="event.remove" /></f:link.action>
+			<div class="hidden">
+				<p><f:translate key="event.removeInformation" /></p>
+				<button class="pull-left btn btn-primary button-cancel"><f:translate key="event.removeCancel" /></button>
+				<button class="pull-right btn btn-primary button-confirm"><f:translate key="event.removeConfirm" /></button>
+			</div>
+		</f:if>
+	</f:form>
+</div>

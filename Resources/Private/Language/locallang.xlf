@@ -396,10 +396,25 @@
 			<trans-unit id="mobilizations.header">
 				<source>Mobilisiere deine Freunde!</source>
 			</trans-unit>
+			<trans-unit id="mobilizations.header_event">
+				<source>Dein Event</source>
+			</trans-unit>
+			<trans-unit id="mobilizations.event.date">
+				<source>Ort</source>
+			</trans-unit>
+			<trans-unit id="mobilizations.event.fromTime">
+				<source>Zeit</source>
+			</trans-unit>
+			<trans-unit id="mobilizations.event.oclock">
+				<source>Uhr</source>
+			</trans-unit>
+			<trans-unit id="mobilizations.event.comment">
+				<source>Bemerkungen</source>
+			</trans-unit>
 			<trans-unit id="mobilizations.introduction">
 				<source><![CDATA[
-					<p>Teile einen personalisierten Link, mit dem deine Freunde dich zu ihrem Wahlhelfer machen können.
-					Bitte beachte, dass du danach in unserem Wahlhelfer-Verzeichnis mit Profilbild und einigen wenigen
+					<p>Teile einen personalisierten Link und mobilisiere so deine Freunde, damit sie mit dir wählen
+					kommen. Bitte beachte, dass du danach in unserem Wahlhelfer-Verzeichnis mit Profilbild und einigen wenigen
 					Angaben (Nicola J. aus Bern, 18 Jahre) erscheinst. Wir werden nie deinen vollen Namen oder weitere
 					Kontaktangaben teilen.</p>
 					<p>Falls du nicht mit Name erscheinen möchtest, kannst du den Schutz der Privatsphäre in deinem
@@ -410,8 +425,11 @@
 				<source>Wähle mit mir!</source>
 			</trans-unit>
 			<trans-unit id="mobilizations.share.text">
-				<source>Ich wähle am nationalen Vote-Event vom 8. Oktober. Tu auch du mit mir am Briefkasten rumhängen,
+				<source>Ich gehe wählen - auch du? Tu mit mir am Briefkasten rumhängen,
 				dein Couvert einrühren und ein Bierli trinken.</source>
+			</trans-unit>
+			<trans-unit id="mobilizations.share.link">
+				<source>Link kopieren und senden</source>
 			</trans-unit>
 			<trans-unit id="mobilizations.followers">
 				<source>Deine Follower</source>
@@ -800,6 +818,43 @@
 			</trans-unit>
 			<trans-unit id="email.subject.communityUserPendingPartyAdministratorIt">
 				<source>Polittalk easyvote – nuovo membro</source>
+			</trans-unit>
+
+			<trans-unit id="tx_easyvote_domain_model_event.location">
+				<source>Ort</source>
+			</trans-unit>
+			<trans-unit id="tx_easyvote_domain_model_event.date">
+				<source>Datum</source>
+			</trans-unit>
+			<trans-unit id="tx_easyvote_domain_model_event.fromTime">
+				<source>Zeit Treffpunkt</source>
+			</trans-unit>
+			<trans-unit id="tx_easyvote_domain_model_event.comment">
+				<source>Bemerkung</source>
+			</trans-unit>
+			<trans-unit id="event.header">
+				<source>Freunde mobilisieren</source>
+			</trans-unit>
+			<trans-unit id="event.introduction">
+				<source>Damit du deine Freunde mobilisieren kannst, musst du eine Treffpunkt-Zeit angeben.</source>
+			</trans-unit>
+			<trans-unit id="event.changeLocation">
+				<source>Ort ändern</source>
+			</trans-unit>
+			<trans-unit id="event.save">
+				<source>speichern</source>
+			</trans-unit>
+			<trans-unit id="event.remove">
+				<source>Event löschen</source>
+			</trans-unit>
+			<trans-unit id="event.removeInformation">
+				<source>Möchtest du deinen Event wirklich löschen? Falls du fortfährst, werden deine bereits mobilisierten Freunde entfernt.</source>
+			</trans-unit>
+			<trans-unit id="event.removeCancel">
+				<source>abbrechen</source>
+			</trans-unit>
+			<trans-unit id="event.removeConfirm">
+				<source>löschen</source>
 			</trans-unit>
 
 

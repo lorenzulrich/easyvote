@@ -343,6 +343,35 @@ var Easyvote = {
 				callback: EasyvoteGeneral.bindImageLazyLoading()
 			});
 		});
+	},
+
+	/**
+	 * Set a (new) location for an event
+	 * Hides the map, displays the event form
+	 *
+	 * @param button
+	 * @returns {boolean}
+	 */
+	setEventLocation: function(button) {
+		var $this = $(button);
+		$('#event-location-text').val($this.data('location-text'));
+		$('#event-location-uid').val($this.data('location-uid'));
+		$('.tx-easyvote-location').slideUp();
+		$('#event-form').slideDown();
+		$('#change-location-trigger').show();
+		return false;
+	},
+
+	/**
+	 * Change the location for an event
+	 * Displays the map, hides the event share partial (if visible)
+	 */
+	changeEventLocation: function() {
+		$('#event-share').slideUp(500, function() {
+			var mapCanvas = document.getElementById('map-canvas');
+			google.maps.event.trigger(mapCanvas, 'resize');
+		});
+		$('.tx-easyvote-location').slideDown();
 	}
 
 };
@@ -535,5 +564,21 @@ $(function() {
 		$parent.parent().parent().find('.advantages').hide();
 		$this.remove();
 	});
+
+	//
+	// Initialization of the mobilizations feature based on existing/new event
+	//
+	var $mobilizations = $('#mobilizations');
+	if ($mobilizations.length) {
+		if (EasyvoteMobilizations.eventUid === null) {
+			// If we don't have a persisted event yet, we display the map
+			$mobilizations.css('visibility', 'visible').show();
+			$('.tx-easyvote-location').css('visibility', 'visible').show();
+		} else {
+			// We have an event, so we display the share view
+			$mobilizations.css('visibility', 'visible').show();
+			$('#event-share').css('visibility', 'visible').show();
+		}
+	}
 
 })

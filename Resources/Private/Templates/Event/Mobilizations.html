@@ -1,15 +1,39 @@
 {namespace v=Tx_Vhs_ViewHelpers}
 {namespace ev=Tx_Easyvote_ViewHelpers}
 
-<div class="content-box">
-	<h2><f:translate key="mobilizations.header" /></h2>
-	<f:translate key="mobilizations.introduction" />
-	<f:render partial="Event/Share" arguments="{_all}" />
-</div>
-
-<div class="content-box" id="community-user-followers">
-	<h2><f:translate key="mobilizations.followers" /> (<f:count>{communityUser.followers}</f:count>)</h2>
-	<v:iterator.sort subject="{communityUser.followers}" as="sortedFollowers" sortBy="firstName" order="ASC" sortFlags="SORT_REGULAR">
-		<f:render partial="Event/FollowerList" arguments="{followers: sortedFollowers}" />
-	</v:iterator.sort>
+<div id="mobilizations" class="hidden">
+	<style type="text/css">
+		<!--
+		.tx-easyvote-location {
+			display: none;
+		}
+		.button-mobilize {
+			display: inline-block !important;
+		}
+		.button-route {
+			display: none;
+		}
+		-->
+	</style>
+	<script>
+		if (typeof EasyvoteMobilizations !== 'object') {
+			window.EasyvoteMobilizations = {}
+		}
+		EasyvoteMobilizations.eventUid = {f:if(condition: '{event.uid}', then:'{event.uid}', else: 'null')};
+	</script>
+	<f:render partial="Event/NewEdit" arguments="{_all}" />
+	<div id="event-share" class="hidden">
+		<div class="content-box">
+			<h2><f:translate key="mobilizations.header" /></h2>
+			<f:render partial="Event/Details" arguments="{_all}" />
+			<f:translate key="mobilizations.introduction" />
+			<f:render partial="Event/Share" arguments="{_all}" />
+		</div>
+		<div class="content-box" id="community-user-followers">
+			<h2><f:translate key="mobilizations.followers" /> (<f:count>{communityUser.followers}</f:count>)</h2>
+			<v:iterator.sort subject="{communityUser.followers}" as="sortedFollowers" sortBy="firstName" order="ASC" sortFlags="SORT_REGULAR">
+				<f:render partial="Event/FollowerList" arguments="{followers: sortedFollowers}" />
+			</v:iterator.sort>
+		</div>
+	</div>
 </div>

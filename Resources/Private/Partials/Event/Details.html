@@ -1,0 +1,34 @@
+<h3>{f:translate(key: 'mobilizations.header_event')}</h3>
+
+<div id="own-event">
+	<f:if condition="{event.location.locationType.uid} == 1">
+		<f:comment>Briefkasten</f:comment>
+		<strong>
+			{f:translate(key: 'post_box', extensionName: 'easyvote_location')}, {event.location.street}, {event.location.zip} {event.location.city}
+		</strong><br />
+	</f:if>
+	<f:if condition="{event.location.locationType.uid} == 10">
+		<f:comment>#VoteNow2015</f:comment>
+		<strong>
+			{event.location.name}, {event.location.street}, {event.location.zip} {event.location.city}
+		</strong><br />
+	</f:if>
+
+	<strong><f:translate key="mobilizations.event.date" />:</strong> <f:format.date format="%A, %e. %B %Y">{event.date}</f:format.date><br />
+	<strong><f:translate key="mobilizations.event.fromTime" />:</strong> <f:format.date format="%R">{event.fromTime}</f:format.date> <f:translate key="mobilizations.event.oclock" /><br />
+	<strong><f:translate key="mobilizations.event.comment" />:</strong><br />
+	<f:format.nl2br>{event.comment}</f:format.nl2br><br />
+
+	<button type="button" onclick="Easyvote.changeEventLocation()" class="change-location-trigger btn btn-primary">{f:translate(key: 'event.changeLocation')}</button>
+	<f:if condition="{event.uid}">
+		<br />
+		<f:link.action controller="Event" action="remove" arguments="{event:event}" class="hasModal"><f:translate key="event.remove" /></f:link.action>
+		<div class="hidden">
+			<p><f:translate key="event.removeInformation" /></p>
+			<button class="pull-left btn btn-primary button-cancel"><f:translate key="event.removeCancel" /></button>
+			<button class="pull-right btn btn-primary button-confirm"><f:translate key="event.removeConfirm" /></button>
+		</div>
+	</f:if>
+
+</div>
+

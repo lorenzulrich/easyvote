@@ -161,6 +161,9 @@
 				color: @grey-dark;
 			}
 		}
+		.uri {
+			font-size: 11px;
+		}
 	}
 	&:last-child {
 		margin-bottom: 0;
@@ -581,5 +584,24 @@ div#dataCompletionRequestModalContent {
 @media (max-width: @screen-xs-max) {
 	.abstimmungsvorlage .voting .row .sameheight {
 		padding: 5px;
+	}
+}
+
+
+#mobilizations {
+	#own-event {
+		background: white;
+		padding: 10px;
+		margin-bottom: 20px;
+		button {
+			margin-top: 10px;
+			margin-bottom: 5px;
+		}
+	}
+	#event-form {
+		display: none;
+	}
+	#change-location-trigger {
+		display: none;
 	}
 }
