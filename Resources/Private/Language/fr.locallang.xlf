@@ -4,260 +4,146 @@
 		<header/>
 		<body>
 
-			<trans-unit id="tx_easyvote_domain_model_metavotingproposal">
-				<source>Meta-Abstimmungsvorlage</source>
-			</trans-unit>
-			<trans-unit id="tx_easyvote_domain_model_metavotingproposal.type">
-				<source>Typ</source>
-			</trans-unit>
 			<trans-unit id="tx_easyvote_domain_model_metavotingproposal.opengraphDescription">
-				<source>Informiere dich jetzt einfach und neutral mit der easyvote Abstimmungshilfe!</source>
 				<target>Informe-toi de manière simple et neutre grâce à la brochure easyvote!</target>
 			</trans-unit>
-			<trans-unit id="tx_easyvote_domain_model_metavotingproposal.scope">
-				<source>Reichweite</source>
-			</trans-unit>
-			<trans-unit id="tx_easyvote_domain_model_metavotingproposal.main_proposal_approval">
-				<source>Zustimmung zur Hauptvorlage (in %)</source>
-			</trans-unit>
-			<trans-unit id="tx_easyvote_domain_model_metavotingproposal.voting_proposals">
-				<source>Abstimmungsvorlagen</source>
-			</trans-unit>
-			<trans-unit id="tx_easyvote_domain_model_metavotingproposal.kanton">
-				<source>Kanton</source>
-			</trans-unit>
-			
+
 			<trans-unit id="tx_easyvote_domain_model_votingproposal">
-				<source>Abstimmungsvorlage</source>
 				<target>Objet de votation</target>
 			</trans-unit>
-			<trans-unit id="tx_easyvote_domain_model_votingproposal.short_title">
-				<source>Kurztitel</source>
-			</trans-unit>
-			<trans-unit id="tx_easyvote_domain_model_votingproposal.official_title">
-				<source>Offizieller Titel</source>
-			</trans-unit>
-			<trans-unit id="tx_easyvote_domain_model_votingproposal.youtube_url">
-				<source>URL zu YouTube-Video</source>
-			</trans-unit>
-			<trans-unit id="tx_easyvote_domain_model_votingproposal.image">
-				<source>Bild (für Open Graph)</source>
-			</trans-unit>
 			<trans-unit id="tx_easyvote_domain_model_votingproposal.goal">
-				<source>Ziel</source>
 				<target>But</target>
 			</trans-unit>
 			<trans-unit id="tx_easyvote_domain_model_votingproposal.initial_status">
-				<source>Ausgangslage</source>
 				<target>Situation actuelle</target>
 			</trans-unit>
 			<trans-unit id="tx_easyvote_domain_model_votingproposal.consequence">
-				<source>Was würde sich ändern?</source>
 				<target>Qu’est-ce qui changerait?</target>
 			</trans-unit>
 			<trans-unit id="tx_easyvote_domain_model_votingproposal.pro_arguments">
-				<source>Pro</source>
 				<target>Arguments pour</target>
 			</trans-unit>
 			<trans-unit id="tx_easyvote_domain_model_votingproposal.contra_arguments">
-				<source>Kontra</source>
 				<target>Arguments contre</target>
 			</trans-unit>
 			<trans-unit id="tx_easyvote_domain_model_votingproposal.government_opinion">
-				<source>Parlaments- und Regierungsmeinung</source>
 				<target>Opinion du Parlement et du Gouvernement</target>
 			</trans-unit>
 			<trans-unit id="tx_easyvote_domain_model_votingproposal.links">
-				<source>Links</source>
 				<target>Liens</target>
 			</trans-unit>
 			<trans-unit id="tx_easyvote_domain_model_votingproposal.share">
-				<source>Teilen</source>
 				<target>Partager</target>
-			</trans-unit>
-			<trans-unit id="tx_easyvote_domain_model_votingproposal.proposal_approval">
-				<source>Zustimmung zur Vorlage (in %)</source>
-			</trans-unit>
-			
-			<trans-unit id="tx_easyvote_domain_model_kanton">
-				<source>Kanton</source>
-			</trans-unit>
-			<trans-unit id="tx_easyvote_domain_model_kanton.name">
-				<source>Name</source>
-			</trans-unit>
-			<trans-unit id="tx_easyvote_domain_model_kanton.abbreviation">
-				<source>Abkürzung</source>
-			</trans-unit>
-			<trans-unit id="tx_easyvote_domain_model_kanton.cities">
-				<source>Orte</source>
-			</trans-unit>
-			
-			<trans-unit id="tx_easyvote_domain_model_votingday">
-				<source>Abstimmungstag</source>
-			</trans-unit>
-			<trans-unit id="tx_easyvote_domain_model_votingday.voting_date">
-				<source>Abstimmungstag</source>
-			</trans-unit>
-			<trans-unit id="tx_easyvote_domain_model_votingday.archived">
-				<source>Archiviert</source>
-			</trans-unit>
-			<trans-unit id="tx_easyvote_domain_model_votingday.meta_voting_proposals">
-				<source>Meta-Abstimmungsvorlagen</source>
-			</trans-unit>
-			
-			<trans-unit id="tx_easyvote_domain_model_city">
-				<source>Ort</source>
-			</trans-unit>
-			<trans-unit id="tx_easyvote_domain_model_city.zip">
-				<source>Postleitzahl</source>
-			</trans-unit>
-			<trans-unit id="tx_easyvote_domain_model_city.name">
-				<source>Ortsname</source>
 			</trans-unit>
 
 			<trans-unit id="widget.pagination.previous">
-					<source>zurück</source>
-					<target>Précédent</target>
+				<target>Précédent</target>
 			</trans-unit>
 			<trans-unit id="widget.pagination.next">
-					<source>Weitere anzeigen</source>
-					<target>Suivant</target>
+				<target>Suivant</target>
 			</trans-unit>
 			<trans-unit id="widget.pagination.first">
-					<source>erste</source>
-					<target>première</target>
+				<target>première</target>
 			</trans-unit>
 			<trans-unit id="widget.pagination.last">
-					<source>letzte</source>
-					<target>dernière</target>
+				<target>dernière</target>
 			</trans-unit>
 			<trans-unit id="widget.pagination.records">
-					<source>Vorlagen</source>
-					<target>Objets</target>
+				<target>Objets</target>
 			</trans-unit>
 			<trans-unit id="widget.pagination.page">
-					<source>Seite</source>
-					<target>page</target>
+				<target>page</target>
 			</trans-unit>
 			<trans-unit id="widget.pagination.of">
-					<source>von</source>
-					<target>de</target>
+				<target>de</target>
 			</trans-unit>
 			<trans-unit id="widget.pagination.refresh">
-					<source>Refresh</source>
-					<target>Rajeunir</target>
+				<target>Rajeunir</target>
 			</trans-unit>
 			<trans-unit id="tx_easyvote_archive.title">
-					<source>Archiv durchstöbern...</source>
-					<target>Parcourir les archives</target>
+				<target>Parcourir les archives</target>
 			</trans-unit>
 			<trans-unit id="tx_easyvote_archive.searchByQuery">
-					<source>Nach Begriff suchen...</source>
-					<target>Rechercher un terme</target>
+				<target>Rechercher un terme</target>
 			</trans-unit>
 			<trans-unit id="tx_easyvote_archive.limitSearch">
-					<source>Suche eingrenzen...</source>
-					<target>Affiner la recherche</target>
+				<target>Affiner la recherche</target>
 			</trans-unit>
 			<trans-unit id="tx_easyvote_archive.limitNational">
-					<source>national</source>
-					<target>national</target>
+				<target>national</target>
 			</trans-unit>
 			<trans-unit id="tx_easyvote_archive.title">
-					<source>Archiv durchstöbern...</source>
-					<target>Parcourir les archives</target>
+				<target>Parcourir les archives</target>
 			</trans-unit>
 			<trans-unit id="tx_easyvote_archive.title">
-					<source>Archiv durchstöbern...</source>
-					<target>Parcourir les archives</target>
+				<target>Parcourir les archives</target>
 			</trans-unit>
 			<trans-unit id="tx_easyvote_archive.searchResultsCount">
-					<source>%o Vorlagen gefunden.</source>
-					<target>%o objets trouvés.</target>
+				<target>%o objets trouvés.</target>
 			</trans-unit>
 			<trans-unit id="tx_easyvote_archive.searchResultsCount">
-					<source>Keine Vorlagen gefunden.</source>
-					<target>Aucun document trouvé.</target>
+				<target>Aucun document trouvé.</target>
 			</trans-unit>
 			<trans-unit id="tx_easyvote_archive.gegenvorschlagNotice">
-					<source><![CDATA[Zu dieser Vorlage gibt es einen <a href="#" id="goToGegenvorschlag">Gegenvorschlag</a>.]]></source>
-					<target><![CDATA[<a href="#" id="goToGegenvorschlag">Voici</a> la contre-proposition.]]></target>
+				<target><![CDATA[<a href="#" id="goToGegenvorschlag">Voici</a> la contre-proposition.]]></target>
 			</trans-unit>
 			<trans-unit id="tx_easyvote_archive.gegenvorschlagBack">
-					<source><![CDATA[Dies ist der Gegenvorschlag. <a href="#" id="goToHauptvorlage">Zurück zur Vorlage</a>.]]></source>
-					<target><![CDATA[Voici la contre-proposition. <a href="#" id="goToHauptvorlage">Retour à l'objet</a>.]]></target>
+				<target><![CDATA[Voici la contre-proposition. <a href="#" id="goToHauptvorlage">Retour à l'objet</a>.]]></target>
 			</trans-unit>
 			<trans-unit id="tx_easyvote_archive.submit">
-					<source>suchen</source>
+				<source>suchen</source>
 			</trans-unit>
 			<trans-unit id="tx_easyvote_archive.reset">
-					<source>zurücksetzen</source>
+				<source>zurücksetzen</source>
 			</trans-unit>
 
 			<trans-unit id="easyvoteCommunity" xml:space="preserve">
-				<source>easyvote Community</source>
 				<target>easyvote Community</target>
 			</trans-unit>
 			<trans-unit id="smsMessaging" xml:space="preserve">
-				<source>SMS-Versand</source>
 				<target>Envoi de SMS</target>
 			</trans-unit>
 			<trans-unit id="backendDashboard" xml:space="preserve">
-				<source>Dashboard</source>
 				<target>Dashboard</target>
 			</trans-unit>
 			<trans-unit id="emailExport" xml:space="preserve">
-				<source>E-Mail-Export</source>
 				<target>Envoi d'e-mails</target>
 			</trans-unit>
 
 			<trans-unit id="voting.yourOpinion">
-				<source><![CDATA[
-					Wie wirst du ab&shy;stimmen?
-				]]></source>
 				<target><![CDATA[
 					Que vas-tu voter?
 				]]></target>
 			</trans-unit>
 			<trans-unit id="voting.alreadyVotedUndo">
-				<source>Du hast bereits abgestimmt. Klicke, um die Stimme rückgängig zu machen.</source>
 				<target>Tu as déjà voté. Clique ici pour revenir sur ton vote.</target>
 			</trans-unit>
 			<trans-unit id="voting.alreadyVoted">
-				<source>Du hast bereits abgestimmt.</source>
 				<target>Tu as déjà voté.</target>
 			</trans-unit>
 			<trans-unit id="voting.voteUp">
-				<source>Stimme für diese Vorlage.</source>
 				<target>Voter pour ce projet.</target>
 			</trans-unit>
 			<trans-unit id="voting.voteDown">
-				<source>Stimme gegen diese Vorlage.</source>
 				<target>Voter contre ce projet.</target>
 			</trans-unit>
 			<trans-unit id="voting.notAuthenticated">
-				<source>Du bist nicht angemeldet. Klicke für mehr Infos.</source>
 				<target>Tu n'es pas inscrit-e. Clique ici pour plus d'informations.</target>
 			</trans-unit>
 
 			<trans-unit id="votingAnswer.header">
-				<source>Danke für deine Stimme!</source>
 				<target>Merci!</target>
 			</trans-unit>
 			<trans-unit id="votingAnswer.shareYourOpinion">
-				<source>Teile deine Meinung und überzeuge deine Freunde.</source>
 				<target>Partage ton opinion et convaincs tes amis.</target>
 			</trans-unit>
 			<trans-unit id="votingAnswer.iSayYes">
-				<source>Ich sage JA</source>
 				<target>Je vote OUI</target>
 			</trans-unit>
 			<trans-unit id="votingAnswer.iSayNo">
-				<source>Ich sage NEIN</source>
 				<target>Je vote NON</target>
 			</trans-unit>
 			<trans-unit id="votingAnswer.getInformation">
-				<source>Informiere dich jetzt unter</source>
 				<target>Informe-toi maintenant sous</target>
 			</trans-unit>
 
@@ -286,77 +172,57 @@
 			</trans-unit>
 
 			<trans-unit id="editProfile.header">
-				<source>Profil bearbeiten</source>
 				<target>Modifier ton profil</target>
 			</trans-unit>
 			<trans-unit id="editProfile.save">
-				<source>speichern</source>
 				<target>sauvegarder</target>
 			</trans-unit>
 			<trans-unit id="editProfile.remove">
-				<source>Möchtest du dein Konto löschen?</source>
 				<target>Souhaites-tu supprimer ton compte?</target>
 			</trans-unit>
 			<trans-unit id="editProfile.removeInformation">
-				<source>Bitte bestätigte, dass du dein Profil löschen möchtest. Nach dem Löschen des Profils erhältst du von uns keine Mitteilungen mehr, auch keine Vote-Wecker.</source>
 				<target>Confirme ton souhait de supprimer ton profil. Une fois ton profil supprimé, tu ne recevras plus aucune communication de notre part, ni aucune alarme de vote.</target>
 			</trans-unit>
 			<trans-unit id="editProfile.removeCancel">
-				<source>abbrechen</source>
 				<target>annuler</target>
 			</trans-unit>
 			<trans-unit id="editProfile.removeConfirm">
-				<source>Profil löschen</source>
 				<target>supprimer le profil</target>
 			</trans-unit>
 			<trans-unit id="editProfile.placeholderFirstName">
-				<source>Vorname</source>
 				<target>Prénom</target>
 			</trans-unit>
 			<trans-unit id="editProfile.placeholderLastName">
-				<source>Nachname</source>
 				<target>Nom de famille</target>
 			</trans-unit>
 			<trans-unit id="editProfile.placeholderAddress">
-				<source>Adresse</source>
 				<target>Adresse</target>
 			</trans-unit>
 			<trans-unit id="editProfile.placeholderZip">
-				<source>PLZ</source>
 				<target>Code postal</target>
 			</trans-unit>
 			<trans-unit id="editProfile.placeholderCity">
-				<source>Ort</source>
 				<target>Localité</target>
 			</trans-unit>
 			<trans-unit id="editProfile.emptySelectKanton">
-				<source>Kanton wählen...</source>
 				<target>Choisir le canton...</target>
 			</trans-unit>
 			<trans-unit id="editProfile.placeholderMobile">
-				<source>Mobiltelefon</source>
 				<target>Numéro de téléphone portable</target>
 			</trans-unit>
 			<trans-unit id="editProfile.placeholderEmail">
-				<source>E-Mail-Adresse</source>
 				<target>Adresse e-mail</target>
 			</trans-unit>
 			<trans-unit id="editProfile.placeholderGender">
-				<source>Geschlecht</source>
 				<target>Sexe</target>
 			</trans-unit>
 			<trans-unit id="editProfile.placeholderLanguage">
-				<source>Sprache</source>
 				<target>Langue</target>
 			</trans-unit>
 			<trans-unit id="editProfile.placeholderBirthdate">
-				<source>Geburtsdatum, z.B. 01.01.2000</source>
 				<target>Date de naissance, p.ex. 01.01.2000</target>
 			</trans-unit>
 			<trans-unit id="editProfile.saved">
-				<source><![CDATA[
-					<i class="evicon-ok-squared"></i> Dein Profil wurde aktualisiert!
-				]]></source>
 				<target><![CDATA[
 					<i class="evicon-ok-squared"></i> Ton profil a été actualisé!
 				]]></target>
@@ -418,68 +284,51 @@
 			</trans-unit>
 
 			<trans-unit id="unsubscribe.header">
-				<source>Vote-Wecker-Abmeldung</source>
 				<target>Désabonnement à l’alarme de vote</target>
 			</trans-unit>
 			<trans-unit id="unsubscribe.invalidRequest">
-				<source><![CDATA[
-					Der Abmeldelink ist unvollständig oder ungültig. Bitte melde dich bei <a href="mailto:info@easyvote.ch">info@easyvote.ch</a>.
-				]]></source>
 				<target><![CDATA[
 					Le lien de désabonnement ne fonctionne pas ou est incomplet. Pour toutes questions: <a href="mailto:info@easyvote.ch">info@easyvote.ch</a>.
 				]]></target>
 			</trans-unit>
 			<trans-unit id="unsubscribe.notificationMailDisabled">
-				<source>Danke für deine Abmeldung. Du erhälst künftig keinen Vote-Wecker mehr per E-Mail.</source>
 				<target>Merci pour ton désabonnement. Tu ne recevras plus d’alarme de vote par email.</target>
 			</trans-unit>
 
 			<trans-unit id="loginPanel.loggedInAs">
-				<source>eingeloggt als</source>
 				<target>connecté sous</target>
 			</trans-unit>
 			<trans-unit id="loginPanel.login">
-				<source>Anmelden</source>
 				<target>Connecter</target>
 			</trans-unit>
 			<trans-unit id="loginPanel.logout">
-				<source>Abmelden</source>
 				<target>se déconnecter</target>
 			</trans-unit>
 			<trans-unit id="loginPanel.register">
-				<source>Noch kein Profil?</source>
 				<target>Pas encore inscrit?</target>
 			</trans-unit>
 			<trans-unit id="loginPanel.modalHeader">
-				<source>Noch kein Profil?</source>
 				<target>Pas encore inscrit?</target>
 			</trans-unit>
 			<trans-unit id="loginPanel.modalHeaderNotAuthenticated">
-				<source>Registrierung</source>
 				<target>Inscription</target>
 			</trans-unit>
 			<trans-unit id="loginPanel.modalSubheaderNotAuthenticated">
-				<source>Registriere dich jetzt bei easyvote, um die angewählte Funktion verwenden zu können.</source>
 				<target>Inscris-toi maintenant sur easyvote pour avoir accès à la fonction souhaitée.</target>
 			</trans-unit>
 			<trans-unit id="loginPanel.modalFacebookHeader">
-				<source>Facebook</source>
 				<target>Facebook</target>
 			</trans-unit>
 			<trans-unit id="loginPanel.modalAdvantages">
-				<source>Vorteile</source>
 				<target>Avantages</target>
 			</trans-unit>
 			<trans-unit id="loginPanel.modalAdvantage.1">
-				<source>Informiere dich einfach und neutral über Abstimmungen und Wahlen!</source>
 				<target>Reçois des informations accessibles et neutres sur les votations et les élections!</target>
 			</trans-unit>
 			<trans-unit id="loginPanel.modalAdvantage.2">
-				<source>Stelle den Vote-Wecker für dich und deine Freude, damit ihr keinen Urnengang verpasst.</source>
 				<target>Installe l'alarme de vote pour toi et tes amis, afin de ne plus manquer aucun scrutin.</target>
 			</trans-unit>
 			<trans-unit id="loginPanel.modalAdvantage.3">
-				<source>Mache mit beim Abstimmungsrating und teile deine Meinung! Weitere Features folgen...</source>
 				<target>Participe à l'évaluation des votations et partage ton opinion! D'autres documents suivront...</target>
 			</trans-unit>
 			<trans-unit id="loginPanel.modalLegalInfo">
@@ -498,95 +347,71 @@
 			</trans-unit>
 
 			<trans-unit id="userFunctions.voteWecker">
-				<source>Stelle deinen Vote-Wecker!</source>
 				<target>Installe ton alarme de vote!</target>
 			</trans-unit>
 			<trans-unit id="userOverview.years">
-				<source>Jahre</source>
 				<target>ans</target>
 			</trans-unit>
 
 			<trans-unit id="error.1245107351">
-				<source>Bitte die rot hinterlegten Felder korrigieren.</source>
 				<target>Veuillez, svp, corriger les champs surlignés en rouge.</target>
 			</trans-unit>
 			<trans-unit id="error.1413988036">
-				<source>Es ist bereits ein Benutzer mit dieser E-Mail-Adresse registriert.</source>
 				<target>Cette adresse e-mail est déjà utilisée par un autre utilisateur.</target>
 			</trans-unit>
 			<trans-unit id="error.propertyPath.username">
-				<source>E-Mail-Adresse</source>
 				<target>Adresse e-mail</target>
 			</trans-unit>
 			<trans-unit id="error.propertyPath.password">
-				<source>Passwort</source>
 				<target>Mot de passe</target>
 			</trans-unit>
 			<trans-unit id="error.propertyPath.firstName">
-				<source>Vorname</source>
 				<target>Prénom</target>
 			</trans-unit>
 			<trans-unit id="error.propertyPath.lastName">
-				<source>Nachname</source>
 				<target>Nom</target>
 			</trans-unit>
 
 			<trans-unit id="registration.username">
-				<source>E-Mail-Adresse</source>
 				<target>Adresse e-mail</target>
 			</trans-unit>
 			<trans-unit id="registration.password">
-				<source>Passwort</source>
 				<target>Mot de passe</target>
 			</trans-unit>
 			<trans-unit id="registration.firstName">
-				<source>Vorname</source>
 				<target>Prénom</target>
 			</trans-unit>
 			<trans-unit id="registration.lastName">
-				<source>Nachname</source>
 				<target>Nom</target>
 			</trans-unit>
 			<trans-unit id="registration.or">
-				<source>oder</source>
 				<target>ou</target>
 			</trans-unit>
 			<trans-unit id="registration.register">
-				<source>Registrieren</source>
 				<target>S'enregistrer</target>
 			</trans-unit>
 
 
 			<trans-unit id="create.header">
-				<source>Registration erfolgreich</source>
 				<target>Enregistrement réussi</target>
 			</trans-unit>
 			<trans-unit id="create.optinMessage">
-				<source>Dein easyvote-Benutzerkonto wurde erfolgreich erstellt. Bitte klicke auf den Link in der Bestätigungs-E-Mail, um dein Konto freizuschalten. Dann kannst du loslegen!</source>
 				<target>Ton compte d’utilisateur easyvote a été créé avec succès. Afin que ton compte soit activé, il faut maintenant cliquer sur le link qui est dans l’e-mail de confirmation que tu as reçu!</target>
 			</trans-unit>
 			<trans-unit id="create.optinMail.subject">
-				<source>easyvote: Bestätige deine E-Mail-Adresse</source>
 				<target>easyvote: Confirme ton adresse e-mail</target>
 			</trans-unit>
 
 			<trans-unit id="create.optinMail.hello">
-				<source>Hallo</source>
 				<target>Salut</target>
 			</trans-unit>
 			<trans-unit id="create.optinMail.introduction">
-				<source>Vielen Dank für dein Interesse an easyvote. Bestätige deine Registrierung mit einem Klick auf den folgenden Link:</source>
 				<target>Merci de ton intérêt pour easyvote. Confirme ton enregistrement en cliquant sur le link suivant :</target>
 			</trans-unit>
 			<trans-unit id="create.optinMail.linkText">
-				<source>easyvote-Konto aktivieren</source>
 				<target>Activer le compte easyvote</target>
 			</trans-unit>
 			<trans-unit id="create.optinMail.ending">
-				<source><![CDATA[
-					<p>Beste Grüsse<br />
-					dein easyvote-Team</p>
-				]]></source>
 				<target><![CDATA[
 					<p>Meilleures salutations<br />
 					ton équipe easyvote</p>
@@ -594,26 +419,21 @@
 			</trans-unit>
 
 			<trans-unit id="activate.header">
-				<source>Aktivierung</source>
 				<target>Activer</target>
 			</trans-unit>
 			<trans-unit id="activate.successMessage">
-				<source>Dein Konto wurde erfolgreich aktiviert. Du kannst dich nun einloggen und bist Teil der easyvote-Community!</source>
 				<target>Ton compte a été activé avec succès. Tu peux maintenant te connecter. Tu fais partie de la community-easyvote!</target>
 			</trans-unit>
 			<trans-unit id="activate.communityHomeLinkLabel">
 				<target>Accéder au compte maintenant !</target>
 			</trans-unit>
 			<trans-unit id="activate.userNotFoundMessage">
-				<source>Das Konto konnte nicht aktiviert werden, weil der Benutzer nicht gefunden wurde.</source>
 				<target>Le compte n’a pas pu être activé car l'utilisateur n'a pas été trouvé.</target>
 			</trans-unit>
 			<trans-unit id="activate.missingLinkPartsMessage">
-				<source>Dein Konto konnte nicht aktiviert werden, da der Aktivierungslink nicht vollständig ist.</source>
 				<target>Ton compte n'a pas pu être activé car le lien d'activation n’est pas complet.</target>
 			</trans-unit>
 			<trans-unit id="activate.invalidLinkMessage">
-				<source>Dein Konto konnte nicht aktiviert werden, da der Aktivierungslink ungültig ist.</source>
 				<target>Ton compte n'a pas pu être activé car le lien d'activation n’est pas valide.</target>
 			</trans-unit>
 
