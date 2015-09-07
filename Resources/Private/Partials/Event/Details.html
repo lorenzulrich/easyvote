@@ -22,6 +22,7 @@
 	<f:if condition="{event.communityUser.followers}">
 		<f:else>
 			<button type="button" onclick="Easyvote.changeEventLocation()" class="change-location-trigger btn btn-primary">{f:translate(key: 'event.changeLocation')}</button>
+			<button type="button" onclick="Easyvote.changeEvent()" class="change-event-trigger btn btn-primary">{f:translate(key: 'event.changeEvent')}</button>
 		</f:else>
 	</f:if>
 	<f:if condition="{event.uid}">

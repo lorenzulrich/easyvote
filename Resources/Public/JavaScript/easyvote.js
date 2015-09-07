@@ -358,6 +358,7 @@ var Easyvote = {
 		$('#event-location-uid').val($this.data('location-uid'));
 		$('.tx-easyvote-location').slideUp();
 		$('#event-form').slideDown();
+		$('#map-container').closest('.col-md-6').find('.csc').first().slideUp();
 		$('#change-location-trigger').show();
 		return false;
 	},
@@ -367,11 +368,20 @@ var Easyvote = {
 	 * Displays the map, hides the event share partial (if visible)
 	 */
 	changeEventLocation: function() {
-		$('#event-share').slideUp(500, function() {
+		$('#event-share').slideUp(500);
+		$('.tx-easyvote-location').slideDown(500, function() {
 			var mapCanvas = document.getElementById('map-canvas');
 			google.maps.event.trigger(mapCanvas, 'resize');
 		});
-		$('.tx-easyvote-location').slideDown();
+	},
+
+	/**
+	 * Change other data of an event
+	 * Displays the event form, hides the event share partial (if visible)
+	 */
+	changeEvent: function() {
+		$('#event-share').slideUp(500);
+		$('#event-form').slideDown(500);
 	}
 
 };

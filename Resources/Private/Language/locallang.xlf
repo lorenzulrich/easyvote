@@ -240,19 +240,19 @@
 				<source>Vote-Wecker per SMS</source>
 			</trans-unit>
 			<trans-unit id="editNotifications.sectionSmsIntroduction">
-				<source>Wir informieren dich per SMS rechtzeitig und mehrmals vor Wahlen und Abstimmungen.</source>
+				<source>Wir erinnern und informieren dich per SMS über bevorstehende Abstimmungen und Wahlen.</source>
 			</trans-unit>
 			<trans-unit id="editNotifications.sectionEmailHeader">
 				<source>Vote-Wecker per E-Mail</source>
 			</trans-unit>
 			<trans-unit id="editNotifications.sectionEmailIntroduction">
-				<source>Wir informieren dich per E-Mail rechtzeitig und mehrmals vor Wahlen und Abstimmungen.</source>
+				<source>Wir erinnern und informieren dich per E-Mail über bevorstehende Abstimmungen und Wahlen.</source>
 			</trans-unit>
 			<trans-unit id="editNotifications.sectionCommunityNewsHeader">
 				<source>Community-News per E-Mail</source>
 			</trans-unit>
 			<trans-unit id="editNotifications.sectionCommunityNewsIntroduction">
-				<source>Wir informieren dich vor Wahlen und Abstimmungen wöchentlich über das Neueste aus unserer Community.</source>
+				<source>Wir informieren dich über das Neuste aus unserer Community.</source>
 			</trans-unit>
 			<trans-unit id="editNotifications.sectionPrivacyProtectionHeader">
 				<source>Erhöhte Privatsphäre</source>
@@ -410,10 +410,10 @@
 			</trans-unit>
 
 			<trans-unit id="mobilizations.header">
-				<source>Mobilisiere deine Freunde!</source>
+				<source>Freunde einladen</source>
 			</trans-unit>
 			<trans-unit id="mobilizations.header_event">
-				<source>Dein Event</source>
+				<source>Deine Einladung</source>
 			</trans-unit>
 			<trans-unit id="mobilizations.event.date">
 				<source>Ort</source>
@@ -425,7 +425,7 @@
 				<source>Uhr</source>
 			</trans-unit>
 			<trans-unit id="mobilizations.event.comment">
-				<source>Bemerkungen</source>
+				<source>Persönliche Nachricht</source>
 			</trans-unit>
 			<trans-unit id="mobilizations.introduction">
 				<source><![CDATA[
@@ -448,7 +448,7 @@
 				<source>Link kopieren und senden</source>
 			</trans-unit>
 			<trans-unit id="mobilizations.followers">
-				<source>Deine Follower</source>
+				<source>Deine mobilisierten Freunde</source>
 			</trans-unit>
 			<trans-unit id="mobilizations.follower.from">
 				<source>aus</source>
@@ -481,10 +481,10 @@
 				<source>Teilnehmen</source>
 			</trans-unit>
 			<trans-unit id="mobilizations.directory.i_follow">
-				<source>Folge ich</source>
+				<source>Ich bin dabei!</source>
 			</trans-unit>
 			<trans-unit id="mobilizations.directory.unfollow">
-				<source>Entfolgen</source>
+				<source>Nicht teilnehmen</source>
 			</trans-unit>
 			<trans-unit id="mobilizations.directory.filter.title">
 				<source>Wahlhelfer finden</source>
@@ -858,10 +858,10 @@
 				<source>Zeit Treffpunkt</source>
 			</trans-unit>
 			<trans-unit id="tx_easyvote_domain_model_event.comment">
-				<source>Bemerkung</source>
+				<source>Persönliche Nachricht</source>
 			</trans-unit>
 			<trans-unit id="event.header">
-				<source>Freunde mobilisieren</source>
+				<source>Uhrzeit festlegen</source>
 			</trans-unit>
 			<trans-unit id="event.introduction">
 				<source>Damit du deine Freunde mobilisieren kannst, musst du eine Treffpunkt-Zeit angeben.</source>
@@ -869,11 +869,14 @@
 			<trans-unit id="event.changeLocation">
 				<source>Ort ändern</source>
 			</trans-unit>
+			<trans-unit id="event.changeEvent">
+				<source>Zeit und Nachricht ändern</source>
+			</trans-unit>
 			<trans-unit id="event.save">
 				<source>speichern</source>
 			</trans-unit>
 			<trans-unit id="event.remove">
-				<source>Event löschen</source>
+				<source>Einladung löschen</source>
 			</trans-unit>
 			<trans-unit id="event.removeInformation">
 				<source>Möchtest du deinen Event wirklich löschen? Falls du fortfährst, werden deine bereits mobilisierten Freunde entfernt.</source>
