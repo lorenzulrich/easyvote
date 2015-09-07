@@ -200,6 +200,24 @@ class CommunityUserController extends \Visol\Easyvote\Controller\AbstractControl
 		$loggedInUser = $this->communityUserService->getCommunityUser();
 		/** Todo: Sanitize properties that should never be updated by the user. */
 		if ($loggedInUser->getUid() === $communityUser->getUid()) {
+			if ($communityUser->_isDirty('email')) {
+				// e-mail address changed, so validate
+				/** @var \Visol\Easyvote\Validation\Validator\UniqueUsernameValidator $uniqueUsernameValidator */
+				$uniqueUsernameValidator = $this->objectManager->get('Visol\Easyvote\Validation\Validator\UniqueUsernameValidator');
+				$validatedUsername = $uniqueUsernameValidator->validate($communityUser->getEmail());
+				if (count($validatedUsername->getErrors())) {
+					// e-mail address is already in use, throw error
+					$this->addFlashMessage($validatedUsername->getFirstError()->getMessage(), $validatedUsername->getFirstError()->getTitle(), \TYPO3\CMS\Core\Messaging\AbstractMessage::ERROR);
+					$this->redirect('editProfile');
+				} else {
+					// e-mail address is not in use, so function can continue, but user needs to opt-in again
+					// TODO add "soft" re-optin because setDisable(1) logs out the user
+					//$communityUser->setDisable(1);
+					// and set username = new e-mail
+					$communityUser->setUsername($communityUser->getEmail());
+				}
+			}
+
 			// General functions
 			if (array_key_exists($phoneNumberPrefix, $this->settings['allowedPhoneNumberPrefixes']) && $communityUser->_isDirty('telephone')) {
 				$communityUser->setTelephone($phoneNumberPrefix . preg_replace('/\D/', '', $communityUser->getTelephone()));
@@ -362,12 +380,27 @@ class CommunityUserController extends \Visol\Easyvote\Controller\AbstractControl
 	 *
 	 * @param CommunityUser $communityUser
 	 * @param string $phoneNumberPrefix
-	 * @dontvalidate $communityUser
 	 */
 	public function updateNotificationsAction(CommunityUser $communityUser, $phoneNumberPrefix = '4175') {
 		$loggedInUser = $this->communityUserService->getCommunityUser();
-		/** Todo: Sanitize properties that should never be updated by the user. */
 		if ($loggedInUser->getUid() === $communityUser->getUid()) {
+			if ($communityUser->_isDirty('email')) {
+				// e-mail address changed, so validate
+				/** @var \Visol\Easyvote\Validation\Validator\UniqueUsernameValidator $uniqueUsernameValidator */
+				$uniqueUsernameValidator = $this->objectManager->get('Visol\Easyvote\Validation\Validator\UniqueUsernameValidator');
+				$validatedUsername = $uniqueUsernameValidator->validate($communityUser->getEmail());
+				if (count($validatedUsername->getErrors())) {
+					// e-mail address is already in use, throw error
+					$this->addFlashMessage($validatedUsername->getFirstError()->getMessage(), $validatedUsername->getFirstError()->getTitle(), \TYPO3\CMS\Core\Messaging\AbstractMessage::ERROR);
+					$this->redirect('editNotifications');
+				} else {
+					// e-mail address is not in use, so function can continue, but user needs to opt-in again
+					// TODO add "soft" re-optin because setDisable(1) logs out the user
+					//$communityUser->setDisable(1);
+					// and set username = new e-mail
+					$communityUser->setUsername($communityUser->getEmail());
+				}
+			}
 			if (array_key_exists($phoneNumberPrefix, $this->settings['allowedPhoneNumberPrefixes'])) {
 				$communityUser->setTelephone($phoneNumberPrefix . preg_replace('/\D/', '', $communityUser->getTelephone()));
 			} else {

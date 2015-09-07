@@ -52,14 +52,11 @@
 				</div>
 			</div>
 		</div>
-		<f:comment>
-			// TODO see https://redmine.visol.ch/issues/728
-			<div class="form-group">
-				<label for="email">{f:translate(key:'editProfile.placeholderEmail')}</label>
-				<f:form.textfield id="email" class="form-control" property="email" additionalAttributes="{required: required}" />
-			</div>
-			<p class="politician-notice"><em><f:translate key="editProfile.email.politicianNotice" /></em></p>
-		</f:comment>
+		<div class="form-group">
+			<label for="email">{f:translate(key:'editProfile.placeholderEmail')}</label>
+			<f:form.textfield id="email" class="form-control" property="email" additionalAttributes="{required: required}" />
+		</div>
+		<p class="politician-notice"><em><f:translate key="editProfile.email.politicianNotice" /></em></p>
 		<div class="form-group">
 			<label for="birthday">{f:translate(key:'editProfile.placeholderBirthdate')}</label>
 			<f:form.textfield id="birthday" class="form-control" property="birthdate" additionalAttributes="{required: required}" value="{user.birthdate -> f:format.date(format:'d.m.Y')}">
