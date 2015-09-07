@@ -74,7 +74,7 @@ class CommunityUserController extends \Visol\Easyvote\Controller\AbstractControl
 	 * @return void
 	 */
 	public function userOverviewAction() {
-		$communityUser = $this->getLoggedInUser();
+		$communityUser = $this->communityUserService->getCommunityUser();
 		$this->view->assign('user', $communityUser);
 	}
 
@@ -84,7 +84,7 @@ class CommunityUserController extends \Visol\Easyvote\Controller\AbstractControl
 	 * @return void
 	 */
 	public function profilePictureAction() {
-		$communityUser = $this->getLoggedInUser();
+		$communityUser = $this->communityUserService->getCommunityUser();
 		$this->view->assign('user', $communityUser);
 	}
 
@@ -118,7 +118,7 @@ class CommunityUserController extends \Visol\Easyvote\Controller\AbstractControl
 	 * @return void
 	 */
 	public function loginPanelAction() {
-		$communityUser = $this->getLoggedInUser();
+		$communityUser = $this->communityUserService->getCommunityUser();
 		if ($communityUser instanceof CommunityUser) {
 			$this->view->assign('user', $communityUser);
 		}
@@ -130,7 +130,7 @@ class CommunityUserController extends \Visol\Easyvote\Controller\AbstractControl
 	 * @param boolean $goToPoliticianProfile
 	 */
 	public function editProfileAction($goToTeacherProfile = NULL, $goToPoliticianProfile = NULL) {
-		$communityUser = $this->getLoggedInUser();
+		$communityUser = $this->communityUserService->getCommunityUser();
 
 		if ($communityUser instanceof CommunityUser) {
 			$fullPhoneNumber = $communityUser->getTelephone();
@@ -203,7 +203,7 @@ class CommunityUserController extends \Visol\Easyvote\Controller\AbstractControl
 	 * @throws \TYPO3\CMS\Extbase\Persistence\Generic\Exception\TooDirtyException
 	 */
 	public function updateProfileAction(CommunityUser $communityUser, $phoneNumberPrefix = '4175', $politician = NULL, $teacher = NULL, $goToPoliticianProfile = NULL, $goToTeacherProfile = NULL) {
-		$loggedInUser = $this->getLoggedInUser();
+		$communityUser = $this->communityUserService->getCommunityUser();
 		/** Todo: Sanitize properties that should never be updated by the user. */
 		if ($loggedInUser->getUid() === $communityUser->getUid()) {
 			// General functions
@@ -303,7 +303,7 @@ class CommunityUserController extends \Visol\Easyvote\Controller\AbstractControl
 	 * @dontvalidate $communityUser
 	 */
 	public function removeProfileAction(CommunityUser $communityUser) {
-		$loggedInUser = $this->getLoggedInUser();
+		$loggedInUser = $this->communityUserService->getCommunityUser();
 		if ($loggedInUser->getUid() === $communityUser->getUid()) {
 			$communityUser->setEmail('');
 			$communityUser->setNotificationMailActive(0);
@@ -345,7 +345,7 @@ class CommunityUserController extends \Visol\Easyvote\Controller\AbstractControl
 	 * action editNotifications
 	 */
 	public function editNotificationsAction() {
-		$communityUser = $this->getLoggedInUser();
+		$communityUser = $this->communityUserService->getCommunityUser();
 		if ($communityUser instanceof CommunityUser) {
 			$fullPhoneNumber = $communityUser->getTelephone();
 			$allowedPhoneNumberPrefixes = $this->settings['allowedPhoneNumberPrefixes'];
@@ -371,7 +371,7 @@ class CommunityUserController extends \Visol\Easyvote\Controller\AbstractControl
 	 * @dontvalidate $communityUser
 	 */
 	public function updateNotificationsAction(CommunityUser $communityUser, $phoneNumberPrefix = '4175') {
-		$loggedInUser = $this->getLoggedInUser();
+		$loggedInUser = $this->communityUserService->getCommunityUser();
 		/** Todo: Sanitize properties that should never be updated by the user. */
 		if ($loggedInUser->getUid() === $communityUser->getUid()) {
 			if (array_key_exists($phoneNumberPrefix, $this->settings['allowedPhoneNumberPrefixes'])) {
@@ -771,7 +771,7 @@ class CommunityUserController extends \Visol\Easyvote\Controller\AbstractControl
 	 */
 	public function dataCompletionRequestAction() {
 		// try to get logged in user
-		$communityUser = $this->getLoggedInUser();
+		$communityUser = $this->communityUserService->getCommunityUser();
 
 		$dataCompletionRequestNecessary = FALSE;
 
@@ -812,7 +812,7 @@ class CommunityUserController extends \Visol\Easyvote\Controller\AbstractControl
 	 */
 	public function appConfigurationAction() {
 		// try to get logged in user
-		$communityUser = $this->getLoggedInUser();
+		$communityUser = $this->communityUserService->getCommunityUser();
 
 		if ($communityUser instanceof CommunityUser) {
 			$appConfiguration = array();
@@ -847,4 +847,3 @@ class CommunityUserController extends \Visol\Easyvote\Controller\AbstractControl
 	}
 
 }
-?>
