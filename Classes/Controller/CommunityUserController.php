@@ -464,6 +464,11 @@ class CommunityUserController extends \Visol\Easyvote\Controller\AbstractControl
 	 * Interface for exporting mail addresses
 	 */
 	public function backendEmailExportIndexAction() {
+		$newsletters = array(
+			'Vote-Wecker' => CommunityUser::NEWSLETTER_VOTING,
+			'Community-News' => CommunityUser::NEWSLETTER_COMMUNITY,
+		);
+
 		$languages = array(
 			'Deutsch' => CommunityUser::USERLANGUAGE_GERMAN,
 			'Französisch' => CommunityUser::USERLANGUAGE_FRENCH,
@@ -476,6 +481,7 @@ class CommunityUserController extends \Visol\Easyvote\Controller\AbstractControl
 		$dateTime = $dateTime->format('Y-m-d\TH:i:s');
 
 		$this->view->assignMultiple(array(
+			'newsletters' => $newsletters,
 			'languages' => $languages,
 			'kantons' => $kantons,
 			'dateTime' => $dateTime,

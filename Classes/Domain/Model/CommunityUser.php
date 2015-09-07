@@ -28,6 +28,9 @@ class CommunityUser extends FrontendUser {
 	const USERLANGUAGE_FRENCH = 2;
 	const USERLANGUAGE_ITALIAN = 3;
 
+	const NEWSLETTER_VOTING = 'notificationMailActive';
+	const NEWSLETTER_COMMUNITY = 'communityNewsMailActive';
+
 	/**
 	 * @var \Visol\Easyvote\Service\CommunityUserService
 	 * @inject

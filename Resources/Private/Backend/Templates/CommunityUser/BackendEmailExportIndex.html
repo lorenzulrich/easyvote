@@ -11,6 +11,7 @@
 
 	<div class="collapsibleSection clearfix">
 		<f:form action="backendEmailExportPerform" noCacheHash="true">
+			<f:render partial="CommunityUser/Filters/Newsletter" arguments="{demand: demand, newsletters:newsletters}" />
 			<f:render partial="CommunityUser/Filters/UserLanguage" arguments="{demand: demand, languages:languages}" />
 			<f:render partial="CommunityUser/Filters/Kanton" arguments="{demand: demand, kantons:kantons}" />
 			<div class="form-row clearfix">

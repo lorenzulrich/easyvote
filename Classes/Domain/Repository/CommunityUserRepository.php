@@ -1,5 +1,6 @@
 <?php
 namespace Visol\Easyvote\Domain\Repository;
+use TYPO3\CMS\Extbase\Utility\DebuggerUtility;
 
 /**
  * This file is part of the TYPO3 CMS project.
@@ -79,7 +80,15 @@ class CommunityUserRepository extends \TYPO3\CMS\Extbase\Domain\Repository\Front
 				$constraints[] = $query->equals('notificationSmsActive', 1);
 			}
 			if ($filterDemand['type'] === \Visol\Easyvote\Domain\Model\MessagingJob::JOBTYPE_EMAIL) {
-				$constraints[] = $query->equals('notificationMailActive', 1);
+				if (array_key_exists('newsletters', $filterDemand)) {
+					$newsletterConstraints = array();
+					foreach ($filterDemand['newsletters'] as $newsletterFilterDemand) {
+						$newsletterConstraints[] = $query->equals($newsletterFilterDemand, 1);
+					}
+					if (count($newsletterConstraints)) {
+						$constraints[] = $query->logicalOr($newsletterConstraints);
+					}
+				}
 			}
 		}
 
@@ -90,6 +99,7 @@ class CommunityUserRepository extends \TYPO3\CMS\Extbase\Domain\Repository\Front
 			}
 			$constraints[] = $query->logicalOr($userLanguages);
 		}
+
 
 		if (array_key_exists('kantons', $filterDemand)) {
 			$useKantonsConstraint = TRUE;
