@@ -25,21 +25,10 @@ class AbstractController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControl
 	protected $communityUserRepository;
 
 	/**
-	 * @return \Visol\Easyvote\Domain\Model\CommunityUser|bool
-	 * @deprecated use \Visol\Easyvote\Service\CommunityUserService->getCommunityUser() instead
+	 * @var \Visol\Easyvote\Service\CommunityUserService
+	 * @inject
 	 */
-	protected function getLoggedInUser() {
-		if ((int)$GLOBALS['TSFE']->fe_user->user['uid'] > 0) {
-			$communityUser = $this->communityUserRepository->findByUid($GLOBALS['TSFE']->fe_user->user['uid']);
-			if ($communityUser instanceof \Visol\Easyvote\Domain\Model\CommunityUser) {
-				return $communityUser;
-			} else {
-				return FALSE;
-			}
-		} else {
-			return FALSE;
-		}
-	}
+	protected $communityUserService;
 
 	/**
 	 * TYPO3 user login

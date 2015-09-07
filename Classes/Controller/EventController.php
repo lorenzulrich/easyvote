@@ -26,12 +26,6 @@ class EventController extends \Visol\Easyvote\Controller\AbstractController {
 	protected $eventRepository;
 
 	/**
-	 * @var \Visol\Easyvote\Service\CommunityUserService
-	 * @inject
-	 */
-	protected $communityUserService;
-
-	/**
 	 * @var \TYPO3\CMS\Extbase\Persistence\Generic\PersistenceManager
 	 * @inject
 	 */
@@ -41,7 +35,7 @@ class EventController extends \Visol\Easyvote\Controller\AbstractController {
 	 * Access check
 	 */
 	public function initializeAction() {
-		if (!$this->getLoggedInUser()) {
+		if (!$this->communityUserService->getCommunityUser()) {
 			$code = 401;
 			$message = 'Authorization Required';
 			$this->response->setStatus($code, $message);

@@ -57,12 +57,6 @@ class CommunityUserController extends \Visol\Easyvote\Controller\AbstractControl
 	protected $messagingJobRepository;
 
 	/**
-	 * @var \Visol\Easyvote\Service\CommunityUserService
-	 * @inject
-	 */
-	protected $communityUserService;
-
-	/**
 	 * @var \TYPO3\CMS\Extbase\Persistence\Generic\PersistenceManager
 	 * @inject
 	 */
@@ -203,7 +197,7 @@ class CommunityUserController extends \Visol\Easyvote\Controller\AbstractControl
 	 * @throws \TYPO3\CMS\Extbase\Persistence\Generic\Exception\TooDirtyException
 	 */
 	public function updateProfileAction(CommunityUser $communityUser, $phoneNumberPrefix = '4175', $politician = NULL, $teacher = NULL, $goToPoliticianProfile = NULL, $goToTeacherProfile = NULL) {
-		$communityUser = $this->communityUserService->getCommunityUser();
+		$loggedInUser = $this->communityUserService->getCommunityUser();
 		/** Todo: Sanitize properties that should never be updated by the user. */
 		if ($loggedInUser->getUid() === $communityUser->getUid()) {
 			// General functions
@@ -642,7 +636,7 @@ class CommunityUserController extends \Visol\Easyvote\Controller\AbstractControl
 			$uniqueUsernameValidator = $this->objectManager->get('Visol\Easyvote\Validation\Validator\UniqueUsernameValidator');
 			$validatedUsername = $uniqueUsernameValidator->validate($this->request->getArgument('username'));
 			if (count($validatedUsername->getErrors())) {
-				$this->flashMessageContainer->add($validatedUsername->getFirstError()->getMessage(), $validatedUsername->getFirstError()->getTitle(), \TYPO3\CMS\Core\Messaging\AbstractMessage::ERROR);
+				$this->addFlashMessage($validatedUsername->getFirstError()->getMessage(), $validatedUsername->getFirstError()->getTitle(), \TYPO3\CMS\Core\Messaging\AbstractMessage::ERROR);
 				$this->forward('noProfileNotification');
 			}
 		}

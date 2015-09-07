@@ -72,7 +72,7 @@ class VotingProposalController extends \Visol\Easyvote\Controller\AbstractContro
 
 		$returnArray['user'] = '';
 
-		$loggedInUser = $this->getLoggedInUser();
+		$loggedInUser = $this->communityUserService->getCommunityUser();
 		if ($loggedInUser) {
 			$pollUserStatus = $this->pollRepository->findByVotingProposalAndUser($votingProposal, $loggedInUser);
 			if (count($pollUserStatus)) {
@@ -102,7 +102,7 @@ class VotingProposalController extends \Visol\Easyvote\Controller\AbstractContro
 	 * @return string
 	 */
 	public function undoUserVoteForVotingProposalAction(\Visol\Easyvote\Domain\Model\VotingProposal $votingProposal) {
-		$loggedInUser = $this->getLoggedInUser();
+		$loggedInUser = $this->communityUserService->getCommunityUser();
 		if ($loggedInUser) {
 			$activeVote = $this->pollRepository->findByVotingProposalAndUser($votingProposal, $loggedInUser)->getFirst();
 			if ($activeVote instanceof \Visol\Easyvote\Domain\Model\Poll) {
@@ -120,7 +120,7 @@ class VotingProposalController extends \Visol\Easyvote\Controller\AbstractContro
 	 * @return string
 	 */
 	public function voteForVotingProposalAction(\Visol\Easyvote\Domain\Model\VotingProposal $votingProposal, $value) {
-		$loggedInUser = $this->getLoggedInUser();
+		$loggedInUser = $this->communityUserService->getCommunityUser();
 		$pollUserStatus = $this->pollRepository->findByVotingProposalAndUser($votingProposal, $loggedInUser)->count();
 		if ($loggedInUser && $pollUserStatus === 0) {
 			$newVote = new \Visol\Easyvote\Domain\Model\Poll();

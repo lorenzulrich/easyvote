@@ -89,7 +89,7 @@ class ElectionSupporterController extends \Visol\Easyvote\Controller\AbstractCon
 
 		$this->view->assign('demand', $demand);
 
-		$authenticatedUser = $this->getCommunityUserService()->getCommunityUser();
+		$authenticatedUser = $this->communityUserService->getCommunityUser();
 		$this->view->assign('authenticatedUser', $authenticatedUser);
 
 		// Check if the current user has a Wahlhelfer themselves
@@ -131,7 +131,7 @@ class ElectionSupporterController extends \Visol\Easyvote\Controller\AbstractCon
 	 * Access check
 	 */
 	public function initializeFollowAction() {
-		if (!$this->getCommunityUserService()->getCommunityUser()) {
+		if (!$this->communityUserService->getCommunityUser()) {
 			$code = 401;
 			$message = 'Authorization Required';
 			$this->response->setStatus($code, $message);
@@ -148,7 +148,7 @@ class ElectionSupporterController extends \Visol\Easyvote\Controller\AbstractCon
 	 * @return string
 	 */
 	public function followAction(CommunityUser $object) {
-		$communityUser = $this->getCommunityUserService()->getCommunityUser();
+		$communityUser = $this->communityUserService->getCommunityUser();
 		$communityUser->setCommunityUser($object);
 		$this->communityUserRepository->update($communityUser);
 		$this->persistenceManager->persistAll();
@@ -159,7 +159,7 @@ class ElectionSupporterController extends \Visol\Easyvote\Controller\AbstractCon
 	 * Access check
 	 */
 	public function initializeUnfollowAction() {
-		if (!$this->getCommunityUserService()->getCommunityUser()) {
+		if (!$this->communityUserService->getCommunityUser()) {
 			$code = 401;
 			$message = 'Authorization Required';
 			$this->response->setStatus($code, $message);
@@ -176,7 +176,7 @@ class ElectionSupporterController extends \Visol\Easyvote\Controller\AbstractCon
 	 * @return string
 	 */
 	public function unfollowAction(CommunityUser $object) {
-		$communityUser = $this->getCommunityUserService()->getCommunityUser();
+		$communityUser = $this->communityUserService->getCommunityUser();
 		$communityUser->setCommunityUser(NULL);
 		$this->communityUserRepository->update($communityUser);
 		$this->persistenceManager->persistAll();
@@ -229,13 +229,6 @@ class ElectionSupporterController extends \Visol\Easyvote\Controller\AbstractCon
 			$demand['query'] = htmlspecialchars(strip_tags($demand['query']));
 			return $demand;
 		}
-	}
-
-	/**
-	 * @return \Visol\Easyvote\Service\CommunityUserService
-	 */
-	public function getCommunityUserService() {
-		return $this->objectManager->get('Visol\Easyvote\Service\CommunityUserService');
 	}
 
 }

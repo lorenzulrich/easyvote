@@ -46,7 +46,7 @@ class PartyController extends \Visol\Easyvote\Controller\AbstractController {
 	 * Access check
 	 */
 	public function initializeAction() {
-		if (!$this->getLoggedInUser()) {
+		if (!$this->communityUserService->getCommunityUser()) {
 			$code = 401;
 			$message = 'Authorization Required';
 			$this->response->setStatus($code, $message);
@@ -85,7 +85,7 @@ class PartyController extends \Visol\Easyvote\Controller\AbstractController {
 	 * @return string
 	 */
 	public function listMembersByDemandAction($demand = NULL) {
-		$communityUser = $this->getLoggedInUser();
+		$communityUser = $this->communityUserService->getCommunityUser();
 		if ($communityUser->isPartyAdministrator()) {
 
 			if ($demand) {

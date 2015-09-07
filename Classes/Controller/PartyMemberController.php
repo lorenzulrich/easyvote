@@ -26,15 +26,8 @@ use Visol\Easyvote\Domain\Model\CommunityUser;
  */
 class PartyMemberController extends \Visol\Easyvote\Controller\CommunityUserController {
 
-	/**
-	 * @return \Visol\Easyvote\Service\CommunityUserService
-	 */
-	public function getCommunityUserService() {
-		return $this->objectManager->get('Visol\Easyvote\Service\CommunityUserService');
-	}
-
 	public function initializeAction() {
-		$communityUser = $this->getCommunityUserService()->getCommunityUser();
+		$communityUser = $this->communityUserService->getCommunityUser();
 		if (!$communityUser || !$communityUser->isPartyAdministrator()) {
 			$code = 401;
 			$message = 'Access Denied';
@@ -53,11 +46,11 @@ class PartyMemberController extends \Visol\Easyvote\Controller\CommunityUserCont
 	 * @return string
 	 */
 	public function confirmAction(\Visol\Easyvote\Domain\Model\CommunityUser $object) {
-		$communityUser = $this->getCommunityUserService()->getCommunityUser();
+		$communityUser = $this->communityUserService->getCommunityUser();
 		if ($communityUser->getParty()->getUid() === $object->getParty()->getUid()) {
-			$pendingPoliticianUsergroup = $this->getCommunityUserService()->getUserGroup('pendingPolitician');
+			$pendingPoliticianUsergroup = $this->communityUserService->getUserGroup('pendingPolitician');
 			$object->removeUsergroup($pendingPoliticianUsergroup);
-			$politicianUsergroup = $this->getCommunityUserService()->getUserGroup('politician');
+			$politicianUsergroup = $this->communityUserService->getUserGroup('politician');
 			$object->addUsergroup($politicianUsergroup);
 			$this->communityUserRepository->update($object);
 			$this->persistenceManager->persistAll();
@@ -85,9 +78,9 @@ class PartyMemberController extends \Visol\Easyvote\Controller\CommunityUserCont
 	 * @return string
 	 */
 	public function declineAction(\Visol\Easyvote\Domain\Model\CommunityUser $object) {
-		$communityUser = $this->getCommunityUserService()->getCommunityUser();
+		$communityUser = $this->communityUserService->getCommunityUser();
 		if ($communityUser->getParty()->getUid() === $object->getParty()->getUid()) {
-			$pendingPoliticianUsergroup = $this->getCommunityUserService()->getUserGroup('pendingPolitician');
+			$pendingPoliticianUsergroup = $this->communityUserService->getUserGroup('pendingPolitician');
 			$object->removeUsergroup($pendingPoliticianUsergroup);
 			$object->setParty(NULL);
 			$this->communityUserRepository->update($object);
@@ -117,9 +110,9 @@ class PartyMemberController extends \Visol\Easyvote\Controller\CommunityUserCont
 	 * @throws \TYPO3\CMS\Extbase\Persistence\Exception\IllegalObjectTypeException
 	 */
 	public function removeAction(\Visol\Easyvote\Domain\Model\CommunityUser $object) {
-		$communityUser = $this->getCommunityUserService()->getCommunityUser();
+		$communityUser = $this->communityUserService->getCommunityUser();
 		if ($communityUser->getParty()->getUid() === $object->getParty()->getUid()) {
-			$politician = $this->getCommunityUserService()->getUserGroup('politician');
+			$politician = $this->communityUserService->getUserGroup('politician');
 			$object->removeUsergroup($politician);
 			$object->setParty(NULL);
 			$this->communityUserRepository->update($object);
@@ -149,9 +142,9 @@ class PartyMemberController extends \Visol\Easyvote\Controller\CommunityUserCont
 	 * @throws \TYPO3\CMS\Extbase\Persistence\Exception\IllegalObjectTypeException
 	 */
 	public function grantAdminAction(\Visol\Easyvote\Domain\Model\CommunityUser $object) {
-		$communityUser = $this->getCommunityUserService()->getCommunityUser();
+		$communityUser = $this->communityUserService->getCommunityUser();
 		if ($communityUser->getParty()->getUid() === $object->getParty()->getUid()) {
-			$partyAdministratorGroup = $this->getCommunityUserService()->getUserGroup('partyAdministrator');
+			$partyAdministratorGroup = $this->communityUserService->getUserGroup('partyAdministrator');
 			$object->addUsergroup($partyAdministratorGroup);
 			$this->communityUserRepository->update($object);
 			$this->persistenceManager->persistAll();
@@ -169,7 +162,7 @@ class PartyMemberController extends \Visol\Easyvote\Controller\CommunityUserCont
 	 * @return string
 	 */
 	public function getMembersOfCurrentPartyAction() {
-		$communityUser = $this->getCommunityUserService()->getCommunityUser();
+		$communityUser = $this->communityUserService->getCommunityUser();
 		if ($communityUser || $communityUser->isPartyAdministrator()) {
 			// Party is a lazy property of CommunityUser
 			if ($communityUser->getParty() instanceof \TYPO3\CMS\Extbase\Persistence\Generic\LazyLoadingProxy) {
