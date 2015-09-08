@@ -213,8 +213,10 @@ class CommunityUserController extends \Visol\Easyvote\Controller\AbstractControl
 					// e-mail address is not in use, so function can continue, but user needs to opt-in again
 					// TODO add "soft" re-optin because setDisable(1) logs out the user
 					//$communityUser->setDisable(1);
-					// and set username = new e-mail
-					$communityUser->setUsername($communityUser->getEmail());
+					if ($this->communityUserService->hasRole($communityUser, 'communityEmail')) {
+						// and set username = new e-mail if it's not a Facebook user
+						$communityUser->setUsername($communityUser->getEmail());
+					}
 				}
 			}
 
@@ -319,6 +321,7 @@ class CommunityUserController extends \Visol\Easyvote\Controller\AbstractControl
 		if ($loggedInUser->getUid() === $communityUser->getUid()) {
 			$communityUser->setEmail('');
 			$communityUser->setNotificationMailActive(0);
+			$communityUser->setCommunityNewsMailActive(0);
 			$communityUser->setTelephone('');
 			$communityUser->setNotificationSmsActive(0);
 			$communityUser->setUsername('gelöschter Benutzer');
@@ -398,7 +401,10 @@ class CommunityUserController extends \Visol\Easyvote\Controller\AbstractControl
 					// TODO add "soft" re-optin because setDisable(1) logs out the user
 					//$communityUser->setDisable(1);
 					// and set username = new e-mail
-					$communityUser->setUsername($communityUser->getEmail());
+					if ($this->communityUserService->hasRole($communityUser, 'communityEmail')) {
+						// and set username = new e-mail if it's not a Facebook user
+						$communityUser->setUsername($communityUser->getEmail());
+					}
 				}
 			}
 			if (array_key_exists($phoneNumberPrefix, $this->settings['allowedPhoneNumberPrefixes'])) {
