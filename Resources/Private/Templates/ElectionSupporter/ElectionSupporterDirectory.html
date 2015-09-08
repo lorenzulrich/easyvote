@@ -1,4 +1,7 @@
 <div class="election-supporters">
+	<f:if condition="{topDisplayUser}">
+		<f:render partial="ElectionSupporter/HeadTags" arguments="{supporter:topDisplayUser, shareUri:shareUri, frontendObject:frontendObject}" />
+	</f:if>
 	<script>
 		var EasyvoteLanguage = {language};
 		$(function() {

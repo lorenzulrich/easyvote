@@ -1,0 +1,19 @@
+{namespace v=Tx_Vhs_ViewHelpers}
+
+<f:if condition="{supporter.privacyProtection}">
+	<f:else>
+		<f:for each="{supporter.events}" as="event">
+			<v:page.header allowMoveToFooter="0">
+				<meta property="og:title" content="{event.CommunityUser.firstName} {event.CommunityUser.lastName -> f:format.crop(maxCharacters: '1', append: '.', respectHtml: false)} {f:translate(key:'mobilizations.directory.votesOn')} {event.date -> f:format.date(format: '%A, %e. %B %Y')}" />
+				<meta property="og:type" content="article" />
+				<meta property="og:url" content="{shareUri}" />
+				<meta property="og:image" content="{f:render(partial:'CommunityUser/ImageUri', arguments:'{user:event.communityUser, size: 300, frontendObject:frontendObject}') -> v:format.eliminate(whitespace: 1)}" />
+				<meta property="og:site_name" content="easyvote" />
+				<f:if condition="{event.comment}">
+					<meta property="og:description" content="{event.comment}" />
+				</f:if>
+			</v:page.header>
+			<v:page.header.title title="{event.CommunityUser.firstName} {event.CommunityUser.lastName -> f:format.crop(maxCharacters: '1', append: '.', respectHtml: false)} {f:translate(key:'mobilizations.directory.votesOn')} {event.date -> f:format.date(format: '%A, %e. %B %Y')} - easyvote" whitespaceString=" " setIndexedDocTitle="1" />
+		</f:for>
+	</f:else>
+</f:if>

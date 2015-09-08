@@ -55,6 +55,21 @@ class ElectionSupporterController extends \Visol\Easyvote\Controller\AbstractCon
 			// User wants to follow a certain user
 			$targetUserUid = base64_decode($follow);
 			$this->view->assign('targetUserUid', $targetUserUid);
+
+			// We also pass the user to the template to be able to provide open graph tags
+			$topDisplayUser = $this->communityUserRepository->findByUid((int)$targetUserUid);
+			$this->view->assign('topDisplayUser', $topDisplayUser);
+
+			$shareUri = $this->uriBuilder->setTargetPageUid($this->settings['electionSupporterPid'])
+				// TODO enable
+				//->setAbsoluteUriScheme('https')
+				->setUseCacheHash(FALSE)
+				->setArguments(array('tx_easyvote_electionsupporterfunctions' => array('follow' => base64_encode($topDisplayUser->getUid()))))
+				->setCreateAbsoluteUri(TRUE)->build();
+
+			$this->view->assign('encodedShareUri', urlencode($shareUri));
+			$this->view->assign('shareUri', $shareUri);
+			$this->view->assign('frontendObject', $this->getFrontendObject());
 		}
 		$this->view->assign('language', $this->getFrontendObject()->sys_language_uid);
 	}

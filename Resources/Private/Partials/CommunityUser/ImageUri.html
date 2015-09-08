@@ -1,0 +1,9 @@
+<f:if condition="{user.falImage}">
+	<f:then>{frontendObject.baseUrl}{f:uri.image(src: '{user.falImage.uid}', treatIdAsReference: 1, width: '{size}' height: '{size}c')}</f:then>
+	<f:else>
+		<f:if condition="{user.communityFacebookUser}">
+			<f:then>https://graph.facebook.com/{user.username}/picture?width={size}&height={size}</f:then>
+			<f:else>{frontendObject.baseUrl}/typo3conf/ext/easyvote/Resources/Public/Images/easyvote-logo-fb.png</f:else>
+		</f:if>
+	</f:else>
+</f:if>
