@@ -230,9 +230,10 @@ class CommunityUserRepository extends \TYPO3\CMS\Extbase\Domain\Repository\Front
 	 *
 	 * @param array|NULL $demand
 	 * @param \Visol\Easyvote\Domain\Model\CommunityUser|NULL $excludeSupporter
+	 * @param null $limit
 	 * @return array|\TYPO3\CMS\Extbase\Persistence\QueryResultInterface
 	 */
-	public function findElectionSupporters($demand = NULL, $excludeSupporter = NULL) {
+	public function findElectionSupporters($demand = NULL, $excludeSupporter = NULL, $limit = NULL) {
 		$query = $this->createQuery();
 		$constraints = [];
 		// TODO make sure relation field is updated
@@ -267,6 +268,20 @@ class CommunityUserRepository extends \TYPO3\CMS\Extbase\Domain\Repository\Front
 				// kanton constraint
 				$constraints[] = $query->equals('citySelection.kanton', (int)$demand['kanton']);
 			}
+
+			if (isset($demand['excludeUsersWithPrivacyProtection']) && $demand['excludeUsersWithPrivacyProtection']) {
+				// privacyProtection
+				$constraints[] = $query->equals('privacyProtection', FALSE);
+			}
+
+			if (isset($demand['excludeUsersWithoutPicture']) && $demand['excludeUsersWithoutPicture']) {
+				// exclude users without picture
+				$constraints[] = $query->logicalOr(
+					//$query->logicalNot($query->equals('falImage', NULL)),
+					$query->greaterThan('falImage', 0),
+					$query->contains('usergroup', $this->communityUserService->getUserGroupUid('communityFacebook'))
+				);
+			}
 		}
 
 		if (!empty($constraints)) {
@@ -281,6 +296,11 @@ class CommunityUserRepository extends \TYPO3\CMS\Extbase\Domain\Repository\Front
 			'lastName' => \TYPO3\CMS\Extbase\Persistence\QueryInterface::ORDER_ASCENDING,
 			'firstName' => \TYPO3\CMS\Extbase\Persistence\QueryInterface::ORDER_ASCENDING,
 		));
+
+		// Set limit if requested
+		if ($limit) {
+			$query->setLimit($limit);
+		}
 
 		return $query->execute();
 

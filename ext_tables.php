@@ -104,7 +104,7 @@ $pluginSignature = str_replace('_', '', $_EXTKEY) . '_partyfunctions';
 $GLOBALS['TCA']['tt_content']['types']['list']['subtypes_addlist'][$pluginSignature] = 'pi_flexform';
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addPiFlexFormValue($pluginSignature, 'FILE:EXT:' . $_EXTKEY . '/Configuration/FlexForm/flexform_party.xml');
 
-/* Party functions */
+/* Election supporter functions */
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin(
 	$_EXTKEY,
 	'Electionsupporterfunctions',

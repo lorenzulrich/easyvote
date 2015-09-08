@@ -199,6 +199,23 @@ class ElectionSupporterController extends \Visol\Easyvote\Controller\AbstractCon
 	}
 
 	/**
+	 * Displays a wall with election supporters and instructions on how to become one
+	 */
+	public function wallAction() {
+		$demand = array(
+			'excludeUsersWithPrivacyProtection' => TRUE,
+			'excludeUsersWithoutPicture' => TRUE
+		);
+		$electionSupporters = $this->communityUserRepository->findElectionSupporters($demand, NULL, 32);
+		$this->view->assign('electionSupporters', $electionSupporters);
+		$electionSupportersCount = $this->communityUserRepository->findElectionSupporters()->count();
+		$this->view->assign('electionSupportersCount', $electionSupportersCount);
+		$goal = 1000;
+		$reachedPercentage = round(($electionSupportersCount / $goal * 100));
+		$this->view->assign('reachedPercentage', $reachedPercentage);
+	}
+
+	/**
 	 * Gets the POST data from the requests and returns all data in the plugin namespace if defined
 	 *
 	 * @return array|null

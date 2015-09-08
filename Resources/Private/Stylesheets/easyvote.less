@@ -609,3 +609,47 @@ div#dataCompletionRequestModalContent {
 		display: none;
 	}
 }
+
+.electionsupporters-wall {
+	font-size: 0;
+	.election-supporter {
+		position: relative;
+		float: left;
+		width: 100% / 6;
+		.mobilizations {
+			position: absolute;
+			bottom: 5px;
+			left: 10px;
+			font-size: 12px;
+			color: @pink;
+			text-shadow: 0 0 2px #FFFFFF;
+			.number {
+				font-size: 22px;
+				font-weight: bold;
+			}
+		}
+		img {
+			width: 100%;
+			height: auto;
+		}
+	}
+	.box {
+		float: left;
+		width: (100% / 6) * 4;
+		border-bottom: 10px solid @site-background;
+		font-size: 12px;
+		.youtube-embed {
+			margin-bottom: 0;
+		}
+		.box-inner {
+			background: @box-background;
+			border-width: 10px 10px 0 0;
+			border-color: @site-background;
+			border-style: solid;
+			padding: 20px;
+			h2 {
+				margin-top: 0;
+			}
+		}
+	}
+}

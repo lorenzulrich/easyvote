@@ -24,6 +24,10 @@
                                         <numIndex index="0">Filter Election Supporters</numIndex>
                                         <numIndex index="1">ElectionSupporter->filter</numIndex>
                                     </numIndex>
+                                    <numIndex index="2">
+                                        <numIndex index="0">Election Supporter Wall</numIndex>
+                                        <numIndex index="1">ElectionSupporter->wall</numIndex>
+                                    </numIndex>
                                 </items>
                             </config>
                         </TCEforms>
