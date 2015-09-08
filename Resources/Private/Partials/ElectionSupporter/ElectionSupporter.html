@@ -11,11 +11,18 @@
 					</f:comment>
 				</div>
 				<h2>
-					<span class="name">{supporter.firstName} <f:format.crop maxCharacters="1" append="." respectHtml="FALSE">{supporter.lastName}</f:format.crop></span>
-					<span class="additional">
-						<f:if condition="{supporter.citySelection}"><f:translate key="mobilizations.directory.from" /> {supporter.citySelection.name}</f:if>
-						<f:if condition="{supporter.age}"> | {supporter.age} <f:translate key="mobilizations.directory.years" /></f:if>
-					</span>
+					<f:if condition="{supporter.privacyProtection}">
+						<f:then>
+							<span class="name">{f:translate(key: 'anonymous')}</span>
+						</f:then>
+						<f:else>
+							<span class="name">{supporter.firstName} <f:format.crop maxCharacters="1" append="." respectHtml="FALSE">{supporter.lastName}</f:format.crop></span>
+							<span class="additional">
+								<f:if condition="{supporter.citySelection}"><f:translate key="mobilizations.directory.from" /> {supporter.citySelection.name}</f:if>
+								<f:if condition="{supporter.age}"> | {supporter.age} <f:translate key="mobilizations.directory.years" /></f:if>
+							</span>
+						</f:else>
+					</f:if>
 				</h2>
 				<f:for each="{supporter.events}" as="event">
 					<f:comment>There can be only one event per user ATM.</f:comment>
