@@ -293,6 +293,129 @@
 				]]></target>
 			</trans-unit>
 
+			<trans-unit id="anonymous">
+				<target>Anonimo</target>
+			</trans-unit>
+
+			<trans-unit id="mobilizations.header">
+				<target>Invita amici</target>
+			</trans-unit>
+			<trans-unit id="mobilizations.header_event">
+				<target>Il tuo invito</target>
+			</trans-unit>
+			<trans-unit id="mobilizations.event.date">
+				<target>Luogo</target>
+			</trans-unit>
+			<trans-unit id="mobilizations.event.fromTime">
+				<target>Ora</target>
+			</trans-unit>
+			<trans-unit id="mobilizations.event.oclock">
+				<target>Ora</target>
+			</trans-unit>
+			<trans-unit id="mobilizations.event.comment">
+				<target>Messaggio personale</target>
+			</trans-unit>
+			<trans-unit id="mobilizations.introduction">
+				<target><![CDATA[
+					<p>Invita i tuoi amici a votare insieme. Diffondi il tuo link personalizzato tramite social media, WhatsApp o e-mail. Ti ricordiamo che il tuo profilo apparirà sulla classifica dei "Vote-Heroes" con la tua foto di profilo e alcune informazioni personali (Nicola J. di Berna, 18 anni).</p>
+				]]></target>
+			</trans-unit>
+			<trans-unit id="mobilizations.share.title">
+				<target>#VoteNow2015</target>
+			</trans-unit>
+			<trans-unit id="mobilizations.share.text">
+				<target> Voglio che il futuro della Svizzera sia nelle mani di noi giovani e che la nostra influenza a Palazzo federale aumenti. Andiamo a votare tutti insieme il {8. Oktober am Wildheinweg 4 in Bern}.</target>
+			</trans-unit>
+			<trans-unit id="mobilizations.share.link">
+				<target>Copia e invia link</target>
+			</trans-unit>
+			<trans-unit id="mobilizations.followers">
+				<target>I tuoi amici mobilitati</target>
+			</trans-unit>
+			<trans-unit id="mobilizations.follower.from">
+				<target>Disattiva</target>
+			</trans-unit>
+			<trans-unit id="mobilizations.follower.years">
+				<target>Anni</target>
+			</trans-unit>
+			<trans-unit id="mobilizations.directory.from">
+				<target>Disattiva</target>
+			</trans-unit>
+			<trans-unit id="mobilizations.directory.years">
+				<target>Anni</target>
+			</trans-unit>
+			<trans-unit id="mobilizations.directory.votesOn">
+				<target>Votate il</target>
+			</trans-unit>
+			<trans-unit id="mobilizations.directory.atTime">
+				<target>Tutti</target>
+			</trans-unit>
+			<trans-unit id="mobilizations.directory.oclock">
+				<target>Ore</target>
+			</trans-unit>
+			<trans-unit id="mobilizations.directory.atPlace">
+				<target>Qui</target>
+			</trans-unit>
+			<trans-unit id="mobilizations.directory.follower">
+				<target>Mobilita amici</target>
+			</trans-unit>
+			<trans-unit id="mobilizations.directory.follow">
+				<target>Partecipa</target>
+			</trans-unit>
+			<trans-unit id="mobilizations.directory.i_follow">
+				<target>Io partecipo!</target>
+			</trans-unit>
+			<trans-unit id="mobilizations.directory.unfollow">
+				<target>Non partecipare</target>
+			</trans-unit>
+			<trans-unit id="mobilizations.directory.filter.title">
+				<target>Trova Vote-Heroes</target>
+			</trans-unit>
+			<trans-unit id="mobilizations.directory.filter.name">
+				<target>Nome</target>
+			</trans-unit>
+			<trans-unit id="mobilizations.directory.filter.city">
+				<target>Luogo</target>
+			</trans-unit>
+			<trans-unit id="mobilizations.directory.filter.kanton">
+				<target>Cantone</target>
+			</trans-unit>
+			<trans-unit id="mobilizations.directory.filter.submit">
+				<target>Attiva filtro</target>
+			</trans-unit>
+			<trans-unit id="mobilizations.directory.filter.noResults">
+				<target>Non sono state trovate persone corrispondenti ai criteri di ricerca.</target>
+			</trans-unit>
+			<trans-unit id="mobilizations.directory.filteredView">
+				<target>Visualizzazione con filtro(%s risultati)</target>
+			</trans-unit>
+			<trans-unit id="mobilizations.directory.cancelFilter">
+				<target>Elimina filtro</target>
+			</trans-unit>
+			<trans-unit id="mobilizations.directory.paginate.next">
+				<target>Visualizza altri</target>
+			</trans-unit>
+			<trans-unit id="mobilizations.follow.modal.cancel">
+				<target>Interrompi</target>
+			</trans-unit>
+			<trans-unit id="mobilizations.follow.modal.confirm">
+				<target>Conferma</target>
+			</trans-unit>
+			<trans-unit id="mobilizations.follow.modal.changeInformation">
+				<target>Stai votando già con %1$s %2$s. Per favore conferma di voler cambiare il tuo Vote-Hero.</target>
+			</trans-unit>
+			<trans-unit id="mobilizations.follow.modal.changeInformationAnonymous">
+				<target>Stai votando già con qualcuno. Per favore conferma di voler cambiare il tuo Vote-Hero.</target>
+			</trans-unit>
+			<trans-unit id="mobilizations.follow.modal.followInformationNoPrivacyProtection">
+				<target><![CDATA[
+					Se accetti l'invito di %1$s %2$s probabilmente apparirai con la tua foto sulla lista dei partecipanti. Se non lo vuoi, puoi attivare la <a target="_blank" href="%s">protezione della privacy sul tuo profilo</a>.
+				]]></target>
+			</trans-unit>
+			<trans-unit id="mobilizations.follow.modal.followInformation">
+				<target>Conferma la tua partecipazione.</target>
+			</trans-unit>
+
 			<trans-unit id="unsubscribe.header">
 				<target>Disattivare la voto-sveglia</target>
 			</trans-unit>
@@ -598,6 +721,47 @@
 			<trans-unit id="email.subject.communityUserPendingPartyAdministratorIt">
 				<target>Polittalk easyvote – nuovo membro</target>
 			</trans-unit>
+
+			<trans-unit id="tx_easyvote_domain_model_event.location">
+				<target>Luogo</target>
+			</trans-unit>
+			<trans-unit id="tx_easyvote_domain_model_event.date">
+				<target>Data</target>
+			</trans-unit>
+			<trans-unit id="tx_easyvote_domain_model_event.fromTime">
+				<target>Ora Luogo d'incontro</target>
+			</trans-unit>
+			<trans-unit id="tx_easyvote_domain_model_event.comment">
+				<target>Messaggio personale</target>
+			</trans-unit>
+			<trans-unit id="event.header">
+				<target>Definire orario</target>
+			</trans-unit>
+			<trans-unit id="event.introduction">
+				<target>Affinché tu possa mobilitare i tuoi amici devi definire un orario. Nel caso volessi incontrare i tuoi amici prima del voto a casa tua, in un caffè o da qualsiasi altra parte, puoi inviare loro un messaggio personale.</target>
+			</trans-unit>
+			<trans-unit id="event.changeLocation">
+				<target>Modifica luogo</target>
+			</trans-unit>
+			<trans-unit id="event.changeEvent">
+				<target>Modifica orario e messaggio</target>
+			</trans-unit>
+			<trans-unit id="event.save">
+				<target>Salva</target>
+			</trans-unit>
+			<trans-unit id="event.remove">
+				<target>Elimina invito</target>
+			</trans-unit>
+			<trans-unit id="event.removeInformation">
+				<target>Vuoi davvero eliminare il tuo invito? Una volta eliminato l'invito tutti i tuoi amici mobilitati saranno ancellati.</target>
+			</trans-unit>
+			<trans-unit id="event.removeCancel">
+				<target>Interrompi</target>
+			</trans-unit>
+			<trans-unit id="event.removeConfirm">
+				<target>Cancella</target>
+			</trans-unit>
+
 		</body>
 	</file>
 </xliff>

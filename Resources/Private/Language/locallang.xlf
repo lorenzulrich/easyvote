@@ -429,20 +429,14 @@
 			</trans-unit>
 			<trans-unit id="mobilizations.introduction">
 				<source><![CDATA[
-					<p>Teile einen personalisierten Link und mobilisiere so deine Freunde, damit sie mit dir wählen
-					kommen. Bitte beachte, dass du danach in unserem Wahlhelfer-Verzeichnis mit Profilbild und einigen wenigen
-					Angaben (Nicola J. aus Bern, 18 Jahre) erscheinst. Wir werden nie deinen vollen Namen oder weitere
-					Kontaktangaben teilen.</p>
-					<p>Falls du nicht mit Name erscheinen möchtest, kannst du den Schutz der Privatsphäre in deinem
-					Profil (LINK) aktivieren.</p>
+					<p>Lade deine Freunde dazu ein gemeinsam eure Stimme abzugeben. Verbreite deinen personalisierten Link über Social Media, WhatsApp oder E-Mail. Bitte beachte, dass du danach im Vote-Hero Ranking mit Profilbild und einigen wenigen Angaben (Nicola J. aus Bern, 18 Jahre)erscheinst.</p>
 				]]></source>
 			</trans-unit>
 			<trans-unit id="mobilizations.share.title">
-				<source>Wähle mit mir!</source>
+				<source>#VoteNow2015</source>
 			</trans-unit>
 			<trans-unit id="mobilizations.share.text">
-				<source>Ich gehe wählen - auch du? Tu mit mir am Briefkasten rumhängen,
-				dein Couvert einrühren und ein Bierli trinken.</source>
+				<source> Ich möchte, dass wir Jungen die Zukunft der Schweiz selbst in die Hand nehmen und wir unseren Einfluss im Bundeshaus verstärken. Lass uns am {8. Oktober am Wildheinweg 4 in Bern} gemeinsam unsere Stimme abgeben.</source>
 			</trans-unit>
 			<trans-unit id="mobilizations.share.link">
 				<source>Link kopieren und senden</source>
@@ -487,7 +481,7 @@
 				<source>Nicht teilnehmen</source>
 			</trans-unit>
 			<trans-unit id="mobilizations.directory.filter.title">
-				<source>Wahlhelfer finden</source>
+				<source>Vote-Heroes finden</source>
 			</trans-unit>
 			<trans-unit id="mobilizations.directory.filter.name">
 				<source>Name</source>
@@ -520,15 +514,14 @@
 				<source>bestätigen</source>
 			</trans-unit>
 			<trans-unit id="mobilizations.follow.modal.changeInformation">
-				<source>Du folgst bereits %1$s %2$s. Bitte bestätige, dass du deinen Wahlhelfer ändern möchtest.</source>
+				<source>Du wählst bereits mit %1$s %2$s. Bitte bestätige, dass du deinen Vote-Hero ändern möchtest.</source>
 			</trans-unit>
 			<trans-unit id="mobilizations.follow.modal.changeInformationAnonymous">
-				<source>Du folgst bereits jemandem. Bitte bestätige, dass du deinen Wahlhelfer ändern möchtest.</source>
+				<source>Du wählst bereits mit jemandem. Bitte bestätige, dass du deinen Vote-Hero ändern möchtest.</source>
 			</trans-unit>
 			<trans-unit id="mobilizations.follow.modal.followInformationNoPrivacyProtection">
 				<source><![CDATA[
-					Wenn du jemandem folgst, erscheinst du möglicherweise mit Bild in der Liste der Follower. Wenn du das
-					nicht möchtest, solltest du zuerst den <a target="_blank" href="%s">Schutz der Privatsphäre in deinem
+					Wenn du die Einladung von %1$s %2$s annimmst , erscheinst du möglicherweise mit Bild in der Liste der Teilnehmer. Wenn du das nicht möchtest, kannst du den <a target="_blank" href="%s">Schutz der Privatsphäre in deinem
 					Profil</a> aktivieren.
 				]]></source>
 			</trans-unit>
@@ -858,19 +851,19 @@
 				<source>Zeit Treffpunkt</source>
 			</trans-unit>
 			<trans-unit id="tx_easyvote_domain_model_event.comment">
-				<source>Persönliche Nachricht</source>
+				<source>Persönliche Mitteilung</source>
 			</trans-unit>
 			<trans-unit id="event.header">
 				<source>Uhrzeit festlegen</source>
 			</trans-unit>
 			<trans-unit id="event.introduction">
-				<source>Damit du deine Freunde mobilisieren kannst, musst du eine Treffpunkt-Zeit angeben.</source>
+				<source>Damit du deine Freunde mobilisieren kannst, musst du die Uhrzeit angeben. Weiter kannst du eine persönliche Mitteilung an deine Freunde anbringen, falls du sie bereis vor der Stimmabgabe bei dir zu Hause, in einem Café oder sonst wo treffen möchtest.</source>
 			</trans-unit>
 			<trans-unit id="event.changeLocation">
 				<source>Ort ändern</source>
 			</trans-unit>
 			<trans-unit id="event.changeEvent">
-				<source>Zeit und Nachricht ändern</source>
+				<source>Zeit und Mitteilung ändern</source>
 			</trans-unit>
 			<trans-unit id="event.save">
 				<source>speichern</source>
@@ -879,7 +872,7 @@
 				<source>Einladung löschen</source>
 			</trans-unit>
 			<trans-unit id="event.removeInformation">
-				<source>Möchtest du deinen Event wirklich löschen? Falls du fortfährst, werden deine bereits mobilisierten Freunde entfernt.</source>
+				<source>Möchtest du deine Einladung wirklich löschen? Falls du fortfährst, werden deine bereits mobilisierten Freunde entfernt.</source>
 			</trans-unit>
 			<trans-unit id="event.removeCancel">
 				<source>abbrechen</source>
@@ -887,7 +880,6 @@
 			<trans-unit id="event.removeConfirm">
 				<source>löschen</source>
 			</trans-unit>
-
 
 		</body>
 	</file>

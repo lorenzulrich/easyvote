@@ -283,6 +283,130 @@
 				]]></target>
 			</trans-unit>
 
+			<trans-unit id="anonymous">
+				<target>anonyme</target>
+			</trans-unit>
+
+			<trans-unit id="mobilizations.header">
+				<target>inviter des amis</target>
+			</trans-unit>
+			<trans-unit id="mobilizations.header_event">
+				<target>Ton invitation</target>
+			</trans-unit>
+			<trans-unit id="mobilizations.event.date">
+				<target>Lieu</target>
+			</trans-unit>
+			<trans-unit id="mobilizations.event.fromTime">
+				<target>Horaire</target>
+			</trans-unit>
+			<trans-unit id="mobilizations.event.oclock">
+				<target>Heure</target>
+			</trans-unit>
+			<trans-unit id="mobilizations.event.comment">
+				<target>Message personnel</target>
+			</trans-unit>
+			<trans-unit id="mobilizations.introduction">
+				<target><![CDATA[
+					<p>Invite tes amis à voter ensemble. Partage ton lien personnalisé sur les médias sociaux, WhatsApp ou par e-mail. Attention tu apparais ensuite dans la liste des Vote-Heroes avec une photo de profil et quelques informations (Nicola J. de Berne, 18 ans).</p>
+				]]></target>
+			</trans-unit>
+			<trans-unit id="mobilizations.share.title">
+				<target>#VoteNow2015</target>
+			</trans-unit>
+			<trans-unit id="mobilizations.share.text">
+				<target> Je veux que les jeunes prennent eux-mêmes l'avenir de la Suisse en main et que nous renforçons notre influence au Palais fédéral. Votons ensemble le {8. Oktober am Wildheinweg 4 in Bern}.</target>
+			</trans-unit>
+			<trans-unit id="mobilizations.share.link">
+				<target>Copier et envoyer le lien</target>
+			</trans-unit>
+			<trans-unit id="mobilizations.followers">
+				<target>Tes amis mobilisés</target>
+			</trans-unit>
+			<trans-unit id="mobilizations.follower.from">
+				<target>de</target>
+			</trans-unit>
+			<trans-unit id="mobilizations.follower.years">
+				<target>ans</target>
+			</trans-unit>
+			<trans-unit id="mobilizations.directory.from">
+				<target>de</target>
+			</trans-unit>
+			<trans-unit id="mobilizations.directory.years">
+				<target>ans</target>
+			</trans-unit>
+			<trans-unit id="mobilizations.directory.votesOn">
+				<target>élit le</target>
+			</trans-unit>
+			<trans-unit id="mobilizations.directory.atTime">
+				<target>à</target>
+			</trans-unit>
+			<trans-unit id="mobilizations.directory.oclock">
+				<target>heures</target>
+			</trans-unit>
+			<trans-unit id="mobilizations.directory.atPlace">
+				<target>ici</target>
+			</trans-unit>
+			<trans-unit id="mobilizations.directory.follower">
+				<target>ami mobilisé</target>
+			</trans-unit>
+			<trans-unit id="mobilizations.directory.follow">
+				<target>participer</target>
+			</trans-unit>
+			<trans-unit id="mobilizations.directory.i_follow">
+				<target>J'en suis !</target>
+			</trans-unit>
+			<trans-unit id="mobilizations.directory.unfollow">
+				<target>ne pas participer</target>
+			</trans-unit>
+			<trans-unit id="mobilizations.directory.filter.title">
+				<target>Trouver des Vote-Heroes</target>
+			</trans-unit>
+			<trans-unit id="mobilizations.directory.filter.name">
+				<target>Nom</target>
+			</trans-unit>
+			<trans-unit id="mobilizations.directory.filter.city">
+				<target>Lieu</target>
+			</trans-unit>
+			<trans-unit id="mobilizations.directory.filter.kanton">
+				<target>Canton</target>
+			</trans-unit>
+			<trans-unit id="mobilizations.directory.filter.submit">
+				<target>Filtres</target>
+			</trans-unit>
+			<trans-unit id="mobilizations.directory.filter.noResults">
+				<target>Aucune personne correspondant aux critères n'a été trouvée.</target>
+			</trans-unit>
+			<trans-unit id="mobilizations.directory.filteredView">
+				<target>Aperçu filtré (%s résultats)</target>
+			</trans-unit>
+			<trans-unit id="mobilizations.directory.cancelFilter">
+				<target>Supprimer les filtres</target>
+			</trans-unit>
+			<trans-unit id="mobilizations.directory.paginate.next">
+				<target>En voir plus</target>
+			</trans-unit>
+			<trans-unit id="mobilizations.follow.modal.cancel">
+				<target>annuler</target>
+			</trans-unit>
+			<trans-unit id="mobilizations.follow.modal.confirm">
+				<target>confirmer</target>
+			</trans-unit>
+			<trans-unit id="mobilizations.follow.modal.changeInformation">
+				<target>Tu élis déjà avec %1$s %2$s. Merci de confirmer que tu souhaites changer de Vote-Hero.</target>
+			</trans-unit>
+			<trans-unit id="mobilizations.follow.modal.changeInformationAnonymous">
+				<target>Tu élis déjà avec quelqu'un. Merci de confirmer que tu souhaites changer de Vote-Hero.</target>
+			</trans-unit>
+			<trans-unit id="mobilizations.follow.modal.followInformationNoPrivacyProtection">
+				<target><![CDATA[
+					En acceptant l'inviation de %1$s %2$s , il est possible que ta photo apparaisse dans la liste des participants. Si tu ne le veux pas, tu peux activer la <a target="_blank" href="%s">protection de la sphère privée dans ton
+					profil</a> .
+				]]></target>
+			</trans-unit>
+			<trans-unit id="mobilizations.follow.modal.followInformation">
+				<target>Merci de confirmer ta participation.</target>
+			</trans-unit>
+
 			<trans-unit id="unsubscribe.header">
 				<target>Désabonnement à l’alarme de vote</target>
 			</trans-unit>
@@ -589,6 +713,46 @@
 			</trans-unit>
 			<trans-unit id="email.subject.communityUserPendingPartyAdministratorIt">
 				<target>Polittalk easyvote – nuovo membro</target>
+			</trans-unit>
+
+			<trans-unit id="tx_easyvote_domain_model_event.location">
+				<target>Lieu</target>
+			</trans-unit>
+			<trans-unit id="tx_easyvote_domain_model_event.date">
+				<target>Date</target>
+			</trans-unit>
+			<trans-unit id="tx_easyvote_domain_model_event.fromTime">
+				<target>Heure de rencontre</target>
+			</trans-unit>
+			<trans-unit id="tx_easyvote_domain_model_event.comment">
+				<target>Commentaire personnel</target>
+			</trans-unit>
+			<trans-unit id="event.header">
+				<target>Fixer une heure</target>
+			</trans-unit>
+			<trans-unit id="event.introduction">
+				<target>Pour pouvoir mobiliser tes amis, tu dois indiquer une heure. Tu peux ensuite transmettre un commentaire personnel à tes amis si tu veux les retrouver chez toi, dans un café ou ailleurs avant le vote.</target>
+			</trans-unit>
+			<trans-unit id="event.changeLocation">
+				<target>Modifier le lieu</target>
+			</trans-unit>
+			<trans-unit id="event.changeEvent">
+				<target>Modifier l'heure et le commentaire</target>
+			</trans-unit>
+			<trans-unit id="event.save">
+				<target>sauvegarder</target>
+			</trans-unit>
+			<trans-unit id="event.remove">
+				<target>Supprimer l'invitation</target>
+			</trans-unit>
+			<trans-unit id="event.removeInformation">
+				<target>Souhaites-tu réellement supprimer l'invitation? En poursuivant, tes amis déjà mobilisés seront supprimés.</target>
+			</trans-unit>
+			<trans-unit id="event.removeCancel">
+				<target>annuler</target>
+			</trans-unit>
+			<trans-unit id="event.removeConfirm">
+				<target>supprimer</target>
 			</trans-unit>
 
 		</body>
