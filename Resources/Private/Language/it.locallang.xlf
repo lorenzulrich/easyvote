@@ -368,6 +368,9 @@
 			<trans-unit id="mobilizations.directory.unfollow">
 				<target>Non partecipare</target>
 			</trans-unit>
+			<trans-unit id="mobilizations.directory.thisIsYou">
+				<target>Sei tu!</target>
+			</trans-unit>
 			<trans-unit id="mobilizations.directory.filter.title">
 				<target>Trova Vote-Heroes</target>
 			</trans-unit>

@@ -480,6 +480,9 @@
 			<trans-unit id="mobilizations.directory.unfollow">
 				<source>Nicht teilnehmen</source>
 			</trans-unit>
+			<trans-unit id="mobilizations.directory.thisIsYou">
+				<source>Das bist du!</source>
+			</trans-unit>
 			<trans-unit id="mobilizations.directory.filter.title">
 				<source>Vote-Heroes finden</source>
 			</trans-unit>
