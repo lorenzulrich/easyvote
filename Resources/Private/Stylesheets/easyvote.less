@@ -618,9 +618,10 @@ div#dataCompletionRequestModalContent {
 	width: 97.9%;
 	border: 2px solid @pink;
 	background: white;
-	height: 25px;
-	margin-bottom: 5px;
-	&:after, &:before {
+	height: 30px;
+	margin-bottom: 25px;
+	margin-top: -50px;
+	&:after {
 		left: 100%;
 		top: 50%;
 		border: solid transparent;
@@ -629,15 +630,20 @@ div#dataCompletionRequestModalContent {
 		width: 0;
 		position: absolute;
 		pointer-events: none;
-	}
-
-	&:after {
 		border-color: rgba(136, 183, 213, 0);
 		border-left-color: @pink;
 		border-width: 20px;
 		margin-top: -20px;
 	}
 	&:before {
+		left: 100%;
+		top: 50%;
+		border: solid transparent;
+		content: " ";
+		height: 0;
+		width: 0;
+		position: absolute;
+		pointer-events: none;
 		border-color: rgba(194, 225, 245, 0);
 		border-left-color: @pink;
 		border-width: 20px;
@@ -647,17 +653,24 @@ div#dataCompletionRequestModalContent {
 	.progress-bar {
 		background: @pink;
 		box-shadow: none;
-		font-size: 16px;
-		line-height: 25px;
+		line-height: 30px;
+	}
+
+	.supporter-count {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		text-align: center;
+		margin-top: 0;
+		.font-ubuntu();
+		font-weight: 600;
+		color: @pink;
+		font-size: 20px;
 	}
 }
 
-.supporter-count {
-	text-align: center;
-	margin-bottom: 20px;
-	margin-top: 0;
-	.font-ubuntu()
-}
+
 
 .electionsupporters-wall {
 	.clearfix();
@@ -686,7 +699,7 @@ div#dataCompletionRequestModalContent {
 		}
 	}
 	.box {
-		z-index: 20150903;
+		z-index: 1010;
 		background: @pink;
 		position: absolute;
 		padding: @box-padding;
@@ -719,6 +732,7 @@ div#dataCompletionRequestModalContent {
 @media (max-width: @screen-sm-max) {
 	.progress-wall {
 		width: 97.5%;
+		margin-top: 0;
 	}
 	.electionsupporters-wall {
 		.election-supporter {
