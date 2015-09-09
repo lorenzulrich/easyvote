@@ -483,6 +483,9 @@
 			<trans-unit id="mobilizations.directory.thisIsYou">
 				<source>Das bist du!</source>
 			</trans-unit>
+			<trans-unit id="mobilizations.directory.message">
+				<source>Mitteilung</source>
+			</trans-unit>
 			<trans-unit id="mobilizations.directory.filter.title">
 				<source>Vote-Heroes finden</source>
 			</trans-unit>

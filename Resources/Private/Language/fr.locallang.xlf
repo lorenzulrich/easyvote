@@ -361,6 +361,9 @@
 			<trans-unit id="mobilizations.directory.thisIsYou">
 				<target>C'est toi!</target>
 			</trans-unit>
+			<trans-unit id="mobilizations.directory.message">
+				<target>Commentaire</target>
+			</trans-unit>
 			<trans-unit id="mobilizations.directory.filter.title">
 				<target>Trouver des Vote-Heroes</target>
 			</trans-unit>

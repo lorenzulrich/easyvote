@@ -39,9 +39,11 @@
 							{event.location.name}, {event.location.street}, {event.location.zip} {event.location.city}
 						</f:if>
 					</div>
-					<div class="comment">
-						<em><f:format.nl2br>{event.comment}</f:format.nl2br></em>
-					</div>
+					<f:if condition="{isTopDisplayUser}">
+						<div class="comment">
+							<em>{f:translate(key:'mobilizations.directory.message')}: {event.comment -> f:format.nl2br()}</em>
+						</div>
+					</f:if>
 				</f:for>
 				<div class="followers">
 					<f:for each="{supporter.followers}" as="follower" iteration="followerIterator">

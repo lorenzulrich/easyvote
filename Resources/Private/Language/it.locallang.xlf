@@ -371,6 +371,9 @@
 			<trans-unit id="mobilizations.directory.thisIsYou">
 				<target>Sei tu!</target>
 			</trans-unit>
+			<trans-unit id="mobilizations.directory.message">
+				<target>Messaggio</target>
+			</trans-unit>
 			<trans-unit id="mobilizations.directory.filter.title">
 				<target>Trova Vote-Heroes</target>
 			</trans-unit>
