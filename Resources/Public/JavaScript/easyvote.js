@@ -319,7 +319,7 @@ var Easyvote = {
 		if ($.isNumeric(command)) {
 			var topDisplay = '/' + command;
 		}
-		EasyvoteGeneral.getData('/routing/electionsupporters' + topDisplay).done(function(data) {
+		EasyvoteGeneral.getData('/routing/electionsupporters' + topDisplay + '?L=' + EasyvoteLanguage + '&id=' + EasyvoteHomePid).done(function(data) {
 			var $electionSupporters = $('.election-supporters');
 			$electionSupporters.html(data);
 			if (command === 'scrollTop') {
