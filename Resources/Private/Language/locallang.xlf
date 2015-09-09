@@ -521,7 +521,7 @@
 			</trans-unit>
 			<trans-unit id="mobilizations.follow.modal.followInformationNoPrivacyProtection">
 				<source><![CDATA[
-					Wenn du die Einladung von %1$s %2$s annimmst , erscheinst du möglicherweise mit Bild in der Liste der Teilnehmer. Wenn du das nicht möchtest, kannst du den <a target="_blank" href="%s">Schutz der Privatsphäre in deinem
+					Wenn du die Einladung annimmst, erscheinst du möglicherweise mit Bild in der Liste der Teilnehmer. Wenn du das nicht möchtest, kannst du den <a target="_blank" href="%s">Schutz der Privatsphäre in deinem
 					Profil</a> aktivieren.
 				]]></source>
 			</trans-unit>

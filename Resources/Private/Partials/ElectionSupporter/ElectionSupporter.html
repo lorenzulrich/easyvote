@@ -100,7 +100,7 @@
 															<p><f:translate key="mobilizations.follow.modal.followInformation" /></p>
 														</f:then>
 														<f:else>
-															<p><f:translate key="mobilizations.follow.modal.followInformationNoPrivacyProtection" arguments="{0: 'http://www.foo.bar'}" /></p>
+															<p><f:translate key="mobilizations.follow.modal.followInformationNoPrivacyProtection" arguments="{0: '{f:uri.page(pageUid:settings.communityVoteweckerPid)}'}" /></p>
 														</f:else>
 													</f:if>
 													<button class="pull-left btn btn-primary button-cancel"><f:translate key="mobilizations.follow.modal.cancel" /></button>

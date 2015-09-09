@@ -409,7 +409,7 @@
 			</trans-unit>
 			<trans-unit id="mobilizations.follow.modal.followInformationNoPrivacyProtection">
 				<target><![CDATA[
-					Se accetti l'invito di %1$s %2$s probabilmente apparirai con la tua foto sulla lista dei partecipanti. Se non lo vuoi, puoi attivare la <a target="_blank" href="%s">protezione della privacy sul tuo profilo</a>.
+					Se accetti l'invito probabilmente apparirai con la tua foto sulla lista dei partecipanti. Se non lo vuoi, puoi attivare la <a target="_blank" href="%s">protezione della privacy sul tuo profilo</a>.
 				]]></target>
 			</trans-unit>
 			<trans-unit id="mobilizations.follow.modal.followInformation">

@@ -399,7 +399,7 @@
 			</trans-unit>
 			<trans-unit id="mobilizations.follow.modal.followInformationNoPrivacyProtection">
 				<target><![CDATA[
-					En acceptant l'inviation de %1$s %2$s , il est possible que ta photo apparaisse dans la liste des participants. Si tu ne le veux pas, tu peux activer la <a target="_blank" href="%s">protection de la sphère privée dans ton
+					En acceptant l'inviation, il est possible que ta photo apparaisse dans la liste des participants. Si tu ne le veux pas, tu peux activer la <a target="_blank" href="%s">protection de la sphère privée dans ton
 					profil</a> .
 				]]></target>
 			</trans-unit>
