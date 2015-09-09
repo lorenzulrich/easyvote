@@ -756,10 +756,10 @@
 			</trans-unit>
 
 			<trans-unit id="wall.box.header">
-				<target>Tes amis ne votent pas et cela t’énerve ?</target>
+				<target>Tes amis ne votent pas et ça t’énerve ?</target>
 			</trans-unit>
 			<trans-unit id="wall.box.text">
-				<target>Tu peux changer cela ! Deviens l’un des 1000 Vote-Heroes et encourage tes amis à participer aux élections nationales. Nous vous informons en continu, toi et tes amis, sur les élections à venir : élire devient vraiment easy.</target>
+				<target>Tu peux changer ça ! Deviens l’un des 1000 Vote-Heroes et encourage tes amis à participer aux élections nationales. Nous vous informons en continu, toi et tes amis, sur les élections à venir : élire devient vraiment easy.</target>
 			</trans-unit>
 			<trans-unit id="wall.box.linkText">
 				<target>Inscris-toi!</target>
