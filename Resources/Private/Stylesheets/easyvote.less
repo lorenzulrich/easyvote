@@ -610,12 +610,64 @@ div#dataCompletionRequestModalContent {
 	}
 }
 
+.progress-wall {
+	overflow: visible;
+	border-radius: 0;
+	box-shadow: none;
+	position: relative;
+	width: 97.9%;
+	border: 2px solid @pink;
+	background: white;
+	height: 25px;
+	margin-bottom: 5px;
+	&:after, &:before {
+		left: 100%;
+		top: 50%;
+		border: solid transparent;
+		content: " ";
+		height: 0;
+		width: 0;
+		position: absolute;
+		pointer-events: none;
+	}
+
+	&:after {
+		border-color: rgba(136, 183, 213, 0);
+		border-left-color: @pink;
+		border-width: 20px;
+		margin-top: -20px;
+	}
+	&:before {
+		border-color: rgba(194, 225, 245, 0);
+		border-left-color: @pink;
+		border-width: 20px;
+		margin-top: -20px;
+	}
+
+	.progress-bar {
+		background: @pink;
+		box-shadow: none;
+		font-size: 16px;
+		line-height: 25px;
+	}
+}
+
+.supporter-count {
+	text-align: center;
+	margin-bottom: 20px;
+	margin-top: 0;
+	.font-ubuntu()
+}
+
 .electionsupporters-wall {
+	.clearfix();
 	font-size: 0;
+	position: relative;
 	.election-supporter {
 		position: relative;
 		float: left;
-		width: 100% / 6;
+		width: 100% / 18;
+		background: white;
 		.mobilizations {
 			position: absolute;
 			bottom: 5px;
@@ -634,22 +686,66 @@ div#dataCompletionRequestModalContent {
 		}
 	}
 	.box {
-		float: left;
-		width: (100% / 6) * 4;
-		border-bottom: 10px solid @site-background;
-		font-size: 12px;
+		z-index: 20150903;
+		background: @pink;
+		position: absolute;
+		padding: @box-padding;
+		.rounded-corners();
+		border: 5px solid @white;
+		width: (100% / 18) * 11.5;
+		left: 50%;
+		margin-left: -((100% / 18) * 11.5) / 2;
+		top: 50%;
+		margin-top: -((100% / 18) * 11.5) / 2;
+		font-size: 14px;
 		.youtube-embed {
 			margin-bottom: 0;
 		}
-		.box-inner {
-			background: @box-background;
-			border-width: 10px 10px 0 0;
-			border-color: @site-background;
-			border-style: solid;
-			padding: 20px;
+		.box-text {
+			color: @white;
+			margin-top: 20px;
 			h2 {
 				margin-top: 0;
+				margin-bottom: 10px;
+				color: @white;
 			}
+			.link-box {
+				background: black;
+			}
+		}
+	}
+}
+
+@media (max-width: @screen-sm-max) {
+	.progress-wall {
+		width: 97.5%;
+	}
+	.electionsupporters-wall {
+		.election-supporter {
+			width: 100% / 12;
+		}
+		.box {
+			margin-top: 0;
+			top: 5%;
+		}
+	}
+}
+
+@media (max-width: @screen-xs-max) {
+	.progress-wall {
+		width: 94.5%;
+	}
+	.electionsupporters-wall {
+		.election-supporter {
+			width: 100% / 6;
+		}
+		.box {
+			padding: @box-padding-xs;
+			margin-top: 0;
+			top: 100px;
+			width: 95%;
+			left: 50%;
+			margin-left: -95% / 2;
 		}
 	}
 }

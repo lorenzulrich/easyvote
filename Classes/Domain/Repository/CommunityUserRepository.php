@@ -236,11 +236,12 @@ class CommunityUserRepository extends \TYPO3\CMS\Extbase\Domain\Repository\Front
 	public function findElectionSupporters($demand = NULL, $excludeSupporter = NULL, $limit = NULL) {
 		$query = $this->createQuery();
 		$constraints = [];
-		// TODO make sure relation field is updated
-		// Only select users with followers
+
 		$constraints[] = $query->logicalNot(
+			// TODO make sure relation field is updated
 			$query->equals('followers', 0)
 		);
+
 		// Make sure user is a Community user (exclude deleted users)
 		$constraints[] = $query->contains('usergroup', $this->communityUserService->getUserGroupUid('community'));
 
@@ -274,14 +275,13 @@ class CommunityUserRepository extends \TYPO3\CMS\Extbase\Domain\Repository\Front
 				$constraints[] = $query->equals('privacyProtection', FALSE);
 			}
 
-			if (isset($demand['excludeUsersWithoutPicture']) && $demand['excludeUsersWithoutPicture']) {
-				// exclude users without picture
-				$constraints[] = $query->logicalOr(
-					//$query->logicalNot($query->equals('falImage', NULL)),
-					$query->greaterThan('falImage', 0),
-					$query->contains('usergroup', $this->communityUserService->getUserGroupUid('communityFacebook'))
-				);
-			}
+//			if (isset($demand['excludeUsersWithoutPicture']) && $demand['excludeUsersWithoutPicture']) {
+//				// exclude users without picture
+//				$constraints[] = $query->logicalOr(
+//					$query->logicalNot($query->equals('falImage.uid', NULL)),
+//					$query->contains('usergroup', $this->communityUserService->getUserGroupUid('communityFacebook'))
+//				);
+//			}
 		}
 
 		if (!empty($constraints)) {
@@ -304,6 +304,48 @@ class CommunityUserRepository extends \TYPO3\CMS\Extbase\Domain\Repository\Front
 
 		return $query->execute();
 
+	}
+
+	/**
+	 * Find all election supporters that are either Facebook users or have an image
+	 *
+	 * @param null $limit
+	 * @return array|\TYPO3\CMS\Extbase\Persistence\QueryResultInterface
+	 */
+	public function findElectionSupportersForWall($limit = NULL) {
+		$query = $this->createQuery();
+		$q = 'SELECT * FROM fe_users
+			WHERE NOT disable AND NOT deleted
+			AND followers > 0
+			AND FIND_IN_SET(' . $this->communityUserService->getUserGroupUid('community') . ', usergroup) > 0
+			AND NOT privacy_protection
+			AND (fal_image > 0 OR FIND_IN_SET(' . $this->communityUserService->getUserGroupUid('communityFacebook') . ', usergroup) > 0)
+			ORDER BY followers DESC, last_name ASC, first_name ASC
+		';
+		if ($limit) {
+			$q .= ' LIMIT ' . (int)$limit;
+		}
+		$query->statement($q);
+		return $query->execute();
+	}
+
+	/**
+	 * Count method for the query above
+	 *
+	 * @return mixed
+	 */
+	public function countElectionSupportersForWall() {
+		$query = $this->createQuery();
+		$q = 'SELECT COUNT(*) as count FROM fe_users
+			WHERE NOT disable AND NOT deleted
+			AND followers > 0
+			AND FIND_IN_SET(' . $this->communityUserService->getUserGroupUid('community') . ', usergroup) > 0
+			AND NOT privacy_protection
+			AND (fal_image > 0 OR FIND_IN_SET(' . $this->communityUserService->getUserGroupUid('communityFacebook') . ', usergroup) > 0)
+			ORDER BY followers DESC, last_name ASC, first_name ASC
+		';
+		$query->statement($q);
+		return $query->execute(TRUE)[0]['count'];
 	}
 
 }

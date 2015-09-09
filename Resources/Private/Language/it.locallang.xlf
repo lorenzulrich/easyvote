@@ -762,6 +762,25 @@
 				<target>Cancella</target>
 			</trans-unit>
 
+			<trans-unit id="wall.box.header">
+				<target>Ti da sui nervi che i tuoi amici non partecipino alle elezioni?</target>
+			</trans-unit>
+			<trans-unit id="wall.box.text">
+				<target>Fai qualcosa al riguardo! Diventa uno dei 1000 eroi del voto e motiva i tuoi amici a partecipare alle elezioni nazionali. Informeremo regolarmente te e i tuoi amici sulle prossime elezioni: così eleggere diventerà davvero easy.</target>
+			</trans-unit>
+			<trans-unit id="wall.box.linkText">
+				<target>Registrati ora!</target>
+			</trans-unit>
+			<trans-unit id="wall.videoId">
+				<target>JJd4iAziItU</target>
+			</trans-unit>
+			<trans-unit id="wall.of">
+				<target>di</target>
+			</trans-unit>
+			<trans-unit id="wall.voteHeroes">
+				<target>eroi del voto</target>
+			</trans-unit>
+
 		</body>
 	</file>
 </xliff>

@@ -755,6 +755,25 @@
 				<target>supprimer</target>
 			</trans-unit>
 
+			<trans-unit id="wall.box.header">
+				<target>Tes amis ne votent pas et cela t’énerve ?</target>
+			</trans-unit>
+			<trans-unit id="wall.box.text">
+				<target>Tu peux changer cela ! Deviens l’un des 1000 Vote-Heroes et encourage tes amis à participer aux élections nationales. Nous vous informons en continu, toi et tes amis, sur les élections à venir : élire devient vraiment easy.</target>
+			</trans-unit>
+			<trans-unit id="wall.box.linkText">
+				<target>Inscris-toi!</target>
+			</trans-unit>
+			<trans-unit id="wall.videoId">
+				<target>Q9ME5ISteLc</target>
+			</trans-unit>
+			<trans-unit id="wall.of">
+				<target>de</target>
+			</trans-unit>
+			<trans-unit id="wall.voteHeroes">
+				<target>Vote-Heroes</target>
+			</trans-unit>
+
 		</body>
 	</file>
 </xliff>

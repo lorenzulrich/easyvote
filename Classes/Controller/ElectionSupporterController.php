@@ -14,6 +14,7 @@ namespace Visol\Easyvote\Controller;
  * The TYPO3 project - inspiring people to share!
  */
 
+use TYPO3\CMS\Extbase\Utility\DebuggerUtility;
 use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
 use Visol\Easyvote\Domain\Model\CommunityUser;
 
@@ -202,17 +203,17 @@ class ElectionSupporterController extends \Visol\Easyvote\Controller\AbstractCon
 	 * Displays a wall with election supporters and instructions on how to become one
 	 */
 	public function wallAction() {
-		$demand = array(
-			'excludeUsersWithPrivacyProtection' => TRUE,
-			'excludeUsersWithoutPicture' => TRUE
-		);
-		$electionSupporters = $this->communityUserRepository->findElectionSupporters($demand, NULL, 32);
+		$numberOfPicturesOnWall = 288;
+		$electionSupporters = $this->communityUserRepository->findElectionSupportersForWall($numberOfPicturesOnWall);
 		$this->view->assign('electionSupporters', $electionSupporters);
-		$electionSupportersCount = $this->communityUserRepository->findElectionSupporters()->count();
+		$electionSupportersCount = $this->communityUserRepository->countElectionSupportersForWall();
 		$this->view->assign('electionSupportersCount', $electionSupportersCount);
 		$goal = 1000;
 		$reachedPercentage = round(($electionSupportersCount / $goal * 100));
 		$this->view->assign('reachedPercentage', $reachedPercentage);
+		$missingElectionSupportersForWall = $numberOfPicturesOnWall - $electionSupportersCount;
+		$missingElectionSupportersArray = array_fill(0, $missingElectionSupportersForWall, NULL);
+		$this->view->assign('missingElectionSupporters', $missingElectionSupportersArray);
 	}
 
 	/**

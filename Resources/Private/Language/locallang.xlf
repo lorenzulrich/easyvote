@@ -881,6 +881,25 @@
 				<source>löschen</source>
 			</trans-unit>
 
+			<trans-unit id="wall.box.header">
+				<source>Nervt es dich, dass deine Freunde nicht wählen?</source>
+			</trans-unit>
+			<trans-unit id="wall.box.text">
+				<source>Ändere das! Werde einer von 1000 Vote-Heroes und motiviere deine Freunde, an den nationalen Wahlen teilzunehmen. Wir informieren dich und deine Freunde laufend über die bevorstehenden Wahlen: So wird wählen richtig easy.</source>
+			</trans-unit>
+			<trans-unit id="wall.box.linkText">
+				<source>Mache jetzt mit!</source>
+			</trans-unit>
+			<trans-unit id="wall.videoId">
+				<source>Lx7X5Sf_m50</source>
+			</trans-unit>
+			<trans-unit id="wall.of">
+				<source>von</source>
+			</trans-unit>
+			<trans-unit id="wall.voteHeroes">
+				<source>Vote-Heroes</source>
+			</trans-unit>
+
 		</body>
 	</file>
 </xliff>

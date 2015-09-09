@@ -1,40 +1,38 @@
-<div class="progress">
+<div class="progress progress-wall">
 	<div class="progress-bar" role="progressbar" aria-valuenow="{reachedPercentage}" aria-valuemin="0" aria-valuemax="1000" style="width:{reachedPercentage}%"></div>
 </div>
-<div style="text-align:center; margin-bottom: 20px; margin-top: 0">
-	{electionSupportersCount} von 1000 Vote-Heroes
+<div class="supporter-count">
+	{electionSupportersCount} {f:translate(key:'wall.of')} 1000 {f:translate(key:'wall.voteHeroes')}
 </div>
 
 <div class="electionsupporters-wall">
+	<div class="box">
+		<div class="youtube-embed">
+			<iframe width="1280" height="720" src="https://www.youtube-nocookie.com/embed/{f:translate(key:'wall.videoId')}" frameborder="0" allowfullscreen></iframe>
+		</div>
+		<div class="box-text">
+			<h2>{f:translate(key:'wall.box.header')}</h2>
+			<p>{f:translate(key:'wall.box.text')}</p>
+			<f:link.page pageUid="{settings.communityMobilizePid}" class="link-box">{f:translate(key:'wall.box.linkText')}</f:link.page>
+		</div>
+	</div>
 	<f:for each="{electionSupporters}" as="electionSupporter" iteration="iterator">
-		<f:if condition="{iterator.cycle} == 7">
-			<div class="box">
-				<div class="youtube-embed">
-					<iframe width="1280" height="720" src="https://www.youtube-nocookie.com/embed/xqCpNVAuhAI" frameborder="0" allowfullscreen></iframe>
-				</div>
-				<div class="box-inner">
-					<h2>Nervt es dich, dass deine Freunde nicht wählen?</h2>
-					<ol>
-						<li>Erstelle ein Vote-Happening am 8. Oktober 2015.</li>
-						<li>Lade deine Freunde ein.</li>
-						<li>Vote Now!</li>
-					</ol>
-					<f:link.page pageUid="{settings.communityMobilizePid}" class="link-box">Jetzt mitmachen</f:link.page>
-				</div>
-			</div>
-		</f:if>
+		<div class="election-supporter uid-{electionSupporter.uidBase64}">
+			<f:link.page pageUid="{settings.electionSupporterPid}" noCacheHash="true" additionalParams="{tx_easyvote_electionsupporterfunctions: {follow: '{electionSupporter.uidBase64}'}}">
+				<f:render partial="ElectionSupporter/Image" arguments="{user:electionSupporter, size: 70, settings:settings}" />
+			</f:link.page>
+		</div>
+	</f:for>
+	<f:for each="{missingElectionSupporters}" as="missingElectionSupporter" iteration="iterator">
 		<div class="election-supporter">
-			<f:render partial="ElectionSupporter/Image" arguments="{user:electionSupporter, size: 290, settings:settings}" />
-			<div class="mobilizations">
-				<f:if condition="{electionSupporter.followers -> f:count()} == 1">
-					<span class="number">{electionSupporter.followers -> f:count()}</span>
-					Freund mobilisiert
-				</f:if>
-				<f:if condition="{electionSupporter.followers -> f:count()} > 1">
-					<span class="number">{electionSupporter.followers -> f:count()}</span>
-					Freunde mobilisiert
-				</f:if>
-			</div>
+			<f:if condition="{iterator.index} % 2">
+				<f:then>
+					<f:image src="/typo3conf/ext/easyvote/Resources/Public/Images/profilepicture-placeholder-m.svg" width="70" height="70c"/>
+				</f:then>
+				<f:else>
+					<f:image src="/typo3conf/ext/easyvote/Resources/Public/Images/profilepicture-placeholder-f.svg" width="70" height="70c"/>
+				</f:else>
+			</f:if>
 		</div>
 	</f:for>
 </div>

@@ -38,6 +38,12 @@ class CommunityUser extends FrontendUser {
 	protected $communityUserService = NULL;
 
 	/**
+	 * @var string
+	 * @transient
+	 */
+	protected $uidBase64;
+
+	/**
 	 * @var \integer
 	 */
 	protected $gender;
@@ -265,6 +271,13 @@ class CommunityUser extends FrontendUser {
 		$this->events = new ObjectStorage();
 		$this->panels = new ObjectStorage();
 		$this->personalElectionLists = new ObjectStorage();
+	}
+
+	/**
+	 * @return string
+	 */
+	public function getUidBase64() {
+		return base64_encode($this->uid);
 	}
 
 	/**
