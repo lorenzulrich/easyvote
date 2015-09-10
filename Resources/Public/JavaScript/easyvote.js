@@ -589,6 +589,13 @@ $(function() {
 			$mobilizations.css('visibility', 'visible').show();
 			$('#event-share').css('visibility', 'visible').show();
 		}
-	}
+	};
+
+	//
+	// Disable submit button on editEventForm after submitting to prevent double submitting
+	//
+	$body.on('submit', '.editEventForm', function() {
+		$(this).find('button').prop('disabled', true);
+	});
 
 })
