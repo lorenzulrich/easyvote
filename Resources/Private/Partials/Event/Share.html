@@ -2,31 +2,31 @@
 
 <f:if condition="{settings.context} != 'app'">
 	<f:then>
-		<a class="share-popup" href="https://www.facebook.com/sharer/sharer.php?u={encodedShareUri}">
-			<div class="share-preview-container facebook">
-				<div class="left">
-					<div class="share-links">
+		<div class="share-preview-container facebook">
+			<div class="left">
+				<div class="share-links">
+					<a class="share-popup" href="https://www.facebook.com/sharer/sharer.php?u={encodedShareUri}">
 						<span class="facebook"></span>
-					</div>
-				</div>
-				<div class="right">
-					<div class="right-inner-left">
-						<f:if condition="{votingProposal.image}">
-							<img src="/typo3conf/ext/easyvote/Resources/Public/Images/easyvote-logo-fb.png" />
-						</f:if>
-					</div>
-					<div class="right-inner-right">
-						<h3>
-							<strong><f:translate key="mobilizations.share.title" /> - easyvote.ch</strong>
-						</h3>
-						<p>
-							<f:translate key="mobilizations.share.text" /><br />
-							www.easyvote.ch
-						</p>
-					</div>
+					</a>
 				</div>
 			</div>
-		</a>
+			<div class="right">
+				<div class="right-inner-left">
+					<f:if condition="{votingProposal.image}">
+						<img src="/typo3conf/ext/easyvote/Resources/Public/Images/easyvote-logo-fb.png" />
+					</f:if>
+				</div>
+				<div class="right-inner-right">
+					<h3>
+						<strong><f:translate key="mobilizations.share.title" /> - easyvote.ch</strong>
+					</h3>
+					<p>
+						<f:translate key="mobilizations.share.text" /><br />
+						www.easyvote.ch
+					</p>
+				</div>
+			</div>
+		</div>
 		<div class="share-preview-container twitter">
 			<div class="left">
 				<div class="share-links">
