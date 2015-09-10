@@ -95,7 +95,7 @@ class EventController extends \Visol\Easyvote\Controller\AbstractController {
 			$this->eventRepository->update($event);
 		}
 		$this->persistenceManager->persistAll();
-		DebuggerUtility::var_dump($event);
+		$this->communityUserRepository->updateRelationCount('tx_easyvote_domain_model_event', 'community_user', 'events', 'fe_users', array('deleted', 'disable'));
 		$this->redirect('mobilizations');
 	}
 

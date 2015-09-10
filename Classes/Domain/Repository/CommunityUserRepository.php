@@ -238,8 +238,7 @@ class CommunityUserRepository extends \TYPO3\CMS\Extbase\Domain\Repository\Front
 		$constraints = [];
 
 		$constraints[] = $query->logicalNot(
-			// TODO make sure relation field is updated
-			$query->equals('followers', 0)
+			$query->equals('events', 0)
 		);
 
 		// Make sure user is a Community user (exclude deleted users)
@@ -316,7 +315,7 @@ class CommunityUserRepository extends \TYPO3\CMS\Extbase\Domain\Repository\Front
 		$query = $this->createQuery();
 		$q = 'SELECT * FROM fe_users
 			WHERE NOT disable AND NOT deleted
-			AND followers > 0
+			AND events > 0
 			AND FIND_IN_SET(' . $this->communityUserService->getUserGroupUid('community') . ', usergroup) > 0
 			AND NOT privacy_protection
 			AND (fal_image > 0 OR FIND_IN_SET(' . $this->communityUserService->getUserGroupUid('communityFacebook') . ', usergroup) > 0)
@@ -338,7 +337,7 @@ class CommunityUserRepository extends \TYPO3\CMS\Extbase\Domain\Repository\Front
 		$query = $this->createQuery();
 		$q = 'SELECT COUNT(*) as count FROM fe_users
 			WHERE NOT disable AND NOT deleted
-			AND followers > 0
+			AND events > 0
 			AND FIND_IN_SET(' . $this->communityUserService->getUserGroupUid('community') . ', usergroup) > 0
 			AND NOT privacy_protection
 			AND (fal_image > 0 OR FIND_IN_SET(' . $this->communityUserService->getUserGroupUid('communityFacebook') . ', usergroup) > 0)
@@ -349,24 +348,38 @@ class CommunityUserRepository extends \TYPO3\CMS\Extbase\Domain\Repository\Front
 	}
 
 	/**
-	 * Update the follower relations count
-	 * This count is used for sorting and not automatically updated, so it is done manually
+	 * Update the relations count for an 1:n IRRE relation
+	 *
+	 * @param string $foreignTable The table with child records
+	 * @param string $foreignField The field in the child record holding the uid of the parent
+	 * @param string $localRelationField The field that holds the relation count
+	 * @param string $localTable The parent table
+	 * @param array $localEnableFields The enable fields to consider for the parent table
+	 * @param array $foreignEnableFields The enable fields to consider from the children table
 	 */
-	public function updateFollowersRelationCount() {
+	public function updateRelationCount($foreignTable, $foreignField, $localRelationField, $localTable = 'fe_users', $localEnableFields = array('hidden', 'deleted'), $foreignEnableFields = array('hidden', 'deleted')) {
+		$foreignEnableFieldsClause = '';
+		foreach ($foreignEnableFields as $foreignEnableField) {
+			$foreignEnableFieldsClause .= ' AND NOT ' . $foreignEnableField;
+		}
+		$localEnableFieldsClause = '';
+		foreach ($localEnableFields as $localEnableField) {
+			$localEnableFieldsClause .= ' AND NOT parent.' . $localEnableField;
+		}
 		$q = '
-			UPDATE fe_users AS parent
+			UPDATE ' . $localTable . ' AS parent
 			LEFT JOIN (
-				SELECT community_user, COUNT(*) followerCount
-				FROM  fe_users
-				WHERE deleted = 0 AND disable = 0
-				GROUP BY community_user
-				) AS follower
-			ON parent.uid = follower.community_user
-			SET parent.followers = CASE
-				WHEN follower.followerCount IS NULL THEN 0
-				WHEN follower.followerCount > 0 THEN follower.followerCount
+				SELECT ' . $foreignField . ', COUNT(*) foreignCount
+				FROM  ' . $foreignTable . '
+				WHERE 1=1 ' . $foreignEnableFieldsClause . '
+				GROUP BY ' . $foreignField . '
+				) AS children
+			ON parent.uid = children.' . $foreignField . '
+			SET parent.' . $localRelationField . ' = CASE
+				WHEN children.foreignCount IS NULL THEN 0
+				WHEN children.foreignCount > 0 THEN children.foreignCount
 			END
-			WHERE parent.deleted = 0 AND parent.disable = 0;
+			WHERE 1=1 ' . $localEnableFieldsClause . ';
 		';
 		$GLOBALS['TYPO3_DB']->sql_query($q);
 	}
