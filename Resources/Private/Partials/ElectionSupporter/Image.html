@@ -1,8 +1,8 @@
 <f:if condition="{user.falImage}">
 	<f:then>
-		<img src="{f:uri.image(src: '{user.falImage.uid}', treatIdAsReference: 1, width: '{size}' height: '{size}c')}" alt="{user.firstName} {user.lastName}" />
+		<img src="{f:uri.image(src: '{user.falImage.uid}', treatIdAsReference: 1, width: '{size}' height: '{size}c')}" alt="{user.firstName} {user.lastName -> f:format.crop(maxCharacters: '1', append: '.', respectHtml: false)}" />
 	</f:then>
 	<f:else>
-		<img src="https://graph.facebook.com/{user.username}/picture?width={size}&height={size}" height="{size}" width="{size}" alt="{user.firstName} {user.lastName}" />
+		<img src="https://graph.facebook.com/{user.username}/picture?width={size}&height={size}" height="{size}" width="{size}" alt="{user.firstName} {user.lastName -> f:format.crop(maxCharacters: '1', append: '.', respectHtml: false)}" />
 	</f:else>
 </f:if>
