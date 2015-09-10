@@ -5,7 +5,7 @@
 	<f:else>
 		<f:if condition="{user.falImage}">
 			<f:then>
-				<img class="user-image lazy" alt="{user.firstName} {user.lastName}" width="{size}" height="{size}"
+				<img class="user-image lazy" alt="{user.firstName} {user.lastName -> f:format.crop(maxCharacters: '1', append: '.', respectHtml: false)}" width="{size}" height="{size}"
 					 src="/typo3conf/ext/easyvote/Resources/Public/Images/profilepicture-placeholder.png"
 					 data-original="{f:uri.image(src: '{user.falImage.uid}', treatIdAsReference: 1, width: '{size}' height: '{size}c')}" />
 			</f:then>
@@ -15,10 +15,10 @@
 						<img class="user-image lazy"
 							 src="/typo3conf/ext/easyvote/Resources/Public/Images/profilepicture-placeholder.png"
 							 data-original="https://graph.facebook.com/{user.username}/picture?width={size}&height={size}"
-							 height="{size}" width="{size}" alt="{user.firstName} {user.lastName}" />
+							 height="{size}" width="{size}" alt="{user.firstName} {user.lastName -> f:format.crop(maxCharacters: '1', append: '.', respectHtml: false)}" />
 					</f:then>
 					<f:else>
-						<f:image class="user-image" alt="{user.firstName} {user.lastName}" src="/typo3conf/ext/easyvote/Resources/Public/Images/profilepicture-placeholder.png" width="{size}" height="{size}c"/>
+						<f:image class="user-image" alt="{user.firstName} {user.lastName -> f:format.crop(maxCharacters: '1', append: '.', respectHtml: false)}" src="/typo3conf/ext/easyvote/Resources/Public/Images/profilepicture-placeholder.png" width="{size}" height="{size}c"/>
 					</f:else>
 				</f:if>
 			</f:else>
