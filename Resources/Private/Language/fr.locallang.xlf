@@ -314,7 +314,10 @@
 				<target>#VoteNow2015</target>
 			</trans-unit>
 			<trans-unit id="mobilizations.share.text">
-				<target> Je veux que les jeunes prennent eux-mêmes l'avenir de la Suisse en main et que nous renforçons notre influence au Palais fédéral. Votons ensemble le {8. Oktober am Wildheinweg 4 in Bern}.</target>
+				<target>Je veux que les jeunes prennent eux-mêmes l'avenir de la Suisse en main et que nous renforçons notre influence au Palais fédéral. Votons ensemble le %1$s: %2$s a %3$s.</target>
+			</trans-unit>
+			<trans-unit id="mobilizations.share.shortText">
+				<target>Votons ensemble le %1$s: %2$s a %3$s.</target>
 			</trans-unit>
 			<trans-unit id="mobilizations.share.link">
 				<target>Copier et envoyer le lien</target>

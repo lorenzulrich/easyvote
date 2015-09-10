@@ -436,7 +436,10 @@
 				<source>#VoteNow2015</source>
 			</trans-unit>
 			<trans-unit id="mobilizations.share.text">
-				<source> Ich möchte, dass wir Jungen die Zukunft der Schweiz selbst in die Hand nehmen und wir unseren Einfluss im Bundeshaus verstärken. Lass uns am {8. Oktober am Wildheinweg 4 in Bern} gemeinsam unsere Stimme abgeben.</source>
+				<source>Ich möchte, dass wir Jungen die Zukunft der Schweiz selbst in die Hand nehmen und wir unseren Einfluss im Bundeshaus verstärken. Lass uns am %1$s gemeinsam unsere Stimme abgeben: %2$s in %3$s.</source>
+			</trans-unit>
+			<trans-unit id="mobilizations.share.shortText">
+				<source>Lass uns am %1$s gemeinsam unsere Stimme abgeben: %2$s in %3$s.</source>
 			</trans-unit>
 			<trans-unit id="mobilizations.share.link">
 				<source>Link kopieren und senden</source>

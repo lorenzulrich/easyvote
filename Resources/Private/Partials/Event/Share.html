@@ -21,7 +21,7 @@
 						<strong><f:translate key="mobilizations.share.title" /> - easyvote.ch</strong>
 					</h3>
 					<p>
-						<f:translate key="mobilizations.share.text" /><br />
+						<f:translate key="mobilizations.share.text" arguments="{1: '{event.date -> f:format.date(format:\'%e. %B\')}', 2: event.location.street, 3: '{event.location.city}{event.location.citySelection.name}'}" /><br />
 						www.easyvote.ch
 					</p>
 				</div>
@@ -30,7 +30,7 @@
 		<div class="share-preview-container twitter">
 			<div class="left">
 				<div class="share-links">
-					<a class="share-popup" href="https://twitter.com/home?status={f:translate(key:'mobilizations.share.title')} {shareUri} @easyvote_ch">
+					<a class="share-popup" href="https://twitter.com/home?status=<f:translate key="mobilizations.share.shortText" arguments="{1: '{event.date -> f:format.date(format:\'%e. %B\')}', 2: event.location.street, 3: '{event.location.city}{event.location.citySelection.name}'}" /> {shareUri} @easyvote_ch">
 						<span class="twitter"></span>
 					</a>
 				</div>
@@ -40,6 +40,7 @@
 					<strong><f:translate key="mobilizations.share.title" /></strong>
 				</h3>
 				<p>
+					<f:translate key="mobilizations.share.shortText" arguments="{1: '{event.date -> f:format.date(format:\'%e. %B\')}', 2: event.location.street, 3: '{event.location.city}{event.location.citySelection.name}'}" /><br />
 					<span class="uri">{shareUri}</span>
 				</p>
 			</div>
@@ -47,7 +48,7 @@
 		<div class="share-preview-container mail">
 			<div class="left">
 				<div class="share-links">
-					<a class="share-popup" href="mailto:?subject={f:translate(key:'mobilizations.share.title')}&body={f:translate(key:'mobilizations.share.text')}%0D%0A{shareUri}">
+					<a class="share-popup" href="mailto:?subject={f:translate(key:'mobilizations.share.title')}&body=<f:translate key="mobilizations.share.text" arguments="{1: '{event.date -> f:format.date(format:\'%e. %B\')}', 2: event.location.street, 3: '{event.location.city}{event.location.citySelection.name}'}" />%0D%0A{shareUri}">
 						<span class="mail"></span>
 					</a>
 				</div>
@@ -57,7 +58,7 @@
 					<strong><f:translate key="mobilizations.share.title" /></strong>
 				</h3>
 				<p>
-					<f:translate key="mobilizations.share.text" /><br />
+					<f:translate key="mobilizations.share.text" arguments="{1: '{event.date -> f:format.date(format:\'%e. %B\')}', 2: event.location.street, 3: '{event.location.city}{event.location.citySelection.name}'}" /><br />
 					<span class="uri">{shareUri}</span>
 				</p>
 			</div>
