@@ -348,4 +348,27 @@ class CommunityUserRepository extends \TYPO3\CMS\Extbase\Domain\Repository\Front
 		return $query->execute(TRUE)[0]['count'];
 	}
 
+	/**
+	 * Update the follower relations count
+	 * This count is used for sorting and not automatically updated, so it is done manually
+	 */
+	public function updateFollowersRelationCount() {
+		$q = '
+			UPDATE fe_users AS parent
+			LEFT JOIN (
+				SELECT community_user, COUNT(*) followerCount
+				FROM  fe_users
+				WHERE deleted = 0 AND disable = 0
+				GROUP BY community_user
+				) AS follower
+			ON parent.uid = follower.community_user
+			SET parent.followers = CASE
+				WHEN follower.followerCount IS NULL THEN 0
+				WHEN follower.followerCount > 0 THEN follower.followerCount
+			END
+			WHERE parent.deleted = 0 AND parent.disable = 0;
+		';
+		$GLOBALS['TYPO3_DB']->sql_query($q);
+	}
+
 }
