@@ -4,7 +4,7 @@
 	<f:else>
 		<f:for each="{supporter.events}" as="event">
 			<v:page.header allowMoveToFooter="0">
-				<meta property="og:title" content="{event.communityUser.firstName} {event.communityUser.lastName -> f:format.crop(maxCharacters: '1', append: '.', respectHtml: false)} {f:translate(key:'mobilizations.directory.votesOn')} {event.date -> f:format.date(format: '%A, %e. %B %Y')}" />
+				<meta property="og:title" content="{f:translate(key:'mobilizations.share.title')}" />
 				<meta property="og:type" content="article" />
 				<meta property="og:url" content="{shareUri}" />
 				<meta property="og:image" content="{frontendObject.baseUrl}/typo3conf/ext/easyvote/Resources/Public/Images/votenow-lang-{event.communityUser.userLanguage}.jpg" />
