@@ -12,7 +12,9 @@
 			</div>
 			<div class="right">
 				<div class="right-inner-left">
-					<f:image width="135" src="typo3conf/ext/easyvote/Resources/Public/Images/votenow-lang-{event.communityUser.userLanguage}.jpg" alt="" />
+					<f:if condition="{event.communityUser.userLanguage}">
+						<f:image width="135" src="typo3conf/ext/easyvote/Resources/Public/Images/votenow-lang-{event.communityUser.userLanguage}.jpg" alt="" />
+					</f:if>
 				</div>
 				<div class="right-inner-right">
 					<h3>
