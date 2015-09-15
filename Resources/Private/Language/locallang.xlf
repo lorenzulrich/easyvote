@@ -462,6 +462,9 @@
 			<trans-unit id="mobilizations.directory.eventTimeAndLocation">
 				<source>wählt am %1$s um %2$s Uhr hier</source>
 			</trans-unit>
+			<trans-unit id="mobilizations.directory.votesOn">
+				<source>wählt am</source>
+			</trans-unit>
 			<trans-unit id="mobilizations.directory.follower">
 				<source>Freunde mobilisiert</source>
 			</trans-unit>

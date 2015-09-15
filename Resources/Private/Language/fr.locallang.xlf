@@ -340,6 +340,9 @@
 			<trans-unit id="mobilizations.directory.eventTimeAndLocation">
 				<target>élit le %1$s à %2$s heures ici</target>
 			</trans-unit>
+			<trans-unit id="mobilizations.directory.votesOn">
+				<target>élit le</target>
+			</trans-unit>
 			<trans-unit id="mobilizations.directory.follower">
 				<target>ami mobilisé</target>
 			</trans-unit>
