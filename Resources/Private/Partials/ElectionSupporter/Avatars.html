@@ -1,0 +1,21 @@
+{namespace v=Tx_Vhs_ViewHelpers}
+
+<f:if condition="{supporter.vip}">
+	<f:if condition="{supporter.cachedFollowerRankVip} > 0">
+		<f:if condition="{supporter.cachedFollowerRankVip} < 4">
+			<img class="avatar" src="/typo3conf/ext/easyvote/Resources/Public/Images/Avatars/flag-vip-{supporter.cachedFollowerRankVip}.svg" />
+		</f:if>
+	</f:if>
+</f:if>
+
+<f:if condition="{supporter.cachedFollowerRankCh} > 0">
+	<f:if condition="{supporter.cachedFollowerRankCh} < 4">
+		<img class="avatar" src="/typo3conf/ext/easyvote/Resources/Public/Images/Avatars/flag-ch-{supporter.cachedFollowerRankCh}.svg" />
+	</f:if>
+</f:if>
+
+<f:if condition="{supporter.cachedFollowerRankCanton} > 0">
+	<f:if condition="{supporter.cachedFollowerRankCanton} < 4">
+		<img class="avatar" src="/typo3conf/ext/easyvote/Resources/Public/Images/Avatars/flag-{supporter.citySelection.kanton.abbreviation -> v:format.case(case: 'lower')}-{supporter.cachedFollowerRankCanton}.svg" />
+	</f:if>
+</f:if>

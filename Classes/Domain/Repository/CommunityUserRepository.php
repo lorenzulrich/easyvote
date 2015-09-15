@@ -143,7 +143,7 @@ class CommunityUserRepository extends \TYPO3\CMS\Extbase\Domain\Repository\Front
 		if (is_array($demand)) {
 			if (isset($demand['query'])) {
 				// query constraint
-				$queryString = '%' . $GLOBALS['TYPO3_DB']->escapeStrForLike($GLOBALS['TYPO3_DB']->quoteStr($demand['query'], $this->tableName), $this->tableName) . '%';
+				$queryString = '%' . $this->getDatabaseConnection()->escapeStrForLike($this->getDatabaseConnection()->quoteStr($demand['query'], $this->tableName), $this->tableName) . '%';
 				$constraints[] = $query->logicalOr(
 					$query->like('firstName', $queryString, FALSE),
 					$query->like('lastName', $queryString, FALSE),
@@ -255,7 +255,7 @@ class CommunityUserRepository extends \TYPO3\CMS\Extbase\Domain\Repository\Front
 		if (is_array($demand)) {
 			if (isset($demand['query'])) {
 				// query constraint
-				$queryString = '%' . $GLOBALS['TYPO3_DB']->escapeStrForLike($GLOBALS['TYPO3_DB']->quoteStr($demand['query'], $this->tableName), $this->tableName) . '%';
+				$queryString = '%' . $this->getDatabaseConnection()->escapeStrForLike($this->getDatabaseConnection()->quoteStr($demand['query'], $this->tableName), $this->tableName) . '%';
 				$constraints[] = $query->like('firstName', $queryString, FALSE);
 			}
 
@@ -378,7 +378,93 @@ class CommunityUserRepository extends \TYPO3\CMS\Extbase\Domain\Repository\Front
 			END
 			WHERE 1=1 ' . $localEnableFieldsClause . ';
 		';
-		$GLOBALS['TYPO3_DB']->sql_query($q);
+		$this->getDatabaseConnection()->sql_query($q);
+	}
+
+	/**
+	 * Update cached follower ranks for
+	 * - Switzerland
+	 * - Each canton
+	 * - VIP rating
+	 *
+	 * @return void
+	 */
+	public function updateCachedFollowerRanks() {
+		// Reset all ranks
+		$sql = 'UPDATE fe_users SET cached_follower_rank_ch=0, cached_follower_rank_canton=0, cached_follower_rank_vip=0';
+		$this->getDatabaseConnection()->sql_query($sql);
+
+		/* Source: http://stackoverflow.com/a/14297055/1517316 */
+
+		// Calculate rank for CH rating
+		$this->getDatabaseConnection()->sql_query('SET @prev_value = NULL;');
+		$this->getDatabaseConnection()->sql_query('SET @rank_count = 0;');
+		$sql = '
+			UPDATE fe_users
+			SET cached_follower_rank_ch = CASE
+				WHEN @prev_value = followers THEN @rank_count
+				WHEN @prev_value := followers THEN @rank_count := @rank_count + 1
+				ELSE @rank_count := @rank_count + 1
+			END
+			WHERE deleted = 0 AND disable = 0 AND followers > 0 AND events > 0 AND NOT vip
+			ORDER BY followers DESC';
+		$this->getDatabaseConnection()->sql_query($sql);
+
+		// Calculate rank for VIP rating
+		$this->getDatabaseConnection()->sql_query('SET @prev_value = NULL;');
+		$this->getDatabaseConnection()->sql_query('SET @rank_count = 0;');
+		$sql = '
+			UPDATE fe_users
+			SET cached_follower_rank_vip = CASE
+				WHEN @prev_value = followers THEN @rank_count
+				WHEN @prev_value := followers THEN @rank_count := @rank_count + 1
+				ELSE @rank_count := @rank_count + 1
+			END
+			WHERE deleted = 0 AND disable = 0 AND followers > 0 AND events > 0 AND vip
+			ORDER BY followers DESC';
+		$this->getDatabaseConnection()->sql_query($sql);
+		
+		// Calculate rank for canton rating
+
+		// set kanton for each user (TODO kanton field is deprecated, but this is the easiest way right now)
+		$sql = '
+			update fe_users as u
+			set kanton = (select kanton from tx_easyvote_domain_model_city where uid = u.city_selection)
+			where not u.deleted and not u.disable and u.followers > 0;';
+		$this->getDatabaseConnection()->sql_query($sql);
+
+		// get all affected cantons
+		$sql = '
+			SELECT DISTINCT kanton
+			FROM fe_users
+			WHERE NOT deleted AND NOT disable AND followers > 0 AND kanton > 0
+			GROUP BY kanton;
+		';
+		$res = $this->getDatabaseConnection()->sql_query($sql);
+		while ($row = $this->getDatabaseConnection()->sql_fetch_assoc($res)) {
+			// set ranking for each canton
+			$kantonUid = $row['kanton'];
+			$this->getDatabaseConnection()->sql_query('SET @prev_value = NULL;');
+			$this->getDatabaseConnection()->sql_query('SET @rank_count = 0;');
+			$sql = '
+			UPDATE fe_users
+			SET cached_follower_rank_canton = CASE
+				WHEN @prev_value = followers THEN @rank_count
+				WHEN @prev_value := followers THEN @rank_count := @rank_count + 1
+				ELSE @rank_count := @rank_count + 1
+			END
+			WHERE kanton =' . $kantonUid . '
+			AND deleted = 0 AND disable = 0 AND followers > 0 AND events > 0 AND NOT vip
+			ORDER BY followers DESC';
+			$this->getDatabaseConnection()->sql_query($sql);
+		}
+	}
+
+	/**
+	 * @return \TYPO3\CMS\Core\Database\DatabaseConnection
+	 */
+	public function getDatabaseConnection() {
+		return $GLOBALS['TYPO3_DB'];
 	}
 
 }

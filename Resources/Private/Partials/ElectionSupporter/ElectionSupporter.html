@@ -10,6 +10,9 @@
 						@TODO Share Icon
 					</f:comment>
 				</div>
+				<div class="avatars">
+					<f:render partial="ElectionSupporter/Avatars" arguments="{supporter:supporter}" />
+				</div>
 				<h2>
 					<f:if condition="{supporter.privacyProtection}">
 						<f:then>

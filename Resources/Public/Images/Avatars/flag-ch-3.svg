@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 15.0.0, SVG Export Plug-In  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd" [
+	<!ENTITY ns_flows "http://ns.adobe.com/Flows/1.0/">
+]>
+<svg version="1.1"
+	 xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:a="http://ns.adobe.com/AdobeSVGViewerExtensions/3.0/"
+	 x="0px" y="0px" width="336px" height="401px" viewBox="0 0 336 401" enable-background="new 0 0 336 401" xml:space="preserve">
+<defs>
+</defs>
+<g>
+	<defs>
+		<rect id="SVGID_1_" width="335.5" height="400.6"/>
+	</defs>
+	<clipPath id="SVGID_4_">
+		<use xlink:href="#SVGID_1_"  overflow="visible"/>
+	</clipPath>
+	<g clip-path="url(#SVGID_4_)">
+		<defs>
+			<rect id="SVGID_3_" x="47.3" y="161.2" width="239.4" height="239.4"/>
+		</defs>
+		<clipPath id="SVGID_5_">
+			<use xlink:href="#SVGID_3_"  overflow="visible"/>
+		</clipPath>
+		<g transform="matrix(1 0 0 1 1.884616e-006 6.283626e-006)" clip-path="url(#SVGID_5_)">
+			
+				<image overflow="visible" width="101" height="101" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGQAAABkCAYAAABw4pVUAAAACXBIWXMAAASdAAAEnQF8NGuhAAAA
+GXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAZ5JREFUeNrs3bsuBFEcwOGDtS4J
+hYiISkRDrRC1Qkv0ep23kFCLJ9AqZUuNRC0Kic4lIktcNtjFsLyC/yTH5vslp52cOd/MnGJms12X
+YxtLKaXxpCyqtMdae8xbinxAfu6OSUuRR92WAIiAABEQIAICRECACIiAABEQIALS4VVyn2DfwnQa
+3V8POdbzdi09bdXcIQICRECACAgQAREQIAICRECACAgQAREQIALyDwv9yKFrqD9+hoPVuGNVK6XM
+8eulldJnkR9I/+pc+Mn2To3GXX2zE6XMsXlwkoqbx/xARjZXsn4cDCzO/I7o6mc3qRkEYg+xqQsI
+EAEBIiBABASIgAgIEAEBIiCdXugLqsbecfgEe8aGw14qtU6u2uMyfI6ft095gjyX8KP86txkGEjz
+6Dw1dg/D51jcNfIEKa4fwk/2q94IvGLeSpmjPcSmLiBABERAgAgIEAEBIiBABERAgAgIEAEBovLL
+/u8q3k+vUn15J+RYHxf3QP5a8fj6+/mOR5aACAgQAQEiIEAEBIiAALEEQAQEiIB0Rt8CDACGXkpO
+mfkrRwAAAABJRU5ErkJggg==" transform="matrix(2.3706 0 0 2.3706 47.3008 161.1587)">
+			</image>
+		</g>
+	</g>
+	<g clip-path="url(#SVGID_4_)">
+		<defs>
+			<rect id="SVGID_2_" width="335.5" height="400.6"/>
+		</defs>
+		<clipPath id="SVGID_6_">
+			<use xlink:href="#SVGID_2_"  overflow="visible"/>
+		</clipPath>
+		<path clip-path="url(#SVGID_6_)" fill="#AA6553" d="M311.4,32.7c-13.4,0-24.2,11.4-24.2,25.5c0,9.1,4.6,17.1,11.4,21.6
+			c-14.5,21.1-35,45.7-56.1,52.8c-27.8,9.4-53.7-48.2-66.5-82.4c9.5-3.5,16.3-12.9,16.3-24c0-14.1-10.8-25.5-24.1-25.5
+			c-13.3,0-24.1,11.4-24.1,25.5c0,11.2,6.9,20.6,16.3,24c-12.7,34.2-38.6,91.8-66.4,82.4C73,125.4,52.5,100.9,38,79.8
+			c6.8-4.5,11.4-12.5,11.4-21.6c0-14.1-10.8-25.5-24.1-25.5C12,32.7,1.2,44.1,1.2,58.1c0,14.1,10.8,25.5,24.1,25.5
+			c0.3,0,0.5-0.1,0.7-0.1l22.9,103.1l238.7,0.9l23.1-104.1c0.2,0,0.5,0.1,0.7,0.1c13.3,0,24.1-11.4,24.1-25.5
+			C335.5,44.1,324.7,32.7,311.4,32.7"/>
+	</g>
+</g>
+</svg>
