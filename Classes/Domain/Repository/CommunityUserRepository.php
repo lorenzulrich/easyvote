@@ -339,9 +339,6 @@ class CommunityUserRepository extends \TYPO3\CMS\Extbase\Domain\Repository\Front
 			WHERE NOT disable AND NOT deleted
 			AND events > 0
 			AND FIND_IN_SET(' . $this->communityUserService->getUserGroupUid('community') . ', usergroup) > 0
-			AND NOT privacy_protection
-			AND (fal_image > 0 OR FIND_IN_SET(' . $this->communityUserService->getUserGroupUid('communityFacebook') . ', usergroup) > 0)
-			ORDER BY followers DESC, last_name ASC, first_name ASC
 		';
 		$query->statement($q);
 		return $query->execute(TRUE)[0]['count'];
