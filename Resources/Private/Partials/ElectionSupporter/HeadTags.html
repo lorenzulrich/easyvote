@@ -9,7 +9,7 @@
 				<meta property="og:url" content="{shareUri}" />
 				<meta property="og:image" content="{frontendObject.baseUrl}/typo3conf/ext/easyvote/Resources/Public/Images/votenow-lang-{event.communityUser.userLanguage}.jpg" />
 				<meta property="og:site_name" content="easyvote" />
-				<meta property="og:description" content="<f:translate key="mobilizations.share.text" arguments="{1: '{event.date -> f:format.date(format:\'%e. %B\')}', 2: event.location.street, 3: '{event.location.city}{event.location.citySelection.name}'}" />" />
+				<meta property="og:description" content="<f:translate key="mobilizations.share.text" arguments="{1: '{event.date -> f:format.date(format:\'%e. %B %Y\')}', 2: event.location.street, 3: '{event.location.city}{event.location.citySelection.name}'}" />" />
 			</v:page.header>
 			<v:page.header.title title="{event.CommunityUser.firstName} {event.CommunityUser.lastName -> f:format.crop(maxCharacters: '1', append: '.', respectHtml: false)} {f:translate(key:'mobilizations.directory.votesOn')} {event.date -> f:format.date(format: '%A, %e. %B %Y')} - easyvote" whitespaceString=" " setIndexedDocTitle="1" />
 		</f:for>

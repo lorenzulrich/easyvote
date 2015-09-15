@@ -337,17 +337,8 @@
 			<trans-unit id="mobilizations.directory.years">
 				<target>ans</target>
 			</trans-unit>
-			<trans-unit id="mobilizations.directory.votesOn">
-				<target>élit le</target>
-			</trans-unit>
-			<trans-unit id="mobilizations.directory.atTime">
-				<target>à</target>
-			</trans-unit>
-			<trans-unit id="mobilizations.directory.oclock">
-				<target>heures</target>
-			</trans-unit>
-			<trans-unit id="mobilizations.directory.atPlace">
-				<target>ici</target>
+			<trans-unit id="mobilizations.directory.eventTimeAndLocation">
+				<target>élit le %1$s à %2$s heures ici</target>
 			</trans-unit>
 			<trans-unit id="mobilizations.directory.follower">
 				<target>ami mobilisé</target>

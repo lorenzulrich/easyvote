@@ -429,7 +429,7 @@
 			</trans-unit>
 			<trans-unit id="mobilizations.introduction">
 				<source><![CDATA[
-					<p>Lade deine Freunde dazu ein gemeinsam eure Stimme abzugeben. Verbreite deinen personalisierten Link über Social Media, WhatsApp oder E-Mail. Bitte beachte, dass du danach im Vote-Hero Ranking mit Profilbild und einigen wenigen Angaben (Nicola J. aus Bern, 18 Jahre) erscheinst.</p>
+					<p>Lade deine Freunde dazu ein, gemeinsam eure Stimme abzugeben. Verbreite deinen personalisierten Link über Social Media, WhatsApp oder E-Mail. Bitte beachte, dass du danach im Vote-Hero Ranking mit Profilbild und einigen wenigen Angaben (Nicola J. aus Bern, 18 Jahre) erscheinst.</p>
 				]]></source>
 			</trans-unit>
 			<trans-unit id="mobilizations.share.title">
@@ -459,17 +459,8 @@
 			<trans-unit id="mobilizations.directory.years">
 				<source>Jahre</source>
 			</trans-unit>
-			<trans-unit id="mobilizations.directory.votesOn">
-				<source>wählt am</source>
-			</trans-unit>
-			<trans-unit id="mobilizations.directory.atTime">
-				<source>um</source>
-			</trans-unit>
-			<trans-unit id="mobilizations.directory.oclock">
-				<source>Uhr</source>
-			</trans-unit>
-			<trans-unit id="mobilizations.directory.atPlace">
-				<source>hier</source>
+			<trans-unit id="mobilizations.directory.eventTimeAndLocation">
+				<source>wählt am %1$s um %2$s Uhr hier</source>
 			</trans-unit>
 			<trans-unit id="mobilizations.directory.follower">
 				<source>Freunde mobilisiert</source>
@@ -866,7 +857,7 @@
 				<source>Uhrzeit festlegen</source>
 			</trans-unit>
 			<trans-unit id="event.introduction">
-				<source>Damit du deine Freunde mobilisieren kannst, musst du die Uhrzeit angeben. Weiter kannst du eine persönliche Mitteilung an deine Freunde anbringen, falls du sie bereits vor der Stimmabgabe bei dir zu Hause, in einem Café oder sonst wo treffen möchtest.</source>
+				<source>Damit du deine Freunde mobilisieren kannst, musst du die Uhrzeit angeben. Weiter kannst du eine persönliche Mitteilung an deine Freunde verfassen, falls du sie bereits vor der Stimmabgabe bei dir zu Hause, in einem Café oder sonst wo treffen möchtest.</source>
 			</trans-unit>
 			<trans-unit id="event.changeLocation">
 				<source>Ort ändern</source>
