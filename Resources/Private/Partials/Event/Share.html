@@ -84,7 +84,7 @@
 		<div class="share-preview-container">
 			<div class="left">
 				<div class="share-links">
-					<a class="share-app" href="share://title={f:translate(key:'mobilizations.share.title') -> f:format.urlencode()}&text={f:translate(key:'mobilizations.share.text') -> f:format.urlencode()}&url={encodedShareUri}">
+					<a class="share-app" href="share://title={f:translate(key:'mobilizations.share.title') -> f:format.urlencode()}&text=<f:format.urlencode><f:translate key="mobilizations.share.text" arguments="{1: '{event.date -> f:format.date(format:\'%e. %B\')}', 2: event.location.street, 3: '{event.location.city}{event.location.citySelection.name}'}" /></f:format.urlencode>&url={encodedShareUri}">
 						<i class="evicon-share"></i>
 					</a>
 				</div>
@@ -92,7 +92,7 @@
 			<div class="right">
 				<p>
 					<strong><f:translate key="mobilizations.share.title" /></strong><br />
-					<f:translate key="mobilizations.share.text" /><br />
+					<f:translate key="mobilizations.share.text" arguments="{1: '{event.date -> f:format.date(format:\'%e. %B\')}', 2: event.location.street, 3: '{event.location.city}{event.location.citySelection.name}'}" /><br />
 					{shareUri}
 				</p>
 			</div>
