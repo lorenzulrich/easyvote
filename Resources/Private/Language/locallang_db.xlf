@@ -234,6 +234,18 @@
 			<trans-unit id="tx_easyvote_domain_model_communityuser.education_institution">
 				<source>Politician: Education institution</source>
 			</trans-unit>
+			<trans-unit id="tx_easyvote_domain_model_communityuser.vip">
+				<source>Is VIP</source>
+			</trans-unit>
+			<trans-unit id="tx_easyvote_domain_model_communityuser.cached_follower_rank_ch">
+				<source>Followers: Cached rank CH</source>
+			</trans-unit>
+			<trans-unit id="tx_easyvote_domain_model_communityuser.cached_follower_rank_canton">
+				<source>Followers: Cached rank Canton</source>
+			</trans-unit>
+			<trans-unit id="tx_easyvote_domain_model_communityuser.cached_follower_rank_vip">
+				<source>Followers: Cached rank VIP</source>
+			</trans-unit>
 
 			<trans-unit id="tx_easyvote_domain_model_messagingjob">
 				<source>Messaging Job</source>

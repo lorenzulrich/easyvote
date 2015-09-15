@@ -169,6 +169,7 @@ class ElectionSupporterController extends \Visol\Easyvote\Controller\AbstractCon
 		$this->communityUserRepository->update($communityUser);
 		$this->persistenceManager->persistAll();
 		$this->communityUserRepository->updateRelationCount('fe_users', 'community_user', 'followers', 'fe_users', array('disable', 'deleted'), array('disable', 'deleted'));
+		$this->communityUserRepository->updateCachedFollowerRanks();
 		return json_encode(array('namespace' => 'Easyvote', 'function' => 'getElectionSupporters', 'arguments' => 'scrollTop'));
 	}
 
@@ -198,6 +199,7 @@ class ElectionSupporterController extends \Visol\Easyvote\Controller\AbstractCon
 		$this->communityUserRepository->update($communityUser);
 		$this->persistenceManager->persistAll();
 		$this->communityUserRepository->updateRelationCount('fe_users', 'community_user', 'followers', 'fe_users', array('disable', 'deleted'), array('disable', 'deleted'));
+		$this->communityUserRepository->updateCachedFollowerRanks();
 		return json_encode(array('namespace' => 'Easyvote', 'function' => 'getElectionSupporters', 'arguments' => 'scrollTop'));
 	}
 

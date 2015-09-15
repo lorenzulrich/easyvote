@@ -398,7 +398,11 @@ CREATE TABLE fe_users (
   education_type varchar(255) DEFAULT '' NOT NULL,
   education_institution varchar(255) DEFAULT '' NOT NULL,
   personal_election_lists int(11) unsigned DEFAULT '0' NOT NULL,
-  privacy_protection int(1) unsigned DEFAULT '0' NOT NULL
+  privacy_protection int(1) unsigned DEFAULT '0' NOT NULL,
+  vip int(1) unsigned DEFAULT '0' NOT NULL,
+  cached_follower_rank_ch int(11) unsigned NOT NULL DEFAULT '0',
+  cached_follower_rank_canton int(11) unsigned NOT NULL DEFAULT '0',
+  cached_follower_rank_vip int(11) unsigned NOT NULL DEFAULT '0'
 );
 
 

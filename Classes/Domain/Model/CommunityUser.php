@@ -251,6 +251,34 @@ class CommunityUser extends FrontendUser {
 	protected $privacyProtection;
 
 	/**
+	 * Is a VIP
+	 *
+	 * @var boolean
+	 */
+	protected $vip;
+
+	/**
+	 * Rank of all users having followers
+	 *
+	 * @var integer
+	 */
+	protected $cachedFollowerRankCh;
+
+	/**
+	 * Rank of all users having followers in the user's canton
+	 *
+	 * @var integer
+	 */
+	protected $cachedFollowerRankCanton;
+
+	/**
+	 * Rank of all VIP users having followers
+	 *
+	 * @var integer
+	 */
+	protected $cachedFollowerRankVip;
+
+	/**
 	 * __construct
 	 *
 	 * @return \Visol\Easyvote\Domain\Model\CommunityUser
@@ -762,6 +790,62 @@ class CommunityUser extends FrontendUser {
 	 */
 	public function setPrivacyProtection($privacyProtection) {
 		$this->privacyProtection = $privacyProtection;
+	}
+
+	/**
+	 * @return int
+	 */
+	public function getCachedFollowerRankCanton() {
+		return $this->cachedFollowerRankCanton;
+	}
+
+	/**
+	 * @param int $cachedFollowerRankCanton
+	 */
+	public function setCachedFollowerRankCanton($cachedFollowerRankCanton) {
+		$this->cachedFollowerRankCanton = $cachedFollowerRankCanton;
+	}
+
+	/**
+	 * @return int
+	 */
+	public function getCachedFollowerRankCh() {
+		return $this->cachedFollowerRankCh;
+	}
+
+	/**
+	 * @param int $cachedFollowerRankCh
+	 */
+	public function setCachedFollowerRankCh($cachedFollowerRankCh) {
+		$this->cachedFollowerRankCh = $cachedFollowerRankCh;
+	}
+
+	/**
+	 * @return int
+	 */
+	public function getCachedFollowerRankVip() {
+		return $this->cachedFollowerRankVip;
+	}
+
+	/**
+	 * @param int $cachedFollowerRankVip
+	 */
+	public function setCachedFollowerRankVip($cachedFollowerRankVip) {
+		$this->cachedFollowerRankVip = $cachedFollowerRankVip;
+	}
+
+	/**
+	 * @return boolean
+	 */
+	public function getVip() {
+		return $this->vip;
+	}
+
+	/**
+	 * @param boolean $vip
+	 */
+	public function setVip($vip) {
+		$this->vip = $vip;
 	}
 
 }
