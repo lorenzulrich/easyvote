@@ -598,4 +598,33 @@ $(function() {
 		$(this).find('button').prop('disabled', true);
 	});
 
+	//
+	// Filter for election supporters on small devices
+	//
+	var jRes = jRespond([
+		{
+			label: 'handheld',
+			enter: 0,
+			exit: 991
+		},{
+			label: 'desktop',
+			enter: 992,
+			exit: 10000
+		}
+	]);
+
+	jRes.addFunc({
+		breakpoint: 'handheld',
+		enter: function() {
+			Easyvote.originalWrapperFilter = $('.supporter-filter');
+			Easyvote.originalWrapperFilterParentContent = Easyvote.originalWrapperFilter.closest('.csc-default');
+			var $box = Easyvote.originalWrapperFilter.detach();
+			$('.election-supporters').prepend($box);
+		},
+		exit: function() {
+			var $box = $('.supporter-filter').detach();
+			Easyvote.originalWrapperFilterParentContent.append($box);
+		}
+	});
+
 })
