@@ -416,7 +416,7 @@
 				<source>Deine Einladung</source>
 			</trans-unit>
 			<trans-unit id="mobilizations.event.date">
-				<source>Ort</source>
+				<source>Datum</source>
 			</trans-unit>
 			<trans-unit id="mobilizations.event.fromTime">
 				<source>Zeit</source>
@@ -425,7 +425,7 @@
 				<source>Uhr</source>
 			</trans-unit>
 			<trans-unit id="mobilizations.event.comment">
-				<source>Persönliche Nachricht</source>
+				<source>Persönliche Mitteilung</source>
 			</trans-unit>
 			<trans-unit id="mobilizations.introduction">
 				<source><![CDATA[
