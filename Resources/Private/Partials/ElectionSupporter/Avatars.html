@@ -10,12 +10,18 @@
 
 <f:if condition="{supporter.cachedFollowerRankCh} > 0">
 	<f:if condition="{supporter.cachedFollowerRankCh} < 4">
-		<img class="avatar" src="/typo3conf/ext/easyvote/Resources/Public/Images/Avatars/flag-ch-{supporter.cachedFollowerRankCh}.svg" />
+		<div class="avatar-region">
+			<img class="rank" src="/typo3conf/ext/easyvote/Resources/Public/Images/Avatars/rank-{supporter.cachedFollowerRankCh}.svg" /><br />
+			<img class="region" src="/typo3conf/ext/usereasyvotetemplate/Resources/Public/Images/Flags/flag-ch.svg" />
+		</div>
 	</f:if>
 </f:if>
 
 <f:if condition="{supporter.cachedFollowerRankCanton} > 0">
 	<f:if condition="{supporter.cachedFollowerRankCanton} < 4">
-		<img class="avatar" src="/typo3conf/ext/easyvote/Resources/Public/Images/Avatars/flag-{supporter.citySelection.kanton.abbreviation -> v:format.case(case: 'lower')}-{supporter.cachedFollowerRankCanton}.svg" />
+		<div class="avatar-region">
+			<img class="rank" src="/typo3conf/ext/easyvote/Resources/Public/Images/Avatars/rank-{supporter.cachedFollowerRankCanton}.svg" /><br />
+			<img class="region" src="/typo3conf/ext/usereasyvotetemplate/Resources/Public/Images/Flags/flag-{supporter.citySelection.kanton.abbreviation -> v:format.case(case: 'lower')}.svg" />
+		</div>
 	</f:if>
 </f:if>
