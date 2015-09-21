@@ -5,7 +5,7 @@
 			<div class="left">
 				<div class="share-links">
 					<a class="share-popup" href="https://www.facebook.com/sharer/sharer.php?u={encodedShareUri}">
-						<span class="facebook"></span>
+						<i class="social-icon facebook"><span class="sr-only">Facebook</span></i>
 					</a>
 				</div>
 			</div>
@@ -30,7 +30,7 @@
 			<div class="left">
 				<div class="share-links">
 					<a class="share-popup" href="https://twitter.com/home?status=<f:translate key="mobilizations.share.shortText" arguments="{1: '{event.date -> f:format.date(format:\'%e. %B\')}', 2: event.location.street, 3: '{event.location.city}{event.location.citySelection.name}'}" /> {shareUri} #VoteNow2015">
-						<span class="twitter"></span>
+					<i class="social-icon twitter"><span class="sr-only">Twitter</span></i>
 					</a>
 				</div>
 			</div>
@@ -48,7 +48,7 @@
 			<div class="left">
 				<div class="share-links">
 					<a class="share-popup" href="mailto:?subject={f:translate(key:'mobilizations.share.title')}&body=<f:translate key="mobilizations.share.text" arguments="{1: '{event.date -> f:format.date(format:\'%e. %B\')}', 2: event.location.street, 3: '{event.location.city}{event.location.citySelection.name}'}" />%0D%0A{shareUri}">
-						<span class="mail"></span>
+					<i class="social-icon mail"><span class="sr-only">Mail</span></i>
 					</a>
 				</div>
 			</div>
@@ -66,7 +66,7 @@
 			<div class="left">
 				<div class="share-links">
 					<a target="_blank" href="{shareUri}">
-						<span class="link"></span>
+						<i class="social-icon link"><span class="sr-only">Link</span></i>
 					</a>
 				</div>
 			</div>
