@@ -149,26 +149,48 @@
 			</trans-unit>
 
 			<trans-unit id="editNotifications.header">
-				<target>Voto-Sveglia</target>
+				<target>Notifiche</target>
+			</trans-unit>
+			<trans-unit id="editNotifications.sectionContactHeader">
+				<target>Info contatto</target>
+			</trans-unit>
+
+			<trans-unit id="editNotifications.sectionSmsHeader">
+				<target>Voto-sveglia via SMS</target>
+			</trans-unit>
+			<trans-unit id="editNotifications.sectionSmsIntroduction">
+				<target>Ti informiamo via SMS sulle prossime votazioni ed elezioni.</target>
 			</trans-unit>
 			<trans-unit id="editNotifications.sectionEmailHeader">
-				<target>Voto-sveglia per E-Mail</target>
+				<target>Voto-sveglia via e-mail</target>
 			</trans-unit>
-			<trans-unit id="editNotifications.sectionSmsHeader">
-				<target>Voto-sveglia per SMS</target>
+			<trans-unit id="editNotifications.sectionEmailIntroduction">
+				<target>Ti informiamo via e-mail sulle prossime votazioni ed elezioni.</target>
+			</trans-unit>
+			<trans-unit id="editNotifications.sectionCommunityNewsHeader">
+				<target>Novità sulla community via e-mail</target>
+			</trans-unit>
+			<trans-unit id="editNotifications.sectionCommunityNewsIntroduction">
+				<target>Ti informiamo sulle novità della nostra community.</target>
+			</trans-unit>
+			<trans-unit id="editNotifications.sectionPrivacyProtectionHeader">
+				<target>Maggiore privacy</target>
+			</trans-unit>
+			<trans-unit id="editNotifications.sectionPrivacyProtectionIntroduction">
+				<target>Le azioni all'interno della community di easyvote, quali la condivisione di contenuti, la mobilitazione di amici e la partecipazione a concorsi nonché il tuo nome e la tua foto sono anonimizzate.</target>
 			</trans-unit>
 			<trans-unit id="editNotifications.stateActive">
-				<target>attivare</target>
+				<target>attivato</target>
 			</trans-unit>
 			<trans-unit id="editNotifications.stateInactive">
-				<target>disattivare</target>
+				<target>disattivato</target>
 			</trans-unit>
 			<trans-unit id="editNotifications.save">
-				<target>salvare</target>
+				<target>salva</target>
 			</trans-unit>
 			<trans-unit id="editNotifications.saved">
 				<target><![CDATA[
-					<i class="evicon-ok-squared"></i> La tua voto-sveglia è stata aggiornanata!
+					<i class="evicon-ok-squared"></i> Le tue impostazioni di notifica sono state aggiornate!
 				]]></target>
 			</trans-unit>
 

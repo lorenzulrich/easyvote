@@ -148,13 +148,35 @@
 			</trans-unit>
 
 			<trans-unit id="editNotifications.header">
-				<target>Alarme de vote</target>
+				<target>Notifications</target>
+			</trans-unit>
+			<trans-unit id="editNotifications.sectionContactHeader">
+				<target>Coordonnées</target>
+			</trans-unit>
+
+			<trans-unit id="editNotifications.sectionSmsHeader">
+				<target>Alarme de vote par SMS</target>
+			</trans-unit>
+			<trans-unit id="editNotifications.sectionSmsIntroduction">
+				<target>Nous t'envoyons par sms un rappel et des informations concernant les prochaines votations et élections.</target>
 			</trans-unit>
 			<trans-unit id="editNotifications.sectionEmailHeader">
 				<target>Alarme de vote par e-mail</target>
 			</trans-unit>
-			<trans-unit id="editNotifications.sectionSmsHeader">
-				<target>Alarme de vote par SMS</target>
+			<trans-unit id="editNotifications.sectionEmailIntroduction">
+				<target>Nous t'envoyons par e-mail un rappel et des informations concernant les prochaines votations et élections.</target>
+			</trans-unit>
+			<trans-unit id="editNotifications.sectionCommunityNewsHeader">
+				<target>News de la communauté par e-mail</target>
+			</trans-unit>
+			<trans-unit id="editNotifications.sectionCommunityNewsIntroduction">
+				<target>Nous t'informons sur les dernières nouveautés de notre communauté.</target>
+			</trans-unit>
+			<trans-unit id="editNotifications.sectionPrivacyProtectionHeader">
+				<target>Protection de la sphère privée renforcée</target>
+			</trans-unit>
+			<trans-unit id="editNotifications.sectionPrivacyProtectionIntroduction">
+				<target>Les activités au sein la communauté easyvote(partage de contenu, mobilisation d'amis, participation aux concours), ainsi que ton nom et ta photo restent anonymes.</target>
 			</trans-unit>
 			<trans-unit id="editNotifications.stateActive">
 				<target>activée</target>
@@ -167,7 +189,7 @@
 			</trans-unit>
 			<trans-unit id="editNotifications.saved">
 				<target><![CDATA[
-					<i class="evicon-ok-squared"></i> Ton alarme de vote a été actualisée!
+					<i class="evicon-ok-squared"></i> Deine Benachrichtigungs-Einstellungen wurden aktualisiert!
 				]]></target>
 			</trans-unit>
 
