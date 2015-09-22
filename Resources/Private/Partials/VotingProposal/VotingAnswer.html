@@ -6,12 +6,10 @@
 	<f:then>
 		<f:if condition="{settings.context} != 'app'">
 			<f:then>
-				<div class="share-preview-container">
+				<a class="share-popup share-preview-container" href="https://www.facebook.com/sharer/sharer.php?u={votingProposal.permalink}">
 					<div class="left">
 						<div class="share-links">
-							<a class="share-popup" href="https://www.facebook.com/sharer/sharer.php?u={votingProposal.permalink}">
-								<i class="social-icon facebook"><span class="sr-only">Facebook</span></i>
-							</a>
+							<i class="social-icon facebook"><span class="sr-only">Facebook</span></i>
 						</div>
 					</div>
 					<div class="right">
@@ -35,13 +33,11 @@
 							</p>
 						</div>
 					</div>
-				</div>
-				<div class="share-preview-container">
+				</a>
+				<a class="share-popup share-preview-container" href="https://twitter.com/home?status={f:translate(key:'LLL:EXT:easyvote/Resources/Private/Language/locallang.xlf:votingAnswer.iSayYes')} - '{votingProposal.shortTitle}'. {f:translate(key:'LLL:EXT:easyvote/Resources/Private/Language/locallang.xlf:votingAnswer.getInformation')} {votingProposal.permalink} @easyvote_ch">
 					<div class="left">
 						<div class="share-links">
-							<a class="share-popup" href="https://twitter.com/home?status={f:translate(key:'LLL:EXT:easyvote/Resources/Private/Language/locallang.xlf:votingAnswer.iSayYes')} - '{votingProposal.shortTitle}'. {f:translate(key:'LLL:EXT:easyvote/Resources/Private/Language/locallang.xlf:votingAnswer.getInformation')} {votingProposal.permalink} @easyvote_ch">
-								<i class="social-icon twitter"><span class="sr-only">Twitter</span></i>
-							</a>
+							<i class="social-icon twitter"><span class="sr-only">Twitter</span></i>
 						</div>
 					</div>
 					<div class="right">
@@ -50,18 +46,16 @@
 							{f:uri.page(pageUid:settings.votingPid, absolute: 1, additionalParams:{tx_easyvote_currentvotings:{selectSingle:votingProposal.uid}})}
 						</p>
 					</div>
-				</div>
+				</a>
 			</f:then>
 			<f:else>
 				<f:comment>
 					<!-- MOBILE APP -->
 				</f:comment>
-				<div class="share-preview-container">
+				<a class="share-app share-preview-container" href="share://title={votingProposal.shortTitle -> f:format.urlencode()}&text={f:translate(key:'LLL:EXT:easyvote/Resources/Private/Language/locallang.xlf:votingAnswer.iSayYes') -> f:format.urlencode()}&url={votingProposal.permalink -> f:format.urlencode()}">
 					<div class="left">
 						<div class="share-links">
-							<a class="share-app" href="share://title={votingProposal.shortTitle -> f:format.urlencode()}&text={f:translate(key:'LLL:EXT:easyvote/Resources/Private/Language/locallang.xlf:votingAnswer.iSayYes') -> f:format.urlencode()}&url={votingProposal.permalink -> f:format.urlencode()}">
-								<i class="evicon-share"></i>
-							</a>
+							<i class="evicon-share"></i>
 						</div>
 					</div>
 					<div class="right">
@@ -70,19 +64,17 @@
 							{votingProposal.permalink}
 						</p>
 					</div>
-				</div>
+				</a>
 			</f:else>
 		</f:if>
 	</f:then>
 	<f:else>
 		<f:if condition="{settings.context} != 'app'">
 			<f:then>
-				<div class="share-preview-container">
+				<a class="share-popup share-preview-container" href="https://www.facebook.com/sharer/sharer.php?u={votingProposal.permalink}">
 					<div class="left">
 						<div class="share-links">
-							<a class="share-popup" href="https://www.facebook.com/sharer/sharer.php?u={votingProposal.permalink}">
-								<i class="social-icon facebook"><span class="sr-only">Facebook</span></i>
-							</a>
+							<i class="social-icon facebook"><span class="sr-only">Facebook</span></i>
 						</div>
 					</div>
 					<div class="right">
@@ -106,13 +98,11 @@
 							</p>
 						</div>
 					</div>
-				</div>
-				<div class="share-preview-container">
+				</a>
+				<a class="share-popup share-preview-container" href="https://twitter.com/home?status={f:translate(key:'LLL:EXT:easyvote/Resources/Private/Language/locallang.xlf:votingAnswer.iSayNo')} - '{votingProposal.shortTitle}'. {f:translate(key:'LLL:EXT:easyvote/Resources/Private/Language/locallang.xlf:votingAnswer.getInformation')} {votingProposal.permalink} @easyvote_ch">
 					<div class="left">
 						<div class="share-links">
-							<a class="share-popup" href="https://twitter.com/home?status={f:translate(key:'LLL:EXT:easyvote/Resources/Private/Language/locallang.xlf:votingAnswer.iSayNo')} - '{votingProposal.shortTitle}'. {f:translate(key:'LLL:EXT:easyvote/Resources/Private/Language/locallang.xlf:votingAnswer.getInformation')} {votingProposal.permalink} @easyvote_ch">
-								<i class="social-icon twitter"><span class="sr-only">Twitter</span></i>
-							</a>
+							<i class="social-icon twitter"><span class="sr-only">Twitter</span></i>
 						</div>
 					</div>
 					<div class="right">
@@ -121,18 +111,16 @@
 							{votingProposal.permalink}
 						</p>
 					</div>
-				</div>
+				</a>
 			</f:then>
 			<f:else>
 				<f:comment>
 					<!-- MOBILE APP -->
 				</f:comment>
-				<div class="share-preview-container">
+				<a class="share-app share-preview-container" href="share://title={votingProposal.shortTitle -> f:format.urlencode()}&text={f:translate(key:'LLL:EXT:easyvote/Resources/Private/Language/locallang.xlf:votingAnswer.iSayNo') -> f:format.urlencode()}&url={votingProposal.permalink -> f:format.urlencode()}">
 					<div class="left">
 						<div class="share-links">
-							<a class="share-app" href="share://title={votingProposal.shortTitle -> f:format.urlencode()}&text={f:translate(key:'LLL:EXT:easyvote/Resources/Private/Language/locallang.xlf:votingAnswer.iSayNo') -> f:format.urlencode()}&url={votingProposal.permalink -> f:format.urlencode()}">
-								<i class="evicon-share"></i>
-							</a>
+							<i class="evicon-share"></i>
 						</div>
 					</div>
 					<div class="right">
@@ -141,7 +129,7 @@
 							{votingProposal.permalink}
 						</p>
 					</div>
-				</div>
+				</a>
 			</f:else>
 		</f:if>
 	</f:else>
