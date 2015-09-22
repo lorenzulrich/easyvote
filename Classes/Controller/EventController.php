@@ -91,6 +91,9 @@ class EventController extends \Visol\Easyvote\Controller\AbstractController {
 		$event->setCommunityUser($communityUser);
 		if (!$event->getUid()) {
 			$this->eventRepository->add($event);
+			// subscribe the user for Community News if an event is added
+			$communityUser->setCommunityNewsMailActive(TRUE);
+			$this->communityUserRepository->update($communityUser);
 		} else {
 			$this->eventRepository->update($event);
 		}
