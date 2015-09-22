@@ -1,12 +1,10 @@
 {namespace v=Tx_Vhs_ViewHelpers}
 <f:if condition="{settings.context} != 'app'">
 	<f:then>
-		<div class="share-preview-container facebook">
+		<a class="share-popup share-preview-container" href="https://www.facebook.com/sharer/sharer.php?u={encodedShareUri}">
 			<div class="left">
 				<div class="share-links">
-					<a class="share-popup" href="https://www.facebook.com/sharer/sharer.php?u={encodedShareUri}">
-						<i class="social-icon facebook"><span class="sr-only">Facebook</span></i>
-					</a>
+					<i class="social-icon facebook"><span class="sr-only">Facebook</span></i>
 				</div>
 			</div>
 			<div class="right">
@@ -25,13 +23,11 @@
 					</p>
 				</div>
 			</div>
-		</div>
-		<div class="share-preview-container twitter">
+		</a>
+		<a class="share-popup share-preview-container" href="https://twitter.com/home?status=<f:translate key="mobilizations.share.shortText" arguments="{1: '{event.date -> f:format.date(format:\'%e. %B\')}', 2: event.location.street, 3: '{event.location.city}{event.location.citySelection.name}'}" /> {shareUri} #VoteNow2015">
 			<div class="left">
 				<div class="share-links">
-					<a class="share-popup" href="https://twitter.com/home?status=<f:translate key="mobilizations.share.shortText" arguments="{1: '{event.date -> f:format.date(format:\'%e. %B\')}', 2: event.location.street, 3: '{event.location.city}{event.location.citySelection.name}'}" /> {shareUri} #VoteNow2015">
 					<i class="social-icon twitter"><span class="sr-only">Twitter</span></i>
-					</a>
 				</div>
 			</div>
 			<div class="right">
@@ -43,13 +39,11 @@
 					<span class="uri">{shareUri}</span>
 				</p>
 			</div>
-		</div>
-		<div class="share-preview-container mail">
+		</a>
+		<a class="share-preview-container" href="mailto:?subject={f:translate(key:'mobilizations.share.title')}&body=<f:translate key="mobilizations.share.text" arguments="{1: '{event.date -> f:format.date(format:\'%e. %B\')}', 2: event.location.street, 3: '{event.location.city}{event.location.citySelection.name}'}" />%0D%0A{shareUri}">
 			<div class="left">
 				<div class="share-links">
-					<a class="share-popup" href="mailto:?subject={f:translate(key:'mobilizations.share.title')}&body=<f:translate key="mobilizations.share.text" arguments="{1: '{event.date -> f:format.date(format:\'%e. %B\')}', 2: event.location.street, 3: '{event.location.city}{event.location.citySelection.name}'}" />%0D%0A{shareUri}">
 					<i class="social-icon mail"><span class="sr-only">Mail</span></i>
-					</a>
 				</div>
 			</div>
 			<div class="right">
@@ -61,40 +55,36 @@
 					<span class="uri">{shareUri}</span>
 				</p>
 			</div>
-		</div>
-		<div class="share-preview-container link">
+		</a>
+		<a target="_blank" class="share-preview-container" href="{shareUri}">
 			<div class="left">
 				<div class="share-links">
-					<a target="_blank" href="{shareUri}">
-						<i class="social-icon link"><span class="sr-only">Link</span></i>
-					</a>
+					<i class="social-icon link"><span class="sr-only">Link</span></i>
 				</div>
 			</div>
 			<div class="right">
 				<f:translate key="mobilizations.share.link" /><br />
 				<input type="text" value="{shareUri}" onfocus="this.select();" style="width: 100%;" />
 			</div>
-		</div>
+		</a>
 	</f:then>
 	<f:else>
 		<f:comment>
 			<!-- MOBILE APP -->
 		</f:comment>
-		<div class="share-preview-container">
+		<a class="share-app share-preview-container" href="share://title={f:translate(key:'mobilizations.share.title') -> f:format.urlencode()}&text=<f:format.urlencode><f:translate key="mobilizations.share.text" arguments="{1: '{event.date -> f:format.date(format:\'%e. %B\')}', 2: event.location.street, 3: '{event.location.city}{event.location.citySelection.name}'}" /></f:format.urlencode>&url={encodedShareUri}">
 			<div class="left">
 				<div class="share-links">
-					<a class="share-app" href="share://title={f:translate(key:'mobilizations.share.title') -> f:format.urlencode()}&text=<f:format.urlencode><f:translate key="mobilizations.share.text" arguments="{1: '{event.date -> f:format.date(format:\'%e. %B\')}', 2: event.location.street, 3: '{event.location.city}{event.location.citySelection.name}'}" /></f:format.urlencode>&url={encodedShareUri}">
-						<i class="evicon-share"></i>
-					</a>
+					<i class="evicon-share"></i>
 				</div>
 			</div>
 			<div class="right">
 				<p>
 					<strong><f:translate key="mobilizations.share.title" /></strong><br />
 					<f:translate key="mobilizations.share.text" arguments="{1: '{event.date -> f:format.date(format:\'%e. %B\')}', 2: event.location.street, 3: '{event.location.city}{event.location.citySelection.name}'}" /><br />
-					{shareUri}
+					<span class="uri">{shareUri}</span>
 				</p>
 			</div>
-		</div>
+		</a>
 	</f:else>
 </f:if>

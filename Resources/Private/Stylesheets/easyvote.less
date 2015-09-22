@@ -123,25 +123,19 @@
 }
 
 .share-preview-container {
+	display: block;
 	.clearfix();
 	margin-bottom: 40px;
 	.left {
 		float: left;
 		width: 50px;
-		.share-app {
-			i {
-				font-size: 30px;
-			}
-			&:hover, &:active {
-				color: @pink;
-			}
-		}
 	}
 	.right {
 		float: left;
 		width: ~"calc(100% - 50px)";
 		background: @white;
 		padding: 10px;
+		color: @text-blue;
 
 		.right-inner-left {
 			float: left;
@@ -168,6 +162,38 @@
 	}
 	&:last-child {
 		margin-bottom: 0;
+	}
+}
+
+.share-app {
+	i {
+		font-size: 30px;
+	}
+	&:hover, &:active {
+		color: @pink;
+	}
+}
+
+@media (max-width: @screen-xs-max) {
+	.share-preview-container {
+		.right {
+			.right-inner-left {
+				float: none;
+				.clearfix();
+				width: 90px;
+				margin-bottom: 10px;
+			}
+			.right-inner-right {
+				float: none;
+				width: 100%;
+				.clearfix();
+			}
+		}
+		.uri {
+			display: block;
+			word-break: break-all;
+			line-height: 12px;
+		}
 	}
 }
 
