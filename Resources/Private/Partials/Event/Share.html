@@ -24,6 +24,22 @@
 				</div>
 			</div>
 		</a>
+		<a class="share-preview-container" data-action="share/whatsapp/share" href="whatsapp://send?text=<f:translate key="mobilizations.share.shortText" arguments="{1: '{event.date -> f:format.date(format:\'%e. %B\')}', 2: event.location.street, 3: '{event.location.city}{event.location.citySelection.name}'}" /> {shareUri}">
+			<div class="left">
+				<div class="share-links">
+					<i class="social-icon whatsapp"><span class="sr-only">Whatsapp</span></i>
+				</div>
+			</div>
+			<div class="right">
+				<h3>
+					<strong><f:translate key="mobilizations.share.title" /></strong>
+				</h3>
+				<p>
+					<f:translate key="mobilizations.share.shortText" arguments="{1: '{event.date -> f:format.date(format:\'%e. %B\')}', 2: event.location.street, 3: '{event.location.city}{event.location.citySelection.name}'}" /><br />
+					<span class="uri">{shareUri}</span>
+				</p>
+			</div>
+		</a>
 		<a class="share-popup share-preview-container" href="https://twitter.com/home?status=<f:translate key="mobilizations.share.shortText" arguments="{1: '{event.date -> f:format.date(format:\'%e. %B\')}', 2: event.location.street, 3: '{event.location.city}{event.location.citySelection.name}'}" /> {shareUri} #VoteNow2015">
 			<div class="left">
 				<div class="share-links">
