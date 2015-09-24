@@ -218,6 +218,7 @@ class ElectionSupporterController extends \Visol\Easyvote\Controller\AbstractCon
 		$missingElectionSupportersForWall = $numberOfPicturesOnWall - $electionSupportersCount;
 		$missingElectionSupportersArray = array_fill(0, $missingElectionSupportersForWall, NULL);
 		$this->view->assign('missingElectionSupporters', $missingElectionSupportersArray);
+		$this->view->assign('frontendLanguage', $GLOBALS['TSFE']->sys_language_uid);
 	}
 
 	/**

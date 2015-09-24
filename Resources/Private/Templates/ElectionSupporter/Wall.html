@@ -4,7 +4,6 @@
 		{electionSupportersCount} {f:translate(key:'wall.of')} 1000 {f:translate(key:'wall.voteHeroes')}
 	</div>
 </div>
-
 <div class="electionsupporters-wall">
 	<div class="box">
 		<div class="youtube-embed">
@@ -13,8 +12,16 @@
 		<div class="box-text">
 			<h2>{f:translate(key:'wall.box.header')}</h2>
 			<p>{f:translate(key:'wall.box.text')}</p>
-			<f:link.page pageUid="{settings.communityMobilizePid}" class="link-box">{f:translate(key:'wall.box.linkText')}</f:link.page>
+			<f:if condition="{frontendLanguage} == 0">
+				<f:then>
+					<f:link.page pageUid="469" class="link-box">{f:translate(key:'wall.box.linkText')}</f:link.page>
+				</f:then>
+				<f:else>
+					<f:link.page pageUid="{settings.communityMobilizePid}" class="link-box">{f:translate(key:'wall.box.linkText')}</f:link.page>
+				</f:else>
+			</f:if>
 		</div>
+
 	</div>
 	<f:for each="{electionSupporters}" as="electionSupporter" iteration="iterator">
 		<div class="election-supporter uid-{electionSupporter.uidBase64}">
