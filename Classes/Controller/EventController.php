@@ -63,8 +63,10 @@ class EventController extends \Visol\Easyvote\Controller\AbstractController {
 
 			if ($createEvent) {
 				// An event must be created immediately (instead of just an empty event)
+				$event->setCommunityUser($communityUser);
 				$this->eventRepository->add($event);
 				$this->persistenceManager->persistAll();
+				$this->communityUserRepository->updateRelationCount('tx_easyvote_domain_model_event', 'community_user', 'events', 'fe_users', array('deleted', 'disable'));
 			}
 		}
 		$this->view->assign('event', $event);
