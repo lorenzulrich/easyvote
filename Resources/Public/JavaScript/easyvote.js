@@ -1,6 +1,21 @@
 $(function() {
 	var $body = $('body');
 
+	// unwrapInner function
+	// http://wowmotty.blogspot.com/2012/07/jquery-unwrapinner.html
+	jQuery.fn.extend({
+		unwrapInner: function(selector) {
+			return this.each(function() {
+				var t = this,
+					c = $(t).children(selector);
+				if (c.length === 1) {
+					c.contents().appendTo(t);
+					c.remove();
+				}
+			});
+		}
+	});
+
 	/* Gegenvorschlag navigation */
 	$('a#goToGegenvorschlag').click(function(e) {
 		var jumpToId = $(this).closest('div.abstimmungsvorlage').next().attr('id');
@@ -91,45 +106,35 @@ var Easyvote = {
 			e.stopPropagation();
 			var requestedLink = $(e.target).attr('href');
 			var $modalContentContainer = $(this).next('div');
-			var modalContent = $modalContentContainer.html();
-			$(this).qtip({
-				content: {
-					text: $modalContentContainer
-				},
-				hide: false,
-				show: {
-					ready: true,
-					modal: {
-						on: true,
-						blur: false
-					}
-				},
-				position: {
-					my: 'center', at: 'center',
-					target: $(window)
-				},
-				style: {
-					classes: 'qtip-easyvote qtip-modal'
-				},
-				events: {
-					render: function(event, api) {
-						event.preventDefault();
-						$('button.button-confirm', api.elements.content).click(function(e) {
-							window.location = requestedLink;
-						});
-						$('a.qtip-close', api.elements.content).click(function(e) {
-							api.hide(e);
-						});
-						$('button.button-cancel', api.elements.content).click(function(e) {
-							api.hide(e);
-						});
-					},
-					hide: function(event, api) {
-						$(e.target).closest('a').after('<div class="hidden">' + modalContent + '</div>');
-						api.destroy();
-					}
-				}
+			$modalContentContainer.addClass('modal').css('visibility', 'visible').wrapInner('<div class="modal-dialog" role="document"><div class="modal-content"><div class="modal-body"></div></div></div>');
+			$modalContentContainer.modal('show');
+
+			$body.on('click', 'button.button-confirm', function(e) {
+				e.preventDefault();
+				window.location = requestedLink;
 			});
+
+			$('button.button-returntrue', $modalContentContainer).click(function (e) {
+				var $button = $(e.target);
+				var selection = $button.attr('data-selection');
+				// return to the callback function, pass possible selection
+				callback(selection);
+				$modalContentContainer.modal('hide').css('visibility', 'hidden').unwrapInner().unwrapInner().unwrapInner();
+			});
+
+			$body.on('click', 'a.modal-close', function(e) {
+				$modalContentContainer.modal('hide').css('visibility', 'hidden').unwrapInner().unwrapInner().unwrapInner();
+			});
+
+			$body.on('click', 'button.button-cancel', function(e) {
+				e.preventDefault();
+				$modalContentContainer.modal('hide').css('visibility', 'hidden').unwrapInner().unwrapInner().unwrapInner();
+			});
+
+			$body.on('hidden.bs.modal', $modalContentContainer, function (e) {
+				$modalContentContainer.modal('hide').css('visibility', 'hidden').unwrapInner().unwrapInner().unwrapInner();
+			})
+
 		});
 	},
 
@@ -146,54 +151,28 @@ var Easyvote = {
 	/* Display a passed modal */
 	displayModal: function(message, callback) {
 		var $flashMessageContainer = $('#flashMessageContainer');
-		var $contentWrap = $('.container-fluid');
-		$flashMessageContainer.html('<a class="pull-right qtip-close" aria-label="schliessen"><i class="evicon-cancel"></i></a>' + message);
-		$contentWrap.qtip({
-			content: {
-				prerender: true, // important
-				text: $flashMessageContainer.html()
-			},
-			hide: false,
-			show: {
-				ready: true,
-				modal: {
-					on: true,
-					blur: false
-				}
-			},
-			position: {
-				my: 'center', at: 'center',
-				target: $(window)
-			},
-			style: {
-				classes: 'qtip-easyvote qtip-rounded qtip-modal qtip-shadow'
-			},
-			events: {
-				render: function(e, api) {
-					e.preventDefault();
-					$('button.button-confirm', api.elements.content).click(function(e) {
-						window.location = requestedLink;
-					});
-					$('button.button-returntrue', api.elements.content).click(function(e) {
-						var $button = $(e.target);
-						var selection = $button.attr('data-selection');
-						// return to the callback function, pass possible selection
-						callback(selection);
-						api.hide(e);
-					});
-					$('a.qtip-close', api.elements.content).click(function(e) {
-						api.hide(e);
-					});
-					$('button.button-cancel', api.elements.content).click(function(e) {
-						api.hide(e);
-					});
-				},
-				hide: function(e, api) {
-					api.destroy();
-				}
-			}
-		}).qtip('show');
+		$flashMessageContainer.html('<div class="modal-dialog" role="document"><div class="modal-content"><div class="modal-body"><a class="pull-right modal-close" aria-label="schliessen"><i class="evicon-cancel"></i></a>' + message + '</div></div></div>').addClass('modal');
+
+		$flashMessageContainer.modal('show');
+
+		$('button.button-confirm', $flashMessageContainer).click(function(e) {
+			window.location = requestedLink;
+		});
+		$('button.button-returntrue', $flashMessageContainer).click(function(e) {
+			var $button = $(e.target);
+			var selection = $button.attr('data-selection');
+			// return to the callback function, pass possible selection
+			callback(selection);
+			$flashMessageContainer.modal('hide');
+		});
+		$('a.modal-close', $flashMessageContainer).click(function(e) {
+			$flashMessageContainer.modal('hide');
+		});
+		$('button.button-cancel', $flashMessageContainer).click(function(e) {
+			$flashMessageContainer.modal('hide');
+		});
 	},
+
 	/* Postal code selection for forms */
 	bindPostalCodeSelection: function() {
 		var $postalCodeSelector = $(".citySelection");
