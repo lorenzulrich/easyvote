@@ -681,7 +681,7 @@ class CommunityUserController extends \Visol\Easyvote\Controller\AbstractControl
 			$uniqueUsernameValidator = $this->objectManager->get('Visol\Easyvote\Validation\Validator\UniqueUsernameValidator');
 			$validatedUsername = $uniqueUsernameValidator->validate($this->request->getArgument('username'));
 			if (count($validatedUsername->getErrors())) {
-				$this->addFlashMessage($validatedUsername->getFirstError()->getMessage(), $validatedUsername->getFirstError()->getTitle(), \TYPO3\CMS\Core\Messaging\AbstractMessage::ERROR);
+				$this->flashMessageContainer->add($validatedUsername->getFirstError()->getMessage(), $validatedUsername->getFirstError()->getTitle(), \TYPO3\CMS\Core\Messaging\AbstractMessage::ERROR);
 				$this->forward('noProfileNotification');
 			}
 		}
