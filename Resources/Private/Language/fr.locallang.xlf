@@ -305,6 +305,14 @@
 				]]></target>
 			</trans-unit>
 
+			<trans-unit id="editProfile.electionSupporter.orderNow">
+				<target>Commander</target>
+			</trans-unit>
+			<trans-unit id="editProfile.electionSupporter.createEvent">
+				<target>Participer</target>
+			</trans-unit>
+
+
 			<trans-unit id="anonymous">
 				<target>anonyme</target>
 			</trans-unit>
@@ -787,6 +795,9 @@
 			</trans-unit>
 			<trans-unit id="event.removeConfirm">
 				<target>supprimer</target>
+			</trans-unit>
+			<trans-unit id="event.setLocationAndDetails">
+				<target>Modifier le lieu et l’heure</target>
 			</trans-unit>
 
 			<trans-unit id="wall.box.header">

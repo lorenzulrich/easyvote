@@ -315,6 +315,13 @@
 				]]></target>
 			</trans-unit>
 
+			<trans-unit id="editProfile.electionSupporter.orderNow">
+				<target>Ordinare</target>
+			</trans-unit>
+			<trans-unit id="editProfile.electionSupporter.createEvent">
+				<target>Participa</target>
+			</trans-unit>
+
 			<trans-unit id="anonymous">
 				<target>Anonimo</target>
 			</trans-unit>
@@ -794,6 +801,9 @@
 			</trans-unit>
 			<trans-unit id="event.removeConfirm">
 				<target>Cancella</target>
+			</trans-unit>
+			<trans-unit id="event.setLocationAndDetails">
+				<target>Modifica luogo e orario</target>
 			</trans-unit>
 
 			<trans-unit id="wall.box.header">
