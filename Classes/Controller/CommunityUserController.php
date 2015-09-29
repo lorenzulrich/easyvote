@@ -527,11 +527,14 @@ class CommunityUserController extends \Visol\Easyvote\Controller\AbstractControl
 			$objPHPExcel->setActiveSheetIndex(0)
 				->setCellValue('A' . $rowIndex, 'Vorname')
 				->setCellValue('B' . $rowIndex, 'Nachname')
-				->setCellValue('C' . $rowIndex, 'E-Mail')
-				->setCellValue('D' . $rowIndex, 'Kanton')
-				->setCellValue('E' . $rowIndex, 'Sprache')
-				->setCellValue('F' . $rowIndex, 'Typ')
-				->setCellValue('G' . $rowIndex, 'Abmelde-Link');
+				->setCellValue('C' . $rowIndex, 'Adresse')
+				->setCellValue('D' . $rowIndex, 'PLZ')
+				->setCellValue('E' . $rowIndex, 'Ort')
+				->setCellValue('F' . $rowIndex, 'E-Mail')
+				->setCellValue('G' . $rowIndex, 'Kanton')
+				->setCellValue('H' . $rowIndex, 'Sprache')
+				->setCellValue('I' . $rowIndex, 'Typ')
+				->setCellValue('J' . $rowIndex, 'Abmelde-Link');
 			$rowIndex++;
 
 			// Add content
@@ -575,11 +578,14 @@ class CommunityUserController extends \Visol\Easyvote\Controller\AbstractControl
 				$objPHPExcel->setActiveSheetIndex(0)
 					->setCellValue('A' . $rowIndex, $communityUser->getFirstName())
 					->setCellValue('B' . $rowIndex, $communityUser->getLastName())
-					->setCellValue('C' . $rowIndex, $communityUser->getEmail())
-					->setCellValue('D' . $rowIndex, $kanton)
-					->setCellValue('E' . $rowIndex, $userLanguage)
-					->setCellValue('F' . $rowIndex, $userGroupsCsv)
-					->setCellValue('G' . $rowIndex, implode($unsubscribeUrl));
+					->setCellValue('C' . $rowIndex, $communityUser->getAddress())
+					->setCellValue('D' . $rowIndex, $communityUser->getCitySelection() instanceof City ? $communityUser->getCitySelection()->getPostalCode() : '')
+					->setCellValue('E' . $rowIndex, $communityUser->getCitySelection() instanceof City ? $communityUser->getCitySelection()->getName() : '')
+					->setCellValue('F' . $rowIndex, $communityUser->getEmail())
+					->setCellValue('G' . $rowIndex, $kanton)
+					->setCellValue('H' . $rowIndex, $userLanguage)
+					->setCellValue('I' . $rowIndex, $userGroupsCsv)
+					->setCellValue('J' . $rowIndex, implode($unsubscribeUrl));
 				$rowIndex++;
 			}
 
