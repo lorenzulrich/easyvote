@@ -7,34 +7,37 @@
 			<div class="col-xs-9 col-md-9">
 				<div class="actions">
 					<div class="action share">
-						<f:if condition="{settings.context} == 'app'">
-							<f:then>
-								<a href="share://title=FOO&text=BAR&url={f:uri.action(pageUid:settings.electionSupporterPid, noCacheHash: 1, absolute:'TRUE', arguments:'{follow:supporter.uidBase64}') -> f:format.urlencode()}">
-									<i class="evicon-share"></i>
-								</a>
-							</f:then>
-							<f:else>
-								<a href="#" class="shareTrigger hasModal">
-									<i class="evicon-share"></i>
-								</a>
-								<div class="hidden">
-									<a class="pull-right modal-close" aria-label="schliessen">
-										<i class="evicon-cancel"></i>
+						<f:for each="{supporter.events}" as="event">
+							<f:comment>There can be only one event per user ATM.</f:comment>
+							<f:if condition="{settings.context} == 'app'">
+								<f:then>
+									<a href="share://title={f:translate(key:'mobilizations.share.title') -> f:format.urlencode()}&text=<f:format.urlencode><f:translate key="mobilizations.share.text" arguments="{1: '{event.date -> f:format.date(format:\'%e. %B\')}', 2: event.location.street, 3: '{event.location.city}{event.location.citySelection.name}'}" /></f:format.urlencode>&url={f:uri.action(pageUid:settings.electionSupporterPid, noCacheHash: 1, absolute:'TRUE', arguments:'{follow:supporter.uidBase64}') -> f:format.urlencode()}">
+										<i class="evicon-share"></i>
 									</a>
-									<div class="share-links">
-										<a class="share-popup" href="https://www.facebook.com/sharer/sharer.php?u={f:uri.action(pageUid:settings.electionSupporterPid, noCacheHash: 1, absolute:'TRUE', arguments:'{news:newsItem}')}">
-											<i class="social-icon facebook"><span class="sr-only">Facebook</span></i>
+								</f:then>
+								<f:else>
+									<a href="#" class="shareTrigger hasModal">
+										<i class="evicon-share"></i>
+									</a>
+									<div class="hidden">
+										<a class="pull-right modal-close" aria-label="schliessen">
+											<i class="evicon-cancel"></i>
 										</a>
-										<a class="share-popup" href="https://twitter.com/home?status=FOO - {f:uri.action(pageUid:settings.electionSupporterPid, noCacheHash: 1, absolute:'TRUE', arguments:'{follow:supporter.uidBase64}')} @easyvote_ch">
-											<i class="social-icon twitter"><span class="sr-only">Twitter</span></i>
-										</a>
+										<div class="share-links">
+											<a class="share-popup" href="https://www.facebook.com/sharer/sharer.php?u={f:uri.action(pageUid:settings.electionSupporterPid, noCacheHash: 1, absolute:'TRUE', arguments:'{news:newsItem}')}">
+												<i class="social-icon facebook"><span class="sr-only">Facebook</span></i>
+											</a>
+											<a class="share-popup" href="https://twitter.com/home?status=<f:format.urlencode><f:translate key="mobilizations.share.shortText" arguments="{1: '{event.date -> f:format.date(format:\'%e. %B\')}', 2: event.location.street, 3: '{event.location.city}{event.location.citySelection.name}'}" /></f:format.urlencode> - {f:uri.action(pageUid:settings.electionSupporterPid, noCacheHash: 1, absolute:'TRUE', arguments:'{follow:supporter.uidBase64}')} @easyvote_ch">
+												<i class="social-icon twitter"><span class="sr-only">Twitter</span></i>
+											</a>
+										</div>
+										<div class="share-uri">
+											<input type="text" onclick="select()" id="participationLink" value="{f:uri.action(pageUid:settings.electionSupporterPid, noCacheHash: 1, absolute:'TRUE', arguments:'{follow:supporter.uidBase64}')}" />
+										</div>
 									</div>
-									<div class="share-uri">
-										<input type="text" onclick="select()" id="participationLink" value="{f:uri.action(pageUid:settings.electionSupporterPid, noCacheHash: 1, absolute:'TRUE', arguments:'{follow:supporter.uidBase64}')}" />
-									</div>
-								</div>
-							</f:else>
-						</f:if>
+								</f:else>
+							</f:if>
+						</f:for>
 					</div>
 				</div>
 				<div class="avatars">
