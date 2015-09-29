@@ -339,8 +339,10 @@ class CommunityUserController extends \Visol\Easyvote\Controller\AbstractControl
 			}
 			$communityUserGroup = $this->frontendUserGroupRepository->findByUid($this->settings['communityUserGroupUid']);
 			$communityUser->removeUsergroup($communityUserGroup);
-			$communityUserGroup = $this->frontendUserGroupRepository->findByUid($this->settings['communityFacebookUserGroupUid']);
-			$communityUser->removeUsergroup($communityUserGroup);
+			$communityFacebookUserGroupUid = $this->frontendUserGroupRepository->findByUid($this->settings['communityFacebookUserGroupUid']);
+			$communityUser->removeUsergroup($communityFacebookUserGroupUid);
+			$communityEmailUserGroupUid = $this->frontendUserGroupRepository->findByUid($this->settings['communityEmailUserGroupUid']);
+			$communityUser->removeUsergroup($communityEmailUserGroupUid);
 			$this->communityUserRepository->update($communityUser);
 			$this->persistenceManager->persistAll();
 			$siteHomeUri = $this->uriBuilder->setTargetPageUid($this->settings['siteHomePid'])->setArguments(array('logintype' => 'logout'))->setCreateAbsoluteUri(TRUE)->build();
