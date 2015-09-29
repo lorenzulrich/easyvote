@@ -806,6 +806,7 @@ class CommunityUserController extends \Visol\Easyvote\Controller\AbstractControl
 					$this->communityUserRepository->update($communityUser);
 					$this->persistenceManager->persistAll();
 					$this->loginUser($communityUser->getUsername());
+					$this->view->assign('languageUid', $GLOBALS['TSFE']->sys_language_uid);
 					$this->view->assign('message', LocalizationUtility::translate('activate.successMessage', 'easyvote'));
 				} else {
 					// user not found

@@ -5,8 +5,18 @@
 	<h2><f:translate key="activate.header" /></h2>
 	<p>{message}</p>
 	<p>
-		<f:link.page pageUid="{settings.communityHomePid}" class="link-box">
-			<f:translate key="activate.communityHomeLinkLabel" />
-		</f:link.page>
+		<f:if condition="{languageUid} == 0">
+			<f:then>
+				<f:comment>TODO REMOVE: Temporary page during Election 2015</f:comment>
+				<f:link.page pageUid="469" class="link-box">
+					<f:translate key="activate.communityHomeLinkLabel" />
+				</f:link.page>
+			</f:then>
+			<f:else>
+				<f:link.page pageUid="{settings.communityHomePid}" class="link-box">
+					<f:translate key="activate.communityHomeLinkLabel" />
+				</f:link.page>
+			</f:else>
+		</f:if>
 	</p>
 </div>
