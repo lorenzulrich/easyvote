@@ -443,7 +443,7 @@
 				<source>#VoteNow2015</source>
 			</trans-unit>
 			<trans-unit id="mobilizations.share.text">
-				<source>Ich möchte, dass wir Jungen die Zukunft der Schweiz selbst in die Hand nehmen und wir unseren Einfluss im Bundeshaus verstärken. Lass uns am %1$s gemeinsam unsere Stimme abgeben: %2$s in %3$s.</source>
+				<source>Ich möchte, dass wir Jungen die Zukunft der Schweiz selbst in die Hand nehmen und wir unseren Einfluss im Bundeshaus verstärken. Lass uns gemeinsam unsere Stimme abgeben! %1$s - %2$s in %3$s.</source>
 			</trans-unit>
 			<trans-unit id="mobilizations.share.shortText">
 				<source>Lass uns am %1$s gemeinsam unsere Stimme abgeben: %2$s in %3$s.</source>

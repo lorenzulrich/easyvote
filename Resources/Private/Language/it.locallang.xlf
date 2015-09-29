@@ -346,7 +346,7 @@
 				<target>#VoteNow2015</target>
 			</trans-unit>
 			<trans-unit id="mobilizations.share.text">
-				<target>Voglio che il futuro della Svizzera sia nelle mani di noi giovani e che la nostra influenza a Palazzo federale aumenti. Andiamo a votare tutti insieme il %1$s: %2$s in %3$s.</target>
+				<target>Voglio che il futuro della Svizzera sia nelle mani di noi giovani e che la nostra influenza a Palazzo federale aumenti. Andiamo a votare tutti insieme! %1$s - %2$s in %3$s.</target>
 			</trans-unit>
 			<trans-unit id="mobilizations.share.shortText">
 				<target>Andiamo a votare tutti insieme il %1$s: %2$s in %3$s.</target>

@@ -63,7 +63,6 @@ class EventController extends \Visol\Easyvote\Controller\AbstractController {
 
 			if ($createEvent) {
 				// An event must be created immediately (instead of just an empty event)
-				$event->setFromTime(0);
 				$this->eventRepository->add($event);
 				$this->persistenceManager->persistAll();
 			}

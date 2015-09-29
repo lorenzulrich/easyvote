@@ -15,9 +15,13 @@
 	</f:if>
 
 	<strong><f:translate key="mobilizations.event.date" />:</strong> <f:format.date format="%A, %e. %B %Y">{event.date}</f:format.date><br />
-	<strong><f:translate key="mobilizations.event.fromTime" />:</strong> <f:format.date format="%R">{event.fromTime}</f:format.date> <f:translate key="mobilizations.event.oclock" /><br />
-	<strong><f:translate key="mobilizations.event.comment" />:</strong><br />
-	<f:format.nl2br>{event.comment}</f:format.nl2br><br />
+	<f:if condition="{event.fromTime}">
+		<strong><f:translate key="mobilizations.event.fromTime" />:</strong> <f:format.date format="%R">{event.fromTime}</f:format.date> <f:translate key="mobilizations.event.oclock" /><br />
+	</f:if>
+	<f:if condition="{event.comment}">
+		<strong><f:translate key="mobilizations.event.comment" />:</strong><br />
+		<f:format.nl2br>{event.comment}</f:format.nl2br><br />
+	</f:if>
 
 	<f:if condition="{event.location}">
 		<f:then>
