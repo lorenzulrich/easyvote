@@ -461,6 +461,22 @@ class CommunityUserRepository extends \TYPO3\CMS\Extbase\Domain\Repository\Front
 	}
 
 	/**
+	 * Used only in ImportCommandController
+	 *
+	 * @return array|\TYPO3\CMS\Extbase\Persistence\QueryResultInterface
+	 */
+	public function findCommunityNewsRecipientsWithoutEvent() {
+		$query = $this->createQuery();
+		$query->matching(
+			$query->logicalAnd(
+				$query->equals('communityNewsMailActive', 1),
+				$query->equals('events', 0)
+			)
+		);
+		return $query->execute();
+	}
+
+	/**
 	 * @return \TYPO3\CMS\Core\Database\DatabaseConnection
 	 */
 	public function getDatabaseConnection() {

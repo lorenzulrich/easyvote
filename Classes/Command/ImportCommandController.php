@@ -1,29 +1,18 @@
 <?php
 namespace Visol\Easyvote\Command;
 
-/***************************************************************
- *  Copyright notice
+/**
+ * This file is part of the TYPO3 CMS project.
  *
- *  (c) 2014 Lorenz Ulrich <lorenz.ulrich@visol.ch>, visol digitale Dienstleistungen GmbH
+ * It is free software; you can redistribute it and/or modify it under
+ * the terms of the GNU General Public License, either version 2
+ * of the License, or any later version.
  *
- *  All rights reserved
+ * For the full copyright and license information, please read the
+ * LICENSE.txt file that was distributed with this source code.
  *
- *  This script is part of the TYPO3 project. The TYPO3 project is
- *  free software; you can redistribute it and/or modify
- *  it under the terms of the GNU General Public License as published by
- *  the Free Software Foundation; either version 3 of the License, or
- *  (at your option) any later version.
- *
- *  The GNU General Public License can be found at
- *  http://www.gnu.org/copyleft/gpl.html.
- *
- *  This script is distributed in the hope that it will be useful,
- *  but WITHOUT ANY WARRANTY; without even the implied warranty of
- *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *  GNU General Public License for more details.
- *
- *  This copyright notice MUST APPEAR in all copies of the script!
- ***************************************************************/
+ * The TYPO3 project - inspiring people to share!
+ */
 use TYPO3\CMS\Backend\Utility\BackendUtility;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 
@@ -52,6 +41,12 @@ class ImportCommandController extends \Visol\Easyvote\Command\AbstractCommandCon
 	 * @inject
 	 */
 	protected $communityUserRepository;
+
+	/**
+	 * @var \Visol\Easyvote\Domain\Repository\EventRepository
+	 * @inject
+	 */
+	protected $eventRepository;
 
 	/**
 	 * persistenceManager
@@ -156,5 +151,25 @@ class ImportCommandController extends \Visol\Easyvote\Command\AbstractCommandCon
 		$this->persistenceManager->persistAll();
 	}
 
+	/**
+	 * Generates an Event for each suspected Vote Hero
+	 *
+	 * @throws \TYPO3\CMS\Extbase\Persistence\Exception\IllegalObjectTypeException
+	 */
+	public function generateEventForCommunityNewsRecipientsCommand() {
+		$communityNewsRecipients = $this->communityUserRepository->findCommunityNewsRecipientsWithoutEvent();
+		foreach ($communityNewsRecipients as $communityUser) {
+			/** @var $communityUser \Visol\Easyvote\Domain\Model\CommunityUser */
+
+			$this->outputLine('Generate event for ' . $communityUser->getEmail());
+
+			/** @var \Visol\Easyvote\Domain\Model\Event $event */
+			$event = $this->objectManager->get('Visol\Easyvote\Domain\Model\Event');
+			$event->setDate(new \DateTime('2015-10-08'));
+			$event->setCommunityUser($communityUser);
+			$this->eventRepository->add($event);
+			$this->persistenceManager->persistAll();
+		}
+		$this->communityUserRepository->updateRelationCount('tx_easyvote_domain_model_event', 'community_user', 'events', 'fe_users', array('deleted', 'disable'));
+	}
 }
-?>
