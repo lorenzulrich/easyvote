@@ -369,6 +369,9 @@
 			<trans-unit id="mobilizations.directory.years">
 				<target>Anni</target>
 			</trans-unit>
+			<trans-unit id="mobilizations.directory.eventDate">
+				<target>Votate %1$s tutti.</target>
+			</trans-unit>
 			<trans-unit id="mobilizations.directory.eventTimeAndLocation">
 				<target>Votate %1$s tutti alle ore %2$s qui</target>
 			</trans-unit>

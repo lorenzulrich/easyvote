@@ -359,6 +359,9 @@
 			<trans-unit id="mobilizations.directory.years">
 				<target>ans</target>
 			</trans-unit>
+			<trans-unit id="mobilizations.directory.eventDate">
+				<target>élit le %1$s.</target>
+			</trans-unit>
 			<trans-unit id="mobilizations.directory.eventTimeAndLocation">
 				<target>élit le %1$s à %2$s heures ici</target>
 			</trans-unit>

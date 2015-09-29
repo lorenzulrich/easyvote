@@ -466,6 +466,9 @@
 			<trans-unit id="mobilizations.directory.years">
 				<source>Jahre</source>
 			</trans-unit>
+			<trans-unit id="mobilizations.directory.eventDate">
+				<source>wählt am %1$s.</source>
+			</trans-unit>
 			<trans-unit id="mobilizations.directory.eventTimeAndLocation">
 				<source>wählt am %1$s um %2$s Uhr hier</source>
 			</trans-unit>

@@ -57,14 +57,21 @@
 				<f:for each="{supporter.events}" as="event">
 					<f:comment>There can be only one event per user ATM.</f:comment>
 					<div class="event">
-						<f:translate key="mobilizations.directory.eventTimeAndLocation" arguments="{1: '{event.date -> f:format.date(format:\'%A, %e. %B %Y\')}', 2: '{event.fromTime -> f:format.date(format: \'%R\')}'}" />:
-						<f:if condition="{event.location.locationType.uid} == 1">
-							<f:comment>Briefkasten</f:comment>
-							{f:translate(key: 'post_box', extensionName: 'easyvote_location')}, {event.location.street}, {event.location.zip} {event.location.city}
-						</f:if>
-						<f:if condition="{event.location.locationType.uid} == 10">
-							<f:comment>#VoteNow2015</f:comment>
-							{event.location.name}, {event.location.street}, {event.location.zip} {event.location.city}
+						<f:if condition="{event.location}">
+							<f:then>
+								<f:translate key="mobilizations.directory.eventTimeAndLocation" arguments="{1: '{event.date -> f:format.date(format:\'%A, %e. %B %Y\')}', 2: '{event.fromTime -> f:format.date(format: \'%R\')}'}" />:
+								<f:if condition="{event.location.locationType.uid} == 1">
+									<f:comment>Briefkasten</f:comment>
+									{f:translate(key: 'post_box', extensionName: 'easyvote_location')}, {event.location.street}, {event.location.zip} {event.location.city}
+								</f:if>
+								<f:if condition="{event.location.locationType.uid} == 10">
+									<f:comment>#VoteNow2015</f:comment>
+									{event.location.name}, {event.location.street}, {event.location.zip} {event.location.city}
+								</f:if>
+							</f:then>
+							<f:else>
+								<f:translate key="mobilizations.directory.eventDate" arguments="{1: '{event.date -> f:format.date(format:\'%A, %e. %B %Y\')}'}" />
+							</f:else>
 						</f:if>
 					</div>
 					<f:if condition="{isTopDisplayUser}">
