@@ -47,8 +47,10 @@ class EventController extends \Visol\Easyvote\Controller\AbstractController {
 	/**
 	 * action editMobilizations
 	 * @ignorevalidation $event
+	 *
+	 * @param boolean $createEvent Create and persist an event
 	 */
-	public function mobilizationsAction() {
+	public function mobilizationsAction($createEvent = NULL) {
 		$communityUser = $this->communityUserService->getCommunityUser();
 		$this->view->assign('communityUser', $communityUser);
 
@@ -58,6 +60,13 @@ class EventController extends \Visol\Easyvote\Controller\AbstractController {
 			/** @var \Visol\Easyvote\Domain\Model\Event $event */
 			$event = $this->objectManager->get('Visol\Easyvote\Domain\Model\Event');
 			$event->setDate(new \DateTime('2015-10-08'));
+
+			if ($createEvent) {
+				// An event must be created immediately (instead of just an empty event)
+				$event->setFromTime(0);
+				$this->eventRepository->add($event);
+				$this->persistenceManager->persistAll();
+			}
 		}
 		$this->view->assign('event', $event);
 

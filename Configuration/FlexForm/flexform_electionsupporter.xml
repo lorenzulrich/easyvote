@@ -28,6 +28,10 @@
                                         <numIndex index="0">Election Supporter Wall</numIndex>
                                         <numIndex index="1">ElectionSupporter->wall</numIndex>
                                     </numIndex>
+                                    <numIndex index="3">
+                                        <numIndex index="0">Create Event Button</numIndex>
+                                        <numIndex index="1">ElectionSupporter->createEvent</numIndex>
+                                    </numIndex>
                                 </items>
                             </config>
                         </TCEforms>

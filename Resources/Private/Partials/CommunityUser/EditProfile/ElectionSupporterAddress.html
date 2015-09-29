@@ -1,0 +1,20 @@
+{namespace vi=Visol\Easyvote\ViewHelpers}
+
+<f:flashMessages renderMode="div" />
+<f:form noCacheHash="true" enctype="multipart/form-data" class="editProfileForm" pageUid="{settings.communityEditProfilePid}" pluginName="Profile" action="updateProfile" arguments="{electionSupporter:'1'}" name="communityUser" object="{user}">
+	<div class="form-group">
+		<label for="address">{f:translate(key:'editProfile.placeholderAddress')}</label>
+		<f:form.textarea additionalAttributes="{required: required}" class="form-control" id="address" property="address" />
+	</div>
+	<div class="form-group">
+		<label>{f:translate(key:'editProfile.placeholderCity')}</label>
+		<f:if condition="{user.citySelection}">
+			<input type="text" class="cityOutput form-control" readonly value="{user.citySelection.postalCode} {user.citySelection.name} ({user.citySelection.kanton.name})" />
+		</f:if>
+		<f:form.textfield class="form-control citySelection" property="citySelection" additionalAttributes="{required: required}" />
+	</div>
+	<f:form.hidden property="communityNewsMailActive" value="1" />
+	<div class="form-group">
+		<button class="btn btn-primary" type="submit"><f:translate key="editProfile.electionSupporter.orderNow" /></button>
+	</div>
+</f:form>

@@ -222,6 +222,12 @@ class ElectionSupporterController extends \Visol\Easyvote\Controller\AbstractCon
 	}
 
 	/**
+	 * Displays a button to directly create an event
+	 */
+	public function createEventAction() {
+	}
+
+	/**
 	 * Gets the POST data from the requests and returns all data in the plugin namespace if defined
 	 *
 	 * @return array|null

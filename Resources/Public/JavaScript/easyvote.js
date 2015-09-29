@@ -111,6 +111,7 @@ var Easyvote = {
 
 			$body.on('click', 'button.button-confirm', function(e) {
 				e.preventDefault();
+				$(e.target).attr('disabled', 'disabled');
 				window.location = requestedLink;
 			});
 

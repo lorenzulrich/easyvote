@@ -19,8 +19,16 @@
 	<strong><f:translate key="mobilizations.event.comment" />:</strong><br />
 	<f:format.nl2br>{event.comment}</f:format.nl2br><br />
 
-	<button type="button" onclick="Easyvote.changeEventLocation()" class="change-location-trigger btn btn-primary">{f:translate(key: 'event.changeLocation')}</button>
-	<button type="button" onclick="Easyvote.changeEvent()" class="change-event-trigger btn btn-primary">{f:translate(key: 'event.changeEvent')}</button>
+	<f:if condition="{event.location}">
+		<f:then>
+			<button type="button" onclick="Easyvote.changeEventLocation()" class="change-location-trigger btn btn-primary">{f:translate(key: 'event.changeLocation')}</button>
+			<button type="button" onclick="Easyvote.changeEvent()" class="change-event-trigger btn btn-primary">{f:translate(key: 'event.changeEvent')}</button>
+		</f:then>
+		<f:else>
+			<button type="button" onclick="Easyvote.changeEventLocation()" class="change-location-trigger btn btn-primary">{f:translate(key: 'event.setLocationAndDetails')}</button>
+		</f:else>
+	</f:if>
+
 
 	<f:if condition="{event.uid}">
 		<br />
@@ -28,7 +36,7 @@
 		<div class="hidden">
 			<p><f:translate key="event.removeInformation" /></p>
 			<button class="pull-left btn btn-primary button-cancel"><f:translate key="event.removeCancel" /></button>
-			<button onclick="this.disabled=true;" class="pull-right btn btn-primary button-confirm"><f:translate key="event.removeConfirm" /></button>
+			<button class="pull-right btn btn-primary button-confirm"><f:translate key="event.removeConfirm" /></button>
 		</div>
 	</f:if>
 

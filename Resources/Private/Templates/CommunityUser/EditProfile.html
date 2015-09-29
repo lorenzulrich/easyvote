@@ -23,3 +23,7 @@
 		</f:else>
 	</f:if>
 </f:if>
+
+<f:if condition="{settings.displayElectionSupporterAddress}">
+	<f:render partial="CommunityUser/EditProfile/ElectionSupporterAddress" arguments="{_all}" />
+</f:if>

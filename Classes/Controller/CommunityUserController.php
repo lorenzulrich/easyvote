@@ -192,11 +192,12 @@ class CommunityUserController extends \Visol\Easyvote\Controller\AbstractControl
 	 * @param boolean $teacher
 	 * @param boolean $goToPoliticianProfile
 	 * @param boolean $goToTeacherProfile
+	 * @param boolean $electionSupporter
 	 * @throws \TYPO3\CMS\Extbase\Mvc\Exception\UnsupportedRequestTypeException
 	 * @throws \TYPO3\CMS\Extbase\Persistence\Exception\IllegalObjectTypeException
 	 * @throws \TYPO3\CMS\Extbase\Persistence\Generic\Exception\TooDirtyException
 	 */
-	public function updateProfileAction(CommunityUser $communityUser, $phoneNumberPrefix = '4175', $politician = NULL, $teacher = NULL, $goToPoliticianProfile = NULL, $goToTeacherProfile = NULL) {
+	public function updateProfileAction(CommunityUser $communityUser, $phoneNumberPrefix = '4175', $politician = NULL, $teacher = NULL, $goToPoliticianProfile = NULL, $goToTeacherProfile = NULL, $electionSupporter = NULL) {
 		$loggedInUser = $this->communityUserService->getCommunityUser();
 		/** Todo: Sanitize properties that should never be updated by the user. */
 		if ($loggedInUser->getUid() === $communityUser->getUid()) {
@@ -303,6 +304,13 @@ class CommunityUserController extends \Visol\Easyvote\Controller\AbstractControl
 			$this->communityUserRepository->update($communityUser);
 			$this->persistenceManager->persistAll();
 		}
+
+		if ($electionSupporter) {
+			// User must become an election supporter
+			$pageUid = (int)$this->settings['communityMobilizePid'];
+			$this->redirect('mobilizations', 'Event', NULL, array('createEvent' => TRUE), $pageUid);
+		}
+
 		$arguments = [
 			'goToTeacherProfile' => $goToTeacherProfile,
 			'goToPoliticianProfile' => $goToPoliticianProfile,

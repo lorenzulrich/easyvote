@@ -62,6 +62,14 @@
 							</config>
 						</TCEforms>
 					</settings.displayPoliticianArea>
+					<settings.displayElectionSupporterAddress>
+						<TCEforms>
+							<label>Zeige Adressformular Vote-Hero</label>
+							<config>
+								<type>check</type>
+							</config>
+						</TCEforms>
+					</settings.displayElectionSupporterAddress>
                 </el>
             </ROOT>
         </sDEF>

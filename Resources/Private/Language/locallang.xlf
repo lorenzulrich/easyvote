@@ -405,6 +405,13 @@
 				]]></source>
 			</trans-unit>
 
+			<trans-unit id="editProfile.electionSupporter.orderNow">
+				<source>Jetzt bestellen!</source>
+			</trans-unit>
+			<trans-unit id="editProfile.electionSupporter.createEvent">
+				<source>Jetzt loslegen!</source>
+			</trans-unit>
+
 			<trans-unit id="anonymous">
 				<source>anonym</source>
 			</trans-unit>
@@ -882,6 +889,9 @@
 			</trans-unit>
 			<trans-unit id="event.removeConfirm">
 				<source>löschen</source>
+			</trans-unit>
+			<trans-unit id="event.setLocationAndDetails">
+				<source>Ort und Zeitpunkt festlegen</source>
 			</trans-unit>
 
 			<trans-unit id="wall.box.header">
