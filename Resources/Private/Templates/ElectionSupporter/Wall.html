@@ -12,11 +12,7 @@
 		<div class="box-text">
 			<h2>{f:translate(key:'wall.box.header')}</h2>
 			<p>{f:translate(key:'wall.box.text')}</p>
-			<f:switch expression="{frontendLanguage}">
-				<f:case value="0"><f:link.page pageUid="469" class="link-box">{f:translate(key:'wall.box.linkText')}</f:link.page></f:case>
-				<f:case value="1"><f:link.page pageUid="469" class="link-box">{f:translate(key:'wall.box.linkText')}</f:link.page></f:case>
-				<f:case value="2"><f:link.page pageUid="{settings.communityMobilizePid}" class="link-box">{f:translate(key:'wall.box.linkText')}</f:link.page></f:case>
-			</f:switch>
+			<f:link.page pageUid="469" class="link-box">{f:translate(key:'wall.box.linkText')}</f:link.page>
 		</div>
 
 	</div>
