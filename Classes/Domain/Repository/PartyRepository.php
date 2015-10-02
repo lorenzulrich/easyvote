@@ -45,7 +45,11 @@ class PartyRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
 		$query->matching(
 			$query->logicalNot(
 				// Party 'Andere'
-				$query->equals('uid', 28)
+				$query->logicalOr(
+					$query->equals('uid', 28),
+					$query->equals('uid', 44),
+					$query->equals('uid', 45)
+				)
 			)
 		);
 		return $query->execute();
