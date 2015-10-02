@@ -25,6 +25,10 @@
 		EasyvoteMobilizations.eventUid = {f:if(condition: '{event.uid}', then:'{event.uid}', else: 'null')};
 	</script>
 	<f:render partial="Event/NewEdit" arguments="{_all}" />
+	<div class="select-location content-box" style="display: none;">
+		<h2>{f:translate(key:'mobilizations.selectLocation.title')}</h2>
+		<p>{f:translate(key:'mobilizations.selectLocation.text')}</p>
+	</div>
 	<div id="event-share" class="hidden">
 		<f:if condition="{event.uid}">
 			<div class="content-box">

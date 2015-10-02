@@ -449,6 +449,13 @@
 				<target>Merci de confirmer ta participation.</target>
 			</trans-unit>
 
+			<trans-unit id="mobilizations.selectLocation.title">
+				<target>Choisis l’endroit</target>
+			</trans-unit>
+			<trans-unit id="mobilizations.selectLocation.text">
+				<target>Décide avec tes amis dans quelle boîte aux lettres vous allez remettre votre bulletin de vote. Choisis la plus proche ou alors participe à l’événement VoteNow le plus proche de chez toi (Bâle, Berne, Lausanne, Lugano et Zürich).</target>
+			</trans-unit>
+
 			<trans-unit id="unsubscribe.header">
 				<target>Désabonnement à l’alarme de vote</target>
 			</trans-unit>

@@ -548,6 +548,13 @@
 				<source>Bitte bestätige deine Teilnahme.</source>
 			</trans-unit>
 
+			<trans-unit id="mobilizations.selectLocation.title">
+				<source>Ort auf Karte auswählen</source>
+			</trans-unit>
+			<trans-unit id="mobilizations.selectLocation.text">
+				<source>Entscheide, wo du und deine Freunde eure Wahlcouverts abgeben wollt. Wähle den nächstgelegenen Briefkasten oder einen Vote-Action-Event (Basel, Bern, Lausanne, Lugano und Zürich) in deiner Nähe aus.</source>
+			</trans-unit>
+
 			<trans-unit id="unsubscribe.header">
 				<source>Vote-Wecker-Abmeldung</source>
 			</trans-unit>

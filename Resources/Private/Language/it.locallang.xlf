@@ -457,6 +457,13 @@
 				<target>Conferma la tua partecipazione.</target>
 			</trans-unit>
 
+			<trans-unit id="mobilizations.selectLocation.title">
+				<target>Scegli il luogo</target>
+			</trans-unit>
+			<trans-unit id="mobilizations.selectLocation.text">
+				<target>Decidi dove tu e i tuoi amici volete depositare la busta di voto. Cerca la bucalettere o l’evento VoteNow (Basilea, Berna, Losanna, Lugano e Zurigo) più vicino.</target>
+			</trans-unit>
+
 			<trans-unit id="unsubscribe.header">
 				<target>Disattivare la voto-sveglia</target>
 			</trans-unit>

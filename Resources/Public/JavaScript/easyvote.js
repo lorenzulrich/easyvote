@@ -337,6 +337,7 @@ var Easyvote = {
 		$('#event-location-text').val($this.data('location-text'));
 		$('#event-location-uid').val($this.data('location-uid'));
 		$('.tx-easyvote-location').slideUp();
+		$('.select-location').slideUp();
 		$('#event-form').slideDown();
 		$('#map-container').closest('.col-md-6').find('.csc').first().slideUp();
 		$('#change-location-trigger').show();
@@ -349,6 +350,11 @@ var Easyvote = {
 	 */
 	changeEventLocation: function() {
 		$('#event-share').slideUp(500);
+		if ($('#map-container').parent().parent().find('.select-location').length === 0) {
+			$('.select-location').detach().insertBefore($('#map-container').parent()).show();
+		} else {
+			$('.select-location').slideDown();
+		}
 		$('.tx-easyvote-location').slideDown(500, function() {
 			var mapCanvas = document.getElementById('map-canvas');
 			google.maps.event.trigger(mapCanvas, 'resize');
