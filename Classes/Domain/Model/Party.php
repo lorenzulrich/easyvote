@@ -118,6 +118,13 @@ class Party extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	protected $candidates;
 
 	/**
+	 * UID of localized record, if applicable
+	 *
+	 * @var integer
+	 */
+	protected $localizedUid;
+
+	/**
 	 * __construct
 	 *
 	 * @return Party
@@ -414,6 +421,13 @@ class Party extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	 */
 	public function setPositionRetirementProvision($positionRetirementProvision) {
 		$this->positionRetirementProvision = $positionRetirementProvision;
+	}
+
+	/**
+	 * @return int
+	 */
+	public function getLocalizedUid() {
+		return $this->_localizedUid;
 	}
 
 }
