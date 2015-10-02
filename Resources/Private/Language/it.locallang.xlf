@@ -321,6 +321,9 @@
 			<trans-unit id="editProfile.electionSupporter.createEvent">
 				<target>Participa</target>
 			</trans-unit>
+			<trans-unit id="editProfile.electionSupporter.saved">
+				<target>Grazie mille! Riceverai un set #VoteNow2015 nei prossimi giorni. Inizia subito a mobilitare i tuoi amici via WhatsApp, Facebook e e-mail.</target>
+			</trans-unit>
 
 			<trans-unit id="anonymous">
 				<target>Anonimo</target>

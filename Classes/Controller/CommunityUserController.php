@@ -308,6 +308,7 @@ class CommunityUserController extends \Visol\Easyvote\Controller\AbstractControl
 		if ($electionSupporter) {
 			// User must become an election supporter
 			$pageUid = (int)$this->settings['communityMobilizePid'];
+			$this->addFlashMessage(LocalizationUtility::translate('editProfile.electionSupporter.saved', 'easyvote'));
 			$this->redirect('mobilizations', 'Event', NULL, array('createEvent' => TRUE), $pageUid);
 		}
 

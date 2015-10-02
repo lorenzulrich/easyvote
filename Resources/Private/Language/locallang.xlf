@@ -411,6 +411,9 @@
 			<trans-unit id="editProfile.electionSupporter.createEvent">
 				<source>Jetzt loslegen!</source>
 			</trans-unit>
+			<trans-unit id="editProfile.electionSupporter.saved">
+				<source>Herzlichen Dank! Du wirst dein #VoteNow2015-Kit in den nächsten Tagen erhalten. Lege bereits jetzt los und mobilisiere deine Freunde per WhatsApp, Facebook und E-Mail.</source>
+			</trans-unit>
 
 			<trans-unit id="anonymous">
 				<source>anonym</source>

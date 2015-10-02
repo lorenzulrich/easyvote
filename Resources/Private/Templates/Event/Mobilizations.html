@@ -33,6 +33,7 @@
 		<f:if condition="{event.uid}">
 			<div class="content-box">
 				<h2><f:translate key="mobilizations.header" /></h2>
+				<f:flashMessages renderMode="div" />
 				<f:render partial="Event/Details" arguments="{_all}" />
 				<f:translate key="mobilizations.introduction" />
 				<f:render partial="Event/Share" arguments="{_all}" />
