@@ -15,6 +15,7 @@ namespace Visol\Easyvote\Command;
  */
 use TYPO3\CMS\Backend\Utility\BackendUtility;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
+use Visol\Easyvote\Domain\Model\CommunityUser;
 
 /**
  *
@@ -171,5 +172,33 @@ class ImportCommandController extends \Visol\Easyvote\Command\AbstractCommandCon
 			$this->persistenceManager->persistAll();
 		}
 		$this->communityUserRepository->updateRelationCount('tx_easyvote_domain_model_event', 'community_user', 'events', 'fe_users', array('deleted', 'disable'));
+	}
+
+	/**
+	 * Generates an Event for each suspected Vote Hero
+	 *
+	 * @param string $communityUsers CSV list of Community Users
+	 * @throws \TYPO3\CMS\Extbase\Persistence\Exception\IllegalObjectTypeException
+	 */
+	public function generateEventForCommunityUsersCommand($communityUsers) {
+		$communityUsers = GeneralUtility::trimExplode(',', $communityUsers);
+		foreach ($communityUsers as $communityUserUid) {
+			/** @var $communityUser \Visol\Easyvote\Domain\Model\CommunityUser */
+			$communityUser = $this->communityUserRepository->findByUid((int)$communityUserUid);
+
+			if ($communityUser instanceof CommunityUser && $communityUser->getEvents()->count() === 0) {
+				$this->outputLine('Generate event for ' . $communityUser->getEmail());
+				/** @var \Visol\Easyvote\Domain\Model\Event $event */
+				$event = $this->objectManager->get('Visol\Easyvote\Domain\Model\Event');
+				$event->setDate(new \DateTime('2015-10-08'));
+				$event->setCommunityUser($communityUser);
+				$this->eventRepository->add($event);
+				$this->persistenceManager->persistAll();
+			} else {
+				$this->outputLine('User with the following uid not found: ' . $communityUserUid);
+			}
+		}
+		$this->communityUserRepository->updateRelationCount('tx_easyvote_domain_model_event', 'community_user', 'events', 'fe_users', array('deleted', 'disable'));
+		$this->sendAndExit();
 	}
 }
