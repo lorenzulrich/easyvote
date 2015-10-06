@@ -45,6 +45,12 @@ class CommunityUserController extends \Visol\Easyvote\Controller\AbstractControl
 	protected $frontendUserGroupRepository;
 
 	/**
+	 * @var \Visol\Easyvote\Domain\Repository\EventRepository
+	 * @inject
+	 */
+	protected $eventRepository;
+
+	/**
 	 * @var \Visol\Easyvote\Domain\Repository\PartyRepository
 	 * @inject
 	 */
@@ -805,7 +811,20 @@ class CommunityUserController extends \Visol\Easyvote\Controller\AbstractControl
 				if ($communityUser instanceof CommunityUser) {
 					$communityUser->setDisable(0);
 					$this->communityUserRepository->update($communityUser);
+
+					// TODO start: Remove after elections
+					// Create an event for each new user
+					/** @var \Visol\Easyvote\Domain\Model\Event $event */
+					$event = $this->objectManager->get('Visol\Easyvote\Domain\Model\Event');
+					$event->setDate(new \DateTime('2015-10-08'));
+					$event->setCommunityUser($communityUser);
+					$this->eventRepository->add($event);
+					// TODO end: Remove after elections
+
 					$this->persistenceManager->persistAll();
+					// TODO start: Remove after elections
+					$this->communityUserRepository->updateRelationCount('tx_easyvote_domain_model_event', 'community_user', 'events', 'fe_users', array('deleted', 'disable'));
+					// TODO end: Remove after elections
 					$this->loginUser($communityUser->getUsername());
 					$this->view->assign('languageUid', $GLOBALS['TSFE']->sys_language_uid);
 					$this->view->assign('message', LocalizationUtility::translate('activate.successMessage', 'easyvote'));
