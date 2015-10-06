@@ -317,9 +317,6 @@
 			<trans-unit id="editProfile.placeholderEmail">
 				<source>E-Mail-Adresse</source>
 			</trans-unit>
-			<trans-unit id="editProfile.email.politicianNotice">
-				<source>Benutze deine Partei-E-Mail-Adresse, falls du Politiker bist.</source>
-			</trans-unit>
 			<trans-unit id="editProfile.placeholderGender">
 				<source>Geschlecht</source>
 			</trans-unit>
