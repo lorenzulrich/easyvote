@@ -431,7 +431,7 @@
 				<target>Non sono state trovate persone corrispondenti ai criteri di ricerca.</target>
 			</trans-unit>
 			<trans-unit id="mobilizations.directory.filteredView">
-				<target>Visualizzazione con filtro(%s risultati)</target>
+				<target>Visualizzazione con filtro (%s risultati)</target>
 			</trans-unit>
 			<trans-unit id="mobilizations.directory.cancelFilter">
 				<target>Elimina filtro</target>

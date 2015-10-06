@@ -53,6 +53,7 @@ $(function() {
 	$body.on('click', '#cancelElectionSupportersFilter', function() {
 		var $electionSupportersFilter = $('#electionSupportersFilter');
 		$electionSupportersFilter.trigger('reset');
+		$electionSupportersFilter.find("input[type=text], textarea").val("");
 		$electionSupportersFilter.find('.citySelection').select2('val', '');
 		$electionSupportersFilter.trigger('submit');
 	});
