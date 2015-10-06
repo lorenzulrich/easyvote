@@ -374,13 +374,13 @@
 				<target>I tuoi amici mobilitati</target>
 			</trans-unit>
 			<trans-unit id="mobilizations.follower.from">
-				<target>Disattiva</target>
+				<target>di</target>
 			</trans-unit>
 			<trans-unit id="mobilizations.follower.years">
 				<target>Anni</target>
 			</trans-unit>
 			<trans-unit id="mobilizations.directory.from">
-				<target>Disattiva</target>
+				<target>di</target>
 			</trans-unit>
 			<trans-unit id="mobilizations.directory.years">
 				<target>Anni</target>
@@ -395,7 +395,7 @@
 				<target>vota il</target>
 			</trans-unit>
 			<trans-unit id="mobilizations.directory.follower">
-				<target>Mobilita amici</target>
+				<target>amici mobilitati</target>
 			</trans-unit>
 			<trans-unit id="mobilizations.directory.follow">
 				<target>Partecipa</target>
