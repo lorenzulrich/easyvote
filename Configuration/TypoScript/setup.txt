@@ -117,6 +117,22 @@ module.tx_easyvote {
 
 lib.feLogin < plugin.tx_felogin_pi1
 
+# Don't display login form on forgot password pid
+# The forgot password plugin is embedded in this page and its function would also affect
+# the felogin form in the login modal
+[globalVar = TSFE:id = 273]
+lib.feLogin >
+lib.feLogin = TEXT
+lib.feLogin {
+	value = Anmelden
+	lang.fr = Connecter
+	lang.it = Login
+	typolink.parameter < plugin.tx_easyvote.settings.siteHomePid
+	typolink.ATagParams = class="link-box" style="margin-bottom: 10px;"
+	typolink.section = displayLoginPanel
+}
+[global]
+
 lib.loginPanel = USER_INT
 lib.loginPanel {
     userFunc      = TYPO3\CMS\Extbase\Core\Bootstrap->run
