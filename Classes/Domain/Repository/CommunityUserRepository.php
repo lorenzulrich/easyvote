@@ -329,11 +329,34 @@ class CommunityUserRepository extends \TYPO3\CMS\Extbase\Domain\Repository\Front
 	}
 
 	/**
+	 * Count election supporters that are either Facebook users or have an image
+	 *
+	 * @param null $limit
+	 * @return array|\TYPO3\CMS\Extbase\Persistence\QueryResultInterface
+	 */
+	public function countElectionSupportersForWall($limit = NULL) {
+		$q = 'SELECT COUNT(*) FROM fe_users
+			WHERE NOT disable AND NOT deleted
+			AND events > 0
+			AND FIND_IN_SET(' . $this->communityUserService->getUserGroupUid('community') . ', usergroup) > 0
+			AND NOT privacy_protection
+			AND (fal_image > 0 OR FIND_IN_SET(' . $this->communityUserService->getUserGroupUid('communityFacebook') . ', usergroup) > 0)
+			ORDER BY followers DESC, last_name ASC, first_name ASC
+		';
+		if ($limit) {
+			$q .= ' LIMIT ' . (int)$limit;
+		}
+		$result = $this->getDatabaseConnection()->sql_query($q);
+		$row = $this->getDatabaseConnection()->sql_fetch_row($result);
+		return (int)$row[0];
+	}
+
+	/**
 	 * Count method for the query above
 	 *
 	 * @return mixed
 	 */
-	public function countElectionSupportersForWall() {
+	public function countElectionSupporters() {
 		$query = $this->createQuery();
 		$q = 'SELECT COUNT(*) as count FROM fe_users
 			WHERE NOT disable AND NOT deleted

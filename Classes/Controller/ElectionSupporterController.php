@@ -208,14 +208,15 @@ class ElectionSupporterController extends \Visol\Easyvote\Controller\AbstractCon
 	 */
 	public function wallAction() {
 		$numberOfPicturesOnWall = 288;
-		$electionSupporters = $this->communityUserRepository->findElectionSupportersForWall($numberOfPicturesOnWall);
-		$this->view->assign('electionSupporters', $electionSupporters);
-		$electionSupportersCount = $this->communityUserRepository->countElectionSupportersForWall();
+		$electionSupportersForWall = $this->communityUserRepository->findElectionSupportersForWall($numberOfPicturesOnWall);
+		$this->view->assign('electionSupporters', $electionSupportersForWall);
+		$electionSupportersCount = $this->communityUserRepository->countElectionSupporters();
 		$this->view->assign('electionSupportersCount', $electionSupportersCount);
 		$goal = 1000;
 		$reachedPercentage = round(($electionSupportersCount / $goal * 100));
 		$this->view->assign('reachedPercentage', $reachedPercentage);
-		$missingElectionSupportersForWall = $numberOfPicturesOnWall - $electionSupportersCount;
+		$picturesOnWall = $this->communityUserRepository->countElectionSupportersForWall($numberOfPicturesOnWall);
+		$missingElectionSupportersForWall = $numberOfPicturesOnWall - $picturesOnWall;
 		if ($missingElectionSupportersForWall > 0) {
 			$missingElectionSupportersArray = array_fill(0, $missingElectionSupportersForWall, NULL);
 			$this->view->assign('missingElectionSupporters', $missingElectionSupportersArray);
