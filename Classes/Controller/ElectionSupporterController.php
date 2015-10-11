@@ -214,6 +214,7 @@ class ElectionSupporterController extends \Visol\Easyvote\Controller\AbstractCon
 		$this->view->assign('electionSupportersCount', $electionSupportersCount);
 		$goal = 1000;
 		$reachedPercentage = round(($electionSupportersCount / $goal * 100));
+		$reachedPercentage = $reachedPercentage > 100 ? 100 : $reachedPercentage;
 		$this->view->assign('reachedPercentage', $reachedPercentage);
 		$picturesOnWall = $this->communityUserRepository->countElectionSupportersForWall($numberOfPicturesOnWall);
 		$missingElectionSupportersForWall = $numberOfPicturesOnWall - $picturesOnWall;
