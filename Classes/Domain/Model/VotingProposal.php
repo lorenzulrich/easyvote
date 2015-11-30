@@ -14,409 +14,445 @@ namespace Visol\Easyvote\Domain\Model;
  * The TYPO3 project - inspiring people to share!
  */
 
-class VotingProposal extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
+use TYPO3\CMS\Extbase\DomainObject\AbstractEntity;
 
-	/**
-	 * Kurztitel
-	 *
-	 * @var \string
-	 * @validate NotEmpty
-	 */
-	protected $shortTitle;
+/**
+ * Class VotingProposal
+ */
+class VotingProposal extends AbstractEntity
+{
 
-	/**
-	 * Offizieller Titel
-	 *
-	 * @var \string
-	 * @validate NotEmpty
-	 */
-	protected $officialTitle;
+    /**
+     * Kurztitel
+     *
+     * @var \string
+     * @validate NotEmpty
+     */
+    protected $shortTitle;
 
-	/**
-	 * URL zu YouTube-Video
-	 *
-	 * @var \string
-	 */
-	protected $youtubeUrl;
+    /**
+     * Offizieller Titel
+     *
+     * @var \string
+     * @validate NotEmpty
+     */
+    protected $officialTitle;
 
-	/**
-	 * Bild (für Open Graph Tag)
-	 *
-	 * @var \string
-	 */
-	protected $image;
+    /**
+     * URL zu YouTube-Video
+     *
+     * @var \string
+     */
+    protected $youtubeUrl;
 
-	/**
-	 * Ziel
-	 *
-	 * @var \string
-	 */
-	protected $goal;
+    /**
+     * Bild (für Open Graph Tag)
+     *
+     * @var \string
+     */
+    protected $image;
 
-	/**
-	 * Ausgangslage
-	 *
-	 * @var \string
-	 */
-	protected $initialStatus;
+    /**
+     * Ziel
+     *
+     * @var \string
+     */
+    protected $goal;
 
-	/**
-	 * Was würde sich ändern?
-	 *
-	 * @var \string
-	 */
-	protected $consequence;
+    /**
+     * Ausgangslage
+     *
+     * @var \string
+     */
+    protected $initialStatus;
 
-	/**
-	 * Pro
-	 *
-	 * @var \string
-	 */
-	protected $proArguments;
+    /**
+     * Was würde sich ändern?
+     *
+     * @var \string
+     */
+    protected $consequence;
 
-	/**
-	 * Kontra
-	 *
-	 * @var \string
-	 */
-	protected $contraArguments;
+    /**
+     * Pro
+     *
+     * @var \string
+     */
+    protected $proArguments;
 
-	/**
-	 * Zusätzliche Informationen Überschrift
-	 *
-	 * @var \string
-	 */
-	protected $additionalInformationHeader;
+    /**
+     * Kontra
+     *
+     * @var \string
+     */
+    protected $contraArguments;
 
-	/**
-	 * Zusätzliche Informationen Inhalt
-	 *
-	 * @var \string
-	 */
-	protected $additionalInformationContent;
+    /**
+     * Zusätzliche Informationen Überschrift
+     *
+     * @var \string
+     */
+    protected $additionalInformationHeader;
 
-	/**
-	 * Regierungsmeinung
-	 *
-	 * @var \string
-	 */
-	protected $governmentOpinion;
+    /**
+     * Zusätzliche Informationen Inhalt
+     *
+     * @var \string
+     */
+    protected $additionalInformationContent;
 
-	/**
-	 * Links
-	 *
-	 * @var \string
-	 */
-	protected $links;
+    /**
+     * Regierungsmeinung
+     *
+     * @var \string
+     */
+    protected $governmentOpinion;
 
-	/**
-	 * Zustimmung zur Vorlage (in %)
-	 *
-	 * @var \string
-	 */
-	protected $proposalApproval;
+    /**
+     * Links
+     *
+     * @var \string
+     */
+    protected $links;
 
-	/**
-	 * Anzahl der zustimmenden Kantone (Ständemehr)
-	 *
-	 * @var \string
-	 */
-	protected $kantonMajority;
+    /**
+     * Zustimmung zur Vorlage (in %)
+     *
+     * @var \string
+     */
+    protected $proposalApproval;
 
-	/**
-	 * The permalink for sharing
-	 *
-	 * @var string
-	 * @transient
-	 */
-	protected $permalink;
+    /**
+     * Anzahl der zustimmenden Kantone (Ständemehr)
+     *
+     * @var \string
+     */
+    protected $kantonMajority;
 
-	/**
-	 * Returns the shortTitle
-	 *
-	 * @return \string $shortTitle
-	 */
-	public function getShortTitle() {
-		return $this->shortTitle;
-	}
+    /**
+     * The permalink for sharing
+     *
+     * @var string
+     * @transient
+     */
+    protected $permalink;
 
-	/**
-	 * Sets the shortTitle
-	 *
-	 * @param \string $shortTitle
-	 * @return void
-	 */
-	public function setShortTitle($shortTitle) {
-		$this->shortTitle = $shortTitle;
-	}
+    /**
+     * Returns the shortTitle
+     *
+     * @return \string $shortTitle
+     */
+    public function getShortTitle()
+    {
+        return $this->shortTitle;
+    }
 
-	/**
-	 * Returns the officialTitle
-	 *
-	 * @return \string $officialTitle
-	 */
-	public function getOfficialTitle() {
-		return $this->officialTitle;
-	}
+    /**
+     * Sets the shortTitle
+     *
+     * @param \string $shortTitle
+     * @return void
+     */
+    public function setShortTitle($shortTitle)
+    {
+        $this->shortTitle = $shortTitle;
+    }
 
-	/**
-	 * Sets the officialTitle
-	 *
-	 * @param \string $officialTitle
-	 * @return void
-	 */
-	public function setOfficialTitle($officialTitle) {
-		$this->officialTitle = $officialTitle;
-	}
+    /**
+     * Returns the officialTitle
+     *
+     * @return \string $officialTitle
+     */
+    public function getOfficialTitle()
+    {
+        return $this->officialTitle;
+    }
 
-	/**
-	 * Returns the youtubeUrl
-	 *
-	 * @return \string $youtubeUrl
-	 */
-	public function getYoutubeUrl() {
-		return $this->youtubeUrl;
-	}
+    /**
+     * Sets the officialTitle
+     *
+     * @param \string $officialTitle
+     * @return void
+     */
+    public function setOfficialTitle($officialTitle)
+    {
+        $this->officialTitle = $officialTitle;
+    }
 
-	/**
-	 * Sets the youtubeUrl
-	 *
-	 * @param \string $youtubeUrl
-	 * @return void
-	 */
-	public function setYoutubeUrl($youtubeUrl) {
-		$this->youtubeUrl = $youtubeUrl;
-	}
+    /**
+     * Returns the youtubeUrl
+     *
+     * @return \string $youtubeUrl
+     */
+    public function getYoutubeUrl()
+    {
+        return $this->youtubeUrl;
+    }
 
-	/**
-	 * @return string
-	 */
-	public function getImage() {
-		return $this->image;
-	}
+    /**
+     * Sets the youtubeUrl
+     *
+     * @param \string $youtubeUrl
+     * @return void
+     */
+    public function setYoutubeUrl($youtubeUrl)
+    {
+        $this->youtubeUrl = $youtubeUrl;
+    }
 
-	/**
-	 * @param string $image
-	 */
-	public function setImage($image) {
-		$this->image = $image;
-	}
+    /**
+     * @return string
+     */
+    public function getImage()
+    {
+        return $this->image;
+    }
 
-	/**
-	 * Returns the goal
-	 *
-	 * @return \string $goal
-	 */
-	public function getGoal() {
-		return $this->goal;
-	}
+    /**
+     * @param string $image
+     */
+    public function setImage($image)
+    {
+        $this->image = $image;
+    }
 
-	/**
-	 * Sets the goal
-	 *
-	 * @param \string $goal
-	 * @return void
-	 */
-	public function setGoal($goal) {
-		$this->goal = $goal;
-	}
+    /**
+     * Returns the goal
+     *
+     * @return \string $goal
+     */
+    public function getGoal()
+    {
+        return $this->goal;
+    }
 
-	/**
-	 * Returns the initialStatus
-	 *
-	 * @return \string $initialStatus
-	 */
-	public function getInitialStatus() {
-		return $this->initialStatus;
-	}
+    /**
+     * Sets the goal
+     *
+     * @param \string $goal
+     * @return void
+     */
+    public function setGoal($goal)
+    {
+        $this->goal = $goal;
+    }
 
-	/**
-	 * Sets the initialStatus
-	 *
-	 * @param \string $initialStatus
-	 * @return void
-	 */
-	public function setInitialStatus($initialStatus) {
-		$this->initialStatus = $initialStatus;
-	}
+    /**
+     * Returns the initialStatus
+     *
+     * @return \string $initialStatus
+     */
+    public function getInitialStatus()
+    {
+        return $this->initialStatus;
+    }
 
-	/**
-	 * Returns the consequence
-	 *
-	 * @return \string $consequence
-	 */
-	public function getConsequence() {
-		return $this->consequence;
-	}
+    /**
+     * Sets the initialStatus
+     *
+     * @param \string $initialStatus
+     * @return void
+     */
+    public function setInitialStatus($initialStatus)
+    {
+        $this->initialStatus = $initialStatus;
+    }
 
-	/**
-	 * Sets the consequence
-	 *
-	 * @param \string $consequence
-	 * @return void
-	 */
-	public function setConsequence($consequence) {
-		$this->consequence = $consequence;
-	}
+    /**
+     * Returns the consequence
+     *
+     * @return \string $consequence
+     */
+    public function getConsequence()
+    {
+        return $this->consequence;
+    }
 
-	/**
-	 * Returns the proArguments
-	 *
-	 * @return \string $proArguments
-	 */
-	public function getProArguments() {
-		return $this->proArguments;
-	}
+    /**
+     * Sets the consequence
+     *
+     * @param \string $consequence
+     * @return void
+     */
+    public function setConsequence($consequence)
+    {
+        $this->consequence = $consequence;
+    }
 
-	/**
-	 * Sets the proArguments
-	 *
-	 * @param \string $proArguments
-	 * @return void
-	 */
-	public function setProArguments($proArguments) {
-		$this->proArguments = $proArguments;
-	}
+    /**
+     * Returns the proArguments
+     *
+     * @return \string $proArguments
+     */
+    public function getProArguments()
+    {
+        return $this->proArguments;
+    }
 
-	/**
-	 * Returns the contraArguments
-	 *
-	 * @return \string $contraArguments
-	 */
-	public function getContraArguments() {
-		return $this->contraArguments;
-	}
+    /**
+     * Sets the proArguments
+     *
+     * @param \string $proArguments
+     * @return void
+     */
+    public function setProArguments($proArguments)
+    {
+        $this->proArguments = $proArguments;
+    }
 
-	/**
-	 * Sets the contraArguments
-	 *
-	 * @param \string $contraArguments
-	 * @return void
-	 */
-	public function setContraArguments($contraArguments) {
-		$this->contraArguments = $contraArguments;
-	}
+    /**
+     * Returns the contraArguments
+     *
+     * @return \string $contraArguments
+     */
+    public function getContraArguments()
+    {
+        return $this->contraArguments;
+    }
 
-	/**
-	 * Returns the additionalInformationHeader
-	 *
-	 * @return \string $additionalInformationHeader
-	 */
-	public function getAdditionalInformationHeader() {
-		return $this->additionalInformationHeader;
-	}
+    /**
+     * Sets the contraArguments
+     *
+     * @param \string $contraArguments
+     * @return void
+     */
+    public function setContraArguments($contraArguments)
+    {
+        $this->contraArguments = $contraArguments;
+    }
 
-	/**
-	 * Sets the additionalInformationHeader
-	 *
-	 * @param \string $additionalInformationHeader
-	 * @return void
-	 */
-	public function setAdditionalInformationHeader($additionalInformationHeader) {
-		$this->additionalInformationHeader = $additionalInformationHeader;
-	}
+    /**
+     * Returns the additionalInformationHeader
+     *
+     * @return \string $additionalInformationHeader
+     */
+    public function getAdditionalInformationHeader()
+    {
+        return $this->additionalInformationHeader;
+    }
 
-	/**
-	 * Returns the additionalInformationContent
-	 *
-	 * @return \string $additionalInformationContent
-	 */
-	public function getAdditionalInformationContent() {
-		return $this->additionalInformationContent;
-	}
+    /**
+     * Sets the additionalInformationHeader
+     *
+     * @param \string $additionalInformationHeader
+     * @return void
+     */
+    public function setAdditionalInformationHeader($additionalInformationHeader)
+    {
+        $this->additionalInformationHeader = $additionalInformationHeader;
+    }
 
-	/**
-	 * Sets the additionalInformationContent
-	 *
-	 * @param \string $additionalInformationContent
-	 * @return void
-	 */
-	public function setAdditionalInformationContent($additionalInformationContent) {
-		$this->additionalInformationContent = $additionalInformationContent;
-	}
+    /**
+     * Returns the additionalInformationContent
+     *
+     * @return \string $additionalInformationContent
+     */
+    public function getAdditionalInformationContent()
+    {
+        return $this->additionalInformationContent;
+    }
 
-	/**
-	 * Returns the governmentOpinion
-	 *
-	 * @return \string $governmentOpinion
-	 */
-	public function getGovernmentOpinion() {
-		return $this->governmentOpinion;
-	}
+    /**
+     * Sets the additionalInformationContent
+     *
+     * @param \string $additionalInformationContent
+     * @return void
+     */
+    public function setAdditionalInformationContent($additionalInformationContent)
+    {
+        $this->additionalInformationContent = $additionalInformationContent;
+    }
 
-	/**
-	 * Sets the governmentOpinion
-	 *
-	 * @param \string $governmentOpinion
-	 * @return void
-	 */
-	public function setGovernmentOpinion($governmentOpinion) {
-		$this->governmentOpinion = $governmentOpinion;
-	}
+    /**
+     * Returns the governmentOpinion
+     *
+     * @return \string $governmentOpinion
+     */
+    public function getGovernmentOpinion()
+    {
+        return $this->governmentOpinion;
+    }
 
-	/**
-	 * Returns the links
-	 *
-	 * @return \string $links
-	 */
-	public function getLinks() {
-		return $this->links;
-	}
+    /**
+     * Sets the governmentOpinion
+     *
+     * @param \string $governmentOpinion
+     * @return void
+     */
+    public function setGovernmentOpinion($governmentOpinion)
+    {
+        $this->governmentOpinion = $governmentOpinion;
+    }
 
-	/**
-	 * Sets the links
-	 *
-	 * @param \string $links
-	 * @return void
-	 */
-	public function setLinks($links) {
-		$this->links = $links;
-	}
+    /**
+     * Returns the links
+     *
+     * @return \string $links
+     */
+    public function getLinks()
+    {
+        return $this->links;
+    }
 
-	/**
-	 * Returns the proposalApproval
-	 *
-	 * @return \string $proposalApproval
-	 */
-	public function getProposalApproval() {
-		return $this->proposalApproval;
-	}
+    /**
+     * Sets the links
+     *
+     * @param \string $links
+     * @return void
+     */
+    public function setLinks($links)
+    {
+        $this->links = $links;
+    }
 
-	/**
-	 * Sets the proposalApproval
-	 *
-	 * @param \string $proposalApproval
-	 * @return void
-	 */
-	public function setProposalApproval($proposalApproval) {
-		$this->proposalApproval = $proposalApproval;
-	}
+    /**
+     * Returns the proposalApproval
+     *
+     * @return \string $proposalApproval
+     */
+    public function getProposalApproval()
+    {
+        return $this->proposalApproval;
+    }
 
-	/**
-	 * Returns the kantonMajority
-	 *
-	 * @return \string $kantonMajority
-	 */
-	public function getKantonMajority() {
-		return $this->kantonMajority;
-	}
+    /**
+     * Sets the proposalApproval
+     *
+     * @param \string $proposalApproval
+     * @return void
+     */
+    public function setProposalApproval($proposalApproval)
+    {
+        $this->proposalApproval = $proposalApproval;
+    }
 
-	/**
-	 * Sets the kantonMajority
-	 *
-	 * @param \string $kantonMajority
-	 * @return void
-	 */
-	public function setKantonMajority($kantonMajority) {
-		$this->kantonMajority = $kantonMajority;
-	}
+    /**
+     * Returns the kantonMajority
+     *
+     * @return \string $kantonMajority
+     */
+    public function getKantonMajority()
+    {
+        return $this->kantonMajority;
+    }
 
-	/**
-	 * @return string
-	 */
-	public function getPermalink() {
-		return $GLOBALS['TSFE']->tmpl->setup['config.']['baseURL'] . 'permalink/v/' . $this->getUid() . '-' . $GLOBALS['TSFE']->tmpl->setup['config.']['sys_language_uid'];
-	}
+    /**
+     * Sets the kantonMajority
+     *
+     * @param \string $kantonMajority
+     * @return void
+     */
+    public function setKantonMajority($kantonMajority)
+    {
+        $this->kantonMajority = $kantonMajority;
+    }
+
+    /**
+     * @return string
+     */
+    public function getPermalink()
+    {
+        return $GLOBALS['TSFE']->tmpl->setup['config.']['baseURL'] . 'permalink/v/' . $this->getUid() . '-' . $GLOBALS['TSFE']->tmpl->setup['config.']['sys_language_uid'];
+    }
 
 }
-?>

@@ -13,6 +13,7 @@ namespace Visol\Easyvote\Service;
  *
  * The TYPO3 project - inspiring people to share!
  */
+
 /**
  * Contains an implementation of the mediaWizardProvider supporting some
  * well known providers.
@@ -21,23 +22,25 @@ namespace Visol\Easyvote\Service;
  * @author Steffen Kamper <info@sk-typo3.de>
  * @author Ernesto Baschny <ernst@cron-it.de>
  */
-class MediaWizardProvider extends \TYPO3\CMS\Frontend\MediaWizard\MediaWizardProvider {
+class MediaWizardProvider extends \TYPO3\CMS\Frontend\MediaWizard\MediaWizardProvider
+{
 
-	/***********************************************
-	 *
-	 * Providers URL rewriting:
-	 *
-	 ***********************************************/
-	/**
-	 * Parse youtube url
-	 *
-	 * @param string $url
-	 * @return string processed url
-	 */
-	protected function process_youtube($url) {
-		$videoId = '';
+    /***********************************************
+     *
+     * Providers URL rewriting:
+     *
+     ***********************************************/
+    /**
+     * Parse youtube url
+     *
+     * @param string $url
+     * @return string processed url
+     */
+    protected function process_youtube($url)
+    {
+        $videoId = '';
 
-		$pattern = '%
+        $pattern = '%
 		^(?:https?://)?									# Optional URL scheme Either http or https
 		(?:www\.)?										# Optional www subdomain
 		(?:												# Group host alternatives:
@@ -55,14 +58,14 @@ class MediaWizardProvider extends \TYPO3\CMS\Frontend\MediaWizard\MediaWizardPro
 		([^"&?/ ]{11})									# 11 characters (Length of Youtube video ids).
 		(?:.+)?$										# Optional other ending URL parameters.
 		%xs';
-		if (preg_match($pattern, $url, $matches)) {
-			$videoId = $matches[1];
-		}
+        if (preg_match($pattern, $url, $matches)) {
+            $videoId = $matches[1];
+        }
 
-		if ($videoId) {
-			$url = $this->getUrlSchema() . 'www.youtube.com/embed/' . $videoId . '?fs=1';
-		}
-		return $url;
-	}
+        if ($videoId) {
+            $url = $this->getUrlSchema() . 'www.youtube.com/embed/' . $videoId . '?fs=1';
+        }
+        return $url;
+    }
 
 }

@@ -18,7 +18,8 @@ use TYPO3\CMS\Core\Utility\GeneralUtility;
 /**
  * Panel
  */
-class Event extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
+class Event extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
+{
 
 //	/**
 //	 * @var \Visol\EasyvoteEducation\Service\VotingService
@@ -26,109 +27,119 @@ class Event extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 //	 */
 //	protected $votingService;
 
-	/**
-	 * Comment
-	 *
-	 * @var string
-	 */
-	protected $comment = '';
+    /**
+     * Comment
+     *
+     * @var string
+     */
+    protected $comment = '';
 
-	/**
-	 * Date
-	 *
-	 * @var \DateTime
-	 */
-	protected $date = NULL;
+    /**
+     * Date
+     *
+     * @var \DateTime
+     */
+    protected $date = NULL;
 
-	/**
-	 * From time
-	 *
-	 * @var integer
-	 */
-	protected $fromTime = NULL;
+    /**
+     * From time
+     *
+     * @var integer
+     */
+    protected $fromTime = NULL;
 
-	/**
-	 * CommunityUser (owner)
-	 *
-	 * @var \Visol\Easyvote\Domain\Model\CommunityUser
-	 */
-	protected $communityUser = NULL;
+    /**
+     * CommunityUser (owner)
+     *
+     * @var \Visol\Easyvote\Domain\Model\CommunityUser
+     */
+    protected $communityUser = NULL;
 
-	/**
-	 * Location
-	 *
-	 * @var \Visol\EasyvoteLocation\Domain\Model\Location
-	 */
-	protected $location = NULL;
+    /**
+     * Location
+     *
+     * @var \Visol\EasyvoteLocation\Domain\Model\Location
+     */
+    protected $location = NULL;
 
-	/**
-	 * @return string
-	 */
-	public function getComment() {
-		return $this->comment;
-	}
+    /**
+     * @return string
+     */
+    public function getComment()
+    {
+        return $this->comment;
+    }
 
-	/**
-	 * @param string $comment
-	 */
-	public function setComment($comment) {
-		$this->comment = $comment;
-	}
+    /**
+     * @param string $comment
+     */
+    public function setComment($comment)
+    {
+        $this->comment = $comment;
+    }
 
-	/**
-	 * @return CommunityUser
-	 */
-	public function getCommunityUser() {
-		return $this->communityUser;
-	}
+    /**
+     * @return CommunityUser
+     */
+    public function getCommunityUser()
+    {
+        return $this->communityUser;
+    }
 
-	/**
-	 * @param CommunityUser $communityUser
-	 */
-	public function setCommunityUser($communityUser) {
-		$this->communityUser = $communityUser;
-	}
+    /**
+     * @param CommunityUser $communityUser
+     */
+    public function setCommunityUser($communityUser)
+    {
+        $this->communityUser = $communityUser;
+    }
 
-	/**
-	 * @return \DateTime
-	 */
-	public function getDate() {
-		return $this->date;
-	}
+    /**
+     * @return \DateTime
+     */
+    public function getDate()
+    {
+        return $this->date;
+    }
 
-	/**
-	 * @param \DateTime $date
-	 */
-	public function setDate($date) {
-		$this->date = $date;
-	}
+    /**
+     * @param \DateTime $date
+     */
+    public function setDate($date)
+    {
+        $this->date = $date;
+    }
 
-	/**
-	 * @return int
-	 */
-	public function getFromTime() {
-		return $this->fromTime;
-	}
+    /**
+     * @return int
+     */
+    public function getFromTime()
+    {
+        return $this->fromTime;
+    }
 
-	/**
-	 * @param int $fromTime
-	 */
-	public function setFromTime($fromTime) {
-		$this->fromTime = $fromTime;
-	}
+    /**
+     * @param int $fromTime
+     */
+    public function setFromTime($fromTime)
+    {
+        $this->fromTime = $fromTime;
+    }
 
-	/**
-	 * @return \Visol\EasyvoteLocation\Domain\Model\Location
-	 */
-	public function getLocation() {
-		return $this->location;
-	}
+    /**
+     * @return \Visol\EasyvoteLocation\Domain\Model\Location
+     */
+    public function getLocation()
+    {
+        return $this->location;
+    }
 
-	/**
-	 * @param \Visol\EasyvoteLocation\Domain\Model\Location $location
-	 */
-	public function setLocation($location) {
-		$this->location = $location;
-	}
+    /**
+     * @param \Visol\EasyvoteLocation\Domain\Model\Location $location
+     */
+    public function setLocation($location)
+    {
+        $this->location = $location;
+    }
 
 }

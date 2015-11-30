@@ -13,36 +13,41 @@
  * The TYPO3 project - inspiring people to share!
  */
 
+use TYPO3\CMS\Fluid\Core\Widget\AbstractWidgetViewHelper;
+
 /**
  * Class Tx_Easyvote_ViewHelpers_Widget_PaginateViewHelper
  *
  * This is an improved Paginate ViewHelper that allows specifying additionalParams
  */
-class Tx_Easyvote_ViewHelpers_Widget_PaginateViewHelper extends Tx_Fluid_Core_Widget_AbstractWidgetViewHelper {
+class Tx_Easyvote_ViewHelpers_Widget_PaginateViewHelper extends AbstractWidgetViewHelper
+{
 
-	/**
-	 * @var Tx_Easyvote_ViewHelpers_Widget_Controller_PaginateController
-	 */
-	protected $controller;
+    /**
+     * @var Tx_Easyvote_ViewHelpers_Widget_Controller_PaginateController
+     */
+    protected $controller;
 
-	/**
-	 * @param Tx_Easyvote_ViewHelpers_Widget_Controller_PaginateController $controller
-	 * @return void
-	 */
-	public function injectController(Tx_Easyvote_ViewHelpers_Widget_Controller_PaginateController $controller) {
-		$this->controller = $controller;
-	}
+    /**
+     * @param Tx_Easyvote_ViewHelpers_Widget_Controller_PaginateController $controller
+     * @return void
+     */
+    public function injectController(Tx_Easyvote_ViewHelpers_Widget_Controller_PaginateController $controller)
+    {
+        $this->controller = $controller;
+    }
 
-	/**
-	 *
-	 * @param Tx_Extbase_Persistence_QueryResultInterface $objects
-	 * @param string $as
-	 * @param array $additionalParams
-	 * @param string $additionalParamsPrefix
-	 * @param array $configuration
-	 * @return string
-	 */
-	public function render(Tx_Extbase_Persistence_QueryResultInterface $objects, $as, $additionalParams = array(), $additionalParamsPrefix = '', array $configuration = array('itemsPerPage' => 10, 'insertAbove' => FALSE, 'insertBelow' => TRUE, 'maximumNumberOfLinks' => 99)) {
-		return $this->initiateSubRequest();
-	}
+    /**
+     *
+     * @param \TYPO3\CMS\Extbase\Persistence\QueryResultInterface $objects
+     * @param string $as
+     * @param array $additionalParams
+     * @param string $additionalParamsPrefix
+     * @param array $configuration
+     * @return string
+     */
+    public function render(\TYPO3\CMS\Extbase\Persistence\QueryResultInterface $objects, $as, $additionalParams = array(), $additionalParamsPrefix = '', array $configuration = array('itemsPerPage' => 10, 'insertAbove' => FALSE, 'insertBelow' => TRUE, 'maximumNumberOfLinks' => 99))
+    {
+        return $this->initiateSubRequest();
+    }
 }

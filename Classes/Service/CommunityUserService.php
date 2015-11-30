@@ -14,91 +14,101 @@ namespace Visol\Easyvote\Service;
  * The TYPO3 project - inspiring people to share!
  */
 
-class CommunityUserService implements \TYPO3\CMS\Core\SingletonInterface {
+use TYPO3\CMS\Core\SingletonInterface;
 
-	/**
-	 * @var \Visol\Easyvote\Domain\Repository\CommunityUserRepository
-	 * @inject
-	 */
-	protected $communityUserRepository;
+/**
+ * Class CommunityUserService
+ */
+class CommunityUserService implements SingletonInterface
+{
 
-	/**
-	 * @var \TYPO3\CMS\Extbase\Domain\Repository\FrontendUserGroupRepository
-	 * @inject
-	 */
-	protected $frontendUserGroupRepository = NULL;
+    /**
+     * @var \Visol\Easyvote\Domain\Repository\CommunityUserRepository
+     * @inject
+     */
+    protected $communityUserRepository;
 
-	/**
-	 * @var \TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface
-	 * @inject
-	 */
-	protected $configurationManager;
+    /**
+     * @var \TYPO3\CMS\Extbase\Domain\Repository\FrontendUserGroupRepository
+     * @inject
+     */
+    protected $frontendUserGroupRepository = NULL;
 
-	/**
-	 * @var array
-	 */
-	protected $settings = array();
+    /**
+     * @var \TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface
+     * @inject
+     */
+    protected $configurationManager;
 
-	/**
-	 * Check if a user has a role as defined in EXT:easyvote settings with a specific syntax
-	 *
-	 * @param \Visol\Easyvote\Domain\Model\CommunityUser $communityUser
-	 * @param $role
-	 * @return bool
-	 */
-	public function hasRole(\Visol\Easyvote\Domain\Model\CommunityUser $communityUser, $role) {
-		$this->settings = $this->configurationManager->getConfiguration(\TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface::CONFIGURATION_TYPE_SETTINGS, 'easyvote', 'easyvote');
-		$hasRole = FALSE;
-		$roleUid = (int)$this->settings[$role . 'UserGroupUid'];
-		if ($roleUid > 0) {
-			foreach ($communityUser->getUsergroup() as $usergroup) {
-				/* @var $usergroup \TYPO3\CMS\Extbase\Domain\Model\FrontendUserGroup */
-				if ($usergroup->getUid() === $roleUid) {
-					$hasRole = TRUE;
-					break;
-				}
-			}
-		}
-		return $hasRole;
-	}
+    /**
+     * @var array
+     */
+    protected $settings = array();
 
-	/**
-	 * @return \Visol\Easyvote\Domain\Model\CommunityUser|bool
-	 */
-	public function getCommunityUser() {
-		if ((int)$GLOBALS['TSFE']->fe_user->user['uid'] > 0) {
-			$communityUser = $this->communityUserRepository->findByUid($GLOBALS['TSFE']->fe_user->user['uid']);
-			if ($communityUser instanceof \Visol\Easyvote\Domain\Model\CommunityUser) {
-				return $communityUser;
-			} else {
-				return FALSE;
-			}
-		} else {
-			return FALSE;
-		}
-	}
+    /**
+     * Check if a user has a role as defined in EXT:easyvote settings with a specific syntax
+     *
+     * @param \Visol\Easyvote\Domain\Model\CommunityUser $communityUser
+     * @param $role
+     * @return bool
+     */
+    public function hasRole(\Visol\Easyvote\Domain\Model\CommunityUser $communityUser, $role)
+    {
+        $this->settings = $this->configurationManager->getConfiguration(\TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface::CONFIGURATION_TYPE_SETTINGS, 'easyvote', 'easyvote');
+        $hasRole = FALSE;
+        $roleUid = (int)$this->settings[$role . 'UserGroupUid'];
+        if ($roleUid > 0) {
+            foreach ($communityUser->getUsergroup() as $usergroup) {
+                /* @var $usergroup \TYPO3\CMS\Extbase\Domain\Model\FrontendUserGroup */
+                if ($usergroup->getUid() === $roleUid) {
+                    $hasRole = TRUE;
+                    break;
+                }
+            }
+        }
+        return $hasRole;
+    }
 
-	/**
-	 * Get a user group defined in EXT:easyvote TypoScript settings with a pre-defined syntax [name]UserGroupUid
-	 *
-	 * @param string $role
-	 * @return \TYPO3\CMS\Extbase\Domain\Model\FrontendUserGroup
-	 */
-	public function getUserGroup($role) {
-		$this->settings = $this->configurationManager->getConfiguration(\TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface::CONFIGURATION_TYPE_SETTINGS, 'easyvote', 'easyvote');
-		$roleUid = (int)$this->settings[$role . 'UserGroupUid'];
-		return $this->frontendUserGroupRepository->findByUid($roleUid);
-	}
+    /**
+     * @return \Visol\Easyvote\Domain\Model\CommunityUser|bool
+     */
+    public function getCommunityUser()
+    {
+        if ((int)$GLOBALS['TSFE']->fe_user->user['uid'] > 0) {
+            $communityUser = $this->communityUserRepository->findByUid($GLOBALS['TSFE']->fe_user->user['uid']);
+            if ($communityUser instanceof \Visol\Easyvote\Domain\Model\CommunityUser) {
+                return $communityUser;
+            } else {
+                return FALSE;
+            }
+        } else {
+            return FALSE;
+        }
+    }
 
-	/**
-	 * Get a user group uid defined in EXT:easyvote TypoScript settings with a pre-defined syntax [name]UserGroupUid
-	 *
-	 * @param string $role
-	 * @return integer
-	 */
-	public function getUserGroupUid($role) {
-		$this->settings = $this->configurationManager->getConfiguration(\TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface::CONFIGURATION_TYPE_SETTINGS, 'easyvote', 'easyvote');
-		return (int)$this->settings[$role . 'UserGroupUid'];
-	}
+    /**
+     * Get a user group defined in EXT:easyvote TypoScript settings with a pre-defined syntax [name]UserGroupUid
+     *
+     * @param string $role
+     * @return \TYPO3\CMS\Extbase\Domain\Model\FrontendUserGroup
+     */
+    public function getUserGroup($role)
+    {
+        $this->settings = $this->configurationManager->getConfiguration(\TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface::CONFIGURATION_TYPE_SETTINGS, 'easyvote', 'easyvote');
+        $roleUid = (int)$this->settings[$role . 'UserGroupUid'];
+        return $this->frontendUserGroupRepository->findByUid($roleUid);
+    }
+
+    /**
+     * Get a user group uid defined in EXT:easyvote TypoScript settings with a pre-defined syntax [name]UserGroupUid
+     *
+     * @param string $role
+     * @return integer
+     */
+    public function getUserGroupUid($role)
+    {
+        $this->settings = $this->configurationManager->getConfiguration(\TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface::CONFIGURATION_TYPE_SETTINGS, 'easyvote', 'easyvote');
+        return (int)$this->settings[$role . 'UserGroupUid'];
+    }
 
 }

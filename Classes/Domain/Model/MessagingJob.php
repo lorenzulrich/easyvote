@@ -1,357 +1,375 @@
 <?php
 namespace Visol\Easyvote\Domain\Model;
 
-/***************************************************************
- *  Copyright notice
+/**
+ * This file is part of the TYPO3 CMS project.
  *
- *  (c) 2014 Lorenz Ulrich <lorenz.ulrich@visol.ch>, visol digitale Dienstleistungen GmbH
- *  
- *  All rights reserved
+ * It is free software; you can redistribute it and/or modify it under
+ * the terms of the GNU General Public License, either version 2
+ * of the License, or any later version.
  *
- *  This script is part of the TYPO3 project. The TYPO3 project is
- *  free software; you can redistribute it and/or modify
- *  it under the terms of the GNU General Public License as published by
- *  the Free Software Foundation; either version 3 of the License, or
- *  (at your option) any later version.
+ * For the full copyright and license information, please read the
+ * LICENSE.txt file that was distributed with this source code.
  *
- *  The GNU General Public License can be found at
- *  http://www.gnu.org/copyleft/gpl.html.
- *
- *  This script is distributed in the hope that it will be useful,
- *  but WITHOUT ANY WARRANTY; without even the implied warranty of
- *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *  GNU General Public License for more details.
- *
- *  This copyright notice MUST APPEAR in all copies of the script!
- ***************************************************************/
+ * The TYPO3 project - inspiring people to share!
+ */
+
+use TYPO3\CMS\Extbase\DomainObject\AbstractEntity;
 
 /**
- *
- *
- * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
- *
+ * Class MessagingJob
  */
-class MessagingJob extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
+class MessagingJob extends AbstractEntity
+{
 
-	const JOBTYPE_SMS = 1;
-	const JOBTYPE_EMAIL = 2;
+    const JOBTYPE_SMS = 1;
+    const JOBTYPE_EMAIL = 2;
 
-	/**
-	 * Type of messaging job
-	 *
-	 * @var \integer
-	 * @validate NotEmpty
-	 */
-	protected $type;
+    /**
+     * Type of messaging job
+     *
+     * @var \integer
+     * @validate NotEmpty
+     */
+    protected $type;
 
-	/**
-	 * Benutzer
-	 *
-	 * @var \Visol\Easyvote\Domain\Model\CommunityUser
-	 */
-	protected $communityUser;
+    /**
+     * Benutzer
+     *
+     * @var \Visol\Easyvote\Domain\Model\CommunityUser
+     */
+    protected $communityUser;
 
-	/**
-	 * Recipient name
-	 *
-	 * @var \string
-	 */
-	protected $recipientName;
+    /**
+     * Recipient name
+     *
+     * @var \string
+     */
+    protected $recipientName;
 
-	/**
-	 * Recipient e-mail
-	 *
-	 * @var \string
-	 */
-	protected $recipientEmail;
+    /**
+     * Recipient e-mail
+     *
+     * @var \string
+     */
+    protected $recipientEmail;
 
-	/**
-	 * Sender name
-	 *
-	 * @var \string
-	 */
-	protected $senderName;
+    /**
+     * Sender name
+     *
+     * @var \string
+     */
+    protected $senderName;
 
-	/**
-	 * Sender e-mail
-	 *
-	 * @var \string
-	 */
-	protected $senderEmail;
+    /**
+     * Sender e-mail
+     *
+     * @var \string
+     */
+    protected $senderEmail;
 
-	/**
-	 * $returnPath
-	 *
-	 * @var \string
-	 */
-	protected $returnPath;
+    /**
+     * $returnPath
+     *
+     * @var \string
+     */
+    protected $returnPath;
 
-	/**
-	 * $replyTo
-	 *
-	 * @var \string
-	 */
-	protected $replyTo;
+    /**
+     * $replyTo
+     *
+     * @var \string
+     */
+    protected $replyTo;
 
-	/**
-	 * Subject for message
-	 *
-	 * @var \string
-	 */
-	protected $subject;
+    /**
+     * Subject for message
+     *
+     * @var \string
+     */
+    protected $subject;
 
-	/**
-	 * Content for message
-	 *
-	 * @var \string
-	 * @validate NotEmpty
-	 */
-	protected $content;
+    /**
+     * Content for message
+     *
+     * @var \string
+     * @validate NotEmpty
+     */
+    protected $content;
 
-	/**
-	 * Distribution time
-	 *
-	 * @var \DateTime|NULL
-	 */
-	protected $distributionTime;
+    /**
+     * Distribution time
+     *
+     * @var \DateTime|NULL
+     */
+    protected $distributionTime;
 
-	/**
-	 * The time it was distributed
-	 *
-	 * @var \DateTime|NULL
-	 */
-	protected $timeDistributed;
+    /**
+     * The time it was distributed
+     *
+     * @var \DateTime|NULL
+     */
+    protected $timeDistributed;
 
-	/**
-	 * The time an error occured
-	 *
-	 * @var \DateTime|NULL
-	 */
-	protected $timeError;
+    /**
+     * The time an error occured
+     *
+     * @var \DateTime|NULL
+     */
+    protected $timeError;
 
-	/**
-	 * Code of error
-	 *
-	 * @var \integer
-	 */
-	protected $errorCode;
+    /**
+     * Code of error
+     *
+     * @var \integer
+     */
+    protected $errorCode;
 
-	/**
-	 * Response from message processor
-	 *
-	 * @var \string
-	 */
-	protected $processorResponse;
+    /**
+     * Response from message processor
+     *
+     * @var \string
+     */
+    protected $processorResponse;
 
-	/**
-	 * @return int
-	 */
-	public function getType() {
-		return $this->type;
-	}
+    /**
+     * @return int
+     */
+    public function getType()
+    {
+        return $this->type;
+    }
 
-	/**
-	 * @param int $type
-	 */
-	public function setType($type) {
-		$this->type = $type;
-	}
+    /**
+     * @param int $type
+     */
+    public function setType($type)
+    {
+        $this->type = $type;
+    }
 
-	/**
-	 * @return \Visol\Easyvote\Domain\Model\CommunityUser
-	 */
-	public function getCommunityUser() {
-		return $this->communityUser;
-	}
+    /**
+     * @return \Visol\Easyvote\Domain\Model\CommunityUser
+     */
+    public function getCommunityUser()
+    {
+        return $this->communityUser;
+    }
 
-	/**
-	 * @param \Visol\Easyvote\Domain\Model\CommunityUser $communityUser
-	 */
-	public function setCommunityUser($communityUser) {
-		$this->communityUser = $communityUser;
-	}
+    /**
+     * @param \Visol\Easyvote\Domain\Model\CommunityUser $communityUser
+     */
+    public function setCommunityUser($communityUser)
+    {
+        $this->communityUser = $communityUser;
+    }
 
-	/**
-	 * @return string
-	 */
-	public function getContent() {
-		return $this->content;
-	}
+    /**
+     * @return string
+     */
+    public function getContent()
+    {
+        return $this->content;
+    }
 
-	/**
-	 * @param string $content
-	 */
-	public function setContent($content) {
-		$this->content = $content;
-	}
+    /**
+     * @param string $content
+     */
+    public function setContent($content)
+    {
+        $this->content = $content;
+    }
 
-	/**
-	 * @return \DateTime|NULL
-	 */
-	public function getDistributionTime() {
-		return $this->distributionTime;
-	}
+    /**
+     * @return \DateTime|NULL
+     */
+    public function getDistributionTime()
+    {
+        return $this->distributionTime;
+    }
 
-	/**
-	 * @param \DateTime|NULL $distributionTime
-	 */
-	public function setDistributionTime($distributionTime) {
-		$this->distributionTime = $distributionTime;
-	}
+    /**
+     * @param \DateTime|NULL $distributionTime
+     */
+    public function setDistributionTime($distributionTime)
+    {
+        $this->distributionTime = $distributionTime;
+    }
 
-	/**
-	 * @return \DateTime|NULL
-	 */
-	public function getTimeDistributed() {
-		return $this->timeDistributed;
-	}
+    /**
+     * @return \DateTime|NULL
+     */
+    public function getTimeDistributed()
+    {
+        return $this->timeDistributed;
+    }
 
-	/**
-	 * @param \DateTime|NULL $timeDistributed
-	 */
-	public function setTimeDistributed($timeDistributed) {
-		$this->timeDistributed = $timeDistributed;
-	}
+    /**
+     * @param \DateTime|NULL $timeDistributed
+     */
+    public function setTimeDistributed($timeDistributed)
+    {
+        $this->timeDistributed = $timeDistributed;
+    }
 
-	/**
-	 * @return \DateTime|NULL
-	 */
-	public function getTimeError() {
-		return $this->timeError;
-	}
+    /**
+     * @return \DateTime|NULL
+     */
+    public function getTimeError()
+    {
+        return $this->timeError;
+    }
 
-	/**
-	 * @param \DateTime|NULL $timeError
-	 */
-	public function setTimeError($timeError) {
-		$this->timeError = $timeError;
-	}
+    /**
+     * @param \DateTime|NULL $timeError
+     */
+    public function setTimeError($timeError)
+    {
+        $this->timeError = $timeError;
+    }
 
-	/**
-	 * @return int
-	 */
-	public function getErrorCode() {
-		return $this->errorCode;
-	}
+    /**
+     * @return int
+     */
+    public function getErrorCode()
+    {
+        return $this->errorCode;
+    }
 
-	/**
-	 * @param int $errorCode
-	 */
-	public function setErrorCode($errorCode) {
-		$this->errorCode = $errorCode;
-	}
+    /**
+     * @param int $errorCode
+     */
+    public function setErrorCode($errorCode)
+    {
+        $this->errorCode = $errorCode;
+    }
 
-	/**
-	 * @return string
-	 */
-	public function getSubject() {
-		return $this->subject;
-	}
+    /**
+     * @return string
+     */
+    public function getSubject()
+    {
+        return $this->subject;
+    }
 
-	/**
-	 * @param string $subject
-	 */
-	public function setSubject($subject) {
-		$this->subject = $subject;
-	}
+    /**
+     * @param string $subject
+     */
+    public function setSubject($subject)
+    {
+        $this->subject = $subject;
+    }
 
-	/**
-	 * @return string
-	 */
-	public function getRecipientName() {
-		return $this->recipientName;
-	}
+    /**
+     * @return string
+     */
+    public function getRecipientName()
+    {
+        return $this->recipientName;
+    }
 
-	/**
-	 * @param string $recipientName
-	 */
-	public function setRecipientName($recipientName) {
-		$this->recipientName = $recipientName;
-	}
+    /**
+     * @param string $recipientName
+     */
+    public function setRecipientName($recipientName)
+    {
+        $this->recipientName = $recipientName;
+    }
 
-	/**
-	 * @return string
-	 */
-	public function getRecipientEmail() {
-		return $this->recipientEmail;
-	}
+    /**
+     * @return string
+     */
+    public function getRecipientEmail()
+    {
+        return $this->recipientEmail;
+    }
 
-	/**
-	 * @param string $recipientEmail
-	 */
-	public function setRecipientEmail($recipientEmail) {
-		$this->recipientEmail = $recipientEmail;
-	}
+    /**
+     * @param string $recipientEmail
+     */
+    public function setRecipientEmail($recipientEmail)
+    {
+        $this->recipientEmail = $recipientEmail;
+    }
 
-	/**
-	 * @return string
-	 */
-	public function getSenderName() {
-		return $this->senderName;
-	}
+    /**
+     * @return string
+     */
+    public function getSenderName()
+    {
+        return $this->senderName;
+    }
 
-	/**
-	 * @param string $senderName
-	 */
-	public function setSenderName($senderName) {
-		$this->senderName = $senderName;
-	}
+    /**
+     * @param string $senderName
+     */
+    public function setSenderName($senderName)
+    {
+        $this->senderName = $senderName;
+    }
 
-	/**
-	 * @return string
-	 */
-	public function getSenderEmail() {
-		return $this->senderEmail;
-	}
+    /**
+     * @return string
+     */
+    public function getSenderEmail()
+    {
+        return $this->senderEmail;
+    }
 
-	/**
-	 * @param string $senderEmail
-	 */
-	public function setSenderEmail($senderEmail) {
-		$this->senderEmail = $senderEmail;
-	}
+    /**
+     * @param string $senderEmail
+     */
+    public function setSenderEmail($senderEmail)
+    {
+        $this->senderEmail = $senderEmail;
+    }
 
-	/**
-	 * @return string
-	 */
-	public function getReturnPath() {
-		return $this->returnPath;
-	}
+    /**
+     * @return string
+     */
+    public function getReturnPath()
+    {
+        return $this->returnPath;
+    }
 
-	/**
-	 * @param string $returnPath
-	 */
-	public function setReturnPath($returnPath) {
-		$this->returnPath = $returnPath;
-	}
+    /**
+     * @param string $returnPath
+     */
+    public function setReturnPath($returnPath)
+    {
+        $this->returnPath = $returnPath;
+    }
 
-	/**
-	 * @return string
-	 */
-	public function getReplyTo() {
-		return $this->replyTo;
-	}
+    /**
+     * @return string
+     */
+    public function getReplyTo()
+    {
+        return $this->replyTo;
+    }
 
-	/**
-	 * @param string $replyTo
-	 */
-	public function setReplyTo($replyTo) {
-		$this->replyTo = $replyTo;
-	}
+    /**
+     * @param string $replyTo
+     */
+    public function setReplyTo($replyTo)
+    {
+        $this->replyTo = $replyTo;
+    }
 
-	/**
-	 * @return string
-	 */
-	public function getProcessorResponse() {
-		return $this->processorResponse;
-	}
+    /**
+     * @return string
+     */
+    public function getProcessorResponse()
+    {
+        return $this->processorResponse;
+    }
 
-	/**
-	 * @param string $processorResponse
-	 */
-	public function setProcessorResponse($processorResponse) {
-		$this->processorResponse = $processorResponse;
-	}
+    /**
+     * @param string $processorResponse
+     */
+    public function setProcessorResponse($processorResponse)
+    {
+        $this->processorResponse = $processorResponse;
+    }
 
 }
-?>

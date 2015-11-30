@@ -14,18 +14,25 @@ namespace Visol\Easyvote\Domain\Repository;
  * The TYPO3 project - inspiring people to share!
  */
 
-class KantonRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
+use TYPO3\CMS\Extbase\Persistence\Repository;
 
-	protected $defaultOrderings = array(
-		'abbreviation' => \TYPO3\CMS\Extbase\Persistence\QueryInterface::ORDER_ASCENDING,
-	);
+/**
+ * Class KantonRepository
+ */
+class KantonRepository extends Repository
+{
 
-	public function initializeObject() {
-		/** @var $querySettings \TYPO3\CMS\Extbase\Persistence\Generic\Typo3QuerySettings */
-		$querySettings = $this->objectManager->get('TYPO3\\CMS\\Extbase\\Persistence\\Generic\\Typo3QuerySettings');
-		$querySettings->setRespectStoragePage(FALSE);
-		//$querySettings->setRespectSysLanguage(FALSE);
-		$this->setDefaultQuerySettings($querySettings);
-	}
+    protected $defaultOrderings = array(
+        'abbreviation' => \TYPO3\CMS\Extbase\Persistence\QueryInterface::ORDER_ASCENDING,
+    );
+
+    public function initializeObject()
+    {
+        /** @var $querySettings \TYPO3\CMS\Extbase\Persistence\Generic\Typo3QuerySettings */
+        $querySettings = $this->objectManager->get('TYPO3\\CMS\\Extbase\\Persistence\\Generic\\Typo3QuerySettings');
+        $querySettings->setRespectStoragePage(FALSE);
+        //$querySettings->setRespectSysLanguage(FALSE);
+        $this->setDefaultQuerySettings($querySettings);
+    }
 
 }
