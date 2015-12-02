@@ -44,7 +44,6 @@ class PollRepository extends Repository
     /**
      * @param \Visol\Easyvote\Domain\Model\VotingProposal $votingProposal
      * @param \Visol\Easyvote\Domain\Model\CommunityUser $communityUser
-     * @internal param int $value
      * @return \TYPO3\CMS\Extbase\Persistence\QueryResultInterface
      */
     public function findByVotingProposalAndUser(\Visol\Easyvote\Domain\Model\VotingProposal $votingProposal, \Visol\Easyvote\Domain\Model\CommunityUser $communityUser)

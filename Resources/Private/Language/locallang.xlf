@@ -25,7 +25,7 @@
 			<trans-unit id="tx_easyvote_domain_model_metavotingproposal.kanton">
 				<source>Kanton</source>
 			</trans-unit>
-			
+
 			<trans-unit id="tx_easyvote_domain_model_votingproposal">
 				<source>Abstimmungsvorlage</source>
 			</trans-unit>
@@ -68,7 +68,7 @@
 			<trans-unit id="tx_easyvote_domain_model_votingproposal.proposal_approval">
 				<source>Zustimmung zur Vorlage (in %)</source>
 			</trans-unit>
-			
+
 			<trans-unit id="tx_easyvote_domain_model_kanton">
 				<source>Kanton</source>
 			</trans-unit>
@@ -81,7 +81,7 @@
 			<trans-unit id="tx_easyvote_domain_model_kanton.cities">
 				<source>Orte</source>
 			</trans-unit>
-			
+
 			<trans-unit id="tx_easyvote_domain_model_votingday">
 				<source>Abstimmungstag</source>
 			</trans-unit>
@@ -94,7 +94,7 @@
 			<trans-unit id="tx_easyvote_domain_model_votingday.meta_voting_proposals">
 				<source>Meta-Abstimmungsvorlagen</source>
 			</trans-unit>
-			
+
 			<trans-unit id="tx_easyvote_domain_model_city">
 				<source>City</source>
 			</trans-unit>
@@ -927,6 +927,25 @@
 			</trans-unit>
 			<trans-unit id="wall.voteHeroes">
 				<source>Vote-Heroes</source>
+			</trans-unit>
+
+			<trans-unit id="graph.population">
+				<source>Bevölkerung</source>
+			</trans-unit>
+			<trans-unit id="graph.canton">
+				<source>Ständemehr</source>
+			</trans-unit>
+			<trans-unit id="graph.mainProposition">
+				<source>Stichfrage</source>
+			</trans-unit>
+			<trans-unit id="graph.counterProposition">
+				<source>Gegenvorschlag</source>
+			</trans-unit>
+			<trans-unit id="graph.yes">
+				<source>Ja</source>
+			</trans-unit>
+			<trans-unit id="graph.no">
+				<source>Nein</source>
 			</trans-unit>
 
 		</body>

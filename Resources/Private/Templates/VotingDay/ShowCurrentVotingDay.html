@@ -1,9 +1,13 @@
+<html xmlns:f="http://typo3.org/ns/fluid/ViewHelpers"
+      xmlns:ev="http://typo3.org/ns/Visol/Easyvote/ViewHelpers">
+
 {namespace v=Tx_Vhs_ViewHelpers}
-{namespace ev=Tx_Easyvote_ViewHelpers}
-<f:layout name="Default" />
+<f:layout name="Default"/>
 
 <f:section name="main">
+
 	<div id="votingsDashboard">
+
 		<section class="hidden-xs hidden-sm col-md-3">
 			<f:if condition="{requestedKanton}">
 				<f:then>
@@ -18,11 +22,11 @@
 			<f:for each="{votingDay.metaVotingProposals}" as="metaVotingProposal" iteration="metaIterator">
 				<f:if condition="{metaVotingProposal.scope} == 1">
 					<f:then>
-						<f:render partial="MetaVotingProposal/SingleItem" arguments="{_all}" />
+						<f:render partial="MetaVotingProposal/SingleItem" arguments="{_all}"/>
 					</f:then>
 					<f:else>
 						<f:if condition="{metaVotingProposal.kanton.uid} == {requestedKanton.uid}">
-							<f:render partial="MetaVotingProposal/SingleItem" arguments="{_all}" />
+							<f:render partial="MetaVotingProposal/SingleItem" arguments="{_all}"/>
 						</f:if>
 					</f:else>
 				</f:if>
@@ -37,3 +41,5 @@
 	<f:render partial="CommunityUser/NotAuthenticatedModal" />
 	<f:render partial="VotingDay/HeadTags" arguments="{_all}" />
 </f:section>
+
+</html>

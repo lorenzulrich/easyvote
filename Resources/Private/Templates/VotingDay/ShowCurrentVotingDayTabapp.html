@@ -1,32 +1,38 @@
+<html xmlns:f="http://typo3.org/ns/fluid/ViewHelpers"
+      xmlns:ev="http://typo3.org/ns/Visol/Easyvote/ViewHelpers">
+
+<!-- Transitional VHs declaration before namespace support -->
 {namespace v=Tx_Vhs_ViewHelpers}
-{namespace ev=Tx_Easyvote_ViewHelpers}
-<f:layout name="Default" />
+
+<f:layout name="Default"/>
 
 <f:section name="main">
 
-<div id="votingsDashboard">
-	<section class="col-floatLeft col-marginRight col-66">
-		<f:for each="{votingDay.metaVotingProposals}" as="metaVotingProposal" iteration="metaIterator">
-			<f:if condition="{metaVotingProposal.scope} == 1">
-				<f:then>
-					<f:render partial="MetaVotingProposal/SingleItem" arguments="{_all}" />
-				</f:then>
-				<f:else>
-					<f:if condition="{metaVotingProposal.kanton.uid} == {requestedKanton.uid}">
-						<f:render partial="MetaVotingProposal/SingleItem" arguments="{_all}" />
-					</f:if>
-				</f:else>
-			</f:if>
-		</f:for>
-	</section>
-	<section class="col-floatLeft col-33">
-	</section>
-</div>
-<f:comment>
-	No votings in TabApp ATM
-	<script>
-		var ajaxUri = '<f:uri.page pageUid="{settings.communityAjaxPid}" absolute="TRUE" pageType="999" />'
-	</script>
-</f:comment>
-<f:render partial="VotingDay/HeadTags" arguments="{_all}" />
+	<div id="votingsDashboard">
+		<section class="col-floatLeft col-marginRight col-66">
+			<f:for each="{votingDay.metaVotingProposals}" as="metaVotingProposal" iteration="metaIterator">
+				<f:if condition="{metaVotingProposal.scope} == 1">
+					<f:then>
+						<f:render partial="MetaVotingProposal/SingleItem" arguments="{_all}"/>
+					</f:then>
+					<f:else>
+						<f:if condition="{metaVotingProposal.kanton.uid} == {requestedKanton.uid}">
+							<f:render partial="MetaVotingProposal/SingleItem" arguments="{_all}"/>
+						</f:if>
+					</f:else>
+				</f:if>
+			</f:for>
+		</section>
+		<section class="col-floatLeft col-33">
+		</section>
+	</div>
+	<f:comment>
+		No votings in TabApp ATM
+		<script>
+			var ajaxUri = '<f:uri.page pageUid="{settings.communityAjaxPid}" absolute="TRUE" pageType="999" />'
+		</script>
+	</f:comment>
+	<f:render partial="VotingDay/HeadTags" arguments="{_all}"/>
 </f:section>
+
+</html>

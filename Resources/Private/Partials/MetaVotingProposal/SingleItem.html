@@ -1,8 +1,10 @@
 {namespace v=Tx_Vhs_ViewHelpers}
 {namespace ev=Tx_Easyvote_ViewHelpers}
-<div class="meta-abstimmungsvorlage {f:if(condition: '{metaVotingProposal.type} == 1', then: 'meta-abstimmungsvorlage-normal', else: 'meta-abstimmungsvorlage-gegenvorschlag')}"  id="meta-abstimmungsvorlage-{metaVotingProposal.uid}">
+<div class="meta-abstimmungsvorlage {f:if(condition: '{metaVotingProposal.type} == 1', then: 'meta-abstimmungsvorlage-normal', else: 'meta-abstimmungsvorlage-gegenvorschlag')}"
+     id="meta-abstimmungsvorlage-{metaVotingProposal.uid}">
 	<f:for each="{metaVotingProposal.votingProposals}" as="votingProposal" iteration="iterator">
-		<div class="content-box content-box-expandable abstimmungsvorlage abstimmungsvorlage-meta-{metaVotingProposal.uid}" id="abstimmungsvorlage-{votingProposal.uid}">
+		<div class="content-box content-box-expandable abstimmungsvorlage abstimmungsvorlage-meta-{metaVotingProposal.uid}"
+		     id="abstimmungsvorlage-{votingProposal.uid}">
 			<div class="box-teaser">
 				<div class="row">
 					<div class="col-xs-2 col-md-2">
@@ -22,15 +24,17 @@
 									<f:then>
 										<a href="#" class="hasModal shareTrigger">
 											<i class="evicon-share hasTooltip"></i>
+
 											<div class="hidden">
 												Teile diese Abstimmungsvorlage
 											</div>
 										</a>
+
 										<div class="hidden">
 											<a class="pull-right modal-close" aria-label="schliessen">
 												<i class="evicon-cancel"></i>
 											</a>
-											<f:render partial="VotingProposal/Share" arguments="{_all}" />
+											<f:render partial="VotingProposal/Share" arguments="{_all}"/>
 										</div>
 									</f:then>
 									<f:else>
@@ -45,6 +49,7 @@
 							</div>
 						</div>
 						<h2>{votingProposal.shortTitle}</h2>
+
 						<h3>
 							<f:format.date format="d.m.Y">{metaVotingProposal.votingDay.votingDate}</f:format.date>
 							&nbsp;–&nbsp;
@@ -53,10 +58,14 @@
 						<f:if condition="{metaVotingProposal.type} == 2">
 							<f:if condition="{iterator.isFirst}">
 								<f:then>
-									<p class="multipleVotingsNavi"><i class="evicon-right-hand pull-left"></i><f:translate key="tx_easyvote_archive.gegenvorschlagNotice" /></p>
+									<p class="multipleVotingsNavi"><i class="evicon-right-hand pull-left"></i>
+										<f:translate key="tx_easyvote_archive.gegenvorschlagNotice"/>
+									</p>
 								</f:then>
 								<f:else>
-									<p class="multipleVotingsNavi"><i class="evicon-right-hand pull-left"></i><f:translate key="tx_easyvote_archive.gegenvorschlagBack" /></p>
+									<p class="multipleVotingsNavi"><i class="evicon-right-hand pull-left"></i>
+										<f:translate key="tx_easyvote_archive.gegenvorschlagBack"/>
+									</p>
 								</f:else>
 							</f:if>
 						</f:if>
@@ -104,8 +113,33 @@
 				<div class="toggle-closed toggle-content"><f:format.html parseFuncTSPath="lib.parseFunc_tagged">{votingProposal.governmentOpinion}</f:format.html></div>
 				<h3 class="toggle-trigger"><f:translate key="tx_easyvote_domain_model_votingproposal.links" /><div class="toggle-handle toggle-handle-plus"></div></h3>
 				<div class="toggle-closed toggle-content"><f:format.html parseFuncTSPath="lib.parseFunc_tagged">{votingProposal.links}</f:format.html></div>
+
+
+				<f:if condition="{votingProposal.proposalApproval}">
+					<div style="width: 200px; text-align: center; float: left">
+						<f:translate key="graph.population"/>
+						<div class="graph-referendum" data-value="{votingProposal.proposalApproval}"></div>
+					</div>
+				</f:if>
+
+				<f:if condition="{votingProposal.kantonMajority}">
+					<div style="width: 200px; text-align: center; float: left">
+						<f:translate key="graph.canton"/>
+						<div class="graph-canton" data-value="{votingProposal.kantonMajority}"></div>
+					</div>
+				</f:if>
+
 			</div>
 
 		</div>
+
+		<script>
+			window.EasyvoteGraph = window.EasyvoteGraph || {};
+
+			EasyvoteGraph.Label = {};
+			EasyvoteGraph.Label.yes = '{f:translate(key: "graph.yes")}';
+			EasyvoteGraph.Label.no = '{f:translate(key: "graph.no")}';
+
+		</script>
 	</f:for>
 </div>

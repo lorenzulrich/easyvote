@@ -1,30 +1,51 @@
+<html xmlns:f="http://typo3.org/ns/fluid/ViewHelpers"
+      xmlns:easyvote="http://typo3.org/ns/Visol/Easyvote/ViewHelpers">
+
+<!-- Transitional VHs declaration before namespace support -->
 {namespace ev=Tx_Easyvote_ViewHelpers}
 {namespace v=Tx_Vhs_ViewHelpers}
-<f:layout name="DefaultNoRow" />
+<f:layout name="DefaultNoRow"/>
 
 <f:section name="main">
 
-	<f:render partial="VotingDay/HeadTags" arguments="{_all}" />
+	<ev:script file="{f:uri.resource(path:'JavaScript/VotingResultChart.js')}"/>
+	<ev:script file="{f:uri.resource(path:'JavaScript/Libraries/D3/d3.js')}"/>
+	<ev:script file="{f:uri.resource(path:'JavaScript/Libraries/D3pie/d3pie.js')}"/>
+
+	<f:render partial="VotingDay/HeadTags" arguments="{_all}"/>
 
 	<div class="content-box archiveSearch">
-		<h2><f:translate key="tx_easyvote_archive.title" /></h2>
+		<h2>
+			<f:translate key="tx_easyvote_archive.title"/>
+		</h2>
 		<f:form noCacheHash="true" id="searchForm" controller="MetaVotingProposal" action="archive">
 
 			<div class="left">
-				<h3><f:translate key="tx_easyvote_archive.searchByQuery" /></h3>
+				<h3>
+					<f:translate key="tx_easyvote_archive.searchByQuery"/>
+				</h3>
 				<f:form.textfield name="query" value="{request.query}"/>
 			</div>
 
 			<div class="right">
 
 				<div class="filters">
-					<h3><f:translate key="tx_easyvote_archive.limitSearch" /></h3>
+					<h3>
+						<f:translate key="tx_easyvote_archive.limitSearch"/>
+					</h3>
 
 					<div class="filter-kanton">
-						<f:form.checkbox id="national" name="national" value="1" checked="{request.national} == 1"/><label for="national"><f:translate key="tx_easyvote_archive.limitNational" /></label><br />
+						<f:form.checkbox id="national" name="national" value="1" checked="{request.national} == 1"/>
+						<label for="national">
+							<f:translate key="tx_easyvote_archive.limitNational"/>
+						</label><br/>
 						<f:for each="{kantons}" as="kanton" key="key">
 							<div class="filter-kanton-item">
-								<f:form.checkbox id="kanton-{key}" name="kantons[]" value="{key}" checked="{v:if.iterator.contains(then: 'true', else: 'false', needle: key, haystack: request.kantons, considerKeys: 0)}" /><label for="kanton-{key}">{kanton}</label><br />
+								<f:form.checkbox id="kanton-{key}"
+								                 name="kantons[]"
+								                 value="{key}"
+								                 checked="{v:if.iterator.contains(then: 'true', else: 'false', needle: key, haystack: request.kantons, considerKeys: 0)}"/>
+								<label for="kanton-{key}">{kanton}</label><br/>
 							</div>
 						</f:for>
 					</div>
@@ -32,7 +53,11 @@
 					<div class="filter-year">
 						<f:for each="{years}" as="year" key="key">
 							<div class="filter-year-item">
-								<f:form.checkbox id="year-{year}" name="years[]" value="{year}" checked="{v:if.iterator.contains(then: 'true', else: 'false', needle: key, haystack: request.years, considerKeys: 0)}"/><label for="year-{year}">{year}</label><br />
+								<f:form.checkbox id="year-{year}"
+								                 name="years[]"
+								                 value="{year}"
+								                 checked="{v:if.iterator.contains(then: 'true', else: 'false', needle: key, haystack: request.years, considerKeys: 0)}"/>
+								<label for="year-{year}">{year}</label><br/>
 							</div>
 						</f:for>
 					</div>
@@ -40,11 +65,15 @@
 
 				<div class="controls">
 					<div class="controls-left">
-						<input type="reset" class="btn btn-primary" onclick="resetForm('#searchForm')" value="{f:translate(key: 'tx_easyvote_archive.reset')}" />
+						<input type="reset"
+						       class="btn btn-primary"
+						       onclick="resetForm('#searchForm')"
+						       value="{f:translate(key: 'tx_easyvote_archive.reset')}"/>
 					</div>
 
 					<div class="controls-right">
-						<f:form.submit class="btn btn-primary" value="{f:translate(key: 'tx_easyvote_archive.submit')}" />
+						<f:form.submit class="btn btn-primary"
+						               value="{f:translate(key: 'tx_easyvote_archive.submit')}"/>
 					</div>
 				</div>
 
@@ -57,14 +86,22 @@
 		<f:then>
 
 			<div class="searchResultsHeader">
-				<p><f:format.printf arguments="{0: '{f:count(subject: metaVotingProposals)}'}"><f:translate key="tx_easyvote_archive.searchResultsCount" /></f:format.printf></p>
+				<p>
+					<f:format.printf arguments="{0: '{f:count(subject: metaVotingProposals)}'}">
+						<f:translate key="tx_easyvote_archive.searchResultsCount"/>
+					</f:format.printf>
+				</p>
 			</div>
 
 			<div class="searchResults">
 
-				<ev:widget.paginate objects="{metaVotingProposals}" as="paginatedMetaVotingProposals" additionalParams="{kantons: '{request.kantons}', years: '{request.years}', query: '{request.query}', national: '{request.national}'}" additionalParamsPrefix="tx_easyvote_archive" configuration="{itemsPerPage: 5, insertBelow: 1, insertAbove: 0}">
+				<ev:widget.paginate objects="{metaVotingProposals}"
+				                    as="paginatedMetaVotingProposals"
+				                    additionalParams="{kantons: '{request.kantons}', years: '{request.years}', query: '{request.query}', national: '{request.national}'}"
+				                    additionalParamsPrefix="tx_easyvote_archive"
+				                    configuration="{itemsPerPage: 5, insertBelow: 1, insertAbove: 0}">
 					<f:for each="{paginatedMetaVotingProposals}" as="metaVotingProposal" iteration="metaIterator">
-						<f:render partial="MetaVotingProposal/SingleItem" arguments="{_all}" />
+						<f:render partial="MetaVotingProposal/SingleItem" arguments="{_all}"/>
 					</f:for>
 				</ev:widget.paginate>
 
@@ -72,8 +109,10 @@
 
 		</f:then>
 		<f:else>
-			<f:translate key="tx_easyvote_archive.noResults" />
+			<f:translate key="tx_easyvote_archive.noResults"/>
 		</f:else>
 
 	</f:if>
 </f:section>
+
+</html>

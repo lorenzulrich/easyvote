@@ -1,0 +1,9 @@
+{
+  "name": "easyvote_smartvote",
+  "version": "1.0.0",
+  "ignore": [],
+  "dependencies": {
+    "d3pie": "~0.1.9",
+    "d3": "~3.5.10"
+  }
+}
