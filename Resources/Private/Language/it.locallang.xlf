@@ -835,6 +835,34 @@
 				<target>eroi del voto</target>
 			</trans-unit>
 
+
+			<trans-unit id="graph.population">
+				<source>Bevölkerung</source>
+			</trans-unit>
+			<trans-unit id="graph.canton">
+				<source>Ständemehr</source>
+			</trans-unit>
+			<trans-unit id="graph.counterProposition">
+				<source>Gegenvorschlag</source>
+			</trans-unit>
+			<trans-unit id="graph.yes">
+				<source>Ja</source>
+			</trans-unit>
+			<trans-unit id="graph.no">
+				<source>Nein</source>
+			</trans-unit>
+			<trans-unit id="graph.mainPropositionAccepted">
+				<source>Die Vorlage wurde angenommen</source>
+			</trans-unit>
+			<trans-unit id="graph.counterPropositionAccepted">
+				<source>Der Gegenvorschlag wurde angenommen</source>
+			</trans-unit>
+			<trans-unit id="graph.proposalAbbreviated">
+				<source>Vorl.</source>
+			</trans-unit>
+			<trans-unit id="graph.counterProposalAbbreviated">
+				<source>Gegenv.</source>
+			</trans-unit>
 		</body>
 	</file>
 </xliff>

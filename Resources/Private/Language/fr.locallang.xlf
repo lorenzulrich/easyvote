@@ -840,6 +840,18 @@
 			<trans-unit id="graph.no">
 				<source>Non</source>
 			</trans-unit>
+			<trans-unit id="graph.mainPropositionAccepted">
+				<source>Die Vorlage wurde angenommen</source>
+			</trans-unit>
+			<trans-unit id="graph.counterPropositionAccepted">
+				<source>Der Gegenvorschlag wurde angenommen</source>
+			</trans-unit>
+			<trans-unit id="graph.proposalAbbreviated">
+				<source>Vorl.</source>
+			</trans-unit>
+			<trans-unit id="graph.counterProposalAbbreviated">
+				<source>Gegenv.</source>
+			</trans-unit>
 		</body>
 	</file>
 </xliff>

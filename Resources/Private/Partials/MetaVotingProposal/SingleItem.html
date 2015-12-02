@@ -115,18 +115,64 @@
 				<div class="toggle-closed toggle-content"><f:format.html parseFuncTSPath="lib.parseFunc_tagged">{votingProposal.links}</f:format.html></div>
 
 
-				<f:if condition="{votingProposal.proposalApproval}">
-					<div style="width: 200px; text-align: center; float: left">
-						<f:translate key="graph.population"/>
-						<div class="graph-referendum" data-value="{votingProposal.proposalApproval}"></div>
-					</div>
-				</f:if>
+				<style>
+					.box-graph {
+						width: 200px;
+						text-align: center;
+						float: left;
+					}
+				</style>
+				<f:comment><!-- type = 1 => normal --></f:comment>
+				<f:comment><!-- type = 2 => with counter proposition --></f:comment>
+				<f:if condition="{metaVotingProposal.type} == '2'">
 
-				<f:if condition="{votingProposal.kantonMajority}">
-					<div style="width: 200px; text-align: center; float: left">
-						<f:translate key="graph.canton"/>
-						<div class="graph-canton" data-value="{votingProposal.kantonMajority}"></div>
-					</div>
+					<f:then>
+
+						<f:for each="{metaVotingProposal.votingProposals}" as="proposal">
+							<f:if condition="{proposal.proposalApproval}">
+								<div class="box-graph">
+									{proposal.shortTitle}
+									<div class="graph-referendum" data-value="{proposal.proposalApproval}"></div>
+								</div>
+							</f:if>
+						</f:for>
+
+						<f:if condition="{metaVotingProposal.mainProposalApproval} != 0">
+
+							<div style="clear: both; font-weight: bold">
+								<f:if condition="{metaVotingProposal.mainProposalApproval} > 50">
+									<f:then>
+										<f:translate key="graph.mainPropositionAccepted"/>
+									</f:then>
+									<f:else>
+										<f:translate key="graph.counterPropositionAccepted"/>
+									</f:else>
+								</f:if>
+							</div>
+
+							<div class="box-graph">
+								<div class="graph-tiebreak" data-value="{metaVotingProposal.mainProposalApproval}"></div>
+							</div>
+
+						</f:if>
+
+					</f:then>
+
+					<f:else>
+						<f:if condition="{votingProposal.proposalApproval}">
+							<div class="box-graph">
+								<f:translate key="graph.population"/>
+								<div class="graph-referendum" data-value="{votingProposal.proposalApproval}"></div>
+							</div>
+						</f:if>
+
+						<f:if condition="{votingProposal.kantonMajority}">
+							<div class="box-graph">
+								<f:translate key="graph.canton"/>
+								<div class="graph-canton" data-value="{votingProposal.kantonMajority}"></div>
+							</div>
+						</f:if>
+					</f:else>
 				</f:if>
 
 			</div>
@@ -139,6 +185,8 @@
 			EasyvoteGraph.Label = {};
 			EasyvoteGraph.Label.yes = '{f:translate(key: "graph.yes")}';
 			EasyvoteGraph.Label.no = '{f:translate(key: "graph.no")}';
+			EasyvoteGraph.Label.proposalAbbreviated = '{f:translate(key: "graph.proposalAbbreviated")}';
+			EasyvoteGraph.Label.counterProposalAbbreviated = '{f:translate(key: "graph.counterProposalAbbreviated")}';
 
 		</script>
 	</f:for>

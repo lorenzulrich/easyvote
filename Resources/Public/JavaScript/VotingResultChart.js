@@ -5,6 +5,11 @@
 		"use strict";
 
 		$(document).on('click', '.content-box-expandable', function(e) {
+
+
+				/**
+				 * Referendum: population case
+				 */
 				if ($('.graph-referendum', this) && !$('.graph-referendum', this).html()) {
 
 					$('.graph-referendum', this).each(function(index, el) {
@@ -34,6 +39,9 @@
 					});
 				}
 
+				/**
+				 * Initiative: canton case
+				 */
 				if ($('.graph-canton', this).length > 0 && !$('.graph-canton', this).html()) {
 
 					var yes = $('.graph-canton', this).data('value');
@@ -60,6 +68,49 @@
 					};
 					var pie = new d3pie($('.graph-canton', this).get(0), configuration);
 				}
+
+
+				/**
+				 * Counter referendum: tie-break question
+				 */
+				if ($('.graph-tiebreak', this).length > 0 && !$('.graph-tiebreak', this).html()) {
+
+					var yes = $('.graph-tiebreak', this).data('value');
+					var no = 100 - yes;
+
+					var configuration = getCommonPieChartConfiguration();
+
+
+					var label1;
+					var label2;
+					if (yes > 50) {
+						label1 = EasyvoteGraph.Label.counterProposalAbbreviated;
+						label2 = EasyvoteGraph.Label.proposalAbbreviated;
+					} else {
+						label1 = EasyvoteGraph.Label.proposalAbbreviated;
+						label2 = EasyvoteGraph.Label.counterProposalAbbreviated;
+					}
+					configuration.data.content = [
+						{
+							"label": label1,
+							"value": no,
+							"color": "#D01762"
+						},
+						{
+							"label": label2,
+							"value": yes,
+							"color": "#13A3D5"
+						}
+					];
+
+					configuration.size.canvasWidth = 250;
+					configuration.labels.outer.pieDistance = 0;
+
+					configuration.labels.inner = {
+						format: "percentage"
+					};
+					var pie = new d3pie($('.graph-tiebreak', this).get(0), configuration);
+				}
 			}
 		);
 
@@ -69,9 +120,9 @@
 		function getCommonPieChartConfiguration() {
 			return {
 				"size": {
-					"canvasWidth": 200,
-					"canvasHeight": 180
-					//"pieOuterRadius": "88%"
+					"canvasWidth": 220,
+					"canvasHeight": 180,
+					"pieOuterRadius": "85%"
 				},
 				"data": {
 					"sortOrder": "none"

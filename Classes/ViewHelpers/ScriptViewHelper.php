@@ -1,6 +1,4 @@
 <?php
-namespace Visol\Easyvote\ViewHelpers;
-
 /**
  * This file is part of the TYPO3 CMS project.
  *
@@ -29,7 +27,7 @@ use TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHelper;
  * Loads the given file and adds it to the Frontend
  * </output>
  */
-class ScriptViewHelper extends AbstractViewHelper
+class Tx_Easyvote_ViewHelpers_ScriptViewHelper extends AbstractViewHelper
 {
 
     /**
