@@ -501,7 +501,7 @@
 				<target>Reçois des informations accessibles et neutres sur les votations et les élections!</target>
 			</trans-unit>
 			<trans-unit id="loginPanel.modalAdvantage.2">
-				<target>Installe l'alarme de vote pour toi et tes amis, afin de ne plus manquer aucun scrutin.</target>
+				<target>Active ton alarme d’élection et ainsi ne rate pas l’urne !</target>
 			</trans-unit>
 			<trans-unit id="loginPanel.modalAdvantage.3">
 				<target>Participe à l'évaluation des votations et partage ton opinion! D'autres documents suivront...</target>
