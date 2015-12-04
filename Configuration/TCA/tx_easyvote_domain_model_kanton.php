@@ -34,7 +34,7 @@ $GLOBALS['TCA']['tx_easyvote_domain_model_kanton'] = [
         'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, name, abbreviation, cities',
     ],
     'types' => [
-        '1' => ['showitem' => 'sys_language_uid;;;;1-1-1, l10n_parent, l10n_diffsource, hidden;;1, name, abbreviation, panel_limit, languages, cities,--div--;LLL:EXT:cms/locallang_ttc.xlf:tabs.access,starttime, endtime'],
+        '1' => ['showitem' => 'sys_language_uid;;;;1-1-1, l10n_parent, l10n_diffsource, hidden;;1, name, abbreviation, panel_limit, panel_allowed_from, panel_allowed_to, languages, cities,--div--;LLL:EXT:cms/locallang_ttc.xlf:tabs.access,starttime, endtime'],
     ],
     'palettes' => [
         '1' => ['showitem' => ''],
@@ -180,7 +180,26 @@ $GLOBALS['TCA']['tx_easyvote_domain_model_kanton'] = [
                 'eval' => 'null'
             ],
         ],
+        'panel_allowed_from' => [
+            'exclude' => 1,
+            'label' => 'LLL:EXT:easyvote/Resources/Private/Language/locallang_db.xlf:tx_easyvote_domain_model_kanton.panel_allowed_from',
+            'config' => [
+                'type' => 'input',
+                'size' => 12,
+                'eval' => 'date',
+                'checkbox' => 0,
+            ],
+        ],
+        'panel_allowed_to' => [
+            'exclude' => 1,
+            'label' => 'LLL:EXT:easyvote/Resources/Private/Language/locallang_db.xlf:tx_easyvote_domain_model_kanton.panel_allowed_to',
+            'config' => [
+                'type' => 'input',
+                'size' => 12,
+                'eval' => 'date',
+                'checkbox' => 0,
+            ],
+        ],
     ],
 ];
 
-?>

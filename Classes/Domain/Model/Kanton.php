@@ -50,11 +50,25 @@ class Kanton extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     protected $languages;
 
     /**
-     * Limit the number of panels with panelInvitations
+     * EXT:easyvote_education: Limit the number of panels with panelInvitations
      *
      * @var int
      */
     protected $panelLimit;
+
+    /**
+     * EXT:easyvote_education: Panels with politicians allowed from
+     *
+     * @var \DateTime
+     */
+    protected $panelAllowedFrom = NULL;
+
+    /**
+     * EXT:easyvote_education: Panels with politicians allowed to
+     *
+     * @var \DateTime
+     */
+    protected $panelAllowedTo = NULL;
 
     /**
      * __construct
@@ -219,6 +233,38 @@ class Kanton extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     public function setPanelLimit($panelLimit)
     {
         $this->panelLimit = $panelLimit;
+    }
+
+    /**
+     * @return \DateTime
+     */
+    public function getPanelAllowedFrom()
+    {
+        return $this->panelAllowedFrom;
+    }
+
+    /**
+     * @param \DateTime $panelAllowedFrom
+     */
+    public function setPanelAllowedFrom($panelAllowedFrom)
+    {
+        $this->panelAllowedFrom = $panelAllowedFrom;
+    }
+
+    /**
+     * @return \DateTime
+     */
+    public function getPanelAllowedTo()
+    {
+        return $this->panelAllowedTo;
+    }
+
+    /**
+     * @param \DateTime $panelAllowedTo
+     */
+    public function setPanelAllowedTo($panelAllowedTo)
+    {
+        $this->panelAllowedTo = $panelAllowedTo;
     }
 
 }
