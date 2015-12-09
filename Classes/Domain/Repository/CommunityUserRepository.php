@@ -143,13 +143,16 @@ class CommunityUserRepository extends FrontendUserRepository
      * @param array|NULL $demand
      * @return array|\TYPO3\CMS\Extbase\Persistence\QueryResultInterface
      */
-    public function findPoliticiansByPartyAndDemand(\Visol\Easyvote\Domain\Model\Party $party, $demand)
+    public function findPoliticiansByPartyAndDemand(\Visol\Easyvote\Domain\Model\Party $party, $demand = NULL)
     {
+        $authenticatedUser = $this->communityUserService->getCommunityUser();
+
         $query = $this->createQuery();
         $constraints = [];
         $constraints[] = $query->equals('party', $party);
+        $constraints[] = $query->in('citySelection.kanton', $authenticatedUser->getPartyAdminAllowedCantons());
 
-        if (is_array($demand)) {
+        if ($demand && is_array($demand)) {
             if (isset($demand['query'])) {
                 // query constraint
                 $queryString = '%' . $this->getDatabaseConnection()->escapeStrForLike($this->getDatabaseConnection()->quoteStr($demand['query'], $this->tableName), $this->tableName) . '%';
@@ -187,10 +190,13 @@ class CommunityUserRepository extends FrontendUserRepository
      */
     public function findPendingPoliticiansByParty(\Visol\Easyvote\Domain\Model\Party $party)
     {
+        $authenticatedUser = $this->communityUserService->getCommunityUser();
+
         $query = $this->createQuery();
         $query->matching(
             $query->logicalAnd(
                 $query->equals('party', $party),
+                $query->in('citySelection.kanton', $authenticatedUser->getPartyAdminAllowedCantons()),
                 $query->contains('usergroup', $this->communityUserService->getUserGroupUid('pendingPolitician'))
             )
         );
@@ -204,10 +210,13 @@ class CommunityUserRepository extends FrontendUserRepository
      */
     public function findPoliticiansByPartyAndQueryString(\Visol\Easyvote\Domain\Model\Party $party, $queryString)
     {
+        $authenticatedUser = $this->communityUserService->getCommunityUser();
+
         $query = $this->createQuery();
         $query->matching(
             $query->logicalAnd(
                 $query->equals('party', $party),
+                $query->in('citySelection.kanton', $authenticatedUser->getPartyAdminAllowedCantons()),
                 $query->contains('usergroup', $this->communityUserService->getUserGroupUid('politician')),
                 $query->logicalOr(
                     $query->like('firstName', $queryString . '%', FALSE),

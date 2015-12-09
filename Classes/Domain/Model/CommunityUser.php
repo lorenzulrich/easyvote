@@ -236,6 +236,11 @@ class CommunityUser extends FrontendUser
     protected $isCommunityFacebookUser;
 
     /**
+     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<Visol\Easyvote\Domain\Model\Kanton>
+     */
+    protected $partyAdminAllowedCantons;
+
+    /**
      * @var \TYPO3\CMS\Extbase\Domain\Model\FileReference
      */
     protected $falImage;
@@ -303,6 +308,7 @@ class CommunityUser extends FrontendUser
         $this->events = new ObjectStorage();
         $this->panels = new ObjectStorage();
         $this->personalElectionLists = new ObjectStorage();
+        $this->partyAdminAllowedCantons = new ObjectStorage();
     }
 
     /**
@@ -720,6 +726,50 @@ class CommunityUser extends FrontendUser
     {
         $this->partyVerificationCode = $partyVerificationCode;
     }
+
+    /**
+     * Adds a partyAdminAllowedCanton
+     *
+     * @param \Visol\Easyvote\Domain\Model\Kanton $kanton
+     * @return void
+     */
+    public function addPartyAdminAllowedCanton(\Visol\Easyvote\Domain\Model\Kanton $kanton)
+    {
+        $this->partyAdminAllowedCantons->attach($kanton);
+    }
+
+    /**
+     * Removes a partyAdminAllowedCanton
+     *
+     * @param \Visol\Easyvote\Domain\Model\Kanton $kanton
+     * @return void
+     */
+    public function removePartyAdminAllowedCanton(\Visol\Easyvote\Domain\Model\Kanton $kanton)
+    {
+        $this->partyAdminAllowedCantons->detach($kanton);
+    }
+
+    /**
+     * Returns the partyAdminAllowedCantons
+     *
+     * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Visol\Easyvote\Domain\Model\Kanton> $partyAdminAllowedCantons
+     */
+    public function getPartyAdminAllowedCantons()
+    {
+        return $this->partyAdminAllowedCantons;
+    }
+
+    /**
+     * Sets the partyAdminAllowedCantons
+     *
+     * @param $partyAdminAllowedCantons \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Visol\Easyvote\Domain\Model\Kanton>
+     * @return void
+     */
+    public function setPartyAdminAllowedCantons(ObjectStorage $partyAdminAllowedCantons)
+    {
+        $this->partyAdminAllowedCantons = $partyAdminAllowedCantons;
+    }
+
 
     /**
      * @return string

@@ -252,6 +252,9 @@
 			<trans-unit id="tx_easyvote_domain_model_communityuser.cached_follower_rank_vip">
 				<source>Followers: Cached rank VIP</source>
 			</trans-unit>
+			<trans-unit id="tx_easyvote_domain_model_communityuser.party_admin_allowed_cantons">
+				<source>Allowed cantons for party administrator</source>
+			</trans-unit>
 
 			<trans-unit id="tx_easyvote_domain_model_messagingjob">
 				<source>Messaging Job</source>

@@ -300,6 +300,21 @@ $communityUserColumns = [
             'eval' => 'int,trim'
         ],
     ],
+    'party_admin_allowed_cantons' => [
+        'exclude' => 1,
+        'label' => 'LLL:EXT:easyvote/Resources/Private/Language/locallang_db.xlf:tx_easyvote_domain_model_communityuser.party_admin_allowed_cantons',
+        'config' => [
+            'type' => 'select',
+            'foreign_table' => 'tx_easyvote_domain_model_kanton',
+            'foreign_table_where' => ' AND tx_easyvote_domain_model_kanton.sys_language_uid IN (-1,0) ORDER BY name ASC',
+            'MM' => 'tx_easyvote_feuser_kanton_mm',
+            'size' => 10,
+            'autoSizeMax' => 30,
+            'maxitems' => 9999,
+            'multiple' => 0,
+            'enableMultiSelectFilterTextfield' => true,
+        ],
+    ],
 ];
 
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addTCAcolumns('fe_users', $communityUserColumns);
@@ -308,7 +323,7 @@ $communityUserColumns = [
 $GLOBALS['TCA']['fe_users']['types']['Tx_Easyvote_CommunityUser']['showitem'] = $GLOBALS['TCA']['fe_users']['types']['Tx_Extbase_Domain_Model_FrontendUser']['showitem'];
 $GLOBALS['TCA']['fe_users']['types']['Tx_Easyvote_CommunityUser']['showitem'] .= ',--div--;LLL:EXT:easyvote/Resources/Private/Language/locallang_db.xlf:tx_easyvote_domain_model_communityuser';
 $GLOBALS['TCA']['fe_users']['types']['Tx_Easyvote_CommunityUser']['showitem'] .=
-    ',gender, privacy_protection, city_selection, kanton, party, party_verification_code, user_language, birthdate, fal_image, auth_token, notification_mail_active, notification_sms_active,community_news_mail_active,followers, events, community_user, tx_easyvoteeducation_panels, organization, organization_website, organization_city, education_type, education_institution, personal_election_lists, vip, cached_follower_rank_ch, cached_follower_rank_canton, cached_follower_rank_vip';
+    ',gender, privacy_protection, city_selection, kanton, party, party_verification_code, party_admin_allowed_cantons, user_language, birthdate, fal_image, auth_token, notification_mail_active, notification_sms_active,community_news_mail_active,followers, events, community_user, tx_easyvoteeducation_panels, organization, organization_website, organization_city, education_type, education_institution, personal_election_lists, vip, cached_follower_rank_ch, cached_follower_rank_canton, cached_follower_rank_vip';
 
 $GLOBALS['TCA']['fe_users']['ctrl']['label_alt'] = 'last_name,first_name';
 $GLOBALS['TCA']['fe_users']['ctrl']['label_alt_force'] = TRUE;

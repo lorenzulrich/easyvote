@@ -404,7 +404,21 @@ CREATE TABLE fe_users (
   vip int(1) unsigned DEFAULT '0' NOT NULL,
   cached_follower_rank_ch int(11) unsigned NOT NULL DEFAULT '0',
   cached_follower_rank_canton int(11) unsigned NOT NULL DEFAULT '0',
-  cached_follower_rank_vip int(11) unsigned NOT NULL DEFAULT '0'
+  cached_follower_rank_vip int(11) unsigned NOT NULL DEFAULT '0',
+  party_admin_allowed_cantons int(11) unsigned DEFAULT '0' NOT NULL
+);
+
+#
+# Table structure for table 'tx_easyvote_metavotingproposal_votingproposal_mm'
+#
+CREATE TABLE tx_easyvote_feuser_kanton_mm (
+  uid_local int(11) unsigned DEFAULT '0' NOT NULL,
+  uid_foreign int(11) unsigned DEFAULT '0' NOT NULL,
+  sorting int(11) unsigned DEFAULT '0' NOT NULL,
+  sorting_foreign int(11) unsigned DEFAULT '0' NOT NULL,
+
+  KEY uid_local (uid_local),
+  KEY uid_foreign (uid_foreign)
 );
 
 

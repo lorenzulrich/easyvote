@@ -68,9 +68,11 @@ class PartyController extends AbstractController
      */
     public function memberFilterAction()
     {
+        $authenticatedUser = $this->communityUserService->getCommunityUser();
+
         $kantons = $this->kantonRepository->findAll();
         $this->view->assign('demand', $this->getDemandFromSession(TRUE));
-        $this->view->assign('kantons', $kantons);
+        $this->view->assign('kantons', $authenticatedUser->getPartyAdminAllowedCantons());
         $statusFilters = array(
             'politician' => LocalizationUtility::translate('party.memberFilter.filter.status.confirmed', 'easyvote'),
             'pendingPolitician' => LocalizationUtility::translate('party.memberFilter.filter.status.pending', 'easyvote')
@@ -106,7 +108,7 @@ class PartyController extends AbstractController
             $this->view->assign('demand', $demand);
             $this->view->assign('communityUser', $communityUser);
 
-            $allMembers = $this->communityUserRepository->findByParty($communityUser->getParty());
+            $allMembers = $this->communityUserRepository->findPoliticiansByPartyAndDemand($communityUser->getParty());
             $this->view->assign('allMembers', $allMembers);
             $pendingMembers = $this->communityUserRepository->findPendingPoliticiansByParty($communityUser->getParty());
             $this->view->assign('pendingMembers', $pendingMembers);

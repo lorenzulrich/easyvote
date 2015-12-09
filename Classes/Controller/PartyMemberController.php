@@ -80,6 +80,7 @@ class PartyMemberController extends CommunityUserController
     public function declineAction(\Visol\Easyvote\Domain\Model\CommunityUser $object)
     {
         $communityUser = $this->communityUserService->getCommunityUser();
+        // TODO check if partyAdmin is authorized for Canton
         if ($communityUser->getParty()->getUid() === $object->getParty()->getUid()) {
             $pendingPoliticianUsergroup = $this->communityUserService->getUserGroup('pendingPolitician');
             $object->removeUsergroup($pendingPoliticianUsergroup);
@@ -113,6 +114,7 @@ class PartyMemberController extends CommunityUserController
     public function removeAction(\Visol\Easyvote\Domain\Model\CommunityUser $object)
     {
         $communityUser = $this->communityUserService->getCommunityUser();
+        // TODO check if partyAdmin is authorized for Canton
         if ($communityUser->getParty()->getUid() === $object->getParty()->getUid()) {
             $politician = $this->communityUserService->getUserGroup('politician');
             $object->removeUsergroup($politician);
@@ -146,9 +148,14 @@ class PartyMemberController extends CommunityUserController
     public function grantAdminAction(\Visol\Easyvote\Domain\Model\CommunityUser $object)
     {
         $communityUser = $this->communityUserService->getCommunityUser();
+        // TODO check if partyAdmin is authorized for Canton
         if ($communityUser->getParty()->getUid() === $object->getParty()->getUid()) {
             $partyAdministratorGroup = $this->communityUserService->getUserGroup('partyAdministrator');
             $object->addUsergroup($partyAdministratorGroup);
+            // Copy same allowed cantons that the current user is allowed for
+            foreach ($communityUser->getPartyAdminAllowedCantons() as $canton) {
+                $object->addPartyAdminAllowedCanton($canton);
+            }
             $this->communityUserRepository->update($object);
             $this->persistenceManager->persistAll();
             return json_encode(array('namespace' => 'Easyvote', 'function' => 'getPartyMembers', 'arguments' => $object->getUid()));
