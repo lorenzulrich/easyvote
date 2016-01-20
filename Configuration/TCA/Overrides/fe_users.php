@@ -310,9 +310,11 @@ $communityUserColumns = [
             'MM' => 'tx_easyvote_feuser_kanton_mm',
             'size' => 10,
             'autoSizeMax' => 30,
+            'minitems' => 0,
             'maxitems' => 9999,
             'multiple' => 0,
             'enableMultiSelectFilterTextfield' => true,
+            'MM_opposite_field' => 'party_administrators',
         ],
     ],
 ];
@@ -327,3 +329,23 @@ $GLOBALS['TCA']['fe_users']['types']['Tx_Easyvote_CommunityUser']['showitem'] .=
 
 $GLOBALS['TCA']['fe_users']['ctrl']['label_alt'] = 'last_name,first_name';
 $GLOBALS['TCA']['fe_users']['ctrl']['label_alt_force'] = TRUE;
+
+
+$tca = array(
+    'grid' => array(
+        'columns' => array(
+            'party_admin_allowed_cantons' => array(
+                'sortable' => FALSE,
+                'renderers' => array(
+                    'Fab\Vidi\Grid\RelationEditRenderer',
+                    'Fab\Vidi\Grid\RelationRenderer',
+                ),
+            ),
+        ),
+    ),
+);
+
+\TYPO3\CMS\Core\Utility\ArrayUtility::mergeRecursiveWithOverrule($GLOBALS['TCA']['fe_users'], $tca);
+
+
+

@@ -34,7 +34,7 @@ $GLOBALS['TCA']['tx_easyvote_domain_model_kanton'] = [
         'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, name, abbreviation, cities',
     ],
     'types' => [
-        '1' => ['showitem' => 'sys_language_uid;;;;1-1-1, l10n_parent, l10n_diffsource, hidden;;1, name, abbreviation, panel_limit, panel_allowed_from, panel_allowed_to, languages, cities,--div--;LLL:EXT:cms/locallang_ttc.xlf:tabs.access,starttime, endtime'],
+        '1' => ['showitem' => 'sys_language_uid;;;;1-1-1, l10n_parent, l10n_diffsource, hidden;;1, name, abbreviation, panel_limit, panel_allowed_from, panel_allowed_to, languages, cities, party_administrators,--div--;LLL:EXT:cms/locallang_ttc.xlf:tabs.access,starttime, endtime'],
     ],
     'palettes' => [
         '1' => ['showitem' => ''],
@@ -198,6 +198,21 @@ $GLOBALS['TCA']['tx_easyvote_domain_model_kanton'] = [
                 'size' => 12,
                 'eval' => 'date',
                 'checkbox' => 0,
+            ],
+        ],
+        'party_administrators' => [
+            'exclude' => 1,
+            'label' => 'LLL:EXT:easyvote/Resources/Private/Language/locallang_db.xlf:tx_easyvote_domain_model_kanton.party_administrators',
+            'config' => [
+                'type' => 'select',
+                'size' => 10,
+                'minitems' => 0,
+                'maxitems' => 9999,
+                'autoSizeMax' => 30,
+                'multiple' => 0,
+                'foreign_table' => 'fe_users',
+                'MM' => 'tx_easyvote_feuser_kanton_mm',
+                'MM_opposite_field' => 'party_admin_allowed_cantons',
             ],
         ],
     ],
