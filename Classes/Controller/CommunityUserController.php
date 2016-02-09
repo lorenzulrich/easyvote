@@ -913,22 +913,16 @@ class CommunityUserController extends AbstractController
     {
         // try to get logged in user
         $communityUser = $this->communityUserService->getCommunityUser();
-
-        if ($communityUser instanceof CommunityUser) {
-            $appConfiguration = array();
-            $appConfiguration['results']['token'] = $communityUser->getAuthToken();
-            $appConfiguration['results']['PushChannels'] = array();
-            $appConfiguration['results']['PushChannels']['Channel0'] = 'userid_' . $communityUser->getUid();
-            foreach ($this->settings['pushChannels'] as $key => $pushChannel) {
-                $appConfiguration['results']['PushChannels']['Channel' . $key] = $pushChannel;
-            }
-
-            return json_encode($appConfiguration);
-
-        } else {
-            return json_encode(array());
+        $appConfiguration = array();
+        $appConfiguration['results']['PushChannels'] = array();
+        foreach ($this->settings['pushChannels'] as $key => $pushChannel) {
+            $appConfiguration['results']['PushChannels']['Channel' . $key] = $pushChannel;
         }
-
+        if ($communityUser instanceof CommunityUser) {
+            $appConfiguration['results']['token'] = $communityUser->getAuthToken();
+            $appConfiguration['results']['PushChannels']['Channel0'] = 'userid_' . $communityUser->getUid();
+        }
+        return json_encode($appConfiguration);
     }
 
     /**
