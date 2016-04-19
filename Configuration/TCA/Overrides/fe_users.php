@@ -330,22 +330,92 @@ $GLOBALS['TCA']['fe_users']['types']['Tx_Easyvote_CommunityUser']['showitem'] .=
 $GLOBALS['TCA']['fe_users']['ctrl']['label_alt'] = 'last_name,first_name';
 $GLOBALS['TCA']['fe_users']['ctrl']['label_alt_force'] = TRUE;
 
-
-
 // Remove all facets first
-unset($GLOBALS['TCA']['fe_users']['grid']['facets']);
+unset($GLOBALS['TCA']['fe_users']['grid']['facets'], $GLOBALS['TCA']['fe_users']['grid']['columns']);
 
 // Exclude more fields from TCA.
 $tca = [
     'grid' => [
-        'excluded_fields' => $GLOBALS['TCA']['fe_users']['grid']['excluded_fields'] . ', uid, name, crdate, tstamp, password, middle_name, address, fax, title, zip, city, country, www, company, fal_image, starttime, endtime, lastlogin, tx_extbase_type, customer_number, age_start, age_end, datasets, salutation, kanton, notification_mail_active, notification_sms_active, notification_related_users, community_user, party_verification_code,tx_cabagloginas_loginas, tx_easyvoteeducation_panels',
+        'excluded_fields' => $GLOBALS['TCA']['fe_users']['grid']['excluded_fields'] . ', uid, name, crdate, tstamp, password, middle_name, address, fax, title, zip, city, country, www, company, fal_image, starttime, endtime, lastlogin, tx_extbase_type, customer_number, age_start, age_end, datasets, kanton, notification_mail_active, notification_sms_active, notification_related_users, community_user, party_verification_code,tx_cabagloginas_loginas, tx_easyvoteeducation_panels',
         'columns' => [
-            'party_admin_allowed_cantons' => [
-                'sortable' => false,
+            '__checkbox' => [
+                'renderer' => new Fab\Vidi\Grid\CheckBoxComponent(),
+            ],
+            'uid' => [
+                'visible' => false,
+                'label' => 'Id',
+                'width' => '5px',
+            ],
+            'username' => [
+                'visible' => true,
+                'label' => 'LLL:EXT:vidi/Resources/Private/Language/fe_users.xlf:username',
+                'editable' => true,
+            ],
+            'gender' => [
+                'visible' => false,
+            ],
+            'name' => [
+                'visible' => true,
+                'label' => 'LLL:EXT:vidi/Resources/Private/Language/fe_users.xlf:name',
+                'editable' => true,
+            ],
+            'email' => [
+                'visible' => true,
+                'label' => 'LLL:EXT:vidi/Resources/Private/Language/fe_users.xlf:email',
+                'editable' => true,
+            ],
+            'usergroup' => [
+                'visible' => true,
                 'renderers' => [
                     'Fab\Vidi\Grid\RelationEditRenderer',
                     'Fab\Vidi\Grid\RelationRenderer',
                 ],
+                'editable' => true,
+                'sortable' => false,
+                'label' => 'LLL:EXT:vidi/Resources/Private/Language/fe_users.xlf:usergroup',
+            ],
+            'tstamp' => [
+                'visible' => false,
+                'format' => 'Fab\Vidi\Formatter\Date',
+                'label' => 'LLL:EXT:vidi/Resources/Private/Language/locallang.xlf:tstamp',
+            ],
+            'crdate' => [
+                'visible' => false,
+                'format' => 'Fab\Vidi\Formatter\Date',
+                'label' => 'LLL:EXT:vidi/Resources/Private/Language/locallang.xlf:crdate',
+            ],
+            'disable' => [
+                'renderer' => 'Fab\Vidi\Grid\VisibilityRenderer',
+                'label' => 'LLL:EXT:vidi/Resources/Private/Language/locallang.xlf:active',
+                'width' => '3%',
+            ],
+            '__zip_renderer' => [
+                'label' => 'LLL:EXT:easyvote/Resources/Private/Language/locallang_db.xlf:tx_easyvote_domain_model_communityuser.zip',
+                'visible' => false,
+                'renderers' => [
+                    \Visol\Easyvote\Grid\ZipRenderer::class,
+                ],
+            ],
+            'city_selection' => [
+                'visible' => false,
+            ],
+            '__canton_renderer' => [
+                'label' => 'LLL:EXT:easyvote/Resources/Private/Language/locallang_db.xlf:tx_easyvote_domain_model_communityuser.canton',
+                'visible' => false,
+                'renderers' => [
+                    \Visol\Easyvote\Grid\CantonRenderer::class,
+                ],
+            ],
+            'party_admin_allowed_cantons' => [
+                'sortable' => false,
+                'visible' => false,
+                'renderers' => [
+                    'Fab\Vidi\Grid\RelationEditRenderer',
+                    'Fab\Vidi\Grid\RelationRenderer',
+                ],
+            ],
+            '__buttons' => [
+                'renderer' => new Fab\Vidi\Grid\ButtonGroupComponent(),
             ],
         ],
         'facets' => [
@@ -395,10 +465,7 @@ $tca = [
                     '1' => 'LLL:EXT:vidi/Resources/Private/Language/locallang.xlf:active.1'
                 ]
             ),
-            new \Fab\Vidi\Facet\StandardFacet(
-                'city_selection',
-                'LLL:EXT:easyvote/Resources/Private/Language/locallang_db.xlf:tx_easyvote_domain_model_communityuser.city_selection'
-            ),
+            new \Visol\Easyvote\Facet\CantonFacet(),
         ],
     ]];
 

@@ -255,6 +255,12 @@
 			<trans-unit id="tx_easyvote_domain_model_communityuser.party_admin_allowed_cantons">
 				<source>Allowed cantons for party administrator</source>
 			</trans-unit>
+			<trans-unit id="tx_easyvote_domain_model_communityuser.zip">
+				<source>Npa</source>
+			</trans-unit>
+			<trans-unit id="tx_easyvote_domain_model_communityuser.canton">
+				<source>Canton</source>
+			</trans-unit>
 
 			<trans-unit id="tx_easyvote_domain_model_messagingjob">
 				<source>Messaging Job</source>
