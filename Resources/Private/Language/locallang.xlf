@@ -51,10 +51,10 @@
 				<source>Was würde sich ändern?</source>
 			</trans-unit>
 			<trans-unit id="tx_easyvote_domain_model_votingproposal.pro_arguments">
-				<source>Pro</source>
+				<source>Argumente der BefürworterInnen</source>
 			</trans-unit>
 			<trans-unit id="tx_easyvote_domain_model_votingproposal.contra_arguments">
-				<source>Kontra</source>
+				<source>Argumente der GegnerInnen</source>
 			</trans-unit>
 			<trans-unit id="tx_easyvote_domain_model_votingproposal.government_opinion">
 				<source>Parlaments- und Regierungsmeinung</source>

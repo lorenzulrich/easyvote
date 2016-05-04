@@ -21,10 +21,10 @@
 				<target>Qu’est-ce qui changerait?</target>
 			</trans-unit>
 			<trans-unit id="tx_easyvote_domain_model_votingproposal.pro_arguments">
-				<target>Arguments pour</target>
+				<target>Arguments des partisans</target>
 			</trans-unit>
 			<trans-unit id="tx_easyvote_domain_model_votingproposal.contra_arguments">
-				<target>Arguments contre</target>
+				<target>Arguments des opposants</target>
 			</trans-unit>
 			<trans-unit id="tx_easyvote_domain_model_votingproposal.government_opinion">
 				<target>Opinion du Parlement et du Gouvernement</target>
