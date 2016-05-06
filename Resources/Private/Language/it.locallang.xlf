@@ -516,9 +516,9 @@
 				<target>Partecipa al rating delle votazioni e condividi la tua opinione! Altre collaborazioni arriveranno a breve...</target>
 			</trans-unit>
 			<trans-unit id="loginPanel.modalLegalInfo">
-				<source><![CDATA[
-					Wenn du fortfährst, bestätigst Du, dass Du unsere <a target="_blank" href="%1$s">Datenschutzrichtlinien</a> gelesen und akzeptiert hast.
-				]]></source>
+				<target><![CDATA[
+					Ich akzeptiere die <a href="%1$s" target="_blank">Datenschutzrichtlinien</a>.
+				]]></target>
 			</trans-unit>
 			<trans-unit id="loginPanel.modalNativeLoginHeader">
 				<target>Login con e-mail</target>
@@ -528,6 +528,9 @@
 			</trans-unit>
 			<trans-unit id="loginPanel.forgotPasswordLink">
 				<target>Password dimenticata</target>
+			</trans-unit>
+			<trans-unit id="loginPanel.registerWithFacebook">
+				<target>Registrare con Facebook</target>
 			</trans-unit>
 
 			<trans-unit id="userFunctions.voteWecker">

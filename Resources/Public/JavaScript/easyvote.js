@@ -73,6 +73,17 @@ $(function() {
 		$('.login-link').trigger('click');
 	});
 
+    /* Legal terms must be accepted before registration is enabled */
+	$body.on('click', '.acceptLegalInfo', function () {
+		$('.button-normal-registration').prop('disabled', false);
+		$('.button-facebook-registration').prop('disabled', false);
+		$('.acceptLegalInfo').prop('checked', true).prop('disabled', true);
+	});
+
+	$body.on('click', '.button-facebook-registration', function () {
+		window.location = $(this).attr('data-targeturi');
+	});
+
 });
 
 var Easyvote = {

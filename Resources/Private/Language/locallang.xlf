@@ -617,8 +617,11 @@
 			</trans-unit>
 			<trans-unit id="loginPanel.modalLegalInfo">
 				<source><![CDATA[
-					Wenn du fortfährst, bestätigst Du, dass Du unsere <a href="%1$s" target="_blank">Datenschutzrichtlinien</a> gelesen und akzeptiert hast.
+					Ich akzeptiere die <a href="%1$s" target="_blank">Datenschutzrichtlinien</a>.
 				]]></source>
+			</trans-unit>
+			<trans-unit id="loginPanel.registerWithFacebook">
+				<source>Mit Facebook anmelden</source>
 			</trans-unit>
 
 			<trans-unit id="userFunctions.voteWecker">

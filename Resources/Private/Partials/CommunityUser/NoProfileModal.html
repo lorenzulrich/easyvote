@@ -29,10 +29,13 @@
 		</table>
 	</div>
 	<div class="col-md-6">
+		<p class="legal-info">
+            <label for="acceptLegalInfo">
+                <input type="checkbox" id="acceptLegalInfo" class="acceptLegalInfo" />
+                <f:translate key="loginPanel.modalLegalInfo" htmlEscape="false" arguments="{1: '{f:uri.page(pageUid:settings.privacyStatementPid, absolute:\'TRUE\')}'}" />
+            </label>
+		</p>
 		<f:render partial="CommunityUser/Registration" arguments="{_all}" />
 		<f:link.page pageUid="{settings.forgotPasswordPid}" noCacheHash="true" additionalParams="{tx_felogin_pi1: {forgot: 1}}"><f:translate key="loginPanel.forgotPasswordLink" /></f:link.page>
 	</div>
 </div>
-<p class="legal-info">
-	<f:translate key="loginPanel.modalLegalInfo" htmlEscape="false" arguments="{1: '{f:uri.page(pageUid:settings.privacyStatementPid, absolute:\'TRUE\')}'}" />
-</p>

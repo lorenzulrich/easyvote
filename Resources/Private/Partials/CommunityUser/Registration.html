@@ -1,14 +1,16 @@
 <div class="registration">
 	<f:if condition="{settings.context} != 'app'">
-		<f:then>
-			<f:link.action class="facebook-login" noCacheHash="TRUE" extensionName="vifbauth" pluginName="Auth" controller="Authentication" action="login">
-				<f:image src="EXT:easyvote/Resources/Public/Images/button-facebook-login.png" alt="Log in with Facebook" />
-			</f:link.action>
+        <f:then>
+            <button class="btn btn-primary button-facebook-registration" data-targeturi="{f:uri.action(noCacheHash: 'true', extensionName: 'vifbauth', pluginName: 'Auth', controller: 'Authentication', action: 'login')}" type="button" disabled="disabled">
+                <i class="evicon-facebook-login"></i>
+                {f:translate(key: 'loginPanel.registerWithFacebook')}
+            </button>
 		</f:then>
 		<f:else>
-			<a class="facebook-login" href="facebooklogin://{f:uri.page(addQueryString:'TRUE', noCacheHash: 'TRUE', absolute: 'TRUE', additionalParams:'{logintype:\'login\'}')}">
-				<f:image src="EXT:easyvote/Resources/Public/Images/button-facebook-login.png" alt="Log in with Facebook" />
-			</a>
+            <button class="btn btn-primary button-facebook-registration" data-targeturi="facebooklogin://{f:uri.page(addQueryString:'TRUE', noCacheHash: 'TRUE', absolute: 'TRUE', additionalParams:'{logintype:\'login\'}')}" type="button" disabled="disabled">
+                <i class="evicon-facebook-login"></i>
+                {f:translate(key: 'loginPanel.registerWithFacebook')}
+            </button>
 		</f:else>
 	</f:if>
 	<h2 class="header-line"><span><f:translate key="registration.or" /></span></h2>
@@ -49,7 +51,7 @@
 				<f:form.password class="form-control" name="password" id="password" additionalAttributes="{required:'true'}" errorClass="has-error" />
 			</div>
 			<div class="form-group">
-				<button type="submit" class="btn btn-primary"><f:translate key="registration.register" /></button>
+				<button type="submit" disabled="disabled" class="button-normal-registration btn btn-primary"><f:translate key="registration.register" /></button>
 			</div>
 		</f:form>
 	</div>

@@ -508,7 +508,7 @@
 			</trans-unit>
 			<trans-unit id="loginPanel.modalLegalInfo">
 				<target><![CDATA[
-					En poursuivant, tu confirmes avoir lu et accepté notre <a target="_blank" href="%1$s">Règles relatives à la protection des données</a>.
+					J'accepte les <a target="_blank" href="%1$s">règles relatives à la protection des données</a>.
 				]]></target>
 			</trans-unit>
 			<trans-unit id="loginPanel.modalNativeLoginHeader">
@@ -519,6 +519,9 @@
 			</trans-unit>
 			<trans-unit id="loginPanel.forgotPasswordLink">
 				<target>Mot de passe oublié</target>
+			</trans-unit>
+			<trans-unit id="loginPanel.registerWithFacebook">
+				<target>S'enregistrer avec Facebook</target>
 			</trans-unit>
 
 			<trans-unit id="userFunctions.voteWecker">
