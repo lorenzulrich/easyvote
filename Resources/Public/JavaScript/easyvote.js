@@ -543,8 +543,12 @@ $(function() {
 	}
 
 	// trigger registration modal on clicking the registration link in login modal
-	$('.loginModalRegistrationLink').on('click', function(e) {
+	$body.on('click', '.loginModalRegistrationLink', function(e) {
 		e.preventDefault();
+        // Close possible open modals
+        $('#flashMessageContainer').modal('hide');
+        $('.login-popup').modal('hide');
+        // Open registration modal
 		$('.register-link').first().trigger('click');
 	});
 

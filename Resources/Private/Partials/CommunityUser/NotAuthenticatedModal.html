@@ -3,64 +3,8 @@
 		<i class="evicon-cancel"></i>
 	</a>
 	<h2><f:translate key="loginPanel.modalHeaderNotAuthenticated" /></h2>
-	<div class="clearfix">
-		<p class="introduction">
-			<f:translate key="loginPanel.modalSubheaderNotAuthenticated" />
-		</p>
-		<div class="row">
-            <div class="col-md-6">
-				<p class="introduction">
-					<f:translate key="loginPanel.modalFacebookHeader" />
-				</p>
-				<p>
-					<f:if condition="{settings.context} != 'app'">
-						<f:then>
-							<f:link.action noCacheHash="TRUE" extensionName="vifbauth" pluginName="Auth" controller="Authentication" action="login">
-								<f:image src="EXT:easyvote/Resources/Public/Images/button-facebook-login.png" alt="Log in with Facebook" />
-							</f:link.action>
-						</f:then>
-						<f:else>
-							<a href="facebooklogin://{f:uri.page(addQueryString:'TRUE', noCacheHash: 'TRUE', absolute: 'TRUE', additionalParams:'{logintype:\'login\'}')}">
-								<f:image src="EXT:easyvote/Resources/Public/Images/button-facebook-login.png" alt="Log in with Facebook" />
-							</a>
-						</f:else>
-					</f:if>
-				</p>
-			</div>
-			<div class="col-md-6">
-				<p class="introduction">
-					<f:translate key="loginPanel.modalAdvantages" />
-				</p>
-				<table class="advantages">
-					<tr>
-						<td>
-							<i class="evicon-broschuere evicon-40"></i>
-						</td>
-						<td>
-							<f:translate key="loginPanel.modalAdvantage.1" />
-						</td>
-					</tr>
-					<tr>
-						<td>
-							<i class="evicon-wecker evicon-40"></i>
-						</td>
-						<td>
-							<f:translate key="loginPanel.modalAdvantage.2" />
-						</td>
-					</tr>
-					<tr>
-						<td>
-							<i class="evicon-sprechblase evicon-40"></i>
-						</td>
-						<td>
-							<f:translate key="loginPanel.modalAdvantage.3" />
-						</td>
-					</tr>
-				</table>
-			</div>
-		</div>
-	</div>
-	<p>
-		<f:translate key="loginPanel.modalLegalInfo" htmlEscape="false" arguments="{1: '{f:uri.page(pageUid:settings.privacyStatementPid, absolute:\'TRUE\')}'}" />
-	</p>
+    <p class="introduction">
+        <f:translate key="loginPanel.modalSubheaderNotAuthenticated" />
+    </p>
+    <f:render partial="CommunityUser/LoginModal" />
 </div>

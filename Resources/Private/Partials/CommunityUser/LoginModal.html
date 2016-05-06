@@ -1,17 +1,18 @@
-<h2><f:translate key="loginPanel.modalHeaderLogin" /></h2>
 <div class="row">
 	<div class="col-md-6">
 		<p>
 			<f:if condition="{settings.context} != 'app'">
 				<f:then>
-					<f:link.action noCacheHash="TRUE" extensionName="vifbauth" pluginName="Auth" controller="Authentication" action="login">
-						<f:image src="EXT:easyvote/Resources/Public/Images/button-facebook-login.png" alt="Log in with Facebook" />
-					</f:link.action>
+                    <button class="btn btn-primary button-facebook-registration" data-targeturi="{f:uri.action(noCacheHash: 'true', extensionName: 'vifbauth', pluginName: 'Auth', controller: 'Authentication', action: 'login')}" type="button">
+                        <i class="evicon-facebook-login"></i>
+                        {f:translate(key: 'loginPanel.registerWithFacebook')}
+                    </button>
 				</f:then>
 				<f:else>
-					<a href="facebooklogin://{f:uri.page(addQueryString:'TRUE', noCacheHash: 'TRUE', absolute: 'TRUE', additionalParams:'{logintype:\'login\'}')}">
-						<f:image src="EXT:easyvote/Resources/Public/Images/button-facebook-login.png" alt="Log in with Facebook" />
-					</a>
+                    <button class="btn btn-primary button-facebook-registration" data-targeturi="facebooklogin://{f:uri.page(addQueryString:'TRUE', noCacheHash: 'TRUE', absolute: 'TRUE', additionalParams:'{logintype:\'login\'}')}" type="button">
+                        <i class="evicon-facebook-login"></i>
+                        {f:translate(key: 'loginPanel.registerWithFacebook')}
+                    </button>
 				</f:else>
 			</f:if>
 		</p>
