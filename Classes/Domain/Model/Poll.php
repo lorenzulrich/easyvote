@@ -25,6 +25,9 @@ class Poll extends AbstractEntity
 
     /**
      * Meinung
+	 *
+	 * 1: yes
+	 * 2: no
      *
      * @var \integer
      * @validate NotEmpty

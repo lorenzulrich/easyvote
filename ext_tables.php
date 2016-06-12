@@ -156,7 +156,8 @@ if (TYPO3_MODE == 'BE') {
         'easyvote',
         'top',
         array(
-            'CommunityUser' => 'backendDashboard,backendSmsMessagingIndex,backendSmsMessageSend,backendEmailExportIndex,backendEmailExportPerform'
+            'CommunityUser' => 'backendDashboard,backendSmsMessagingIndex,backendSmsMessageSend,backendEmailExportIndex,backendEmailExportPerform',
+            'CommunityUserBackend' => 'personalDataRequest'
         ),
         array(
             'access' => 'user,group',

@@ -285,6 +285,11 @@ class CommunityUser extends FrontendUser
      */
     protected $cachedFollowerRankVip;
 
+	/**
+	 * @var integer
+	 */
+	protected $lastlogin;
+
     /**
      * __construct
      *
@@ -975,5 +980,12 @@ class CommunityUser extends FrontendUser
     {
         $this->vip = $vip;
     }
+
+	/**
+	 * @return integer
+	 */
+	public function getLastlogin() {
+		return $this->lastlogin;
+	}
 
 }

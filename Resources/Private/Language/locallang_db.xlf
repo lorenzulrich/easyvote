@@ -256,10 +256,13 @@
 				<source>Allowed cantons for party administrator</source>
 			</trans-unit>
 			<trans-unit id="tx_easyvote_domain_model_communityuser.zip">
-				<source>Npa</source>
+				<source>Post code</source>
 			</trans-unit>
 			<trans-unit id="tx_easyvote_domain_model_communityuser.canton">
 				<source>Canton</source>
+			</trans-unit>
+			<trans-unit id="tx_easyvote_domain_model_communityuser.personal_data_request">
+				<source>Auskunftsbegehren</source>
 			</trans-unit>
 
 			<trans-unit id="tx_easyvote_domain_model_messagingjob">

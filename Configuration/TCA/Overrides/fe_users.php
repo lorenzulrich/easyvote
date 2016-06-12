@@ -406,6 +406,13 @@ $tca = [
                     \Visol\Easyvote\Grid\CantonRenderer::class,
                 ],
             ],
+            '__personal_data_request' => [
+                'label' => 'LLL:EXT:easyvote/Resources/Private/Language/locallang_db.xlf:tx_easyvote_domain_model_communityuser.personal_data_request',
+                'visible' => false,
+                'renderers' => [
+                    \Visol\Easyvote\Grid\PersonalDataRequestRenderer::class,
+                ],
+            ],
             'party_admin_allowed_cantons' => [
                 'sortable' => false,
                 'visible' => false,

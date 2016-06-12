@@ -1,0 +1,461 @@
+<h2>{f:translate(key: 'personalDataCollection')}</h2>
+
+<h1>{communityUser.username} (UID {communityUser.uid})</h1>
+
+<f:if condition="{communityUser.falImage}">
+    <f:image class="user-image" alt="{communityUser.firstName} {communityUser.lastName}" src="{communityUser.falImage.uid}" treatIdAsReference="1" width="200" height="200c"/>
+</f:if>
+
+<table id="personal-data-request">
+<tbody>
+<tr>
+    <th class="sectionHeader" colspan="2">
+        <h2>{f:translate(key: 'personalDataCollection.section.general')}</h2>
+    </th>
+</tr>
+<tr>
+    <th>{f:translate(key: 'personalDataCollection.field.firstName')}</th>
+    <td>{communityUser.firstName}</td>
+</tr>
+<tr>
+    <th>{f:translate(key: 'personalDataCollection.field.lastName')}</th>
+    <td>{communityUser.lastName}</td>
+</tr>
+<tr>
+    <th>{f:translate(key: 'personalDataCollection.field.address')}</th>
+    <td>{communityUser.address}</td>
+</tr>
+<tr>
+    <th>{f:translate(key: 'personalDataCollection.field.locality')}</th>
+    <td>{communityUser.citySelection.postalCode} {communityUser.citySelection.name}</td>
+</tr>
+<tr>
+    <th>{f:translate(key: 'personalDataCollection.field.phone')}</th>
+    <td>{communityUser.formattedTelephone}</td>
+</tr>
+<tr>
+    <th>{f:translate(key: 'personalDataCollection.field.email')}</th>
+    <td>{communityUser.email}</td>
+</tr>
+<tr>
+    <th>{f:translate(key: 'personalDataCollection.field.birthdate')}</th>
+    <td>
+        <f:format.date format="{f:translate(key:'personalDataCollection.dateFormat')}"
+                       date="{communityUser.birthdate}"/>
+    </td>
+</tr>
+<tr>
+    <th>{f:translate(key: 'personalDataCollection.field.userLanguage')}</th>
+    <td>
+        <f:translate key="personalDataCollection.field.userLanguage.{communityUser.userLanguage}"/>
+    </td>
+</tr>
+<tr>
+    <th>{f:translate(key: 'personalDataCollection.field.gender')}</th>
+    <td>
+        <f:translate key="personalDataCollection.field.gender.{communityUser.gender}"/>
+    </td>
+</tr>
+<tr>
+    <th>{f:translate(key: 'personalDataCollection.field.vip')}</th>
+    <td>
+        <f:translate key="personalDataCollection.yesNoBoolean.{communityUser.vip}"/>
+    </td>
+</tr>
+
+<tr>
+    <th>{f:translate(key: 'personalDataCollection.field.lastlogin')}</th>
+    <td>
+        <f:if condition="{communityUser.lastlogin}">
+            <f:format.date format="{f:translate(key:'personalDataCollection.dateTimeFormat')}">@{communityUser.lastlogin}</f:format.date>
+        </f:if>
+    </td>
+</tr>
+<f:if condition="{communityUser.teacher}">
+    <tr>
+        <th class="sectionHeader" colspan="2">
+            <h2>{f:translate(key: 'personalDataCollection.section.teacher')}</h2>
+        </th>
+    </tr>
+    <tr>
+        <th>{f:translate(key: 'personalDataCollection.field.organization')}</th>
+        <td>{communityUser.organization}</td>
+    </tr>
+    <tr>
+        <th>{f:translate(key: 'personalDataCollection.field.organizationWebsite')}</th>
+        <td>{communityUser.organizationWebsite}</td>
+    </tr>
+    <tr>
+        <th>{f:translate(key: 'personalDataCollection.field.organizationCity')}</th>
+        <td>{communityUser.organizationCity.postalCode} {communityUser.organizationCity.name}</td>
+    </tr>
+</f:if>
+<f:if condition="{communityUser.politician}">
+    <tr>
+        <th class="sectionHeader" colspan="2">
+            <h2>{f:translate(key: 'personalDataCollection.section.politician')}</h2>
+        </th>
+    </tr>
+    <tr>
+        <th>{f:translate(key: 'personalDataCollection.field.party')}</th>
+        <td>{communityUser.party.title}</td>
+    </tr>
+    <tr>
+        <th>{f:translate(key: 'personalDataCollection.field.partyVerificationCode')}</th>
+        <td>{communityUser.partyVerificationCode}</td>
+    </tr>
+    <tr>
+        <th>{f:translate(key: 'personalDataCollection.field.educationType')}</th>
+        <td>{communityUser.educationType}</td>
+    </tr>
+    <tr>
+        <th>{f:translate(key: 'personalDataCollection.field.educationInstitution')}</th>
+        <td>{communityUser.educationInstitution}</td>
+    </tr>
+    <tr>
+        <th>{f:translate(key: 'personalDataCollection.field.partyAdminAllowedCanton')}</th>
+        <td>
+            <ul>
+                <f:for each="{communityUser.partyAdminAllowedCantons}" as="canton">
+                    <li>{canton.name}</li>
+                </f:for>
+            </ul>
+        </td>
+    </tr>
+</f:if>
+
+<tr>
+    <th class="sectionHeader" colspan="2">
+        <h2>{f:translate(key: 'personalDataCollection.section.notifications')}</h2>
+    </th>
+</tr>
+<tr>
+    <th>{f:translate(key: 'personalDataCollection.field.notificationMailActive')}</th>
+    <td>
+        <f:translate key="personalDataCollection.activeInactiveBoolean.{communityUser.notificationMailActive}"/>
+    </td>
+</tr>
+<tr>
+    <th>{f:translate(key: 'personalDataCollection.field.notificationSmsActive')}</th>
+    <td>
+        <f:translate key="personalDataCollection.activeInactiveBoolean.{communityUser.notificationSmsActive}"/>
+    </td>
+</tr>
+<tr>
+    <th>{f:translate(key: 'personalDataCollection.field.communityNewsMailActive')}</th>
+    <td>
+        <f:translate key="personalDataCollection.activeInactiveBoolean.{communityUser.communityNewsMailActive}"/>
+    </td>
+</tr>
+<tr>
+    <th>{f:translate(key: 'personalDataCollection.field.privacyProtection')}</th>
+    <td>
+        <f:translate key="personalDataCollection.activeInactiveBoolean.{communityUser.privacyProtection}"/>
+    </td>
+</tr>
+
+<tr>
+    <th class="sectionHeader" colspan="2">
+        <h2>{f:translate(key: 'personalDataCollection.section.opinionsOnVotingProposals')}</h2>
+    </th>
+</tr>
+<tr>
+    <td colspan="2">
+        <ul>
+            <f:for each="{opinionsOnVotingProposals}" as="opinion">
+                <li>
+                    <strong>
+                        {opinion.votingProposal.officialTitle}:
+                    </strong>
+                    <f:translate key="personalDataCollection.approveRejectBoolean.{opinion.value}"/>
+                </li>
+            </f:for>
+        </ul>
+    </td>
+</tr>
+
+<f:if condition="{organizedPanels}">
+    <tr>
+        <th class="sectionHeader" colspan="2">
+            <h2>{f:translate(key: 'personalDataCollection.section.panelsAsOrganizer')}</h2>
+        </th>
+    </tr>
+    <f:for each="{organizedPanels}" as="panel">
+        <tr>
+            <th>
+                <f:format.date format="{f:translate(key:'personalDataCollection.dateFormat')}">{panel.date}</f:format.date>
+            </th>
+            <td>
+                {panel.title}<br/>
+                <strong>{f:translate(key: 'personalDataCollection.field.panel.place')}:</strong>
+                <f:if condition="{panel.organization}">
+                    {panel.organization},
+                </f:if>
+                <f:if condition="{panel.address}">
+                    {panel.address},
+                </f:if>
+                <f:if condition="{panel.city}">
+                    {panel.city.postalCode} {panel.city.name}
+                </f:if>
+                <br/>
+                <f:if condition="{panel.description}">
+                    <br/>
+                    <strong>
+                        <f:translate key="personalDataCollection.field.panel.description"/>
+                        :
+                    </strong>
+                    {panel.description}
+                </f:if>
+
+            </td>
+        </tr>
+    </f:for>
+</f:if>
+
+<f:if condition="{attendingPanelInvitations}">
+    <tr>
+        <th class="sectionHeader" colspan="2">
+            <h2>{f:translate(key: 'personalDataCollection.section.panelsAsPolitician')}</h2>
+        </th>
+    </tr>
+    <f:for each="{attendingPanelInvitations}" as="panelInvitation">
+        <tr>
+            <th>
+                <f:format.date format="{f:translate(key:'personalDataCollection.dateFormat')}">{panelInvitation.panel.date}</f:format.date>
+            </th>
+            <td>
+                {panelInvitation.panel.title}<br/>
+                <strong>{f:translate(key: 'personalDataCollection.field.panel.place')}:</strong>
+                <f:if condition="{panelInvitation.panel.organization}">
+                    {panelInvitation.panel.organization},
+                </f:if>
+                <f:if condition="{panelInvitation.panel.address}">
+                    {panelInvitation.panel.address},
+                </f:if>
+                <f:if condition="{panelInvitation.panel.city}">
+                    {panelInvitation.panel.city.postalCode} {panelInvitation.panel.city.name}
+                </f:if>
+                <br/>
+                <f:if condition="{panelInvitation.panel.description}">
+                    <br/>
+                    <strong>
+                        <f:translate key="personalDataCollection.field.panel.description"/>
+                        :
+                    </strong>
+                    {panelInvitation.panel.description}
+                </f:if>
+
+            </td>
+        </tr>
+    </f:for>
+</f:if>
+
+<f:if condition="{competitionParticipations}">
+    <tr>
+        <th class="sectionHeader" colspan="2">
+            <h2>{f:translate(key: 'personalDataCollection.section.competitionParticipations')}</h2>
+        </th>
+    </tr>
+    <tr>
+        <td colspan="2">
+            <ul>
+                <f:for each="{competitionParticipations}" as="participation">
+                    <li>
+                        <strong>
+                            {participation.competition.titleLong}:
+                        </strong>
+                        {participation.title}
+                    </li>
+                </f:for>
+            </ul>
+        </td>
+    </tr>
+</f:if>
+
+<f:if condition="{competitionVotes}">
+    <tr>
+        <th class="sectionHeader" colspan="2">
+            <h2>{f:translate(key: 'personalDataCollection.section.competitionVotes')}</h2>
+        </th>
+    </tr>
+    <tr>
+        <td colspan="2">
+            <ul>
+                <f:for each="{competitionVotes}" as="vote">
+                    <li>
+                        <strong>
+                            {vote.participation.competition.titleLong}:
+                        </strong>
+                        {f:translate(key:'personalDataCollection.section.competitionVotes.voteForParticipation')}
+                        "{vote.participation.title}"
+                    </li>
+                </f:for>
+            </ul>
+        </td>
+    </tr>
+</f:if>
+
+<f:if condition="{communityUser.events}">
+    <tr>
+        <th class="sectionHeader" colspan="2">
+            <h2>{f:translate(key: 'personalDataCollection.section.ownEvent')}</h2>
+        </th>
+    </tr>
+    <f:for each="{communityUser.events}" as="event">
+        <tr>
+            <th>{f:translate(key: 'personalDataCollection.field.event.date')}</th>
+            <td>
+                <f:format.date format="{f:translate(key:'personalDataCollection.dateFormat')}">{event.date}</f:format.date>
+            </td>
+        </tr>
+        <tr>
+            <th>{f:translate(key: 'personalDataCollection.field.event.fromTime')}</th>
+            <td>
+                <f:format.date format="{f:translate(key:'personalDataCollection.timeFormat')}">{event.fromTime}</f:format.date>
+            </td>
+        </tr>
+        <tr>
+            <th>{f:translate(key: 'personalDataCollection.field.event.comment')}</th>
+            <td>{event.comment}</td>
+        </tr>
+        <tr>
+            <th>{f:translate(key: 'personalDataCollection.field.event.location')}</th>
+            <td>
+                <f:if condition="{event.location.locationType.uid} == 1">
+                    <f:comment>Briefkasten</f:comment>
+                    {f:translate(key: 'post_box', extensionName: 'easyvote_location')}, {event.location.street}, {event.location.zip} {event.location.city}
+                </f:if>
+                <f:if condition="{event.location.locationType.uid} == 10">
+                    <f:comment>#VoteNow2015</f:comment>
+                    {event.location.name}, {event.location.street}, {event.location.zip} {event.location.city}
+                </f:if>
+            </td>
+        </tr>
+        <tr>
+            <th>{f:translate(key: 'personalDataCollection.field.followers')}</th>
+            <td>
+                <f:if condition="{communityUser.followers}">
+                    <ul>
+                        <f:for each="{communityUser.followers}" as="follower">
+                            <li>
+                                <f:if condition="{follower.privacyProtection}">
+                                    <f:then>
+                                        <span class="name"><f:translate key="anonymous" /></span>
+                                    </f:then>
+                                    <f:else>
+                                        <span class="name">{follower.firstName} <f:format.crop maxCharacters="1" append="." respectWordBoundaries="FALSE" respectHtml="FALSE">{follower.lastName}</f:format.crop></span>
+                                    </f:else>
+                                </f:if>
+                            </li>
+                        </f:for>
+                    </ul>
+                </f:if>
+            </td>
+        </tr>
+    </f:for>
+</f:if>
+
+<f:if condition="{communityUser.communityUser}">
+    <tr>
+        <th class="sectionHeader" colspan="2">
+            <h2>{f:translate(key: 'personalDataCollection.section.eventParticipation')}</h2>
+        </th>
+    </tr>
+    <tr>
+        <th>{f:translate(key: 'personalDataCollection.field.event.communityUser')}</th>
+        <td>
+            <f:if condition="{communityUser.communityUser.privacyProtection}">
+                <f:then>
+                    <span class="name"><f:translate key="anonymous" /></span>
+                </f:then>
+                <f:else>
+                    <span class="name">{communityUser.communityUser.firstName} <f:format.crop maxCharacters="1" append="." respectWordBoundaries="FALSE" respectHtml="FALSE">{communityUser.communityUser.lastName}</f:format.crop></span>
+                </f:else>
+            </f:if>
+        </td>
+    </tr>
+
+    <f:for each="{communityUser.communityUser.events}" as="participatingEvent">
+        <tr>
+            <th>{f:translate(key: 'personalDataCollection.field.event.date')}</th>
+            <td>
+                <f:format.date format="{f:translate(key:'personalDataCollection.dateFormat')}">{participatingEvent.date}</f:format.date>
+            </td>
+        </tr>
+        <tr>
+            <th>{f:translate(key: 'personalDataCollection.field.event.fromTime')}</th>
+            <td>
+                <f:format.date format="{f:translate(key:'personalDataCollection.timeFormat')}">{participatingEvent.fromTime}</f:format.date>
+            </td>
+        </tr>
+        <tr>
+            <th>{f:translate(key: 'personalDataCollection.field.event.comment')}</th>
+            <td>{participatingEvent.comment}</td>
+        </tr>
+        <tr>
+            <th>{f:translate(key: 'personalDataCollection.field.event.location')}</th>
+            <td>
+                <f:if condition="{event.location.locationType.uid} == 1">
+                    <f:comment>Briefkasten</f:comment>
+                    {f:translate(key: 'post_box', extensionName: 'easyvote_location')}, {participatingEvent.location.street}, {participatingEvent.location.zip} {participatingEvent.location.city}
+                </f:if>
+                <f:if condition="{event.location.locationType.uid} == 10">
+                    <f:comment>#VoteNow2015</f:comment>
+                    {participatingEvent.location.name}, {participatingEvent.location.street}, {participatingEvent.location.zip} {participatingEvent.location.city}
+                </f:if>
+            </td>
+        </tr>
+        <tr>
+            <th>{f:translate(key: 'personalDataCollection.field.followers')}</th>
+            <td>
+                <f:if condition="{communityUser.communityUser.followers}">
+                    <ul>
+                        <f:for each="{communityUser.communityUser.followers}" as="follower">
+                            <li>
+                                <f:if condition="{follower.privacyProtection}">
+                                    <f:then>
+                                        <span class="name"><f:translate key="anonymous" /></span>
+                                    </f:then>
+                                    <f:else>
+                                        <span class="name">{follower.firstName} <f:format.crop maxCharacters="1" append="." respectWordBoundaries="FALSE" respectHtml="FALSE">{follower.lastName}</f:format.crop></span>
+                                    </f:else>
+                                </f:if>
+                            </li>
+                        </f:for>
+                    </ul>
+                </f:if>
+            </td>
+        </tr>
+    </f:for>
+</f:if>
+
+
+
+</tbody>
+</table>
+
+
+<style type="text/css">
+    <!--
+    body {
+        font-family: Verdana, Arial, Helvetica, sans-serif;
+        font-size: 12px;
+    }
+
+    #personal-data-request {
+        font-size: 12px;
+    }
+
+    #personal-data-request h2 {
+        font-size: 16px;
+        font-weight: bold;
+        margin: 20px 0 5px 0;
+    }
+
+    #personal-data-request th, #personal-data-request td {
+        text-align: left;
+        vertical-align: top;
+    }
+
+    -->
+</style>

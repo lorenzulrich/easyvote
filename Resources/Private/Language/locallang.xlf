@@ -960,6 +960,212 @@
 				<source>Gegenv.</source>
 			</trans-unit>
 
+			<trans-unit id="personalDataRequest">
+				<source>Auskunftsbegehren</source>
+			</trans-unit>
+
+			<trans-unit id="personalDataCollection.dateTimeFormat">
+				<source>%d.%m.%Y %H:%M</source>
+			</trans-unit>
+			<trans-unit id="personalDataCollection.dateFormat">
+				<source>%d.%m.%Y</source>
+			</trans-unit>
+			<trans-unit id="personalDataCollection.timeFormat">
+				<source>%H:%M</source>
+			</trans-unit>
+
+			<trans-unit id="personalDataCollection">
+				<source>Auskunftserteilung</source>
+			</trans-unit>
+			<trans-unit id="personalDataCollection.section.general">
+				<source>Allgemeine Angaben</source>
+			</trans-unit>
+			<trans-unit id="personalDataCollection.field.firstName">
+				<source>Vorname</source>
+			</trans-unit>
+			<trans-unit id="personalDataCollection.field.lastName">
+				<source>Nachname</source>
+			</trans-unit>
+			<trans-unit id="personalDataCollection.field.address">
+				<source>Adresse</source>
+			</trans-unit>
+			<trans-unit id="personalDataCollection.field.locality">
+				<source>Ort</source>
+			</trans-unit>
+			<trans-unit id="personalDataCollection.field.locality">
+				<source>Ort</source>
+			</trans-unit>
+			<trans-unit id="personalDataCollection.field.phone">
+				<source>Telefon</source>
+			</trans-unit>
+			<trans-unit id="personalDataCollection.field.email">
+				<source>E-Mail</source>
+			</trans-unit>
+			<trans-unit id="personalDataCollection.field.birthdate">
+				<source>Geburtsdatum</source>
+			</trans-unit>
+			<trans-unit id="personalDataCollection.field.userLanguage">
+				<source>Sprache</source>
+			</trans-unit>
+			<trans-unit id="personalDataCollection.field.userLanguage.1">
+				<source>Deutsch</source>
+			</trans-unit>
+			<trans-unit id="personalDataCollection.field.userLanguage.2">
+				<source>Französisch</source>
+			</trans-unit>
+			<trans-unit id="personalDataCollection.field.userLanguage.3">
+				<source>Italienisch</source>
+			</trans-unit>
+			<trans-unit id="personalDataCollection.field.gender">
+				<source>Geschlecht</source>
+			</trans-unit>
+			<trans-unit id="personalDataCollection.field.gender.0">
+				<source>Frau</source>
+			</trans-unit>
+			<trans-unit id="personalDataCollection.field.gender.1">
+				<source>Mann</source>
+			</trans-unit>
+			<trans-unit id="personalDataCollection.field.lastlogin">
+				<source>Letztes Login</source>
+			</trans-unit>
+			<trans-unit id="personalDataCollection.field.lastlogin">
+				<source>Letztes Login</source>
+			</trans-unit>
+			<trans-unit id="personalDataCollection.field.vip">
+				<source>Ist VIP</source>
+			</trans-unit>
+			<trans-unit id="personalDataCollection.field.lastlogin">
+				<source>Letztes Login</source>
+			</trans-unit>
+
+			<trans-unit id="personalDataCollection.section.teacher">
+				<source>Angaben als Lehrperson</source>
+			</trans-unit>
+			<trans-unit id="personalDataCollection.field.organization">
+				<source>Name der Schule</source>
+			</trans-unit>
+			<trans-unit id="personalDataCollection.field.organizationWebsite">
+				<source>Website der Schule</source>
+			</trans-unit>
+			<trans-unit id="personalDataCollection.field.organizationCity">
+				<source>Ort der Schule</source>
+			</trans-unit>
+
+			<trans-unit id="personalDataCollection.section.politician">
+				<source>Angaben als PolitikerIn</source>
+			</trans-unit>
+			<trans-unit id="personalDataCollection.field.party">
+				<source>Partei</source>
+			</trans-unit>
+			<trans-unit id="personalDataCollection.field.partyVerificationCode">
+				<source>Bestätigungscode</source>
+			</trans-unit>
+			<trans-unit id="personalDataCollection.field.educationType">
+				<source>Schulbildung (Sek II)</source>
+			</trans-unit>
+			<trans-unit id="personalDataCollection.field.educationInstitution">
+				<source>Name der Schule</source>
+			</trans-unit>
+			<trans-unit id="personalDataCollection.field.partyAdminAllowedCanton">
+				<source>Parteiadmin für Kantone</source>
+			</trans-unit>
+
+			<trans-unit id="personalDataCollection.section.notifications">
+				<source>Benachrichtigungen</source>
+			</trans-unit>
+			<trans-unit id="personalDataCollection.field.notificationMailActive">
+				<source>Vote-Wecker per E-Mail</source>
+			</trans-unit>
+			<trans-unit id="personalDataCollection.field.notificationSmsActive">
+				<source>Vote-Wecker per SMS</source>
+			</trans-unit>
+			<trans-unit id="personalDataCollection.field.communityNewsMailActive">
+				<source>Community-News per E-Mail</source>
+			</trans-unit>
+			<trans-unit id="personalDataCollection.field.privacyProtection">
+				<source>Erhöhte Privatsphäre</source>
+			</trans-unit>
+
+			<trans-unit id="personalDataCollection.section.opinionsOnVotingProposals">
+				<source>Abstimmungsmeinungen</source>
+			</trans-unit>
+
+			<trans-unit id="personalDataCollection.section.panelsAsOrganizer">
+				<source>Polittalks als Organisator/in</source>
+			</trans-unit>
+			<trans-unit id="personalDataCollection.section.panelsAsPolitician">
+				<source>Polittalks als Politiker/in</source>
+			</trans-unit>
+			<trans-unit id="personalDataCollection.field.panel.place">
+				<source>Ort</source>
+			</trans-unit>
+			<trans-unit id="personalDataCollection.field.panel.description">
+				<source>Bemerkung</source>
+			</trans-unit>
+
+			<trans-unit id="personalDataCollection.section.competitionParticipations">
+				<source>Beiträge zu Wettbewerben</source>
+			</trans-unit>
+			<trans-unit id="personalDataCollection.section.competitionVotes">
+				<source>Stimmen für Wettbewerbsbeiträge</source>
+			</trans-unit>
+			<trans-unit id="personalDataCollection.section.competitionVotes.voteForParticipation">
+				<source>Stimme für Beitrag</source>
+			</trans-unit>
+
+			<trans-unit id="personalDataCollection.section.ownEvent">
+				<source>Eigener VoteNow 2015-Event</source>
+			</trans-unit>
+			<trans-unit id="personalDataCollection.section.eventParticipation">
+				<source>Teilnahme an VoteNow 2015-Event</source>
+			</trans-unit>
+			<trans-unit id="personalDataCollection.field.event.communityUser">
+				<source>Organisator/in</source>
+			</trans-unit>
+			<trans-unit id="personalDataCollection.field.event.date">
+				<source>Datum</source>
+			</trans-unit>
+			<trans-unit id="personalDataCollection.field.event.fromTime">
+				<source>Startzeit</source>
+			</trans-unit>
+			<trans-unit id="personalDataCollection.field.event.comment">
+				<source>Kommentar</source>
+			</trans-unit>
+			<trans-unit id="personalDataCollection.field.event.location">
+				<source>Ort</source>
+			</trans-unit>
+			<trans-unit id="personalDataCollection.field.followers">
+				<source>Teilnehmende</source>
+			</trans-unit>
+
+			<trans-unit id="personalDataCollection.activeInactiveBoolean.">
+				<source>deaktiviert</source>
+			</trans-unit>
+			<trans-unit id="personalDataCollection.activeInactiveBoolean.0">
+				<source>deaktiviert</source>
+			</trans-unit>
+			<trans-unit id="personalDataCollection.activeInactiveBoolean.1">
+				<source>aktiviert</source>
+			</trans-unit>
+			<trans-unit id="personalDataCollection.approveRejectBoolean.1">
+				<source>Zustimmung</source>
+			</trans-unit>
+			<trans-unit id="personalDataCollection.approveRejectBoolean.2">
+				<source>Ablehnung</source>
+			</trans-unit>
+			<trans-unit id="personalDataCollection.yesNoBoolean.">
+				<source>Nein</source>
+			</trans-unit>
+			<trans-unit id="personalDataCollection.yesNoBoolean.0">
+				<source>Nein</source>
+			</trans-unit>
+			<trans-unit id="personalDataCollection.yesNoBoolean.1">
+				<source>Ja</source>
+			</trans-unit>
+
+
+
+
 		</body>
 	</file>
 </xliff>
