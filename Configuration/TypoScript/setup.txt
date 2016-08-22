@@ -70,7 +70,8 @@ plugin.tx_easyvote {
 		userStoragePid = 144
 		senderEmail = info@easyvote.ch
 		senderName = easyvote
-		smsTestUserUid = 726
+		# bianca leist
+		smsTestUserUid = 5049
 		smsGatewayUsername =
 		smsGatewayPassword = 
 		smsGatewayTest = 0
