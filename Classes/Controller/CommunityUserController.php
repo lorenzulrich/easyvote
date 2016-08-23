@@ -17,6 +17,7 @@ namespace Visol\Easyvote\Controller;
 use TYPO3\CMS\Core\Utility\DebugUtility;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Domain\Model\FileReference;
+use TYPO3\CMS\Extbase\Domain\Model\FrontendUserGroup;
 use TYPO3\CMS\Extbase\Utility\DebuggerUtility;
 use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
 use Visol\Easyvote\Domain\Model\City;
@@ -644,8 +645,13 @@ class CommunityUserController extends AbstractController
         $kantons = $this->kantonRepository->findAll();
         $admins = $this->communityUserRepository->findEasyVoteAdminUsers();
 
-        if( $admins->count() === 0 ){
-            $groupname = $this->frontendUserGroupRepository->findByUid((int)$this->settings['easyvoteAdminUserGroupUid'])->getTitle();
+        if ($admins->count() === 0) {
+            $group = $this->frontendUserGroupRepository->findByUid((int)$this->settings['easyvoteAdminUserGroupUid']);
+            if ($group instanceof FrontendUserGroup) {
+                $groupname = $group->getTitle();
+            } else {
+                $groupname = '(no group found for uid ' . $this->settings['easyvoteAdminUserGroupUid'] . ')';
+            }
             $this->addFlashMessage('Es existiert noch kein FE-User mit der Gruppe "' . $groupname . '" für den Testversand');
         }
 
