@@ -474,7 +474,7 @@ class CommunityUserController extends AbstractController
                     if (in_array($this->settings['communityUserGroupUid'], $userGroupArray)) {
                         // Facebook: Deactivate notification mail
                         if (isset($arguments['nl'])) {
-                            $newsletters = explode("|", $arguments['nl']);
+                            $newsletters = explode(",", $arguments['nl']);
                             foreach ($newsletters as $newsletter) {
                                 if ($newsletter == $communityUser::NEWSLETTER_COMMUNITY) {
                                     $communityUser->setCommunityNewsMailActive(FALSE);
@@ -571,12 +571,10 @@ class CommunityUserController extends AbstractController
                 ->setCellValue('I' . $rowIndex, 'Typ');
             $rowIndex++;
 
-
-            if ($demand['filter']['newsletters'] && is_array($demand['filter']['newsletters']) ) {
-                $newslettersparam = '&nl=' .implode("|",$demand['filter']['newsletters']);
+            if ($demand['filter']['newsletters'] && is_array($demand['filter']['newsletters'])) {
+                $newslettersParam = '&nl=' . implode(",", $demand['filter']['newsletters']);
                 $objPHPExcel->setActiveSheetIndex(0)->setCellValue('J' . $rowIndex, 'Abmelde-Link');
             }
-
 
             // Add content
             foreach ($communityUsers as $communityUser) {
@@ -606,7 +604,7 @@ class CommunityUserController extends AbstractController
 
                 $unsubscribeUrl[] = '?cuid=' . base64_encode($communityUser->getUid());
                 $unsubscribeUrl[] = '&verify=' . GeneralUtility::stdAuthCode($communityUser->getUid());
-                $unsubscribeUrl[] = $newslettersparam;
+                $unsubscribeUrl[] = $newslettersParam;
 
                 // user groups
                 $usergroups = $communityUser->getUsergroup();
@@ -628,7 +626,7 @@ class CommunityUserController extends AbstractController
                     ->setCellValue('H' . $rowIndex, $userLanguage)
                     ->setCellValue('I' . $rowIndex, $userGroupsCsv);
 
-                if ($demand['filter']['newsletters'] && is_array($demand['filter']['newsletters']) ) {
+                if ($demand['filter']['newsletters'] && is_array($demand['filter']['newsletters'])) {
                     $objPHPExcel->setActiveSheetIndex(0)->setCellValue('J' . $rowIndex, implode($unsubscribeUrl));
                 }
                 $rowIndex++;
