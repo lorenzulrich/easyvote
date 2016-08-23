@@ -15,10 +15,14 @@
 			<f:render partial="CommunityUser/Filters/Kanton" arguments="{demand: demand, kantons:kantons}" />
 			<div class="form-row clearfix">
 				<div class="label">
-					Testversand
+					Testversand an
 				</div>
 				<div class="fields">
-					<f:form.checkbox name="demand[sendToTestUser]" value="1" id="sendToTestUser" /> <label for="sendToTestUser">Sende nur einen Test an {testUser.firstName} {testUser.lastName} (Nummer: {testUser.telephone})</label>
+					<f:if condition="{admins}">
+						<f:then>
+							<f:form.select id="smsTestUserUid" name="demand[smsTestUserUid]" options="{admins}" optionLabelField="nameAndPhone" sortByOptionLabel="TRUE" class="form-control" additionalAttributes="{maxlength: '11'}" prependOptionLabel="kein Testversand" prependOptionValue="0" />
+						</f:then>
+					</f:if>
 				</div>
 			</div>
 			<div class="form-row clearfix">

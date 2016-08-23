@@ -642,19 +642,22 @@ class CommunityUserController extends AbstractController
         );
 
         $kantons = $this->kantonRepository->findAll();
+        $admins = $this->communityUserRepository->findEasyVoteAdminUsers();
+
+        if( $admins->count() === 0 ){
+            $groupname = $this->frontendUserGroupRepository->findByUid((int)$this->settings['easyvoteAdminUserGroupUid'])->getTitle();
+            $this->addFlashMessage('Es existiert noch kein FE-User mit der Gruppe "' . $groupname . '" für den Testversand');
+        }
 
         $dateTime = new \DateTime();
         $dateTime = $dateTime->format('Y-m-d\TH:i:s');
 
-        $testUser = $this->communityUserRepository->findByUid($this->settings['smsTestUserUid']);
-
         $this->view->assignMultiple(array(
             'languages' => $languages,
             'kantons' => $kantons,
-            'dateTime' => $dateTime,
-            'testUser' => $testUser
+            'admins' => $admins,
+            'dateTime' => $dateTime
         ));
-
     }
 
     /**
@@ -662,14 +665,14 @@ class CommunityUserController extends AbstractController
      */
     public function backendSmsMessageSendAction($demand = array())
     {
-        if ((int)$demand['sendToTestUser'] === 1) {
+        if ($demand['smsTestUserUid'] > 0) {
             // no need to process filter demand, we just queue one message
             $messagingJob = new \Visol\Easyvote\Domain\Model\MessagingJob();
             $messagingJob->setContent($demand['message']);
             $messagingJob->setType(\Visol\Easyvote\Domain\Model\MessagingJob::JOBTYPE_SMS);
             $distributionTime = date_create($demand['distributionTime']);
             $messagingJob->setDistributionTime($distributionTime);
-            $testUser = $this->communityUserRepository->findByUid($this->settings['smsTestUserUid']);
+            $testUser = $this->communityUserRepository->findByUid($demand['smsTestUserUid']);
             $messagingJob->setCommunityUser($testUser);
             $messagingJob->setSubject('SMS-Test-Job');
             $this->messagingJobRepository->add($messagingJob);

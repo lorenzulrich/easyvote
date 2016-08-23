@@ -246,6 +246,27 @@ class CommunityUserRepository extends FrontendUserRepository
         return $query->execute();
     }
 
+
+    /**
+     * Find Eeasyvote-Admin users with phone number only
+     * 
+     * @return array|\TYPO3\CMS\Extbase\Persistence\QueryResultInterface
+     */
+    public function findEasyVoteAdminUsers() {
+
+        $query = $this->createQuery();
+        $query->matching(
+            $query->logicalAnd(
+                $query->logicalNot(
+                    $query->equals('telephone', '')
+                ),
+            $query->contains('usergroup', $this->communityUserService->getUserGroupUid('easyvoteAdmin'))
+            )
+        );
+        return $query->execute();
+    }
+
+
     /**
      * Find all or filtered election supporters
      *

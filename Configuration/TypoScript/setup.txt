@@ -1,119 +1,117 @@
 plugin.tx_easyvote {
-	view {
-		templateRootPath = {$plugin.tx_easyvote.view.templateRootPath}
-		partialRootPath = {$plugin.tx_easyvote.view.partialRootPath}
-		layoutRootPath = {$plugin.tx_easyvote.view.layoutRootPath}
+  view {
+    templateRootPath = {$plugin.tx_easyvote.view.templateRootPath}
+    partialRootPath = {$plugin.tx_easyvote.view.partialRootPath}
+    layoutRootPath = {$plugin.tx_easyvote.view.layoutRootPath}
 
-		# Currently only used for Election Supporters
-		widget.TYPO3\CMS\Fluid\ViewHelpers\Widget\PaginateViewHelper.templateRootPath = EXT:easyvote/Resources/Private/Templates/ElectionSupporter/
-	}
-	persistence {
-		storagePid = {$plugin.tx_easyvote.persistence.storagePid}
-	}
-	mvc {
-		callDefaultActionIfActionCantBeResolved = 1
-	}
+    # Currently only used for Election Supporters
+    widget.TYPO3\CMS\Fluid\ViewHelpers\Widget\PaginateViewHelper.templateRootPath = EXT:easyvote/Resources/Private/Templates/ElectionSupporter/
+  }
+  persistence {
+    storagePid = {$plugin.tx_easyvote.persistence.storagePid}
+  }
+  mvc {
+    callDefaultActionIfActionCantBeResolved = 1
+  }
 }
 
 plugin.tx_easyvote._CSS_DEFAULT_STYLE (
-	textarea.f3-form-error {
-		background-color:#FF9F9F;
-		border: 1px #FF0000 solid;
-	}
+  textarea.f3-form-error {
+    background-color:#FF9F9F;
+    border: 1px #FF0000 solid;
+  }
 
-	select.f3-form-error,
-	input.f3-form-error {
-		background-color:#FF9F9F;
-		border: 1px #FF0000 solid;
-	}
+  select.f3-form-error,
+  input.f3-form-error {
+    background-color:#FF9F9F;
+    border: 1px #FF0000 solid;
+  }
 
-	.tx-easyvote table {
-		border-collapse:separate;
-		border-spacing:10px;
-	}
+  .tx-easyvote table {
+    border-collapse:separate;
+    border-spacing:10px;
+  }
 
-	.tx-easyvote table th {
-		font-weight:bold;
-	}
+  .tx-easyvote table th {
+    font-weight:bold;
+  }
 
-	.tx-easyvote table td {
-		vertical-align:top;
-	}
+  .tx-easyvote table td {
+    vertical-align:top;
+  }
 )
 
 # skip default arguments in request --> RealURL optimization
 plugin.tx_easyvote {
-	features {
-		skipDefaultArguments = 1
-	}
-	settings {
-		votingDayViewTemplate = EXT:easyvote/Resources/Private/Templates/VotingDay/ShowCurrentVotingDay.html
-		votingProposal {
-			youtubeWidth = 480
-			youtubeHeight = 360
-		}
-		communityUserGroupUid = 4
-		communityFacebookUserGroupUid = 6
-		communityEmailUserGroupUid = 7
-		loginPid = 193
-		forgotPasswordPid = 273
-		communityAjaxPid = 194
-		unsubscribePid = 202
-		unsubscribeHost = http://www.easyvote.dev/
-		votingPid = 139
-		communityVoteweckerPid = 199
-		communityMobilizePid = 200
-		electionSupporterPid = 339
-		communityHomePid = 192
-		communityEditProfilePid = 193
-		siteHomePid = 4
-		userStoragePid = 144
-		senderEmail = info@easyvote.ch
-		senderName = easyvote
-		# bianca leist
-		smsTestUserUid = 5049
-		smsGatewayUsername =
-		smsGatewayPassword = 
-		smsGatewayTest = 0
-		privacyStatementPid = 258
-		pushChannels {
-			1 = easyvote News
-			2 = easyvote Abstimmungen
-		}
-		allowedPhoneNumberPrefixes {
-			4175 {
-				label = 075
-				lengthOfPrefixAndNumber = 11
-			}
-			4176 {
-				label = 076
-				lengthOfPrefixAndNumber = 11
-			}
-			4177 {
-				label = 077
-				lengthOfPrefixAndNumber = 11
-			}
-			4178 {
-				label = 078
-				lengthOfPrefixAndNumber = 11
-			}
-			4179 {
-				label = 079
-				lengthOfPrefixAndNumber = 11
-			}
-		}
-	}
+  features {
+    skipDefaultArguments = 1
+  }
+  settings {
+    votingDayViewTemplate = EXT:easyvote/Resources/Private/Templates/VotingDay/ShowCurrentVotingDay.html
+    votingProposal {
+      youtubeWidth = 480
+      youtubeHeight = 360
+    }
+    communityUserGroupUid = 4
+    communityFacebookUserGroupUid = 6
+    communityEmailUserGroupUid = 7
+    loginPid = 193
+    forgotPasswordPid = 273
+    communityAjaxPid = 194
+    unsubscribePid = 202
+    unsubscribeHost = http://www.easyvote.dev/
+    votingPid = 139
+    communityVoteweckerPid = 199
+    communityMobilizePid = 200
+    electionSupporterPid = 339
+    communityHomePid = 192
+    communityEditProfilePid = 193
+    siteHomePid = 4
+    userStoragePid = 144
+    senderEmail = info@easyvote.ch
+    senderName = easyvote
+    smsGatewayUsername =
+    smsGatewayPassword =
+    smsGatewayTest = 0
+    privacyStatementPid = 258
+    pushChannels {
+      1 = easyvote News
+      2 = easyvote Abstimmungen
+    }
+    allowedPhoneNumberPrefixes {
+      4175 {
+        label = 075
+        lengthOfPrefixAndNumber = 11
+      }
+      4176 {
+        label = 076
+        lengthOfPrefixAndNumber = 11
+      }
+      4177 {
+        label = 077
+        lengthOfPrefixAndNumber = 11
+      }
+      4178 {
+        label = 078
+        lengthOfPrefixAndNumber = 11
+      }
+      4179 {
+        label = 079
+        lengthOfPrefixAndNumber = 11
+      }
+    }
+  }
 }
 
 module.tx_easyvote < plugin.tx_easyvote
 
  # Module configuration
 module.tx_easyvote {
-	view {
-		templateRootPath = {$module.tx_easyvote.view.templateRootPath}
-		partialRootPath = {$module.tx_easyvote.view.partialRootPath}
-		layoutRootPath = {$module.tx_easyvote.view.layoutRootPath}
-	}
+  view {
+    templateRootPath = {$module.tx_easyvote.view.templateRootPath}
+    partialRootPath = {$module.tx_easyvote.view.partialRootPath}
+    layoutRootPath = {$module.tx_easyvote.view.layoutRootPath}
+  }
 }
 
 lib.feLogin < plugin.tx_felogin_pi1

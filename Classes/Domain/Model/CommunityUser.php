@@ -291,6 +291,12 @@ class CommunityUser extends FrontendUser
 	protected $lastlogin;
 
     /**
+     * @var string
+     * @transient
+     */
+    protected $nameAndPhone;
+
+    /**
      * __construct
      *
      * @return \Visol\Easyvote\Domain\Model\CommunityUser
@@ -987,5 +993,15 @@ class CommunityUser extends FrontendUser
 	public function getLastlogin() {
 		return $this->lastlogin;
 	}
+
+    /**
+     * @return string
+     */
+    public function getNameAndPhone()
+    {
+        return $this->lastName . ' ' . $this->firstName . ', Telefon: ' . $this->telephone ;
+    }
+
+
 
 }
