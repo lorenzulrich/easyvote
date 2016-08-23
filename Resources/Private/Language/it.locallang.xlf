@@ -468,7 +468,7 @@
 			</trans-unit>
 
 			<trans-unit id="unsubscribe.header">
-				<target>Disattivare la voto-sveglia</target>
+				<target>Grazie per la disattivazione</target>
 			</trans-unit>
 			<trans-unit id="unsubscribe.invalidRequest">
 				<target><![CDATA[
@@ -476,7 +476,7 @@
 				]]></target>
 			</trans-unit>
 			<trans-unit id="unsubscribe.notificationMailDisabled">
-				<target>Grazie per la disattivazione. In futuro non disporrai più della voto-sveglia e non riceverai più e-mail.</target>
+				<target>In futuro non riceverai più e-mail.</target>
 			</trans-unit>
 
 			<trans-unit id="loginPanel.loggedInAs">

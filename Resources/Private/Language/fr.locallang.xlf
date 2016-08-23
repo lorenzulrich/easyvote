@@ -459,7 +459,7 @@
 			</trans-unit>
 
 			<trans-unit id="unsubscribe.header">
-				<target>Désabonnement à l’alarme de vote</target>
+				<target>Merci pour ton désabonnement</target>
 			</trans-unit>
 			<trans-unit id="unsubscribe.invalidRequest">
 				<target><![CDATA[
@@ -467,7 +467,7 @@
 				]]></target>
 			</trans-unit>
 			<trans-unit id="unsubscribe.notificationMailDisabled">
-				<target>Merci pour ton désabonnement. Tu ne recevras plus d’alarme de vote par email.</target>
+				<target>Tu ne recevras plus des messages par email.</target>
 			</trans-unit>
 
 			<trans-unit id="loginPanel.loggedInAs">

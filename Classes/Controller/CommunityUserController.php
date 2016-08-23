@@ -473,7 +473,17 @@ class CommunityUserController extends AbstractController
                 if (count($userGroupArray)) {
                     if (in_array($this->settings['communityUserGroupUid'], $userGroupArray)) {
                         // Facebook: Deactivate notification mail
-                        $communityUser->setNotificationMailActive(FALSE);
+                        if (isset($arguments['nl'])) {
+                            $newsletters = explode("|", $arguments['nl']);
+                            foreach ($newsletters as $newsletter) {
+                                if ($newsletter == $communityUser::NEWSLETTER_COMMUNITY) {
+                                    $communityUser->setCommunityNewsMailActive(FALSE);
+                                }
+                                if ($newsletter == $communityUser::NEWSLETTER_VOTING) {
+                                    $communityUser->setNotificationMailActive(FALSE);
+                                }
+                            }
+                        }
                         $this->communityUserRepository->update($communityUser);
                         $this->persistenceManager->persistAll();
                         $message = LocalizationUtility::translate('unsubscribe.notificationMailDisabled', 'easyvote');
@@ -558,9 +568,15 @@ class CommunityUserController extends AbstractController
                 ->setCellValue('F' . $rowIndex, 'E-Mail')
                 ->setCellValue('G' . $rowIndex, 'Kanton')
                 ->setCellValue('H' . $rowIndex, 'Sprache')
-                ->setCellValue('I' . $rowIndex, 'Typ')
-                ->setCellValue('J' . $rowIndex, 'Abmelde-Link');
+                ->setCellValue('I' . $rowIndex, 'Typ');
             $rowIndex++;
+
+
+            if ($demand['filter']['newsletters'] && is_array($demand['filter']['newsletters']) ) {
+                $newslettersparam = '&nl=' .implode("|",$demand['filter']['newsletters']);
+                $objPHPExcel->setActiveSheetIndex(0)->setCellValue('J' . $rowIndex, 'Abmelde-Link');
+            }
+
 
             // Add content
             foreach ($communityUsers as $communityUser) {
@@ -590,6 +606,7 @@ class CommunityUserController extends AbstractController
 
                 $unsubscribeUrl[] = '?cuid=' . base64_encode($communityUser->getUid());
                 $unsubscribeUrl[] = '&verify=' . GeneralUtility::stdAuthCode($communityUser->getUid());
+                $unsubscribeUrl[] = $newslettersparam;
 
                 // user groups
                 $usergroups = $communityUser->getUsergroup();
@@ -609,8 +626,11 @@ class CommunityUserController extends AbstractController
                     ->setCellValue('F' . $rowIndex, $communityUser->getEmail())
                     ->setCellValue('G' . $rowIndex, $kanton)
                     ->setCellValue('H' . $rowIndex, $userLanguage)
-                    ->setCellValue('I' . $rowIndex, $userGroupsCsv)
-                    ->setCellValue('J' . $rowIndex, implode($unsubscribeUrl));
+                    ->setCellValue('I' . $rowIndex, $userGroupsCsv);
+
+                if ($demand['filter']['newsletters'] && is_array($demand['filter']['newsletters']) ) {
+                    $objPHPExcel->setActiveSheetIndex(0)->setCellValue('J' . $rowIndex, implode($unsubscribeUrl));
+                }
                 $rowIndex++;
             }
 

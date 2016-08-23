@@ -556,7 +556,7 @@
 			</trans-unit>
 
 			<trans-unit id="unsubscribe.header">
-				<source>Vote-Wecker-Abmeldung</source>
+				<source>Danke für deine Abmeldung</source>
 			</trans-unit>
 			<trans-unit id="unsubscribe.invalidRequest">
 				<source><![CDATA[
@@ -564,7 +564,7 @@
 				]]></source>
 			</trans-unit>
 			<trans-unit id="unsubscribe.notificationMailDisabled">
-				<source>Danke für deine Abmeldung. Du erhälst künftig keinen Vote-Wecker mehr per E-Mail.</source>
+				<source>Du erhältst künftig keine Infos mehr per E-Mail.</source>
 			</trans-unit>
 
 			<trans-unit id="loginPanel.loggedInAs">
