@@ -568,16 +568,15 @@ class CommunityUserController extends AbstractController
                 ->setCellValue('F' . $rowIndex, 'E-Mail')
                 ->setCellValue('G' . $rowIndex, 'Kanton')
                 ->setCellValue('H' . $rowIndex, 'Sprache')
-                ->setCellValue('I' . $rowIndex, 'Typ')
-	            ->setCellValue('J' . $rowIndex, 'Abmelde-Link');
-            $rowIndex++;
+                ->setCellValue('I' . $rowIndex, 'Typ');
 
             if ($demand['filter']['newsletters'] && is_array($demand['filter']['newsletters'])) {
                 $newslettersParam = '&nl=' . implode(",", $demand['filter']['newsletters']);
-                #$objPHPExcel->setActiveSheetIndex(0)->setCellValue('J' . $rowIndex, 'Abmelde-Link');
+                $objPHPExcel->setActiveSheetIndex(0)->setCellValue('J' . $rowIndex, 'Abmelde-Link');
             }
+	        $rowIndex++;
 
-            // Add content
+	        // Add content
             foreach ($communityUsers as $communityUser) {
                 /** @var $communityUser CommunityUser */
 
