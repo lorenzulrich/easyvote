@@ -23,23 +23,15 @@
 						<div class="actions">
 							<div class="action share">
 								<f:if condition="{settings.context} != 'app'">
-									<f:then>
-										<a href="#" class="hasModal shareTrigger">
-											<i class="evicon-share hasTooltip"></i>
-
-											<div class="hidden">
-												Teile diese Abstimmungsvorlage
-											</div>
-										</a>
-
-										<div class="hidden">
-											<a class="pull-right modal-close" aria-label="schliessen">
-												<i class="evicon-cancel"></i>
-											</a>
-											<f:render partial="VotingProposal/Share" arguments="{_all}"/>
-										</div>
+                                    <f:then>
+                                        <div class="hidden">
+                                            <a href="{votingProposal.permalink}" id="votingProposalLink">
+                                                <f:translate key="tx_easyvote_domain_model_votingproposal" /> {votingProposal.shortTitle}
+                                            </a>
+                                        </div>
 									</f:then>
 									<f:else>
+                                        <f:comment>01.03.2017/am: sharing inside app context not clear yet</f:comment>
 										<a href="share://title={votingProposal.shortTitle -> f:format.urlencode()}&text={votingProposal.officialTitle -> f:format.urlencode()}&url={votingProposal.permalink -> f:format.urlencode()}">
 											<i class="evicon-share"></i>
 										</a>
