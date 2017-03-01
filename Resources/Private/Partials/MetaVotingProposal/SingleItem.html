@@ -3,10 +3,11 @@
 <div class="meta-abstimmungsvorlage {f:if(condition: '{metaVotingProposal.type} == 1', then: 'meta-abstimmungsvorlage-normal', else: 'meta-abstimmungsvorlage-gegenvorschlag')}"
      id="meta-abstimmungsvorlage-{metaVotingProposal.uid}">
 	<f:for each="{metaVotingProposal.votingProposals}" as="votingProposal" iteration="iterator">
-		<div class="content-box content-box-expandable abstimmungsvorlage abstimmungsvorlage-meta-{metaVotingProposal.uid}"
+		<div class="content-box xcontent-box-expandable abstimmungsvorlage abstimmungsvorlage-meta-{metaVotingProposal.uid}"
 		     id="abstimmungsvorlage-{votingProposal.uid}">
 			<div class="box-teaser">
 				<div class="row">
+					<f:comment><!-- no flags, add 2 more cols to content below -->
 					<div class="col-xs-2 col-md-2">
 						<f:if condition="{metaVotingProposal.scope} == 1">
 							<f:then>
@@ -17,7 +18,8 @@
 							</f:else>
 						</f:if>
 					</div>
-					<div class="col-xs-10 col-md-10">
+					</f:comment>
+					<div class="col-xs-12 col-md-12">
 						<div class="actions">
 							<div class="action share">
 								<f:if condition="{settings.context} != 'app'">
@@ -43,9 +45,6 @@
 										</a>
 									</f:else>
 								</f:if>
-							</div>
-							<div class="action toggle handle">
-								<i class="evicon-down-open"></i>
 							</div>
 						</div>
 						<h2>{votingProposal.shortTitle}</h2>

@@ -1,18 +1,20 @@
 plugin.tx_easyvote {
-  view {
-    templateRootPath = {$plugin.tx_easyvote.view.templateRootPath}
-    partialRootPath = {$plugin.tx_easyvote.view.partialRootPath}
-    layoutRootPath = {$plugin.tx_easyvote.view.layoutRootPath}
+    view {
+        templateRootPath = {$plugin.tx_easyvote.view.templateRootPath}
+        partialRootPath = {$plugin.tx_easyvote.view.partialRootPath}
+        layoutRootPath = {$plugin.tx_easyvote.view.layoutRootPath}
 
-    # Currently only used for Election Supporters
-    widget.TYPO3\CMS\Fluid\ViewHelpers\Widget\PaginateViewHelper.templateRootPath = EXT:easyvote/Resources/Private/Templates/ElectionSupporter/
-  }
-  persistence {
-    storagePid = {$plugin.tx_easyvote.persistence.storagePid}
-  }
-  mvc {
-    callDefaultActionIfActionCantBeResolved = 1
-  }
+        # Currently only used for Election Supporters
+        widget.TYPO3\CMS\Fluid\ViewHelpers\Widget\PaginateViewHelper.templateRootPath = EXT:easyvote/Resources/Private/Templates/ElectionSupporter/
+    }
+
+    persistence {
+        storagePid = {$plugin.tx_easyvote.persistence.storagePid}
+    }
+
+    mvc {
+        callDefaultActionIfActionCantBeResolved = 1
+    }
 }
 
 plugin.tx_easyvote._CSS_DEFAULT_STYLE (
@@ -43,75 +45,82 @@ plugin.tx_easyvote._CSS_DEFAULT_STYLE (
 
 # skip default arguments in request --> RealURL optimization
 plugin.tx_easyvote {
-  features {
-    skipDefaultArguments = 1
-  }
-  settings {
-    votingDayViewTemplate = EXT:easyvote/Resources/Private/Templates/VotingDay/ShowCurrentVotingDay.html
-    votingProposal {
-      youtubeWidth = 480
-      youtubeHeight = 360
+    features {
+        skipDefaultArguments = 1
     }
-    communityUserGroupUid = 4
-    communityFacebookUserGroupUid = 6
-    communityEmailUserGroupUid = 7
-    loginPid = 193
-    forgotPasswordPid = 273
-    communityAjaxPid = 194
-    unsubscribePid = 202
-    unsubscribeHost = http://www.easyvote.dev/
-    votingPid = 139
-    communityVoteweckerPid = 199
-    communityMobilizePid = 200
-    electionSupporterPid = 339
-    communityHomePid = 192
-    communityEditProfilePid = 193
-    siteHomePid = 4
-    userStoragePid = 144
-    senderEmail = info@easyvote.ch
-    senderName = easyvote
-    smsGatewayUsername =
-    smsGatewayPassword =
-    smsGatewayTest = 0
-    privacyStatementPid = 258
-    pushChannels {
-      1 = easyvote News
-      2 = easyvote Abstimmungen
+
+    settings {
+        votingDayViewTemplate = EXT:easyvote/Resources/Private/Templates/VotingDay/ShowCurrentVotingDay.html
+        votingProposal {
+            youtubeWidth = 480
+            youtubeHeight = 360
+        }
+
+        communityUserGroupUid = 4
+        communityFacebookUserGroupUid = 6
+        communityEmailUserGroupUid = 7
+        loginPid = 193
+        forgotPasswordPid = 273
+        communityAjaxPid = 194
+        unsubscribePid = 202
+        unsubscribeHost = http://www.easyvote.dev/
+        votingPid = 139
+        communityVoteweckerPid = 199
+        communityMobilizePid = 200
+        electionSupporterPid = 339
+        communityHomePid = 192
+        communityEditProfilePid = 193
+        siteHomePid = 4
+        userStoragePid = 144
+        senderEmail = info@easyvote.ch
+        senderName = easyvote
+        smsGatewayUsername =
+        smsGatewayPassword =
+        smsGatewayTest = 0
+        privacyStatementPid = 258
+        pushChannels {
+            1 = easyvote News
+            2 = easyvote Abstimmungen
+        }
+
+        allowedPhoneNumberPrefixes {
+            4175 {
+                label = 075
+                lengthOfPrefixAndNumber = 11
+            }
+
+            4176 {
+                label = 076
+                lengthOfPrefixAndNumber = 11
+            }
+
+            4177 {
+                label = 077
+                lengthOfPrefixAndNumber = 11
+            }
+
+            4178 {
+                label = 078
+                lengthOfPrefixAndNumber = 11
+            }
+
+            4179 {
+                label = 079
+                lengthOfPrefixAndNumber = 11
+            }
+        }
     }
-    allowedPhoneNumberPrefixes {
-      4175 {
-        label = 075
-        lengthOfPrefixAndNumber = 11
-      }
-      4176 {
-        label = 076
-        lengthOfPrefixAndNumber = 11
-      }
-      4177 {
-        label = 077
-        lengthOfPrefixAndNumber = 11
-      }
-      4178 {
-        label = 078
-        lengthOfPrefixAndNumber = 11
-      }
-      4179 {
-        label = 079
-        lengthOfPrefixAndNumber = 11
-      }
-    }
-  }
 }
 
 module.tx_easyvote < plugin.tx_easyvote
 
- # Module configuration
+# Module configuration
 module.tx_easyvote {
-  view {
-    templateRootPath = {$module.tx_easyvote.view.templateRootPath}
-    partialRootPath = {$module.tx_easyvote.view.partialRootPath}
-    layoutRootPath = {$module.tx_easyvote.view.layoutRootPath}
-  }
+    view {
+        templateRootPath = {$module.tx_easyvote.view.templateRootPath}
+        partialRootPath = {$module.tx_easyvote.view.partialRootPath}
+        layoutRootPath = {$module.tx_easyvote.view.layoutRootPath}
+    }
 }
 
 lib.feLogin < plugin.tx_felogin_pi1
@@ -120,27 +129,27 @@ lib.feLogin < plugin.tx_felogin_pi1
 # The forgot password plugin is embedded in this page and its function would also affect
 # the felogin form in the login modal
 [globalVar = TSFE:id = 273]
-lib.feLogin >
-lib.feLogin = TEXT
-lib.feLogin {
-	value = Anmelden
-	lang.fr = Connecter
-	lang.it = Login
-	typolink.parameter < plugin.tx_easyvote.settings.siteHomePid
-	typolink.ATagParams = class="link-box" style="margin-bottom: 10px;"
-	typolink.section = displayLoginPanel
-}
+    lib.feLogin >
+    lib.feLogin = TEXT
+    lib.feLogin {
+        value = Anmelden
+        lang.fr = Connecter
+        lang.it = Login
+        typolink.parameter < plugin.tx_easyvote.settings.siteHomePid
+        typolink.ATagParams = class="link-box" style="margin-bottom: 10px;"
+        typolink.section = displayLoginPanel
+    }
 [global]
 
 lib.loginPanel = USER_INT
 lib.loginPanel {
-    userFunc      = TYPO3\CMS\Extbase\Core\Bootstrap->run
+    userFunc = TYPO3\CMS\Extbase\Core\Bootstrap->run
 
-    pluginName    = Community
+    pluginName = Community
     extensionName = Easyvote
-    vendorName    = Visol
-    controller    = CommunityUser
-    action        = loginPanel
+    vendorName = Visol
+    controller = CommunityUser
+    action = loginPanel
     switchableControllerActions {
         CommunityUser {
             1 = loginPanel
@@ -150,12 +159,12 @@ lib.loginPanel {
 
 lib.dataCompletionRequestModal = USER_INT
 lib.dataCompletionRequestModal {
-	userFunc = TYPO3\CMS\Extbase\Core\Bootstrap->run
-    pluginName    = Community
+    userFunc = TYPO3\CMS\Extbase\Core\Bootstrap->run
+    pluginName = Community
     extensionName = Easyvote
-    vendorName    = Visol
-    controller    = CommunityUser
-    action        = dataCompletionRequest
+    vendorName = Visol
+    controller = CommunityUser
+    action = dataCompletionRequest
     switchableControllerActions {
         CommunityUser {
             1 = dataCompletionRequest
@@ -164,33 +173,35 @@ lib.dataCompletionRequestModal {
 }
 
 [globalString = ENV:HTTP_XEASYVOTEAPP = true]
-lib.appConfiguration = USER_INT
-lib.appConfiguration {
-	userFunc = TYPO3\CMS\Extbase\Core\Bootstrap->run
-	extensionName = Easyvote
-	pluginName = Community
-	vendorName = Visol
-	controller = CommunityUser
-	action = appConfiguration
-	switchableControllerActions {
-		CommunityUser {
-			1 = appConfiguration
-		}
-	}
-	view < plugin.tx_meineExtension.view
-	persistence < plugin.tx_meineExtension.persistence
-	settings < plugin.tx_meineExtension.settings
-}
+    lib.appConfiguration = USER_INT
+    lib.appConfiguration {
+        userFunc = TYPO3\CMS\Extbase\Core\Bootstrap->run
+        extensionName = Easyvote
+        pluginName = Community
+        vendorName = Visol
+        controller = CommunityUser
+        action = appConfiguration
+        switchableControllerActions {
+            CommunityUser {
+                1 = appConfiguration
+            }
+        }
 
-jsonView = PAGE
-jsonView {
-	typeNum = 20141208
-	config {
-		disableAllHeaderCode = 1
-		xhtml_cleaning = 0
-		admPanel = 0
-		additionalHeaders = Content-type: text/plain
-	}
-	10 < lib.appConfiguration
-}
+        view < plugin.tx_meineExtension.view
+        persistence < plugin.tx_meineExtension.persistence
+        settings < plugin.tx_meineExtension.settings
+    }
+
+    jsonView = PAGE
+    jsonView {
+        typeNum = 20141208
+        config {
+            disableAllHeaderCode = 1
+            xhtml_cleaning = 0
+            admPanel = 0
+            additionalHeaders = Content-type: text/plain
+        }
+
+        10 < lib.appConfiguration
+    }
 [global]

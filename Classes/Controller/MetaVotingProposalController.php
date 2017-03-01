@@ -15,6 +15,8 @@ namespace Visol\Easyvote\Controller;
  */
 
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
+use TYPO3\CMS\Extbase\Utility\DebuggerUtility;
+use Visol\Easyvote\Domain\Model\MetaVotingProposal;
 
 /**
  * Class MetaVotingProposalController
@@ -39,6 +41,16 @@ class MetaVotingProposalController extends ActionController
      * @inject
      */
     protected $votingDayRepository;
+
+    /**
+     * @param MetaVotingProposal $metaVotingProposal
+     */
+    public function showAction(MetaVotingProposal $metaVotingProposal)
+    {
+        //DebuggerUtility::var_dump($metaVotingProposal);
+        $this->view->assign('metaVotingProposal', $metaVotingProposal);
+
+    }
 
     /**
      * action archive

@@ -9,6 +9,7 @@ if (!defined('TYPO3_MODE')) {
     'Currentvotings',
     array(
         'VotingDay' => 'showCurrentVotingDay',
+        'MetaVotingProposal' => 'show',
 
     ),
     // non-cacheable actions

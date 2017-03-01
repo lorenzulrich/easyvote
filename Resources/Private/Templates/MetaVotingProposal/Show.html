@@ -6,14 +6,13 @@
 
 <f:section name="main">
 
-	<f:comment>
 	<ev:script file="{f:uri.resource(path:'JavaScript/VotingResultChart.js')}"/>
 	<ev:script file="{f:uri.resource(path:'JavaScript/Libraries/D3/d3.js')}"/>
 	<ev:script file="{f:uri.resource(path:'JavaScript/Libraries/D3pie/d3pie.js')}"/>
-	</f:comment>
 
 	<div id="votingsDashboard">
-		<f:comment><!-- no flags -->
+		<f:comment>
+		<f:debug title="metaVotingProposal">{metaVotingProposal}</f:debug>
 		<section class="hidden-xs hidden-sm col-md-3">
 			<f:if condition="{requestedKanton}">
 				<f:then>
@@ -25,21 +24,23 @@
 			</f:if>
 		</section>
 		</f:comment>
+
 		<section class="col-xs-12 col-md-9">
-			<f:for each="{votingDay.metaVotingProposals}" as="metaVotingProposal" iteration="metaIterator">
+			<f:for each="{metaVotingProposal.votingProposals}" as="votingProposal" iteration="iterator">
 				<f:if condition="{metaVotingProposal.scope} == 1">
 					<f:then>
-						<f:render partial="MetaVotingProposal/ListItem" arguments="{_all}"/>
+						<f:render partial="MetaVotingProposal/SingleItem" arguments="{metaVotingProposal:metaVotingProposal}"/>
 					</f:then>
 					<f:else>
 						<f:if condition="{metaVotingProposal.kanton.uid} == {requestedKanton.uid}">
-							<f:render partial="MetaVotingProposal/ListItem" arguments="{_all}"/>
+							<f:render partial="MetaVotingProposal/SingleItem" arguments="{metaVotingProposal:metaVotingProposal}"/>
 						</f:if>
 					</f:else>
 				</f:if>
 			</f:for>
 		</section>
 		<section class="hidden-xs col-md-3">
+			Show.html
 		</section>
 	</div>
 	<script>
