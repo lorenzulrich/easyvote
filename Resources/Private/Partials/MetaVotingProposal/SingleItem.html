@@ -7,18 +7,6 @@
 		     id="abstimmungsvorlage-{votingProposal.uid}">
 			<div class="box-teaser">
 				<div class="row">
-					<f:comment><!-- no flags, add 2 more cols to content below -->
-					<div class="col-xs-2 col-md-2">
-						<f:if condition="{metaVotingProposal.scope} == 1">
-							<f:then>
-								<div class="flag-voting flag-ch"></div>
-							</f:then>
-							<f:else>
-								<div class="flag-voting flag-{v:format.case(string: metaVotingProposal.kanton.abbreviation, case: 'lower')}"></div>
-							</f:else>
-						</f:if>
-					</div>
-					</f:comment>
 					<div class="col-xs-12 col-md-12">
 						<div class="actions">
 							<div class="action share">

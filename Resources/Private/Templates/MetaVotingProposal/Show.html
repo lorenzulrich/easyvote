@@ -11,21 +11,7 @@
 	<ev:script file="{f:uri.resource(path:'JavaScript/Libraries/D3pie/d3pie.js')}"/>
 
 	<div id="votingsDashboard">
-		<f:comment>
-		<f:debug title="metaVotingProposal">{metaVotingProposal}</f:debug>
-		<section class="hidden-xs hidden-sm col-md-3">
-			<f:if condition="{requestedKanton}">
-				<f:then>
-					<div class="flag-big flag-{v:format.case(string: requestedKanton.abbreviation, case: 'lower')}"></div>
-				</f:then>
-				<f:else>
-					<div class="flag-big flag-ch">debug:eidgenössisch</div>
-				</f:else>
-			</f:if>
-		</section>
-		</f:comment>
-
-		<section class="col-xs-12 col-md-9">
+		<section class="col-xs-12 col-md-6">
 			<f:for each="{metaVotingProposal.votingProposals}" as="votingProposal" iteration="iterator">
 				<f:if condition="{metaVotingProposal.scope} == 1">
 					<f:then>
@@ -39,10 +25,10 @@
 				</f:if>
 			</f:for>
 		</section>
-		<section class="hidden-xs col-md-3">
-			Show.html
-		</section>
-	</div>
+        <section class="hidden-xs hidden-sm col-md-6">
+            <!-- optional col to control width of content or displaying other content? -->
+        </section>
+    </div>
 	<script>
 		var ajaxUri = '<f:uri.page pageUid="{settings.communityAjaxPid}" absolute="TRUE" pageType="999" />';
 	</script>
