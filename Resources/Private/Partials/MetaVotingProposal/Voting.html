@@ -1,29 +1,35 @@
 <div class="voting">
 	<div class="row">
-		<div class="col-xs-4 col-md-6 sameheight">
-			<f:translate key="voting.yourOpinion" />
+		<div class="col-md-12">
+			<h3>
+				<f:translate key="voting.yourOpinion"/>
+			</h3>
 		</div>
-		<div class="col-xs-4 col-md-3 sameheight">
+	</div>
+	<div class="row">
+		<div class="col-xs-4 col-md-3">
 			<div class="vote">
 				<div class="vote-handle vote-handle-up">
 					<i class="hasTooltip evicon-like vote-color-up" id="voteUp-{votingPropsalUid}"></i>
 					<div class="hidden">
-                        <f:translate key="votingAnswer.iSayYes" />
-                    </div>
+						<f:translate key="votingAnswer.iSayYes"/>
+					</div>
 				</div>
 				<div class="vote-result vote-result-up vote-color-up">
+					xx.x%
 				</div>
 			</div>
 		</div>
-		<div class="col-xs-4 col-md-3 sameheight">
+		<div class="col-xs-4 col-md-3">
 			<div class="vote">
 				<div class="vote-handle vote-handle-down">
 					<i class="hasTooltip evicon-dislike vote-color-down" id="voteDown-{votingPropsalUid}"></i>
 					<div class="hidden">
-                        <f:translate key="votingAnswer.iSayNo" />
+						<f:translate key="votingAnswer.iSayNo"/>
 					</div>
 				</div>
 				<div class="vote-result vote-result-down vote-color-down">
+					yy.y%
 				</div>
 			</div>
 		</div>
