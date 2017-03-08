@@ -35,8 +35,12 @@ $GLOBALS['TCA']['tx_easyvote_domain_model_metavotingproposal'] = [
         'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, private_title, type, scope, main_proposal_approval, voting_proposals, kanton',
     ],
     'types' => [
-        '1' => ['showitem' => 'sys_language_uid;;;;1-1-1, l10n_parent, l10n_diffsource, hidden;;1, private_title, voting_day, type, scope, voting_proposals, kanton,--div--;LLL:EXT:cms/locallang_ttc.xlf:tabs.access,starttime, endtime'],
-        '2' => ['showitem' => 'sys_language_uid;;;;1-1-1, l10n_parent, l10n_diffsource, hidden;;1, private_title, voting_day, type, scope, main_proposal_approval, voting_proposals, kanton,--div--;LLL:EXT:cms/locallang_ttc.xlf:tabs.access,starttime, endtime'],
+        '1' => ['showitem' =>
+            'sys_language_uid, l10n_parent, l10n_diffsource, hidden, private_title, voting_day, type, scope, voting_proposals, kanton, image,
+             --div--;LLL:EXT:cms/locallang_ttc.xlf:tabs.access,starttime, endtime'],
+        '2' => ['showitem' =>
+            'sys_language_uid, l10n_parent, l10n_diffsource, hidden, private_title, voting_day, type, scope, main_proposal_approval, voting_proposals, kanton, image,
+             --div--;LLL:EXT:cms/locallang_ttc.xlf:tabs.access,starttime, endtime'],
     ],
     'palettes' => [
         '1' => ['showitem' => ''],
@@ -233,7 +237,17 @@ $GLOBALS['TCA']['tx_easyvote_domain_model_metavotingproposal'] = [
                 'maxitems' => 1,
             ],
         ],
+        'image' => [
+            'exclude' => 1,
+            'label' => 'Image',
+            'config' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::getFileFieldTCAConfig(
+                'image', [
+                'appearance' => [
+                    'createNewRelationLinkTitle' => 'LLL:EXT:cms/locallang_ttc.xlf:images.addFileReference'
+                ],
+                'minitems' => 0,
+                'maxitems' => 1,
+            ], $GLOBALS['TYPO3_CONF_VARS']['GFX']['imagefile_ext']),
+        ],
     ],
 ];
-
-?>

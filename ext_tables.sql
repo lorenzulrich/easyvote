@@ -13,6 +13,7 @@ CREATE TABLE tx_easyvote_domain_model_metavotingproposal (
 	main_proposal_approval double(11,2) DEFAULT '0.00' NOT NULL,
 	voting_proposals int(11) unsigned DEFAULT '0' NOT NULL,
 	kanton int(11) unsigned DEFAULT '0',
+	image int(11) unsigned DEFAULT '0' NOT NULL,
 
 	tstamp int(11) unsigned DEFAULT '0' NOT NULL,
 	crdate int(11) unsigned DEFAULT '0' NOT NULL,
