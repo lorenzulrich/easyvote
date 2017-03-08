@@ -47,9 +47,10 @@ class MetaVotingProposalController extends ActionController
      */
     public function showAction(MetaVotingProposal $metaVotingProposal)
     {
-        //DebuggerUtility::var_dump($metaVotingProposal);
-        $this->view->assign('metaVotingProposal', $metaVotingProposal);
-
+        $this->view->assignMultiple([
+            'votingDay' => $this->votingDayRepository->findCurrentVotingDay(),
+            'metaVotingProposal' => $metaVotingProposal
+        ]);
     }
 
     /**

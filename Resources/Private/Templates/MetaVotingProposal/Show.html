@@ -25,6 +25,15 @@
 				</f:if>
 			</f:for>
 		</section>
+		<section class="col-xs-12 col-md-6">
+		<f:for each="{votingDay.metaVotingProposals}" as="relatedMetaVotingProposal">
+			<f:if condition="{metaVotingProposal.uid} != {relatedMetaVotingProposal.uid}">
+				<div>
+					{relatedMetaVotingProposal.uid}: {relatedMetaVotingProposal.privateTitle}
+				</div>
+			</f:if>
+		</f:for>
+		</section>
         <section class="hidden-xs hidden-sm col-md-6">
             <!-- optional col to control width of content or displaying other content? -->
         </section>
