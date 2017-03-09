@@ -77,6 +77,11 @@ class MetaVotingProposal extends AbstractEntity
     protected $kanton;
 
     /**
+     * @var \TYPO3\CMS\Extbase\Domain\Model\FileReference
+     */
+    protected $image;
+
+    /**
      * __construct
      *
      * @return MetaVotingProposal
@@ -258,6 +263,24 @@ class MetaVotingProposal extends AbstractEntity
     public function setKanton(\Visol\Easyvote\Domain\Model\Kanton $kanton)
     {
         $this->kanton = $kanton;
+    }
+
+    /**
+     * @return \TYPO3\CMS\Extbase\Domain\Model\FileReference
+     */
+    public function getImage()
+    {
+        return $this->image;
+    }
+
+    /**
+     * @param \TYPO3\CMS\Extbase\Domain\Model\FileReference $image
+     * @return $this
+     */
+    public function setImage($image)
+    {
+        $this->image = $image;
+        return $this;
     }
 
 }
