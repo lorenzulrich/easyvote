@@ -37,16 +37,19 @@
 						</f:if>
 					</f:else>
 				</f:if>
+
 			</f:for>
 		</section>
 		<section class="hidden-xs col-md-3">
 		</section>
 	</div>
+	<f:comment><!-- mo js functions needed here anymore, we just have links to detailpages -->
 	<script>
 		var ajaxUri = '<f:uri.page pageUid="{settings.communityAjaxPid}" absolute="TRUE" pageType="999" />';
 	</script>
 	<f:render partial="CommunityUser/NotAuthenticatedModal"/>
 	<f:render partial="VotingDay/HeadTags" arguments="{_all}"/>
+	</f:comment>
 </f:section>
 
 </html>
