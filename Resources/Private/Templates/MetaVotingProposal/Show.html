@@ -12,37 +12,76 @@
 
 	<div id="votingsDashboard">
 		<section class="col-xs-12 col-md-6">
-			<f:for each="{metaVotingProposal.votingProposals}" as="votingProposal" iteration="iterator">
-				<f:if condition="{metaVotingProposal.scope} == 1">
-					<f:then>
+
+			<f:if condition="{metaVotingProposal.scope} == 1">
+				<f:then>
+					<div class="meta-abstimmungsvorlage {f:if(condition: '{metaVotingProposal.type} == 1', then: 'meta-abstimmungsvorlage-normal', else: 'meta-abstimmungsvorlage-gegenvorschlag')}"
+						 id="meta-abstimmungsvorlage-{metaVotingProposal.uid}">
 						<f:render partial="MetaVotingProposal/SingleItem" arguments="{metaVotingProposal:metaVotingProposal}"/>
-					</f:then>
-					<f:else>
-						<f:if condition="{metaVotingProposal.kanton.uid} == {requestedKanton.uid}">
-							<f:render partial="MetaVotingProposal/SingleItem" arguments="{metaVotingProposal:metaVotingProposal}"/>
-						</f:if>
-					</f:else>
-				</f:if>
-			</f:for>
+					</div>
+				</f:then>
+				<f:else>
+					<f:if condition="{metaVotingProposal.kanton.uid} == {requestedKanton.uid}">
+						<f:render partial="MetaVotingProposal/SingleItem" arguments="{metaVotingProposal:metaVotingProposal}"/>
+					</f:if>
+				</f:else>
+			</f:if>
+
 		</section>
+
 		<section class="col-xs-12 col-md-6">
+
+		<f:if condition="{votingDay.metaVotingProposals -> f:count()} > 1">
+			<div class="header-topic header-layout-11">
+				<h2>Die weiteren Vorlagen <span class="subheader-topic">vom <f:format.date format="d.m.Y">{metaVotingProposal.votingDay.votingDate}</f:format.date></span></h2>
+			</div>
+		</f:if>
+
 		<f:for each="{votingDay.metaVotingProposals}" as="relatedMetaVotingProposal">
 			<f:if condition="{metaVotingProposal.uid} != {relatedMetaVotingProposal.uid}">
-				<div>
-					{relatedMetaVotingProposal.uid}: {relatedMetaVotingProposal.privateTitle}
+				<div class="meta-abstimmungsvorlage-related" style="position:relative">
+					<f:if condition="{relatedMetaVotingProposal.image}">
+						<f:then>
+							<div class="meta-abstimmungsvorlage-img" style="">
+								<f:image src="{relatedMetaVotingProposal.image.uid}" treatIdAsReference="1" class="img-responsive" alt="Symbolbild" maxWidth="364" maxHeight="191" />
+							</div>
+						</f:then>
+						<f:else>
+							<div class="meta-abstimmungsvorlage-img" style="height:191px;background-color:#cccccc">&nbsp;</div>
+						</f:else>
+					</f:if>
+					<f:for each="{relatedMetaVotingProposal.votingProposals}" as="relatedProposal">
+						<f:link.action controller="MetaVotingProposal" action="show" arguments="{metaVotingProposal:relatedMetaVotingProposal}">
+						<div class="text-overlay">
+							<h2>{relatedProposal.shortTitle}</h2>
+							<h3>{relatedProposal.officialTitle}</h3>
+						</div>
+						</f:link.action>
+					</f:for>
 				</div>
 			</f:if>
 		</f:for>
 		</section>
-        <section class="hidden-xs hidden-sm col-md-6">
-            <!-- optional col to control width of content or displaying other content? -->
-        </section>
+
     </div>
 	<script>
 		var ajaxUri = '<f:uri.page pageUid="{settings.communityAjaxPid}" absolute="TRUE" pageType="999" />';
 	</script>
+
 	<f:render partial="CommunityUser/NotAuthenticatedModal"/>
 	<f:render partial="VotingDay/HeadTags" arguments="{_all}"/>
+
+	<script>
+		window.EasyvoteGraph = window.EasyvoteGraph || {};
+
+		EasyvoteGraph.Label = {};
+		EasyvoteGraph.Label.yes = '{f:translate(key: "graph.yes")}';
+		EasyvoteGraph.Label.no = '{f:translate(key: "graph.no")}';
+		EasyvoteGraph.Label.proposalAbbreviated = '{f:translate(key: "graph.proposalAbbreviated")}';
+		EasyvoteGraph.Label.counterProposalAbbreviated = '{f:translate(key: "graph.counterProposalAbbreviated")}';
+
+	</script>
+
 </f:section>
 
 </html>
