@@ -107,6 +107,7 @@
 
 					<f:then>
 
+						<f:comment>
 						<f:for each="{metaVotingProposal.votingProposals}" as="proposal">
 							<f:if condition="{proposal.proposalApproval}">
 								<div class="box-graph">
@@ -115,6 +116,7 @@
 								</div>
 							</f:if>
 						</f:for>
+						</f:comment>
 
 						<f:if condition="{metaVotingProposal.mainProposalApproval} != 0">
 
@@ -158,6 +160,7 @@
 
 		</div>
 
+		<f:comment><!-- moved to Show.html and should not have been in for loop, I guess -->
 		<script>
 			window.EasyvoteGraph = window.EasyvoteGraph || {};
 
@@ -168,5 +171,7 @@
 			EasyvoteGraph.Label.counterProposalAbbreviated = '{f:translate(key: "graph.counterProposalAbbreviated")}';
 
 		</script>
+		</f:comment>
+
 	</f:for>
 </div>
