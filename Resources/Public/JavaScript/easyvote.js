@@ -28,6 +28,7 @@ $(function() {
 		e.stopPropagation();
 	});
 
+
 	/* Toggle sections in a voting proposal */
 	$body.on('click', '.toggle-trigger', function(e) {
 		Easyvote.toggleBlock(this);
@@ -35,10 +36,10 @@ $(function() {
 		e.stopPropagation();
 	});
 
-	/* Initialize votings */
+	/* Initialize votings
 	if ($('#votingsDashboard').length > 0) {
 		Easyvote.initializeVotings();
-	}
+	}*/
 
 	/* Initialize infinite scrolling for archive */
 	$('.searchResults').jscroll({
@@ -223,7 +224,7 @@ var Easyvote = {
 		}, 1000);
 	},
 
-	initializeVotings: function() {
+	/*initializeVotings: function() {
 		if (typeof votingProposalId != 'undefined') {
 			Easyvote.openVoting(votingProposalId);
 		} else {
@@ -236,7 +237,7 @@ var Easyvote = {
 		$('#abstimmungsvorlage-' + votingId).find('.toggle i').trigger('click');
 		Easyvote.scrollToElement('#abstimmungsvorlage-' + votingId);
 	},
-
+	*/
 
 	toggleBlock: function(trigger) {
 		$('.toggle-handle', trigger).toggleClass('toggle-handle-plus').promise().done(function() {
