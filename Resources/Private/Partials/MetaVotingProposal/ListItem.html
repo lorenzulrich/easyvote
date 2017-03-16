@@ -1,6 +1,6 @@
 {namespace v=Tx_Vhs_ViewHelpers}
 {namespace ev=Tx_Easyvote_ViewHelpers}
-<div class="row meta-abstimmungsvorlage {f:if(condition: '{metaVotingProposal.type} == 1', then: 'meta-abstimmungsvorlage-normal', else: 'meta-abstimmungsvorlage-gegenvorschlag')}"
+<div class="meta-abstimmungsvorlage {f:if(condition: '{metaVotingProposal.type} == 1', then: 'meta-abstimmungsvorlage-normal', else: 'meta-abstimmungsvorlage-gegenvorschlag')}"
      id="meta-abstimmungsvorlage-{metaVotingProposal.uid}">
 
 	<div class="row">
@@ -9,12 +9,10 @@
 				<f:then>
 					<div class="meta-abstimmungsvorlage-img" style="">
 						<f:image src="{metaVotingProposal.image.uid}" treatIdAsReference="1" class="img-responsive" alt="Symbolbild" maxWidth="364" maxHeight="191" />
-
 					</div>
-
 				</f:then>
 				<f:else>
-					<div class="meta-abstimmungsvorlage-img" style="">&nbsp;</div>
+					<div class="meta-abstimmungsvorlage-img">noch kein Foto zugeordnet</div>
 				</f:else>
 			</f:if>
 		</div>
