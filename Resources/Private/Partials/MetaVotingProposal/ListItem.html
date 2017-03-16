@@ -2,7 +2,6 @@
 {namespace ev=Tx_Easyvote_ViewHelpers}
 <div class="meta-abstimmungsvorlage {f:if(condition: '{metaVotingProposal.type} == 1', then: 'meta-abstimmungsvorlage-normal', else: 'meta-abstimmungsvorlage-gegenvorschlag')}"
      id="meta-abstimmungsvorlage-{metaVotingProposal.uid}">
-
 	<div class="row">
 		<div class="col-xs-12 col-md-5">
 			<f:if condition="{metaVotingProposal.image}">
