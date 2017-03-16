@@ -23,11 +23,13 @@
 		</p>
 		<f:cObject typoscriptObjectPath="lib.feLogin" />
 		<p>
-			<a href="#" class="loginModalRegistrationLink">
-				<f:translate key="loginPanel.registrationLink" />
-			</a>
-			<br />
-			<f:link.page pageUid="{settings.forgotPasswordPid}" noCacheHash="true" additionalParams="{tx_felogin_pi1: {forgot: 1}}"><f:translate key="loginPanel.forgotPasswordLink" /></f:link.page>
+			<f:link.page pageUid="{settings.forgotPasswordPid}" noCacheHash="true" additionalParams="{tx_felogin_pi1: {forgot: 1}}">
+				<f:translate key="loginPanel.forgotPasswordLink" />
+			</f:link.page>
 		</p>
+		<h4><f:translate key="loginPanel.registrationTitle" /></h4>
+		<a href="#" class="loginModalRegistrationLink btn btn-primary">
+			<f:translate key="loginPanel.registrationLink" />
+		</a>
 	</div>
 </div>

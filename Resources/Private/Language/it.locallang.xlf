@@ -523,8 +523,11 @@
 			<trans-unit id="loginPanel.modalNativeLoginHeader">
 				<target>Login con e-mail</target>
 			</trans-unit>
+			<trans-unit id="loginPanel.registrationTitle">
+				<target>Ancora senza profilo?</target>
+			</trans-unit>
 			<trans-unit id="loginPanel.registrationLink">
-				<target>Ancora senza profilo? Registrati adesso.</target>
+				<target>Registrati adesso</target>
 			</trans-unit>
 			<trans-unit id="loginPanel.forgotPasswordLink">
 				<target>Password dimenticata</target>

@@ -606,8 +606,11 @@
 			<trans-unit id="loginPanel.modalNativeLoginHeader">
 				<source>Anmelden mit E-Mail</source>
 			</trans-unit>
+			<trans-unit id="loginPanel.registrationTitle">
+				<source>Noch kein Profil?</source>
+			</trans-unit>
 			<trans-unit id="loginPanel.registrationLink">
-				<source>Noch kein Profil? Jetzt registrieren.</source>
+				<source>Jetzt registrieren</source>
 			</trans-unit>
 			<trans-unit id="loginPanel.forgotPasswordLink">
 				<source>Kennwort vergessen?</source>

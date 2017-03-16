@@ -374,11 +374,23 @@ div.login-actions {
 	right: 30px;
     width: 110px;
 	font-size: 0;
+	.font-ubuntu;
 	a {
 		font-size: 14px;
 		&.register-link {
 			color: @text-blue;
 		}
+		&.loginModalRegistrationLink {
+			margin-bottom: 10px;
+		}
+	}
+	p {
+		&.felogin-error {
+			background-color: @pink-light2;
+			padding: 5px 10px;
+			margin-bottom: 10px;
+		}
+		margin-bottom: 10px;
 	}
 }
 
