@@ -14,11 +14,9 @@ namespace Visol\Easyvote\Controller;
  * The TYPO3 project - inspiring people to share!
  */
 
-use TYPO3\CMS\Core\Utility\DebugUtility;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Domain\Model\FileReference;
 use TYPO3\CMS\Extbase\Domain\Model\FrontendUserGroup;
-use TYPO3\CMS\Extbase\Utility\DebuggerUtility;
 use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
 use Visol\Easyvote\Domain\Model\City;
 use Visol\Easyvote\Domain\Model\CommunityUser;
@@ -282,7 +280,7 @@ class CommunityUserController extends AbstractController
                 $templateEmail->setTemplateName('communityUserPendingPartyAdministrator');
                 $templateEmail->setExtensionName($this->request->getControllerExtensionName());
                 $templateEmail->assign('pendingPolitician', $communityUser);
-                $partyAdministrators = $this->communityUserRepository->findPartyAdministrators($communityUser->getParty());
+                $partyAdministrators = $this->communityUserRepository->findPartyAdministratorsAssignedToUserCanton($communityUser);
                 foreach ($partyAdministrators as $partyAdministrator) {
                     /** @var $partyAdministrator \Visol\Easyvote\Domain\Model\CommunityUser */
                     $templateEmail->addRecipient($partyAdministrator);
@@ -310,7 +308,7 @@ class CommunityUserController extends AbstractController
                 $templateEmail->setTemplateName('communityUserPendingPartyAdministrator');
                 $templateEmail->setExtensionName($this->request->getControllerExtensionName());
                 $templateEmail->assign('pendingPolitician', $communityUser);
-                $partyAdministrators = $this->communityUserRepository->findPartyAdministrators($communityUser->getParty());
+                $partyAdministrators = $this->communityUserRepository->findPartyAdministratorsAssignedToUserCanton($communityUser);
                 foreach ($partyAdministrators as $partyAdministrator) {
                     /** @var $partyAdministrator \Visol\Easyvote\Domain\Model\CommunityUser */
                     $templateEmail->addRecipient($partyAdministrator);

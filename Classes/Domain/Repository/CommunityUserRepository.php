@@ -15,6 +15,7 @@ namespace Visol\Easyvote\Domain\Repository;
  */
 
 use TYPO3\CMS\Extbase\Domain\Repository\FrontendUserRepository;
+use Visol\Easyvote\Domain\Model\CommunityUser;
 
 /**
  * Class CommunityUserRepository
@@ -231,15 +232,16 @@ class CommunityUserRepository extends FrontendUserRepository
     /**
      * Finds all administrators of a certain party
      *
-     * @param \Visol\Easyvote\Domain\Model\Party $party
+     * @param CommunityUser $communityUser
      * @return array|\TYPO3\CMS\Extbase\Persistence\QueryResultInterface
      */
-    public function findPartyAdministrators(\Visol\Easyvote\Domain\Model\Party $party)
+    public function findPartyAdministratorsAssignedToUserCanton(CommunityUser $communityUser)
     {
         $query = $this->createQuery();
         $query->matching(
             $query->logicalAnd(
-                $query->equals('party', $party),
+                $query->equals('party', $communityUser->getParty()),
+                $query->contains('partyAdminAllowedCantons', $communityUser->getCitySelection()->getKanton()),
                 $query->contains('usergroup', $this->communityUserService->getUserGroupUid('partyAdministrator'))
             )
         );
