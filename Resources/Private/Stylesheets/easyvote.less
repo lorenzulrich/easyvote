@@ -81,9 +81,45 @@
 		padding-left: 0px;
 		padding-right: 0px;
 		margin-bottom: 30px;
+		width: 100%;
 
 		.row {
 			display: table-row;
+			margin-left: 0;
+			margin-right: 0;
+
+			div {
+				padding-left:0;
+				padding-right: 2px;
+				.vote-up {
+					color: @light-blue;
+					border-color: @light-blue;
+
+					&:hover {
+						.vote-handle {
+							color: @white;
+							cursor: pointer;
+							background-color: @light-blue;
+							i {
+								color: inherit;
+							}
+						}
+					}
+				}
+				.vote-down {
+					&:hover {
+						.vote-handle {
+							color: @white;
+							cursor: pointer;
+							background-color: @pink;
+							i {
+								color: inherit;
+							}
+
+						}
+					}
+				}
+			}
 
 			.sameheight {
 				display: table-cell;
@@ -103,26 +139,42 @@
 				}
 			}
 
+			.vote-handle {
+				margin-bottom: 4px;
+				font-size: 35px;
+				text-align: center;
+				border: solid 4px @gray-light;
+				text-align: center;
+				padding: 6px
+			}
+
+			.vote-result {
+				margin-bottom: 4px;
+				text-align: center;
+				border: solid 4px @gray-light;
+				text-align: center;
+				padding: 6px
+			}
+
 			.vote-color-up {
-				color: #00adef;
+				color: @light-blue;
+				border-color: @light-blue;
 			}
 
 			.vote-color-down {
 				color: @pink;
+				border-color: @pink;
 			}
 
-			.vote-handle {
-				display: inline-block;
-				font-size: 35px;
-				padding-right: 3px;
-			}
-
-			.vote-result {
-				display: inline-block;
-			}
-
-			.vote-result-up {
+			/*.vote-result-up {
 				color: #005476;
+				border-color: #005476;
+			}*/
+			.vote-handle-up {
+				border-color: @light-blue;
+			}
+			.vote-handle-down {
+				border-color: @pink;
 			}
 
 			.vote-active {

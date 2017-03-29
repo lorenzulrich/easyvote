@@ -1,4 +1,3 @@
-<div class="voting">
 	<div class="row">
 		<div class="col-md-12">
 			<h3>
@@ -6,27 +5,28 @@
 			</h3>
 		</div>
 	</div>
-	<div class="row">
-		<div class="col-xs-4 col-md-3">
-			<div class="vote">
-				<div class="vote-handle vote-handle-up">
-					<i class="hasTooltip evicon-like vote-color-up" id="voteUp-{votingPropsalUid}"></i>
+	<div class="voting">
+	<div class="row voting-graph">
+		<div class="col-xs-6 col-md-3">
+			<div class="vote vote-up">
+				<div class="hasTooltip vote-handle vote-handle-up" id="voteUp-{votingPropsalUid}">
 					<div class="hidden">
 						<f:translate key="votingAnswer.iSayYes"/>
 					</div>
+					<i class="evicon-like vote-color-up"></i>
 				</div>
 				<div class="vote-result vote-result-up vote-color-up">
 					xx.x%
 				</div>
 			</div>
 		</div>
-		<div class="col-xs-4 col-md-3">
-			<div class="vote">
-				<div class="vote-handle vote-handle-down">
-					<i class="hasTooltip evicon-dislike vote-color-down" id="voteDown-{votingPropsalUid}"></i>
+		<div class="col-xs-6 col-md-3">
+			<div class="vote vote-down">
+				<div class="hasTooltip vote-handle vote-handle-down" id="voteDown-{votingPropsalUid}">
 					<div class="hidden">
 						<f:translate key="votingAnswer.iSayNo"/>
 					</div>
+					<i class="evicon-dislike vote-color-down"></i>
 				</div>
 				<div class="vote-result vote-result-down vote-color-down">
 					yy.y%
