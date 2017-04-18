@@ -1,13 +1,15 @@
 {namespace v=Tx_Vhs_ViewHelpers}
 {namespace ev=Tx_Easyvote_ViewHelpers}
 
-<div class="login-status hidden-xs hidden-sm">
+<div class="login-status">
 	<f:security.ifAuthenticated>
 		<f:then>
 			<f:security.ifHasRole role="{settings.communityUserGroupUid}">
+				<div style="display:inline-block">
 				<f:link.page class="community-home-link" pageUid="{settings.communityHomePid}">
 					<f:render partial="CommunityUser/Image" arguments="{user:user, settings:settings, size:'50'}" />
 				</f:link.page>
+				</div>
 				<span class="loggedin-as"><f:translate key="loginPanel.loggedInAs" /></span>
 				<div class="user-name"><f:link.page pageUid="{settings.communityHomePid}">{user.firstName} {user.lastName}</f:link.page></div>
 			</f:security.ifHasRole>
@@ -18,12 +20,12 @@
 	<f:security.ifAuthenticated>
 		<f:then>
 			<f:security.ifHasRole role="{settings.communityUserGroupUid}">
-				<f:link.page class="link-box hidden-xs hidden-sm" noCacheHash="TRUE" pageUid="{settings.siteHomePid}" additionalParams="{logintype:'logout'}"><f:translate key="loginPanel.logout" /></f:link.page>
+				<f:link.page class="link-box" noCacheHash="TRUE" pageUid="{settings.siteHomePid}" additionalParams="{logintype:'logout'}"><f:translate key="loginPanel.logout" /></f:link.page>
 				<f:comment><f:link.page class="link-box" noCacheHash="TRUE" additionalParams="{logintype:'logout'}"><f:translate key="loginPanel.logout" /></f:link.page></f:comment>
 			</f:security.ifHasRole>
 		</f:then>
 		<f:else>
-			<a class="hasModal login-link link-box hidden-xs hidden-sm" href="#"><f:translate key="loginPanel.login" /></a>
+			<a class="hasModal login-link link-box" href="#"><f:translate key="loginPanel.login" /></a>
 			<div class="hidden login-popup">
 				<a class="pull-right modal-close" aria-label="schliessen">
 					<i class="evicon-cancel"></i>
@@ -32,13 +34,15 @@
 				<f:render partial="CommunityUser/LoginModal" />
 			</div>
 
-			<a class="hasModal register-link hidden-xs hidden-sm" href="#"><f:translate key="loginPanel.register" /></a>
+			<f:comment><!-- no more register link https://redmine.visol.ch/issues/3270 I leave the markup just in case... -->
+			<a class="hasModal register-link" href="#"><f:translate key="loginPanel.register" /></a>
 			<div class="hidden profile-popup">
 				<a class="pull-right modal-close" aria-label="schliessen">
 					<i class="evicon-cancel"></i>
 				</a>
 				<f:render partial="CommunityUser/NoProfileModal" arguments="{_all}" />
 			</div>
+			</f:comment>
 		</f:else>
 	</f:security.ifAuthenticated>
 </div>
