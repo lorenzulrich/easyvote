@@ -168,6 +168,9 @@
 			<trans-unit id="tx_easyvote_archive.gegenvorschlagNotice">
 					<source><![CDATA[Zu dieser Vorlage gibt es einen <a href="#" id="goToGegenvorschlag">Gegenvorschlag</a>.]]></source>
 			</trans-unit>
+			<trans-unit id="tx_easyvote_archive.mitGegenvorschlag">
+					<source>mit Gegenvorschlag</source>
+			</trans-unit>
 			<trans-unit id="tx_easyvote_archive.gegenvorschlagNoticePrefix">
 					<source>Zu dieser Vorlage gibt es einen</source>
 			</trans-unit>

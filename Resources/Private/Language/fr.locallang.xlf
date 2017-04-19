@@ -87,6 +87,9 @@
 			<trans-unit id="tx_easyvote_archive.gegenvorschlagNotice">
 				<target><![CDATA[<a href="#" id="goToGegenvorschlag">Voici</a> la contre-proposition.]]></target>
 			</trans-unit>
+            <trans-unit id="tx_easyvote_archive.mitGegenvorschlag">
+                    <source>avec contre-proposition</source>
+            </trans-unit>
 			<trans-unit id="tx_easyvote_archive.gegenvorschlagBack">
 				<target><![CDATA[Voici la contre-proposition. <a href="#" id="goToHauptvorlage">Retour à l'objet</a>.]]></target>
 			</trans-unit>

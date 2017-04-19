@@ -3,6 +3,7 @@
 <div class="meta-abstimmungsvorlage {f:if(condition: '{metaVotingProposal.type} == 1', then: 'meta-abstimmungsvorlage-normal', else: 'meta-abstimmungsvorlage-gegenvorschlag')}"
      id="meta-abstimmungsvorlage-{metaVotingProposal.uid}">
 	<f:for each="{metaVotingProposal.votingProposals}" as="votingProposal" iteration="iterator">
+		<div class="col-xs-12 col-md-6">
 		<div class="content-box xcontent-box-expandable abstimmungsvorlage abstimmungsvorlage-meta-{metaVotingProposal.uid}"
 		     id="abstimmungsvorlage-{votingProposal.uid}">
 			<div class="box-teaser">
@@ -34,6 +35,7 @@
 							&nbsp;–&nbsp;
 							{votingProposal.officialTitle}
 						</h3>
+						<f:comment>
 						<f:if condition="{metaVotingProposal.type} == 2">
 							<f:if condition="{iterator.isFirst}">
 								<f:then>
@@ -48,6 +50,7 @@
 								</f:else>
 							</f:if>
 						</f:if>
+						</f:comment>
 					</div>
 				</div>
 			</div>
@@ -157,21 +160,7 @@
 				</f:if>
 
 			</div>
-
 		</div>
-
-		<f:comment><!-- moved to Show.html and should not have been in for loop, I guess -->
-		<script>
-			window.EasyvoteGraph = window.EasyvoteGraph || {};
-
-			EasyvoteGraph.Label = {};
-			EasyvoteGraph.Label.yes = '{f:translate(key: "graph.yes")}';
-			EasyvoteGraph.Label.no = '{f:translate(key: "graph.no")}';
-			EasyvoteGraph.Label.proposalAbbreviated = '{f:translate(key: "graph.proposalAbbreviated")}';
-			EasyvoteGraph.Label.counterProposalAbbreviated = '{f:translate(key: "graph.counterProposalAbbreviated")}';
-
-		</script>
-		</f:comment>
-
+		</div>
 	</f:for>
 </div>

@@ -11,58 +11,84 @@
 	<ev:script file="{f:uri.resource(path:'JavaScript/Libraries/D3pie/d3pie.js')}"/>
 
 	<div id="votingsDashboard">
-		<section class="col-xs-12 col-md-6">
 
-			<f:if condition="{metaVotingProposal.scope} == 1">
-				<f:then>
-					<div class="meta-abstimmungsvorlage {f:if(condition: '{metaVotingProposal.type} == 1', then: 'meta-abstimmungsvorlage-normal', else: 'meta-abstimmungsvorlage-gegenvorschlag')}"
-						 id="meta-abstimmungsvorlage-{metaVotingProposal.uid}">
+				<f:if condition="{metaVotingProposal.scope} == 1">
+					<f:then>
 						<f:render partial="MetaVotingProposal/SingleItem" arguments="{metaVotingProposal:metaVotingProposal}"/>
-					</div>
-				</f:then>
-				<f:else>
-					<f:if condition="{metaVotingProposal.kanton.uid} == {requestedKanton.uid}">
-						<f:render partial="MetaVotingProposal/SingleItem" arguments="{metaVotingProposal:metaVotingProposal}"/>
-					</f:if>
-				</f:else>
-			</f:if>
+					</f:then>
+					<f:else>
+						<f:if condition="{metaVotingProposal.kanton.uid} == {requestedKanton.uid}">
+							<f:render partial="MetaVotingProposal/SingleItem" arguments="{metaVotingProposal:metaVotingProposal}"/>
+						</f:if>
+					</f:else>
+				</f:if>
 
-		</section>
 
-		<section class="col-xs-12 col-md-6">
 
-		<f:if condition="{votingDay.metaVotingProposals -> f:count()} > 1">
-			<div class="header-topic header-layout-11">
-				<h2>Die weiteren Vorlagen <span class="subheader-topic">vom <f:format.date format="d.m.Y">{metaVotingProposal.votingDay.votingDate}</f:format.date></span></h2>
+
+	<f:if condition="{votingDay.metaVotingProposals -> f:count()} > 1">
+		<div class="">
+			<div class="col-xs-12">
+				<div class="header-topic header-layout-11">
+					<h2>Die weiteren Vorlagen <span class="subheader-topic">vom <f:format.date format="d.m.Y">{metaVotingProposal.votingDay.votingDate}</f:format.date></span></h2>
+				</div>
 			</div>
-		</f:if>
+		</div>
+
+		<div class="">
 
 		<f:for each="{votingDay.metaVotingProposals}" as="relatedMetaVotingProposal">
 			<f:if condition="{metaVotingProposal.uid} != {relatedMetaVotingProposal.uid}">
-				<div class="meta-abstimmungsvorlage-related" style="position:relative">
-					<f:if condition="{relatedMetaVotingProposal.image}">
-						<f:then>
-							<div class="meta-abstimmungsvorlage-img" style="">
-								<f:image src="{relatedMetaVotingProposal.image.uid}" treatIdAsReference="1" class="img-responsive" alt="Symbolbild" maxWidth="364" maxHeight="191" />
-							</div>
-						</f:then>
-						<f:else>
-							<div class="meta-abstimmungsvorlage-img" style="height:191px;background-color:#cccccc">&nbsp;</div>
-						</f:else>
-					</f:if>
-					<f:for each="{relatedMetaVotingProposal.votingProposals}" as="relatedProposal">
-						<f:link.action controller="MetaVotingProposal" action="show" arguments="{metaVotingProposal:relatedMetaVotingProposal}">
-						<div class="text-overlay">
-							<h2>{relatedProposal.shortTitle}</h2>
-							<h3>{relatedProposal.officialTitle}</h3>
+				<div class="col-xs-12 col-md-6">
+					<f:link.action controller="MetaVotingProposal" action="show" arguments="{metaVotingProposal:relatedMetaVotingProposal}">
+
+				<f:if condition="{relatedMetaVotingProposal.image}">
+					<f:then>
+						<div class="home-box-item"
+							 style="background-image:url('{f:uri.image(src: '{relatedMetaVotingProposal.image.uid}', treatIdAsReference: 1, maxWidth: 364, maxHeight: 191)}')">
+							<f:render section="boxContent" arguments="{relatedMetaVotingProposal:relatedMetaVotingProposal}" />
 						</div>
-						</f:link.action>
-					</f:for>
+					</f:then>
+					<f:else>
+						<div class="home-box-item">
+							<f:render section="boxContent" arguments="{relatedMetaVotingProposal:relatedMetaVotingProposal}" />
+						</div>
+					</f:else>
+				</f:if>
+					</f:link.action>
+
 				</div>
+
+				<f:comment>
+					<div class="meta-abstimmungsvorlage-related" style="position:relative">
+						<f:if condition="{relatedMetaVotingProposal.image}">
+							<f:then>
+								<div class="meta-abstimmungsvorlage-img" style="">
+									<f:image src="{relatedMetaVotingProposal.image.uid}" treatIdAsReference="1" class="img-responsive" alt="Symbolbild" maxWidth="364" maxHeight="191" />
+								</div>
+							</f:then>
+							<f:else>
+								<div class="meta-abstimmungsvorlage-img" style="height:191px;background-color:#cccccc">&nbsp;</div>
+							</f:else>
+						</f:if>
+						<f:for each="{relatedMetaVotingProposal.votingProposals}" as="relatedProposal">
+							<f:link.action controller="MetaVotingProposal" action="show" arguments="{metaVotingProposal:relatedMetaVotingProposal}">
+								<div class="text-overlay">
+									<h2>{relatedProposal.shortTitle}</h2>
+									<h3>{relatedProposal.officialTitle}</h3>
+								</div>
+							</f:link.action>
+						</f:for>
+					</div>
+
+				</f:comment>
+
 			</f:if>
 		</f:for>
-		</section>
 
+
+			</div>
+		</f:if>
     </div>
 	<script>
 		var ajaxUri = '<f:uri.page pageUid="{settings.communityAjaxPid}" absolute="TRUE" pageType="999" />';
@@ -82,6 +108,30 @@
 
 	</script>
 
+</f:section>
+
+<f:section name="boxContent">
+	<f:for each="{relatedMetaVotingProposal.votingProposals}" as="votingProposal" iteration="iterator">
+		<f:if condition="{iterator.isFirst}">
+
+			<div class="box-content themen-layout-11 abstimmungsvorlage abstimmungsvorlage-meta-{relatedMetaVotingProposal.uid}"
+				 id="abstimmungsvorlage-{votingProposal.uid}">
+				<h2>{votingProposal.shortTitle}</h2>
+				<h3>
+					<f:format.date format="d.m.Y">{relatedMetaVotingProposal.votingDay.votingDate}</f:format.date>
+					&nbsp;–&nbsp;
+					{votingProposal.officialTitle}
+				</h3>
+				<f:if condition="{relatedMetaVotingProposal.type} == 2">
+					<f:then>
+						<div class="multipleVotingsNavi">
+							<f:translate key="tx_easyvote_archive.mitGegenvorschlag"/>
+						</div>
+					</f:then>
+				</f:if>
+			</div>
+		</f:if>
+	</f:for>
 </f:section>
 
 </html>

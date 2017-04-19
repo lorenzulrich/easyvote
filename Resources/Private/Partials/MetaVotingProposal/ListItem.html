@@ -1,54 +1,47 @@
 {namespace v=Tx_Vhs_ViewHelpers}
 {namespace ev=Tx_Easyvote_ViewHelpers}
-<div class="meta-abstimmungsvorlage {f:if(condition: '{metaVotingProposal.type} == 1', then: 'meta-abstimmungsvorlage-normal', else: 'meta-abstimmungsvorlage-gegenvorschlag')}"
+<div class="col-xs-12 col-md-6 meta-abstimmungsvorlage {f:if(condition: '{metaVotingProposal.type} == 1', then: 'meta-abstimmungsvorlage-normal', else: 'meta-abstimmungsvorlage-gegenvorschlag')}"
      id="meta-abstimmungsvorlage-{metaVotingProposal.uid}">
-	<div class="row">
-		<div class="col-xs-12 col-md-5">
-			<f:if condition="{metaVotingProposal.image}">
-				<f:then>
-					<div class="meta-abstimmungsvorlage-img" style="">
-						<f:image src="{metaVotingProposal.image.uid}" treatIdAsReference="1" class="img-responsive" alt="Symbolbild" maxWidth="364" maxHeight="191" />
-					</div>
-				</f:then>
-				<f:else>
-					<div class="meta-abstimmungsvorlage-img">noch kein Foto zugeordnet</div>
-				</f:else>
-			</f:if>
-		</div>
-		<div class="col-xs-12 col-md-7">
-		<f:for each="{metaVotingProposal.votingProposals}" as="votingProposal" iteration="iterator">
-			<div class="content-box abstimmungsvorlage abstimmungsvorlage-meta-{metaVotingProposal.uid}"
-				 id="abstimmungsvorlage-{votingProposal.uid}">
-				<div class="box-teaser">
-					<f:link.action controller="MetaVotingProposal" action="show" arguments="{metaVotingProposal:metaVotingProposal}">
-					<div class="xcol-xs-12 xcol-md-7">
-						<h2>{votingProposal.shortTitle}</h2>
-						<h3>
-							<f:format.date format="d.m.Y">{metaVotingProposal.votingDay.votingDate}</f:format.date>
-							&nbsp;–&nbsp;
-							{votingProposal.officialTitle}
-						</h3>
-						<f:comment>
-						<f:if condition="{metaVotingProposal.type} == 2">
-							<f:if condition="{iterator.isFirst}">
-								<f:then>
-									<p class="multipleVotingsNavi"><i class="evicon-right-hand pull-left"></i>
-										<f:translate key="tx_easyvote_archive.gegenvorschlagNotice"/>
-									</p>
-								</f:then>
-								<f:else>
-									<p class="multipleVotingsNavi"><i class="evicon-right-hand pull-left"></i>
-										<f:translate key="tx_easyvote_archive.gegenvorschlagBack"/>
-									</p>
-								</f:else>
-							</f:if>
-						</f:if>
-						</f:comment>
-					</div>
-					</f:link.action>
-				</div>
+	<f:link.action controller="MetaVotingProposal" action="show" arguments="{metaVotingProposal:metaVotingProposal}">
+
+	<f:if condition="{metaVotingProposal.image}">
+		<f:then>
+			<div class="home-box-item"
+				 style="background-image:url('{f:uri.image(src: '{metaVotingProposal.image.uid}', treatIdAsReference: 1, maxWidth: 364, maxHeight: 191)}')">
+				<f:render section="boxContent" arguments="{_all}" />
 			</div>
-		</f:for>
-		</div>
-	</div>
+		</f:then>
+		<f:else>
+			<div class="home-box-item">
+				<f:render section="boxContent" arguments="{_all}" />
+			</div>
+		</f:else>
+	</f:if>
+	</f:link.action>
 </div>
+
+<f:section name="boxContent">
+	<f:for each="{metaVotingProposal.votingProposals}" as="votingProposal" iteration="iterator">
+		<f:if condition="{iterator.isFirst}">
+			<f:comment>don't show gegenvorschlag details anymore. always show only first item</f:comment>
+
+			<div class="box-content themen-layout-11 abstimmungsvorlage abstimmungsvorlage-meta-{metaVotingProposal.uid}"
+				 id="abstimmungsvorlage-{votingProposal.uid}">
+				<h2>{votingProposal.shortTitle}</h2>
+				<h3>
+					<f:format.date format="d.m.Y">{metaVotingProposal.votingDay.votingDate}</f:format.date>
+					&nbsp;–&nbsp;
+					{votingProposal.officialTitle}
+				</h3>
+				<f:if condition="{metaVotingProposal.type} == 2">
+					<f:then>
+						<div class="multipleVotingsNavi">
+							<f:translate key="tx_easyvote_archive.mitGegenvorschlag"/>
+						</div>
+					</f:then>
+				</f:if>
+			</div>
+		</f:if>
+	</f:for>
+</f:section>
+
