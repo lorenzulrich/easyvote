@@ -20,7 +20,7 @@
 	<f:security.ifAuthenticated>
 		<f:then>
 			<f:security.ifHasRole role="{settings.communityUserGroupUid}">
-				<f:link.page class="link-box" noCacheHash="TRUE" pageUid="{settings.siteHomePid}" additionalParams="{logintype:'logout'}"><f:translate key="loginPanel.logout" /></f:link.page>
+				<f:link.page noCacheHash="TRUE" pageUid="{settings.siteHomePid}" additionalParams="{logintype:'logout'}"><f:translate key="loginPanel.logout" /></f:link.page>
 				<f:comment><f:link.page class="link-box" noCacheHash="TRUE" additionalParams="{logintype:'logout'}"><f:translate key="loginPanel.logout" /></f:link.page></f:comment>
 			</f:security.ifHasRole>
 		</f:then>
