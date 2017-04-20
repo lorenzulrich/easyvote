@@ -12,25 +12,22 @@
 
 	<div id="votingsDashboard">
 
-				<f:if condition="{metaVotingProposal.scope} == 1">
-					<f:then>
-						<f:render partial="MetaVotingProposal/SingleItem" arguments="{metaVotingProposal:metaVotingProposal}"/>
-					</f:then>
-					<f:else>
-						<f:if condition="{metaVotingProposal.kanton.uid} == {requestedKanton.uid}">
-							<f:render partial="MetaVotingProposal/SingleItem" arguments="{metaVotingProposal:metaVotingProposal}"/>
-						</f:if>
-					</f:else>
+		<f:if condition="{metaVotingProposal.scope} == 1">
+			<f:then>
+				<f:render partial="MetaVotingProposal/SingleItem" arguments="{metaVotingProposal:metaVotingProposal}"/>
+			</f:then>
+			<f:else>
+				<f:if condition="{metaVotingProposal.kanton.uid} == {requestedKanton.uid}">
+					<f:render partial="MetaVotingProposal/SingleItem" arguments="{metaVotingProposal:metaVotingProposal}"/>
 				</f:if>
-
-
-
+			</f:else>
+		</f:if>
 
 	<f:if condition="{votingDay.metaVotingProposals -> f:count()} > 1">
 		<div class="">
 			<div class="col-xs-12">
 				<div class="header-topic header-layout-11">
-					<h2>Die weiteren Vorlagen <span class="subheader-topic">vom <f:format.date format="d.m.Y">{metaVotingProposal.votingDay.votingDate}</f:format.date></span></h2>
+					<h2>{f:translate(key:'tx_easyvote_domain_model_votingproposal.related')} <span class="subheader-topic"><f:format.date format="d.m.Y">{metaVotingProposal.votingDay.votingDate}</f:format.date></span></h2>
 				</div>
 			</div>
 		</div>

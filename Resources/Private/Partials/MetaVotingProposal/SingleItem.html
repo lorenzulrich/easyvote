@@ -13,11 +13,9 @@
 							<div class="action share">
 								<f:if condition="{settings.context} != 'app'">
                                     <f:then>
-                                        <div class="hidden">
-                                            <a href="{votingProposal.permalink}" id="votingProposalLink">
-                                                <f:translate key="tx_easyvote_domain_model_votingproposal" /> {votingProposal.shortTitle}
-                                            </a>
-                                        </div>
+										<a id="votingProposalLink" href="#" class="hasSharingModal shareTrigger" data-share-uri="{votingProposal.permalink}" data-share-title="{f:translate(key:'tx_easyvote_domain_model_votingproposal')} {votingProposal.shortTitle}" title="{f:translate(key:'tx_easyvote_domain_model_votingproposal.share')}: {f:translate(key:'tx_easyvote_domain_model_votingproposal')}">
+											<i class="evicon-share"></i>
+										</a>
 									</f:then>
 									<f:else>
                                         <f:comment>01.03.2017/am: sharing inside app context not clear yet</f:comment>

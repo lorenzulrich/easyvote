@@ -35,6 +35,12 @@
 			<trans-unit id="tx_easyvote_domain_model_votingproposal.share">
 				<target>Condividi</target>
 			</trans-unit>
+			<trans-unit id="tx_easyvote_domain_model_votingproposal.proposal_approval">
+				<source>Zustimmung zur Vorlage (in %)</source>
+			</trans-unit>
+			<trans-unit id="tx_easyvote_domain_model_votingproposal.related">
+				<source>Die weiteren Vorlagen</source>
+			</trans-unit>
 
 			<trans-unit id="widget.pagination.previous">
 					<target>indietro</target>
