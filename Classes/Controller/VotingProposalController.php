@@ -191,10 +191,10 @@ class VotingProposalController extends AbstractController
         $language = $this->request->getArgument('language');
         if ($metaVotingProposal instanceof \Visol\Easyvote\Domain\Model\MetaVotingProposal) {
             if ($metaVotingProposal->getVotingDay()->isArchived()) {
-                $redirectUri = $this->uriBuilder->setTargetPageUid((int)$this->settings['votingArchivePid'])->setArguments(array('tx_easyvote_archive' => array('selectSingle' => $votingProposal->getUid()), 'L' => $language))->build();
+                $redirectUri = $this->uriBuilder->setTargetPageUid((int)$this->settings['votingArchivePid'])->setArguments(['tx_easyvote_archive' => ['metaVotingProposal' => $metaVotingProposal->getUid()], 'L' => $language])->build();
                 $this->redirectToUri($redirectUri);
             } else {
-                $redirectUri = $this->uriBuilder->setTargetPageUid((int)$this->settings['currentVotingsPid'])->setArguments(array('tx_easyvote_currentvotings' => array('selectSingle' => $votingProposal->getUid()), 'L' => $language))->build();
+                $redirectUri = $this->uriBuilder->setTargetPageUid((int)$this->settings['currentVotingsPid'])->setArguments(['tx_easyvote_currentvotings' => ['controller' => 'MetaVotingProposal', 'metaVotingProposal' => $metaVotingProposal->getUid()], 'L' => $language])->build();
                 $this->redirectToUri($redirectUri);
             }
         }
