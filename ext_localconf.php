@@ -32,7 +32,7 @@ if (!defined('TYPO3_MODE')) {
     'Visol.' . $_EXTKEY,
     'Archive',
     array(
-        'MetaVotingProposal' => 'archive',
+        'MetaVotingProposal' => 'archive,show',
     ),
     // non-cacheable actions
     array(
