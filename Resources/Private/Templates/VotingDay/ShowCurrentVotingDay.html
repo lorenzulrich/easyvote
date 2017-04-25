@@ -38,12 +38,11 @@
 			</f:if>
 		</f:for>
 	</div>
-	<f:comment><!-- mo js functions needed here anymore, we just have links to detailpages -->
+	<f:comment><!-- no js functions needed here anymore, we just have links to detailpages -->
 	<script>
 		var ajaxUri = '<f:uri.page pageUid="{settings.communityAjaxPid}" absolute="TRUE" pageType="999" />';
 	</script>
 	<f:render partial="CommunityUser/NotAuthenticatedModal"/>
-	<f:render partial="VotingDay/HeadTags" arguments="{_all}"/>
 	</f:comment>
 </f:section>
 

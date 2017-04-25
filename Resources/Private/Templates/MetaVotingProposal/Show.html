@@ -6,6 +6,8 @@
 
 <f:section name="main">
 
+
+
 	<ev:script file="{f:uri.resource(path:'JavaScript/VotingResultChart.js')}"/>
 	<ev:script file="{f:uri.resource(path:'JavaScript/Libraries/D3/d3.js')}"/>
 	<ev:script file="{f:uri.resource(path:'JavaScript/Libraries/D3pie/d3pie.js')}"/>
@@ -92,7 +94,6 @@
 	</script>
 
 	<f:render partial="CommunityUser/NotAuthenticatedModal"/>
-	<f:render partial="VotingDay/HeadTags" arguments="{_all}"/>
 
 	<script>
 		window.EasyvoteGraph = window.EasyvoteGraph || {};
