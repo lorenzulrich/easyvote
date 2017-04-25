@@ -27,12 +27,6 @@
 
 			<div class="box-content themen-layout-11 abstimmungsvorlage abstimmungsvorlage-meta-{metaVotingProposal.uid}"
 				 id="abstimmungsvorlage-{votingProposal.uid}">
-				<h2>{votingProposal.shortTitle}</h2>
-				<h3>
-					<f:format.date format="d.m.Y">{metaVotingProposal.votingDay.votingDate}</f:format.date>
-					&nbsp;–&nbsp;
-					{votingProposal.officialTitle}
-				</h3>
 				<f:if condition="{metaVotingProposal.type} == 2">
 					<f:then>
 						<div class="multipleVotingsNavi">
@@ -40,6 +34,12 @@
 						</div>
 					</f:then>
 				</f:if>
+				<h2>{votingProposal.shortTitle}</h2>
+				<h3>
+					<f:format.date format="d.m.Y">{metaVotingProposal.votingDay.votingDate}</f:format.date>
+					&nbsp;–&nbsp;
+					{votingProposal.officialTitle}
+				</h3>
 			</div>
 		</f:if>
 	</f:for>
