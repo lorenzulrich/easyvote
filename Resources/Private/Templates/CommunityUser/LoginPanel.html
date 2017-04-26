@@ -34,7 +34,7 @@
 				<f:render partial="CommunityUser/LoginModal" />
 			</div>
 
-			<f:comment><!-- no more register link https://redmine.visol.ch/issues/3270 I leave the markup just in case... -->
+			<f:comment><!-- no more register link https://redmine.visol.ch/issues/3270 I leave the markup just in case... --></f:comment>
 			<a class="hasModal register-link" href="#"><f:translate key="loginPanel.register" /></a>
 			<div class="hidden profile-popup">
 				<a class="pull-right modal-close" aria-label="schliessen">
@@ -42,7 +42,6 @@
 				</a>
 				<f:render partial="CommunityUser/NoProfileModal" arguments="{_all}" />
 			</div>
-			</f:comment>
 		</f:else>
 	</f:security.ifAuthenticated>
 </div>
