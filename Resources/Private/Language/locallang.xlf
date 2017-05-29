@@ -258,7 +258,7 @@
 				<source>Vote-Wecker per E-Mail</source>
 			</trans-unit>
 			<trans-unit id="editNotifications.sectionEmailIntroduction">
-				<source>Wir erinnern und informieren dich per E-Mail über bevorstehende Abstimmungen und Wahlen.</source>
+				<source>Wir erinnern und informieren dich per E-Mail über bevorstehende Abstimmungen und Wahlen. Lehrpersonen erhalten zusätzlich Infos zu Angebote von easyvote-school.</source>
 			</trans-unit>
 			<trans-unit id="editNotifications.sectionCommunityNewsHeader">
 				<source>Community-News per E-Mail</source>
