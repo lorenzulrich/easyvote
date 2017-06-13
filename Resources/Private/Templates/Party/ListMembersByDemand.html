@@ -26,14 +26,14 @@
 							<f:render partial="CommunityUser/Image" arguments="{user:member, size: 300}" />
 						</div>
 						<div class="col-xs-9 col-md-9">
-							<div class="actions">
-								<f:if condition="{member.pendingPolitician}">
+							<f:if condition="{member.pendingPolitician}">
+								<div class="actions">
 									<div class="action status">
 										<i class="evicon-spin animate-spin hasTooltip"></i>
 										<div class="hidden">{f:translate(key:'party.member.pending')}</div>
 									</div>
-								</f:if>
-							</div>
+								</div>
+							</f:if>
 							<h2>
 								{member.firstName} {member.lastName}
 							</h2>
@@ -80,10 +80,10 @@
 										<f:then>
 											<f:if condition="{member} == {communityUser}">
 												<f:then>
-													<p><f:translate key="party.member.isYou" /></p>
+													<div><f:translate key="party.member.isYou" /></div>
 												</f:then>
 												<f:else>
-													<p><f:translate key="party.member.isAdmin" /></p>
+													<div><f:translate key="party.member.isAdmin" /></div>
 												</f:else>
 											</f:if>
 										</f:then>
